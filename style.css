@@ -5,6 +5,7 @@ body {
     padding: 0;
     background-color: #f4f4f9;
     color: #333;
+    overflow-y: auto; /* Enables vertical scrolling */
 }
 
 header {
@@ -100,6 +101,8 @@ main {
     border-radius: 10px;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Enables vertical scrolling within main */
+    max-height: 80vh; /* Limits height to ensure scrolling */
 }
 
 h2 {
