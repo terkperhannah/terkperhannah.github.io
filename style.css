@@ -3,9 +3,10 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    padding-bottom: 60px; /* Ensure footer doesn't overlap */
     background-color: #f4f4f9;
     color: #333;
-    overflow-y: auto; /* Enables vertical scrolling */
+    overflow-y: auto; /* Allows page scrolling */
 }
 
 header {
@@ -96,13 +97,12 @@ nav ul li .submenu li a:hover {
 
 main {
     padding: 20px;
-    margin: 20px;
+    margin: 20px auto;
     border: 2px solid #ccc;
     border-radius: 10px;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow-y: auto; /* Enables vertical scrolling within main */
-    max-height: 80vh; /* Limits height to ensure scrolling */
+    overflow-y: auto; /* Enables scrolling within main */
 }
 
 h2 {
@@ -115,9 +115,7 @@ footer {
     color: white;
     text-align: center;
     padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    position: relative; /* Footer scrolls with the page */
     border-top: 5px solid #388e3c;
 }
 
