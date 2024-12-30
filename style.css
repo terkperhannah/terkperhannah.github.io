@@ -139,3 +139,34 @@ main {
     backdrop-filter: blur(8px);
     background-color: rgba(255, 255, 255, 0.8);
 }
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8em; /* Smaller font size for mobile */
+    }
+
+    nav ul {
+        flex-direction: column; /* Stack the navigation items */
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 5px 0; /* Add spacing between items */
+    }
+
+    nav ul li a {
+        font-size: 0.9em; /* Smaller font size for links */
+        padding: 8px 12px; /* Adjust padding for smaller screens */
+    }
+
+    main {
+        margin: 10px; /* Reduce margin for mobile */
+        padding: 15px; /* Adjust padding */
+    }
+
+    footer {
+        font-size: 0.9em; /* Smaller font for the footer */
+        padding: 10px;
+    }
+}
