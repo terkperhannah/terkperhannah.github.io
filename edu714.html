@@ -3,77 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EDU 714: Course Design</title>
+    <title>EDU 714 Final Project</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <header>
         <h1>Ms. Terkper's Digital Classroom</h1>
     </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li class="dropdown">
-                <a href="#">Math</a>
-                <ul class="submenu">
-                    <li><a href="math7.html">Math 7</a></li>
-                    <li><a href="math8.html">Math 8</a></li>
-                    <li><a href="math9.html">Math 9</a></li>
-                    <li><a href="math10.html">Math 10</a></li>
-                    <li><a href="math20-1.html">Math 11</a></li>
-                    <li><a href="math30-1.html">Math 12</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#">Science</a>
-                <ul class="submenu">
-                    <li><a href="science7.html">Science 7</a></li>
-                    <li><a href="science8.html">Science 8</a></li>
-                    <li><a href="science9.html">Science 9</a></li>
-                    <li><a href="science10.html">Science 10</a></li>
-                    <li><a href="Bio20.html">Science 11</a></li>
-                    <li><a href="Bio30.html">Science 12</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#">Computer Science</a>
-                <ul class="submenu">
-                    <li><a href="cs-general.html">General</a></li>
-                    <li><a href="cs-robotics.html">Robotics</a></li>
-                    <li><a href="cs-video-game-design.html">Video Game Design</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#">M.Ed-Courses</a>
-                <ul class="submenu">
-                    <li><a href="med-general.html">General</a></li>
-                    <li><a href="edu714.html">EDU 714</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
+
     <main>
-        <section>
-            <h2>EDU 714: Course Design</h2>
-            <p>Welcome to EDU 714: Course Design. This course focuses on creating effective and inclusive course materials using Universal Design for Learning (UDL) principles. As part of my final project, I'll be building a comprehensive website to showcase UDL principles and include instructional videos to enhance accessibility and engagement.</p>
+        <!-- Section Header -->
+        <section id="edu714-header" class="section">
+            <h2>EDU 714 Final Project</h2>
+        </section>
 
-            <h3>Final Project: UDL Website</h3>
-            <ul>
-                <li>Objective: To create a user-friendly and accessible website.</li>
-                <li>Features:
-                    <ul>
-                        <li>Video tutorials and instructional content</li>
-                        <li>Interactive elements for student engagement</li>
-                        <li>Resources for educators on implementing UDL</li>
-                    </ul>
-                </li>
-            </ul>
+        <!-- Introduction -->
+        <section id="introduction" class="section">
+            <h3>Introduction</h3>
+            <p>Welcome to my final project for EDU 714: Course Design. For this project, I evaluated Math 15, a foundational math course designed for English Language Learner students aged 18–20 who are new to Canada. This project uses Universal Design for Learning (UDL) principles to improve accessibility and engagement in the course.</p>
+        </section>
 
-            <p>Stay tuned for updates and resources as the project progresses!</p>
+        <!-- Embedded Video -->
+        <section id="video-section" class="section">
+            <h3>Collaborative Math in Action</h3>
+            <p>The video below showcases various ways students can engage with math, including group activities, using whiteboards, workbooks, and educational games, all aimed at achieving the same math outcomes.</p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/UPD5zg6GtD0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </section>
+
+        <!-- Course Evaluation (Collapsible) -->
+        <section id="course-evaluation" class="section collapsible">
+            <h3>Course Evaluation Based on UDL Principles</h3>
+            <div class="content">
+                <h4>Engagement</h4>
+                <p><strong>Strengths:</strong> The self-paced structure promotes autonomy and provides clear outcomes.</p>
+                <p><strong>Improvements:</strong> Add collaborative activities and strategies to address learner variability.</p>
+
+                <h4>Representation</h4>
+                <p><strong>Strengths:</strong> Practice booklets provide consistent instruction.</p>
+                <p><strong>Improvements:</strong> Include videos, visuals, and translated resources for ELL students.</p>
+
+                <h4>Action and Expression</h4>
+                <p><strong>Strengths:</strong> Exams measure understanding effectively.</p>
+                <p><strong>Improvements:</strong> Offer alternative assessments like projects or presentations.</p>
+            </div>
+        </section>
+
+        <!-- Recommendations (Collapsible) -->
+        <section id="recommendations" class="section collapsible">
+            <h3>Recommendations for Improvement</h3>
+            <div class="content">
+                <ul>
+                    <li><strong>Engagement:</strong> Use gamified activities like Kahoot and schedule weekly group problem-solving sessions.</li>
+                    <li><strong>Representation:</strong> Create video tutorials and provide glossaries for ELL students.</li>
+                    <li><strong>Action and Expression:</strong> Add project-based assessments and self-assessment opportunities.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Placeholder for Additional Content -->
+        <section id="additional-content" class="section">
+            <h3>Additional Resources</h3>
+            <p>Stay tuned for more resources and updates here!</p>
         </section>
     </main>
+
     <footer>
         <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
     </footer>
+
+    <script>
+        // Add collapsible functionality
+        document.querySelectorAll('.collapsible').forEach(section => {
+            section.querySelector('h3').addEventListener('click', () => {
+                section.querySelector('.content').classList.toggle('visible');
+            });
+        });
+    </script>
 </body>
 </html>
