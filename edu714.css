@@ -219,3 +219,48 @@ main {
         padding: 10px;
     }
 }
+
+/* Styling for Collapsible Green Box */
+.section.collapsible {
+    background-color: #e8f5e9; /* Light green background */
+    border: 2px solid #4caf50; /* Darker green border */
+    border-radius: 8px; /* Rounded corners */
+    margin: 20px 0; /* Space between sections */
+    padding: 10px; /* Inner padding */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease-in-out; /* Add subtle animation */
+}
+
+.section.collapsible:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+}
+
+.section.collapsible h3 {
+    cursor: pointer; /* Indicate interactivity with hand cursor */
+    color: #2e7d32; /* Dark green text for headers */
+    margin: 0;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: space-between; /* Space for expand/collapse icons */
+    align-items: center;
+    padding: 10px; /* Add padding around the text */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.section.collapsible h3:hover {
+    background-color: #4caf50; /* Dark green background on hover */
+    color: #fff; /* White text on hover */
+    border-radius: 8px; /* Consistent with the section box */
+}
+
+.section.collapsible h3::after {
+    content: '\\25BC'; /* Down arrow icon */
+    font-size: 0.8em;
+    color: #2e7d32;
+    transition: transform 0.3s ease-in-out;
+}
+
+.section.collapsible h3.expanded::after {
+    transform: rotate(180deg); /* Rotate arrow when expanded */
+}
+
