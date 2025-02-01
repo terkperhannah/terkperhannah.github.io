@@ -3,9 +3,10 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    padding-bottom: 60px; /* Ensure footer doesn't overlap */
     background-color: #f4f4f9;
     color: #333;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-y: auto; /* Allows page scrolling */
 }
 
 header {
@@ -21,79 +22,92 @@ h1 {
     margin: 0;
 }
 
-.section {
-    padding: 20px;
-    margin: 20px auto;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    animation: slide-in 0.8s ease-in-out;
+nav {
+    background-color: #222;
+    color: white;
+    padding: 10px 0;
+    position: relative;
+    z-index: 1000;
 }
 
-.section h3 {
-    color: #388e3c;
-    cursor: pointer;
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.collapsible .content {
-    display: none;
-    margin-top: 10px;
+nav ul li {
+    position: relative;
+    margin: 0 10px;
 }
 
-.collapsible .content.visible {
-    display: block;
-    animation: fade-in 0.5s ease-in-out;
-}
-
-/* Animations */
-@keyframes slide-in {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* Interactive Elements */
-a {
+nav ul li a {
+    color: white;
     text-decoration: none;
-    color: #4caf50;
+    font-size: 1em; /* Increased font size */
+    padding: 10px 15px; /* Adjusted padding */
     font-weight: bold;
+    border-radius: 5px; /* Add border radius for styling */
+    background-color: #444; /* Subtle background color for contrast */
     transition: color 0.3s, background-color 0.3s;
 }
 
-a:hover {
+nav ul li a:hover {
+    background-color: #555;
     color: #ffd700;
-    background-color: #4caf50;
-    border-radius: 5px;
-    padding: 2px 5px;
 }
 
-button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+nav ul li .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    border: 1px solid #4caf50;
+    padding: 10px 0;
+    list-style: none;
+    z-index: 1000;
+    min-width: 150px;
 }
 
-button:hover {
-    background-color: #388e3c;
+nav ul li:hover .submenu {
+    display: block;
+}
+
+nav ul li .submenu li {
+    padding: 5px 15px;
+}
+
+nav ul li .submenu li a {
+    font-size: 0.9em;
+    padding: 5px 10px;
+    display: block;
+    text-align: left;
+    background-color: #444;
+    border-radius: 3px;
+}
+
+nav ul li .submenu li a:hover {
+    background-color: #555;
+    color: #ffd700;
+}
+
+main {
+    padding: 20px;
+    margin: 20px auto;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Enables scrolling within main */
+}
+
+h2 {
+    color: #388e3c;
+    text-align: center;
 }
 
 footer {
@@ -101,23 +115,58 @@ footer {
     color: white;
     text-align: center;
     padding: 10px 0;
-    position: relative;
+    position: relative; /* Footer scrolls with the page */
     border-top: 5px solid #388e3c;
 }
 
-/* Responsive Design */
+/* Additional Styling */
+section {
+    line-height: 1.6;
+}
+
+p {
+    font-size: 1.1em;
+}
+
+/* Nature & Technology Theme */
+body {
+    background-image: url('https://images.unsplash.com/photo-1732287931034-c4cc1b06de6a?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Add a nature-themed background */
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+main {
+    backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Mobile Styles */
 @media (max-width: 768px) {
     header h1 {
-        font-size: 1.8em;
+        font-size: 1.8em; /* Smaller font size for mobile */
     }
 
-    .section {
-        margin: 10px;
-        padding: 15px;
+    nav ul {
+        flex-direction: column; /* Stack the navigation items */
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 5px 0; /* Add spacing between items */
+    }
+
+    nav ul li a {
+        font-size: 0.9em; /* Smaller font size for links */
+        padding: 8px 12px; /* Adjust padding for smaller screens */
+    }
+
+    main {
+        margin: 10px; /* Reduce margin for mobile */
+        padding: 15px; /* Adjust padding */
     }
 
     footer {
-        font-size: 0.9em;
+        font-size: 0.9em; /* Smaller font for the footer */
         padding: 10px;
     }
 }
