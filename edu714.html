@@ -128,6 +128,18 @@
                     });
                 }
             });
+
+            // Hover effect for headers
+            document.querySelectorAll('.section.collapsible h3').forEach(header => {
+                header.addEventListener('mouseover', () => {
+                    header.style.backgroundColor = '#4caf50';
+                    header.style.color = '#fff';
+                });
+                header.addEventListener('mouseout', () => {
+                    header.style.backgroundColor = '';
+                    header.style.color = '';
+                });
+            });
         });
     </script>
 </body>
