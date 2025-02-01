@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EDU 714 Final Project</title>
-    <link rel="stylesheet" href="edu714.css">
+    <link rel="stylesheet" href="edu714_styles.css">
 </head>
 <body>
     <header>
@@ -20,36 +20,9 @@
                     <li><a href="math8.html">Math 8</a></li>
                     <li><a href="math9.html">Math 9</a></li>
                     <li><a href="math10.html">Math 10</a></li>
-                    <li><a href="math20-1.html">Math 11</a></li>
-                    <li><a href="math30-1.html">Math 12</a></li>
                 </ul>
             </li>
-            <li class="dropdown">
-                <a href="#">Science</a>
-                <ul class="submenu">
-                    <li><a href="science7.html">Science 7</a></li>
-                    <li><a href="science8.html">Science 8</a></li>
-                    <li><a href="science9.html">Science 9</a></li>
-                    <li><a href="science10.html">Science 10</a></li>
-                    <li><a href="Bio20.html">Science 11</a></li>
-                    <li><a href="Bio30.html">Science 12</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#">Computer Science</a>
-                <ul class="submenu">
-                    <li><a href="cs-general.html">General</a></li>
-                    <li><a href="cs-robotics.html">Robotics</a></li>
-                    <li><a href="cs-video-game-design.html">Video Game Design</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#">M.Ed-Courses</a>
-                <ul class="submenu">
-                    <li><a href="med-general.html">General</a></li>
-                    <li><a href="edu714.html">EDU 714</a></li>
-                </ul>
-            </li>
+            <li><a href="edu714.html">EDU 714</a></li>
         </ul>
     </nav>
     <main>
@@ -113,10 +86,28 @@
     </footer>
 
     <script>
-        // Add collapsible functionality
-        document.querySelectorAll('.collapsible').forEach(section => {
-            section.querySelector('h3').addEventListener('click', () => {
-                section.querySelector('.content').classList.toggle('visible');
+        document.addEventListener("DOMContentLoaded", function () {
+            // Collapsible Sections
+            document.querySelectorAll('.collapsible').forEach(section => {
+                const header = section.querySelector('h3');
+                const content = section.querySelector('.content');
+
+                if (header && content) {
+                    header.addEventListener('click', () => {
+                        content.classList.toggle('visible');
+                        header.classList.toggle('expanded');
+                    });
+                }
+            });
+
+            // Hover Effects (if applicable)
+            document.querySelectorAll('a').forEach(link => {
+                link.addEventListener('mouseover', () => {
+                    link.style.color = '#ffd700'; // Gold on hover
+                });
+                link.addEventListener('mouseout', () => {
+                    link.style.color = ''; // Revert to default
+                });
             });
         });
     </script>
