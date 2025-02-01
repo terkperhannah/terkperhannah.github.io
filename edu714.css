@@ -254,7 +254,7 @@ main {
 }
 
 .section.collapsible h3::after {
-    content: '\\25BC'; /* Down arrow icon */
+    content: '\25BC'; /* Down arrow icon */
     font-size: 0.8em;
     color: #2e7d32;
     transition: transform 0.3s ease-in-out;
