@@ -140,7 +140,20 @@ main {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-/* Mobile Styles */
+.collapsible .content {
+    display: none;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.collapsible .content.visible {
+    display: block;
+    max-height: 500px; /* Adjust as needed */
+    opacity: 1;
+}
+
 @media (max-width: 768px) {
     header h1 {
         font-size: 1.8em; /* Smaller font size for mobile */
