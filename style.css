@@ -170,3 +170,26 @@ main {
         padding: 10px;
     }
 }
+/* Units List Styling */
+.units {
+    list-style-type: none;
+    padding: 0;
+}
+
+.units li {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.units li a {
+    text-decoration: none;
+    color: #4caf50;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.units li a:hover {
+    color: #388e3c;
+    text-shadow: 1px 1px 5px #555;
+}
+
