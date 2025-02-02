@@ -53,53 +53,8 @@
         </ul>
     </nav>
     <main>
-        <!-- Section Header -->
         <section id="edu714-header" class="section">
             <h2>EDU 714 Final Project</h2>
-        </section>
-
-        <!-- Collapsible Sections -->
-        <section id="introduction" class="section collapsible">
-            <h3>Introduction</h3>
-            <div class="content">
-                <p>Welcome to my final project for EDU 714: Course Design. For this project, I evaluated Math 15, a foundational math course designed for English Language Learner students aged 18–20 who are new to Canada. This project uses Universal Design for Learning (UDL) principles to improve accessibility and engagement in the course.</p>
-            </div>
-        </section>
-
-        <section id="video-section" class="section collapsible">
-            <h3>Collaborative Math in Action</h3>
-            <div class="content">
-                <p>The video below showcases various ways students can engage with math, including group activities, using whiteboards, workbooks, and educational games, all aimed at achieving the same math outcomes.</p>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/UPD5zg6GtD0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </section>
-
-        <section id="course-evaluation" class="section collapsible">
-            <h3>Course Evaluation Based on UDL Principles</h3>
-            <div class="content">
-                <h4>Engagement</h4>
-                <p><strong>Strengths:</strong> The self-paced structure promotes autonomy and provides clear outcomes.</p>
-                <p><strong>Improvements:</strong> Add collaborative activities and strategies to address learner variability.</p>
-
-                <h4>Representation</h4>
-                <p><strong>Strengths:</strong> Practice booklets provide consistent instruction.</p>
-                <p><strong>Improvements:</strong> Include videos, visuals, and translated resources for ELL students.</p>
-
-                <h4>Action and Expression</h4>
-                <p><strong>Strengths:</strong> Exams measure understanding effectively.</p>
-                <p><strong>Improvements:</strong> Offer alternative assessments like projects or presentations.</p>
-            </div>
-        </section>
-
-        <section id="recommendations" class="section collapsible">
-            <h3>Recommendations for Improvement</h3>
-            <div class="content">
-                <ul>
-                    <li><strong>Engagement:</strong> Use gamified activities like Kahoot and schedule weekly group problem-solving sessions.</li>
-                    <li><strong>Representation:</strong> Create video tutorials and provide glossaries for ELL students.</li>
-                    <li><strong>Action and Expression:</strong> Add project-based assessments and self-assessment opportunities.</li>
-                </ul>
-            </div>
         </section>
 
         <section id="additional-content" class="section collapsible">
@@ -108,39 +63,17 @@
                 <p>Stay tuned for more resources and updates here!</p>
             </div>
         </section>
+
+        <section id="references" class="section collapsible">
+            <h3>References</h3>
+            <div class="content">
+                <p>Include any sources, articles, or materials referenced in your project.</p>
+            </div>
+        </section>
     </main>
 
     <footer>
         <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
     </footer>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Collapsible Sections
-            document.querySelectorAll('.collapsible').forEach(section => {
-                const header = section.querySelector('h3');
-                const content = section.querySelector('.content');
-
-                if (header && content) {
-                    header.addEventListener('click', () => {
-                        content.classList.toggle('visible');
-                        header.classList.toggle('expanded');
-                    });
-                }
-            });
-
-            // Hover effect for headers
-            document.querySelectorAll('.section.collapsible h3').forEach(header => {
-                header.addEventListener('mouseover', () => {
-                    header.style.backgroundColor = '#4caf50';
-                    header.style.color = '#fff';
-                });
-                header.addEventListener('mouseout', () => {
-                    header.style.backgroundColor = '';
-                    header.style.color = '';
-                });
-            });
-        });
-    </script>
 </body>
 </html>
