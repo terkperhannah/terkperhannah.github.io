@@ -55,114 +55,21 @@
     <main>
         <section>
             <h2>Welcome to Math 9 Unit 4: Geometry of Polygons</h2>
-    
-        </section>
-    </main>
-    <title>Math 9 Practice Questions</title>
-    <style>
-        /* CSS Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
+        <h2>Outcomes</h2>
+            <ul>
+            <li>determine surface area of 3D objects </li>
 
-        main {
-            padding: 20px;
-            margin: auto;
-            max-width: 600px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+            <li>explain how polygons are similar</li> 
 
-        .question {
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #ffffff;
-        }
+            <li>solve problems using similar polygons</li>
 
-        .question p {
-            margin: 0 0 10px;
-        }
+            <li>draw and interpret scale diagrams of 2D shapes</li> 
 
-        input {
-            padding: 8px;
-            width: calc(100% - 100px);
-            margin-right: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            padding: 8px 12px;
-            background-color: #4caf50;
-            color: #ffffff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #388e3c;
-        }
-
-        .feedback {
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        #score {
-            font-weight: bold;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-    <main>
-        <section>
-            <h2>Practice Questions</h2>
-
-            <div class="question">
-                <p><strong>11.</strong> Simplify \( 81a^9b^6 - 45a^7b^4 + 27a^5b^2 \) by dividing each term by \( 9a^5b^2 \).</p>
-                <input type="text" id="answer11" placeholder="Your answer">
-                <button onclick="checkAnswer(11, '9a^4b^4 - 5a^2b^2 + 3')">Submit</button>
-                <p class="feedback" id="feedback11"></p>
-            </div>
-
-            <div class="question">
-                <p><strong>12.</strong> Divide \( 100m^6n^3 - 50m^5n^2 + 25m^4n \) by \( 25m^4n \) and simplify.</p>
-                <input type="text" id="answer12" placeholder="Your answer">
-                <button onclick="checkAnswer(12, '4m^2n^2 - 2mn + 1')">Submit</button>
-                <p class="feedback" id="feedback12"></p>
-            </div>
-
-            <p id="score">Correct Answers: 0</p>
+            <li>demonstrate an understanding of line and rotation symmetry</li> 
+            </ul>
         </section>
     </main>
 
-    <script>
-        /* JavaScript */
-        let correctAnswers = 0;
-
-        function checkAnswer(questionNumber, correctAnswer) {
-            const userAnswer = document.getElementById(`answer${questionNumber}`).value.trim();
-            const feedback = document.getElementById(`feedback${questionNumber}`);
-
-            if (userAnswer === correctAnswer) {
-                feedback.textContent = "Correct!";
-                feedback.style.color = "green";
-                correctAnswers++;
-            } else {
-                feedback.textContent = "Try again.";
-                feedback.style.color = "red";
-            }
-
-            document.getElementById("score").textContent = `Correct Answers: ${correctAnswers}`;
-        }
-    </script>
     <footer>
         <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
     </footer>
