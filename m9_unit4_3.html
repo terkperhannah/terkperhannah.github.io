@@ -1,1 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Math</a>
+                <ul class="submenu">
+                    <li><a href="math7.html">Math 7</a></li>
+                    <li><a href="math8.html">Math 8</a></li>
+                    <li><a href="math9.html">Math 9</a></li>
+                    <li><a href="math10.html">Math 10</a></li>
+                    <li><a href="math11.html">Math 11</a></li>
+                    <li><a href="math12.html">Math 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Science</a>
+                <ul class="submenu">
+                    <li><a href="science7.html">Science 7</a></li>
+                    <li><a href="science8.html">Science 8</a></li>
+                    <li><a href="science9.html">Science 9</a></li>
+                    <li><a href="science10.html">Science 10</a></li>
+                    <li><a href="science11.html">Science 11</a></li>
+                    <li><a href="science12.html">Science 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Computer Science</a>
+                <ul class="submenu">
+                    <li><a href="cs-general.html">General</a></li>
+                    <li><a href="cs-robotics.html">Robotics</a></li>
+                    <li><a href="cs-video-game-design.html">Video Game Design</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">M.Ed-Courses</a>
+                <ul class="submenu">
+                    <li><a href="med-general.html">General</a></li>
+                    <li><a href="edu714.html">EDU 714</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <h2>Welcome to Math 9 Unit 4: Geometry of Polygons</h2>
+            <h3>Scale Diagrams</h2>
 
+    
+        </section>
+    </main>
+
+     <title>Surface Area #2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        .question img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+
+        input {
+            padding: 8px;
+            width: calc(100% - 100px);
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="question">
+            <p><strong>1.</strong> Determine the length of a diagonal. Round your answer to the nearest tenth. No units needed.</p>
+            <img src="SA_pics/SA_1.png" alt="A box diagram with dimensions for diagonal calculation">
+            <input type="text" id="answer1" placeholder="Your answer">
+            <button onclick="checkAnswer()">Submit</button>
+            <p class="feedback" id="feedback"></p>
+        </div>
+    </main>
+
+    <script>
+        // JavaScript for answer validation
+        let attempts = 0;
+        const maxAttempts = 5;
+        const correctAnswer = "3.9";
+
+        function checkAnswer() {
+            const userAnswer = document.getElementById("answer1").value.trim();
+            const feedback = document.getElementById("feedback");
+
+            if (userAnswer === correctAnswer) {
+                feedback.textContent = "Correct! Well done!";
+                feedback.style.color = "green";
+            } else {
+                attempts++;
+                if (attempts < maxAttempts) {
+                    feedback.textContent = `Incorrect. You have ${maxAttempts - attempts} attempts remaining.`;
+                    feedback.style.color = "red";
+                } else {
+                    feedback.textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
+                    feedback.style.color = "red";
+                }
+            }
+        }
+    </script>
+
+  <main>
+        <div class="question">
+            <p><strong>2.</strong> Determine the length of a diagonal. Round your answer to the nearest tenth. No units needed.</p>
+            <img src="SA_pics/SA_2.png" alt="A box diagram with dimensions for diagonal calculation">
+            <input type="text" id="answer1" placeholder="Your answer">
+            <button onclick="checkAnswer()">Submit</button>
+            <p class="feedback" id="feedback"></p>
+        </div>
+    </main>
+
+    <script>
+        // JavaScript for answer validation
+        let attempts = 0;
+        const maxAttempts = 5;
+        const correctAnswer = "8.5";
+
+        function checkAnswer() {
+            const userAnswer = document.getElementById("answer1").value.trim();
+            const feedback = document.getElementById("feedback");
+
+            if (userAnswer === correctAnswer) {
+                feedback.textContent = "Correct! Well done!";
+                feedback.style.color = "green";
+            } else {
+                attempts++;
+                if (attempts < maxAttempts) {
+                    feedback.textContent = `Incorrect. You have ${maxAttempts - attempts} attempts remaining.`;
+                    feedback.style.color = "red";
+                } else {
+                    feedback.textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
+                    feedback.style.color = "red";
+                }
+            }
+        }
+    </script>
+
+  <main>
+        <div class="question">
+            <p><strong>3.</strong> Determine the surface area of each composite object. What effect does the overlap have on the surface area? Round your answer to the nearest hundredth. No units needed.</p>
+            <img src="SA_pics/SA_3.png" alt="A box diagram with dimensions for diagonal calculation">
+            <input type="text" id="answer1" placeholder="Your answer">
+            <button onclick="checkAnswer()">Submit</button>
+            <p class="feedback" id="feedback"></p>
+        </div>
+    </main>
+
+    <script>
+        // JavaScript for answer validation
+        let attempts = 0;
+        const maxAttempts = 5;
+        const correctAnswer = "515.48";
+
+        function checkAnswer() {
+            const userAnswer = document.getElementById("answer1").value.trim();
+            const feedback = document.getElementById("feedback");
+
+            if (userAnswer === correctAnswer) {
+                feedback.textContent = "Correct! Well done!";
+                feedback.style.color = "green";
+            } else {
+                attempts++;
+                if (attempts < maxAttempts) {
+                    feedback.textContent = `Incorrect. You have ${maxAttempts - attempts} attempts remaining.`;
+                    feedback.style.color = "red";
+                } else {
+                    feedback.textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
+                    feedback.style.color = "red";
+                }
+            }
+        }
+    </script>
+
+  <main>
+        <div class="question">
+            <p><strong>4.</strong> Determine the surface area of each composite object. What effect does the overlap have on the surface area? Round your answer to the nearest hundredth. No units needed.</p>
+            <img src="SA_pics/SA_4.png" alt="A box diagram with dimensions for diagonal calculation">
+            <input type="text" id="answer1" placeholder="Your answer">
+            <button onclick="checkAnswer()">Submit</button>
+            <p class="feedback" id="feedback"></p>
+        </div>
+    </main>
+
+    <script>
+        // JavaScript for answer validation
+        let attempts = 0;
+        const maxAttempts = 5;
+        const correctAnswer = "253.28";
+
+        function checkAnswer() {
+            const userAnswer = document.getElementById("answer1").value.trim();
+            const feedback = document.getElementById("feedback");
+
+            if (userAnswer === correctAnswer) {
+                feedback.textContent = "Correct! Well done!";
+                feedback.style.color = "green";
+            } else {
+                attempts++;
+                if (attempts < maxAttempts) {
+                    feedback.textContent = `Incorrect. You have ${maxAttempts - attempts} attempts remaining.`;
+                    feedback.style.color = "red";
+                } else {
+                    feedback.textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
+                    feedback.style.color = "red";
+                }
+            }
+        }
+    </script>
+
+  <main>
+        <div class="question">
+            <p><strong>5.</strong> Determine the surface area of each composite object. Give the answers to the nearest tenth. No units needed.</p>
+            <img src="SA_pics/SA_5.png" alt="A box diagram with dimensions for diagonal calculation">
+            <input type="text" id="answer1" placeholder="Your answer">
+            <button onclick="checkAnswer()">Submit</button>
+            <p class="feedback" id="feedback"></p>
+        </div>
+    </main>
+
+    <script>
+        // JavaScript for answer validation
+        let attempts = 0;
+        const maxAttempts = 5;
+        const correctAnswer = "940.2";
+
+        function checkAnswer() {
+            const userAnswer = document.getElementById("answer1").value.trim();
+            const feedback = document.getElementById("feedback");
+
+            if (userAnswer === correctAnswer) {
+                feedback.textContent = "Correct! Well done!";
+                feedback.style.color = "green";
+            } else {
+                attempts++;
+                if (attempts < maxAttempts) {
+                    feedback.textContent = `Incorrect. You have ${maxAttempts - attempts} attempts remaining.`;
+                    feedback.style.color = "red";
+                } else {
+                    feedback.textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
+                    feedback.style.color = "red";
+                }
+            }
+        }
+    </script>
+
+  <main>
+        <div class="question">
+            <p><strong>6.</strong> Determine the surface area of each composite object. Give the answers to the nearest tenth. No units needed.</p>
+            <img src="SA_pics/SA_6.png" alt="A box diagram with dimensions for diagonal calculation">
+            <input type="text" id="answer1" placeholder="Your answer">
+            <button onclick="checkAnswer()">Submit</button>
+            <p class="feedback" id="feedback"></p>
+        </div>
+    </main>
+
+    <script>
+        // JavaScript for answer validation
+        let attempts = 0;
+        const maxAttempts = 5;
+        const correctAnswer = "1192.8";
+
+        function checkAnswer() {
+            const userAnswer = document.getElementById("answer1").value.trim();
+            const feedback = document.getElementById("feedback");
+
+            if (userAnswer === correctAnswer) {
+                feedback.textContent = "Correct! Well done!";
+                feedback.style.color = "green";
+            } else {
+                attempts++;
+                if (attempts < maxAttempts) {
+                    feedback.textContent = `Incorrect. You have ${maxAttempts - attempts} attempts remaining.`;
+                    feedback.style.color = "red";
+                } else {
+                    feedback.textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
+                    feedback.style.color = "red";
+                }
+            }
+        }
+    </script>
+  
+</body>
+    <footer>
+        <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+    </footer>
+</body>
+</html>
