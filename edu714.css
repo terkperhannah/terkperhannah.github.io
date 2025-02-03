@@ -263,4 +263,14 @@ main {
 .section.collapsible h3.expanded::after {
     transform: rotate(180deg); /* Rotate arrow when expanded */
 }
+form label {
+    font-size: 1.1em;
+    margin: 10px 0;
+    display: block;
+    cursor: pointer;
+}
+
+form input[type="checkbox"] {
+    margin-right: 10px;
+}
 
