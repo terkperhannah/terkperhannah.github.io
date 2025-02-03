@@ -175,30 +175,62 @@
             </div>
 
             <section id="udl-checklist" class="section collapsible">
-    <h3>UDL Checklist</h3>
+    <h3>Take this UDL Checklist Test</h3>
     <div class="content">
-        <form>
+        <p>Check all that apply to your course to see if it adheres to the UDL guidelines.</p>
+        <form id="udlForm">
             <label>
-                <input type="checkbox">
+                <input type="checkbox" class="udl-checkbox" value="1">
                 Multiple ways to access course content
-            </label><br>
+            </label>
+            <br>
             <label>
-                <input type="checkbox">
+                <input type="checkbox" class="udl-checkbox" value="1">
                 Diverse assessment methods
-            </label><br>
+            </label>
+            <br>
             <label>
-                <input type="checkbox">
+                <input type="checkbox" class="udl-checkbox" value="1">
                 Opportunities for engagement and collaboration
-            </label><br>
+            </label>
+            <br>
             <label>
-                <input type="checkbox">
+                <input type="checkbox" class="udl-checkbox" value="1">
                 Support for diverse cultural and linguistic needs
-            </label><br>
+            </label>
+            <br><br>
+            <button type="button" id="submitChecklist">Submit</button>
         </form>
+        <p id="checklistResult" style="margin-top: 10px; font-weight: bold;"></p>
     </div>
 </section>
 
-        </section>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const submitButton = document.getElementById("submitChecklist");
+        const resultText = document.getElementById("checklistResult");
+
+        submitButton.addEventListener("click", () => {
+            const checkboxes = document.querySelectorAll(".udl-checkbox");
+            let checkedCount = 0;
+
+            checkboxes.forEach((checkbox) => {
+                if (checkbox.checked) {
+                    checkedCount++;
+                }
+            });
+
+            if (checkedCount === checkboxes.length) {
+                resultText.textContent = "Your course adheres to the UDL guidelines, but there is always room to improve accessibility!";
+                resultText.style.color = "green";
+            } else {
+                resultText.textContent = "Fail. Please reevaluate your course to better align with the UDL guidelines.";
+                resultText.style.color = "red";
+            }
+        });
+    });
+</script>
+
 
          <section id="references" class="section collapsible">
     <h3>References</h3>
