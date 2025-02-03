@@ -274,3 +274,21 @@ form input[type="checkbox"] {
     margin-right: 10px;
 }
 
+.collapsible .content {
+    display: none;
+    max-height: 300px; /* Set maximum height for scrollable area */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px; /* Add padding for better readability */
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    background-color: #ffffff; /* Ensure readability */
+    border-radius: 8px; /* Match the collapsible box design */
+    max-height: 0;
+    opacity: 0;
+}
+
+.collapsible .content.visible {
+    display: block;
+    max-height: 300px; /* Matches the scrollable area height */
+    overflow-y: auto; /* Allows scrolling */
+    opacity: 1;
+}
