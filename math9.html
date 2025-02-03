@@ -5,6 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Math 9</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .units-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .unit-box {
+            background-color: #4caf50;
+            color: white;
+            text-align: center;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 250px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .unit-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+            background-color: #388e3c;
+        }
+
+        .unit-box span {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+
+        .unit-box a {
+            color: white;
+            text-decoration: none;
+        }
+
+    </style>
 </head>
 <body>
     <header>
@@ -56,40 +96,39 @@
         <section>
             <h2>Welcome to Math 9</h2>
         </section>
-    <section>
-        <p><b>Math 9 Course Objective</b></p>
-        <p>The main goals of mathematics education are to prepare students to:</p>
-        <ul>
-            <li>Use mathematics confidently to solve problems</li>
-            <li>Communicate and reason mathematically</li>
-            <li>Appreciate and value mathematics</li>
-            <li>Make connections between mathematics and its applications</li>
-            <li>Commit to lifelong learning</li>
-            <li>Become mathematically literate adults contributing to society</li>
-        </ul>
-        <p>Students who meet these goals will:</p>
-        <ul>
-            <li>Gain an appreciation of mathematics as a science, philosophy, and art</li>
-            <li>Exhibit a positive attitude toward mathematics</li>
-            <li>Engage and persevere in mathematical tasks and projects</li>
-            <li>Contribute to mathematical discussions</li>
-            <li>Take risks in performing mathematical tasks</li>
-            <li>Exhibit curiosity</li>
-        </ul>
+        <section>
+            <p><b>Math 9 Course Objective</b></p>
+            <p>The main goals of mathematics education are to prepare students to:</p>
+            <ul>
+                <li>Use mathematics confidently to solve problems</li>
+                <li>Communicate and reason mathematically</li>
+                <li>Appreciate and value mathematics</li>
+                <li>Make connections between mathematics and its applications</li>
+                <li>Commit to lifelong learning</li>
+                <li>Become mathematically literate adults contributing to society</li>
+            </ul>
+            <p>Students who meet these goals will:</p>
+            <ul>
+                <li>Gain an appreciation of mathematics as a science, philosophy, and art</li>
+                <li>Exhibit a positive attitude toward mathematics</li>
+                <li>Engage and persevere in mathematical tasks and projects</li>
+                <li>Contribute to mathematical discussions</li>
+                <li>Take risks in performing mathematical tasks</li>
+                <li>Exhibit curiosity</li>
+            </ul>
 
-    <h3>Units</h3>
-    <ul class="units">
-        <li><a href="m9_unit1.html">Unit 1: Rational Numbers</a></li>
-        <li><a href="m9_unit2.html">Unit 2: Powers and Exponents</a></li>
-        <li><a href="m9_unit3.html">Unit 3: Operations with Polynomials</a></li>
-        <li><a href="m9_unit4.html">Unit 4: Geometry of Polygons</a></li>
-        <li><a href="m9_unit5.html">Unit 5: Linear Relations</a></li>
-        <li><a href="m9_unit6.html">Unit 6: Linear Inequalities</a></li>
-        <li><a href="m9_unit7.html">Unit 7: Circle Geometry</a></li>
-        <li><a href="m9_unit8.html">Unit 8: Data Analysis and Probability</a></li>
-    </ul>
-
-    </section>
+            <h3>Units</h3>
+            <div class="units-container">
+                <a href="m9_unit1.html" class="unit-box">Unit 1: Rational Numbers<br><span>Work with fractions and integers</span></a>
+                <a href="m9_unit2.html" class="unit-box">Unit 2: Powers and Exponents<br><span>Understand powers and their applications</span></a>
+                <a href="m9_unit3.html" class="unit-box">Unit 3: Operations with Polynomials<br><span>Polynomial operations and simplification</span></a>
+                <a href="m9_unit4.html" class="unit-box">Unit 4: Geometry of Polygons<br><span>Surface area and polygons</span></a>
+                <a href="m9_unit5.html" class="unit-box">Unit 5: Linear Relations<br><span>Graphs and relationships</span></a>
+                <a href="m9_unit6.html" class="unit-box">Unit 6: Linear Inequalities<br><span>Explore inequalities</span></a>
+                <a href="m9_unit7.html" class="unit-box">Unit 7: Circle Geometry<br><span>Work with circles</span></a>
+                <a href="m9_unit8.html" class="unit-box">Unit 8: Data Analysis and Probability<br><span>Analyze and interpret data</span></a>
+            </div>
+        </section>
     </main>
     <footer>
         <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
