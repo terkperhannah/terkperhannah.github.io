@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math</title>
+    <title>Math 9 Unit 4</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,256 +19,82 @@
                     <li><a href="math7.html">Math 7</a></li>
                     <li><a href="math8.html">Math 8</a></li>
                     <li><a href="math9.html">Math 9</a></li>
-                    <li><a href="math10.html">Math 10</a></li>
-                    <li><a href="math11.html">Math 11</a></li>
-                    <li><a href="math12.html">Math 12</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#">Science</a>
-                <ul class="submenu">
-                    <li><a href="science7.html">Science 7</a></li>
-                    <li><a href="science8.html">Science 8</a></li>
-                    <li><a href="science9.html">Science 9</a></li>
-                    <li><a href="science10.html">Science 10</a></li>
-                    <li><a href="science11.html">Science 11</a></li>
-                    <li><a href="science12.html">Science 12</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#">Computer Science</a>
-                <ul class="submenu">
-                    <li><a href="cs-general.html">General</a></li>
-                    <li><a href="cs-robotics.html">Robotics</a></li>
-                    <li><a href="cs-video-game-design.html">Video Game Design</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#">M.Ed-Courses</a>
-                <ul class="submenu">
-                    <li><a href="med-general.html">General</a></li>
-                    <li><a href="edu714.html">EDU 714</a></li>
                 </ul>
             </li>
         </ul>
     </nav>
     <main>
         <section>
-            <h2>Welcome to Math 9 Unit 4: Geometry of Polygons</h2>
-            <h3>Scale Diagrams</h2>
+            <h2>Math 9 Unit 4: Geometry of Polygons</h2>
 
-    
+            <!-- Question 1 -->
+            <div class="question">
+                <p><strong>1.</strong> Determine the scale factor for each reduction as a decimal.</p>
+                <img src="SA_pics/SA_7.png" alt="Scale Diagram">
+                <input type="text" id="answer1" placeholder="Your answer">
+                <button onclick="checkAnswer(1, '0.2')">Submit</button>
+                <p class="feedback" id="feedback1"></p>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question">
+                <p><strong>2.</strong> Determine the scale factor for each reduction as a decimal.</p>
+                <img src="SA_pics/SA_8.png" alt="Scale Diagram">
+                <input type="text" id="answer2" placeholder="Your answer">
+                <button onclick="checkAnswer(2, '0.75')">Submit</button>
+                <p class="feedback" id="feedback2"></p>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question">
+                <p><strong>3.</strong> Which of rectangles A, B, and C is a reduction of the large rectangle? Write the letter in capital.</p>
+                <img src="SA_pics/SA_9.png" alt="Rectangles Diagram">
+                <input type="text" id="answer3" placeholder="Your answer">
+                <button onclick="checkAnswer(3, 'C')">Submit</button>
+                <p class="feedback" id="feedback3"></p>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question">
+                <p><strong>4.</strong> Which two polygons have pairs of corresponding lengths that are proportional? Write answer as X,Y.</p>
+                <img src="SA_pics/SA_10.png" alt="Polygon Diagram">
+                <input type="text" id="answer4" placeholder="Your answer">
+                <button onclick="checkAnswer(4, 'B,C')">Submit</button>
+                <p class="feedback" id="feedback4"></p>
+            </div>
         </section>
+        <p id="score">Correct Answers: 0</p>
     </main>
 
-     <title>Surface Area #2</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-
-        main {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .question {
-            margin-bottom: 30px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #ffffff;
-        }
-
-        .question img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 10px 0;
-        }
-
-        input {
-            padding: 8px;
-            width: calc(100% - 100px);
-            margin-right: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            padding: 8px 12px;
-            background-color: #4caf50;
-            color: #ffffff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #388e3c;
-        }
-
-        .feedback {
-            margin-top: 10px;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    <main>
-        <div class="question">
-            <p><strong>1.</strong> Determine the scale factor for each reduction as a decimal. </p>
-            <img src="SA_pics/SA_7.png" alt="A box diagram with dimensions for diagonal calculation">
-            <input type="text" id="answer1" placeholder="Your answer">
-            <button onclick="checkAnswer()">Submit</button>
-            <p class="feedback" id="feedback"></p>
-        </div>
-    </main>
-
-    <script>
-        // JavaScript for answer validation
-        let attempts = 0;
-        const maxAttempts = 5;
-        const correctAnswer = "0.2";
-
-        function checkAnswer() {
-            const userAnswer = document.getElementById("answer1").value.trim();
-            const feedback = document.getElementById("feedback");
-
-            if (userAnswer === correctAnswer) {
-                feedback.textContent = "Correct! Well done!";
-                feedback.style.color = "green";
-            } else {
-                attempts++;
-                if (attempts < maxAttempts) {
-                    feedback.textContent = `Incorrect. You have ${maxAttempts - attempts} attempts remaining.`;
-                    feedback.style.color = "red";
-                } else {
-                    feedback.textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
-                    feedback.style.color = "red";
-                }
-            }
-        }
-    </script>
-
-  <main>
-        <div class="question">
-            <p><strong>2.</strong> Determine the scale factor for each reduction as a decimal.</p>
-            <img src="SA_pics/SA_8.png" alt="A box diagram with dimensions for diagonal calculation">
-            <input type="text" id="answer1" placeholder="Your answer">
-            <button onclick="checkAnswer()">Submit</button>
-            <p class="feedback" id="feedback"></p>
-        </div>
-    </main>
-
-    <script>
-        // JavaScript for answer validation
-        let attempts = 0;
-        const maxAttempts = 5;
-        const correctAnswer = "0.75";
-
-        function checkAnswer() {
-            const userAnswer = document.getElementById("answer1").value.trim();
-            const feedback = document.getElementById("feedback");
-
-            if (userAnswer === correctAnswer) {
-                feedback.textContent = "Correct! Well done!";
-                feedback.style.color = "green";
-            } else {
-                attempts++;
-                if (attempts < maxAttempts) {
-                    feedback.textContent = `Incorrect. You have ${maxAttempts - attempts} attempts remaining.`;
-                    feedback.style.color = "red";
-                } else {
-                    feedback.textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
-                    feedback.style.color = "red";
-                }
-            }
-        }
-    </script>
-
-  <main>
-        <div class="question">
-            <p><strong>3.</strong> Which of rectangles A, B, and C is a reduction of the large rectangle? Write the letter in capital.</p>
-            <img src="SA_pics/SA_9.png" alt="A box diagram with dimensions for diagonal calculation">
-            <input type="text" id="answer1" placeholder="Your answer">
-            <button onclick="checkAnswer()">Submit</button>
-            <p class="feedback" id="feedback"></p>
-        </div>
-    </main>
-
-    <script>
-        // JavaScript for answer validation
-        let attempts = 0;
-        const maxAttempts = 5;
-        const correctAnswer = "C";
-
-        function checkAnswer() {
-            const userAnswer = document.getElementById("answer1").value.trim();
-            const feedback = document.getElementById("feedback");
-
-            if (userAnswer === correctAnswer) {
-                feedback.textContent = "Correct! Well done!";
-                feedback.style.color = "green";
-            } else {
-                attempts++;
-                if (attempts < maxAttempts) {
-                    feedback.textContent = `Incorrect. You have ${maxAttempts - attempts} attempts remaining.`;
-                    feedback.style.color = "red";
-                } else {
-                    feedback.textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
-                    feedback.style.color = "red";
-                }
-            }
-        }
-    </script>
-
-  <main>
-        <div class="question">
-            <p><strong>4.</strong> Which two polygons have pairs of corresponding lengths that are proportional? Write answer as X,Y</p>
-            <img src="SA_pics/SA_10.png" alt="A box diagram with dimensions for diagonal calculation">
-            <input type="text" id="answer1" placeholder="Your answer">
-            <button onclick="checkAnswer()">Submit</button>
-            <p class="feedback" id="feedback"></p>
-        </div>
-    </main>
-
-    <script>
-        // JavaScript for answer validation
-        let attempts = 0;
-        const maxAttempts = 5;
-        const correctAnswer = "B,C";
-
-        function checkAnswer() {
-            const userAnswer = document.getElementById("answer1").value.trim();
-            const feedback = document.getElementById("feedback");
-
-            if (userAnswer === correctAnswer) {
-                feedback.textContent = "Correct! Well done!";
-                feedback.style.color = "green";
-            } else {
-                attempts++;
-                if (attempts < maxAttempts) {
-                    feedback.textContent = `Incorrect. You have ${maxAttempts - attempts} attempts remaining.`;
-                    feedback.style.color = "red";
-                } else {
-                    feedback.textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
-                    feedback.style.color = "red";
-                }
-            }
-        }
-    </script>
-  
-</body>
     <footer>
         <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
     </footer>
+
+    <script>
+        let correctAnswers = 0;
+        const attempts = {};
+
+        function checkAnswer(questionNumber, correctAnswer) {
+            const inputElement = document.getElementById(`answer${questionNumber}`);
+            const feedbackElement = document.getElementById(`feedback${questionNumber}`);
+
+            if (!attempts[questionNumber]) attempts[questionNumber] = 0;
+            attempts[questionNumber]++;
+
+            if (inputElement.value.trim() === correctAnswer) {
+                feedbackElement.textContent = "Correct! Well done!";
+                feedbackElement.style.color = "green";
+                correctAnswers++;
+            } else if (attempts[questionNumber] < 5) {
+                feedbackElement.textContent = `Incorrect. You have ${5 - attempts[questionNumber]} attempts remaining.`;
+                feedbackElement.style.color = "orange";
+            } else {
+                feedbackElement.textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
+                feedbackElement.style.color = "red";
+            }
+
+            document.getElementById("score").textContent = `Correct Answers: ${correctAnswers}`;
+        }
+    </script>
 </body>
 </html>
