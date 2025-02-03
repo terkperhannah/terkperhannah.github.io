@@ -124,8 +124,8 @@
 <body>
     <main>
         <div class="question">
-            <p><strong>1.</strong> Determine the length of a diagonal. Round your answer to the nearest tenth. No units needed.</p>
-            <img src="SA_pics/SA_1.png" alt="A box diagram with dimensions for diagonal calculation">
+            <p><strong>1.</strong> Determine the scale factor for each reduction as a decimal. </p>
+            <img src="SA_pics/SA_7.png" alt="A box diagram with dimensions for diagonal calculation">
             <input type="text" id="answer1" placeholder="Your answer">
             <button onclick="checkAnswer()">Submit</button>
             <p class="feedback" id="feedback"></p>
@@ -136,7 +136,7 @@
         // JavaScript for answer validation
         let attempts = 0;
         const maxAttempts = 5;
-        const correctAnswer = "3.9";
+        const correctAnswer = "0.2";
 
         function checkAnswer() {
             const userAnswer = document.getElementById("answer1").value.trim();
@@ -160,8 +160,8 @@
 
   <main>
         <div class="question">
-            <p><strong>2.</strong> Determine the length of a diagonal. Round your answer to the nearest tenth. No units needed.</p>
-            <img src="SA_pics/SA_2.png" alt="A box diagram with dimensions for diagonal calculation">
+            <p><strong>2.</strong> Determine the scale factor for each reduction as a decimal.</p>
+            <img src="SA_pics/SA_9.png" alt="A box diagram with dimensions for diagonal calculation">
             <input type="text" id="answer1" placeholder="Your answer">
             <button onclick="checkAnswer()">Submit</button>
             <p class="feedback" id="feedback"></p>
@@ -172,7 +172,7 @@
         // JavaScript for answer validation
         let attempts = 0;
         const maxAttempts = 5;
-        const correctAnswer = "8.5";
+        const correctAnswer = "0.75";
 
         function checkAnswer() {
             const userAnswer = document.getElementById("answer1").value.trim();
@@ -196,8 +196,8 @@
 
   <main>
         <div class="question">
-            <p><strong>3.</strong> Determine the surface area of each composite object. What effect does the overlap have on the surface area? Round your answer to the nearest hundredth. No units needed.</p>
-            <img src="SA_pics/SA_3.png" alt="A box diagram with dimensions for diagonal calculation">
+            <p><strong>3.</strong> Which of rectangles A, B, and C is a reduction of the large rectangle? Write the letter in capital.</p>
+            <img src="SA_pics/SA_9.png" alt="A box diagram with dimensions for diagonal calculation">
             <input type="text" id="answer1" placeholder="Your answer">
             <button onclick="checkAnswer()">Submit</button>
             <p class="feedback" id="feedback"></p>
@@ -208,7 +208,7 @@
         // JavaScript for answer validation
         let attempts = 0;
         const maxAttempts = 5;
-        const correctAnswer = "515.48";
+        const correctAnswer = "C";
 
         function checkAnswer() {
             const userAnswer = document.getElementById("answer1").value.trim();
@@ -232,8 +232,8 @@
 
   <main>
         <div class="question">
-            <p><strong>4.</strong> Determine the surface area of each composite object. What effect does the overlap have on the surface area? Round your answer to the nearest hundredth. No units needed.</p>
-            <img src="SA_pics/SA_4.png" alt="A box diagram with dimensions for diagonal calculation">
+            <p><strong>4.</strong> Which two polygons have pairs of corresponding lengths that are proportional? Write answer as X,Y</p>
+            <img src="SA_pics/SA_10.png" alt="A box diagram with dimensions for diagonal calculation">
             <input type="text" id="answer1" placeholder="Your answer">
             <button onclick="checkAnswer()">Submit</button>
             <p class="feedback" id="feedback"></p>
@@ -244,79 +244,7 @@
         // JavaScript for answer validation
         let attempts = 0;
         const maxAttempts = 5;
-        const correctAnswer = "253.28";
-
-        function checkAnswer() {
-            const userAnswer = document.getElementById("answer1").value.trim();
-            const feedback = document.getElementById("feedback");
-
-            if (userAnswer === correctAnswer) {
-                feedback.textContent = "Correct! Well done!";
-                feedback.style.color = "green";
-            } else {
-                attempts++;
-                if (attempts < maxAttempts) {
-                    feedback.textContent = `Incorrect. You have ${maxAttempts - attempts} attempts remaining.`;
-                    feedback.style.color = "red";
-                } else {
-                    feedback.textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
-                    feedback.style.color = "red";
-                }
-            }
-        }
-    </script>
-
-  <main>
-        <div class="question">
-            <p><strong>5.</strong> Determine the surface area of each composite object. Give the answers to the nearest tenth. No units needed.</p>
-            <img src="SA_pics/SA_5.png" alt="A box diagram with dimensions for diagonal calculation">
-            <input type="text" id="answer1" placeholder="Your answer">
-            <button onclick="checkAnswer()">Submit</button>
-            <p class="feedback" id="feedback"></p>
-        </div>
-    </main>
-
-    <script>
-        // JavaScript for answer validation
-        let attempts = 0;
-        const maxAttempts = 5;
-        const correctAnswer = "940.2";
-
-        function checkAnswer() {
-            const userAnswer = document.getElementById("answer1").value.trim();
-            const feedback = document.getElementById("feedback");
-
-            if (userAnswer === correctAnswer) {
-                feedback.textContent = "Correct! Well done!";
-                feedback.style.color = "green";
-            } else {
-                attempts++;
-                if (attempts < maxAttempts) {
-                    feedback.textContent = `Incorrect. You have ${maxAttempts - attempts} attempts remaining.`;
-                    feedback.style.color = "red";
-                } else {
-                    feedback.textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
-                    feedback.style.color = "red";
-                }
-            }
-        }
-    </script>
-
-  <main>
-        <div class="question">
-            <p><strong>6.</strong> Determine the surface area of each composite object. Give the answers to the nearest tenth. No units needed.</p>
-            <img src="SA_pics/SA_6.png" alt="A box diagram with dimensions for diagonal calculation">
-            <input type="text" id="answer1" placeholder="Your answer">
-            <button onclick="checkAnswer()">Submit</button>
-            <p class="feedback" id="feedback"></p>
-        </div>
-    </main>
-
-    <script>
-        // JavaScript for answer validation
-        let attempts = 0;
-        const maxAttempts = 5;
-        const correctAnswer = "1192.8";
+        const correctAnswer = "B,C";
 
         function checkAnswer() {
             const userAnswer = document.getElementById("answer1").value.trim();
