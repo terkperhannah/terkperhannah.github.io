@@ -30,19 +30,28 @@
             background-color: #ffffff;
         }
 
-        .question img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 10px 0;
+        .question p {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
 
-        input {
-            padding: 8px;
-            width: calc(100% - 100px);
-            margin-right: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .options label {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            gap: 10px;
+        }
+
+        .options input[type="radio"] {
+            margin: 0;
         }
 
         button {
