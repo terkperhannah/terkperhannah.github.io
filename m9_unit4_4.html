@@ -136,6 +136,24 @@
             background-color: #ffffff;
         }
 
+        .question p {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .options label {
+            display: flex;
+            align-items: center;
+        }
+
         button {
             padding: 8px 12px;
             background-color: #4caf50;
@@ -153,10 +171,6 @@
             margin-top: 10px;
             font-weight: bold;
         }
-
-        input[type="radio"] {
-            margin-right: 10px;
-        }
     </style>
 </head>
 <body>
@@ -166,67 +180,62 @@
     <main>
         <!-- Question 1 -->
         <div class="question">
-            <p><strong>1.</strong> In similar polygons, corresponding sides are ___ and corresponding angles are ___.</p>
-            <label><input type="radio" name="q1" value="a"> congruent, proportional</label><br>
-            <label><input type="radio" name="q1" value="b"> proportional, congruent</label><br>
-            <label><input type="radio" name="q1" value="c"> congruent, congruent</label><br>
-            <label><input type="radio" name="q1" value="d"> proportional, proportional</label><br>
+            <p>1. In similar polygons, corresponding sides are ___ and corresponding angles are ___.</p>
+            <div class="options">
+                <input type="radio" id="q1a" name="q1" value="a">
+                <label for="q1a">A. congruent, proportional</label>
+
+                <input type="radio" id="q1b" name="q1" value="b">
+                <label for="q1b">B. proportional, congruent</label>
+
+                <input type="radio" id="q1c" name="q1" value="c">
+                <label for="q1c">C. congruent, congruent</label>
+
+                <input type="radio" id="q1d" name="q1" value="d">
+                <label for="q1d">D. proportional, proportional</label>
+            </div>
             <button onclick="checkAnswer('q1', 'b')">Submit</button>
             <p class="feedback" id="q1-feedback"></p>
         </div>
 
         <!-- Question 2 -->
         <div class="question">
-            <p><strong>2.</strong> Are these triangles similar?<br>
+            <p>2. Are these triangles similar?<br>
                 Angles in Triangle 1: 40⁰, 60⁰, and 80⁰<br>
-                Angles in Triangle 2: 40⁰, 50⁰, and 90⁰</p>
-            <label><input type="radio" name="q2" value="a"> Yes</label><br>
-            <label><input type="radio" name="q2" value="b"> No</label><br>
-            <label><input type="radio" name="q2" value="c"> There is not enough information to decide</label><br>
+                Angles in Triangle 2: 40⁰, 50⁰, and 90⁰
+            </p>
+            <div class="options">
+                <input type="radio" id="q2a" name="q2" value="a">
+                <label for="q2a">A. Yes</label>
+
+                <input type="radio" id="q2b" name="q2" value="b">
+                <label for="q2b">B. No</label>
+
+                <input type="radio" id="q2c" name="q2" value="c">
+                <label for="q2c">C. There is not enough information to decide</label>
+            </div>
             <button onclick="checkAnswer('q2', 'b')">Submit</button>
             <p class="feedback" id="q2-feedback"></p>
         </div>
 
         <!-- Question 3 -->
         <div class="question">
-            <p><strong>3.</strong> Rectangle ABCD is similar to rectangle PQRS. If AB = 7.2 cm, BC = 5.7 cm, and PQ = 4.8 cm, determine the length of QR.</p>
-            <label><input type="radio" name="q3" value="a"> 8 cm</label><br>
-            <label><input type="radio" name="q3" value="b"> 4 cm</label><br>
-            <label><input type="radio" name="q3" value="c"> 1.5 cm</label><br>
-            <label><input type="radio" name="q3" value="d"> 3.8 cm</label><br>
+            <p>3. Rectangle ABCD is similar to rectangle PQRS. If AB = 7.2 cm, BC = 5.7 cm, and PQ = 4.8 cm, determine the length of QR.</p>
+            <div class="options">
+                <input type="radio" id="q3a" name="q3" value="a">
+                <label for="q3a">A. 8 cm</label>
+
+                <input type="radio" id="q3b" name="q3" value="b">
+                <label for="q3b">B. 4 cm</label>
+
+                <input type="radio" id="q3c" name="q3" value="c">
+                <label for="q3c">C. 1.5 cm</label>
+
+                <input type="radio" id="q3d" name="q3" value="d">
+                <label for="q3d">D. 3.8 cm</label>
+            </div>
             <button onclick="checkAnswer('q3', 'd')">Submit</button>
             <p class="feedback" id="q3-feedback"></p>
-        </div>
-
-        <!-- Question 4 -->
-        <div class="question">
-            <p><strong>4.</strong> Two similar triangles have a scale factor of 2:5. If the smaller triangle's side is 6 cm, what is the length of the corresponding side of the larger triangle?</p>
-            <label><input type="radio" name="q4" value="a"> 15 cm</label><br>
-            <label><input type="radio" name="q4" value="b"> 12 cm</label><br>
-            <label><input type="radio" name="q4" value="c"> 30 cm</label><br>
-            <label><input type="radio" name="q4" value="d"> 25 cm</label><br>
-            <button onclick="checkAnswer('q4', 'a')">Submit</button>
-            <p class="feedback" id="q4-feedback"></p>
-        </div>
-
-        <!-- Question 5 -->
-        <div class="question">
-            <p><strong>5.</strong> What is the scale factor of two similar triangles if one side of the smaller triangle is 3 and the corresponding side of the larger triangle is 9?</p>
-            <label><input type="radio" name="q5" value="a"> 1:2</label><br>
-            <label><input type="radio" name="q5" value="b"> 1:3</label><br>
-            <label><input type="radio" name="q5" value="c"> 3:1</label><br>
-            <label><input type="radio" name="q5" value="d"> 2:1</label><br>
-            <button onclick="checkAnswer('q5', 'b')">Submit</button>
-            <p class="feedback" id="q5-feedback"></p>
-        </div>
-
-        <!-- Question 6 -->
-        <div class="question">
-            <p><strong>6.</strong> True or False: If two polygons are similar, their perimeters are proportional to the ratio of their corresponding sides.</p>
-            <label><input type="radio" name="q6" value="a"> True</label><br>
-            <label><input type="radio" name="q6" value="b"> False</label><br>
-            <button onclick="checkAnswer('q6', 'a')">Submit</button>
-            <p class="feedback" id="q6-feedback"></p>
         </div>
     </main>
     <script>
@@ -247,6 +256,5 @@
             }
         }
     </script>
-</body>
 </body>
 </html>
