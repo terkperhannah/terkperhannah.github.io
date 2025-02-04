@@ -1,1 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ms. Terkper's Digital Classroom</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
 
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        .question img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+
+        input {
+            padding: 8px;
+            width: calc(100% - 100px);
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Math</a>
+                <ul class="submenu">
+                    <li><a href="math7.html">Math 7</a></li>
+                    <li><a href="math8.html">Math 8</a></li>
+                    <li><a href="math9.html">Math 9</a></li>
+                    <li><a href="math10.html">Math 10</a></li>
+                    <li><a href="math11.html">Math 11</a></li>
+                    <li><a href="math12.html">Math 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Science</a>
+                <ul class="submenu">
+                    <li><a href="science7.html">Science 7</a></li>
+                    <li><a href="science8.html">Science 8</a></li>
+                    <li><a href="science9.html">Science 9</a></li>
+                    <li><a href="science10.html">Science 10</a></li>
+                    <li><a href="science11.html">Science 11</a></li>
+                    <li><a href="science12.html">Science 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Computer Science</a>
+                <ul class="submenu">
+                    <li><a href="cs-general.html">General</a></li>
+                    <li><a href="cs-robotics.html">Robotics</a></li>
+                    <li><a href="cs-video-game-design.html">Video Game Design</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">M.Ed-Courses</a>
+                <ul class="submenu">
+                    <li><a href="med-general.html">General</a></li>
+                    <li><a href="edu714.html">EDU 714</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <title>Geometry Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Geometry Quiz</h1>
+    </header>
+    <main>
+        <!-- Question 1 -->
+        <div class="question">
+            <p><strong>1.</strong> In similar polygons, corresponding sides are ___ and corresponding angles are ___.</p>
+            <label><input type="radio" name="q1" value="a"> congruent, proportional</label><br>
+            <label><input type="radio" name="q1" value="b"> proportional, congruent</label><br>
+            <label><input type="radio" name="q1" value="c"> congruent, congruent</label><br>
+            <label><input type="radio" name="q1" value="d"> proportional, proportional</label><br>
+            <button onclick="checkAnswer('q1', 'b')">Submit</button>
+            <p class="feedback" id="q1-feedback"></p>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <p><strong>2.</strong> Are these triangles similar?<br>
+                Angles in Triangle 1: 40⁰, 60⁰, and 80⁰<br>
+                Angles in Triangle 2: 40⁰, 50⁰, and 90⁰</p>
+            <label><input type="radio" name="q2" value="a"> Yes</label><br>
+            <label><input type="radio" name="q2" value="b"> No</label><br>
+            <label><input type="radio" name="q2" value="c"> There is not enough information to decide</label><br>
+            <button onclick="checkAnswer('q2', 'b')">Submit</button>
+            <p class="feedback" id="q2-feedback"></p>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question">
+            <p><strong>3.</strong> Rectangle ABCD is similar to rectangle PQRS. If AB = 7.2 cm, BC = 5.7 cm, and PQ = 4.8 cm, determine the length of QR.</p>
+            <label><input type="radio" name="q3" value="a"> 8 cm</label><br>
+            <label><input type="radio" name="q3" value="b"> 4 cm</label><br>
+            <label><input type="radio" name="q3" value="c"> 1.5 cm</label><br>
+            <label><input type="radio" name="q3" value="d"> 3.8 cm</label><br>
+            <button onclick="checkAnswer('q3', 'd')">Submit</button>
+            <p class="feedback" id="q3-feedback"></p>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question">
+            <p><strong>4.</strong> Two similar triangles have a scale factor of 2:5. If the smaller triangle's side is 6 cm, what is the length of the corresponding side of the larger triangle?</p>
+            <label><input type="radio" name="q4" value="a"> 15 cm</label><br>
+            <label><input type="radio" name="q4" value="b"> 12 cm</label><br>
+            <label><input type="radio" name="q4" value="c"> 30 cm</label><br>
+            <label><input type="radio" name="q4" value="d"> 25 cm</label><br>
+            <button onclick="checkAnswer('q4', 'a')">Submit</button>
+            <p class="feedback" id="q4-feedback"></p>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question">
+            <p><strong>5.</strong> What is the scale factor of two similar triangles if one side of the smaller triangle is 3 and the corresponding side of the larger triangle is 9?</p>
+            <label><input type="radio" name="q5" value="a"> 1:2</label><br>
+            <label><input type="radio" name="q5" value="b"> 1:3</label><br>
+            <label><input type="radio" name="q5" value="c"> 3:1</label><br>
+            <label><input type="radio" name="q5" value="d"> 2:1</label><br>
+            <button onclick="checkAnswer('q5', 'b')">Submit</button>
+            <p class="feedback" id="q5-feedback"></p>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question">
+            <p><strong>6.</strong> True or False: If two polygons are similar, their perimeters are proportional to the ratio of their corresponding sides.</p>
+            <label><input type="radio" name="q6" value="a"> True</label><br>
+            <label><input type="radio" name="q6" value="b"> False</label><br>
+            <button onclick="checkAnswer('q6', 'a')">Submit</button>
+            <p class="feedback" id="q6-feedback"></p>
+        </div>
+    </main>
+    <script>
+        function checkAnswer(questionId, correctAnswer) {
+            const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`);
+            const feedback = document.getElementById(`${questionId}-feedback`);
+            if (!selectedAnswer) {
+                feedback.textContent = "Please select an answer!";
+                feedback.style.color = "red";
+                return;
+            }
+            if (selectedAnswer.value === correctAnswer) {
+                feedback.textContent = "Correct! Well done!";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = "Incorrect. Try again!";
+                feedback.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</body>
+</html>
