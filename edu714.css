@@ -292,3 +292,11 @@ form input[type="checkbox"] {
     overflow-y: auto; /* Allows scrolling */
     opacity: 1;
 }
+
+form label small {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #555; /* Subtle gray color */
+    font-style: italic;
+}
