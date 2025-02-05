@@ -352,31 +352,35 @@ function checkAnswer(questionId, correctAnswer) {
         attempts[questionId] = 0; // Initialize attempts if not already set
     }
 
-    const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`);
     const feedback = document.getElementById(`feedback${questionId}`);
+    const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`);
     
+    // Handle cases where no answer is selected
     if (!selectedAnswer) {
         feedback.textContent = "Please select an answer!";
         feedback.style.color = "red";
         return;
     }
 
-    const userAnswer = selectedAnswer.value;
-    attempts[questionId] += 1; // Increment attempts
+    const userAnswer = selectedAnswer.value; // Get the value of the selected radio button
+    attempts[questionId] += 1; // Increment attempts for this question
 
+    // Check if the answer is correct
     if (userAnswer.trim() === correctAnswer) {
         feedback.textContent = "Correct! Well done!";
         feedback.style.color = "green";
-        // Disable inputs after correct answer
+
+        // Disable inputs after the correct answer is given
         document.querySelectorAll(`input[name="${questionId}"]`).forEach(input => input.disabled = true);
     } else {
+        // If incorrect and attempts are less than 3
         if (attempts[questionId] < 3) {
             feedback.textContent = `Incorrect. Try again! (${3 - attempts[questionId]} attempt(s) left)`;
             feedback.style.color = "red";
         } else {
+            // If 3 attempts are used, show the correct answer and disable further inputs
             feedback.textContent = `Incorrect. The correct answer is: ${correctAnswer}`;
             feedback.style.color = "blue";
-            // Disable further attempts
             document.querySelectorAll(`input[name="${questionId}"]`).forEach(input => input.disabled = true);
         }
     }
