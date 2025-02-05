@@ -344,25 +344,43 @@
 </style>
 
     <script>
-        function checkAnswer(questionId, correctAnswer) {
-            const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`) || document.getElementById(`answer${questionId}`);
-            const feedback = document.getElementById(`feedback${questionId}`);
-            if (!selectedAnswer) {
-                feedback.textContent = "Please select an answer!";
-                feedback.style.color = "red";
-                return;
-            }
+    // Create an object to track attempts for each question
+    const attempts = {};
 
-            const userAnswer = selectedAnswer.value || selectedAnswer;
-            if (userAnswer.trim() === correctAnswer) {
-                feedback.textContent = "Correct! Well done!";
-                feedback.style.color = "green";
-            } else {
-                feedback.textContent = "Incorrect. Try again!";
+    function checkAnswer(questionId, correctAnswer) {
+        if (!attempts[questionId]) {
+            attempts[questionId] = 0; // Initialize attempts if not already set
+        }
+
+        const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`) || document.getElementById(`answer${questionId}`);
+        const feedback = document.getElementById(`feedback${questionId}`);
+        
+        if (!selectedAnswer) {
+            feedback.textContent = "Please select an answer!";
+            feedback.style.color = "red";
+            return;
+        }
+
+        const userAnswer = selectedAnswer.value || selectedAnswer;
+        attempts[questionId] += 1; // Increment attempts
+
+        if (userAnswer.trim() === correctAnswer) {
+            feedback.textContent = "Correct! Well done!";
+            feedback.style.color = "green";
+        } else {
+            if (attempts[questionId] < 3) {
+                feedback.textContent = `Incorrect. Try again! (${3 - attempts[questionId]} attempt(s) left)`;
                 feedback.style.color = "red";
+            } else {
+                feedback.textContent = `Incorrect. The correct answer is: ${correctAnswer}`;
+                feedback.style.color = "blue";
+                // Disable further attempts
+                document.querySelectorAll(`input[name="${questionId}"]`).forEach(input => input.disabled = true);
             }
         }
-    </script>
+    }
+</script>
+
 </body>
 </html>
 
