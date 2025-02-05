@@ -27,7 +27,7 @@
             padding: 15px;
             border: 1px solid #ddd;
             border-radius: 8px;
-           -color: #ffffff;
+            background-color: #ffffff;
         }
 
         .question img {
@@ -72,7 +72,7 @@
     </style>
 </head>
 <body>
-    <header>
+  <header>
         <h1>Ms. Terkper's Digital Classroom</h1>
     </header>
     <nav>
@@ -124,26 +124,16 @@
         <!-- Question 1 -->
         <div class="question">
             <p>1. Reflect the point (2, -4) over the y-axis. Write your answer as a coordinate.</p>
-            <div class="options">
-                <label><input type="radio" id="q1a" name="q1" value="-2,-4"> A. (-2, -4)</label>
-                <label><input type="radio" id="q1b" name="q1" value="2,4"> B. (2, 4)</label>
-                <label><input type="radio" id="q1c" name="q1" value="-2,4"> C. (-2, 4)</label>
-                <label><input type="radio" id="q1d" name="q1" value="2,-4"> D. (2, -4)</label>
-            </div>
-            <button onclick="checkAnswer('q1', '-2,-4')">Submit</button>
+            <input type="text" id="answer1" placeholder="Your answer">
+            <button onclick="checkAnswer(1, '-2,-4')">Submit</button>
             <p class="feedback" id="feedback1"></p>
         </div>
 
         <!-- Question 2 -->
         <div class="question">
             <p>2. The point (-2, 5) is reflected over the line x = 1. Write your answer as a coordinate.</p>
-            <div class="options">
-                <label><input type="radio" id="q2a" name="q2" value="0,5"> A. (0, 5)</label>
-                <label><input type="radio" id="q2b" name="q2" value="4,5"> B. (4, 5)</label>
-                <label><input type="radio" id="q2c" name="q2" value="2,5"> C. (2, 5)</label>
-                <label><input type="radio" id="q2d" name="q2" value="1,5"> D. (1, 5)</label>
-            </div>
-            <button onclick="checkAnswer('q2', '4,5')">Submit</button>
+            <input type="text" id="answer2" placeholder="Your answer">
+            <button onclick="checkAnswer(2, '4,5')">Submit</button>
             <p class="feedback" id="feedback2"></p>
         </div>
 
@@ -151,8 +141,8 @@
         <div class="question">
             <p>3. True or False: Reflections cause 2 changes to occur: location and orientation.</p>
             <div class="options">
-                <label><input type="radio" id="q3a" name="q3" value="true"> A. True</label>
-                <label><input type="radio" id="q3b" name="q3" value="false"> B. False</label>
+                <label><input type="radio" id="q3a" name="q3" value="true"> True</label>
+                <label><input type="radio" id="q3b" name="q3" value="false"> False</label>
             </div>
             <button onclick="checkAnswer('q3', 'true')">Submit</button>
             <p class="feedback" id="feedback3"></p>
@@ -162,13 +152,8 @@
         <div class="question">
             <p>4. How many lines of symmetry does this tessellation have?</p>
             <img src="RS4.png" alt="Tessellation image">
-            <div class="options">
-                <label><input type="radio" id="q4a" name="q4" value="4"> A. 4</label>
-                <label><input type="radio" id="q4b" name="q4" value="6"> B. 6</label>
-                <label><input type="radio" id="q4c" name="q4" value="8"> C. 8</label>
-                <label><input type="radio" id="q4d" name="q4" value="2"> D. 2</label>
-            </div>
-            <button onclick="checkAnswer('q4', '6')">Submit</button>
+            <input type="text" id="answer4" placeholder="Your answer">
+            <button onclick="checkAnswer(4, '6')">Submit</button>
             <p class="feedback" id="feedback4"></p>
         </div>
 
@@ -189,14 +174,9 @@
         <!-- Question 6 -->
         <div class="question">
             <p>6. State the number of lines of symmetry in this tessellation.</p>
-            <img src="RRRS6.png" alt="Complex tessellation">
-            <div class="options">
-                <label><input type="radio" id="q6a" name="q6" value="2"> A. 2</label>
-                <label><input type="radio" id="q6b" name="q6" value="4"> B. 4</label>
-                <label><input type="radio" id="q6c" name="q6" value="6"> C. 6</label>
-                <label><input type="radio" id="q6d" name="q6" value="8"> D. 8</label>
-            </div>
-            <button onclick="checkAnswer('q6', '4')">Submit</button>
+            <img src="RRRS5.png" alt="Complex tessellation">
+            <input type="text" id="answer6" placeholder="Your answer">
+            <button onclick="checkAnswer(6, '4')">Submit</button>
             <p class="feedback" id="feedback6"></p>
         </div>
 
@@ -295,25 +275,24 @@
             <button onclick="checkAnswer('q13', '1,-4')">Submit</button>
             <p class="feedback" id="feedback13"></p>
         </div>
-    </main>
 
+    </main>
     <script>
         function checkAnswer(questionId, correctAnswer) {
+            const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`) || document.getElementById(`answer${questionId}`);
             const feedback = document.getElementById(`feedback${questionId}`);
-            const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`);
-            
             if (!selectedAnswer) {
                 feedback.textContent = "Please select an answer!";
                 feedback.style.color = "red";
                 return;
             }
 
-            const userAnswer = selectedAnswer.value;
-            if (userAnswer === correctAnswer) {
-                feedback.textContent = "Correct!";
+            const userAnswer = selectedAnswer.value || selectedAnswer;
+            if (userAnswer.trim() === correctAnswer) {
+                feedback.textContent = "Correct! Well done!";
                 feedback.style.color = "green";
             } else {
-                feedback.textContent = "Incorrect!";
+                feedback.textContent = "Incorrect. Try again!";
                 feedback.style.color = "red";
             }
         }
