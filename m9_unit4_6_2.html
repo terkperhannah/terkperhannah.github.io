@@ -314,24 +314,27 @@
 </style>
 
     <script>
-        function checkAnswer(questionId, correctAnswer) {
-            const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`) || document.getElementById(`answer${questionId}`);
-            const feedback = document.getElementById(`feedback${questionId}`);
-            if (!selectedAnswer) {
-                feedback.textContent = "Please select an answer!";
-                feedback.style.color = "red";
-                return;
-            }
+    function checkAnswer(questionId, correctAnswer) {
+        const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`);
+        const feedback = document.getElementById(`${questionId}-feedback`);
 
-            const userAnswer = selectedAnswer.value || selectedAnswer;
-            if (userAnswer.trim() === correctAnswer) {
-                feedback.textContent = "Correct! Well done!";
-                feedback.style.color = "green";
-            } else {
-                feedback.textContent = "Incorrect. Try again!";
-                feedback.style.color = "red";
-            }
+        // Check if an answer is selected
+        if (!selectedAnswer) {
+            feedback.textContent = "Please select an answer!";
+            feedback.style.color = "red";
+            return;
         }
-    </script>
+
+        // Provide feedback based on the selected answer
+        if (selectedAnswer.value === correctAnswer) {
+            feedback.textContent = "Correct! Well done!";
+            feedback.style.color = "green";
+        } else {
+            feedback.textContent = "Incorrect. Try again!";
+            feedback.style.color = "red";
+        }
+    }
+</script>
+
 </body>
 </html>
