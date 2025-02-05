@@ -1,1 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflections and Symmetry</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        .question img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .options label {
+            display: flex;
+            align-items: center;
+        }
+
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+  <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Math</a>
+                <ul class="submenu">
+                    <li><a href="math7.html">Math 7</a></li>
+                    <li><a href="math8.html">Math 8</a></li>
+                    <li><a href="math9.html">Math 9</a></li>
+                    <li><a href="math10.html">Math 10</a></li>
+                    <li><a href="math11.html">Math 11</a></li>
+                    <li><a href="math12.html">Math 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Science</a>
+                <ul class="submenu">
+                    <li><a href="science7.html">Science 7</a></li>
+                    <li><a href="science8.html">Science 8</a></li>
+                    <li><a href="science9.html">Science 9</a></li>
+                    <li><a href="science10.html">Science 10</a></li>
+                    <li><a href="science11.html">Science 11</a></li>
+                    <li><a href="science12.html">Science 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Computer Science</a>
+                <ul class="submenu">
+                    <li><a href="cs-general.html">General</a></li>
+                    <li><a href="cs-robotics.html">Robotics</a></li>
+                    <li><a href="cs-video-game-design.html">Video Game Design</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">M.Ed-Courses</a>
+                <ul class="submenu">
+                    <li><a href="med-general.html">General</a></li>
+                    <li><a href="edu714.html">EDU 714</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Reflections and Symmetry</h1>
+    </header>
+    <main>
+        <!-- Question 1 -->
+        <div class="question">
+            <p>1. Reflect the point (2, -4) over the y-axis. Write your answer as a coordinate.</p>
+            <img src="RS1.png" alt="Graph for reflection over y-axis">
+            <input type="text" id="answer1" placeholder="Your answer">
+            <button onclick="checkAnswer(1, '-2,-4')">Submit</button>
+            <p class="feedback" id="feedback1"></p>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <p>2. The point (-2, 5) is reflected over the line x = 1. Write your answer as a coordinate.</p>
+            <img src="RS2.png" alt="Graph for reflection over x=1">
+            <input type="text" id="answer2" placeholder="Your answer">
+            <button onclick="checkAnswer(2, '4,5')">Submit</button>
+            <p class="feedback" id="feedback2"></p>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question">
+            <p>3. True or False: Reflections cause 2 changes to occur: location and orientation.</p>
+            <div class="options">
+                <label><input type="radio" id="q3a" name="q3" value="true"> True</label>
+                <label><input type="radio" id="q3b" name="q3" value="false"> False</label>
+            </div>
+            <button onclick="checkAnswer('q3', 'true')">Submit</button>
+            <p class="feedback" id="feedback3"></p>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question">
+            <p>4. How many lines of symmetry does this tessellation have?</p>
+            <img src="RS3.png" alt="Tessellation image">
+            <input type="text" id="answer4" placeholder="Your answer">
+            <button onclick="checkAnswer(4, '6')">Submit</button>
+            <p class="feedback" id="feedback4"></p>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question">
+            <p>5. Which design has exactly one line of symmetry?</p>
+            <img src="RS4.png" alt="Symmetry designs">
+            <div class="options">
+                <label><input type="radio" id="q5a" name="q5" value="Q"> A. Design Q</label>
+                <label><input type="radio" id="q5b" name="q5" value="R"> B. Design R</label>
+                <label><input type="radio" id="q5c" name="q5" value="S"> C. Design S</label>
+                <label><input type="radio" id="q5d" name="q5" value="P"> D. Design P</label>
+            </div>
+            <button onclick="checkAnswer('q5', 'R')">Submit</button>
+            <p class="feedback" id="feedback5"></p>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question">
+            <p>6. State the number of lines of symmetry in this tessellation.</p>
+            <img src="RS5.png" alt="Complex tessellation">
+            <input type="text" id="answer6" placeholder="Your answer">
+            <button onclick="checkAnswer(6, '4')">Submit</button>
+            <p class="feedback" id="feedback6"></p>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question">
+            <p>7. State the line of reflection for the given shape.</p>
+            <img src="RS6.png" alt="Reflection graph">
+            <div class="options">
+                <label><input type="radio" id="q7a" name="q7" value="y-axis"> A. Reflection across y-axis</label>
+                <label><input type="radio" id="q7b" name="q7" value="x=1"> B. Reflection across x = 1</label>
+                <label><input type="radio" id="q7c" name="q7" value="x-axis"> C. Reflection across x-axis</label>
+                <label><input type="radio" id="q7d" name="q7" value="y=1"> D. Reflection across y = 1</label>
+            </div>
+            <button onclick="checkAnswer('q7', 'y-axis')">Submit</button>
+            <p class="feedback" id="feedback7"></p>
+        </div>
+    </main>
+    <script>
+        function checkAnswer(questionId, correctAnswer) {
+            const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`) || document.getElementById(`answer${questionId}`);
+            const feedback = document.getElementById(`feedback${questionId}`);
+            if (!selectedAnswer) {
+                feedback.textContent = "Please select an answer!";
+                feedback.style.color = "red";
+                return;
+            }
+
+            const userAnswer = selectedAnswer.value || selectedAnswer;
+            if (userAnswer.trim() === correctAnswer) {
+                feedback.textContent = "Correct! Well done!";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = "Incorrect. Try again!";
+                feedback.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
 
