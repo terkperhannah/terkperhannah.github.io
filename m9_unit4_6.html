@@ -367,47 +367,49 @@
 </style>
 
     <script>
+    <script>
     // Create an object to track attempts for each question
-const attempts = {};
+    const attempts = {};
 
-function checkAnswer(questionId, correctAnswer) {
-    if (!attempts[questionId]) {
-        attempts[questionId] = 0; // Initialize attempts if not already set
-    }
+    function checkAnswer(questionId, correctAnswer) {
+        if (!attempts[questionId]) {
+            attempts[questionId] = 0; // Initialize attempts if not already set
+        }
 
-    const feedback = document.getElementById(`feedback${questionId}`);
-    const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`);
-
-    // Handle cases where no answer is selected
-    if (!selectedAnswer) {
-        feedback.textContent = "Please select an answer!";
-        feedback.style.color = "red";
-        return;
-    }
-
-    const userAnswer = selectedAnswer.value; // Get the value of the selected radio button
-    attempts[questionId] += 1; // Increment attempts for this question
-
-    // Check if the answer is correct
-    if (userAnswer.trim() === correctAnswer) {
-        feedback.textContent = "Correct! Well done!";
-        feedback.style.color = "green";
-
-        // Disable inputs after the correct answer is given
-        document.querySelectorAll(`input[name="${questionId}"]`).forEach(input => input.disabled = true);
-    } else {
-        // If incorrect and attempts are less than 5
-        if (attempts[questionId] < 5) {
-            feedback.textContent = `Incorrect. Try again! (${5 - attempts[questionId]} attempt(s) left)`;
+        const feedback = document.getElementById(`feedback${questionId}`);
+        const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`) || document.getElementById(`answer${questionId}`);
+        
+        // Handle cases where no answer is selected
+        if (!selectedAnswer) {
+            feedback.textContent = "Please select an answer!";
             feedback.style.color = "red";
-        } else {
-            // If 5 attempts are used, show the correct answer and disable further inputs
-            feedback.textContent = `Incorrect. The correct answer is: ${correctAnswer}`;
-            feedback.style.color = "blue";
+            return;
+        }
+
+        const userAnswer = selectedAnswer.value || selectedAnswer.trim(); // Get the value of the selected input
+        attempts[questionId] += 1; // Increment attempts for this question
+
+        // Check if the answer is correct
+        if (userAnswer === correctAnswer) {
+            feedback.textContent = "Correct! Well done!";
+            feedback.style.color = "green";
+
+            // Disable inputs after the correct answer is given
             document.querySelectorAll(`input[name="${questionId}"]`).forEach(input => input.disabled = true);
+        } else {
+            // If incorrect and attempts are less than 5
+            if (attempts[questionId] < 5) {
+                feedback.textContent = `Incorrect. Try again! (${5 - attempts[questionId]} attempt(s) left)`;
+                feedback.style.color = "red";
+            } else {
+                // If 5 attempts are used, show the correct answer and disable further inputs
+                feedback.textContent = `Incorrect. The correct answer is: ${correctAnswer}`;
+                feedback.style.color = "blue";
+                document.querySelectorAll(`input[name="${questionId}"]`).forEach(input => input.disabled = true);
+            }
         }
     }
-}
+</script>
 
 </script>
 
