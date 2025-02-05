@@ -277,6 +277,72 @@
         </div>
 
     </main>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f9f9f9;
+    }
+
+    main {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .question {
+        margin-bottom: 30px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #ffffff;
+    }
+
+    .question img {
+        max-width: 60%; /* Adjust percentage for desired size */
+        height: auto;
+        display: block;
+        margin: 10px auto;
+    }
+
+    .options {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .options label {
+        display: flex;
+        align-items: center;
+    }
+
+    .options input[type="radio"] {
+        margin-right: 10px;
+    }
+
+    button {
+        padding: 8px 12px;
+        background-color: #4caf50;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #388e3c;
+    }
+
+    .feedback {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+</style>
+
     <script>
         function checkAnswer(questionId, correctAnswer) {
             const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`) || document.getElementById(`answer${questionId}`);
