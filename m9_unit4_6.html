@@ -227,24 +227,59 @@
 </style>
 
     <script>
-        function checkAnswer(questionId, correctAnswer) {
-            const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`) || document.getElementById(`answer${questionId}`);
-            const feedback = document.getElementById(`feedback${questionId}`);
-            if (!selectedAnswer) {
-                feedback.textContent = "Please select an answer!";
-                feedback.style.color = "red";
-                return;
-            }
+    // Object to track attempts for each question
+    const attempts = {};
 
-            const userAnswer = selectedAnswer.value || selectedAnswer;
-            if (userAnswer.trim() === correctAnswer) {
-                feedback.textContent = "Correct! Well done!";
-                feedback.style.color = "green";
-            } else {
-                feedback.textContent = "Incorrect. Try again!";
+    function checkAnswer(questionId, correctAnswer) {
+        // Initialize attempts for the question if not already set
+        if (!attempts[questionId]) {
+            attempts[questionId] = 0;
+        }
+
+        const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`) || document.getElementById(`answer${questionId}`);
+        const feedback = document.getElementById(`feedback${questionId}`);
+
+        // If no answer is selected, prompt the user to select one
+        if (!selectedAnswer) {
+            feedback.textContent = "Please select an answer!";
+            feedback.style.color = "red";
+            return;
+        }
+
+        const userAnswer = selectedAnswer.value || selectedAnswer;
+
+        // Increment the attempt counter
+        attempts[questionId] += 1;
+
+        // Check if the answer is correct
+        if (userAnswer.trim() === correctAnswer) {
+            feedback.textContent = "Correct! Well done!";
+            feedback.style.color = "green";
+
+            // Disable further input after a correct answer
+            disableInputs(questionId);
+        } else {
+            // If the answer is incorrect and attempts are less than 5
+            if (attempts[questionId] < 5) {
+                feedback.textContent = `Incorrect. Try again! (${5 - attempts[questionId]} attempt(s) left)`;
                 feedback.style.color = "red";
+            } else {
+                // If 5 attempts are used up, reveal the correct answer and disable inputs
+                feedback.textContent = `Incorrect. The correct answer is: ${correctAnswer}`;
+                feedback.style.color = "blue";
+                disableInputs(questionId);
             }
         }
-    </script>
+    }
+
+    // Function to disable inputs for a specific question
+    function disableInputs(questionId) {
+        const inputs = document.querySelectorAll(`input[name="${questionId}"]`);
+        inputs.forEach(input => {
+            input.disabled = true;
+        });
+    }
+</script>
+
 </body>
 </html>
