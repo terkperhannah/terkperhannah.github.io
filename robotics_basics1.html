@@ -115,6 +115,85 @@
     </header>
 
     <main>
+        <section>
+    <h2>Introduction to Python - Basics #1</h2>
+    <p>Python is a <b>high-level, beginner-friendly programming language</b> used in 
+       <b>robotics, automation, game development, and artificial intelligence</b>. 
+       It is known for its <b>simple and readable syntax</b>, making it a great first language for learning programming.</p>
+
+    <h3>1. Printing Output in Python</h3>
+    <p>One of the first things you'll do in Python is <b>display text on the screen</b> using the <code>print()</code> function.</p>
+    <pre>
+        <code>
+print("Hello, World!")
+        </code>
+    </pre>
+    <p><b>Output:</b></p>
+    <pre>
+        <code>
+Hello, World!
+        </code>
+    </pre>
+    <ul>
+        <li><b><code>print()</code></b> is used to <b>display messages</b> in Python.</li>
+        <li>Text must be inside <b>quotation marks</b> (<code>" "</code> or <code>' '</code>).</li>
+        <li>Every statement in Python runs from <b>top to bottom</b>.</li>
+    </ul>
+
+    <h3>2. Taking User Input</h3>
+    <p>Python allows users to <b>enter data</b> using the <code>input()</code> function:</p>
+    <pre>
+        <code>
+name = input("Enter your name: ")
+print("Hello, " + name + "!")
+        </code>
+    </pre>
+    <p><b>Example Output:</b> If the user types <code>Hannah</code>, the output will be:</p>
+    <pre>
+        <code>
+Hello, Hannah!
+        </code>
+    </pre>
+    <ul>
+        <li>The <b><code>input()</code></b> function takes user input as a <b>string</b>.</li>
+        <li>We can use <b><code>+</code></b> to <b>concatenate</b> (join) text together.</li>
+    </ul>
+
+    <h3>3. Variables and Data Types</h3>
+    <p>In Python, a <b>variable</b> is used to store values, such as numbers or text:</p>
+    <pre>
+        <code>
+age = 15
+height = 5.7
+name = "Hannah"
+        </code>
+    </pre>
+    <p><b>Common Data Types:</b></p>
+    <ul>
+        <li><b><code>int</code></b> → Whole numbers (e.g., <code>10</code>, <code>25</code>, <code>42</code>).</li>
+        <li><b><code>float</code></b> → Decimal numbers (e.g., <code>3.14</code>, <code>7.89</code>).</li>
+        <li><b><code>str</code></b> → Text (e.g., <code>"Hello"</code>, <code>"Python"</code>).</li>
+        <li><b><code>bool</code></b> → True/False values (e.g., <code>True</code>, <code>False</code>).</li>
+    </ul>
+
+    <h3>4. Type Conversion</h3>
+    <p>When using <code>input()</code>, Python always treats the input as a <b>string</b>. To use numbers, we need to <b>convert the type</b>:</p>
+    <pre>
+        <code>
+age = input("Enter your age: ")  # Input is stored as a string
+age = int(age)  # Convert to integer
+print("Next year, you will be " + str(age + 1) + " years old!")
+        </code>
+    </pre>
+    <ul>
+        <li><b><code>int()</code></b> → Converts a string to an integer.</li>
+        <li><b><code>float()</code></b> → Converts a string to a decimal number.</li>
+        <li><b><code>str()</code></b> → Converts numbers back to text.</li>
+    </ul>
+
+    <p>Now that you've learned the basics, try answering the questions below! 👇</p>
+</section>
+
 
         <!-- Question 1 -->
 <div class="question">
