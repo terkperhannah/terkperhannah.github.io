@@ -117,7 +117,7 @@
     <main>
         <section>
             <h2>Introduction to Python - Basics #2</h2>
-            <p>This section builds upon the foundational concepts introduced earlier, diving into conditional statements, loops, and functions. These are essential concepts for writing programs that make decisions and perform repetitive tasks. Let’s explore these topics with examples and explanations below.</p>
+            <p>This section builds upon the foundational concepts introduced earlier, diving into conditional statements, loops, functions, and the importance of syntax. These are essential for writing programs that make decisions and perform repetitive tasks. Let’s explore these topics with examples and explanations below.</p>
 
             <h3>1. Conditional Statements</h3>
             <p>Python uses <code>if</code>, <code>elif</code>, and <code>else</code> statements to make decisions based on conditions:</p>
@@ -132,7 +132,6 @@ else:
     print("x is less than 5")
                 </code>
             </pre>
-            <p>In this example, Python checks each condition in sequence and executes the corresponding block of code.</p>
 
             <h3>2. Loops</h3>
             <p>Loops allow us to execute a block of code multiple times. Python supports <b><code>for</code></b> and <b><code>while</code></b> loops:</p>
@@ -161,9 +160,25 @@ greet("Hannah")  # Outputs: Hello, Hannah!
                 </code>
             </pre>
 
-            <p>Functions allow us to reuse code and make our programs more modular.</p>
-        </section>
+            <h3>4. The Importance of Syntax and Spacing</h3>
+            <p>Python relies heavily on proper indentation to define blocks of code. Unlike some other programming languages, Python does not use braces (<code>{}</code>) to separate blocks. Instead, it uses consistent spacing:</p>
+            <pre>
+                <code>
+# Correct syntax
+if x > 5:
+    print("x is greater than 5")
 
+# Incorrect syntax (will cause an error)
+if x > 5:
+print("x is greater than 5")  # No indentation
+                </code>
+            </pre>
+            <ul>
+                <li><b>Indentation</b>: Use 4 spaces for each indentation level.</li>
+                <li><b>Consistency</b>: Mixed use of tabs and spaces can cause errors. Stick to one.</li>
+                <li><b>Readability</b>: Proper formatting makes code easier to understand and debug.</li>
+            </ul>
+        </section>
         <!-- Question 1 -->
         <div class="question">
             <p>1. What does the following code output?</p>
@@ -202,11 +217,11 @@ if x > 5:
             <p>3. What keyword is used to define a function in Python?</p>
             <div class="options">
                 <label><input type="radio" name="q3" value="A"> A. function</label>
-                <label><input type="radio" name="q3" value="B"> B. def</label>
-                <label><input type="radio" name="q3" value="C"> C. func</label>
+                <label><input type="radio" name="q3" value="B"> B. func</label>
+                <label><input type="radio" name="q3" value="C"> C. def</label>
                 <label><input type="radio" name="q3" value="D"> D. define</label>
             </div>
-            <button onclick="checkAnswer('q3', 'B')">Submit</button>
+            <button onclick="checkAnswer('q3', 'C')">Submit</button>
             <p class="feedback" id="q3-feedback"></p>
         </div>
 
@@ -223,11 +238,11 @@ greet()
             </pre>
             <div class="options">
                 <label><input type="radio" name="q4" value="A"> A. greet</label>
-                <label><input type="radio" name="q4" value="B"> B. Hello!</label>
+                <label><input type="radio" name="q4" value="B"> B. Nothing</label>
                 <label><input type="radio" name="q4" value="C"> C. An error</label>
-                <label><input type="radio" name="q4" value="D"> D. Nothing</label>
+                <label><input type="radio" name="q4" value="D"> D. Hello!</label>
             </div>
-            <button onclick="checkAnswer('q4', 'B')">Submit</button>
+            <button onclick="checkAnswer('q4', 'D')">Submit</button>
             <p class="feedback" id="q4-feedback"></p>
         </div>
 
@@ -242,6 +257,32 @@ greet()
             </div>
             <button onclick="checkAnswer('q5', 'B')">Submit</button>
             <p class="feedback" id="q5-feedback"></p>
+        </div>
+
+         <!-- Question 6 -->
+        <div class="question">
+            <p>6. What will happen if you forget to properly indent a block of code in Python?</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="A"> A. The program will display an indentation error.</label>
+                <label><input type="radio" name="q6" value="B"> B. TThe program will run normally.</label>
+                <label><input type="radio" name="q6" value="C"> C. Python will fix the indentation automatically.</label>
+                <label><input type="radio" name="q6" value="D"> D. The block will be ignored.</label>
+            </div>
+            <button onclick="checkAnswer('q6', 'A')">Submit</button>
+            <p class="feedback" id="q6-feedback"></p>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question">
+            <p>7. Why is consistent spacing important in Python?</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="A"> A. To make the code run faster.</label>
+                <label><input type="radio" name="q7" value="B"> B. To save memory while running the program.</label>
+                <label><input type="radio" name="q7" value="C"> C. Python ignores spacing, so it doesn’t matter.</label>
+                <label><input type="radio" name="q7" value="D"> D. To avoid errors and make the code readable.</label>
+            </div>
+            <button onclick="checkAnswer('q7', 'D')">Submit</button>
+            <p class="feedback" id="q2-feedback"></p>
         </div>
     </main>
 
