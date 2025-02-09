@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basics of C# 3: Conditionals and Loops</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .options label {
+            display: flex;
+            align-items: center;
+        }
+
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Math</a>
+                <ul class="submenu">
+                    <li><a href="math7.html">Math 7</a></li>
+                    <li><a href="math8.html">Math 8</a></li>
+                    <li><a href="math9.html">Math 9</a></li>
+                    <li><a href="math10.html">Math 10</a></li>
+                    <li><a href="math11.html">Math 11</a></li>
+                    <li><a href="math12.html">Math 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Science</a>
+                <ul class="submenu">
+                    <li><a href="science7.html">Science 7</a></li>
+                    <li><a href="science8.html">Science 8</a></li>
+                    <li><a href="science9.html">Science 9</a></li>
+                    <li><a href="science10.html">Science 10</a></li>
+                    <li><a href="science11.html">Science 11</a></li>
+                    <li><a href="science12.html">Science 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Computer Science</a>
+                <ul class="submenu">
+                    <li><a href="cs-general.html">General</a></li>
+                    <li><a href="cs-robotics.html">Robotics</a></li>
+                    <li><a href="VGD.html">Video Game Design</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">M.Ed-Courses</a>
+                <ul class="submenu">
+                    <li><a href="med-general.html">General</a></li>
+                    <li><a href="edu714.html">EDU 714</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Basics of C# 3: Conditionals and Loops</h1>
+    </header>
+
+    <main>
+        <p>Welcome to **Basics of C# 3**! This module covers **conditional statements (if, else, switch)** and **loops (for, while, do-while)**.</p>
+
+        <h2>🔹 What are Conditionals?</h2>
+        <p>Conditionals allow your program to make **decisions** based on certain conditions.</p>
+        
+        <pre>
+            <code>
+int age = 16;
+if (age >= 18) {
+    Console.WriteLine("You can vote.");
+} else {
+    Console.WriteLine("You are too young to vote.");
+}
+            </code>
+        </pre>
+
+        <h2>🔹 What are Loops?</h2>
+        <p>Loops **repeat a block of code** multiple times based on a condition.</p>
+        
+        <pre>
+            <code>
+for (int i = 0; i < 5; i++) {
+    Console.WriteLine("Iteration: " + i);
+}
+            </code>
+        </pre>
+
+        <h2>🔹 Questions</h2>
+
+        <!-- Question 1 -->
+        <div class="question">
+            <p>1. Which keyword is used for a conditional statement in C#?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="A"> A. loop</label>
+                <label><input type="radio" name="q1" value="B"> B. if</label>
+                <label><input type="radio" name="q1" value="C"> C. repeat</label>
+                <label><input type="radio" name="q1" value="D"> D. check</label>
+            </div>
+            <button onclick="checkAnswer('q1', 'B')">Submit</button>
+            <p class="feedback" id="q1-feedback"></p>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <p>2. How many times will this loop run?</p>
+            <pre>
+                <code>
+for (int i = 0; i < 3; i++) {
+    Console.WriteLine(i);
+}
+                </code>
+            </pre>
+            <div class="options">
+                <label><input type="radio" name="q2" value="A"> A. 2</label>
+                <label><input type="radio" name="q2" value="B"> B. 3</label>
+                <label><input type="radio" name="q2" value="C"> C. 4</label>
+                <label><input type="radio" name="q2" value="D"> D. Infinite</label>
+            </div>
+            <button onclick="checkAnswer('q2', 'B')">Submit</button>
+            <p class="feedback" id="q2-feedback"></p>
+        </div>
+
+      <!-- Question 3 -->
+<div class="question">
+    <p>3. What will be the output of the following C# code?</p>
+    <pre>
+        <code>
+int x = 10;
+if (x > 5)
+{
+    Console.WriteLine("Greater");
+}
+else
+{
+    Console.WriteLine("Smaller");
+}
+        </code>
+    </pre>
+    <div class="options">
+        <label><input type="radio" name="q3" value="A"> A. Greater</label>
+        <label><input type="radio" name="q3" value="B"> B. Smaller</label>
+        <label><input type="radio" name="q3" value="C"> C. Nothing</label>
+        <label><input type="radio" name="q3" value="D"> D. Error</label>
+    </div>
+    <button onclick="checkAnswer('q3', 'A')">Submit</button>
+    <p class="feedback" id="q3-feedback"></p>
+</div>
+
+      <!-- Question 4 -->
+<div class="question">
+    <p>4. What is the correct syntax for a `while` loop in C#?</p>
+    <div class="options">
+        <label><input type="radio" name="q4" value="A"> A. while x > 5 { }</label>
+        <label><input type="radio" name="q4" value="B"> B. while (x > 5) { }</label>
+        <label><input type="radio" name="q4" value="C"> C. repeat while x > 5 { }</label>
+        <label><input type="radio" name="q4" value="D"> D. loop (x > 5) { }</label>
+    </div>
+    <button onclick="checkAnswer('q4', 'B')">Submit</button>
+    <p class="feedback" id="q4-feedback"></p>
+</div>
+
+      <!-- Question 5 -->
+<div class="question">
+    <p>5. How many times will the following `do-while` loop execute?</p>
+    <pre>
+        <code>
+int i = 5;
+do
+{
+    Console.WriteLine(i);
+    i++;
+} while (i < 5);
+        </code>
+    </pre>
+    <div class="options">
+        <label><input type="radio" name="q5" value="A"> A. 0</label>
+        <label><input type="radio" name="q5" value="B"> B. 1</label>
+        <label><input type="radio" name="q5" value="C"> C. Infinite</label>
+        <label><input type="radio" name="q5" value="D"> D. 5</label>
+    </div>
+    <button onclick="checkAnswer('q5', 'B')">Submit</button>
+    <p class="feedback" id="q5-feedback"></p>
+</div>
+
+    </main>
+
+    <script>
+        function checkAnswer(questionId, correctAnswer) {
+            const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`);
+            const feedback = document.getElementById(`${questionId}-feedback`);
+
+            if (!selectedAnswer) {
+                feedback.textContent = "⚠️ Please select an answer before submitting!";
+                feedback.style.color = "red";
+                return;
+            }
+
+            if (selectedAnswer.value === correctAnswer) {
+                feedback.textContent = "✅ Correct! Well done!";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = "❌ Incorrect. Try again!";
+                feedback.style.color = "red";
+            }
+        }
+    </script>
+    </body>
+</html>
