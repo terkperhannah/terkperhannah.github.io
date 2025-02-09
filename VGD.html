@@ -38,37 +38,33 @@
             flex-direction: column;
             gap: 20px;
         }
-        .testing-box, .resource-box {
-            background-color: #4caf50;
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .testing-box:hover, .resource-box:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-            background-color: #388e3c;
-        }
-        .dropdown {
-            position: relative;
-        }
-        .dropdown-content {
-            display: none;
-            background-color: #ffffff;
-            padding: 15px;
-            margin-top: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+        .resource-box {
+    display: block;
+    width: 100%; /* Ensures all boxes are the same width */
+    box-sizing: border-box; /* Includes padding in width calculation */
+}
+
+.dropdown {
+    position: relative;
+    width: 100%; /* Matches the size of other resource boxes */
+}
+
+.dropdown-content {
+    display: none;
+    background-color: #ffffff;
+    padding: 15px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Matches the width of the parent box */
+    box-sizing: border-box;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
     </style>
 </head>
 <body>
@@ -121,17 +117,17 @@
         <div class="column">
             <section class="box-container resources">
                 <h2>Resources</h2>
-                <div class="resources-grid">
-                    <div class="dropdown">
-                        <a class="resource-box" href="#">Indigenous Perspectives in Game Design</a>
-                        <div class="dropdown-content">
-                            <p>Explore Indigenous perspectives in game design through the following resources:</p>
-                            <ul>
-                                <li><a href="https://neveralonegame.com/" target="_blank">Never Alone (Kisima Ingitchuna)</a> - A game based on Iñupiat culture.</li>
-                                <li><a href="https://www.thunderbirdstrike.com/" target="_blank">Thunderbird Strike</a> - A game about Indigenous resistance and environmental awareness.</li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="dropdown resource-box">
+    <a href="#">Indigenous Perspectives in Game Design</a>
+    <div class="dropdown-content">
+        <p>Explore Indigenous perspectives in game design through the following resources:</p>
+        <ul>
+            <li><a href="https://neveralonegame.com/" target="_blank">Never Alone (Kisima Ingitchuna)</a> - A game based on Iñupiat culture.</li>
+            <li><a href="https://www.thunderbirdstrike.com/" target="_blank">Thunderbird Strike</a> - A game about Indigenous resistance and environmental awareness.</li>
+        </ul>
+    </div>
+</div>
+
                     <a href="https://github.com/terkperhannah" class="resource-box" target="_blank">Ms. Terkper's GitHub Project Branch</a>
                     <a href="https://learn.unity.com/" class="resource-box" target="_blank">Unity Learn</a>
                     <a href="https://www.pixilart.com/" class="resource-box" target="_blank">Pixilart - Create Your Game Assets</a>
