@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Python: Basics #2</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .options label {
+            display: flex;
+            align-items: center;
+        }
+
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Math</a>
+                <ul class="submenu">
+                    <li><a href="math7.html">Math 7</a></li>
+                    <li><a href="math8.html">Math 8</a></li>
+                    <li><a href="math9.html">Math 9</a></li>
+                    <li><a href="math10.html">Math 10</a></li>
+                    <li><a href="math11.html">Math 11</a></li>
+                    <li><a href="math12.html">Math 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Science</a>
+                <ul class="submenu">
+                    <li><a href="science7.html">Science 7</a></li>
+                    <li><a href="science8.html">Science 8</a></li>
+                    <li><a href="science9.html">Science 9</a></li>
+                    <li><a href="science10.html">Science 10</a></li>
+                    <li><a href="science11.html">Science 11</a></li>
+                    <li><a href="science12.html">Science 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Computer Science</a>
+                <ul class="submenu">
+                    <li><a href="cs-general.html">General</a></li>
+                    <li><a href="cs-robotics.html">Robotics</a></li>
+                    <li><a href="VGD.html">Video Game Design</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">M.Ed-Courses</a>
+                <ul class="submenu">
+                    <li><a href="med-general.html">General</a></li>
+                    <li><a href="edu714.html">EDU 714</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Introduction to Python: Basics #2</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Introduction to Python - Basics #2</h2>
+            <p>This section builds upon the foundational concepts introduced earlier, diving into conditional statements, loops, and functions. These are essential concepts for writing programs that make decisions and perform repetitive tasks. Let’s explore these topics with examples and explanations below.</p>
+
+            <h3>1. Conditional Statements</h3>
+            <p>Python uses <code>if</code>, <code>elif</code>, and <code>else</code> statements to make decisions based on conditions:</p>
+            <pre>
+                <code>
+x = 10
+if x > 5:
+    print("x is greater than 5")
+elif x == 5:
+    print("x is equal to 5")
+else:
+    print("x is less than 5")
+                </code>
+            </pre>
+            <p>In this example, Python checks each condition in sequence and executes the corresponding block of code.</p>
+
+            <h3>2. Loops</h3>
+            <p>Loops allow us to execute a block of code multiple times. Python supports <b><code>for</code></b> and <b><code>while</code></b> loops:</p>
+            <pre>
+                <code>
+# Example of a for loop
+for i in range(5):
+    print(i)  # Prints numbers from 0 to 4
+
+# Example of a while loop
+x = 0
+while x < 5:
+    print(x)
+    x += 1  # Increment x
+                </code>
+            </pre>
+
+            <h3>3. Functions</h3>
+            <p>A function is a block of code designed to perform a specific task. We use the <code>def</code> keyword to define a function:</p>
+            <pre>
+                <code>
+def greet(name):
+    print("Hello, " + name + "!")
+
+greet("Hannah")  # Outputs: Hello, Hannah!
+                </code>
+            </pre>
+
+            <p>Functions allow us to reuse code and make our programs more modular.</p>
+        </section>
+
+        <!-- Question 1 -->
+        <div class="question">
+            <p>1. What does the following code output?</p>
+            <pre>
+                <code>
+x = 10
+if x > 5:
+    print("Greater than 5")
+                </code>
+            </pre>
+            <div class="options">
+                <label><input type="radio" name="q1" value="A"> A. Greater than 5</label>
+                <label><input type="radio" name="q1" value="B"> B. Nothing</label>
+                <label><input type="radio" name="q1" value="C"> C. An error</label>
+                <label><input type="radio" name="q1" value="D"> D. 10</label>
+            </div>
+            <button onclick="checkAnswer('q1', 'A')">Submit</button>
+            <p class="feedback" id="q1-feedback"></p>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <p>2. Which of the following is a valid Python loop?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="A"> A. for x in 10</label>
+                <label><input type="radio" name="q2" value="B"> B. while x < 10:</label>
+                <label><input type="radio" name="q2" value="C"> C. do while x < 10:</label>
+                <label><input type="radio" name="q2" value="D"> D. repeat until x == 10</label>
+            </div>
+            <button onclick="checkAnswer('q2', 'B')">Submit</button>
+            <p class="feedback" id="q2-feedback"></p>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question">
+            <p>3. What keyword is used to define a function in Python?</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="A"> A. function</label>
+                <label><input type="radio" name="q3" value="B"> B. def</label>
+                <label><input type="radio" name="q3" value="C"> C. func</label>
+                <label><input type="radio" name="q3" value="D"> D. define</label>
+            </div>
+            <button onclick="checkAnswer('q3', 'B')">Submit</button>
+            <p class="feedback" id="q3-feedback"></p>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question">
+            <p>4. What will the following code output?</p>
+            <pre>
+                <code>
+def greet():
+    print("Hello!")
+
+greet()
+                </code>
+            </pre>
+            <div class="options">
+                <label><input type="radio" name="q4" value="A"> A. greet</label>
+                <label><input type="radio" name="q4" value="B"> B. Hello!</label>
+                <label><input type="radio" name="q4" value="C"> C. An error</label>
+                <label><input type="radio" name="q4" value="D"> D. Nothing</label>
+            </div>
+            <button onclick="checkAnswer('q4', 'B')">Submit</button>
+            <p class="feedback" id="q4-feedback"></p>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question">
+            <p>5. Which operator is used for exponentiation in Python?</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="A"> A. ^</label>
+                <label><input type="radio" name="q5" value="B"> B. **</label>
+                <label><input type="radio" name="q5" value="C"> C. pow</label>
+                <label><input type="radio" name="q5" value="D"> D. exp</label>
+            </div>
+            <button onclick="checkAnswer('q5', 'B')">Submit</button>
+            <p class="feedback" id="q5-feedback"></p>
+        </div>
+    </main>
+
+    <script>
+        function checkAnswer(questionId, correctAnswer) {
+            const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`);
+            const feedback = document.getElementById(`${questionId}-feedback`);
+
+            if (!selectedAnswer) {
+                feedback.textContent = "⚠️ Please select an answer before submitting!";
+                feedback.style.color = "red";
+                return;
+            }
+
+            if (selectedAnswer.value === correctAnswer) {
+                feedback.textContent = "✅ Correct! Well done!";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = "❌ Incorrect. Try again!";
+                feedback.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
