@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basics of C# 2: Variables and Data Types</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .options label {
+            display: flex;
+            align-items: center;
+        }
+
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Math</a>
+                <ul class="submenu">
+                    <li><a href="math7.html">Math 7</a></li>
+                    <li><a href="math8.html">Math 8</a></li>
+                    <li><a href="math9.html">Math 9</a></li>
+                    <li><a href="math10.html">Math 10</a></li>
+                    <li><a href="math11.html">Math 11</a></li>
+                    <li><a href="math12.html">Math 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Science</a>
+                <ul class="submenu">
+                    <li><a href="science7.html">Science 7</a></li>
+                    <li><a href="science8.html">Science 8</a></li>
+                    <li><a href="science9.html">Science 9</a></li>
+                    <li><a href="science10.html">Science 10</a></li>
+                    <li><a href="science11.html">Science 11</a></li>
+                    <li><a href="science12.html">Science 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Computer Science</a>
+                <ul class="submenu">
+                    <li><a href="cs-general.html">General</a></li>
+                    <li><a href="cs-robotics.html">Robotics</a></li>
+                    <li><a href="VGD.html">Video Game Design</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">M.Ed-Courses</a>
+                <ul class="submenu">
+                    <li><a href="med-general.html">General</a></li>
+                    <li><a href="edu714.html">EDU 714</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Basics of C# 2: Variables and Data Types</h1>
+    </header>
+
+    <main>
+        <p>Welcome to **Basics of C# 2**! This module introduces **variables and data types** in C#. Learn how to declare variables, assign values, and understand different data types.</p>
+
+        <h2>🔹 What are Variables?</h2>
+        <p>In C#, variables are **storage locations** that hold data. You declare a variable with a specific **data type**.</p>
+        
+        <pre>
+            <code>
+int myNumber = 10;
+string myName = "Hannah";
+bool isTeacher = true;
+double pi = 3.14;
+            </code>
+        </pre>
+
+        <h2>🔹 Questions</h2>
+
+        <!-- Question 1 -->
+        <div class="question">
+            <p>1. What is the correct way to declare an integer variable in C#?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="A"> A. int number = 10;</label>
+                <label><input type="radio" name="q1" value="B"> B. var number = 10;</label>
+                <label><input type="radio" name="q1" value="C"> C. integer number = 10;</label>
+                <label><input type="radio" name="q1" value="D"> D. number = 10;</label>
+            </div>
+            <button onclick="checkAnswer('q1', 'A')">Submit</button>
+            <p class="feedback" id="q1-feedback"></p>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <p>2. Which data type should be used for a floating-point number?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="A"> A. int</label>
+                <label><input type="radio" name="q2" value="B"> B. double</label>
+                <label><input type="radio" name="q2" value="C"> C. bool</label>
+                <label><input type="radio" name="q2" value="D"> D. string</label>
+            </div>
+            <button onclick="checkAnswer('q2', 'B')">Submit</button>
+            <p class="feedback" id="q2-feedback"></p>
+        </div>
+    </main>
+
+    <script>
+        function checkAnswer(questionId, correctAnswer) {
+            const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`);
+            const feedback = document.getElementById(`${questionId}-feedback`);
+
+            if (!selectedAnswer) {
+                feedback.textContent = "⚠️ Please select an answer before submitting!";
+                feedback.style.color = "red";
+                return;
+            }
+
+            if (selectedAnswer.value === correctAnswer) {
+                feedback.textContent = "✅ Correct! Well done!";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = "❌ Incorrect. Try again!";
+                feedback.style.color = "red";
+            }
+        }
+    </script>
+    </body>
+</html>
