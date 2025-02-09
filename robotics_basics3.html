@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Python: Basics #3</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .options label {
+            display: flex;
+            align-items: center;
+        }
+
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Math</a>
+                <ul class="submenu">
+                    <li><a href="math7.html">Math 7</a></li>
+                    <li><a href="math8.html">Math 8</a></li>
+                    <li><a href="math9.html">Math 9</a></li>
+                    <li><a href="math10.html">Math 10</a></li>
+                    <li><a href="math11.html">Math 11</a></li>
+                    <li><a href="math12.html">Math 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Science</a>
+                <ul class="submenu">
+                    <li><a href="science7.html">Science 7</a></li>
+                    <li><a href="science8.html">Science 8</a></li>
+                    <li><a href="science9.html">Science 9</a></li>
+                    <li><a href="science10.html">Science 10</a></li>
+                    <li><a href="science11.html">Science 11</a></li>
+                    <li><a href="science12.html">Science 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Computer Science</a>
+                <ul class="submenu">
+                    <li><a href="cs-general.html">General</a></li>
+                    <li><a href="cs-robotics.html">Robotics</a></li>
+                    <li><a href="VGD.html">Video Game Design</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">M.Ed-Courses</a>
+                <ul class="submenu">
+                    <li><a href="med-general.html">General</a></li>
+                    <li><a href="edu714.html">EDU 714</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Introduction to Python: Basics #3</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Introduction to Python - Basics #3</h2>
+            <p>Welcome to the final part of Python Basics. In this lesson, we'll cover essential concepts to help you succeed when programming with the VEX EXP Python environment. You'll learn about importing libraries, controlling motors, handling sensors, and using loops for robot automation. Let's dive in!</p>
+
+            <h3>1. Importing Libraries</h3>
+            <p>To use VEX-specific functionality, you must import the required libraries. The <code>vex</code> library provides access to robot components:</p>
+            <pre>
+                <code>
+from vex import *
+                </code>
+            </pre>
+
+            <h3>2. Configuring Devices</h3>
+            <p>Before controlling motors or sensors, you need to configure them in your code:</p>
+            <pre>
+                <code>
+motor_left = Motor(Ports.PORT1, GearSetting.RATIO_18_1, False)
+motor_right = Motor(Ports.PORT2, GearSetting.RATIO_18_1, True)
+brain = Brain()
+                </code>
+            </pre>
+            <ul>
+                <li><b><code>Motor</code></b>: Represents a motor connected to a specific port.</li>
+                <li><b><code>Ports</code></b>: Refers to the port where the motor is plugged in.</li>
+                <li><b><code>Brain</code></b>: Controls the screen and provides feedback.</li>
+            </ul>
+
+            <h3>3. Moving Motors</h3>
+            <p>To move a robot, use the <code>spin</code> or <code>drive</code> commands:</p>
+            <pre>
+                <code>
+motor_left.spin(FORWARD, 50, PERCENT)
+motor_right.spin(FORWARD, 50, PERCENT)
+                </code>
+            </pre>
+            <p><b>Explanation:</b></p>
+            <ul>
+                <li><b><code>FORWARD</code></b>: Moves the motor forward.</li>
+                <li><b><code>50</code></b>: Sets the speed as a percentage.</li>
+                <li><b><code>PERCENT</code></b>: Defines the unit of speed.</li>
+            </ul>
+
+            <h3>4. Using Sensors</h3>
+            <p>To interact with the environment, you can use sensors like distance or color sensors:</p>
+            <pre>
+                <code>
+distance_sensor = DistanceSensor(Ports.PORT3)
+color_sensor = ColorSensor(Ports.PORT4)
+
+if distance_sensor.get_distance(MM) < 100:
+    brain.screen.print("Object detected!")
+
+if color_sensor.get_color() == Colors.RED:
+    brain.screen.print("Red object detected!")
+                </code>
+            </pre>
+            <ul>
+                <li><b><code>get_distance()</code></b>: Returns the distance to an object in the specified unit (e.g., <code>MM</code>).</li>
+                <li><b><code>get_color()</code></b>: Detects the color of an object.</li>
+            </ul>
+
+            <h3>5. Automating with Loops</h3>
+            <p>Loops are essential for automating tasks. Use <code>while</code> or <code>for</code> loops for continuous or repeated actions:</p>
+            <pre>
+                <code>
+while True:
+    motor_left.spin(FORWARD, 50, PERCENT)
+    motor_right.spin(FORWARD, 50, PERCENT)
+
+    if distance_sensor.get_distance(MM) < 50:
+        motor_left.stop()
+        motor_right.stop()
+        break
+                </code>
+            </pre>
+            <ul>
+                <li><b><code>while True</code></b>: Runs indefinitely until a condition is met.</li>
+                <li><b><code>break</code></b>: Stops the loop.</li>
+            </ul>
+
+            <p>With these basics, you're ready to program your robot effectively. Try the questions below to test your knowledge!</p>
+        </section>
+
+        <!-- Questions -->
+        <!-- Question 1 -->
+        <div class="question">
+            <p>1. Which library is essential for programming VEX EXP robots?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="A"> A. vex</label>
+                <label><input type="radio" name="q1" value="B"> B. robotics</label>
+                <label><input type="radio" name="q1" value="C"> C. hardware</label>
+                <label><input type="radio" name="q1" value="D"> D. automation</label>
+            </div>
+            <button onclick="checkAnswer('q1', 'A')">Submit</button>
+            <p class="feedback" id="q1-feedback"></p>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <p>2. What method is used to start a motor in VEX EXP Python?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="A"> A. move()</label>
+                <label><input type="radio" name="q2" value="B"> B. start()</label>
+                <label><input type="radio" name="q2" value="C"> C. spin()</label>
+                <label><input type="radio" name="q2" value="D"> D. run()</label>
+            </div>
+            <button onclick="checkAnswer('q2', 'C')">Submit</button>
+            <p class="feedback" id="q2-feedback"></p>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question">
+            <p>3. How can you check if a distance sensor detects an object less than 50mm away?</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="A"> A. distance_sensor.detect(50)</label>
+                <label><input type="radio" name="q3" value="B"> B. distance_sensor.get_distance(MM) < 50</label>
+                <label><input type="radio" name="q3" value="C"> C. distance_sensor.measure() < 50</label>
+                <label><input type="radio" name="q3" value="D"> D. distance_sensor.scan(50)</label>
+            </div>
+            <button onclick="checkAnswer('q3', 'B')">Submit</button>
+            <p class="feedback" id="q3-feedback"></p>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question">
+            <p>4. What does the following code do?
+                <pre>
+                    <code>
+while True:
+    motor_left.spin(FORWARD, 50, PERCENT)
+    if distance_sensor.get_distance(MM) < 30:
+        motor_left.stop()
+        break
+                    </code>
+                </pre>
+            </p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="A"> A. Spins the motor indefinitely.</label>
+                <label><input type="radio" name="q4" value="B"> B. Stops the motor if an object is detected closer than 30mm.</label>
+                <label><input type="radio" name="q4" value="C"> C. Moves the robot backward.</label>
+                <label><input type="radio" name="q4" value="D"> D. Causes an error.</label>
+            </div>
+            <button onclick="checkAnswer('q4', 'B')">Submit</button>
+            <p class="feedback" id="q4-feedback"></p>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question">
+            <p>5. What is the role of the <code>Brain</code> object in VEX EXP Python?</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="A"> A. Controls the motors.</label>
+                <label><input type="radio" name="q5" value="B"> B. Displays messages and provides feedback.</label>
+                <label><input type="radio" name="q5" value="C"> C. Detects objects.</label>
+                <label><input type="radio" name="q5" value="D"> D. Configures the sensors.</label>
+            </div>
+            <button onclick="checkAnswer('q5', 'B')">Submit</button>
+            <p class="feedback" id="q5-feedback"></p>
+        </div>
+    </main>
+
+    <script>
+        function checkAnswer(questionId, correctAnswer) {
+            const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`);
+            const feedback = document.getElementById(`${questionId}-feedback`);
+
+            if (!selectedAnswer) {
+                feedback.textContent = "⚠️ Please select an answer before submitting!";
+                feedback.style.color = "red";
+                return;
+            }
+
+            if (selectedAnswer.value === correctAnswer) {
+                feedback.textContent = "✅ Correct! Well done!";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = "❌ Incorrect. Try again!";
+                feedback.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
