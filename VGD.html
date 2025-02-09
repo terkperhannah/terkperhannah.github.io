@@ -5,6 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Math 7</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .box-container {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+        .knowledge-testing, .resources {
+            margin: 40px 0;
+        }
+        .testing-grid, .resources-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .testing-box, .resource-box {
+            background-color: #4caf50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            width: 200px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .testing-box:hover, .resource-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            background-color: #388e3c;
+        }
+        .testing-box span, .resource-box span {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -65,16 +107,23 @@
             </ul>
         </section>
         
-        <section>
+        <section class="box-container resources">
+            <h2>Resources</h2>
+            <div class="resources-grid">
+                <a href="YOUR_GITHUB_BRANCH_LINK" class="resource-box" target="_blank">GitHub Project Branch</a>
+                <a href="https://learn.unity.com/" class="resource-box" target="_blank">Unity Learn</a>
+                <a href="https://www.pixilart.com/" class="resource-box" target="_blank">Pixilart - Create Your Game Assets</a>
+            </div>
+        </section>
+        
+        <section class="box-container knowledge-testing">
             <h2>Knowledge Testing</h2>
-            <div class="knowledge-testing">
-                <div class="testing-grid">
-                    <a href="csharp_basics1.html" class="testing-box">Basics of C# 1<span>Introduction to Syntax</span></a>
-                    <a href="csharp_basics2.html" class="testing-box">Basics of C# 2<span>Variables and Data Types</span></a>
-                    <a href="csharp_basics3.html" class="testing-box">Basics of C# 3<span>Conditionals and Loops</span></a>
-                    <a href="unity_navigation1.html" class="testing-box">Intro to Unity 1<span>Understanding the Interface</span></a>
-                    <a href="unity_navigation2.html" class="testing-box">Intro to Unity 2<span>Creating and Managing Objects</span></a>
-                </div>
+            <div class="testing-grid">
+                <a href="csharp_basics1.html" class="testing-box">Basics of C# 1<span>Introduction to Syntax</span></a>
+                <a href="csharp_basics2.html" class="testing-box">Basics of C# 2<span>Variables and Data Types</span></a>
+                <a href="csharp_basics3.html" class="testing-box">Basics of C# 3<span>Conditionals and Loops</span></a>
+                <a href="unity_navigation1.html" class="testing-box">Intro to Unity 1<span>Understanding the Interface</span></a>
+                <a href="unity_navigation2.html" class="testing-box">Intro to Unity 2<span>Creating and Managing Objects</span></a>
             </div>
         </section>
     </main>
