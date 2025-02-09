@@ -6,22 +6,36 @@
     <title>Video Game Design</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        main {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+        }
+        .column {
+            flex: 1;
+            padding: 10px;
+        }
         .box-container {
             background-color: #f4f4f4;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin: 20px auto;
-            max-width: 1200px; /* Adjusted to allow full width */
-            text-align: center;
-        }
-        .knowledge-testing, .resources {
-            margin: 40px 0;
+            margin: 20px 0;
         }
         .testing-grid, .resources-grid {
             display: flex;
-            justify-content: space-evenly; /* Spread items across the full width */
-            flex-wrap: wrap;
+            flex-direction: column;
             gap: 20px;
         }
         .testing-box, .resource-box {
@@ -32,7 +46,6 @@
             text-align: center;
             text-decoration: none;
             font-weight: bold;
-            width: 250px; /* Increased width */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s, box-shadow 0.2s;
         }
@@ -41,10 +54,20 @@
             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
             background-color: #388e3c;
         }
-        .testing-box span, .resource-box span {
-            display: block;
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            background-color: #ffffff;
+            padding: 15px;
             margin-top: 10px;
-            font-size: 0.9em;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
     </style>
 </head>
@@ -95,32 +118,38 @@
         </ul>
     </nav>
     <main>
-        <section>
-            <h2>Welcome to Video Game Design</h2>
-            <p>This course will introduce you to the fundamentals of game design using Unity and C#. Below are some useful resources to help you get started.</p>
-            
-        </section>
-        
-        <section class="box-container resources">
-            <h2>Resources</h2>
-            <div class="resources-grid">
-                <a href="https://github.com/terkperhannah" class="resource-box" target="_blank">Indigenous Perspectives in Game Design</a>
-                <a href="https://github.com/terkperhannah" class="resource-box" target="_blank">Ms. Terkper's GitHub Project Branch</a>
-                <a href="https://learn.unity.com/" class="resource-box" target="_blank">Unity Learn</a>
-                <a href="https://www.pixilart.com/" class="resource-box" target="_blank">Pixilart - Create Your Game Assets</a>
-            </div>
-        </section>
-        
-        <section class="box-container knowledge-testing">
-            <h2>Knowledge Testing</h2>
-            <div class="testing-grid">
-                <a href="csharp_basics1.html" class="testing-box">Basics of C# 1<span>Introduction to Syntax</span></a>
-                <a href="csharp_basics2.html" class="testing-box">Basics of C# 2<span>Variables and Data Types</span></a>
-                <a href="csharp_basics3.html" class="testing-box">Basics of C# 3<span>Conditionals and Loops</span></a>
-                <a href="unity_navigation1.html" class="testing-box">Intro to Unity 1<span>Understanding the Interface</span></a>
-                <a href="unity_navigation2.html" class="testing-box">Intro to Unity 2<span>Creating and Managing Objects</span></a>
-            </div>
-        </section>
+        <div class="column">
+            <section class="box-container resources">
+                <h2>Resources</h2>
+                <div class="resources-grid">
+                    <div class="dropdown">
+                        <a class="resource-box" href="#">Indigenous Perspectives in Game Design</a>
+                        <div class="dropdown-content">
+                            <p>Explore Indigenous perspectives in game design through the following resources:</p>
+                            <ul>
+                                <li><a href="https://neveralonegame.com/" target="_blank">Never Alone (Kisima Ingitchuna)</a> - A game based on Iñupiat culture.</li>
+                                <li><a href="https://www.thunderbirdstrike.com/" target="_blank">Thunderbird Strike</a> - A game about Indigenous resistance and environmental awareness.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="https://github.com/terkperhannah" class="resource-box" target="_blank">Ms. Terkper's GitHub Project Branch</a>
+                    <a href="https://learn.unity.com/" class="resource-box" target="_blank">Unity Learn</a>
+                    <a href="https://www.pixilart.com/" class="resource-box" target="_blank">Pixilart - Create Your Game Assets</a>
+                </div>
+            </section>
+        </div>
+        <div class="column">
+            <section class="box-container knowledge-testing">
+                <h2>Knowledge Testing</h2>
+                <div class="testing-grid">
+                    <a href="csharp_basics1.html" class="testing-box">Basics of C# 1<span>Introduction to Syntax</span></a>
+                    <a href="csharp_basics2.html" class="testing-box">Basics of C# 2<span>Variables and Data Types</span></a>
+                    <a href="csharp_basics3.html" class="testing-box">Basics of C# 3<span>Conditionals and Loops</span></a>
+                    <a href="unity_navigation1.html" class="testing-box">Intro to Unity 1<span>Understanding the Interface</span></a>
+                    <a href="unity_navigation2.html" class="testing-box">Intro to Unity 2<span>Creating and Managing Objects</span></a>
+                </div>
+            </section>
+        </div>
     </main>
     <footer>
         <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
