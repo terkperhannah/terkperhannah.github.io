@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basics of C# 1: Introduction to Syntax</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .options label {
+            display: flex;
+            align-items: center;
+        }
+
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Math</a>
+                <ul class="submenu">
+                    <li><a href="math7.html">Math 7</a></li>
+                    <li><a href="math8.html">Math 8</a></li>
+                    <li><a href="math9.html">Math 9</a></li>
+                    <li><a href="math10.html">Math 10</a></li>
+                    <li><a href="math11.html">Math 11</a></li>
+                    <li><a href="math12.html">Math 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Science</a>
+                <ul class="submenu">
+                    <li><a href="science7.html">Science 7</a></li>
+                    <li><a href="science8.html">Science 8</a></li>
+                    <li><a href="science9.html">Science 9</a></li>
+                    <li><a href="science10.html">Science 10</a></li>
+                    <li><a href="science11.html">Science 11</a></li>
+                    <li><a href="science12.html">Science 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Computer Science</a>
+                <ul class="submenu">
+                    <li><a href="cs-general.html">General</a></li>
+                    <li><a href="cs-robotics.html">Robotics</a></li>
+                    <li><a href="VGD.html">Video Game Design</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">M.Ed-Courses</a>
+                <ul class="submenu">
+                    <li><a href="med-general.html">General</a></li>
+                    <li><a href="edu714.html">EDU 714</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Basics of C# 1: Introduction to Syntax</h1>
+    </header>
+
+    <main>
+        <p>Welcome to the **Basics of C#**! This page introduces the **fundamentals of C# syntax** as covered in the first two modules of <a href="https://learn.microsoft.com/en-us/training/paths/get-started-c-sharp-part-1/" target="_blank">Microsoft Learn: Get Started with C#</a>.</p>
+
+        <h2>🔹 What is C#?</h2>
+        <p>C# (pronounced "C-Sharp") is a **modern, object-oriented programming language** developed by Microsoft. It is used for building **games (Unity), web apps (.NET), and automation scripts**.</p>
+
+        <h2>🔹 Basic C# Syntax</h2>
+        <p>In C#, every program has a **Main method**, and statements end with a **semicolon (;)**. Here’s a simple program:</p>
+
+        <pre>
+            <code>
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Hello, World!");
+    }
+}
+            </code>
+        </pre>
+
+        <h2>🔹 Questions</h2>
+
+        <!-- Question 1 -->
+        <div class="question">
+            <p>1. What is C# primarily used for?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="A"> A. Web development</label>
+                <label><input type="radio" name="q1" value="B"> B. Game development</label>
+                <label><input type="radio" name="q1" value="C"> C. Both A & B</label>
+                <label><input type="radio" name="q1" value="D"> D. None of the above</label>
+            </div>
+            <button onclick="checkAnswer('q1', 'C')">Submit</button>
+            <p class="feedback" id="q1-feedback"></p>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <p>2. Which method is required in every C# program?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="A"> A. Start()</label>
+                <label><input type="radio" name="q2" value="B"> B. Execute()</label>
+                <label><input type="radio" name="q2" value="C"> C. Main()</label>
+                <label><input type="radio" name="q2" value="D"> D. Run()</label>
+            </div>
+            <button onclick="checkAnswer('q2', 'C')">Submit</button>
+            <p class="feedback" id="q2-feedback"></p>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question">
+            <p>3. What is the correct syntax to print "Hello, World!" in C#?</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="A"> A. print("Hello, World!");</label>
+                <label><input type="radio" name="q3" value="B"> B. echo "Hello, World!";</label>
+                <label><input type="radio" name="q3" value="C"> C. Console.WriteLine("Hello, World!");</label>
+                <label><input type="radio" name="q3" value="D"> D. cout << "Hello, World!";</label>
+            </div>
+            <button onclick="checkAnswer('q3', 'C')">Submit</button>
+            <p class="feedback" id="q3-feedback"></p>
+        </div>
+
+                          <!-- Question 4 -->
+        <div class="question">
+            <p>4. Which keyword is used to declare a variable in C#?</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="A"> A. var</label>
+                <label><input type="radio" name="q4" value="B"> B. define</label>
+                <label><input type="radio" name="q4" value="C"> C. let</label>
+                <label><input type="radio" name="q4" value="D"> D. new</label>
+            </div>
+            <button onclick="checkAnswer('q4', 'A')">Submit</button>
+            <p class="feedback" id="q4-feedback"></p>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question">
+            <p>5. Which of the following is a correct single-line comment in C#?</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="A"> A. /* This is a comment */</label>
+                <label><input type="radio" name="q5" value="B"> B. // This is a comment</label>
+                <label><input type="radio" name="q5" value="C"> C. # This is a comment</label>
+                <label><input type="radio" name="q5" value="D"> D. -- This is a comment</label>
+            </div>
+            <button onclick="checkAnswer('q5', 'B')">Submit</button>
+            <p class="feedback" id="q5-feedback"></p>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question">
+            <p>6. What data type should be used for a decimal number in C#?</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="A"> A. int</label>
+                <label><input type="radio" name="q6" value="B"> B. double</label>
+                <label><input type="radio" name="q6" value="C"> C. bool</label>
+                <label><input type="radio" name="q6" value="D"> D. string</label>
+            </div>
+            <button onclick="checkAnswer('q6', 'B')">Submit</button>
+            <p class="feedback" id="q6-feedback"></p>
+        </div>
+
+    </main>
+
+    <script>
+        function checkAnswer(questionId, correctAnswer) {
+            const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`);
+            const feedback = document.getElementById(`${questionId}-feedback`);
+
+            if (!selectedAnswer) {
+                feedback.textContent = "⚠️ Please select an answer before submitting!";
+                feedback.style.color = "red";
+                return;
+            }
+
+            if (selectedAnswer.value === correctAnswer) {
+                feedback.textContent = "✅ Correct! Well done!";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = "❌ Incorrect. Try again!";
+                feedback.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
