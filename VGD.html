@@ -48,6 +48,8 @@
             font-weight: bold;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            display: block;
         }
         .testing-box:hover, .resource-box:hover {
             transform: scale(1.05);
@@ -56,6 +58,7 @@
         }
         .dropdown {
             position: relative;
+            width: 100%;
         }
         .dropdown-content {
             display: none;
@@ -65,6 +68,7 @@
             border: 1px solid #ddd;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
         }
         .dropdown:hover .dropdown-content {
             display: block;
@@ -108,22 +112,16 @@
                     <li><a href="VGD.html">Video Game Design</a></li>
                 </ul>
             </li>
-            <li class="dropdown">
-                <a href="#">M.Ed-Courses</a>
-                <ul class="submenu">
-                    <li><a href="med-general.html">General</a></li>
-                    <li><a href="edu714.html">EDU 714</a></li>
-                </ul>
-            </li>
         </ul>
     </nav>
     <main>
+        <h2>Welcome to Video Game Design</h2>
         <div class="column">
             <section class="box-container resources">
                 <h2>Resources</h2>
                 <div class="resources-grid">
-                    <div class="dropdown">
-                        <a class="resource-box" href="#">Indigenous Perspectives in Game Design</a>
+                    <div class="dropdown resource-box">
+                        <a href="#">Indigenous Perspectives in Game Design</a>
                         <div class="dropdown-content">
                             <p>Explore Indigenous perspectives in game design through the following resources:</p>
                             <ul>
@@ -135,18 +133,6 @@
                     <a href="https://github.com/terkperhannah" class="resource-box" target="_blank">Ms. Terkper's GitHub Project Branch</a>
                     <a href="https://learn.unity.com/" class="resource-box" target="_blank">Unity Learn</a>
                     <a href="https://www.pixilart.com/" class="resource-box" target="_blank">Pixilart - Create Your Game Assets</a>
-                </div>
-            </section>
-        </div>
-        <div class="column">
-            <section class="box-container knowledge-testing">
-                <h2>Knowledge Testing</h2>
-                <div class="testing-grid">
-                    <a href="csharp_basics1.html" class="testing-box">Basics of C# 1<span>Introduction to Syntax</span></a>
-                    <a href="csharp_basics2.html" class="testing-box">Basics of C# 2<span>Variables and Data Types</span></a>
-                    <a href="csharp_basics3.html" class="testing-box">Basics of C# 3<span>Conditionals and Loops</span></a>
-                    <a href="unity_navigation1.html" class="testing-box">Intro to Unity 1<span>Understanding the Interface</span></a>
-                    <a href="unity_navigation2.html" class="testing-box">Intro to Unity 2<span>Creating and Managing Objects</span></a>
                 </div>
             </section>
         </div>
