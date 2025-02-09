@@ -1,1 +1,132 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotics</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        .column {
+            flex: 1;
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .resources-grid, .testing-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .resource-box, .testing-box {
+            background-color: #4caf50;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .resource-box:hover, .testing-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            background-color: #388e3c;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Math</a>
+                <ul class="submenu">
+                    <li><a href="math7.html">Math 7</a></li>
+                    <li><a href="math8.html">Math 8</a></li>
+                    <li><a href="math9.html">Math 9</a></li>
+                    <li><a href="math10.html">Math 10</a></li>
+                    <li><a href="math20-1.html">Math 11</a></li>
+                    <li><a href="math30-1.html">Math 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Science</a>
+                <ul class="submenu">
+                    <li><a href="science7.html">Science 7</a></li>
+                    <li><a href="science8.html">Science 8</a></li>
+                    <li><a href="science9.html">Science 9</a></li>
+                    <li><a href="science10.html">Science 10</a></li>
+                    <li><a href="Bio20.html">Science 11</a></li>
+                    <li><a href="Bio30.html">Science 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Computer Science</a>
+                <ul class="submenu">
+                    <li><a href="cs-general.html">General</a></li>
+                    <li><a href="cs-robotics.html">Robotics</a></li>
+                    <li><a href="VGD.html">Video Game Design</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">M.Ed-Courses</a>
+                <ul class="submenu">
+                    <li><a href="med-general.html">General</a></li>
+                    <li><a href="edu714.html">EDU 714</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Welcome to Robotics</h2>
+        <p>Explore robotics competitions and class resources below.</p>
+        
+        <div class="container">
+            <!-- Left Column: Robotics Competition Team Resources -->
+            <div class="column">
+                <h2>Robotics Competition Team Resources</h2>
+                <div class="resources-grid">
+                    <a href="https://www.robotevents.com/" class="resource-box" target="_blank">Official Robotics Events</a>
+                    <a href="https://www.vexrobotics.com/" class="resource-box" target="_blank">VEX Robotics</a>
+                    <a href="https://firstinspires.org/" class="resource-box" target="_blank">FIRST Robotics</a>
+                    <a href="team_documentation.html" class="resource-box">Team Strategy & Documentation</a>
+                </div>
+            </div>
+            
+            <!-- Right Column: Robotics Classes -->
+            <div class="column">
+                <h2>Robotics Classes</h2>
+                <h3>Resources</h3>
+                <div class="resources-grid">
+                    <a href="https://www.robotmesh.com/studio" class="resource-box" target="_blank">Robot Mesh Studio</a>
+                    <a href="https://education.vex.com/" class="resource-box" target="_blank">VEX Education Portal</a>
+                    <a href="python_robotics.html" class="resource-box">Python for Robotics</a>
+                </div>
+                
+                <h3>Knowledge Testing</h3>
+                <div class="testing-grid">
+                    <a href="robotics_basics1.html" class="testing-box">Robotics Basics 1<span>Introduction to Robotics</span></a>
+                    <a href="robotics_basics2.html" class="testing-box">Robotics Basics 2<span>Understanding Sensors</span></a>
+                    <a href="robotics_basics3.html" class="testing-box">Robotics Basics 3<span>Programming Your Robot</span></a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+    </footer>
+</body>
+</html>
