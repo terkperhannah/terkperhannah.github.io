@@ -82,6 +82,7 @@
             </li>
         </ul>
     </nav>
+    <body>
     <header>
         <h1>Ms. Terkper's Digital Classroom</h1>
     </header>
@@ -117,14 +118,14 @@
                 if (line === "x-axis") {
                     return [x, 400 - y]; 
                 } else if (line === "y-axis") {
-                    return [400 - (x - 200) - 200, y]; // ✅ Fixed reflection for Y-axis 
+                    return [400 - (x - 200) - 200, y]; 
                 } else if (line === "y=x") {
                     return [y, x]; 
                 } else if (line === "x=2") {
-                    let reflectionX = 400 - (x - 200) + 200; 
+                    let reflectionX = 100 + (100 - x); // ✅ Fixed reflection for x=2
                     return [reflectionX, y];  
                 } else if (line === "y=2") {
-                    let reflectionY = 400 - (y - 200) + 200; 
+                    let reflectionY = 300 + (300 - y); // ✅ Fixed reflection for y=2
                     return [x, reflectionY];  
                 }
                 return [x, y];
@@ -135,10 +136,8 @@
                 ctx.lineWidth = 2;
 
                 ctx.beginPath();
-                // Draw x-axis (horizontal center)
                 ctx.moveTo(0, 200);
                 ctx.lineTo(400, 200);
-                // Draw y-axis (vertical center)
                 ctx.moveTo(200, 0);
                 ctx.lineTo(200, 400);
                 ctx.stroke();
@@ -159,11 +158,11 @@
                     ctx.moveTo(0, 400);
                     ctx.lineTo(400, 0);
                 } else if (line === "x=2") {
-                    ctx.moveTo(250, 0);
-                    ctx.lineTo(250, 400);
+                    ctx.moveTo(100, 0);
+                    ctx.lineTo(100, 400);
                 } else if (line === "y=2") {
-                    ctx.moveTo(0, 150);
-                    ctx.lineTo(400, 150);
+                    ctx.moveTo(0, 300);
+                    ctx.lineTo(400, 300);
                 }
 
                 ctx.stroke();
