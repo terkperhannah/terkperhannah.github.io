@@ -7,18 +7,45 @@
     <link rel="stylesheet" href="style.css">
     <style>
         body {
-            text-align: center;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
         }
-        .canvas-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 300px;
-            margin-top: 20px;
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #ffffff;
+            text-align: center;
         }
         canvas {
-            border: 2px solid black;
+            border: 1px solid black;
+            margin-top: 10px;
+        }
+        button {
+            padding: 8px 12px;
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #388e3c;
+        }
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -70,78 +97,80 @@
     </nav>
     
 <body>
-    <h2>Rotational Symmetry Visualizer</h2>
-    <label for="shape">Choose a shape:</label>
-    <select id="shape" onchange="drawShape()">
-        <option value="triangle">Triangle</option>
-        <option value="square">Square</option>
-        <option value="pentagon">Pentagon</option>
-        <option value="hexagon">Hexagon</option>
-    </select>
-    
-    <div class="canvas-container">
-        <canvas id="canvas" width="300" height="300"></canvas>
-    </div>
-    
-    <label for="rotation">Rotate:</label>
-    <input type="range" id="rotation" min="0" max="360" step="5" value="0" oninput="rotateShape(this.value)">
-    <span id="angle">0</span>&deg;
-    
-    <p>Order of rotational symmetry: <span id="order">-</span></p>
-    
-    <script>
-        const canvas = document.getElementById("canvas");
-        const ctx = canvas.getContext("2d");
-        let currentShape = "triangle";
-        let angle = 0;
+    <main>
+        <h1>Rotational Symmetry</h1>
+        <p>Answer the following questions about rotational symmetry, angle of rotation, and order of rotation.</p>
         
-        function drawShape(rotation = 0) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.save();
-            ctx.translate(canvas.width / 2, canvas.height / 2);
-            ctx.rotate(rotation * Math.PI / 180);
-            ctx.beginPath();
+        <!-- Question 1 -->
+        <div class="question">
+            <p>1. What is the order of rotational symmetry of an equilateral triangle?</p>
+            <canvas id="triangleCanvas" width="200" height="200"></canvas>
+            <input type="text" id="answer1" placeholder="Your answer">
+            <button onclick="checkAnswer(1, '3')">Submit</button>
+            <p class="feedback" id="feedback1"></p>
+        </div>
+        
+        <!-- Question 2 -->
+        <div class="question">
+            <p>2. What is the angle of rotation for a square with rotational symmetry?</p>
+            <canvas id="squareCanvas" width="200" height="200"></canvas>
+            <input type="text" id="answer2" placeholder="Your answer">
+            <button onclick="checkAnswer(2, '90')">Submit</button>
+            <p class="feedback" id="feedback2"></p>
+        </div>
+        
+        <!-- Question 3 -->
+        <div class="question">
+            <p>3. What is the order of rotational symmetry for a regular pentagon?</p>
+            <canvas id="pentagonCanvas" width="200" height="200"></canvas>
+            <input type="text" id="answer3" placeholder="Your answer">
+            <button onclick="checkAnswer(3, '5')">Submit</button>
+            <p class="feedback" id="feedback3"></p>
+        </div>
+        
+        <!-- Question 4 -->
+        <div class="question">
+            <p>4. What is the smallest angle of rotation for a hexagon with rotational symmetry?</p>
+            <canvas id="hexagonCanvas" width="200" height="200"></canvas>
+            <input type="text" id="answer4" placeholder="Your answer">
+            <button onclick="checkAnswer(4, '60')">Submit</button>
+            <p class="feedback" id="feedback4"></p>
+        </div>
+    </main>
+    <script>
+        function checkAnswer(questionId, correctAnswer) {
+            const userAnswer = document.getElementById(`answer${questionId}`).value.trim();
+            const feedback = document.getElementById(`feedback${questionId}`);
             
-            let sides;
-            switch (document.getElementById("shape").value) {
-                case "triangle":
-                    sides = 3;
-                    break;
-                case "square":
-                    sides = 4;
-                    break;
-                case "pentagon":
-                    sides = 5;
-                    break;
-                case "hexagon":
-                    sides = 6;
-                    break;
+            if (userAnswer === correctAnswer) {
+                feedback.textContent = "Correct! Well done!";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = "Incorrect. Try again!";
+                feedback.style.color = "red";
             }
-            document.getElementById("order").innerText = sides;
-            
-            const radius = 50;
+        }
+        
+        function drawPolygon(context, sides, centerX, centerY, radius) {
+            context.beginPath();
             for (let i = 0; i < sides; i++) {
                 const theta = (i * 2 * Math.PI) / sides;
-                const x = radius * Math.cos(theta);
-                const y = radius * Math.sin(theta);
+                const x = centerX + radius * Math.cos(theta);
+                const y = centerY + radius * Math.sin(theta);
                 if (i === 0) {
-                    ctx.moveTo(x, y);
+                    context.moveTo(x, y);
                 } else {
-                    ctx.lineTo(x, y);
+                    context.lineTo(x, y);
                 }
             }
-            ctx.closePath();
-            ctx.stroke();
-            ctx.restore();
+            context.closePath();
+            context.stroke();
         }
         
-        function rotateShape(newAngle) {
-            angle = newAngle;
-            document.getElementById("angle").innerText = newAngle;
-            drawShape(angle);
-        }
-        
-        drawShape();
+        drawPolygon(document.getElementById("triangleCanvas").getContext("2d"), 3, 100, 100, 50);
+        drawPolygon(document.getElementById("squareCanvas").getContext("2d"), 4, 100, 100, 50);
+        drawPolygon(document.getElementById("pentagonCanvas").getContext("2d"), 5, 100, 100, 50);
+        drawPolygon(document.getElementById("hexagonCanvas").getContext("2d"), 6, 100, 100, 50);
     </script>
     <footer>
         <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
