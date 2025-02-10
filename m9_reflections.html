@@ -113,32 +113,6 @@
             const canvas = document.getElementById("canvas");
             const ctx = canvas.getContext("2d");
 
-            function drawShape(reflected, color) {
-        let shape = document.getElementById("shape").value;
-        let reflection = document.getElementById("reflection").value;
-
-        ctx.fillStyle = color;
-        ctx.beginPath();
-        let points = [];
-
-        if (shape === "triangle") {
-            // Asymmetric triangle
-            points = [[160, 220], [220, 220], [200, 150]]; // Left-heavy base and high peak
-        } else if (shape === "hexagon") {
-            // Asymmetric hexagon
-            points = [[200, 170], [240, 190], [230, 220], [200, 240], [160, 220], [170, 190]];
-        }
-
-        if (reflected) {
-            points = points.map(p => reflectPoint(p[0], p[1], reflection));
-        }
-
-        ctx.moveTo(points[0][0], points[0][1]);
-        points.forEach(([x, y]) => ctx.lineTo(x, y));
-        ctx.closePath();
-        ctx.fill();
-    }
-            
             function reflectPoint(x, y, line) {
                 if (line === "x-axis") {
                     return [x, 400 - y]; 
