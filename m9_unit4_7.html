@@ -171,19 +171,31 @@
 
     </main>
     <script>
+        let attempts = {};
+
         function checkAnswer(questionId, correctAnswer) {
+            if (!attempts[questionId]) {
+                attempts[questionId] = 0;
+            }
+
             const userAnswer = document.getElementById(`answer${questionId}`).value.trim();
             const feedback = document.getElementById(`feedback${questionId}`);
-            
+
             if (userAnswer === correctAnswer) {
                 feedback.textContent = "Correct! Well done!";
                 feedback.style.color = "green";
             } else {
-                feedback.textContent = "Incorrect. Try again!";
-                feedback.style.color = "red";
+                attempts[questionId]++;
+                if (attempts[questionId] < 5) {
+                    feedback.textContent = `Incorrect. Try again! (${5 - attempts[questionId]} attempts left)`;
+                    feedback.style.color = "red";
+                } else {
+                    feedback.textContent = `Incorrect. The correct answer is: ${correctAnswer}`;
+                    feedback.style.color = "blue";
+                }
             }
         }
-        
+
         function drawPolygon(context, sides, centerX, centerY, radius) {
             context.beginPath();
             for (let i = 0; i < sides; i++) {
@@ -199,7 +211,7 @@
             context.closePath();
             context.stroke();
         }
-        
+
         drawPolygon(document.getElementById("triangleCanvas").getContext("2d"), 3, 100, 100, 50);
         drawPolygon(document.getElementById("squareCanvas").getContext("2d"), 4, 100, 100, 50);
         drawPolygon(document.getElementById("pentagonCanvas").getContext("2d"), 5, 100, 100, 50);
