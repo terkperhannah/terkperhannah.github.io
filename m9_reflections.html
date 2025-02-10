@@ -122,11 +122,9 @@
                 } else if (line === "y=x") {
                     return [y, x]; 
                 } else if (line === "x=2") {
-                    let reflectX = 200 + (200 - x);
-                    return [reflectX, y];
+                    return [400 - (x - 250) + 250, y];  
                 } else if (line === "y=2") {
-                    let reflectY = 200 + (200 - y);
-                    return [x, reflectY];
+                    return [x, 400 - (y - 150) + 150];  
                 }
                 return [x, y];
             }
@@ -217,6 +215,5 @@
             drawReflection();
         </script>
     </main>
-
 </body>
 </html>
