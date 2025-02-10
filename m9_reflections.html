@@ -22,71 +22,6 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .question {
-            margin-bottom: 30px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #ffffff;
-        }
-
-        .question img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 10px 0;
-        }
-
-        .options {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .options label {
-            display: flex;
-            align-items: center;
-        }
-
-        .options input[type="radio"] {
-            margin-right: 10px;
-        }
-
-        button {
-            padding: 8px 12px;
-            background-color: #4caf50;
-            color: #ffffff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #388e3c;
-        }
-
-        .feedback {
-            margin-top: 10px;
-            font-weight: bold;
-        }
-    </style>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-
-        main {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
         .canvas-container {
             display: flex;
             justify-content: center;
@@ -148,8 +83,9 @@
         </ul>
     </nav>
     <header>
-        <h1>Reflections and Symmetry</h1>
+        <h1>Ms. Terkper's Digital Classroom</h1>
     </header>
+
     <main>
         <h2>Interactive Reflection of Shapes</h2>
         <p>Select a shape and reflection line to see how it transforms.</p>
@@ -186,29 +122,43 @@
                 } else if (line === "y=x") {
                     return [y, x]; 
                 } else if (line === "x=2") {
-                    return [400 - (x - 200) - 200, y]; 
+                    return [(400 - (x - 200)) - 200, y]; 
                 } else if (line === "y=2") {
-                    return [x, 400 - (y - 200) - 200]; 
+                    return [x, (400 - (y - 200)) - 200]; 
                 }
                 return [x, y];
             }
 
-            function drawShape(reflected) {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            function drawLine(line) {
                 ctx.strokeStyle = "black";
-
-                // Draw axes
+                ctx.lineWidth = 2;
                 ctx.beginPath();
-                ctx.moveTo(0, 200);
-                ctx.lineTo(400, 200);
-                ctx.moveTo(200, 0);
-                ctx.lineTo(200, 400);
-                ctx.stroke();
 
+                if (line === "x-axis") {
+                    ctx.moveTo(0, 200);
+                    ctx.lineTo(400, 200);
+                } else if (line === "y-axis") {
+                    ctx.moveTo(200, 0);
+                    ctx.lineTo(200, 400);
+                } else if (line === "y=x") {
+                    ctx.moveTo(0, 400);
+                    ctx.lineTo(400, 0);
+                } else if (line === "x=2") {
+                    ctx.moveTo(250, 0);
+                    ctx.lineTo(250, 400);
+                } else if (line === "y=2") {
+                    ctx.moveTo(0, 150);
+                    ctx.lineTo(400, 150);
+                }
+
+                ctx.stroke();
+            }
+
+            function drawShape(reflected, color) {
                 let shape = document.getElementById("shape").value;
                 let reflection = document.getElementById("reflection").value;
 
-                ctx.fillStyle = reflected ? "red" : "blue";
+                ctx.fillStyle = color;
                 ctx.beginPath();
                 let points = [];
 
@@ -220,7 +170,6 @@
                     points = [[200, 170], [230, 190], [230, 220], [200, 240], [170, 220], [170, 190]];
                 }
 
-                // Reflect points if needed
                 if (reflected) {
                     points = points.map(p => reflectPoint(p[0], p[1], reflection));
                 }
@@ -232,8 +181,17 @@
             }
 
             function drawReflection() {
-                drawShape(false);  // Draw original shape in blue
-                drawShape(true);   // Draw reflected shape in red
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Draw reflection line
+                let reflection = document.getElementById("reflection").value;
+                drawLine(reflection);
+
+                // Draw original shape in blue
+                drawShape(false, "blue");
+
+                // Draw reflected shape in red
+                drawShape(true, "red");
             }
 
             drawReflection();
