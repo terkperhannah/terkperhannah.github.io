@@ -122,9 +122,11 @@
                 } else if (line === "y=x") {
                     return [y, x]; 
                 } else if (line === "x=2") {
-                    return [400 - (x - 250) + 250, y];  
+                    let reflectionX = 500 - x; // Corrected reflection formula for x = 2
+                    return [reflectionX, y];  
                 } else if (line === "y=2") {
-                    return [x, 400 - (y - 150) + 150];  
+                    let reflectionY = 300 - y; // Corrected reflection formula for y = 2
+                    return [x, reflectionY];  
                 }
                 return [x, y];
             }
