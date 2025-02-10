@@ -87,18 +87,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .canvas-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 400px;
-            margin-bottom: 20px;
-        }
-
-        canvas {
-            border: 2px solid black;
-            background-color: #ffffff;
-        }
+        
     </style>
 </head>
 <body>
@@ -150,68 +139,7 @@
     <header>
         <h1>Reflections and Symmetry</h1>
     </header>
-    <main>
-        <h2>Interactive Reflection of Shapes</h2>
-        <p>Select a shape and reflection line to see how it transforms.</p>
-        <label for="shape">Choose a shape:</label>
-        <select id="shape" onchange="drawShape()">
-            <option value="triangle">Triangle</option>
-            <option value="rectangle">Rectangle</option>
-            <option value="hexagon">Hexagon</option>
-        </select>
-        
-        <label for="reflection">Reflect across:</label>
-        <select id="reflection" onchange="drawShape()">
-            <option value="x-axis">X-Axis</option>
-            <option value="y-axis">Y-Axis</option>
-            <option value="y=x">y = x</option>
-            <option value="x=2">x = 2</option>
-            <option value="y=2">y = 2</option>
-        </select>
-        
-        <div class="canvas-container">
-            <canvas id="canvas" width="400" height="400"></canvas>
-        </div>
-        
-        <script>
-            const canvas = document.getElementById("canvas");
-            const ctx = canvas.getContext("2d");
-
-            function drawShape() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.strokeStyle = "black";
-                ctx.beginPath();
-                ctx.moveTo(0, 200);
-                ctx.lineTo(400, 200);
-                ctx.moveTo(200, 0);
-                ctx.lineTo(200, 400);
-                ctx.stroke();
-                
-                let shape = document.getElementById("shape").value;
-                let reflection = document.getElementById("reflection").value;
-                
-                ctx.fillStyle = "blue";
-                ctx.beginPath();
-                if (shape === "triangle") {
-                    ctx.moveTo(180, 220);
-                    ctx.lineTo(220, 220);
-                    ctx.lineTo(200, 180);
-                } else if (shape === "rectangle") {
-                    ctx.rect(180, 180, 40, 40);
-                } else if (shape === "hexagon") {
-                    ctx.moveTo(200, 170);
-                    ctx.lineTo(230, 190);
-                    ctx.lineTo(230, 220);
-                    ctx.lineTo(200, 240);
-                    ctx.lineTo(170, 220);
-                    ctx.lineTo(170, 190);
-                }
-                ctx.closePath();
-                ctx.fill();
-            }
-            drawShape();
-        </script>
-    </main>
+    
     <main>
         <!-- Question 1 -->
         <div class="question">
