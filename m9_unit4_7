@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotation</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .canvas-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            margin-top: 20px;
+        }
+        canvas {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+  <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Math</a>
+                <ul class="submenu">
+                    <li><a href="math7.html">Math 7</a></li>
+                    <li><a href="math8.html">Math 8</a></li>
+                    <li><a href="math9.html">Math 9</a></li>
+                    <li><a href="math10.html">Math 10</a></li>
+                    <li><a href="math11.html">Math 11</a></li>
+                    <li><a href="math12.html">Math 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Science</a>
+                <ul class="submenu">
+                    <li><a href="science7.html">Science 7</a></li>
+                    <li><a href="science8.html">Science 8</a></li>
+                    <li><a href="science9.html">Science 9</a></li>
+                    <li><a href="science10.html">Science 10</a></li>
+                    <li><a href="science11.html">Science 11</a></li>
+                    <li><a href="science12.html">Science 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Computer Science</a>
+                <ul class="submenu">
+                    <li><a href="cs-general.html">General</a></li>
+                    <li><a href="cs-robotics.html">Robotics</a></li>
+                    <li><a href="VGD.html">Video Game Design</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">M.Ed-Courses</a>
+                <ul class="submenu">
+                    <li><a href="med-general.html">General</a></li>
+                    <li><a href="edu714.html">EDU 714</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    
+<body>
+    <h2>Rotational Symmetry Visualizer</h2>
+    <label for="shape">Choose a shape:</label>
+    <select id="shape" onchange="drawShape()">
+        <option value="triangle">Triangle</option>
+        <option value="square">Square</option>
+        <option value="pentagon">Pentagon</option>
+        <option value="hexagon">Hexagon</option>
+    </select>
+    
+    <div class="canvas-container">
+        <canvas id="canvas" width="300" height="300"></canvas>
+    </div>
+    
+    <label for="rotation">Rotate:</label>
+    <input type="range" id="rotation" min="0" max="360" step="5" value="0" oninput="rotateShape(this.value)">
+    <span id="angle">0</span>&deg;
+    
+    <p>Order of rotational symmetry: <span id="order">-</span></p>
+    
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        let currentShape = "triangle";
+        let angle = 0;
+        
+        function drawShape(rotation = 0) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.save();
+            ctx.translate(canvas.width / 2, canvas.height / 2);
+            ctx.rotate(rotation * Math.PI / 180);
+            ctx.beginPath();
+            
+            let sides;
+            switch (document.getElementById("shape").value) {
+                case "triangle":
+                    sides = 3;
+                    break;
+                case "square":
+                    sides = 4;
+                    break;
+                case "pentagon":
+                    sides = 5;
+                    break;
+                case "hexagon":
+                    sides = 6;
+                    break;
+            }
+            document.getElementById("order").innerText = sides;
+            
+            const radius = 50;
+            for (let i = 0; i < sides; i++) {
+                const theta = (i * 2 * Math.PI) / sides;
+                const x = radius * Math.cos(theta);
+                const y = radius * Math.sin(theta);
+                if (i === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            ctx.closePath();
+            ctx.stroke();
+            ctx.restore();
+        }
+        
+        function rotateShape(newAngle) {
+            angle = newAngle;
+            document.getElementById("angle").innerText = newAngle;
+            drawShape(angle);
+        }
+        
+        drawShape();
+    </script>
+</body>
+</html>
+       
