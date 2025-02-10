@@ -93,7 +93,6 @@
         <label for="shape">Choose a shape:</label>
         <select id="shape" onchange="drawReflection()">
             <option value="triangle">Triangle</option>
-            <option value="rectangle">Rectangle</option>
             <option value="hexagon">Hexagon</option>
         </select>
         
@@ -181,8 +180,6 @@
 
                 if (shape === "triangle") {
                     points = [[180, 220], [220, 220], [200, 180]];
-                } else if (shape === "rectangle") {
-                    points = [[180, 180], [220, 180], [220, 220], [180, 220]];
                 } else if (shape === "hexagon") {
                     points = [[200, 170], [230, 190], [230, 220], [200, 240], [170, 220], [170, 190]];
                 }
