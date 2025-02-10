@@ -1,1 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation on Cartesian Plane</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .canvas-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            margin-top: 20px;
+        }
+        canvas {
+            border: 2px solid black;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+  <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Math</a>
+                <ul class="submenu">
+                    <li><a href="math7.html">Math 7</a></li>
+                    <li><a href="math8.html">Math 8</a></li>
+                    <li><a href="math9.html">Math 9</a></li>
+                    <li><a href="math10.html">Math 10</a></li>
+                    <li><a href="math11.html">Math 11</a></li>
+                    <li><a href="math12.html">Math 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Science</a>
+                <ul class="submenu">
+                    <li><a href="science7.html">Science 7</a></li>
+                    <li><a href="science8.html">Science 8</a></li>
+                    <li><a href="science9.html">Science 9</a></li>
+                    <li><a href="science10.html">Science 10</a></li>
+                    <li><a href="science11.html">Science 11</a></li>
+                    <li><a href="science12.html">Science 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Computer Science</a>
+                <ul class="submenu">
+                    <li><a href="cs-general.html">General</a></li>
+                    <li><a href="cs-robotics.html">Robotics</a></li>
+                    <li><a href="VGD.html">Video Game Design</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">M.Ed-Courses</a>
+                <ul class="submenu">
+                    <li><a href="med-general.html">General</a></li>
+                    <li><a href="edu714.html">EDU 714</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    
+<body>
+    <h2>Translation on Cartesian Plane</h2>
+    <label for="x-translate">Move along X-axis:</label>
+    <input type="range" id="x-translate" min="-100" max="100" step="5" value="0" oninput="translateShape()">
+    <span id="x-value">0</span>
+    
+    <label for="y-translate">Move along Y-axis:</label>
+    <input type="range" id="y-translate" min="-100" max="100" step="5" value="0" oninput="translateShape()">
+    <span id="y-value">0</span>
+    
+    <div class="canvas-container">
+        <canvas id="canvas" width="400" height="400"></canvas>
+    </div>
+    
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        let xOffset = 0;
+        let yOffset = 0;
+        
+        function drawCartesianPlane() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.strokeStyle = "gray";
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2, 0);
+            ctx.lineTo(canvas.width / 2, canvas.height);
+            ctx.moveTo(0, canvas.height / 2);
+            ctx.lineTo(canvas.width, canvas.height / 2);
+            ctx.stroke();
+        }
+        
+        function drawTriangle() {
+            drawCartesianPlane();
+            
+            ctx.save();
+            ctx.translate(canvas.width / 2 + xOffset, canvas.height / 2 - yOffset);
+            ctx.fillStyle = "blue";
+            ctx.beginPath();
+            ctx.moveTo(-30, 30);
+            ctx.lineTo(30, 30);
+            ctx.lineTo(0, -30);
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+        }
+        
+        function translateShape() {
+            xOffset = parseInt(document.getElementById("x-translate").value);
+            yOffset = parseInt(document.getElementById("y-translate").value);
+            
+            document.getElementById("x-value").innerText = xOffset;
+            document.getElementById("y-value").innerText = yOffset;
+            
+            drawTriangle();
+        }
+        
+        drawTriangle();
+    </script>
+</body>
+</html>
 
+    <footer>
+        <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+    </footer>
+</html>
+       
