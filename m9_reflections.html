@@ -1,1 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflections and Symmetry</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
 
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        .question img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .options label {
+            display: flex;
+            align-items: center;
+        }
+
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .canvas-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            margin-bottom: 20px;
+        }
+
+        canvas {
+            border: 2px solid black;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+  <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Math</a>
+                <ul class="submenu">
+                    <li><a href="math7.html">Math 7</a></li>
+                    <li><a href="math8.html">Math 8</a></li>
+                    <li><a href="math9.html">Math 9</a></li>
+                    <li><a href="math10.html">Math 10</a></li>
+                    <li><a href="math11.html">Math 11</a></li>
+                    <li><a href="math12.html">Math 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Science</a>
+                <ul class="submenu">
+                    <li><a href="science7.html">Science 7</a></li>
+                    <li><a href="science8.html">Science 8</a></li>
+                    <li><a href="science9.html">Science 9</a></li>
+                    <li><a href="science10.html">Science 10</a></li>
+                    <li><a href="science11.html">Science 11</a></li>
+                    <li><a href="science12.html">Science 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Computer Science</a>
+                <ul class="submenu">
+                    <li><a href="cs-general.html">General</a></li>
+                    <li><a href="cs-robotics.html">Robotics</a></li>
+                    <li><a href="VGD.html">Video Game Design</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">M.Ed-Courses</a>
+                <ul class="submenu">
+                    <li><a href="med-general.html">General</a></li>
+                    <li><a href="edu714.html">EDU 714</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Reflections and Symmetry</h1>
+    </header>
+    <main>
+        <h2>Interactive Reflection of Shapes</h2>
+        <p>Select a shape and reflection line to see how it transforms.</p>
+        <label for="shape">Choose a shape:</label>
+        <select id="shape" onchange="drawShape()">
+            <option value="triangle">Triangle</option>
+            <option value="rectangle">Rectangle</option>
+            <option value="hexagon">Hexagon</option>
+        </select>
+        
+        <label for="reflection">Reflect across:</label>
+        <select id="reflection" onchange="drawShape()">
+            <option value="x-axis">X-Axis</option>
+            <option value="y-axis">Y-Axis</option>
+            <option value="y=x">y = x</option>
+            <option value="x=2">x = 2</option>
+            <option value="y=2">y = 2</option>
+        </select>
+        
+        <div class="canvas-container">
+            <canvas id="canvas" width="400" height="400"></canvas>
+        </div>
+        
+        <script>
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+
+            function drawShape() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.strokeStyle = "black";
+                ctx.beginPath();
+                ctx.moveTo(0, 200);
+                ctx.lineTo(400, 200);
+                ctx.moveTo(200, 0);
+                ctx.lineTo(200, 400);
+                ctx.stroke();
+                
+                let shape = document.getElementById("shape").value;
+                let reflection = document.getElementById("reflection").value;
+                
+                ctx.fillStyle = "blue";
+                ctx.beginPath();
+                if (shape === "triangle") {
+                    ctx.moveTo(180, 220);
+                    ctx.lineTo(220, 220);
+                    ctx.lineTo(200, 180);
+                } else if (shape === "rectangle") {
+                    ctx.rect(180, 180, 40, 40);
+                } else if (shape === "hexagon") {
+                    ctx.moveTo(200, 170);
+                    ctx.lineTo(230, 190);
+                    ctx.lineTo(230, 220);
+                    ctx.lineTo(200, 240);
+                    ctx.lineTo(170, 220);
+                    ctx.lineTo(170, 190);
+                }
+                ctx.closePath();
+                ctx.fill();
+            }
+            drawShape();
+        </script>
+    </main>
+
+</body>
+</html>
