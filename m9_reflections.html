@@ -122,16 +122,32 @@
                 } else if (line === "y=x") {
                     return [y, x]; 
                 } else if (line === "x=2") {
-                    return [(400 - (x - 200)) - 200, y]; 
+                    let reflectX = 200 + (200 - x);
+                    return [reflectX, y];
                 } else if (line === "y=2") {
-                    return [x, (400 - (y - 200)) - 200]; 
+                    let reflectY = 200 + (200 - y);
+                    return [x, reflectY];
                 }
                 return [x, y];
             }
 
-            function drawLine(line) {
+            function drawAxes() {
                 ctx.strokeStyle = "black";
                 ctx.lineWidth = 2;
+
+                ctx.beginPath();
+                // Draw x-axis (horizontal center)
+                ctx.moveTo(0, 200);
+                ctx.lineTo(400, 200);
+                // Draw y-axis (vertical center)
+                ctx.moveTo(200, 0);
+                ctx.lineTo(200, 400);
+                ctx.stroke();
+            }
+
+            function drawReflectionLine(line) {
+                ctx.strokeStyle = "black";
+                ctx.setLineDash([5, 5]); // Dashed line for reflection line
                 ctx.beginPath();
 
                 if (line === "x-axis") {
@@ -152,6 +168,7 @@
                 }
 
                 ctx.stroke();
+                ctx.setLineDash([]); // Reset to solid lines
             }
 
             function drawShape(reflected, color) {
@@ -183,9 +200,12 @@
             function drawReflection() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-                // Draw reflection line
+                // Draw the axes (always visible)
+                drawAxes();
+
+                // Draw reflection line (if selected)
                 let reflection = document.getElementById("reflection").value;
-                drawLine(reflection);
+                drawReflectionLine(reflection);
 
                 // Draw original shape in blue
                 drawShape(false, "blue");
