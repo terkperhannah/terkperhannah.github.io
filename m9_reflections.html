@@ -153,15 +153,16 @@
     <main>
         <h2>Interactive Reflection of Shapes</h2>
         <p>Select a shape and reflection line to see how it transforms.</p>
+        
         <label for="shape">Choose a shape:</label>
-        <select id="shape" onchange="drawShape()">
+        <select id="shape" onchange="drawReflection()">
             <option value="triangle">Triangle</option>
             <option value="rectangle">Rectangle</option>
             <option value="hexagon">Hexagon</option>
         </select>
         
         <label for="reflection">Reflect across:</label>
-        <select id="reflection" onchange="drawShape()">
+        <select id="reflection" onchange="drawReflection()">
             <option value="x-axis">X-Axis</option>
             <option value="y-axis">Y-Axis</option>
             <option value="y=x">y = x</option>
@@ -177,39 +178,65 @@
             const canvas = document.getElementById("canvas");
             const ctx = canvas.getContext("2d");
 
-            function drawShape() {
+            function reflectPoint(x, y, line) {
+                if (line === "x-axis") {
+                    return [x, 400 - y]; 
+                } else if (line === "y-axis") {
+                    return [400 - x, y]; 
+                } else if (line === "y=x") {
+                    return [y, x]; 
+                } else if (line === "x=2") {
+                    return [400 - (x - 200) - 200, y]; 
+                } else if (line === "y=2") {
+                    return [x, 400 - (y - 200) - 200]; 
+                }
+                return [x, y];
+            }
+
+            function drawShape(reflected) {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.strokeStyle = "black";
+
+                // Draw axes
                 ctx.beginPath();
                 ctx.moveTo(0, 200);
                 ctx.lineTo(400, 200);
                 ctx.moveTo(200, 0);
                 ctx.lineTo(200, 400);
                 ctx.stroke();
-                
+
                 let shape = document.getElementById("shape").value;
                 let reflection = document.getElementById("reflection").value;
-                
-                ctx.fillStyle = "blue";
+
+                ctx.fillStyle = reflected ? "red" : "blue";
                 ctx.beginPath();
+                let points = [];
+
                 if (shape === "triangle") {
-                    ctx.moveTo(180, 220);
-                    ctx.lineTo(220, 220);
-                    ctx.lineTo(200, 180);
+                    points = [[180, 220], [220, 220], [200, 180]];
                 } else if (shape === "rectangle") {
-                    ctx.rect(180, 180, 40, 40);
+                    points = [[180, 180], [220, 180], [220, 220], [180, 220]];
                 } else if (shape === "hexagon") {
-                    ctx.moveTo(200, 170);
-                    ctx.lineTo(230, 190);
-                    ctx.lineTo(230, 220);
-                    ctx.lineTo(200, 240);
-                    ctx.lineTo(170, 220);
-                    ctx.lineTo(170, 190);
+                    points = [[200, 170], [230, 190], [230, 220], [200, 240], [170, 220], [170, 190]];
                 }
+
+                // Reflect points if needed
+                if (reflected) {
+                    points = points.map(p => reflectPoint(p[0], p[1], reflection));
+                }
+
+                ctx.moveTo(points[0][0], points[0][1]);
+                points.forEach(([x, y]) => ctx.lineTo(x, y));
                 ctx.closePath();
                 ctx.fill();
             }
-            drawShape();
+
+            function drawReflection() {
+                drawShape(false);  // Draw original shape in blue
+                drawShape(true);   // Draw reflected shape in red
+            }
+
+            drawReflection();
         </script>
     </main>
 
