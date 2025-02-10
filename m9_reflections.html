@@ -117,14 +117,14 @@
                 if (line === "x-axis") {
                     return [x, 400 - y]; 
                 } else if (line === "y-axis") {
-                    return [400 - x, y]; // Fixed reflection formula for y-axis
+                    return [400 - (x - 200) - 200, y]; // ✅ Fixed reflection for Y-axis 
                 } else if (line === "y=x") {
                     return [y, x]; 
                 } else if (line === "x=2") {
-                    let reflectionX = 500 - x; // Corrected reflection formula for x=2
+                    let reflectionX = 400 - (x - 200) + 200; 
                     return [reflectionX, y];  
                 } else if (line === "y=2") {
-                    let reflectionY = 300 - y; // Corrected reflection formula for y=2
+                    let reflectionY = 400 - (y - 200) + 200; 
                     return [x, reflectionY];  
                 }
                 return [x, y];
