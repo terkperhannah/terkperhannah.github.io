@@ -76,37 +76,85 @@
         }
         .options {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin: 10px 0;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin: 15px 0;
         }
         .option {
-            padding: 10px;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            cursor: pointer;
+            padding: 12px 15px;
+        background-color: #f8f9fa;
+        border: 2px solid #dee2e6;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 15px;
+        text-align: left;
+        transition: all 0.2s ease;
+        color: #212529;
         }
         .option:hover {
-            background-color: #e0e0e0;
-        }
-        .option.correct {
-            background-color: #d4edda;
-            border-color: #c3e6cb;
-        }
-        .option.incorrect {
-            background-color: #f8d7da;
-            border-color: #f5c6cb;
-        }
+        background-color: #e9ecef;
+        transform: translateY(-2px);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .option:active {
+        transform: translateY(0);
+    }
+
+    /* Disabled State */
+    .option:disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+    /* Correct/Incorrect Feedback */
+    .option.correct {
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+        color: #155724;
+    }
+
+    .option.incorrect {
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        color: #721c24;
+    }
         .whiteboard {
             width: 100%;
-            height: 200px;
-            border: 2px solid black;
-            margin-top: 10px;
+        height: 200px;
+        border: 2px solid #333;
+        margin-top: 15px;
+        background-color: white;
+        touch-action: none; /* Prevent touch scrolling */
+        -ms-touch-action: none;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        .whiteboard-controls {
-            margin-top: 5px;
-        }
+        /* Whiteboard Controls */
+    .whiteboard-controls {
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .whiteboard-controls button {
+        padding: 8px 15px;
+        background-color: #6c757d;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .whiteboard-controls button:hover {
+        background-color: #5a6268;
+    }
+
         .feedback {
             margin-top: 10px;
             padding: 5px;
