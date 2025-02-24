@@ -184,6 +184,98 @@
     <canvas class="whiteboard"></canvas>
 </div>
         </section>
+
+    <script>
+        // Initialize whiteboards
+        document.querySelectorAll('.whiteboard').forEach(canvas => {
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            
+            // Set white background
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 2;
+
+            let isDrawing = false;
+            let lastX = 0;
+            let lastY = 0;
+
+            // Drawing functions
+            function startDrawing(e) {
+                isDrawing = true;
+                [lastX, lastY] = [e.offsetX, e.offsetY];
+            }
+
+            function draw(e) {
+                if (!isDrawing) return;
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(e.offsetX, e.offsetY);
+                ctx.stroke();
+                [lastX, lastY] = [e.offsetX, e.offsetY];
+            }
+
+            function stopDrawing() {
+                isDrawing = false;
+            }
+
+            // Event listeners
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseout', stopDrawing);
+
+            // Add clear button
+            const clearButton = document.createElement('button');
+            clearButton.className = 'clear-button';
+            clearButton.textContent = 'Clear Whiteboard';
+            clearButton.addEventListener('click', () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            });
+            canvas.parentNode.insertBefore(clearButton, canvas.nextSibling);
+        });
+
+        // Attempt tracking and answer checking
+        let attempts = Array(11).fill(0); // Index 0 unused for easier numbering
+
+        function checkAnswer(questionNumber, correctAnswer) {
+            const inputField = document.getElementById(`answer${questionNumber}`);
+            const submitButton = document.querySelector(`button[onclick*="${questionNumber}"]`);
+            const userAnswer = inputField.value.trim();
+            let feedback = inputField.parentNode.querySelector('.feedback');
+
+            if (!feedback) {
+                feedback = document.createElement('div');
+                feedback.className = 'feedback';
+                inputField.parentNode.appendChild(feedback);
+            }
+
+            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                feedback.textContent = 'Correct!';
+                feedback.style.color = 'green';
+                inputField.disabled = true;
+                submitButton.disabled = true;
+                return;
+            }
+
+            attempts[questionNumber]++;
+            const remaining = 5 - attempts[questionNumber];
+
+            if (remaining > 0) {
+                feedback.textContent = `Incorrect. Attempts left: ${remaining}`;
+                feedback.style.color = 'red';
+            } else {
+                feedback.textContent = `No attempts left. Correct answer: ${correctAnswer}`;
+                feedback.style.color = 'red';
+                inputField.disabled = true;
+                submitButton.disabled = true;
+            }
+        }
+    </script>
     </main>
 </body>
 </html>
