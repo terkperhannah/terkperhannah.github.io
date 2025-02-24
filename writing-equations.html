@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math 9 Unit 4: Linear Relations</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+        input {
+            padding: 8px;
+            width: calc(100% - 100px);
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 8px 12px;
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #388e3c;
+        }
+        .whiteboard {
+            width: 100%;
+            height: 300px;
+            border: 2px solid black;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+  <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Math</a>
+                <ul class="submenu">
+                    <li><a href="math7.html">Math 7</a></li>
+                    <li><a href="math8.html">Math 8</a></li>
+                    <li><a href="math9.html">Math 9</a></li>
+                    <li><a href="math10.html">Math 10</a></li>
+                    <li><a href="math11.html">Math 11</a></li>
+                    <li><a href="math12.html">Math 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Science</a>
+                <ul class="submenu">
+                    <li><a href="science7.html">Science 7</a></li>
+                    <li><a href="science8.html">Science 8</a></li>
+                    <li><a href="science9.html">Science 9</a></li>
+                    <li><a href="science10.html">Science 10</a></li>
+                    <li><a href="science11.html">Science 11</a></li>
+                    <li><a href="science12.html">Science 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Computer Science</a>
+                <ul class="submenu">
+                    <li><a href="cs-general.html">General</a></li>
+                    <li><a href="cs-robotics.html">Robotics</a></li>
+                    <li><a href="VGD.html">Video Game Design</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">M.Ed-Courses</a>
+                <ul class="submenu">
+                    <li><a href="med-general.html">General</a></li>
+                    <li><a href="edu714.html">EDU 714</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <h2>Welcome to Math 9 Unit 4: Linear Relations</h2>
+            <h3>Extra Practice</h3>
+            
+            <!-- Question 1 -->
+            <div class="question">
+                <p><strong>1.</strong> Luke is paid $9 an hour for shoveling driveways. What is the equation to represent his earnings (E) in terms of hours worked (h)?</p>
+                <input type="text" id="answer1" placeholder="Your answer">
+                <button onclick="checkAnswer(1, 'E=9h')">Submit</button>
+                <canvas class="whiteboard"></canvas>
+            </div>
+            
+            <!-- Question 2 -->
+            <div class="question">
+                <p><strong>2.</strong> If Luke works 11 hours, how much will he earn?</p>
+                <input type="text" id="answer2" placeholder="Your answer">
+                <button onclick="checkAnswer(2, '99')">Submit</button>
+                <canvas class="whiteboard"></canvas>
+            </div>
+            
+            <!-- Question 3 -->
+            <div class="question">
+                <p><strong>3.</strong> A cab company charges $3.60 plus $1.50 per kilometer. Write an equation for the total cost (C) of a ride given distance (d).</p>
+                <input type="text" id="answer3" placeholder="Your answer">
+                <button onclick="checkAnswer(3, 'C=3.60+1.50d')">Submit</button>
+                <canvas class="whiteboard"></canvas>
+            </div>
+            
+            <!-- Question 4 -->
+            <div class="question">
+                <p><strong>4.</strong> What is the cost of a 12 km cab ride?</p>
+                <input type="text" id="answer4" placeholder="Your answer">
+                <button onclick="checkAnswer(4, '21.60')">Submit</button>
+                <canvas class="whiteboard"></canvas>
+            </div>
+            
+            <!-- Question 5 -->
+<div class="question">
+    <p><strong>5.</strong> A banquet hall arranges tables in a line. The first table seats 4 people, and each additional table adds 2 more seats. Write an equation to represent the number of seats (S) given the number of tables (T).</p>
+    <input type="text" id="answer5" placeholder="Your answer">
+    <button onclick="checkAnswer(5, 'S=2T+2')">Submit</button>
+    <canvas class="whiteboard"></canvas>
+</div>
+
+<!-- Question 6 -->
+<div class="question">
+    <p><strong>6.</strong> Using the equation from Question 5, determine the number of seats if there are 10 tables.</p>
+    <input type="text" id="answer6" placeholder="Your answer">
+    <button onclick="checkAnswer(6, '22')">Submit</button>
+    <canvas class="whiteboard"></canvas>
+</div>
+
+<!-- Question 7 -->
+<div class="question">
+    <p><strong>7.</strong> A plane starts descending from 9000 meters and decreases altitude by 600 meters per minute. Write an equation to represent the height (H) of the plane over time (t).</p>
+    <input type="text" id="answer7" placeholder="Your answer">
+    <button onclick="checkAnswer(7, 'H=9000-600t')">Submit</button>
+    <canvas class="whiteboard"></canvas>
+</div>
+
+<!-- Question 8 -->
+<div class="question">
+    <p><strong>8.</strong> How high will the plane be after 15 minutes?</p>
+    <input type="text" id="answer8" placeholder="Your answer">
+    <button onclick="checkAnswer(8, '6000')">Submit</button>
+    <canvas class="whiteboard"></canvas>
+</div>
+
+<!-- Question 9 -->
+<div class="question">
+    <p><strong>9.</strong> The cost (C) of renting a hall is $500 plus an additional $20 per person attending. Write an equation to represent the total cost.</p>
+    <input type="text" id="answer9" placeholder="Your answer">
+    <button onclick="checkAnswer(9, 'C=500+20p')">Submit</button>
+    <canvas class="whiteboard"></canvas>
+</div>
+
+<!-- Question 10 -->
+<div class="question">
+    <p><strong>10.</strong> If 30 people attend the event in Question 9, what is the total cost?</p>
+    <input type="text" id="answer10" placeholder="Your answer">
+    <button onclick="checkAnswer(10, '1100')">Submit</button>
+    <canvas class="whiteboard"></canvas>
+</div>
+        </section>
+    </main>
+</body>
+</html>
