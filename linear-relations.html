@@ -159,12 +159,11 @@
         i) What is y when x = 2?<br>
         ii) What is x when y = 17?</p>
     <div class="options">
-        <button class="option" onclick="checkAnswer(3, 'a')">A) i) 5, ii) 4</button>
+        <button class="option" onclick="checkAnswer(3, 'b')">A) i) 5, ii) 4</button>
         <button class="option" onclick="checkAnswer(3, 'b')">B) i) 5, ii) 5</button>
         <button class="option" onclick="checkAnswer(3, 'c')">C) i) 7, ii) 6</button>
         <button class="option" onclick="checkAnswer(3, 'd')">D) i) 3, ii) 4</button>
     </div>
-    <!-- ... rest of question 3 ... -->
     <div class="feedback" id="feedback3"></div>
     <canvas class="whiteboard" id="whiteboard3"></canvas>
     <div class="whiteboard-controls">
@@ -270,58 +269,134 @@
 
     </main>
 
-<script>
-    // Whiteboard initialization and drawing history
-    const whiteboards = {};
-    const MAX_HISTORY = 50;
+    <script>
+        // Whiteboard initialization and drawing history
+        const whiteboards = {};
+        const MAX_HISTORY = 50;
 
-    // Initialize all whiteboards (updated to 8)
-    for(let i = 1; i <= 8; i++) {
-        initializeWhiteboard(i);
-    }
-
-    // Updated correctAnswers with all answers
-    const correctAnswers = {
-        1: 'a',
-        2: 'a',
-        3: 'b',
-        4: 'a',
-        5: 'a',
-        6: 'a',
-        7: 'a',
-        8: 'a'
-    };
-
-    // Updated attempts tracking for all questions
-    const attempts = { 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0 };
-
-    // Updated checkAnswer function
-    function checkAnswer(qNum, selected) {
-        const feedback = document.getElementById(`feedback${qNum}`);
-        const questionDiv = document.querySelector(`#whiteboard${qNum}`).closest('.question');
-        const options = questionDiv.querySelectorAll('.option');
-        
-        if(attempts[qNum] >= 3) return;
-
-        if(selected === correctAnswers[qNum]) {
-            feedback.textContent = "Correct!";
-            feedback.style.backgroundColor = '#d4edda';
-            options.forEach(opt => opt.disabled = true);
-        } else {
-            attempts[qNum]++;
-            const remaining = 3 - attempts[qNum];
+        function initializeWhiteboard(qNum) {
+            const canvas = document.getElementById(`whiteboard${qNum}`);
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
             
-            if(remaining > 0) {
-                feedback.textContent = `Incorrect. Attempts remaining: ${remaining}`;
-                feedback.style.backgroundColor = '#f8d7da';
-            } else {
-                feedback.textContent = `Correct answer: ${correctAnswers[qNum].toUpperCase()}`;
-                feedback.style.backgroundColor = '#fff3cd';
-                options.forEach(opt => opt.disabled = true);
+            // Set white background
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            whiteboards[qNum] = {
+                ctx: ctx,
+                isDrawing: false,
+                history: [],
+                currentStep: -1
+            };
+
+            // Save initial state
+            saveState(qNum);
+
+            // Event listeners
+            canvas.addEventListener('mousedown', startDrawing.bind(null, qNum));
+            canvas.addEventListener('mousemove', draw.bind(null, qNum));
+            canvas.addEventListener('mouseup', stopDrawing.bind(null, qNum));
+            canvas.addEventListener('mouseout', stopDrawing.bind(null, qNum));
+        }
+
+        // Initialize all whiteboards
+        for(let i = 1; i <= 5; i++) {
+            initializeWhiteboard(i);
+        }
+
+        function saveState(qNum) {
+            const canvas = document.getElementById(`whiteboard${qNum}`);
+            const state = whiteboards[qNum].ctx.getImageData(0, 0, canvas.width, canvas.height);
+            whiteboards[qNum].history = whiteboards[qNum].history.slice(0, whiteboards[qNum].currentStep + 1);
+            whiteboards[qNum].history.push(state);
+            whiteboards[qNum].currentStep++;
+            
+            if(whiteboards[qNum].history.length > MAX_HISTORY) {
+                whiteboards[qNum].history.shift();
+                whiteboards[qNum].currentStep--;
             }
         }
-    }
-</script>
+
+        function undoDrawing(qNum) {
+            if(whiteboards[qNum].currentStep > 0) {
+                whiteboards[qNum].currentStep--;
+                whiteboards[qNum].ctx.putImageData(whiteboards[qNum].history[whiteboards[qNum].currentStep], 0, 0);
+            }
+        }
+
+        function clearWhiteboard(qNum) {
+            const canvas = document.getElementById(`whiteboard${qNum}`);
+            whiteboards[qNum].ctx.clearRect(0, 0, canvas.width, canvas.height);
+            whiteboards[qNum].ctx.fillStyle = 'white';
+            whiteboards[qNum].ctx.fillRect(0, 0, canvas.width, canvas.height);
+            whiteboards[qNum].history = [];
+            saveState(qNum);
+        }
+
+        function startDrawing(qNum, e) {
+            whiteboards[qNum].isDrawing = true;
+            const rect = e.target.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            whiteboards[qNum].ctx.beginPath();
+            whiteboards[qNum].ctx.moveTo(x, y);
+        }
+
+        function draw(qNum, e) {
+            if(!whiteboards[qNum].isDrawing) return;
+            const rect = e.target.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            whiteboards[qNum].ctx.lineTo(x, y);
+            whiteboards[qNum].ctx.strokeStyle = 'black';
+            whiteboards[qNum].ctx.lineWidth = 2;
+            whiteboards[qNum].ctx.stroke();
+        }
+
+        function stopDrawing(qNum) {
+            if(whiteboards[qNum].isDrawing) {
+                saveState(qNum);
+            }
+            whiteboards[qNum].isDrawing = false;
+        }
+
+        // Answer checking logic
+        const correctAnswers = {
+            1: 'a',
+            2: 'a'
+            // Add answers for other questions
+        };
+
+        const attempts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+
+        function checkAnswer(qNum, selected) {
+            const feedback = document.getElementById(`feedback${qNum}`);
+            const options = document.querySelectorAll(`#whiteboard${qNum}`).previousElementSibling.querySelectorAll('.option');
+            
+            if(attempts[qNum] >= 3) return;
+
+            if(selected === correctAnswers[qNum]) {
+                feedback.textContent = "Correct!";
+                feedback.style.backgroundColor = '#d4edda';
+                options.forEach(opt => opt.disabled = true);
+            } else {
+                attempts[qNum]++;
+                const remaining = 3 - attempts[qNum];
+                
+                if(remaining > 0) {
+                    feedback.textContent = `Incorrect. Attempts remaining: ${remaining}`;
+                    feedback.style.backgroundColor = '#f8d7da';
+                } else {
+                    feedback.textContent = `Correct answer: ${correctAnswers[qNum].toUpperCase()}`;
+                    feedback.style.backgroundColor = '#fff3cd';
+                    options.forEach(opt => opt.disabled = true);
+                }
+            }
+        }
+    </script>
            
    
     <footer>
