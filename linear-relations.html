@@ -275,93 +275,92 @@
         const MAX_HISTORY = 50;
 
         function initializeWhiteboard(qNum) {
-            const canvas = document.getElementById(`whiteboard${qNum}`);
-            const ctx = canvas.getContext('2d');
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
-            
-            // Set white background
-            ctx.fillStyle = 'white';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            whiteboards[qNum] = {
-                ctx: ctx,
-                isDrawing: false,
-                history: [],
-                currentStep: -1
-            };
+    const canvas = document.getElementById(`whiteboard${qNum}`);
+    const ctx = canvas.getContext('2d');
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    
+    // Set white background
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    whiteboards[qNum] = {
+        ctx: ctx,
+        isDrawing: false,
+        history: [],
+        currentStep: -1
+    };
 
-            // Save initial state
-            saveState(qNum);
+    // Save initial state
+    saveState(qNum);
 
-            // Event listeners
-            canvas.addEventListener('mousedown', startDrawing.bind(null, qNum));
-            canvas.addEventListener('mousemove', draw.bind(null, qNum));
-            canvas.addEventListener('mouseup', stopDrawing.bind(null, qNum));
-            canvas.addEventListener('mouseout', stopDrawing.bind(null, qNum));
-        }
+    // Mouse event listeners
+    canvas.addEventListener('mousedown', startDrawing.bind(null, qNum));
+    canvas.addEventListener('mousemove', draw.bind(null, qNum));
+    canvas.addEventListener('mouseup', stopDrawing.bind(null, qNum));
+    canvas.addEventListener('mouseout', stopDrawing.bind(null, qNum));
 
-        // Initialize all whiteboards
-        for(let i = 1; i <= 8; i++) {
-            initializeWhiteboard(i);
-        }
+    // Touch event listeners (for touchscreen devices)
+    canvas.addEventListener('touchstart', startTouchDrawing.bind(null, qNum));
+    canvas.addEventListener('touchmove', drawTouch.bind(null, qNum));
+    canvas.addEventListener('touchend', stopDrawing.bind(null, qNum));
+}
 
-        function saveState(qNum) {
-            const canvas = document.getElementById(`whiteboard${qNum}`);
-            const state = whiteboards[qNum].ctx.getImageData(0, 0, canvas.width, canvas.height);
-            whiteboards[qNum].history = whiteboards[qNum].history.slice(0, whiteboards[qNum].currentStep + 1);
-            whiteboards[qNum].history.push(state);
-            whiteboards[qNum].currentStep++;
-            
-            if(whiteboards[qNum].history.length > MAX_HISTORY) {
-                whiteboards[qNum].history.shift();
-                whiteboards[qNum].currentStep--;
-            }
-        }
+// Function to start drawing with mouse
+function startDrawing(qNum, e) {
+    whiteboards[qNum].isDrawing = true;
+    const rect = e.target.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    whiteboards[qNum].ctx.beginPath();
+    whiteboards[qNum].ctx.moveTo(x, y);
+}
 
-        function undoDrawing(qNum) {
-            if(whiteboards[qNum].currentStep > 0) {
-                whiteboards[qNum].currentStep--;
-                whiteboards[qNum].ctx.putImageData(whiteboards[qNum].history[whiteboards[qNum].currentStep], 0, 0);
-            }
-        }
+// Function to start drawing with touch
+function startTouchDrawing(qNum, e) {
+    e.preventDefault(); // Prevent scrolling when drawing
+    whiteboards[qNum].isDrawing = true;
+    const rect = e.target.getBoundingClientRect();
+    const touch = e.touches[0];
+    const x = touch.clientX - rect.left;
+    const y = touch.clientY - rect.top;
+    whiteboards[qNum].ctx.beginPath();
+    whiteboards[qNum].ctx.moveTo(x, y);
+}
 
-        function clearWhiteboard(qNum) {
-            const canvas = document.getElementById(`whiteboard${qNum}`);
-            whiteboards[qNum].ctx.clearRect(0, 0, canvas.width, canvas.height);
-            whiteboards[qNum].ctx.fillStyle = 'white';
-            whiteboards[qNum].ctx.fillRect(0, 0, canvas.width, canvas.height);
-            whiteboards[qNum].history = [];
-            saveState(qNum);
-        }
+// Function to draw with mouse
+function draw(qNum, e) {
+    if (!whiteboards[qNum].isDrawing) return;
+    const rect = e.target.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-        function startDrawing(qNum, e) {
-            whiteboards[qNum].isDrawing = true;
-            const rect = e.target.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            whiteboards[qNum].ctx.beginPath();
-            whiteboards[qNum].ctx.moveTo(x, y);
-        }
+    whiteboards[qNum].ctx.lineTo(x, y);
+    whiteboards[qNum].ctx.strokeStyle = 'black';
+    whiteboards[qNum].ctx.lineWidth = 2;
+    whiteboards[qNum].ctx.stroke();
+}
 
-        function draw(qNum, e) {
-            if(!whiteboards[qNum].isDrawing) return;
-            const rect = e.target.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            whiteboards[qNum].ctx.lineTo(x, y);
-            whiteboards[qNum].ctx.strokeStyle = 'black';
-            whiteboards[qNum].ctx.lineWidth = 2;
-            whiteboards[qNum].ctx.stroke();
-        }
+// Function to draw with touch
+function drawTouch(qNum, e) {
+    e.preventDefault(); // Prevent scrolling when drawing
+    if (!whiteboards[qNum].isDrawing) return;
+    const rect = e.target.getBoundingClientRect();
+    const touch = e.touches[0];
+    const x = touch.clientX - rect.left;
+    const y = touch.clientY - rect.top;
 
-        function stopDrawing(qNum) {
-            if(whiteboards[qNum].isDrawing) {
-                saveState(qNum);
-            }
-            whiteboards[qNum].isDrawing = false;
-        }
+    whiteboards[qNum].ctx.lineTo(x, y);
+    whiteboards[qNum].ctx.strokeStyle = 'black';
+    whiteboards[qNum].ctx.lineWidth = 2;
+    whiteboards[qNum].ctx.stroke();
+}
+
+// Function to stop drawing (works for both mouse and touch)
+function stopDrawing(qNum) {
+    whiteboards[qNum].isDrawing = false;
+    saveState(qNum);
+}
 
         // Define correct answers for all questions
 const correctAnswers = {
