@@ -112,6 +112,15 @@
             padding: 5px;
             border-radius: 4px;
         }
+        /* Add these canvas-specific rules */
+    canvas.whiteboard {
+        touch-action: none;
+        -ms-touch-action: none;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
     </style>
         <section>
             <h2>Linear Relations - Multiple Choice Practice</h2>
@@ -275,21 +284,74 @@
         const MAX_HISTORY = 50;
 
         function initializeWhiteboard(qNum) {
-            const canvas = document.getElementById(`whiteboard${qNum}`);
-            const ctx = canvas.getContext('2d');
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
-            
-            // Set white background
-            ctx.fillStyle = 'white';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            whiteboards[qNum] = {
-                ctx: ctx,
-                isDrawing: false,
-                history: [],
-                currentStep: -1
-            };
+        const canvas = document.getElementById(`whiteboard${qNum}`);
+        const ctx = canvas.getContext('2d');
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        
+        // Add touch-action CSS property
+        canvas.style.touchAction = 'none'; // Prevent browser touch gestures
+        
+        // Set white background
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        whiteboards[qNum] = {
+            ctx: ctx,
+            isDrawing: false,
+            history: [],
+            currentStep: -1
+        };
+
+        // Save initial state
+        saveState(qNum);
+
+        // Mouse event listeners
+        canvas.addEventListener('mousedown', startDrawing.bind(null, qNum));
+        canvas.addEventListener('mousemove', draw.bind(null, qNum));
+        canvas.addEventListener('mouseup', stopDrawing.bind(null, qNum));
+        canvas.addEventListener('mouseout', stopDrawing.bind(null, qNum));
+        
+        // Touch event listeners
+        canvas.addEventListener('touchstart', handleTouchStart.bind(null, qNum));
+        canvas.addEventListener('touchmove', handleTouchMove.bind(null, qNum));
+        canvas.addEventListener('touchend', stopDrawing.bind(null, qNum));
+    }
+
+    // Add these new functions for touch support
+    function handleTouchStart(qNum, e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const rect = e.target.getBoundingClientRect();
+        const x = touch.clientX - rect.left;
+        const y = touch.clientY - rect.top;
+        startDrawing(qNum, { offsetX: x, offsetY: y });
+    }
+
+    function handleTouchMove(qNum, e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const rect = e.target.getBoundingClientRect();
+        const x = touch.clientX - rect.left;
+        const y = touch.clientY - rect.top;
+        draw(qNum, { offsetX: x, offsetY: y });
+    }
+
+    // Modified drawing functions
+    function startDrawing(qNum, e) {
+        whiteboards[qNum].isDrawing = true;
+        whiteboards[qNum].ctx.beginPath();
+        whiteboards[qNum].ctx.moveTo(e.offsetX, e.offsetY);
+    }
+
+    function draw(qNum, e) {
+        if(!whiteboards[qNum].isDrawing) return;
+        
+        whiteboards[qNum].ctx.lineTo(e.offsetX, e.offsetY);
+        whiteboards[qNum].ctx.strokeStyle = 'black';
+        whiteboards[qNum].ctx.lineWidth = 2;
+        whiteboards[qNum].ctx.stroke();
+    }
 
             // Save initial state
             saveState(qNum);
