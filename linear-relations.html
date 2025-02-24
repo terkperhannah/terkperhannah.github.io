@@ -270,141 +270,148 @@
     </main>
 
     <script>
-        // Whiteboard initialization and drawing history
-        const whiteboards = {};
-        const MAX_HISTORY = 50;
+    // Whiteboard initialization and drawing history
+    const whiteboards = {};
+    const MAX_HISTORY = 50;
+    const correctAnswers = {
+        1: 'a', 2: 'a', 3: 'b', 4: 'a',
+        5: 'a', 6: 'a', 7: 'a', 8: 'a'
+    };
+    const attempts = { 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0 };
 
-        function initializeWhiteboard(qNum) {
-            const canvas = document.getElementById(`whiteboard${qNum}`);
-            const ctx = canvas.getContext('2d');
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
-            
-            // Set white background
-            ctx.fillStyle = 'white';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            whiteboards[qNum] = {
-                ctx: ctx,
-                isDrawing: false,
-                history: [],
-                currentStep: -1
-            };
+    // Initialize all whiteboards
+    for(let i = 1; i <= 8; i++) {
+        initializeWhiteboard(i);
+    }
 
-            // Save initial state
+    function initializeWhiteboard(qNum) {
+        const canvas = document.getElementById(`whiteboard${qNum}`);
+        const ctx = canvas.getContext('2d');
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        
+        // Set white background
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        whiteboards[qNum] = {
+            ctx: ctx,
+            isDrawing: false,
+            history: [],
+            currentStep: -1
+        };
+
+        // Event listeners for both mouse and touch
+        canvas.addEventListener('mousedown', startDrawing.bind(null, qNum));
+        canvas.addEventListener('mousemove', draw.bind(null, qNum));
+        canvas.addEventListener('mouseup', stopDrawing.bind(null, qNum));
+        canvas.addEventListener('mouseout', stopDrawing.bind(null, qNum));
+        
+        canvas.addEventListener('touchstart', handleTouchStart.bind(null, qNum));
+        canvas.addEventListener('touchmove', handleTouchMove.bind(null, qNum));
+        canvas.addEventListener('touchend', stopDrawing.bind(null, qNum));
+
+        saveState(qNum);
+    }
+
+    // Touch event handlers
+    function handleTouchStart(qNum, e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const rect = e.target.getBoundingClientRect();
+        startDrawing(qNum, {
+            offsetX: touch.clientX - rect.left,
+            offsetY: touch.clientY - rect.top
+        });
+    }
+
+    function handleTouchMove(qNum, e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const rect = e.target.getBoundingClientRect();
+        draw(qNum, {
+            offsetX: touch.clientX - rect.left,
+            offsetY: touch.clientY - rect.top
+        });
+    }
+
+    // Drawing functions
+    function startDrawing(qNum, e) {
+        whiteboards[qNum].isDrawing = true;
+        whiteboards[qNum].ctx.beginPath();
+        whiteboards[qNum].ctx.moveTo(e.offsetX, e.offsetY);
+    }
+
+    function draw(qNum, e) {
+        if(!whiteboards[qNum].isDrawing) return;
+        whiteboards[qNum].ctx.lineTo(e.offsetX, e.offsetY);
+        whiteboards[qNum].ctx.strokeStyle = 'black';
+        whiteboards[qNum].ctx.lineWidth = 2;
+        whiteboards[qNum].ctx.stroke();
+    }
+
+    function stopDrawing(qNum) {
+        if(whiteboards[qNum].isDrawing) {
             saveState(qNum);
-
-            // Event listeners
-            canvas.addEventListener('mousedown', startDrawing.bind(null, qNum));
-            canvas.addEventListener('mousemove', draw.bind(null, qNum));
-            canvas.addEventListener('mouseup', stopDrawing.bind(null, qNum));
-            canvas.addEventListener('mouseout', stopDrawing.bind(null, qNum));
         }
+        whiteboards[qNum].isDrawing = false;
+    }
 
-        // Initialize all whiteboards
-        for(let i = 1; i <= 8; i++) {
-            initializeWhiteboard(i);
-        }
+    // Whiteboard utilities
+    function saveState(qNum) {
+        const canvas = document.getElementById(`whiteboard${qNum}`);
+        const state = whiteboards[qNum].ctx.getImageData(0, 0, canvas.width, canvas.height);
+        whiteboards[qNum].history = whiteboards[qNum].history.slice(0, whiteboards[qNum].currentStep + 1);
+        whiteboards[qNum].history.push(state);
+        whiteboards[qNum].currentStep = Math.min(whiteboards[qNum].currentStep + 1, MAX_HISTORY - 1);
+    }
 
-        function saveState(qNum) {
-            const canvas = document.getElementById(`whiteboard${qNum}`);
-            const state = whiteboards[qNum].ctx.getImageData(0, 0, canvas.width, canvas.height);
-            whiteboards[qNum].history = whiteboards[qNum].history.slice(0, whiteboards[qNum].currentStep + 1);
-            whiteboards[qNum].history.push(state);
-            whiteboards[qNum].currentStep++;
-            
-            if(whiteboards[qNum].history.length > MAX_HISTORY) {
-                whiteboards[qNum].history.shift();
-                whiteboards[qNum].currentStep--;
-            }
-        }
-
-        function undoDrawing(qNum) {
-            if(whiteboards[qNum].currentStep > 0) {
-                whiteboards[qNum].currentStep--;
-                whiteboards[qNum].ctx.putImageData(whiteboards[qNum].history[whiteboards[qNum].currentStep], 0, 0);
-            }
-        }
-
-        function clearWhiteboard(qNum) {
-            const canvas = document.getElementById(`whiteboard${qNum}`);
-            whiteboards[qNum].ctx.clearRect(0, 0, canvas.width, canvas.height);
-            whiteboards[qNum].ctx.fillStyle = 'white';
-            whiteboards[qNum].ctx.fillRect(0, 0, canvas.width, canvas.height);
-            whiteboards[qNum].history = [];
-            saveState(qNum);
-        }
-
-        function startDrawing(qNum, e) {
-            whiteboards[qNum].isDrawing = true;
-            const rect = e.target.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            whiteboards[qNum].ctx.beginPath();
-            whiteboards[qNum].ctx.moveTo(x, y);
-        }
-
-        function draw(qNum, e) {
-            if(!whiteboards[qNum].isDrawing) return;
-            const rect = e.target.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            whiteboards[qNum].ctx.lineTo(x, y);
-            whiteboards[qNum].ctx.strokeStyle = 'black';
-            whiteboards[qNum].ctx.lineWidth = 2;
-            whiteboards[qNum].ctx.stroke();
-        }
-
-        function stopDrawing(qNum) {
-            if(whiteboards[qNum].isDrawing) {
-                saveState(qNum);
-            }
-            whiteboards[qNum].isDrawing = false;
-        }
-
-        // Define correct answers for all questions
-const correctAnswers = {
-    1: 'a',
-    2: 'a',
-    3: 'b',
-    4: 'a',
-    5: 'c',
-    6: 'a',
-    7: 'a',
-    8: 'd'
-};
-
-// Track attempts
-const attempts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0 };
-
-function checkAnswer(qNum, selected) {
-    const feedback = document.getElementById(`feedback${qNum}`);
-    const options = document.querySelectorAll(`.question:nth-of-type(${qNum}) .option`);
-
-    // Prevent extra attempts after 3
-    if (attempts[qNum] >= 3) return;
-
-    // Check answer
-    if (selected === correctAnswers[qNum]) {
-        feedback.textContent = "Correct!";
-        feedback.style.backgroundColor = '#d4edda';
-        options.forEach(opt => opt.disabled = true); // Disable buttons
-    } else {
-        attempts[qNum]++;
-        const remaining = 3 - attempts[qNum];
-
-        if (remaining > 0) {
-            feedback.textContent = `Incorrect. Attempts remaining: ${remaining}`;
-            feedback.style.backgroundColor = '#f8d7da';
-        } else {
-            feedback.textContent = `Incorrect. The correct answer is: ${correctAnswers[qNum].toUpperCase()}`;
-            feedback.style.backgroundColor = '#fff3cd';
-            options.forEach(opt => opt.disabled = true); // Disable buttons after 3 attempts
+    function undoDrawing(qNum) {
+        if(whiteboards[qNum].currentStep > 0) {
+            whiteboards[qNum].currentStep--;
+            whiteboards[qNum].ctx.putImageData(
+                whiteboards[qNum].history[whiteboards[qNum].currentStep],
+                0, 0
+            );
         }
     }
-}
-    </script>
+
+    function clearWhiteboard(qNum) {
+        const canvas = document.getElementById(`whiteboard${qNum}`);
+        whiteboards[qNum].ctx.clearRect(0, 0, canvas.width, canvas.height);
+        whiteboards[qNum].ctx.fillStyle = 'white';
+        whiteboards[qNum].ctx.fillRect(0, 0, canvas.width, canvas.height);
+        whiteboards[qNum].history = [];
+        saveState(qNum);
+    }
+
+    // Answer checking logic
+    function checkAnswer(qNum, selected) {
+        const feedback = document.getElementById(`feedback${qNum}`);
+        const questionDiv = document.querySelector(`#whiteboard${qNum}`).closest('.question');
+        const options = questionDiv.querySelectorAll('.option');
+
+        if(attempts[qNum] >= 3) return;
+
+        if(selected === correctAnswers[qNum]) {
+            feedback.textContent = "Correct!";
+            feedback.style.backgroundColor = '#d4edda';
+            options.forEach(opt => opt.disabled = true);
+        } else {
+            attempts[qNum]++;
+            const remaining = 3 - attempts[qNum];
+            
+            if(remaining > 0) {
+                feedback.textContent = `Incorrect. Attempts remaining: ${remaining}`;
+                feedback.style.backgroundColor = '#f8d7da';
+            } else {
+                feedback.textContent = `Correct answer: ${correctAnswers[qNum].toUpperCase()}`;
+                feedback.style.backgroundColor = '#fff3cd';
+                options.forEach(opt => opt.disabled = true);
+            }
+        }
+    }
+</script>
            
    
     <footer>
