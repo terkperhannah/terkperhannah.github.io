@@ -363,39 +363,47 @@
             whiteboards[qNum].isDrawing = false;
         }
 
-        // Answer checking logic
-        const correctAnswers = {
-            1: 'a',
-            2: 'a'
-            // Add answers for other questions
-        };
+        // Define correct answers for all questions
+const correctAnswers = {
+    1: 'a',
+    2: 'c',
+    3: 'b',
+    4: 'd',
+    5: 'a',
+    6: 'b',
+    7: 'a',
+    8: 'd'
+};
 
-        const attempts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+// Track attempts
+const attempts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0 };
 
-        function checkAnswer(qNum, selected) {
-            const feedback = document.getElementById(`feedback${qNum}`);
-            const options = document.querySelectorAll(`#whiteboard${qNum}`).previousElementSibling.querySelectorAll('.option');
-            
-            if(attempts[qNum] >= 3) return;
+function checkAnswer(qNum, selected) {
+    const feedback = document.getElementById(`feedback${qNum}`);
+    const options = document.querySelectorAll(`.question:nth-of-type(${qNum}) .option`);
 
-            if(selected === correctAnswers[qNum]) {
-                feedback.textContent = "Correct!";
-                feedback.style.backgroundColor = '#d4edda';
-                options.forEach(opt => opt.disabled = true);
-            } else {
-                attempts[qNum]++;
-                const remaining = 3 - attempts[qNum];
-                
-                if(remaining > 0) {
-                    feedback.textContent = `Incorrect. Attempts remaining: ${remaining}`;
-                    feedback.style.backgroundColor = '#f8d7da';
-                } else {
-                    feedback.textContent = `Correct answer: ${correctAnswers[qNum].toUpperCase()}`;
-                    feedback.style.backgroundColor = '#fff3cd';
-                    options.forEach(opt => opt.disabled = true);
-                }
-            }
+    // Prevent extra attempts after 3
+    if (attempts[qNum] >= 3) return;
+
+    // Check answer
+    if (selected === correctAnswers[qNum]) {
+        feedback.textContent = "Correct!";
+        feedback.style.backgroundColor = '#d4edda';
+        options.forEach(opt => opt.disabled = true); // Disable buttons
+    } else {
+        attempts[qNum]++;
+        const remaining = 3 - attempts[qNum];
+
+        if (remaining > 0) {
+            feedback.textContent = `Incorrect. Attempts remaining: ${remaining}`;
+            feedback.style.backgroundColor = '#f8d7da';
+        } else {
+            feedback.textContent = `Incorrect. The correct answer is: ${correctAnswers[qNum].toUpperCase()}`;
+            feedback.style.backgroundColor = '#fff3cd';
+            options.forEach(opt => opt.disabled = true); // Disable buttons after 3 attempts
         }
+    }
+}
     </script>
            
    
