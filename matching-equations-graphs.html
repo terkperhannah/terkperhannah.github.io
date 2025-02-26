@@ -159,6 +159,28 @@
             margin-top: 10px;
             padding: 5px;
             border-radius: 4px;
+
+        .whiteboard-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background: white;
+  border: 2px solid #333;
+  border-radius: 8px;
+}
+
+.grid-layer, .drawing-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.grid-layer { z-index: 1; }
+.drawing-layer { z-index: 2; }
+
+            
         }
     </style>
         <section>
@@ -370,9 +392,6 @@
         canvas.width = canvas.offsetWidth;
         canvas.height = canvas.offsetHeight;
         
-        // Set white background
-        ctx.fillStyle = 'white';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
         
         whiteboards[qNum] = {
             ctx: ctx,
@@ -457,13 +476,47 @@
     }
 
     function clearWhiteboard(qNum) {
-        const canvas = document.getElementById(`whiteboard${qNum}`);
-        whiteboards[qNum].ctx.clearRect(0, 0, canvas.width, canvas.height);
-        whiteboards[qNum].ctx.fillStyle = 'white';
-        whiteboards[qNum].ctx.fillRect(0, 0, canvas.width, canvas.height);
-        whiteboards[qNum].history = [];
-        saveState(qNum);
-    }
+  const canvas = document.getElementById(`whiteboard${qNum}`);
+  whiteboards[qNum].ctx.clearRect(0, 0, canvas.width, canvas.height);
+  whiteboards[qNum].history = [];
+  saveState(qNum);
+}
+
+        // Add these functions
+function toggleGrid(qNum) {
+  const gridCanvas = document.getElementById(`grid${qNum}`);
+  const ctx = gridCanvas.getContext('2d');
+  
+  // Set canvas size
+  gridCanvas.width = gridCanvas.offsetWidth;
+  gridCanvas.height = gridCanvas.offsetHeight;
+  
+  // Draw grid
+  ctx.strokeStyle = '#ddd';
+  ctx.lineWidth = 1;
+  
+  // Vertical lines
+  for(let x = 0; x <= gridCanvas.width; x += 20) {
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, gridCanvas.height);
+    ctx.stroke();
+  }
+  
+  // Horizontal lines
+  for(let y = 0; y <= gridCanvas.height; y += 20) {
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(gridCanvas.width, y);
+    ctx.stroke();
+  }
+}
+
+function toggleBlank(qNum) {
+  const gridCanvas = document.getElementById(`grid${qNum}`);
+  const ctx = gridCanvas.getContext('2d');
+  ctx.clearRect(0, 0, gridCanvas.width, gridCanvas.height);
+}
 
     // Answer checking logic
     function checkAnswer(qNum, selected) {
