@@ -175,8 +175,13 @@
                 <button class="option" onclick="checkAnswer(1, 'd')">D) They walked at the same rate</button>
             </div>
             <div class="feedback" id="feedback1"></div>
-            <canvas class="whiteboard" id="whiteboard1"></canvas>
+            <div class="whiteboard-container" id="container1">
+  <canvas class="grid-layer" id="grid1"></canvas>
+  <canvas class="drawing-layer" id="whiteboard1"></canvas>
+</div>
             <div class="whiteboard-controls">
+  <button onclick="toggleGrid(1)">Grid</button>
+  <button onclick="toggleBlank(1)">Blank</button>
                 <button onclick="undoDrawing(1)">Undo</button>
                 <button onclick="clearWhiteboard(1)">Clear</button>
             </div>
@@ -192,8 +197,13 @@
                 <button class="option" onclick="checkAnswer(2, 'd')">D) Bill; 2 m</button>
             </div>
             <div class="feedback" id="feedback2"></div>
-            <canvas class="whiteboard" id="whiteboard2"></canvas>
+             <div class="whiteboard-container" id="container2">
+  <canvas class="grid-layer" id="grid2"></canvas>
+  <canvas class="drawing-layer" id="whiteboard2"></canvas>
+</div>
             <div class="whiteboard-controls">
+  <button onclick="toggleGrid(2)">Grid</button>
+  <button onclick="toggleBlank(2)">Blank</button>
                 <button onclick="undoDrawing(2)">Undo</button>
                 <button onclick="clearWhiteboard(2)">Clear</button>
             </div>
