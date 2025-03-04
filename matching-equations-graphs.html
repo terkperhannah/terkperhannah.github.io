@@ -170,12 +170,12 @@ elliptical machine. </strong></p>
                 <p>1. Estimate how many Calories Kendall
 burns in 20 min.</p>
                 <div class="options">
-                    <button class="option" onclick="checkAnswer(1, 'a')">A) 300 calories</button>
-                    <button class="option" onclick="checkAnswer(1, 'b')">B) 400 calories</button>
-                    <button class="option" onclick="checkAnswer(1, 'c')">C) 500 calories</button>
-                    <button class="option" onclick="checkAnswer(1, 'd')">D) 600 calories</button>
-                </div>
-                <div class="feedback" id="feedback1"></div>
+    <button class="option" data-answer="a" onclick="checkAnswer(1, 'a')">A) 300 calories</button>
+    <button class="option" data-answer="b" onclick="checkAnswer(1, 'b')">B) 400 calories</button>
+    <button class="option" data-answer="c" onclick="checkAnswer(1, 'c')">C) 500 calories</button>
+    <button class="option" data-answer="d" onclick="checkAnswer(1, 'd')">D) 600 calories</button>
+</div>
+               
             </div>
 
             <!-- Regular Whiteboard for Question 2 -->
@@ -191,12 +191,12 @@ burns in 20 min.</p>
             <div class="question">
                 <p>2. Who walked farther in the first 4 s and by how much?</p>
                 <div class="options">
-                    <button class="option" onclick="checkAnswer(2, 'a')">A) John; 1 m</button>
-                    <button class="option" onclick="checkAnswer(2, 'b')">B) John; 2 m</button>
-                    <button class="option" onclick="checkAnswer(2, 'c')">C) Bill; 1 m</button>
-                    <button class="option" onclick="checkAnswer(2, 'd')">D) Bill; 2 m</button>
-                </div>
-                <div class="feedback" id="feedback2"></div>
+    <button class="option" data-answer="a" onclick="checkAnswer(2, 'a')">A) John; 1 m</button>
+    <button class="option" data-answer="b" onclick="checkAnswer(2, 'b')">B) John; 2 m</button>
+    <button class="option" data-answer="c" onclick="checkAnswer(2, 'c')">C) Bill; 1 m</button>
+    <button class="option" data-answer="d" onclick="checkAnswer(2, 'd')">D) Bill; 2 m</button>
+</div>
+                
             </div>
         </section>
     </main>
@@ -367,82 +367,57 @@ burns in 20 min.</p>
 
 
     
-const correctAnswers = {
-    1: 'a', 
-    2: 'd'
-};
-
-const maxAttempts = 2;  // Maximum attempts per question
-const attempts = {};  // Store attempts per question
+// Configuration
+const correctAnswers = { 1: 'a', 2: 'd' };
+const maxAttempts = 2;
+const attempts = { 1: 0, 2: 0 }; // Initialize attempts for all questions
 
 function checkAnswer(qNum, selected) {
-    if (!attempts[qNum]) attempts[qNum] = 0; // Initialize attempts if not exists
-
     const feedback = document.getElementById(`feedback${qNum}`);
-    const questionDiv = document.querySelector(`#whiteboard${qNum}`).closest('.question');
+    // FIX #1: Use proper question container selection
+    const questionDiv = document.querySelector(`.question:nth-of-type(${qNum})`);
     const options = questionDiv.querySelectorAll('.option');
     const correctKey = correctAnswers[qNum];
 
-    // Disable further attempts if max reached
-    if (attempts[qNum] >= 2) {
-        return;
-    }
+    // FIX #2: Proper attempt tracking
+    if (attempts[qNum] >= maxAttempts) return;
 
-    // Reset all option styles before applying new ones
+    // Clear previous styles
     options.forEach(opt => {
         opt.classList.remove('correct', 'incorrect');
-        opt.disabled = false;
     });
 
-    // Check if the selected answer is correct
     if (selected === correctKey) {
         feedback.innerHTML = "✅ Correct!";
         feedback.style.backgroundColor = '#d4edda';
-        feedback.style.color = '#155724';
-
-        // Mark the correct option
-        const correctOption = questionDiv.querySelector(`.option[onclick*="'${correctKey}'"]`);
-        correctOption.classList.add('correct');
-
-        // Disable all buttons
         options.forEach(opt => opt.disabled = true);
+        questionDiv.querySelector(`.option[data-answer="${correctKey}"]`).classList.add('correct');
     } else {
-        // Increment attempts
         attempts[qNum]++;
-        const remaining = 2 - attempts[qNum];
-
-        // Mark incorrect choice
-        const incorrectOption = questionDiv.querySelector(`.option[onclick*="'${selected}'"]`);
-        incorrectOption.classList.add('incorrect');
-
-        // Provide feedback
+        const remaining = maxAttempts - attempts[qNum];
+        
+        // FIX #3: Mark incorrect answer
+        questionDiv.querySelector(`.option[data-answer="${selected}"]`).classList.add('incorrect');
+        
         if (remaining > 0) {
-            feedback.innerHTML = `❌ Incorrect. (${remaining} attempt${remaining > 1 ? 's' : ''} left)`;
+            feedback.innerHTML = `❌ Incorrect (${remaining} attempt${remaining > 1 ? 's' : ''} left)`;
             feedback.style.backgroundColor = '#f8d7da';
-            feedback.style.color = '#721c24';
         } else {
-            // Show correct answer when attempts run out
             feedback.innerHTML = `📘 Correct answer: <strong>${
-                questionDiv.querySelector(`.option[onclick*="'${correctKey}'"]`).textContent
+                questionDiv.querySelector(`.option[data-answer="${correctKey}"]`).textContent
             }</strong>`;
             feedback.style.backgroundColor = '#fff3cd';
-            feedback.style.color = '#856404';
-
-            // Mark correct option
-            questionDiv.querySelector(`.option[onclick*="'${correctKey}'"]`).classList.add('correct');
-
-            // Disable all buttons
             options.forEach(opt => opt.disabled = true);
+            questionDiv.querySelector(`.option[data-answer="${correctKey}"]`).classList.add('correct');
         }
     }
-
-    // Ensure feedback is visible
+    
+    // Ensure feedback visibility
     feedback.style.display = 'block';
     feedback.style.padding = '10px';
     feedback.style.borderRadius = '4px';
     feedback.style.marginTop = '10px';
 }
-
 
     </script>
     
