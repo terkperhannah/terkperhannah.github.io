@@ -136,6 +136,21 @@
         .regular-controls button:hover { background-color: #5a6268; }
         .undo-btn { background-color: #ffc107 !important; color: black !important; }
         .clear-btn { background-color: #dc3545 !important; color: white !important; }
+
+        .whiteboard-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.drawing-layer {
+    z-index: 2;
+}
+
+.grid-layer {
+    z-index: 1;
+    pointer-events: none; /* Allow clicks to pass through grid */
+}
     </style>
 </head>
     <main>
@@ -173,9 +188,9 @@ burns in 20 min.</p>
 
             <!-- Regular Whiteboard for Question 1 -->
             <div class="whiteboard-container" style="width: 75%; height: 300px;">
-                <canvas class="whiteboard-canvas" id="whiteboard2"></canvas>
-                <canvas class="whiteboard-canvas" id="grid1"></canvas>
-            </div>
+    <canvas class="whiteboard-canvas grid-layer" id="grid1"></canvas>
+    <canvas class="whiteboard-canvas drawing-layer" id="whiteboard2"></canvas>
+</div>
             <div class="whiteboard-controls regular-controls">
                 <button onclick="toggleGrid(1)">Grid</button>
                 <button onclick="toggleBlank(1)">Blank</button>
@@ -324,43 +339,36 @@ burns in 20 min.</p>
         }
 
         function toggleGrid(id) {
-            const gridCanvas = document.querySelector(`#grid${id}`);
-            if (!gridCanvas) return;
+    const gridCanvas = document.querySelector(`#grid${id}`);
+    if (!gridCanvas) return;
 
-            const ctx = gridCanvas.getContext('2d');
-            ctx.clearRect(0, 0, gridCanvas.width, gridCanvas.height);
+    const ctx = gridCanvas.getContext('2d');
+    ctx.clearRect(0, 0, gridCanvas.width, gridCanvas.height);
 
-            if (!gridCanvas.dataset.gridVisible) {
-                ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
-                ctx.lineWidth = 1;
+    if (!gridCanvas.dataset.gridVisible) {
+        ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
+        ctx.lineWidth = 1;
 
-                // Draw grid
-                for (let x = 0; x <= gridCanvas.width; x += 20) {
-                    ctx.beginPath();
-                    ctx.moveTo(x, 0);
-                    ctx.lineTo(x, gridCanvas.height);
-                    ctx.stroke();
-                }
-
-                for (let y = 0; y <= gridCanvas.height; y += 20) {
-                    ctx.beginPath();
-                    ctx.moveTo(0, y);
-                    ctx.lineTo(gridCanvas.width, y);
-                    ctx.stroke();
-                }
-
-                gridCanvas.dataset.gridVisible = "true";
-            } else {
-                gridCanvas.dataset.gridVisible = "";
-            }
+        // Redraw grid to ensure full coverage
+        for (let x = 0; x <= gridCanvas.width; x += 20) {
+            ctx.beginPath();
+            ctx.moveTo(x - 0.5, 0);
+            ctx.lineTo(x - 0.5, gridCanvas.height);
+            ctx.stroke();
         }
 
-        function toggleBlank(id) {
-            const gridCanvas = document.querySelector(`#grid${id}`);
-            if (gridCanvas) {
-                gridCanvas.getContext('2d').clearRect(0, 0, gridCanvas.width, gridCanvas.height);
-            }
+        for (let y = 0; y <= gridCanvas.height; y += 20) {
+            ctx.beginPath();
+            ctx.moveTo(0, y - 0.5);
+            ctx.lineTo(gridCanvas.width, y - 0.5);
+            ctx.stroke();
         }
+
+        gridCanvas.dataset.gridVisible = "true";
+    } else {
+        gridCanvas.dataset.gridVisible = "";
+    }
+}
 
 
     
