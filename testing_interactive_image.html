@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Math</a>
+                <ul class="submenu">
+                    <li><a href="math7.html">Math 7</a></li>
+                    <li><a href="math8.html">Math 8</a></li>
+                    <li><a href="math9.html">Math 9</a></li>
+                    <li><a href="math10.html">Math 10</a></li>
+                    <li><a href="math11.html">Math 11</a></li>
+                    <li><a href="math12.html">Math 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Science</a>
+                <ul class="submenu">
+                    <li><a href="science7.html">Science 7</a></li>
+                    <li><a href="science8.html">Science 8</a></li>
+                    <li><a href="science9.html">Science 9</a></li>
+                    <li><a href="science10.html">Science 10</a></li>
+                    <li><a href="science11.html">Science 11</a></li>
+                    <li><a href="science12.html">Science 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Computer Science</a>
+                <ul class="submenu">
+                    <li><a href="cs-general.html">General</a></li>
+                    <li><a href="cs-robotics.html">Robotics</a></li>
+                    <li><a href="VGD.html">Video Game Design</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">M.Ed-Courses</a>
+                <ul class="submenu">
+                    <li><a href="med-general.html">General</a></li>
+                    <li><a href="edu714.html">EDU 714</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+        .options {
+            display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin: 15px 0;
+        }
+        .option {
+            padding: 12px 15px;
+        background-color: #f8f9fa;
+        border: 2px solid #dee2e6;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 15px;
+        text-align: left;
+        transition: all 0.2s ease;
+        color: #212529;
+        }
+        .option:hover {
+        background-color: #e9ecef;
+        transform: translateY(-2px);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .option:active {
+        transform: translateY(0);
+    }
+
+    /* Disabled State */
+    .option:disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+    /* Correct/Incorrect Feedback */
+    .option.correct {
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+        color: #155724;
+    }
+
+    .option.incorrect {
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        color: #721c24;
+    }
+        .whiteboard {
+            width: 100%;
+        height: 200px;
+        border: 2px solid #333;
+        margin-top: 15px;
+        background-color: white;
+        touch-action: none; /* Prevent touch scrolling */
+        -ms-touch-action: none;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        /* Whiteboard Controls */
+    .whiteboard-controls {
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .whiteboard-controls button {
+        padding: 8px 15px;
+        background-color: #6c757d;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .whiteboard-controls button:hover {
+        background-color: #5a6268;
+    }
+
+        .feedback {
+            margin-top: 10px;
+            padding: 5px;
+            border-radius: 4px;
+
+        .whiteboard-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background: white;
+  border: 2px solid #333;
+  border-radius: 8px;
+}
+
+.grid-layer, .drawing-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.grid-layer { z-index: 1; }
+.drawing-layer { z-index: 2; }
+
+            
+        }
+      
+    </style>
+        <section>
+            <h2>Matching Equations and Using Graphs to Estimate Values</h2>
+            
+            <!-- Questions 1 & 2 -->
+            <p><strong>Use the graphs to answer questions 1 and 2.</strong></p>
+            <div class="image-whiteboard-container" id="container1">
+                <img src="SA_pics/Bill_John.png" alt="Bill and John Graph">
+                <canvas class="grid-layer" id="grid1"></canvas>
+                <canvas class="drawing-layer" id="whiteboard1"></canvas>
+            </div>
+<!-- Question 1 -->
+        <div class="question">
+            <p>1. Who walked at a faster rate?</p>
+            <div class="options">
+                <button class="option" onclick="checkAnswer(1, 'a')">A) Bill</button>
+                <button class="option" onclick="checkAnswer(1, 'b')">B) John</button>
+                <button class="option" onclick="checkAnswer(1, 'c')">C) The graphs do not show who was faster</button>
+                <button class="option" onclick="checkAnswer(1, 'd')">D) They walked at the same rate</button>
+            </div>
+            <div class="feedback" id="feedback1"></div>
+            <div class="image-whiteboard-container" id="container2">
+                <img src="SA_pics/grape_1.png" alt="Elliptical Machine">
+                <canvas class="grid-layer" id="grid2"></canvas>
+                <canvas class="drawing-layer" id="whiteboard2"></canvas>
+            </div>
+            <div class="whiteboard-controls">
+  <button onclick="toggleGrid(1)">Grid</button>
+  <button onclick="toggleBlank(1)">Blank</button>
+                <button onclick="undoDrawing(1)">Undo</button>
+                <button onclick="clearWhiteboard(1)">Clear</button>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <p>2. Who walked farther in the first 4 s and by how much?</p>
+            <div class="options">
+                <button class="option" onclick="checkAnswer(2, 'a')">A) John; 1 m</button>
+                <button class="option" onclick="checkAnswer(2, 'b')">B) John; 2 m</button>
+                <button class="option" onclick="checkAnswer(2, 'c')">C) Bill; 1 m</button>
+                <button class="option" onclick="checkAnswer(2, 'd')">D) Bill; 2 m</button>
+            </div>
+            <div class="feedback" id="feedback2"></div>
+             <div class="whiteboard-container" id="container2">
+  <canvas class="grid-layer" id="grid2"></canvas>
+  <canvas class="drawing-layer" id="whiteboard2"></canvas>
+</div>
+            <div class="whiteboard-controls">
+  <button onclick="toggleGrid(2)">Grid</button>
+  <button onclick="toggleBlank(2)">Blank</button>
+                <button onclick="undoDrawing(2)">Undo</button>
+                <button onclick="clearWhiteboard(2)">Clear</button>
+            </div>
+        </div>
+
+    </main>
+<style>
+                .image-whiteboard-container {
+                    position: relative;
+                    width: 100%;
+                    margin: 15px 0;
+                }
+                .image-whiteboard-container img {
+                    width: 100%;
+                    height: auto;
+                    display: block;
+                }
+                .grid-layer, .drawing-layer {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    touch-action: none;
+                }
+                .grid-layer { z-index: 1; }
+                .drawing-layer { z-index: 2; }
+            </style>
+          <script>
+    // Enhanced initialization
+    function initializeWhiteboard(qNum) {
+        const container = document.getElementById(`container${qNum}`);
+        const img = container.querySelector('img');
+        const canvas = document.getElementById(`whiteboard${qNum}`);
+        const gridCanvas = document.getElementById(`grid${qNum}`);
+
+        const initCanvas = () => {
+            canvas.width = container.offsetWidth;
+            canvas.height = container.offsetHeight;
+            gridCanvas.width = container.offsetWidth;
+            gridCanvas.height = container.offsetHeight;
+
+            // Drawing context setup
+            const ctx = canvas.getContext('2d');
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+
+            // Store in whiteboards object
+            whiteboards[qNum] = {
+                ctx: ctx,
+                isDrawing: false,
+                history: [],
+                currentStep: -1
+            };
+
+            // Event listeners
+            addDrawingEvents(canvas, qNum);
+        };
+
+        if (img.complete) initCanvas();
+        else img.addEventListener('load', initCanvas);
+    }
+
+        // Add touch event handlers
+        function addDrawingEvents(canvas, qNum) {
+            canvas.addEventListener('mousedown', startDrawing.bind(null, qNum));
+            canvas.addEventListener('mousemove', draw.bind(null, qNum));
+            canvas.addEventListener('mouseup', stopDrawing.bind(null, qNum));
+            canvas.addEventListener('mouseout', stopDrawing.bind(null, qNum));
+
+            canvas.addEventListener('touchstart', (e) => {
+                const touch = e.touches[0];
+                const rect = canvas.getBoundingClientRect();
+                startDrawing(qNum, {
+                    offsetX: touch.clientX - rect.left,
+                    offsetY: touch.clientY - rect.top
+                });
+            });
+
+            canvas.addEventListener('touchmove', (e) => {
+                const touch = e.touches[0];
+                const rect = canvas.getBoundingClientRect();
+                draw(qNum, {
+                    offsetX: touch.clientX - rect.left,
+                    offsetY: touch.clientY - rect.top
+                });
+            });
+        }
+
+        // Initialize all whiteboards
+        for(let i = 1; i <= 10; i++) {
+            if(document.getElementById(`container${i}`)) {
+                initializeWhiteboard(i);
+            }
+        }
+
+        // Enhanced grid toggle
+        function toggleGrid(qNum) {
+            const gridCanvas = document.getElementById(`grid${qNum}`);
+            const ctx = gridCanvas.getContext('2d');
+            ctx.clearRect(0, 0, gridCanvas.width, gridCanvas.height);
+
+            if(!gridCanvas.dataset.gridVisible) {
+                ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
+                ctx.lineWidth = 1;
+
+                // Vertical lines
+                for(let x = 0; x <= gridCanvas.width; x += 20) {
+                    ctx.beginPath();
+                    ctx.moveTo(x, 0);
+                    ctx.lineTo(x, gridCanvas.height);
+                    ctx.stroke();
+                }
+
+                // Horizontal lines
+                for(let y = 0; y <= gridCanvas.height; y += 20) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, y);
+                    ctx.lineTo(gridCanvas.width, y);
+                    ctx.stroke();
+                }
+                gridCanvas.dataset.gridVisible = "true";
+            } else {
+                gridCanvas.dataset.gridVisible = "";
+            }
+        }
+    </script>
+    <script>
+    // Whiteboard initialization and drawing history
+    const whiteboards = {};
+    const MAX_HISTORY = 50;
+    const correctAnswers = {
+        1: 'a', 2: 'd'
+    };
+    const attempts = { 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0, 10:0 };
+
+    // Initialize all whiteboards
+    for(let i = 1; i <= 2; i++) {
+        initializeWhiteboard(i);
+    }
+
+    function initializeWhiteboard(qNum) {
+        const canvas = document.getElementById(`whiteboard${qNum}`);
+        const ctx = canvas.getContext('2d');
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        
+        
+        whiteboards[qNum] = {
+            ctx: ctx,
+            isDrawing: false,
+            history: [],
+            currentStep: -1
+        };
+
+        // Event listeners for both mouse and touch
+        canvas.addEventListener('mousedown', startDrawing.bind(null, qNum));
+        canvas.addEventListener('mousemove', draw.bind(null, qNum));
+        canvas.addEventListener('mouseup', stopDrawing.bind(null, qNum));
+        canvas.addEventListener('mouseout', stopDrawing.bind(null, qNum));
+        
+        canvas.addEventListener('touchstart', handleTouchStart.bind(null, qNum));
+        canvas.addEventListener('touchmove', handleTouchMove.bind(null, qNum));
+        canvas.addEventListener('touchend', stopDrawing.bind(null, qNum));
+
+        saveState(qNum);
+    }
+
+    // Touch event handlers
+    function handleTouchStart(qNum, e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const rect = e.target.getBoundingClientRect();
+        startDrawing(qNum, {
+            offsetX: touch.clientX - rect.left,
+            offsetY: touch.clientY - rect.top
+        });
+    }
+
+    function handleTouchMove(qNum, e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const rect = e.target.getBoundingClientRect();
+        draw(qNum, {
+            offsetX: touch.clientX - rect.left,
+            offsetY: touch.clientY - rect.top
+        });
+    }
+
+    // Drawing functions
+    function startDrawing(qNum, e) {
+        whiteboards[qNum].isDrawing = true;
+        whiteboards[qNum].ctx.beginPath();
+        whiteboards[qNum].ctx.moveTo(e.offsetX, e.offsetY);
+    }
+
+    function draw(qNum, e) {
+        if(!whiteboards[qNum].isDrawing) return;
+        whiteboards[qNum].ctx.lineTo(e.offsetX, e.offsetY);
+        whiteboards[qNum].ctx.strokeStyle = 'black';
+        whiteboards[qNum].ctx.lineWidth = 2;
+        whiteboards[qNum].ctx.stroke();
+    }
+
+    function stopDrawing(qNum) {
+        if(whiteboards[qNum].isDrawing) {
+            saveState(qNum);
+        }
+        whiteboards[qNum].isDrawing = false;
+    }
+
+    // Whiteboard utilities
+    function saveState(qNum) {
+        const canvas = document.getElementById(`whiteboard${qNum}`);
+        const state = whiteboards[qNum].ctx.getImageData(0, 0, canvas.width, canvas.height);
+        whiteboards[qNum].history = whiteboards[qNum].history.slice(0, whiteboards[qNum].currentStep + 1);
+        whiteboards[qNum].history.push(state);
+        whiteboards[qNum].currentStep = Math.min(whiteboards[qNum].currentStep + 1, MAX_HISTORY - 1);
+    }
+
+    function undoDrawing(qNum) {
+        if(whiteboards[qNum].currentStep > 0) {
+            whiteboards[qNum].currentStep--;
+            whiteboards[qNum].ctx.putImageData(
+                whiteboards[qNum].history[whiteboards[qNum].currentStep],
+                0, 0
+            );
+        }
+    }
+
+    function clearWhiteboard(qNum) {
+  const canvas = document.getElementById(`whiteboard${qNum}`);
+  whiteboards[qNum].ctx.clearRect(0, 0, canvas.width, canvas.height);
+  whiteboards[qNum].history = [];
+  saveState(qNum);
+}
+
+        // Add these functions
+function toggleGrid(qNum) {
+  const gridCanvas = document.getElementById(`grid${qNum}`);
+  const ctx = gridCanvas.getContext('2d');
+  
+  // Set canvas size
+  gridCanvas.width = gridCanvas.offsetWidth;
+  gridCanvas.height = gridCanvas.offsetHeight;
+  
+  // Draw grid
+  ctx.strokeStyle = '#ddd';
+  ctx.lineWidth = 1;
+  
+  // Vertical lines
+  for(let x = 0; x <= gridCanvas.width; x += 20) {
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, gridCanvas.height);
+    ctx.stroke();
+  }
+  
+  // Horizontal lines
+  for(let y = 0; y <= gridCanvas.height; y += 20) {
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(gridCanvas.width, y);
+    ctx.stroke();
+  }
+}
+
+function toggleBlank(qNum) {
+  const gridCanvas = document.getElementById(`grid${qNum}`);
+  const ctx = gridCanvas.getContext('2d');
+  ctx.clearRect(0, 0, gridCanvas.width, gridCanvas.height);
+}
+
+    // Answer checking logic
+    function checkAnswer(qNum, selected) {
+        const feedback = document.getElementById(`feedback${qNum}`);
+        const questionDiv = document.querySelector(`#whiteboard${qNum}`).closest('.question');
+        const options = questionDiv.querySelectorAll('.option');
+
+        if(attempts[qNum] >= 2) return;
+
+        if(selected === correctAnswers[qNum]) {
+            feedback.textContent = "Correct!";
+            feedback.style.backgroundColor = '#d4edda';
+            options.forEach(opt => opt.disabled = true);
+        } else {
+            attempts[qNum]++;
+            const remaining = 2 - attempts[qNum];
+            
+            if(remaining > 0) {
+                feedback.textContent = `Incorrect. Attempts remaining: ${remaining}`;
+                feedback.style.backgroundColor = '#f8d7da';
+            } else {
+                feedback.textContent = `Correct answer: ${correctAnswers[qNum].toUpperCase()}`;
+                feedback.style.backgroundColor = '#fff3cd';
+                options.forEach(opt => opt.disabled = true);
+            }
+        }
+    }
+</script>
+           
+   
+    <footer>
+        <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+    </footer>
+</body>
+</html>
