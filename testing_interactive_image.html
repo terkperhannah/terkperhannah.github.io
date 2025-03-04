@@ -148,12 +148,11 @@ elliptical machine. </strong></p>
             <!-- Image Whiteboard for Question 1 -->
             <div class="whiteboard-container">
                 <img src="SA_pics/graphe_1.png" alt="Kendall">
-                <canvas class="whiteboard-canvas" id="grid1"></canvas>
+                
                 <canvas class="whiteboard-canvas" id="whiteboard1"></canvas>
             </div>
             <div class="whiteboard-controls image-controls">
-                <button onclick="toggleGrid(1)">Grid</button>
-                <button onclick="toggleBlank(1)">Blank</button>
+                
                 <button class="undo-btn" onclick="undoDrawing(1)">Undo</button>
                 <button class="clear-btn" onclick="clearWhiteboard(1)">Clear</button>
             </div>
@@ -172,11 +171,14 @@ burns in 20 min.</p>
        
             </div>
 
-            <!-- Regular Whiteboard for Question 2 -->
+            <!-- Regular Whiteboard for Question 1 -->
             <div class="whiteboard-container" style="width: 75%; height: 300px;">
                 <canvas class="whiteboard-canvas" id="whiteboard2"></canvas>
+                <canvas class="whiteboard-canvas" id="grid1"></canvas>
             </div>
             <div class="whiteboard-controls regular-controls">
+                <button onclick="toggleGrid(1)">Grid</button>
+                <button onclick="toggleBlank(1)">Blank</button>
                 <button class="undo-btn" onclick="undoDrawing(2)">Undo</button>
                 <button class="clear-btn" onclick="clearWhiteboard(2)">Clear</button>
             </div>
