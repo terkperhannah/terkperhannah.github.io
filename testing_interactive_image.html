@@ -52,12 +52,6 @@
             </li>
         </ul>
     </nav>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -144,15 +138,16 @@
         .clear-btn { background-color: #dc3545 !important; color: white !important; }
     </style>
 </head>
-<body>
     <main>
         <section>
             <h2>Matching Equations and Using Graphs to Estimate Values</h2>
-            <p><strong>Use the graphs to answer questions 1 and 2.</strong></p>
+            <p><strong>Use the graphs to answer questions 1 and 2. This graph shows the energy in Calories that
+Kendall burns when he works out on an
+elliptical machine. </strong></p>
 
             <!-- Image Whiteboard for Question 1 -->
             <div class="whiteboard-container">
-                <img src="SA_pics/Bill_John.png" alt="Bill and John Graph">
+                <img src="SA_pics/graphe_1.png" alt="Kendall">
                 <canvas class="whiteboard-canvas" id="grid1"></canvas>
                 <canvas class="whiteboard-canvas" id="whiteboard1"></canvas>
             </div>
@@ -165,18 +160,20 @@
 
             <!-- Question 1 -->
             <div class="question">
-                <p>1. Who walked at a faster rate?</p>
+                <p>1. Estimate how many Calories Kendall
+burns in 20 min.</p>
                 <div class="options">
-                    <button class="option" onclick="checkAnswer(1, 'a')">A) Bill</button>
-                    <button class="option" onclick="checkAnswer(1, 'b')">B) John</button>
-                    <button class="option" onclick="checkAnswer(1, 'c')">C) The graphs do not show who was faster</button>
-                    <button class="option" onclick="checkAnswer(1, 'd')">D) They walked at the same rate</button>
-                </div>
-                <div class="feedback" id="feedback1"></div>
+    <button class="option" data-answer="a" onclick="checkAnswer(1, 'a')">A) 300 calories</button>
+    <button class="option" data-answer="b" onclick="checkAnswer(1, 'b')">B) 400 calories</button>
+    <button class="option" data-answer="c" onclick="checkAnswer(1, 'c')">C) 500 calories</button>
+    <button class="option" data-answer="d" onclick="checkAnswer(1, 'd')">D) 600 calories</button>
+</div>
+        <div class="feedback" id="feedback1"></div>
+       
             </div>
 
             <!-- Regular Whiteboard for Question 2 -->
-            <div class="whiteboard-container" style="width: 100%; height: 300px;">
+            <div class="whiteboard-container" style="width: 75%; height: 300px;">
                 <canvas class="whiteboard-canvas" id="whiteboard2"></canvas>
             </div>
             <div class="whiteboard-controls regular-controls">
@@ -188,19 +185,18 @@
             <div class="question">
                 <p>2. Who walked farther in the first 4 s and by how much?</p>
                 <div class="options">
-                    <button class="option" onclick="checkAnswer(2, 'a')">A) John; 1 m</button>
-                    <button class="option" onclick="checkAnswer(2, 'b')">B) John; 2 m</button>
-                    <button class="option" onclick="checkAnswer(2, 'c')">C) Bill; 1 m</button>
-                    <button class="option" onclick="checkAnswer(2, 'd')">D) Bill; 2 m</button>
-                </div>
-                <div class="feedback" id="feedback2"></div>
+    <button class="option" data-answer="a" onclick="checkAnswer(2, 'a')">A) John; 1 m</button>
+    <button class="option" data-answer="b" onclick="checkAnswer(2, 'b')">B) John; 2 m</button>
+    <button class="option" data-answer="c" onclick="checkAnswer(2, 'c')">C) Bill; 1 m</button>
+    <button class="option" data-answer="d" onclick="checkAnswer(2, 'd')">D) Bill; 2 m</button>
+</div>
+           <div class="feedback" id="feedback2"></div>
+     
             </div>
         </section>
     </main>
 <script>
         const whiteboards = {};
-        const correctAnswers = { 1: 'a', 2: 'd' };
-        const attempts = { 1: 0, 2: 0 };
         const MAX_HISTORY = 50;
 
         // Initialize whiteboards
@@ -364,37 +360,66 @@
             }
         }
 
-        function checkAnswer(qNum, selected) {
-            const feedback = document.getElementById(`feedback${qNum}`);
-            const options = document.querySelectorAll(`#feedback${qNum}`).closest('.question').querySelectorAll('.option');
 
-            if (attempts[qNum] >= 2) return;
+    
+// Configuration
+const correctAnswers = { 1: 'a', 2: 'd' };
+const maxAttempts = 2;
+const attempts = { 1: 0, 2: 0 }; // Initialize attempts for all questions
 
-            if (selected === correctAnswers[qNum]) {
-                feedback.textContent = "Correct!";
-                feedback.style.backgroundColor = '#d4edda';
-                options.forEach(opt => opt.disabled = true);
-            } else {
-                attempts[qNum]++;
-                const remaining = 2 - attempts[qNum];
-                
-                if (remaining > 0) {
-                    feedback.textContent = `Incorrect. Attempts remaining: ${remaining}`;
-                    feedback.style.backgroundColor = '#f8d7da';
-                } else {
-                    feedback.textContent = `Correct answer: ${correctAnswers[qNum].toUpperCase()}`;
-                    feedback.style.backgroundColor = '#fff3cd';
-                    options.forEach(opt => opt.disabled = true);
-                }
-            }
+function checkAnswer(qNum, selected) {
+    const feedback = document.getElementById(`feedback${qNum}`);
+    // FIX #1: Use proper question container selection
+    const questionDiv = document.querySelector(`.question:nth-of-type(${qNum})`);
+    const options = questionDiv.querySelectorAll('.option');
+    const correctKey = correctAnswers[qNum];
+
+    // FIX #2: Proper attempt tracking
+    if (attempts[qNum] >= maxAttempts) return;
+
+    // Clear previous styles
+    options.forEach(opt => {
+        opt.classList.remove('correct', 'incorrect');
+    });
+
+    if (selected === correctKey) {
+        feedback.innerHTML = "✅ Correct!";
+        feedback.style.backgroundColor = '#d4edda';
+        options.forEach(opt => opt.disabled = true);
+        questionDiv.querySelector(`.option[data-answer="${correctKey}"]`).classList.add('correct');
+    } else {
+        attempts[qNum]++;
+        const remaining = maxAttempts - attempts[qNum];
+        
+        // FIX #3: Mark incorrect answer
+        questionDiv.querySelector(`.option[data-answer="${selected}"]`).classList.add('incorrect');
+        
+        if (remaining > 0) {
+            feedback.innerHTML = `❌ Incorrect (${remaining} attempt${remaining > 1 ? 's' : ''} left)`;
+            feedback.style.backgroundColor = '#f8d7da';
+        } else {
+            feedback.innerHTML = `📘 Correct answer: <strong>${
+                questionDiv.querySelector(`.option[data-answer="${correctKey}"]`).textContent
+            }</strong>`;
+            feedback.style.backgroundColor = '#fff3cd';
+            options.forEach(opt => opt.disabled = true);
+            questionDiv.querySelector(`.option[data-answer="${correctKey}"]`).classList.add('correct');
         }
+    }
+    
+    // Ensure feedback visibility
+    feedback.style.display = 'block';
+    feedback.style.padding = '10px';
+    feedback.style.borderRadius = '4px';
+    feedback.style.marginTop = '10px';
+}
+
     </script>
     
-</body>
 
    
     <footer>
         <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
     </footer>
-</body>
+
 </html>
