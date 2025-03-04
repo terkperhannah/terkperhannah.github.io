@@ -372,58 +372,77 @@ const correctAnswers = {
     2: 'd'
 };
 
-const maxAttempts = 2;
-// End configuration
-
-const attempts = {};
+const maxAttempts = 2;  // Maximum attempts per question
+const attempts = {};  // Store attempts per question
 
 function checkAnswer(qNum, selected) {
-    // Initialize attempts if not exists
-    if (!attempts[qNum]) attempts[qNum] = 0;
-    
+    if (!attempts[qNum]) attempts[qNum] = 0; // Initialize attempts if not exists
+
     const feedback = document.getElementById(`feedback${qNum}`);
     const questionDiv = document.querySelector(`.question:nth-of-type(${qNum})`);
     const options = questionDiv.querySelectorAll('.option');
     const correctKey = correctAnswers[qNum];
-    
-    // Clear previous styling
+
+    // Disable further attempts if max reached
+    if (attempts[qNum] >= maxAttempts) {
+        return;
+    }
+
+    // Clear previous styles
     options.forEach(opt => {
         opt.classList.remove('correct', 'incorrect');
+        opt.disabled = false; // Re-enable if needed
     });
 
+    // Check if the selected answer is correct
     if (selected === correctKey) {
-        // Correct answer handling
-        feedback.textContent = "✅ Correct!";
+        feedback.innerHTML = "✅ Correct!";
         feedback.style.backgroundColor = '#d4edda';
+        feedback.style.color = '#155724';
+
+        // Mark the correct option
+        const correctOption = questionDiv.querySelector(`.option[onclick*="'${correctKey}'"]`);
+        correctOption.classList.add('correct');
+
+        // Disable all buttons
         options.forEach(opt => opt.disabled = true);
-        questionDiv.querySelector(`.option[onclick*="'${correctKey}'"]`).classList.add('correct');
     } else {
-        // Wrong answer handling
+        // Increment attempts
         attempts[qNum]++;
         const remaining = maxAttempts - attempts[qNum];
-        
-        // Add visual feedback
-        questionDiv.querySelector(`.option[onclick*="'${selected}'"]`).classList.add('incorrect');
-        
+
+        // Mark incorrect choice
+        const incorrectOption = questionDiv.querySelector(`.option[onclick*="'${selected}'"]`);
+        incorrectOption.classList.add('incorrect');
+
+        // Provide feedback
         if (remaining > 0) {
-            feedback.textContent = `❌ Incorrect (${remaining} attempt${remaining > 1 ? 's' : ''} left)`;
+            feedback.innerHTML = `❌ Incorrect. (${remaining} attempt${remaining > 1 ? 's' : ''} left)`;
             feedback.style.backgroundColor = '#f8d7da';
+            feedback.style.color = '#721c24';
         } else {
+            // Show correct answer when attempts run out
             feedback.innerHTML = `📘 Correct answer: <strong>${
                 questionDiv.querySelector(`.option[onclick*="'${correctKey}'"]`).textContent
             }</strong>`;
             feedback.style.backgroundColor = '#fff3cd';
-            options.forEach(opt => opt.disabled = true);
+            feedback.style.color = '#856404';
+
+            // Mark correct option
             questionDiv.querySelector(`.option[onclick*="'${correctKey}'"]`).classList.add('correct');
+
+            // Disable all buttons
+            options.forEach(opt => opt.disabled = true);
         }
     }
-    
-    // Show feedback styling
+
+    // Ensure feedback is visible
     feedback.style.display = 'block';
     feedback.style.padding = '10px';
     feedback.style.borderRadius = '4px';
     feedback.style.marginTop = '10px';
 }
+
     </script>
     
 </body>
