@@ -379,19 +379,19 @@ function checkAnswer(qNum, selected) {
     if (!attempts[qNum]) attempts[qNum] = 0; // Initialize attempts if not exists
 
     const feedback = document.getElementById(`feedback${qNum}`);
-    const questionDiv = document.querySelector(`.question:nth-of-type(${qNum})`);
+    const questionDiv = document.querySelector(`#whiteboard${qNum}`).closest('.question');
     const options = questionDiv.querySelectorAll('.option');
     const correctKey = correctAnswers[qNum];
 
     // Disable further attempts if max reached
-    if (attempts[qNum] >= maxAttempts) {
+    if (attempts[qNum] >= 2) {
         return;
     }
 
-    // Clear previous styles
+    // Reset all option styles before applying new ones
     options.forEach(opt => {
         opt.classList.remove('correct', 'incorrect');
-        opt.disabled = false; // Re-enable if needed
+        opt.disabled = false;
     });
 
     // Check if the selected answer is correct
@@ -409,7 +409,7 @@ function checkAnswer(qNum, selected) {
     } else {
         // Increment attempts
         attempts[qNum]++;
-        const remaining = maxAttempts - attempts[qNum];
+        const remaining = 2 - attempts[qNum];
 
         // Mark incorrect choice
         const incorrectOption = questionDiv.querySelector(`.option[onclick*="'${selected}'"]`);
@@ -442,6 +442,7 @@ function checkAnswer(qNum, selected) {
     feedback.style.borderRadius = '4px';
     feedback.style.marginTop = '10px';
 }
+
 
     </script>
     
