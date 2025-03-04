@@ -119,41 +119,7 @@
         border-color: #f5c6cb;
         color: #721c24;
     }
-        .whiteboard {
-            width: 100%;
-        height: 200px;
-        border: 2px solid #333;
-        margin-top: 15px;
-        background-color: white;
-        touch-action: none; /* Prevent touch scrolling */
-        -ms-touch-action: none;
-        -webkit-tap-highlight-color: transparent;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        user-select: none;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        /* Whiteboard Controls */
-    .whiteboard-controls {
-        margin-top: 10px;
-        display: flex;
-        gap: 10px;
-    }
-
-    .whiteboard-controls button {
-        padding: 8px 15px;
-        background-color: #6c757d;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.2s;
-    }
-
-    .whiteboard-controls button:hover {
-        background-color: #5a6268;
-    }
+        
 
         .feedback {
             margin-top: 10px;
@@ -169,31 +135,85 @@
   border-radius: 8px;
 }
 
-.grid-layer, .drawing-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+      /* Image Whiteboard Controls */
+.image-whiteboard-controls {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
 }
 
-.grid-layer { z-index: 1; }
-.drawing-layer { z-index: 2; }
+.image-whiteboard-controls button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
 
-            
-        }
-      
+.image-whiteboard-controls button:hover {
+    background-color: #0056b3;
+}
+
+/* Regular Whiteboard Controls */
+.regular-whiteboard-controls {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.regular-whiteboard-controls button {
+    padding: 8px 15px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.regular-whiteboard-controls button:hover {
+    background-color: #5a6268;
+}
+
+/* Differentiate Undo and Clear Buttons */
+.image-whiteboard-undo, .regular-whiteboard-undo {
+    background-color: #ffc107;
+    color: black;
+}
+
+.image-whiteboard-undo:hover, .regular-whiteboard-undo:hover {
+    background-color: #e0a800;
+}
+
+.image-whiteboard-clear, .regular-whiteboard-clear {
+    background-color: #dc3545;
+    color: white;
+}
+
+.image-whiteboard-clear:hover, .regular-whiteboard-clear:hover {
+    background-color: #c82333;
+}
+
     </style>
+    
         <section>
             <h2>Matching Equations and Using Graphs to Estimate Values</h2>
             
             <!-- Questions 1 & 2 -->
             <p><strong>Use the graphs to answer questions 1 and 2.</strong></p>
-            <div class="image-whiteboard-container" id="container1">
-                <img src="SA_pics/Bill_John.png" alt="Bill and John Graph">
-                <canvas class="grid-layer" id="grid1"></canvas>
-                <canvas class="drawing-layer" id="whiteboard1"></canvas>
-            </div>
+            <div class="image-whiteboard-container">
+    <img src="SA_pics/Bill_John.png" alt="Bill and John Graph">
+    <canvas class="grid-layer" id="grid1"></canvas>
+    <canvas class="drawing-layer" id="whiteboard1"></canvas>
+</div>
+<div class="image-whiteboard-controls">
+    <button onclick="toggleGrid(1)">Grid</button>
+    <button onclick="toggleBlank(1)">Blank</button>
+    <button class="image-whiteboard-undo" onclick="undoDrawing(1)">Undo</button>
+    <button class="image-whiteboard-clear" onclick="clearWhiteboard(1)">Clear</button>
+</div>
 <!-- Question 1 -->
         <div class="question">
             <p>1. Who walked at a faster rate?</p>
@@ -204,18 +224,13 @@
                 <button class="option" onclick="checkAnswer(1, 'd')">D) They walked at the same rate</button>
             </div>
             <div class="feedback" id="feedback1"></div>
-            <div class="image-whiteboard-container" id="container2">
-                <img src="SA_pics/grape_1.png" alt="Elliptical Machine">
-                <canvas class="grid-layer" id="grid2"></canvas>
-                <canvas class="drawing-layer" id="whiteboard2"></canvas>
-            </div>
-            <div class="whiteboard-controls">
-  <button onclick="toggleGrid(1)">Grid</button>
-  <button onclick="toggleBlank(1)">Blank</button>
-                <button onclick="undoDrawing(1)">Undo</button>
-                <button onclick="clearWhiteboard(1)">Clear</button>
-            </div>
-        </div>
+            <div class="regular-whiteboard-container">
+    <canvas class="drawing-layer" id="whiteboard2"></canvas>
+</div>
+<div class="regular-whiteboard-controls">
+    <button class="regular-whiteboard-undo" onclick="undoDrawing(2)">Undo</button>
+    <button class="regular-whiteboard-clear" onclick="clearWhiteboard(2)">Clear</button>
+</div>
 
         <!-- Question 2 -->
         <div class="question">
@@ -240,29 +255,90 @@
         </div>
 
     </main>
-<style>
-                .image-whiteboard-container {
-                    position: relative;
-                    width: 100%;
-                    margin: 15px 0;
-                }
-                .image-whiteboard-container img {
-                    width: 100%;
-                    height: auto;
-                    display: block;
-                }
-                .grid-layer, .drawing-layer {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    touch-action: none;
-                }
-                .grid-layer { z-index: 1; }
-                .drawing-layer { z-index: 2; }
-            </style>
+
+               
           <script>
+// Initialize Image & Regular Whiteboards Separately
+for (let i = 1; i <= 2; i++) {
+    if (document.getElementById(`whiteboard${i}`)) {
+        initializeWhiteboard(i);
+    }
+}
+
+// Function to initialize whiteboards
+function initializeWhiteboard(qNum) {
+    const canvas = document.getElementById(`whiteboard${qNum}`);
+    const ctx = canvas.getContext('2d');
+    
+    // Set size based on container
+    if (canvas.closest('.image-whiteboard-container')) {
+        canvas.width = canvas.closest('.image-whiteboard-container').offsetWidth;
+        canvas.height = canvas.closest('.image-whiteboard-container').offsetHeight;
+    } else if (canvas.closest('.regular-whiteboard-container')) {
+        canvas.width = canvas.closest('.regular-whiteboard-container').offsetWidth;
+        canvas.height = canvas.closest('.regular-whiteboard-container').offsetHeight;
+    }
+    
+    // Store drawing state
+    whiteboards[qNum] = {
+        ctx: ctx,
+        isDrawing: false,
+        history: [],
+        currentStep: -1
+    };
+
+    // Add drawing event listeners
+    addDrawingEvents(canvas, qNum);
+}
+
+// Toggle grid only for image-based whiteboards
+function toggleGrid(qNum) {
+    const gridCanvas = document.getElementById(`grid${qNum}`);
+    if (!gridCanvas) return;
+
+    const ctx = gridCanvas.getContext('2d');
+    ctx.clearRect(0, 0, gridCanvas.width, gridCanvas.height);
+
+    if (!gridCanvas.dataset.gridVisible) {
+        ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
+        ctx.lineWidth = 1;
+
+        // Draw grid
+        for (let x = 0; x <= gridCanvas.width; x += 20) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, gridCanvas.height);
+            ctx.stroke();
+        }
+
+        for (let y = 0; y <= gridCanvas.height; y += 20) {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(gridCanvas.width, y);
+            ctx.stroke();
+        }
+
+        gridCanvas.dataset.gridVisible = "true";
+    } else {
+        gridCanvas.dataset.gridVisible = "";
+    }
+}
+
+// Clear whiteboard properly
+function clearWhiteboard(qNum) {
+    const canvas = document.getElementById(`whiteboard${qNum}`);
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    whiteboards[qNum].history = [];
+    saveState(qNum);
+}
+
+
+
+              
     // Enhanced initialization
     function initializeWhiteboard(qNum) {
         const container = document.getElementById(`container${qNum}`);
