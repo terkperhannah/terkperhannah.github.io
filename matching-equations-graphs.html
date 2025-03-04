@@ -202,8 +202,6 @@ burns in 20 min.</p>
     </main>
 <script>
         const whiteboards = {};
-        const correctAnswers = { 1: 'a', 2: 'd' };
-        const attempts = { 1: 0, 2: 0 };
         const MAX_HISTORY = 50;
 
         // Initialize whiteboards
@@ -367,30 +365,70 @@ burns in 20 min.</p>
             }
         }
 
-        function checkAnswer(qNum, selected) {
-            const feedback = document.getElementById(`feedback${qNum}`);
-            const options = document.querySelectorAll(`#feedback${qNum}`).closest('.question').querySelectorAll('.option');
+        <script>
+// Configuration - Only edit this section
+const correctAnswers = {
+    1: 'a', 2: 'd', 3: 'b', 4: 'd',
+    5: 'c', 6: 'c', 7: 'd', 8: 'b', 
+    9: 'd', 10: 'c', 11: 'a', 12: 'c', 
+    13: 'c', 14: 'b', 15: 'd'
+};
 
-            if (attempts[qNum] >= 2) return;
+const maxAttempts = 2;
+// End configuration
 
-            if (selected === correctAnswers[qNum]) {
-                feedback.textContent = "Correct!";
-                feedback.style.backgroundColor = '#d4edda';
-                options.forEach(opt => opt.disabled = true);
-            } else {
-                attempts[qNum]++;
-                const remaining = 2 - attempts[qNum];
-                
-                if (remaining > 0) {
-                    feedback.textContent = `Incorrect. Attempts remaining: ${remaining}`;
-                    feedback.style.backgroundColor = '#f8d7da';
-                } else {
-                    feedback.textContent = `Correct answer: ${correctAnswers[qNum].toUpperCase()}`;
-                    feedback.style.backgroundColor = '#fff3cd';
-                    options.forEach(opt => opt.disabled = true);
-                }
-            }
+const attempts = {};
+
+function checkAnswer(qNum, selected) {
+    // Initialize attempts if not exists
+    if (!attempts[qNum]) attempts[qNum] = 0;
+    
+    const feedback = document.getElementById(`feedback${qNum}`);
+    const questionDiv = document.getElementById(`whiteboard${qNum}`).closest('.question');
+    const options = questionDiv.querySelectorAll('.option');
+    const correctKey = correctAnswers[qNum];
+    
+    // Clear previous styling
+    options.forEach(opt => {
+        opt.classList.remove('correct', 'incorrect');
+    });
+
+    if (selected === correctKey) {
+        // Correct answer handling
+        feedback.textContent = "✅ Correct!";
+        feedback.style.backgroundColor = '#d4edda';
+        options.forEach(opt => opt.disabled = true);
+        questionDiv.querySelector(`.option[onclick*="'${correctKey}'"]`).classList.add('correct');
+    } else {
+        // Wrong answer handling
+        attempts[qNum]++;
+        const remaining = maxAttempts - attempts[qNum];
+        
+        // Add visual feedback
+        questionDiv.querySelector(`.option[onclick*="'${selected}'"]`).classList.add('incorrect');
+        
+        if (remaining > 0) {
+            feedback.textContent = `❌ Incorrect (${remaining} attempt${remaining > 1 ? 's' : ''} left)`;
+            feedback.style.backgroundColor = '#f8d7da';
+        } else {
+            feedback.innerHTML = `📘 Correct answer: <strong>${
+                questionDiv.querySelector(`.option[onclick*="'${correctKey}'"]`).textContent
+            }</strong>`;
+            feedback.style.backgroundColor = '#fff3cd';
+            options.forEach(opt => opt.disabled = true);
+            questionDiv.querySelector(`.option[onclick*="'${correctKey}'"]`).classList.add('correct');
         }
+    }
+    
+    // Show feedback styling
+    feedback.style.display = 'block';
+    feedback.style.padding = '10px';
+    feedback.style.borderRadius = '4px';
+    feedback.style.marginTop = '10px';
+}
+
+// Whiteboard initialization code remains the same...
+</script>
     </script>
     
 </body>
