@@ -147,15 +147,16 @@
     <main>
         <section>
             <h2>Matching Equations and Using Graphs to Estimate Values</h2>
-            
-            <!-- Image Whiteboard -->
-            <div class="whiteboard-container whiteboard-image" style="height: 300px; background-image: url('SA_pics/graphe_1.png')">
-                <canvas class="whiteboard-canvas" id="image-whiteboard"></canvas>
-            </div>
-            <div class="controls">
-                <button style="background: var(--warning-color);" onclick="whiteboards.image.undo()">Undo</button>
-                <button style="background: var(--danger-color); color: white" onclick="whiteboards.image.clear()">Clear</button>
-            </div>
+            <p><strong>Use this image to answer question 1 & 2</strong></p>
+            <!-- Question 1 Section -->
+        <p><strong>Use this image to answer question 1</strong></p>
+        <div class="whiteboard-container whiteboard-image" style="height: 300px; background-image: url('SA_pics/graphe_1.png')">
+            <canvas class="whiteboard-canvas" id="image-whiteboard1"></canvas>
+        </div>
+        <div class="controls">
+            <button style="background: var(--warning-color);" onclick="whiteboards.image1.undo()">Undo</button>
+            <button style="background: var(--danger-color); color: white" onclick="whiteboards.image1.clear()">Clear</button>
+        </div>
 
             <!-- Question 1 -->
             <div class="question">
@@ -169,7 +170,38 @@
 <div class="feedback" id="feedback1"></div>
 
             </div>
+             <!-- Grid Whiteboard -->
+            <div class="whiteboard-container" style="height: 400px;">
+                <canvas class="whiteboard-canvas" id="grid-layer"></canvas>
+                <canvas class="whiteboard-canvas" id="drawing-layer"></canvas>
+            </div>
+            <div class="controls">
+                <button style="background: var(--primary-color); color: white" onclick="whiteboards.grid.toggleGrid()">Toggle Grid</button>
+                <button style="background: var(--warning-color);" onclick="whiteboards.grid.undo()">Undo</button>
+                <button style="background: var(--danger-color); color: white" onclick="whiteboards.grid.clear()">Clear</button>
+            </div>
+            
+<!-- Question 2 Section -->
+        <p><strong>Use this image to answer question 2</strong></p>
+        <div class="whiteboard-container whiteboard-image" style="height: 300px; background-image: url('SA_pics/graphe_2.png')">
+            <canvas class="whiteboard-canvas" id="image-whiteboard2"></canvas>
+        </div>
+        <div class="controls">
+            <button style="background: var(--warning-color);" onclick="whiteboards.image2.undo()">Undo</button>
+            <button style="background: var(--danger-color); color: white" onclick="whiteboards.image2.clear()">Clear</button>
+        </div>
 
+        <!-- Question 2 -->
+        <div class="question">
+            <p>2. Your second question here...</p>
+            <div class="options">
+                <button class="option" data-answer="a">A) Option 1</button>
+                <button class="option" data-answer="b">B) Option 2</button>
+                <button class="option" data-answer="c">C) Option 3</button>
+                <button class="option" data-answer="d">D) Option 4</button>
+            </div>
+            <div class="feedback" id="feedback2"></div>
+        </div>
             <!-- Grid Whiteboard -->
             <div class="whiteboard-container" style="height: 400px;">
                 <canvas class="whiteboard-canvas" id="grid-layer"></canvas>
@@ -302,15 +334,16 @@
             }
         }
 
-        // Initialize whiteboards
-        const whiteboards = {
-            image: new Whiteboard('image-whiteboard', { image: 'SA_pics/graphe_1.png' }),
-            grid: new Whiteboard('drawing-layer', { grid: true })
-        };
+         // Update whiteboards initialization
+    const whiteboards = {
+        image1: new Whiteboard('image-whiteboard1', { image: 'SA_pics/graphe_1.png' }),
+        image2: new Whiteboard('image-whiteboard2', { image: 'SA_pics/graphe_2.png' }),
+        grid: new Whiteboard('drawing-layer', { grid: true })
+    };
 
         // Correct answers
-const correctAnswers = { 1: "a" };
-const attempts = { 1: 0 };
+const correctAnswers = { 1: "a", 2: "b" }; // Add correct answer for Q2
+    const attempts = { 1: 0, 2: 0 }; // Add attempts tracker for Q2
 const maxAttempts = 2;
 
 // Function to check answer
