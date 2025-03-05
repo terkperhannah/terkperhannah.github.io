@@ -53,368 +53,312 @@
         </ul>
     </nav>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f9f9f9;
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
         }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
         main {
             max-width: 800px;
-            margin: auto;
+            margin: 20px auto;
             padding: 20px;
-            background-color: #ffffff;
+            background: white;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .question {
-            margin-bottom: 30px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #ffffff;
-        }
-        .options {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin: 15px 0;
-        }
-        .option {
-            padding: 12px 15px;
-            background-color: #f8f9fa;
-            border: 2px solid #dee2e6;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 15px;
-            text-align: left;
-            transition: all 0.2s ease;
-            color: #212529;
-        }
-        .option:hover {
-            background-color: #e9ecef;
-            transform: translateY(-2px);
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-        }
-        .option.correct {
-            background-color: #d4edda;
-            border-color: #c3e6cb;
-            color: #155724;
-        }
-        .option.incorrect {
-            background-color: #f8d7da;
-            border-color: #f5c6cb;
-            color: #721c24;
-        }
+
         .whiteboard-container {
             position: relative;
-            display: inline-block;
-            background: white;
-            border: 2px solid #333;
+            width: 100%;
+            border: 2px solid #dee2e6;
             border-radius: 8px;
+            background: white;
         }
+
         .whiteboard-canvas {
             position: absolute;
             top: 0;
             left: 0;
         }
-        .whiteboard-controls {
+
+        .controls {
             margin-top: 10px;
             display: flex;
-            gap: 10px;
+            gap: 8px;
+            flex-wrap: wrap;
         }
-        .whiteboard-controls button {
-            padding: 8px 15px;
+
+        button {
+            padding: 8px 12px;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: opacity 0.2s;
         }
-        .image-controls button { background-color: #007bff; color: white; }
-        .image-controls button:hover { background-color: #0056b3; }
-        .regular-controls button { background-color: #6c757d; color: white; }
-        .regular-controls button:hover { background-color: #5a6268; }
-        .undo-btn { background-color: #ffc107 !important; color: black !important; }
-        .clear-btn { background-color: #dc3545 !important; color: white !important; }
+
+        button:hover { opacity: 0.8; }
+
+        .question {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .option {
+            padding: 10px;
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .whiteboard-image {
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
     </style>
 </head>
+<body>
     <main>
         <section>
             <h2>Matching Equations and Using Graphs to Estimate Values</h2>
-            <p><strong>Use the graphs to answer questions 1 and 2. This graph shows the energy in Calories that
-Kendall burns when he works out on an
-elliptical machine. </strong></p>
-
-            <!-- Image Whiteboard for Question 1 -->
-            <div class="whiteboard-container">
-                <img src="SA_pics/graphe_1.png" alt="Kendall">
-                <canvas class="whiteboard-canvas" id="grid1"></canvas>
-                <canvas class="whiteboard-canvas" id="whiteboard1"></canvas>
+            
+            <!-- Image Whiteboard -->
+            <div class="whiteboard-container whiteboard-image" style="height: 300px; background-image: url('SA_pics/graphe_1.png')">
+                <canvas class="whiteboard-canvas" id="image-whiteboard"></canvas>
             </div>
-            <div class="whiteboard-controls image-controls">
-                <button onclick="toggleGrid(1)">Grid</button>
-                <button onclick="toggleBlank(1)">Blank</button>
-                <button class="undo-btn" onclick="undoDrawing(1)">Undo</button>
-                <button class="clear-btn" onclick="clearWhiteboard(1)">Clear</button>
+            <div class="controls">
+                <button style="background: var(--warning-color);" onclick="whiteboards.image.undo()">Undo</button>
+                <button style="background: var(--danger-color); color: white" onclick="whiteboards.image.clear()">Clear</button>
             </div>
 
             <!-- Question 1 -->
             <div class="question">
-                <p>1. Estimate how many Calories Kendall
-burns in 20 min.</p>
+                <p>1. Estimate how many Calories Kendall burns in 20 min.</p>
                 <div class="options">
-    <button class="option" data-answer="a" onclick="checkAnswer(1, 'a')">A) 300 calories</button>
-    <button class="option" data-answer="b" onclick="checkAnswer(1, 'b')">B) 400 calories</button>
-    <button class="option" data-answer="c" onclick="checkAnswer(1, 'c')">C) 500 calories</button>
-    <button class="option" data-answer="d" onclick="checkAnswer(1, 'd')">D) 600 calories</button>
+    <button class="option" data-answer="a">A) 300 calories</button>
+    <button class="option" data-answer="b">B) 400 calories</button>
+    <button class="option" data-answer="c">C) 500 calories</button>
+    <button class="option" data-answer="d">D) 600 calories</button>
 </div>
-        <div class="feedback" id="feedback1"></div>
-       
+<div class="feedback" id="feedback1"></div>
+
             </div>
 
-            <!-- Regular Whiteboard for Question 2 -->
-            <div class="whiteboard-container" style="width: 75%; height: 300px;">
-                <canvas class="whiteboard-canvas" id="whiteboard2"></canvas>
+            <!-- Grid Whiteboard -->
+            <div class="whiteboard-container" style="height: 400px;">
+                <canvas class="whiteboard-canvas" id="grid-layer"></canvas>
+                <canvas class="whiteboard-canvas" id="drawing-layer"></canvas>
             </div>
-            <div class="whiteboard-controls regular-controls">
-                <button class="undo-btn" onclick="undoDrawing(2)">Undo</button>
-                <button class="clear-btn" onclick="clearWhiteboard(2)">Clear</button>
-            </div>
-
-            <!-- Question 2 -->
-            <div class="question">
-                <p>2. Who walked farther in the first 4 s and by how much?</p>
-                <div class="options">
-    <button class="option" data-answer="a" onclick="checkAnswer(2, 'a')">A) John; 1 m</button>
-    <button class="option" data-answer="b" onclick="checkAnswer(2, 'b')">B) John; 2 m</button>
-    <button class="option" data-answer="c" onclick="checkAnswer(2, 'c')">C) Bill; 1 m</button>
-    <button class="option" data-answer="d" onclick="checkAnswer(2, 'd')">D) Bill; 2 m</button>
-</div>
-           <div class="feedback" id="feedback2"></div>
-     
+            <div class="controls">
+                <button style="background: var(--primary-color); color: white" onclick="whiteboards.grid.toggleGrid()">Toggle Grid</button>
+                <button style="background: var(--warning-color);" onclick="whiteboards.grid.undo()">Undo</button>
+                <button style="background: var(--danger-color); color: white" onclick="whiteboards.grid.clear()">Clear</button>
             </div>
         </section>
     </main>
-<script>
-        const whiteboards = {};
-        const MAX_HISTORY = 50;
+
+    <script>
+        class Whiteboard {
+            constructor(canvasId, options = {}) {
+                this.canvas = document.getElementById(canvasId);
+                this.ctx = this.canvas.getContext('2d');
+                this.drawing = false;
+                this.history = [];
+                this.currentStep = -1;
+                this.options = {
+                    grid: false,
+                    image: null,
+                    ...options
+                };
+
+                this.init();
+            }
+
+            init() {
+                // Set canvas size
+                const container = this.canvas.parentElement;
+                this.canvas.width = container.offsetWidth;
+                this.canvas.height = container.offsetHeight;
+
+                // Set default styles
+                this.ctx.lineWidth = 2;
+                this.ctx.lineCap = 'round';
+                this.ctx.strokeStyle = '#000';
+
+                // Event listeners
+                this.canvas.addEventListener('mousedown', this.startDrawing.bind(this));
+                this.canvas.addEventListener('mousemove', this.draw.bind(this));
+                this.canvas.addEventListener('mouseup', this.stopDrawing.bind(this));
+                this.canvas.addEventListener('mouseout', this.stopDrawing.bind(this));
+
+                if (this.options.grid) this.drawGrid();
+                if (this.options.image) this.loadImage();
+            }
+
+            startDrawing(e) {
+                this.drawing = true;
+                const { offsetX: x, offsetY: y } = e;
+                this.ctx.beginPath();
+                this.ctx.moveTo(x, y);
+                this.saveState();
+            }
+
+            draw(e) {
+                if (!this.drawing) return;
+                const { offsetX: x, offsetY: y } = e;
+                this.ctx.lineTo(x, y);
+                this.ctx.stroke();
+            }
+
+            stopDrawing() {
+                this.drawing = false;
+                this.ctx.closePath();
+            }
+
+            drawGrid() {
+                this.ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
+                for (let x = 0; x <= this.canvas.width; x += 20) {
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(x, 0);
+                    this.ctx.lineTo(x, this.canvas.height);
+                    this.ctx.stroke();
+                }
+                for (let y = 0; y <= this.canvas.height; y += 20) {
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(0, y);
+                    this.ctx.lineTo(this.canvas.width, y);
+                    this.ctx.stroke();
+                }
+            }
+
+            toggleGrid() {
+                this.options.grid = !this.options.grid;
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                if (this.options.grid) this.drawGrid();
+                this.restoreDrawing();
+            }
+
+            saveState() {
+                const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+                this.history = this.history.slice(0, this.currentStep + 1);
+                this.history.push(imageData);
+                this.currentStep = Math.min(this.currentStep + 1, 49);
+            }
+
+            undo() {
+                if (this.currentStep > 0) {
+                    this.currentStep--;
+                    this.ctx.putImageData(this.history[this.currentStep], 0, 0);
+                }
+            }
+
+            clear() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                if (this.options.grid) this.drawGrid();
+                this.history = [];
+                this.currentStep = -1;
+                this.saveState();
+            }
+
+            loadImage() {
+                const img = new Image();
+                img.src = this.options.image;
+                img.onload = () => {
+                    this.ctx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height);
+                    this.saveState();
+                };
+            }
+
+            restoreDrawing() {
+                if (this.history.length > 0) {
+                    this.ctx.putImageData(this.history[this.currentStep], 0, 0);
+                }
+            }
+        }
 
         // Initialize whiteboards
-        document.querySelectorAll('.whiteboard-container').forEach((container, index) => {
-            const id = index + 1;
-            const img = container.querySelector('img');
-            const drawingCanvas = container.querySelector(`#whiteboard${id}`);
-            const gridCanvas = container.querySelector(`#grid${id}`);
+        const whiteboards = {
+            image: new Whiteboard('image-whiteboard', { image: 'SA_pics/graphe_1.png' }),
+            grid: new Whiteboard('drawing-layer', { grid: true })
+        };
 
-            if (img) {
-                img.onload = () => {
-                    container.style.width = `${img.naturalWidth}px`;
-                    container.style.height = `${img.naturalHeight}px`;
-                    initCanvas(drawingCanvas, gridCanvas, id);
-                };
-            } else {
-                initCanvas(drawingCanvas, gridCanvas, id);
-            }
-        });
-
-        function initCanvas(drawingCanvas, gridCanvas, id) {
-            // Set canvas sizes
-            const container = drawingCanvas.parentElement;
-            [drawingCanvas, gridCanvas].forEach(canvas => {
-                if (!canvas) return;
-                canvas.width = container.offsetWidth;
-                canvas.height = container.offsetHeight;
-            });
-
-            // Initialize drawing context
-            const ctx = drawingCanvas.getContext('2d');
-            ctx.lineCap = 'round';
-            ctx.lineJoin = 'round';
-            ctx.lineWidth = 2;
-            ctx.strokeStyle = '#000000';
-
-            whiteboards[id] = {
-                ctx,
-                isDrawing: false,
-                history: [],
-                currentStep: -1
-            };
-
-            setupEventListeners(drawingCanvas, id);
-            saveState(id); // Save initial blank state
-        }
-
-        function setupEventListeners(canvas, id) {
-            const start = e => {
-                e.preventDefault();
-                const rect = canvas.getBoundingClientRect();
-                const x = (e.clientX || e.touches[0].clientX) - rect.left;
-                const y = (e.clientY || e.touches[0].clientY) - rect.top;
-                startDrawing(id, x, y);
-            };
-
-            const move = e => {
-                e.preventDefault();
-                if (!whiteboards[id].isDrawing) return;
-                const rect = canvas.getBoundingClientRect();
-                const x = (e.clientX || e.touches[0].clientX) - rect.left;
-                const y = (e.clientY || e.touches[0].clientY) - rect.top;
-                draw(id, x, y);
-            };
-
-            canvas.addEventListener('mousedown', start);
-            canvas.addEventListener('mousemove', move);
-            canvas.addEventListener('mouseup', () => stopDrawing(id));
-            canvas.addEventListener('mouseout', () => stopDrawing(id));
-            canvas.addEventListener('touchstart', start);
-            canvas.addEventListener('touchmove', move);
-            canvas.addEventListener('touchend', () => stopDrawing(id));
-        }
-
-        function startDrawing(id, x, y) {
-            const wb = whiteboards[id];
-            wb.isDrawing = true;
-            wb.ctx.beginPath();
-            wb.ctx.moveTo(x, y);
-        }
-
-        function draw(id, x, y) {
-            const wb = whiteboards[id];
-            if (!wb.isDrawing) return;
-            wb.ctx.lineTo(x, y);
-            wb.ctx.stroke();
-        }
-
-        function stopDrawing(id) {
-            const wb = whiteboards[id];
-            if (wb.isDrawing) {
-                wb.ctx.closePath();
-                saveState(id);
-            }
-            wb.isDrawing = false;
-        }
-
-        function saveState(id) {
-            const wb = whiteboards[id];
-            const canvas = wb.ctx.canvas;
-            const imageData = wb.ctx.getImageData(0, 0, canvas.width, canvas.height);
-            
-            // Manage history
-            wb.history = wb.history.slice(0, wb.currentStep + 1);
-            wb.history.push(imageData);
-            wb.currentStep = Math.min(wb.currentStep + 1, MAX_HISTORY - 1);
-        }
-
-        function undoDrawing(id) {
-            const wb = whiteboards[id];
-            if (wb.currentStep > 0) {
-                wb.currentStep--;
-                wb.ctx.putImageData(wb.history[wb.currentStep], 0, 0);
-            }
-        }
-
-        function clearWhiteboard(id) {
-            const wb = whiteboards[id];
-            wb.ctx.clearRect(0, 0, wb.ctx.canvas.width, wb.ctx.canvas.height);
-            wb.history = [];
-            wb.currentStep = -1;
-            saveState(id);
-        }
-
-        function toggleGrid(id) {
-            const gridCanvas = document.querySelector(`#grid${id}`);
-            if (!gridCanvas) return;
-
-            const ctx = gridCanvas.getContext('2d');
-            ctx.clearRect(0, 0, gridCanvas.width, gridCanvas.height);
-
-            if (!gridCanvas.dataset.gridVisible) {
-                ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
-                ctx.lineWidth = 1;
-
-                // Draw grid
-                for (let x = 0; x <= gridCanvas.width; x += 20) {
-                    ctx.beginPath();
-                    ctx.moveTo(x, 0);
-                    ctx.lineTo(x, gridCanvas.height);
-                    ctx.stroke();
-                }
-
-                for (let y = 0; y <= gridCanvas.height; y += 20) {
-                    ctx.beginPath();
-                    ctx.moveTo(0, y);
-                    ctx.lineTo(gridCanvas.width, y);
-                    ctx.stroke();
-                }
-
-                gridCanvas.dataset.gridVisible = "true";
-            } else {
-                gridCanvas.dataset.gridVisible = "";
-            }
-        }
-
-        function toggleBlank(id) {
-            const gridCanvas = document.querySelector(`#grid${id}`);
-            if (gridCanvas) {
-                gridCanvas.getContext('2d').clearRect(0, 0, gridCanvas.width, gridCanvas.height);
-            }
-        }
-
-
-    
-// Configuration
-const correctAnswers = { 1: 'a', 2: 'd' };
+        // Correct answers
+const correctAnswers = { 1: "a" };
+const attempts = { 1: 0 };
 const maxAttempts = 2;
-const attempts = { 1: 0, 2: 0 }; // Initialize attempts for all questions
 
+// Function to check answer
 function checkAnswer(qNum, selected) {
     const feedback = document.getElementById(`feedback${qNum}`);
-    // FIX #1: Use proper question container selection
-    const questionDiv = document.querySelector(`.question:nth-of-type(${qNum})`);
-    const options = questionDiv.querySelectorAll('.option');
+    const buttons = document.querySelectorAll(`.question:nth-of-type(${qNum}) .option`);
     const correctKey = correctAnswers[qNum];
 
-    // FIX #2: Proper attempt tracking
-    if (attempts[qNum] >= maxAttempts) return;
+    if (attempts[qNum] >= maxAttempts) return; // Stop if max attempts reached
+
+    attempts[qNum]++;
 
     // Clear previous styles
-    options.forEach(opt => {
-        opt.classList.remove('correct', 'incorrect');
-    });
+    buttons.forEach((btn) => btn.classList.remove("correct", "incorrect"));
 
     if (selected === correctKey) {
         feedback.innerHTML = "✅ Correct!";
-        feedback.style.backgroundColor = '#d4edda';
-        options.forEach(opt => opt.disabled = true);
-        questionDiv.querySelector(`.option[data-answer="${correctKey}"]`).classList.add('correct');
+        feedback.style.backgroundColor = "#d4edda";
+        feedback.style.display = "block";
+        buttons.forEach((btn) => (btn.disabled = true));
+        document.querySelector(`.question:nth-of-type(${qNum}) .option[data-answer="${correctKey}"]`).classList.add("correct");
     } else {
-        attempts[qNum]++;
-        const remaining = maxAttempts - attempts[qNum];
-        
-        // FIX #3: Mark incorrect answer
-        questionDiv.querySelector(`.option[data-answer="${selected}"]`).classList.add('incorrect');
-        
-        if (remaining > 0) {
-            feedback.innerHTML = `❌ Incorrect (${remaining} attempt${remaining > 1 ? 's' : ''} left)`;
-            feedback.style.backgroundColor = '#f8d7da';
+        if (attempts[qNum] < maxAttempts) {
+            feedback.innerHTML = `❌ Incorrect (${maxAttempts - attempts[qNum]} attempt(s) left)`;
+            feedback.style.backgroundColor = "#f8d7da";
         } else {
             feedback.innerHTML = `📘 Correct answer: <strong>${
-                questionDiv.querySelector(`.option[data-answer="${correctKey}"]`).textContent
+                document.querySelector(`.question:nth-of-type(${qNum}) .option[data-answer="${correctKey}"]`).textContent
             }</strong>`;
-            feedback.style.backgroundColor = '#fff3cd';
-            options.forEach(opt => opt.disabled = true);
-            questionDiv.querySelector(`.option[data-answer="${correctKey}"]`).classList.add('correct');
+            feedback.style.backgroundColor = "#fff3cd";
+            buttons.forEach((btn) => (btn.disabled = true));
+            document.querySelector(`.question:nth-of-type(${qNum}) .option[data-answer="${correctKey}"]`).classList.add("correct");
         }
+        feedback.style.display = "block";
     }
-    
-    // Ensure feedback visibility
-    feedback.style.display = 'block';
-    feedback.style.padding = '10px';
-    feedback.style.borderRadius = '4px';
-    feedback.style.marginTop = '10px';
 }
 
+// Attach event listeners to answer buttons
+document.querySelectorAll(".option").forEach((button) => {
+    button.addEventListener("click", function () {
+        const qNum = this.closest(".question").querySelector(".feedback").id.replace("feedback", "");
+        const selected = this.getAttribute("data-answer");
+        checkAnswer(qNum, selected);
+    });
+});
+
     </script>
+</body>
     
 
    
