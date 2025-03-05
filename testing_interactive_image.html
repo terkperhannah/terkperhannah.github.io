@@ -116,12 +116,13 @@
             <div class="question">
                 <p>1. Estimate how many Calories Kendall burns in 20 min.</p>
                 <div class="options">
-                    <button class="option">A) 300 calories</button>
-                    <button class="option">B) 400 calories</button>
-                    <button class="option">C) 500 calories</button>
-                    <button class="option">D) 600 calories</button>
-                </div>
-                <div class="feedback" id="feedback1"></div>
+    <button class="option" data-answer="a">A) 300 calories</button>
+    <button class="option" data-answer="b">B) 400 calories</button>
+    <button class="option" data-answer="c">C) 500 calories</button>
+    <button class="option" data-answer="d">D) 600 calories</button>
+</div>
+<div class="feedback" id="feedback1"></div>
+
             </div>
 
             <!-- Grid Whiteboard -->
@@ -261,6 +262,56 @@
             image: new Whiteboard('image-whiteboard', { image: 'SA_pics/graphe_1.png' }),
             grid: new Whiteboard('drawing-layer', { grid: true })
         };
+
+        // Correct answers
+const correctAnswers = { 1: "a" };
+const attempts = { 1: 0 };
+const maxAttempts = 2;
+
+// Function to check answer
+function checkAnswer(qNum, selected) {
+    const feedback = document.getElementById(`feedback${qNum}`);
+    const buttons = document.querySelectorAll(`.question:nth-of-type(${qNum}) .option`);
+    const correctKey = correctAnswers[qNum];
+
+    if (attempts[qNum] >= maxAttempts) return; // Stop if max attempts reached
+
+    attempts[qNum]++;
+
+    // Clear previous styles
+    buttons.forEach((btn) => btn.classList.remove("correct", "incorrect"));
+
+    if (selected === correctKey) {
+        feedback.innerHTML = "✅ Correct!";
+        feedback.style.backgroundColor = "#d4edda";
+        feedback.style.display = "block";
+        buttons.forEach((btn) => (btn.disabled = true));
+        document.querySelector(`.question:nth-of-type(${qNum}) .option[data-answer="${correctKey}"]`).classList.add("correct");
+    } else {
+        if (attempts[qNum] < maxAttempts) {
+            feedback.innerHTML = `❌ Incorrect (${maxAttempts - attempts[qNum]} attempt(s) left)`;
+            feedback.style.backgroundColor = "#f8d7da";
+        } else {
+            feedback.innerHTML = `📘 Correct answer: <strong>${
+                document.querySelector(`.question:nth-of-type(${qNum}) .option[data-answer="${correctKey}"]`).textContent
+            }</strong>`;
+            feedback.style.backgroundColor = "#fff3cd";
+            buttons.forEach((btn) => (btn.disabled = true));
+            document.querySelector(`.question:nth-of-type(${qNum}) .option[data-answer="${correctKey}"]`).classList.add("correct");
+        }
+        feedback.style.display = "block";
+    }
+}
+
+// Attach event listeners to answer buttons
+document.querySelectorAll(".option").forEach((button) => {
+    button.addEventListener("click", function () {
+        const qNum = this.closest(".question").querySelector(".feedback").id.replace("feedback", "");
+        const selected = this.getAttribute("data-answer");
+        checkAnswer(qNum, selected);
+    });
+});
+
     </script>
 </body>
 
