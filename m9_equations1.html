@@ -189,12 +189,12 @@
 
         <!-- Question 2 -->
         <div class="question">
-            <p>2. Who walked farther in the first 4 s and by how much?</p>
+            <p>2. At a school fundraiser, 675 students bought tickets to the annual school dance. This represents three-fourths of the total students at the school. How many students did not buy a ticket?</p>
             <div class="options">
-                <button class="option" onclick="checkAnswer(2, 'a')">A) John; 1 m</button>
-                <button class="option" onclick="checkAnswer(2, 'b')">B) John; 2 m</button>
-                <button class="option" onclick="checkAnswer(2, 'c')">C) Bill; 1 m</button>
-                <button class="option" onclick="checkAnswer(2, 'd')">D) Bill; 2 m</button>
+                <button class="option" onclick="checkAnswer(2, 'a')">A) 150</button>
+                <button class="option" onclick="checkAnswer(2, 'b')">B) 180</button>
+                <button class="option" onclick="checkAnswer(2, 'c')">C) 225</button>
+                <button class="option" onclick="checkAnswer(2, 'd')">D) 250</button>
             </div>
             <div class="feedback" id="feedback2"></div>
             <canvas class="whiteboard" id="whiteboard2"></canvas>
@@ -206,12 +206,12 @@
 
         <!-- Question 3 -->
 <div class="question">
-    <p>3. Which linear relation represents John's graph?</p>
+    <p>3. On a history exam, a student scored 21 points, which resulted in a mark of 70%. What score would be needed to achieve a 100%?</p>
     <div class="options">
-        <button class="option" onclick="checkAnswer(3, 'b')">A) d = 1.5t</button>
-        <button class="option" onclick="checkAnswer(3, 'b')">B) d = 1.5t + 1.5</button>
-        <button class="option" onclick="checkAnswer(3, 'c')">C) d = 3t</button>
-        <button class="option" onclick="checkAnswer(3, 'd')">D) d = 3t + 3</button>
+        <button class="option" onclick="checkAnswer(3, 'b')">A) 25</button>
+        <button class="option" onclick="checkAnswer(3, 'b')">B) 28</button>
+        <button class="option" onclick="checkAnswer(3, 'c')">C) 30</button>
+        <button class="option" onclick="checkAnswer(3, 'd')">D) 35</button>
     </div>
     <div class="feedback" id="feedback3"></div>
     <canvas class="whiteboard" id="whiteboard3"></canvas>
@@ -223,12 +223,13 @@
 
 <!-- Question 4 -->
 <div class="question">
-    <p>4. Which linear relation represent Bill's graph?</p>
+    <p>4. Solve for <i>x</i>:</p>
+   <p> \( \frac{1}{3} + \frac{1}{6} = \frac{5}{6}x \) </p>
     <div class="options">
-        <button class="option" onclick="checkAnswer(4, 'a')">A) d = 3t + 3</button>
-        <button class="option" onclick="checkAnswer(4, 'b')">B) d = 3t</button>
-        <button class="option" onclick="checkAnswer(4, 'c')">C) d = 2t + 2</button>
-        <button class="option" onclick="checkAnswer(4, 'd')">D) d = 2t</button>
+        <button class="option" onclick="checkAnswer(4, 'a')">A) \( x = \frac{2}{5} \)</button>
+        <button class="option" onclick="checkAnswer(4, 'b')">B) \( x = \frac{3}{5} \)</button>
+        <button class="option" onclick="checkAnswer(4, 'c')">C) \( x = \frac{5}{4} \)</button>
+        <button class="option" onclick="checkAnswer(4, 'd')">D) \( x = \frac{2}{3} \)</button>
     </div>
     <div class="feedback" id="feedback4"></div>
     <canvas class="whiteboard" id="whiteboard4"></canvas>
@@ -433,7 +434,7 @@ were made.</p>
     const whiteboards = {};
     const MAX_HISTORY = 50;
     const correctAnswers = {
-        1: 'a', 2: 'd', 3: 'b', 4: 'd',
+        1: 'a', 2: 'c', 3: 'c', 4: 'd',
         5: 'c', 6: 'c', 7: 'd', 8: 'b', 9: 'd', 10: 'c', 11: 'a', 12: 'c', 13: 'c', 14: 'b', 15: 'd'
     };
     const attempts = { 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0, 10:0, 11:0, 12:0, 13:0, 14:0, 15:0 };
