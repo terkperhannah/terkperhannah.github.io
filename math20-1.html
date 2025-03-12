@@ -3,8 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math 20-1</title>
+    <title>Math 20</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .units-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.unit-box {
+    background-color: #4caf50;
+    color: white;
+    text-align: center;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 250px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.unit-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    background-color: #388e3c;
+}
+
+.unit-box span {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.9em;
+}
+
+    </style>
 </head>
 <body>
     <header>
@@ -54,7 +89,46 @@
     </nav>
     <main>
         <section>
-            <h2>Welcome to Math 20-1</h2>
+            <h2 style="text-align: center;">Welcome to Math 20</h2>
+<p style="text-align: center;">Explore the course structure for Math 20-1 and Math 20-2 below.</p>
+
+<div class="container">
+    <!-- Left Column: Math 20-1 -->
+    <div class="column">
+        <h2>Math 20-1</h2>
+        <div class="units-container">
+            <a href="m20-1_unit1.html" class="unit-box">Unit 1: Sequences and Series<br><span>Exploring arithmetic and geometric sequences</span></a>
+            <a href="m20-1_unit2.html" class="unit-box">Unit 2: Trigonometry<br><span>Solving non-right triangles using the sine and cosine laws</span></a>
+            <a href="m20-1_unit3.html" class="unit-box">Unit 3: Quadratics<br><span>Factoring, graphing, and solving quadratic equations</span></a>
+            <a href="m20-1_unit4.html" class="unit-box">Unit 4: Radicals<br><span>Simplifying and solving equations with radicals</span></a>
+            <a href="m20-1_unit5.html" class="unit-box">Unit 5: Rational Expressions<br><span>Operations with rational expressions and equations</span></a>
+            <a href="m20-1_unit6.html" class="unit-box">Unit 6: Absolute Value and Reciprocal Functions<br><span>Graphing and analyzing absolute value and reciprocal functions</span></a>
+            <a href="m20-1_unit7.html" class="unit-box">Unit 7: Systems of Equations and Inequalities<br><span>Solving linear and quadratic systems</span></a>
+            <a href="m20-1_review.html" class="unit-box">Final Review<br><span>Comprehensive review of all topics</span></a>
+        </div>
+    </div>
+
+    <!-- Right Column: Math 20-2 -->
+    <div class="column">
+        <h2>Math 20-2</h2>
+        <div class="units-container">
+            <a href="m20-2_unit1.html" class="unit-box">Unit 1: Radicals (Numbers and Logic)<br><span>Exploring rational and irrational numbers</span></a>
+            <a href="m20-2_unit2.html" class="unit-box">Unit 2: Geometry<br><span>Working with angles, polygons, and transformations</span></a>
+            <a href="m20-2_unit3.html" class="unit-box">Unit 3: Quadratic Relations and Equations<br><span>Understanding quadratic functions and equations</span></a>
+            <a href="m20-2_unit4.html" class="unit-box">Unit 4: Measurement<br><span>Surface area, volume, and scale diagrams</span></a>
+            <a href="m20-2_unit5.html" class="unit-box">Unit 5: Statistics<br><span>Analyzing and interpreting data</span></a>
+            <a href="m20-2_review.html" class="unit-box">Final Review<br><span>Comprehensive review of all topics</span></a>
+        </div>
+    </div>
+</div>
+
+
+            <h3>Resources:</h3>
+            <ul>
+                <li><a href="#">Interactive Practice Problems</a></li>
+                <li><a href="#">Video Tutorials</a></li>
+                <li><a href="#">Extra Worksheets</a></li>
+            </ul>
         </section>
     </main>
     <footer>
