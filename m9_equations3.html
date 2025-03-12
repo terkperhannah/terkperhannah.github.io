@@ -167,19 +167,17 @@
         
         <section>
 
-            <h1 style="text-align: center;">6.2 – Solving Equations Using Balance Strategies</h1>
+            <h1 style="text-align: center;"> 6.3 – Introduction to Linear Inequalities</h1>
 
 <!-- Question 1 -->
         <div class="question">
-            <p>1.        Solve for \( x \):
-        \[
-        5x + \frac{3}{4} = \frac{7}{4}
-        \]</p>
+            <p>1.Use a symbol to write an inequality that corresponds to this statement:  
+        **\( w \) is greater than \(-6\).**</p>
             <div class="options">
-                <button class="option" onclick="checkAnswer(1, 'a')">A) \( x = \frac{1}{4} \)</button>
-                <button class="option" onclick="checkAnswer(1, 'b')">B) \( x = \frac{2}{5} \)</button>
-                <button class="option" onclick="checkAnswer(1, 'c')">C) \( x = \frac{4}{5} \)</button>
-                <button class="option" onclick="checkAnswer(1, 'd')">D) \( x = \frac{1}{5} \)</button>
+                <button class="option" onclick="checkAnswer(1, 'a')">A) \( w \geq 6 \)</button>
+                <button class="option" onclick="checkAnswer(1, 'b')">B) \( w > 6 \)</button>
+                <button class="option" onclick="checkAnswer(1, 'c')">C) \( w > -6 \)</button>
+                <button class="option" onclick="checkAnswer(1, 'd')">D) \( w \geq -6 \)</button>
             </div>
             <div class="feedback" id="feedback1"></div>
             <canvas class="whiteboard" id="whiteboard1"></canvas>
@@ -191,15 +189,13 @@
 
         <!-- Question 2 -->
         <div class="question">
-            <p>2. Solve for \( y \):
-        \[
-        3y - \frac{5}{6} = \frac{7}{6}
-        \]</p>
+            <p>2.Use a symbol to write an inequality that corresponds to this statement:  
+        **\( x \) is less than or equal to 12.**</p>
             <div class="options">
-                <button class="option" onclick="checkAnswer(2, 'a')">A) \( y = \frac{4}{3} \)</button>
-                <button class="option" onclick="checkAnswer(2, 'b')">B) \( y = \frac{2}{3} \)</button>
-                <button class="option" onclick="checkAnswer(2, 'c')">C) \( y = \frac{6}{5} \)</button>
-                <button class="option" onclick="checkAnswer(2, 'd')">D) \( y = \frac{3}{2} \)</button>
+                <button class="option" onclick="checkAnswer(2, 'a')">A) \( x > 12 \)</button>
+                <button class="option" onclick="checkAnswer(2, 'b')">B) \( x \leq 12 \)</button>
+                <button class="option" onclick="checkAnswer(2, 'c')">C) \( x \geq 12 \)</button>
+                <button class="option" onclick="checkAnswer(2, 'd')">D) \( x < -12 \)</button>
             </div>
             <div class="feedback" id="feedback2"></div>
             <canvas class="whiteboard" id="whiteboard2"></canvas>
@@ -211,15 +207,13 @@
 
         <!-- Question 3 -->
 <div class="question">
-    <p>3.         Solve for \( x \):
-        \[
-        -1.25 = -0.2x - 0.85
-        \]</p>
+    <p>3. Use a symbol to write an inequality that corresponds to this statement:  
+        **The temperature \( T \) is greater than or equal to -2°C.**</p>
     <div class="options">
-        <button class="option" onclick="checkAnswer(3, 'b')">A) \( x = 2 \)</button>
-        <button class="option" onclick="checkAnswer(3, 'b')">B) \( x = 3 \</button>
-        <button class="option" onclick="checkAnswer(3, 'c')">C) \( x = 4 \</button>
-        <button class="option" onclick="checkAnswer(3, 'd')">D) \( x = 5 \</button>
+        <button class="option" onclick="checkAnswer(3, 'b')">A) \( T > -2 \)</button>
+        <button class="option" onclick="checkAnswer(3, 'b')">B) \( T \geq -2 \)</button>
+        <button class="option" onclick="checkAnswer(3, 'c')">C) \( T < -2 \)</button>
+        <button class="option" onclick="checkAnswer(3, 'd')">D) \( T \leq -2 \)</button>
     </div>
     <div class="feedback" id="feedback3"></div>
     <canvas class="whiteboard" id="whiteboard3"></canvas>
@@ -458,7 +452,7 @@ were made.</p>
     const whiteboards = {};
     const MAX_HISTORY = 50;
     const correctAnswers = {
-        1: 'c', 2: 'a', 3: 'b', 4: 'a',
+        1: 'c', 2: 'b', 3: 'b', 4: 'a',
         5: 'b', 6: 'c', 7: 'a', 8: 'c', 9: 'c', 10: 'b', 11: 'a', 12: 'c', 13: 'c', 14: 'b', 15: 'd'
     };
     const attempts = { 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0, 10:0, 11:0, 12:0, 13:0, 14:0, 15:0 };
