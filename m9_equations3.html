@@ -225,15 +225,13 @@
 
 <!-- Question 4 -->
 <div class="question">
-    <p>        Solve for \( x \):
-        \[
-        -0.92 = -0.4x - 0.32
-        \]</p>
+    <p> Which of these graphs is a solution of \( t \leq 1 \)?</p>
+    <img src="SA_pics/linin1.png" alt="Linear Inequality">
     <div class="options">
-        <button class="option" onclick="checkAnswer(4, 'a')">A) \( x = 1.5 \)</button>
-        <button class="option" onclick="checkAnswer(4, 'b')">B) \( x = 2 \)</button>
-        <button class="option" onclick="checkAnswer(4, 'c')">C) \( x = 2.3 \)</button>
-        <button class="option" onclick="checkAnswer(4, 'd')">D) \( x = 3 \</button>
+        <button class="option" onclick="checkAnswer(4, 'a')">A) Graph i</button>
+        <button class="option" onclick="checkAnswer(4, 'b')">B) Graph ii</button>
+        <button class="option" onclick="checkAnswer(4, 'c')">C) \Graph iii</button>
+        <button class="option" onclick="checkAnswer(4, 'd')">D) Graph iv</button>
     </div>
     <div class="feedback" id="feedback4"></div>
     <canvas class="whiteboard" id="whiteboard4"></canvas>
@@ -452,7 +450,7 @@ were made.</p>
     const whiteboards = {};
     const MAX_HISTORY = 50;
     const correctAnswers = {
-        1: 'c', 2: 'b', 3: 'b', 4: 'a',
+        1: 'c', 2: 'b', 3: 'b', 4: 'd',
         5: 'b', 6: 'c', 7: 'a', 8: 'c', 9: 'c', 10: 'b', 11: 'a', 12: 'c', 13: 'c', 14: 'b', 15: 'd'
     };
     const attempts = { 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0, 10:0, 11:0, 12:0, 13:0, 14:0, 15:0 };
