@@ -1,1 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math 9 - Equation Solving</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Math</a>
+                <ul class="submenu">
+                    <li><a href="math7.html">Math 7</a></li>
+                    <li><a href="math8.html">Math 8</a></li>
+                    <li><a href="math9.html">Math 9</a></li>
+                    <li><a href="math10.html">Math 10</a></li>
+                    <li><a href="math11.html">Math 11</a></li>
+                    <li><a href="math12.html">Math 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Science</a>
+                <ul class="submenu">
+                    <li><a href="science7.html">Science 7</a></li>
+                    <li><a href="science8.html">Science 8</a></li>
+                    <li><a href="science9.html">Science 9</a></li>
+                    <li><a href="science10.html">Science 10</a></li>
+                    <li><a href="science11.html">Science 11</a></li>
+                    <li><a href="science12.html">Science 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Computer Science</a>
+                <ul class="submenu">
+                    <li><a href="cs-general.html">General</a></li>
+                    <li><a href="cs-robotics.html">Robotics</a></li>
+                    <li><a href="VGD.html">Video Game Design</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">M.Ed-Courses</a>
+                <ul class="submenu">
+                    <li><a href="med-general.html">General</a></li>
+                    <li><a href="edu714.html">EDU 714</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <style>
+        /* Modified Whiteboard Style */
+        .whiteboard {
+            width: 100%;
+            height: 150px;
+            border: 2px solid #333;
+            margin-top: 15px;
+            background-color: white;
+            background-image: linear-gradient(rgba(200, 200, 200, 0.3) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(200, 200, 200, 0.3) 1px, transparent 1px);
+            background-size: 20px 20px;
+            touch-action: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
+        /* Question styling remains same */
+        .question { margin-bottom: 30px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
+        .options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 15px 0; }
+        .option { padding: 12px 15px; background-color: #f8f9fa; border: 2px solid #dee2e6; border-radius: 8px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Math 9 - Equation Solving</h1>
+    </header>
+    <nav><!-- Keep your existing navigation --></nav>
+
+    <main>
+        <section>
+            <h2>Solve Equations: ax = b, x/a = b, a/x = b</h2>
+            
+            <!-- Question 1 -->
+            <div class="question">
+                <p>1. Solve for x: 3x = 15</p>
+                <div class="options">
+                    <button class="option" onclick="checkAnswer(1, 'c')">A) x = 3</button>
+                    <button class="option" onclick="checkAnswer(1, 'c')">B) x = 12</button>
+                    <button class="option" onclick="checkAnswer(1, 'c')">C) x = 5</button>
+                    <button class="option" onclick="checkAnswer(1, 'c')">D) x = 10</button>
+                </div>
+                <canvas class="whiteboard" id="whiteboard1"></canvas>
+                <div class="whiteboard-controls">
+                    <button onclick="undoDrawing(1)">Undo</button>
+                    <button onclick="clearWhiteboard(1)">Clear</button>
+                </div>
+                <div class="feedback" id="feedback1"></div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question">
+                <p>2. Solve for x: x/4 = 3</p>
+                <div class="options">
+                    <button class="option" onclick="checkAnswer(2, 'b')">A) x = 1.3</button>
+                    <button class="option" onclick="checkAnswer(2, 'b')">B) x = 12</button>
+                    <button class="option" onclick="checkAnswer(2, 'b')">C) x = 7</button>
+                    <button class="option" onclick="checkAnswer(2, 'b')">D) x = 0.75</button>
+                </div>
+                <canvas class="whiteboard" id="whiteboard2"></canvas>
+                <!-- Controls and feedback same as Q1 -->
+            </div>
+
+            <!-- Continue with questions 3-10 following similar pattern -->
+            <!-- Sample questions: -->
+            <div class="question">
+                <p>3. Solve for x: 5/x = 1</p>
+                <div class="options">...</div>
+                <!-- Whiteboard and controls -->
+            </div>
+
+            <!-- Add 7 more questions following the pattern -->
+            
+        </section>
+    </main>
+
+    <script>
+    // Updated Whiteboard Initialization with Grid
+    function initializeWhiteboard(qNum) {
+        const canvas = document.getElementById(`whiteboard${qNum}`);
+        const ctx = canvas.getContext('2d');
+        
+        // Set dimensions
+        canvas.width = 800;  // Wider width
+        canvas.height = 150;
+        
+        // Draw grid
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = '#e0e0e0';
+        
+        // Vertical lines
+        for(let x = 0; x <= canvas.width; x += 20) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, canvas.height);
+            ctx.stroke();
+        }
+        
+        // Horizontal lines
+        for(let y = 0; y <= canvas.height; y += 20) {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(canvas.width, y);
+            ctx.stroke();
+        }
+
+        // Keep existing drawing functionality
+        whiteboards[qNum] = { ctx, isDrawing: false, history: [], currentStep: -1 };
+        saveState(qNum);
+    }
+
+    // Rest of your existing JavaScript remains the same
+    const correctAnswers = {1: 'c', 2: 'b', 3: 'c', 4: 'a', 5: 'd', 6: 'b', 7: 'a', 8: 'c', 9: 'd', 10: 'a'};
+    </script>
+
+           
+   
+    <footer>
+        <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+    </footer>
+</body>
+</html>
