@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Math</a>
+                <ul class="submenu">
+                    <li><a href="math7.html">Math 7</a></li>
+                    <li><a href="math8.html">Math 8</a></li>
+                    <li><a href="math9.html">Math 9</a></li>
+                    <li><a href="math10.html">Math 10</a></li>
+                    <li><a href="math11.html">Math 11</a></li>
+                    <li><a href="math12.html">Math 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Science</a>
+                <ul class="submenu">
+                    <li><a href="science7.html">Science 7</a></li>
+                    <li><a href="science8.html">Science 8</a></li>
+                    <li><a href="science9.html">Science 9</a></li>
+                    <li><a href="science10.html">Science 10</a></li>
+                    <li><a href="science11.html">Science 11</a></li>
+                    <li><a href="science12.html">Science 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Computer Science</a>
+                <ul class="submenu">
+                    <li><a href="cs-general.html">General</a></li>
+                    <li><a href="cs-robotics.html">Robotics</a></li>
+                    <li><a href="VGD.html">Video Game Design</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">M.Ed-Courses</a>
+                <ul class="submenu">
+                    <li><a href="med-general.html">General</a></li>
+                    <li><a href="edu714.html">EDU 714</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+        .options {
+            display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin: 15px 0;
+        }
+        .option {
+            padding: 12px 15px;
+        background-color: #f8f9fa;
+        border: 2px solid #dee2e6;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 15px;
+        text-align: left;
+        transition: all 0.2s ease;
+        color: #212529;
+        }
+        .option:hover {
+        background-color: #e9ecef;
+        transform: translateY(-2px);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .option:active {
+        transform: translateY(0);
+    }
+
+    /* Disabled State */
+    .option:disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+    /* Correct/Incorrect Feedback */
+    .option.correct {
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+        color: #155724;
+    }
+
+    .option.incorrect {
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        color: #721c24;
+    }
+        .whiteboard {
+            width: 100%;
+        height: 200px;
+        border: 2px solid #333;
+        margin-top: 15px;
+        background-color: white;
+        touch-action: none; /* Prevent touch scrolling */
+        -ms-touch-action: none;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        /* Whiteboard Controls */
+    .whiteboard-controls {
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .whiteboard-controls button {
+        padding: 8px 15px;
+        background-color: #6c757d;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .whiteboard-controls button:hover {
+        background-color: #5a6268;
+    }
+
+        .feedback {
+            margin-top: 10px;
+            padding: 5px;
+            border-radius: 4px;
+        }
+    </style>
+        <section>
+            <h2>Another Form of the Equation for a Linear Relation</h2>
+          <p><strong>Use the graphs to answer questions 1-5</strong></p>
+           <img src="SA_pics/Bill_John.png" alt="Bill and John Graph">
+<!-- Question 1 -->
+        <div class="question">
+            <p>1. Who walked at a faster rate?</p>
+            <div class="options">
+                <button class="option" onclick="checkAnswer(1, 'a')">A) Bill</button>
+                <button class="option" onclick="checkAnswer(1, 'b')">B) John</button>
+                <button class="option" onclick="checkAnswer(1, 'c')">C) The graphs do not show who was faster</button>
+                <button class="option" onclick="checkAnswer(1, 'd')">D) They walked at the same rate</button>
+            </div>
+            <div class="feedback" id="feedback1"></div>
+            <canvas class="whiteboard" id="whiteboard1"></canvas>
+            <div class="whiteboard-controls">
+                <button onclick="undoDrawing(1)">Undo</button>
+                <button onclick="clearWhiteboard(1)">Clear</button>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <p>2. Who walked farther in the first 4 s and by how much?</p>
+            <div class="options">
+                <button class="option" onclick="checkAnswer(2, 'a')">A) John; 1 m</button>
+                <button class="option" onclick="checkAnswer(2, 'b')">B) John; 2 m</button>
+                <button class="option" onclick="checkAnswer(2, 'c')">C) Bill; 1 m</button>
+                <button class="option" onclick="checkAnswer(2, 'd')">D) Bill; 2 m</button>
+            </div>
+            <div class="feedback" id="feedback2"></div>
+            <canvas class="whiteboard" id="whiteboard2"></canvas>
+            <div class="whiteboard-controls">
+                <button onclick="undoDrawing(2)">Undo</button>
+                <button onclick="clearWhiteboard(2)">Clear</button>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+<div class="question">
+    <p>3. Which linear relation represents John's graph?</p>
+    <div class="options">
+        <button class="option" onclick="checkAnswer(3, 'b')">A) d = 1.5t</button>
+        <button class="option" onclick="checkAnswer(3, 'b')">B) d = 1.5t + 1.5</button>
+        <button class="option" onclick="checkAnswer(3, 'c')">C) d = 3t</button>
+        <button class="option" onclick="checkAnswer(3, 'd')">D) d = 3t + 3</button>
+    </div>
+    <div class="feedback" id="feedback3"></div>
+    <canvas class="whiteboard" id="whiteboard3"></canvas>
+    <div class="whiteboard-controls">
+        <button onclick="undoDrawing(3)">Undo</button>
+        <button onclick="clearWhiteboard(3)">Clear</button>
+    </div>
+</div>
+
+<!-- Question 4 -->
+<div class="question">
+    <p>4. Which linear relation represent Bill's graph?</p>
+    <div class="options">
+        <button class="option" onclick="checkAnswer(4, 'a')">A) d = 3t + 3</button>
+        <button class="option" onclick="checkAnswer(4, 'b')">B) d = 3t</button>
+        <button class="option" onclick="checkAnswer(4, 'c')">C) d = 2t + 2</button>
+        <button class="option" onclick="checkAnswer(4, 'd')">D) d = 2t</button>
+    </div>
+    <div class="feedback" id="feedback4"></div>
+    <canvas class="whiteboard" id="whiteboard4"></canvas>
+    <div class="whiteboard-controls">
+        <button onclick="undoDrawing(4)">Undo</button>
+        <button onclick="clearWhiteboard(4)">Clear</button>
+    </div>
+</div>
+
+<!-- Question 5 -->
+<div class="question">
+    <p>5. At what time has Bill walked 3 m further than John??</p>
+    <div class="options">
+        <button class="option" onclick="checkAnswer(5, 'a')">A) 2 s</button>
+        <button class="option" onclick="checkAnswer(5, 'b')">B) 4 s</button>
+        <button class="option" onclick="checkAnswer(5, 'c')">C) 6 s</button>
+        <button class="option" onclick="checkAnswer(5, 'd')">D) 8 s</button>
+    </div>
+    <div class="feedback" id="feedback5"></div>
+    <canvas class="whiteboard" id="whiteboard5"></canvas>
+    <div class="whiteboard-controls">
+        <button onclick="undoDrawing(5)">Undo</button>
+        <button onclick="clearWhiteboard(5)">Clear</button>
+    </div>
+</div>
+
+          <p><strong>Use the figures to answer question 6-7</strong></p>
+           <img src="SA_pics/dots_fig.png" alt="3 dot figures">
+<!-- Question 6 -->
+<div class="question">
+    <p>6. Following the pattern above, how many dots will Figure 5 contain?</p>
+    <div class="options">
+        <button class="option" onclick="checkAnswer(6, 'a')">A) 10</button>
+        <button class="option" onclick="checkAnswer(6, 'b')">B) 11</button>
+        <button class="option" onclick="checkAnswer(6, 'c')">C) 12</button>
+        <button class="option" onclick="checkAnswer(6, 'd')">D) 13</button>
+    </div>
+    <div class="feedback" id="feedback6"></div>
+    <canvas class="whiteboard" id="whiteboard6"></canvas>
+    <div class="whiteboard-controls">
+        <button onclick="undoDrawing(6)">Undo</button>
+        <button onclick="clearWhiteboard(6)">Clear</button>
+    </div>
+</div>
+
+<!-- Question 7 -->
+<div class="question">
+    <p>7. Which equation represents the relationship between the figure number (f) and the number of dots (n) in the figure?</p>
+    <div class="options">
+        <button class="option" onclick="checkAnswer(7, 'a')">A) n = 2f+5</button>
+        <button class="option" onclick="checkAnswer(7, 'b')">B) n  8f-1</button>
+        <button class="option" onclick="checkAnswer(7, 'c')">C) f=7n+1</button>
+        <button class="option" onclick="checkAnswer(7, 'd')">D) n=f+7</button>
+    </div>
+    <div class="feedback" id="feedback7"></div>
+    <canvas class="whiteboard" id="whiteboard7"></canvas>
+    <div class="whiteboard-controls">
+        <button onclick="undoDrawing(7)">Undo</button>
+        <button onclick="clearWhiteboard(7)">Clear</button>
+    </div>
+</div>
+
+<!-- Question 8 -->
+<div class="question">
+    <p>8. Which graph represents the equation Y = -x + 6</p>
+    <div class="options">
+        <button class="option" onclick="checkAnswer(8, 'a')">A) <img src="SA_pics/graph_a.png" alt="graph a"></button>
+        <button class="option" onclick="checkAnswer(8, 'b')">B) <img src="SA_pics/graph_b.png" alt="graph b"></button>
+        <button class="option" onclick="checkAnswer(8, 'c')">C) <img src="SA_pics/graph_c.png" alt="graph c"></button>
+        <button class="option" onclick="checkAnswer(8, 'd')">D) <img src="SA_pics/graph_d.png" alt="graph d"></button>
+    </div>
+    <div class="feedback" id="feedback8"></div>
+    <canvas class="whiteboard" id="whiteboard8"></canvas>
+    <div class="whiteboard-controls">
+        <button onclick="undoDrawing(8)">Undo</button>
+        <button onclick="clearWhiteboard(8)">Clear</button>
+    </div>
+</div>
+
+    <!-- Question 9 -->
+<div class="question">
+    <p>9. Which graph represents the equation Y = X</p>
+    <div class="options">
+        <button class="option" onclick="checkAnswer(9, 'a')">A) <img src="SA_pics/graph_a1.png" alt="graph a"></button>
+        <button class="option" onclick="checkAnswer(9, 'b')">B) <img src="SA_pics/graph_b1.png" alt="graph b"></button>
+        <button class="option" onclick="checkAnswer(9, 'c')">C) <img src="SA_pics/graph_c1.png" alt="graph c"></button>
+        <button class="option" onclick="checkAnswer(9, 'd')">D) <img src="SA_pics/graph_d1.png" alt="graph d"></button>
+    </div>
+    <div class="feedback" id="feedback9"></div>
+    <canvas class="whiteboard" id="whiteboard9"></canvas>
+    <div class="whiteboard-controls">
+        <button onclick="undoDrawing(9)">Undo</button>
+        <button onclick="clearWhiteboard(9)">Clear</button>
+    </div>
+</div>
+
+          <!-- Question 10 -->
+<div class="question">
+    <p>10. As flowepots are added individually to a stack, the height of the new stack is represented by the following graph. What is the height of a stack of 4 flowerpots?</p>
+    <img src="SA_pics/pots.png" alt="Flower pot graph">
+  <div class="options">
+        <button class="option" onclick="checkAnswer(10, 'a')">A) 27 cm</button>
+        <button class="option" onclick="checkAnswer(10, 'b')">B) 24 cm</button>
+        <button class="option" onclick="checkAnswer(10, 'c')">C) 21 cm</button>
+        <button class="option" onclick="checkAnswer(10, 'd')">D) 18 cm</button>
+    </div>
+    <div class="feedback" id="feedback10"></div>
+    <canvas class="whiteboard" id="whiteboard10"></canvas>
+    <div class="whiteboard-controls">
+        <button onclick="undoDrawing(10)">Undo</button>
+        <button onclick="clearWhiteboard(10)">Clear</button>
+    </div>
+</div>
+
+      <!-- Question 11 -->
+<div class="question">
+    <p>11. For the equation 10x+5y=40, determine the x-intercept</p>
+  <div class="options">
+        <button class="option" onclick="checkAnswer(11, 'a')">A) x=4</button>
+        <button class="option" onclick="checkAnswer(11, 'b')">B) x=5</button>
+        <button class="option" onclick="checkAnswer(11, 'c')">C) x=8</button>
+        <button class="option" onclick="checkAnswer(11, 'd')">D) x=10</button>
+    </div>
+    <div class="feedback" id="feedback11"></div>
+    <canvas class="whiteboard" id="whiteboard11"></canvas>
+    <div class="whiteboard-controls">
+        <button onclick="undoDrawing(11)">Undo</button>
+        <button onclick="clearWhiteboard(11)">Clear</button>
+    </div>
+</div>      
+
+            <!-- Question 12 -->
+<div class="question">
+    <p>12. 10x+5y=40, determine the y-intercept </p>
+  <div class="options">
+        <button class="option" onclick="checkAnswer(12, 'a')">A) y=4</button>
+        <button class="option" onclick="checkAnswer(12, 'b')">B) y=5</button>
+        <button class="option" onclick="checkAnswer(12, 'c')">C) y=8</button>
+        <button class="option" onclick="checkAnswer(12, 'd')">D) y=10</button>
+    </div>
+    <div class="feedback" id="feedback12"></div>
+    <canvas class="whiteboard" id="whiteboard12"></canvas>
+    <div class="whiteboard-controls">
+        <button onclick="undoDrawing(12)">Undo</button>
+        <button onclick="clearWhiteboard(12)">Clear</button>
+    </div>
+</div> 
+            <!-- Question 13 -->
+<div class="question">
+    <p>13. Which points lie on the graph represented by the equation y=12-5x?
+P(1, 7), Q(2, 14), R(2, 2), S(0, 7) </p>
+  <div class="options">
+        <button class="option" onclick="checkAnswer(13, 'a')">A) Q and R</button>
+        <button class="option" onclick="checkAnswer(13, 'b')">B) P and Q</button>
+        <button class="option" onclick="checkAnswer(13, 'c')">C) P and R</button>
+        <button class="option" onclick="checkAnswer(13, 'd')">D) R and S</button>
+    </div>
+    <div class="feedback" id="feedback13"></div>
+    <canvas class="whiteboard" id="whiteboard13"></canvas>
+    <div class="whiteboard-controls">
+        <button onclick="undoDrawing(13)">Undo</button>
+        <button onclick="clearWhiteboard(13)">Clear</button>
+    </div>
+</div> 
+
+            <!-- Question 14 -->
+<div class="question">
+    <p>14. Describe the graph of the equation x+8=0. </p>
+  <div class="options">
+        <button class="option" onclick="checkAnswer(14, 'a')">A) A vertical line that intersects the x-axis at 8.</button>
+        <button class="option" onclick="checkAnswer(14, 'b')">B) A vertical line that intersects the x-axis at –8.</button>
+        <button class="option" onclick="checkAnswer(14, 'c')">C) A horizontal line that intersects the y-axis at –8.</button>
+        <button class="option" onclick="checkAnswer(14, 'd')">D) A horizontal line that intersects the y-axis at 8.</button>
+    </div>
+    <div class="feedback" id="feedback14"></div>
+    <canvas class="whiteboard" id="whiteboard14"></canvas>
+    <div class="whiteboard-controls">
+        <button onclick="undoDrawing(14)">Undo</button>
+        <button onclick="clearWhiteboard(14)">Clear</button>
+    </div>
+</div> 
+
+            <!-- Question 15 -->
+<div class="question">
+    <p>15. A phone company charges a fixed cost of $2.35 per month, plus $0.53 per minute for local calls and $1.07 per
+minute for long distance calls. Determine the phone bill for a month in which 53 min of local calls and 31 min of long distance calls
+were made.</p>
+  <div class="options">
+        <button class="option" onclick="checkAnswer(15, 'a')">A) $61.04</button>
+        <button class="option" onclick="checkAnswer(15, 'b')">B) $58.97</button>
+        <button class="option" onclick="checkAnswer(15, 'c')">C) $55.62</button>
+        <button class="option" onclick="checkAnswer(15, 'd')">D) $63.61</button>
+    </div>
+    <div class="feedback" id="feedback15"></div>
+    <canvas class="whiteboard" id="whiteboard15"></canvas>
+    <div class="whiteboard-controls">
+        <button onclick="undoDrawing(15)">Undo</button>
+        <button onclick="clearWhiteboard(15)">Clear</button>
+    </div>
+</div> 
+    </main>
+
+    <script>
+    // Whiteboard initialization and drawing history
+    const whiteboards = {};
+    const MAX_HISTORY = 50;
+    const correctAnswers = {
+        1: 'a', 2: 'd', 3: 'b', 4: 'd',
+        5: 'c', 6: 'c', 7: 'd', 8: 'b', 9: 'd', 10: 'c', 11: 'a', 12: 'c', 13: 'c', 14: 'b', 15: 'd'
+    };
+    const attempts = { 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0, 10:0, 11:0, 12:0, 13:0, 14:0, 15:0 };
+
+    // Initialize all whiteboards
+    for(let i = 1; i <= 15; i++) {
+        initializeWhiteboard(i);
+    }
+
+    function initializeWhiteboard(qNum) {
+        const canvas = document.getElementById(`whiteboard${qNum}`);
+        const ctx = canvas.getContext('2d');
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        
+        // Set white background
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        whiteboards[qNum] = {
+            ctx: ctx,
+            isDrawing: false,
+            history: [],
+            currentStep: -1
+        };
+
+        // Event listeners for both mouse and touch
+        canvas.addEventListener('mousedown', startDrawing.bind(null, qNum));
+        canvas.addEventListener('mousemove', draw.bind(null, qNum));
+        canvas.addEventListener('mouseup', stopDrawing.bind(null, qNum));
+        canvas.addEventListener('mouseout', stopDrawing.bind(null, qNum));
+        
+        canvas.addEventListener('touchstart', handleTouchStart.bind(null, qNum));
+        canvas.addEventListener('touchmove', handleTouchMove.bind(null, qNum));
+        canvas.addEventListener('touchend', stopDrawing.bind(null, qNum));
+
+        saveState(qNum);
+    }
+
+    // Touch event handlers
+    function handleTouchStart(qNum, e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const rect = e.target.getBoundingClientRect();
+        startDrawing(qNum, {
+            offsetX: touch.clientX - rect.left,
+            offsetY: touch.clientY - rect.top
+        });
+    }
+
+    function handleTouchMove(qNum, e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const rect = e.target.getBoundingClientRect();
+        draw(qNum, {
+            offsetX: touch.clientX - rect.left,
+            offsetY: touch.clientY - rect.top
+        });
+    }
+
+    // Drawing functions
+    function startDrawing(qNum, e) {
+        whiteboards[qNum].isDrawing = true;
+        whiteboards[qNum].ctx.beginPath();
+        whiteboards[qNum].ctx.moveTo(e.offsetX, e.offsetY);
+    }
+
+    function draw(qNum, e) {
+        if(!whiteboards[qNum].isDrawing) return;
+        whiteboards[qNum].ctx.lineTo(e.offsetX, e.offsetY);
+        whiteboards[qNum].ctx.strokeStyle = 'black';
+        whiteboards[qNum].ctx.lineWidth = 2;
+        whiteboards[qNum].ctx.stroke();
+    }
+
+    function stopDrawing(qNum) {
+        if(whiteboards[qNum].isDrawing) {
+            saveState(qNum);
+        }
+        whiteboards[qNum].isDrawing = false;
+    }
+
+    // Whiteboard utilities
+    function saveState(qNum) {
+        const canvas = document.getElementById(`whiteboard${qNum}`);
+        const state = whiteboards[qNum].ctx.getImageData(0, 0, canvas.width, canvas.height);
+        whiteboards[qNum].history = whiteboards[qNum].history.slice(0, whiteboards[qNum].currentStep + 1);
+        whiteboards[qNum].history.push(state);
+        whiteboards[qNum].currentStep = Math.min(whiteboards[qNum].currentStep + 1, MAX_HISTORY - 1);
+    }
+
+    function undoDrawing(qNum) {
+        if(whiteboards[qNum].currentStep > 0) {
+            whiteboards[qNum].currentStep--;
+            whiteboards[qNum].ctx.putImageData(
+                whiteboards[qNum].history[whiteboards[qNum].currentStep],
+                0, 0
+            );
+        }
+    }
+
+    function clearWhiteboard(qNum) {
+        const canvas = document.getElementById(`whiteboard${qNum}`);
+        whiteboards[qNum].ctx.clearRect(0, 0, canvas.width, canvas.height);
+        whiteboards[qNum].ctx.fillStyle = 'white';
+        whiteboards[qNum].ctx.fillRect(0, 0, canvas.width, canvas.height);
+        whiteboards[qNum].history = [];
+        saveState(qNum);
+    }
+
+    // Answer checking logic
+    function checkAnswer(qNum, selected) {
+        const feedback = document.getElementById(`feedback${qNum}`);
+        const questionDiv = document.querySelector(`#whiteboard${qNum}`).closest('.question');
+        const options = questionDiv.querySelectorAll('.option');
+
+        if(attempts[qNum] >= 2) return;
+
+        if(selected === correctAnswers[qNum]) {
+            feedback.textContent = "Correct!";
+            feedback.style.backgroundColor = '#d4edda';
+            options.forEach(opt => opt.disabled = true);
+        } else {
+            attempts[qNum]++;
+            const remaining = 2 - attempts[qNum];
+            
+            if(remaining > 0) {
+                feedback.textContent = `Incorrect. Attempts remaining: ${remaining}`;
+                feedback.style.backgroundColor = '#f8d7da';
+            } else {
+                feedback.textContent = `Correct answer: ${correctAnswers[qNum].toUpperCase()}`;
+                feedback.style.backgroundColor = '#fff3cd';
+                options.forEach(opt => opt.disabled = true);
+            }
+        }
+    }
+</script>
+           
+   
+    <footer>
+        <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+    </footer>
+</body>
+</html>
