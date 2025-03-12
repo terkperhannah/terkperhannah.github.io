@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Science 10</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .units-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .unit-box {
+            background-color: #4caf50;
+            color: white;
+            text-align: center;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 250px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .unit-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+            background-color: #388e3c;
+        }
+
+        .unit-box span {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+
+        .unit-box a {
+            color: white;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Math</a>
+                <ul class="submenu">
+                    <li><a href="math7.html">Math 7</a></li>
+                    <li><a href="math8.html">Math 8</a></li>
+                    <li><a href="math9.html">Math 9</a></li>
+                    <li><a href="math10.html">Math 10</a></li>
+                    <li><a href="math20-1.html">Math 11</a></li>
+                    <li><a href="math30-1.html">Math 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Science</a>
+                <ul class="submenu">
+                    <li><a href="science7.html">Science 7</a></li>
+                    <li><a href="science8.html">Science 8</a></li>
+                    <li><a href="science9.html">Science 9</a></li>
+                    <li><a href="science10.html">Science 10</a></li>
+                    <li><a href="Bio20.html">Science 11</a></li>
+                    <li><a href="Bio30.html">Science 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Computer Science</a>
+                <ul class="submenu">
+                    <li><a href="cs-general.html">General</a></li>
+                    <li><a href="cs-robotics.html">Robotics</a></li>
+                    <li><a href="VGD.html">Video Game Design</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">M.Ed-Courses</a>
+                <ul class="submenu">
+                    <li><a href="med-general.html">General</a></li>
+                    <li><a href="edu714.html">EDU 714</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <h2>Welcome to Math 9</h2>
+        </section>
+        <section>
+            <p><b>Alberta Science 10 Outcomes</b></p>
+<p>The Science 10 curriculum provides a foundation for scientific literacy by developing knowledge, skills, and attitudes necessary for understanding scientific principles and their applications. Students will:</p>
+<ul>
+    <li>Understand and apply fundamental scientific concepts across multiple disciplines</li>
+    <li>Develop inquiry and problem-solving skills through scientific investigation</li>
+    <li>Analyze and interpret experimental data to make informed conclusions</li>
+    <li>Recognize the interconnections between science, technology, and the environment</li>
+    <li>Communicate scientific ideas effectively using appropriate terminology and methods</li>
+    <li>Demonstrate safe and responsible practices in scientific experiments</li>
+</ul>
+<p>By achieving these outcomes, students will:</p>
+<ul>
+    <li>Apply scientific principles to real-world problems and societal issues</li>
+    <li>Engage in critical thinking and evidence-based decision-making</li>
+    <li>Develop an appreciation for the impact of scientific advancements</li>
+    <li>Understand energy flow, chemical processes, and the dynamic nature of Earth’s systems</li>
+    <li>Demonstrate curiosity and a commitment to lifelong scientific learning</li>
+</ul>
+
+
+
+            <h3>Units</h3>
+<div class="units-container">
+    <a href="s10_unit1.html" class="unit-box">Unit 1: Energy and Matter in Chemical Change<br><span>Exploring chemical reactions, bonding, and conservation of matter</span></a>
+    <a href="s10_unit2.html" class="unit-box">Unit 2: Energy Flow in Technological Systems<br><span>Understanding thermodynamics, efficiency, and energy transformations</span></a>
+    <a href="s10_unit3.html" class="unit-box">Unit 3: Cycling of Matter in Living Systems<br><span>Examining cell theory, photosynthesis, and ecosystem interactions</span></a>
+    <a href="s10_unit4.html" class="unit-box">Unit 4: Energy Flow in Global Systems<br><span>Investigating climate, weather, and Earth's energy balance</span></a>
+</div>
+
+
+
+
+        </section>
+    </main>
+    <footer>
+        <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+    </footer>
+</body>
+</html>
