@@ -7,35 +7,34 @@
     <link rel="stylesheet" href="style.css">
 </head>
     <style>
-        .extra-practice {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    margin-top: 20px;
-}
+        .extra-practice, .resources {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
 
-.practice-box {
-    background-color: #28a745; /* Green color */
-    color: white;
-    padding: 15px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 8px;
-    width: 250px; /* Adjust width as needed */
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
+        .practice-box, .resource-box {
+            background-color: #28a745; /* Green color */
+            color: white;
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 8px;
+            width: 250px; /* Adjust width as needed */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
 
-.practice-box:hover {
-    background-color: #218838; /* Darker green on hover */
-    transform: scale(1.05); /* Slight pop-out effect */
-}
+        .practice-box:hover, .resource-box:hover {
+            background-color: #218838; /* Darker green on hover */
+            transform: scale(1.05); /* Slight pop-out effect */
+        }
 
-.practice-box:active {
-    transform: scale(0.95); /* Slight press effect */
-}
-
+        .practice-box:active, .resource-box:active {
+            transform: scale(0.95); /* Slight press effect */
+        }
     </style>
 <body>
     <header>
@@ -92,6 +91,11 @@
                 <a href="m9_equations2.html" class="practice-box"> 6.2 – Solving Equations Using Balance Strategies</a>
                 <a href="m9_equations3.html" class="practice-box"> 6.3 – Introduction to Linear Inequalities</a>
                 <a href="m9_equations4.html" class="practice-box"> 6.4 & 6.5 – Solving Linear Inequalities</a>
+            </div>
+                        <!-- New Resources Section -->
+            <h3>Resources</h3>
+            <div class="resources">
+                <a href="SA_pics/march12_notes.pdf" class="resource-box">Completed March 12 Notes</a>
             </div>
         </section>
     </main>
