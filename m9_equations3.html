@@ -225,12 +225,12 @@
 
 <!-- Question 4 -->
 <div class="question">
-    <p> Which of these graphs is a solution of \( t \leq 1 \)?</p>
+    <p> 4. Which of these graphs is a solution of \( t \leq 1 \)?</p>
     <img src="SA_pics/linin1.png" alt="Linear Inequality" style="width: 300px; height: auto;">
     <div class="options">
         <button class="option" onclick="checkAnswer(4, 'a')">A) Graph i</button>
         <button class="option" onclick="checkAnswer(4, 'b')">B) Graph ii</button>
-        <button class="option" onclick="checkAnswer(4, 'c')">C) \Graph iii</button>
+        <button class="option" onclick="checkAnswer(4, 'c')">C) Graph iii</button>
         <button class="option" onclick="checkAnswer(4, 'd')">D) Graph iv</button>
     </div>
     <div class="feedback" id="feedback4"></div>
@@ -243,13 +243,13 @@
 
 <!-- Question 5 -->
 <div class="question">
-    <p>5. The cost of a **burger** is **$6.75** plus **$1.25** per extra topping.  
-        How many extra toppings are on a burger that costs **$12.00**? </p>
+    <p>5. What inequality does the number line graph represent? </p>
+    <img src="SA_pics/linin2.png" alt="Linear Inequality" style="width: 300px; height: auto;">
     <div class="options">
-        <button class="option" onclick="checkAnswer(5, 'a')">A) 3</button>
-        <button class="option" onclick="checkAnswer(5, 'b')">B) 4</button>
-        <button class="option" onclick="checkAnswer(5, 'c')">C) 5</button>
-        <button class="option" onclick="checkAnswer(5, 'd')">D) 6</button>
+        <button class="option" onclick="checkAnswer(5, 'a')">A) \( T > -4 \)</button>
+        <button class="option" onclick="checkAnswer(5, 'b')">B) \( T \geq -4 \)</button>
+        <button class="option" onclick="checkAnswer(5, 'c')">C) \( T < -4 \)</button>
+        <button class="option" onclick="checkAnswer(5, 'd')">D) \( T \leq -4 \)</button>
     </div>
     <div class="feedback" id="feedback5"></div>
     <canvas class="whiteboard" id="whiteboard5"></canvas>
@@ -261,14 +261,14 @@
 
 <!-- Question 6 -->
 <div class="question">
-    <p>6. On Sunday morning, **Sarah** had a **third** of her weekly allowance left.  
-        She spent **$7.20** on a snack and bus fare in the afternoon, leaving her with **$3.60**.  
-        How much is Sarah’s **weekly allowance**?</p>
+    <p>6. Solve and graph the inequality.
+77 ≤ 5 + 8n</p>
+     <img src="SA_pics/linin3.png" alt="Linear Inequality" style="width: 300px; height: auto;">
     <div class="options">
-        <button class="option" onclick="checkAnswer(6, 'a')">A) $28.80</button>
-        <button class="option" onclick="checkAnswer(6, 'b')">B) $30.60</button>
-        <button class="option" onclick="checkAnswer(6, 'c')">C) $32.40</button>
-        <button class="option" onclick="checkAnswer(6, 'd')">D) $36.00</button>
+        <button class="option" onclick="checkAnswer(6, 'a')">A)</button>
+        <button class="option" onclick="checkAnswer(6, 'b')">B)</button>
+        <button class="option" onclick="checkAnswer(6, 'c')">C)</button>
+        <button class="option" onclick="checkAnswer(6, 'd')">D)</button>
     </div>
     <div class="feedback" id="feedback6"></div>
     <canvas class="whiteboard" id="whiteboard6"></canvas>
@@ -451,7 +451,7 @@ were made.</p>
     const MAX_HISTORY = 50;
     const correctAnswers = {
         1: 'c', 2: 'b', 3: 'b', 4: 'd',
-        5: 'b', 6: 'c', 7: 'a', 8: 'c', 9: 'c', 10: 'b', 11: 'a', 12: 'c', 13: 'c', 14: 'b', 15: 'd'
+        5: 'c', 6: 'd', 7: 'a', 8: 'c', 9: 'c', 10: 'b', 11: 'a', 12: 'c', 13: 'c', 14: 'b', 15: 'd'
     };
     const attempts = { 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0, 10:0, 11:0, 12:0, 13:0, 14:0, 15:0 };
 
