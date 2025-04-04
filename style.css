@@ -192,3 +192,33 @@ main {
     color: #388e3c;
     text-shadow: 1px 1px 5px #555;
 }
+
+
+/* Search Bar Styling */
+.gcse-search {
+    padding: 10px 15px;
+}
+
+.gsc-control-cse {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.gsc-input-box {
+    border-radius: 20px !important;
+    border: 1px solid #3498db !important;
+}
+
+.gsc-search-button {
+    display: none !important; /* Hide Google logo */
+}
+
+.gsc-input {
+    font-size: 14px !important;
+    padding-left: 10px !important;
+}
+
+.search-container {
+    margin-left: auto; /* Push to right side */
+}
