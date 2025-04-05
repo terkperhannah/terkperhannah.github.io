@@ -7,35 +7,87 @@
     <link rel="stylesheet" href="style.css">
 </head>
     <style>
-        .extra-practice {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    margin-top: 20px;
-}
+        /* Consistent with main course pages */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-.practice-box {
-    background-color: #28a745; /* Green color */
-    color: white;
-    padding: 15px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 8px;
-    width: 250px; /* Adjust width as needed */
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
+        .content-box {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-.practice-box:hover {
-    background-color: #218838; /* Darker green on hover */
-    transform: scale(1.05); /* Slight pop-out effect */
-}
+        .content-box h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
 
-.practice-box:active {
-    transform: scale(0.95); /* Slight press effect */
-}
+        .practice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
 
+        .practice-card {
+            padding: 20px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            transition: transform 0.3s ease;
+            border: 1px solid #e0e0e0;
+            text-decoration: none;
+            color: #34495e;
+        }
+
+        .practice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-color: #3498db;
+        }
+
+        .practice-card h3 {
+            color: #3498db;
+            margin: 0 0 10px 0;
+            font-size: 1.1em;
+        }
+
+        .resources-section {
+            background: #f8f9fa;
+            border-color: #2ecc71;
+            margin-top: 30px;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 6px;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: #34495e;
+            border: 1px solid #e0e0e0;
+        }
+
+        .resource-link:hover {
+            transform: translateX(5px);
+            border-color: #2ecc71;
+        }
+
+        .unit-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
     </style>
 <body>
     <header>
@@ -84,16 +136,55 @@
         </ul>
     </nav>
      <main>
-        <section>
-            <h2>Welcome to Linear Relationships</h2>
-            <h3>Extra Practice</h3>
-            <div class="extra-practice">
-                <a href="writing-equations.html" class="practice-box">4.1: Writing Equations to Describe Patterns</a>
-                <a href="linear-relations.html" class="practice-box">4.2: Linear Relations</a>
-                <a href="equation-form.html" class="practice-box">4.3: Another Form of the Equation for a Linear Relation</a>
-                <a href="matching-equations-graphs.html" class="practice-box">4.4 & 4.5: Matching Equations and Using Graphs to Estimate Values</a>
+        <div class="content-wrapper">
+            <div class="content-box">
+                <div class="unit-header">
+                    <h2>Math 9 - Unit 5</h2>
+                    <h3>Linear Relationships</h3>
+                </div>
+
+                <div class="content-box">
+                    <h2>Extra Practice</h2>
+                    <div class="practice-grid">
+                        <a href="writing-equations.html" class="practice-card">
+                            <h3>4.1 – Pattern Equations</h3>
+                            <p>Translate visual patterns into algebraic equations</p>
+                        </a>
+                        
+                        <a href="linear-relations.html" class="practice-card">
+                            <h3>4.2 – Linear Relations</h3>
+                            <p>Identify and analyze linear relationships</p>
+                        </a>
+
+                        <a href="equation-form.html" class="practice-card">
+                            <h3>4.3 – Equation Forms</h3>
+                            <p>Convert between different linear equation formats</p>
+                        </a>
+
+                        <a href="matching-equations-graphs.html" class="practice-card">
+                            <h3>4.4 & 4.5 – Graph Analysis</h3>
+                            <p>Match equations to graphs and estimate values</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="content-box resources-section">
+                    <h2>Learning Resources</h2>
+                    <a href="#" class="resource-link">
+                        Linear Relationship Video Guide
+                    </a>
+                    <a href="#" class="resource-link">
+                        Interactive Graphing Tool
+                    </a>
+                    <a href="#" class="resource-link">
+                        Pattern Recognition Worksheets
+                    </a>
+                    <a href="#" class="resource-link">
+                        Equation Conversion Cheat Sheet
+                    </a>
+                </div>
             </div>
-        </section>
+        </div>
     </main>
     <footer>
         <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
