@@ -6,41 +6,80 @@
     <title>Robotics</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .container {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
+        /* Consistent with main course pages */
+        .content-wrapper {
             max-width: 1200px;
-            margin: auto;
+            margin: 0 auto;
             padding: 20px;
         }
-        .column {
-            flex: 1;
-            background-color: #f4f4f4;
+
+        .content-box {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .content-box h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .resource-card {
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .resources-grid, .testing-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .resource-box, .testing-box {
-            background-color: #4caf50;
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
+            background: #f8f9fa;
+            transition: transform 0.3s ease;
+            border: 1px solid #e0e0e0;
             text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.2s, box-shadow 0.2s;
+            color: #34495e;
         }
-        .resource-box:hover, .testing-box:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-            background-color: #388e3c;
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-color: #3498db;
+        }
+
+        .resource-card h3 {
+            color: #3498db;
+            margin: 0 0 10px 0;
+            font-size: 1.1em;
+        }
+
+        .assignment-section {
+            background: #f8f9fa;
+            border-color: #2ecc71;
+        }
+
+        .external-link {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 6px;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: #34495e;
+            border: 1px solid #e0e0e0;
+        }
+
+        .external-link:hover {
+            transform: translateX(5px);
+            border-color: #2ecc71;
         }
     </style>
 </head>
@@ -91,37 +130,63 @@
         </ul>
     </nav>
     <main>
-        <h2>Welcome to Robotics</h2>
-        <p style="text-align: center;">Explore robotics competitions and class resources below.</p>
-        
-        <div class="container">
-            <!-- Left Column: Robotics Competition Team Resources -->
-            <div class="column">
-                <h2>Robotics Competition Team Resources</h2>
-                <div class="resources-grid">
-                    <a href="https://www.robotevents.com/" class="resource-box" target="_blank">Official Robotics Events</a>
-                    <a href="https://www.vexrobotics.com/" class="resource-box" target="_blank">VEX Robotics</a>
-                    <a href="https://firstinspires.org/" class="resource-box" target="_blank">FIRST Robotics</a>
-                    <a href="https://codev5.vex.com/" class="resource-box">VEXCode V5</a>
+        <div class="content-wrapper">
+            <div class="content-box">
+                <h2>Robotics Program</h2>
+                <p>Explore competition resources and class materials for our robotics program.</p>
+            </div>
+
+            <div class="content-box">
+                <h2>Competition Resources</h2>
+                <div class="grid-container">
+                    <a href="https://www.robotevents.com/" class="resource-card" target="_blank">
+                        <h3>Official Robotics Events</h3>
+                        <p>Find competition schedules and rules</p>
+                    </a>
+                    <a href="https://www.vexrobotics.com/" class="resource-card" target="_blank">
+                        <h3>VEX Robotics</h3>
+                        <p>Hardware specifications and manuals</p>
+                    </a>
+                    <a href="https://firstinspires.org/" class="resource-card" target="_blank">
+                        <h3>FIRST Robotics</h3>
+                        <p>FIRST challenge details and resources</p>
+                    </a>
+                    <a href="https://codev5.vex.com/" class="resource-card">
+                        <h3>VEXCode V5</h3>
+                        <p>Programming interface for VEX robots</p>
+                    </a>
                 </div>
             </div>
-            
-            <!-- Right Column: Robotics Classes -->
-            <div class="column">
-                <h2>Robotics Classes</h2>
-                <h3>Resources</h3>
-                <div class="resources-grid">
-                    <a href="https://codeexp.vex.com/" class="resource-box">VEXCode EXP</a>
-                    <a href="https://www.robotmesh.com/studio" class="resource-box" target="_blank">Robot Mesh Studio</a>
-                    <a href="https://education.vex.com/" class="resource-box" target="_blank">VEX Education Portal</a>
+
+            <div class="content-box assignment-section">
+                <h2>Class Assignments</h2>
+                <div class="grid-container">
+                    <a href="assignment1.html" class="resource-card">
+                        <h3>Assignment 1: Robot Basics</h3>
+                        <p>Introduction to robot components and safety</p>
+                    </a>
+                    <a href="assignment2.html" class="resource-card">
+                        <h3>Assignment 2: Sensor Integration</h3>
+                        <p>Working with environmental sensors</p>
+                    </a>
+                    <a href="assignment3.html" class="resource-card">
+                        <h3>Assignment 3: Autonomous Navigation</h3>
+                        <p>Programming pathfinding algorithms</p>
+                    </a>
                 </div>
-                
-                <h3>Knowledge Testing</h3>
-                <div class="testing-grid">
-                    <a href="robotics_basics1.html" class="testing-box">Introduction to Python: Basics #1</a>
-                    <a href="robotics_basics2.html" class="testing-box">Introduction to Python: Basics #2</a>
-                    <a href="robotics_basics3.html" class="testing-box">Introduction to Python: Basics #3</a>
-                </div>
+            </div>
+
+            <div class="content-box">
+                <h2>Programming Practice</h2>
+                <a href="https://www.udacity.com/course/introduction-to-python--ud1110" class="external-link" target="_blank">
+                    Introduction to Python Programming (Udacity)
+                </a>
+                <a href="https://codeexp.vex.com/" class="external-link">
+                    ⚡ VEXCode EXP Practice Environment
+                </a>
+                <a href="https://www.robotmesh.com/studio" class="external-link" target="_blank">
+                    Robot Mesh Studio Projects
+                </a>
             </div>
         </div>
     </main>
