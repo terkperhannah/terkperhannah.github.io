@@ -6,90 +6,90 @@
     <title>Math 30</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .units-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-}
+        /* Consistent with main course pages */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-.unit-box {
-    background-color: #4caf50;
-    color: white;
-    text-align: center;
-    padding: 15px 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    width: 250px;
-    font-weight: bold;
-    text-decoration: none;
-}
+        .content-box {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-.unit-box:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-    background-color: #388e3c;
-}
+        .content-box h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
 
-.unit-box span {
-    display: block;
-    margin-top: 5px;
-    font-size: 0.9em;
-}
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-}
+        .stream-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 25px;
+        }
 
-.column {
-    flex: 1;
-    background-color: #f4f4f4;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    min-width: 300px;
-}
+        .units-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
 
-.resources-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
-}
+        .unit-card {
+            padding: 20px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            transition: transform 0.3s ease;
+            border: 1px solid #e0e0e0;
+            text-decoration: none;
+            color: #34495e;
+        }
 
-.resource-box {
-    background-color: #4caf50;
-    color: white;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-    text-decoration: none;
-    font-weight: bold;
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: block;
-}
+        .unit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
 
-.resource-box:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-    background-color: #388e3c;
-}
+        .unit-card h3 {
+            color: #3498db;
+            margin-bottom: 10px;
+        }
 
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
-}
+        .unit-card p {
+            line-height: 1.5;
+        }
 
+        .resources-box {
+            background: #f8f9fa;
+            border-color: #2ecc71;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 6px;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: #34495e;
+            border: 1px solid #e0e0e0;
+        }
+
+        .resource-link:hover {
+            transform: translateX(5px);
+            border-color: #3498db;
+        }
     </style>
 </head>
 <body>
@@ -139,41 +139,87 @@
         </ul>
     </nav>
     <main>
-        <section>
-            <h2 style="text-align: center;">Welcome to Math 30</h2>
-<p style="text-align: center;">Explore the course structure for Math 30-1 and Math 30-2 below.</p>
+        <div class="content-wrapper">
+            <div class="content-box">
+                <h2>Math 30 Program</h2>
+                <p>Prepare for post-secondary mathematics with our comprehensive Math 30 streams.</p>
+            </div>
 
-<div class="container">
-    <!-- Left Column: Math 30-1 -->
-    <div class="column">
-        <h2>Math 30-1</h2>
-        <div class="resources-grid">
-            <a href="m30-1_unit1.html" class="resource-box">Unit 1: Transformations and Functions<br><span>Exploring transformations of various function types</span></a>
-            <a href="m30-1_unit2.html" class="resource-box">Unit 2: Trigonometry<br><span>Solving trigonometric equations and identities</span></a>
-            <a href="m30-1_unit3.html" class="resource-box">Unit 3: Exponential, Logarithmic, and Rational Functions<br><span>Analyzing and solving equations involving these functions</span></a>
-            <a href="m30-1_unit4.html" class="resource-box">Unit 4: Permutations, Combinations, and the Binomial Theorem<br><span>Understanding counting principles and binomial expansions</span></a>
-            <a href="m30-1_review.html" class="resource-box">Diploma Review<br><span>Comprehensive review of all topics</span></a>
+            <div class="content-box">
+                <div class="stream-container">
+                    <!-- Math 30-1 Stream -->
+                    <div class="content-box">
+                        <h2>Math 30-1</h2>
+                        <div class="units-grid">
+                            <a href="m30-1_unit1.html" class="unit-card">
+                                <h3>Transformations and Functions</h3>
+                                <p>Analyzing function transformations and combinations</p>
+                            </a>
+                            <a href="m30-1_unit2.html" class="unit-card">
+                                <h3>Trigonometry</h3>
+                                <p>Solving trigonometric equations and identities</p>
+                            </a>
+                            <a href="m30-1_unit3.html" class="unit-card">
+                                <h3>Exponential & Logarithmic Functions</h3>
+                                <p>Modeling growth and decay scenarios</p>
+                            </a>
+                            <a href="m30-1_unit4.html" class="unit-card">
+                                <h3>Permutations & Combinations</h3>
+                                <p>Advanced counting principles and applications</p>
+                            </a>
+                            <a href="m30-1_review.html" class="unit-card">
+                                <h3>Diploma Review</h3>
+                                <p>Comprehensive exam preparation</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Math 30-2 Stream -->
+                    <div class="content-box">
+                        <h2>Math 30-2</h2>
+                        <div class="units-grid">
+                            <a href="m30-2_unit1.html" class="unit-card">
+                                <h3>Set Theory</h3>
+                                <p>Venn diagrams and set operations</p>
+                            </a>
+                            <a href="m30-2_unit2.html" class="unit-card">
+                                <h3>Probability</h3>
+                                <p>Conditional probability and counting techniques</p>
+                            </a>
+                            <a href="m30-2_unit3.html" class="unit-card">
+                                <h3>Rational Expressions</h3>
+                                <p>Simplifying and solving rational equations</p>
+                            </a>
+                            <a href="m30-2_unit4.html" class="unit-card">
+                                <h3>Polynomial Functions</h3>
+                                <p>Graphing and analyzing polynomial equations</p>
+                            </a>
+                            <a href="m30-2_unit5.html" class="unit-card">
+                                <h3>Sinusoidal Functions</h3>
+                                <p>Modeling periodic phenomena</p>
+                            </a>
+                            <a href="m30-2_review.html" class="unit-card">
+                                <h3>Diploma Review</h3>
+                                <p>Comprehensive exam preparation</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-box resources-box">
+                <h3>Recommended Resources</h3>
+                <a href="https://www.khanacademy.org/math/precalculus" class="resource-link" target="_blank">
+                    Khan Academy Pre-Calculus
+                </a>
+                <a href="https://ca.ixl.com/math/grade-12" class="resource-link" target="_blank">
+                    IXL Math Grade 12 Practice
+                </a>
+                <a href="https://www.desmos.com/calculator" class="resource-link" target="_blank">
+                    Desmos Graphing Calculator
+                </a>
+            </div>
         </div>
-    </div>
-
-    <!-- Right Column: Math 30-2 -->
-    <div class="column">
-        <h2>Math 30-2</h2>
-        <div class="resources-grid">
-            <a href="m30-2_unit1.html" class="resource-box">Unit 1: Set Theory<br><span>Understanding sets, subsets, and Venn diagrams</span></a>
-            <a href="m30-2_unit2.html" class="resource-box">Unit 2: Permutations and Combinations<br><span>Applying counting techniques to probability</span></a>
-            <a href="m30-2_unit3.html" class="resource-box">Unit 3: Probability<br><span>Exploring independent, dependent, and conditional probability</span></a>
-            <a href="m30-2_unit4.html" class="resource-box">Unit 4: Rational Expressions and Equations<br><span>Solving and simplifying rational expressions</span></a>
-            <a href="m30-2_unit5.html" class="resource-box">Unit 5: Polynomial Functions<br><span>Graphing and analyzing polynomial equations</span></a>
-            <a href="m30-2_unit6.html" class="resource-box">Unit 6: Exponential and Logarithmic Functions<br><span>Understanding growth and decay models</span></a>
-            <a href="m30-2_unit7.html" class="resource-box">Unit 7: Sinusoidal Functions<br><span>Graphing and solving sinusoidal equations</span></a>
-            <a href="m30-2_unit8.html" class="resource-box">Unit 8: Logic & Reasoning<br><span>Exploring deductive and inductive reasoning</span></a>
-            <a href="m30-2_review.html" class="resource-box">Diploma Review<br><span>Comprehensive review of all topics</span></a>
-        </div>
-    </div>
-</div>
-
-        </section>
     </main>
     <footer>
         <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
