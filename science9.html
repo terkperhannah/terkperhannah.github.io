@@ -6,44 +6,104 @@
     <title>Science 9</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .units-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
+        /* Consistent with main course pages */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        .unit-box {
-            background-color: #4caf50;
-            color: white;
-            text-align: center;
-            padding: 15px 20px;
+        .content-box {
+            border: 2px solid #e0e0e0;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            width: 250px;
-            font-weight: bold;
+            padding: 25px;
+            margin-bottom: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .content-box h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .units-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .unit-card {
+            padding: 20px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            transition: transform 0.3s ease;
+            border: 1px solid #e0e0e0;
             text-decoration: none;
+            color: #34495e;
         }
 
-        .unit-box:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-            background-color: #388e3c;
+        .unit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        .unit-box span {
-            display: block;
-            margin-top: 5px;
-            font-size: 0.9em;
+        .unit-card h3 {
+            color: #3498db;
+            margin-bottom: 10px;
         }
 
-        .unit-box a {
-            color: white;
+        .unit-card p {
+            line-height: 1.5;
+        }
+
+        .outcomes-list {
+            columns: 2;
+            gap: 30px;
+            padding-left: 20px;
+        }
+
+        .outcomes-list li {
+            margin-bottom: 12px;
+            break-inside: avoid;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .outcomes-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #2ecc71;
+        }
+
+        .resources-box {
+            background: #f8f9fa;
+            border-color: #2ecc71;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 6px;
+            transition: transform 0.3s ease;
             text-decoration: none;
+            color: #34495e;
+            border: 1px solid #e0e0e0;
         }
 
+        .resource-link:hover {
+            transform: translateX(5px);
+            border-color: #3498db;
+        }
     </style>
 </head>
 <body>
@@ -93,41 +153,63 @@
         </ul>
     </nav>
     <main>
-        <section>
-            <h2>Welcome to Science 9</h2>
-        </section>
-        <section>
-            <h3 style="text-align: center;">Units</h3>
-<div class="units-container">
-    <a href="s9_unit1.html" class="unit-box">Unit 1: Biodiversity<br><span>Exploring species diversity and ecosystem sustainability</span></a>
-    <a href="s9_unit2.html" class="unit-box">Unit 2: Matter & Chemical Change<br><span>Investigating chemical reactions and properties of matter</span></a>
-    <a href="s9_unit3.html" class="unit-box">Unit 3: Environmental Chemistry<br><span>Examining human impacts on air, water, and soil quality</span></a>
-    <a href="s9_unit4.html" class="unit-box">Unit 4: Electrical Principles & Technologies<br><span>Understanding electricity and its applications</span></a>
-    <a href="s9_unit5.html" class="unit-box">Unit 5: Space Exploration<br><span>Studying space science and technological advancements</span></a>
-</div>
-            <p><b>Alberta Junior High Science Outcomes</b></p>
-<p>The Science curriculum aims to develop students' scientific knowledge, inquiry skills, and appreciation for science in the world around them. Students will:</p>
-<ul>
-    <li>Develop an understanding of key scientific concepts and principles</li>
-    <li>Apply scientific inquiry and problem-solving skills</li>
-    <li>Demonstrate safe and appropriate use of scientific equipment</li>
-    <li>Analyze and interpret data to draw conclusions</li>
-    <li>Explore the relationships between science, technology, and society</li>
-    <li>Communicate scientific ideas effectively</li>
-</ul>
-<p>By achieving these outcomes, students will:</p>
-<ul>
-    <li>Develop critical thinking and reasoning skills in scientific contexts</li>
-    <li>Engage in hands-on experiments and investigations</li>
-    <li>Make informed decisions about science-related societal issues</li>
-    <li>Appreciate the role of science in daily life and the natural world</li>
-    <li>Exhibit curiosity and a lifelong interest in scientific exploration</li>
-</ul>
+        <div class="content-wrapper">
+            <div class="content-box">
+                <h2>Science 9 Curriculum</h2>
+                <p>Explore matter, energy, and environmental systems through scientific investigation.</p>
+                
+                <h3>Course Units</h3>
+                <div class="units-grid">
+                    <a href="s9_unit1.html" class="unit-card">
+                        <h3>Biodiversity</h3>
+                        <p>Analyzing species diversity and ecosystem balance</p>
+                    </a>
+                    <a href="s9_unit2.html" class="unit-card">
+                        <h3>Matter & Chemical Change</h3>
+                        <p>Investigating chemical properties and reactions</p>
+                    </a>
+                    <a href="s9_unit3.html" class="unit-card">
+                        <h3>Environmental Chemistry</h3>
+                        <p>Examining human impacts on natural systems</p>
+                    </a>
+                    <a href="s9_unit4.html" class="unit-card">
+                        <h3>Electrical Technologies</h3>
+                        <p>Understanding electrical principles and applications</p>
+                    </a>
+                    <a href="s9_unit5.html" class="unit-card">
+                        <h3>Space Exploration</h3>
+                        <p>Studying astronomical phenomena and technologies</p>
+                    </a>
+                </div>
+            </div>
 
+            <div class="content-box">
+                <h2>Alberta Science 9 Outcomes</h2>
+                <ul class="outcomes-list">
+                    <li>Conduct safe laboratory experiments with proper protocols</li>
+                    <li>Analyze biodiversity and ecosystem sustainability</li>
+                    <li>Explain chemical changes and conservation of mass</li>
+                    <li>Investigate environmental impacts of chemical substances</li>
+                    <li>Demonstrate understanding of electrical circuits</li>
+                    <li>Evaluate space exploration technologies and ethics</li>
+                    <li>Communicate scientific findings effectively</li>
+                    <li>Apply problem-solving strategies to real-world issues</li>
+                </ul>
+            </div>
 
-
-
-        </section>
+            <div class="content-box resources-box">
+                <h3>Recommended Resources</h3>
+                <a href="https://phet.colorado.edu/" class="resource-link" target="_blank">
+                    PhET Interactive Simulations
+                </a>
+                <a href="https://www.ck12.org/" class="resource-link" target="_blank">
+                    CK-12 Chemistry Resources
+                </a>
+                <a href="https://www.nasa.gov/stem" class="resource-link" target="_blank">
+                    NASA STEM Engagement
+                </a>
+            </div>
+        </div>
     </main>
     <footer>
         <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
