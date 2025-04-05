@@ -6,68 +6,98 @@
     <title>Video Game Design</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-        main {
+        /* Consistent with main course pages */
+        .content-wrapper {
             max-width: 1200px;
-            margin: auto;
+            margin: 0 auto;
             padding: 20px;
+        }
+
+        .content-box {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
             background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .column {
-            flex: 1;
-            padding: 10px;
+
+        .content-box h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 24px;
         }
-        .box-container {
-            background-color: #f4f4f4;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin: 20px 0;
-        }
-        .testing-grid, .resources-grid {
-            display: flex;
-            flex-direction: column;
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
+            margin-top: 25px;
         }
-        .testing-box, .resource-box {
-            background-color: #4caf50;
-            color: white;
+
+        .resource-card {
             padding: 20px;
             border-radius: 8px;
-            text-align: center;
+            background: #f8f9fa;
+            transition: transform 0.3s ease;
+            border: 1px solid #e0e0e0;
             text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
+            color: #34495e;
         }
-        .testing-box:hover, .resource-box:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-            background-color: #388e3c;
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-color: #3498db;
         }
-        .dropdown {
-            position: relative;
+
+        .resource-card h3 {
+            color: #3498db;
+            margin: 0 0 10px 0;
+            font-size: 1.1em;
         }
-        .dropdown-content {
-            display: none;
-            background-color: #ffffff;
+
+        .indigenous-resources {
+            background: #f8f9fa;
+            border-color: #2ecc71;
+        }
+
+        .external-link {
+            display: flex;
+            align-items: center;
             padding: 15px;
-            margin-top: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px 0;
+            background: white;
+            border-radius: 6px;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: #34495e;
+            border: 1px solid #e0e0e0;
         }
-        .dropdown:hover .dropdown-content {
-            display: block;
+
+        .external-link:hover {
+            transform: translateX(5px);
+            border-color: #2ecc71;
+        }
+
+        .nested-list {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .nested-list li {
+            margin: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .nested-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #2ecc71;
         }
     </style>
 </head>
@@ -118,37 +148,97 @@
         </ul>
     </nav>
     <main>
-        <div class="column">
-            <section class="box-container resources">
-                <h2>Resources</h2>
-                <div class="resources-grid">
-                    <div class="dropdown">
-                        <a class="resource-box" href="#">Indigenous Perspectives in Game Design</a>
-                        <div class="dropdown-content">
-                            <p>Explore Indigenous perspectives in game design through the following resources:</p>
-                            <ul>
-                                <li><a href="https://neveralonegame.com/" target="_blank">Never Alone (Kisima Ingitchuna)</a> - A game based on Iñupiat culture.</li>
-                                <li><a href="https://www.thunderbirdstrike.com/" target="_blank">Thunderbird Strike</a> - A game about Indigenous resistance and environmental awareness.</li>
-                            </ul>
-                        </div>
+        <div class="content-wrapper">
+            <div class="content-box">
+                <h2>Video Game Design Program</h2>
+                <p>Explore resources and develop skills in game development and design principles.</p>
+            </div>
+
+            <div class="content-box indigenous-resources">
+                <h2>Indigenous Perspectives in Gaming</h2>
+                <div class="grid-container">
+                    <div class="resource-card">
+                        <h3>Never Alone (Kisima Ingitchuna)</h3>
+                        <p>Explore Iñupiat culture through gameplay</p>
+                        <ul class="nested-list">
+                            <li><a href="https://neveralonegame.com/" target="_blank">Official Website</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=PP7YrKUt2g0" target="_blank">Documentary Series</a></li>
+                        </ul>
                     </div>
-                    <a href="https://github.com/terkperhannah" class="resource-box" target="_blank">Ms. Terkper's GitHub Project Branch</a>
-                    <a href="https://learn.unity.com/" class="resource-box" target="_blank">Unity Learn</a>
-                    <a href="https://www.pixilart.com/" class="resource-box" target="_blank">Pixilart - Create Your Game Assets</a>
+                    
+                    <div class="resource-card">
+                        <h3>Thunderbird Strike</h3>
+                        <p>Indigenous resistance and environmental awareness</p>
+                        <ul class="nested-list">
+                            <li><a href="https://www.thunderbirdstrike.com/" target="_blank">Game Download</a></li>
+                            <li><a href="https://itch.io/" target="_blank">Development Insights</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </section>
-        </div>
-        <div class="column">
-            <section class="box-container knowledge-testing">
-                <h2>Knowledge Testing</h2>
-                <div class="testing-grid">
-                    <a href="csharp_basics1.html" class="testing-box">C# Basics: #1</a>
-                    <a href="csharp_basics2.html" class="testing-box">C# Basics: #2</a>
-                    <a href="csharp_basics3.html" class="testing-box">C# Basics: #3</span></a>
-                    <a href="unity_navigation1.html" class="testing-box">Intro to Unity 1: Understanding the Interface</a>
-                    <a href="unity_navigation2.html" class="testing-box">Intro to Unity 2: Creating and Managing Objects</a>
+            </div>
+
+            <div class="content-box">
+                <h2>Development Resources</h2>
+                <div class="grid-container">
+                    <a href="https://github.com/terkperhannah" class="resource-card" target="_blank">
+                        <h3>My GitHub Projects</h3>
+                        <p>Access our class code repositories and examples</p>
+                    </a>
+                    
+                    <a href="https://learn.unity.com/" class="resource-card" target="_blank">
+                        <h3>Unity Learn Platform</h3>
+                        <p>Official Unity tutorials and courses</p>
+                    </a>
+
+                    <a href="https://www.pixilart.com/" class="resource-card" target="_blank">
+                        <h3>🖌PixilArt Studio</h3>
+                        <p>Create and edit game assets</p>
+                    </a>
                 </div>
-            </section>
+            </div>
+
+            <div class="content-box">
+                <h2>Core Skills Development</h2>
+                <div class="grid-container">
+                    <a href="csharp_basics1.html" class="resource-card">
+                        <h3>C# Basics 1: Fundamentals</h3>
+                        <p>Variables, data types, and basic syntax</p>
+                    </a>
+                    
+                    <a href="csharp_basics2.html" class="resource-card">
+                        <h3>C# Basics 2: Control Flow</h3>
+                        <p>Conditionals and loops</p>
+                    </a>
+
+                    <a href="csharp_basics3.html" class="resource-card">
+                        <h3>C# Basics 3: OOP Principles</h3>
+                        <p>Classes and object-oriented design</p>
+                    </a>
+
+                    <a href="unity_navigation1.html" class="resource-card">
+                        <h3>Unity Basics 1: Interface</h3>
+                        <p>Navigating the Unity Editor</p>
+                    </a>
+
+                    <a href="unity_navigation2.html" class="resource-card">
+                        <h3>Unity Basics 2: Object Management</h3>
+                        <p>GameObjects and components</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="content-box">
+                <h2>Software Tools</h2>
+                <a href="https://unity.com/" class="external-link" target="_blank">
+                    Download Unity Game Engine
+                </a>
+                <a href="https://visualstudio.microsoft.com/" class="external-link" target="_blank">
+                    Visual Studio Installer
+                </a>
+                <a href="https://www.blender.org/" class="external-link" target="_blank">
+                    Blender 3D Modeling Suite
+                </a>
+            </div>
         </div>
     </main>
     <footer>
