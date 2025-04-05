@@ -7,33 +7,86 @@
     <link rel="stylesheet" href="style.css">
 </head>
     <style>
-        .extra-practice, .resources {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 20px;
+        /* Consistent with main course pages */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        .practice-box, .resource-box {
-            background-color: #28a745; /* Green color */
-            color: white;
-            padding: 15px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 16px;
+        .content-box {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .content-box h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .practice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .practice-card {
+            padding: 20px;
             border-radius: 8px;
-            width: 250px; /* Adjust width as needed */
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            background: #f8f9fa;
+            transition: transform 0.3s ease;
+            border: 1px solid #e0e0e0;
+            text-decoration: none;
+            color: #34495e;
         }
 
-        .practice-box:hover, .resource-box:hover {
-            background-color: #218838; /* Darker green on hover */
-            transform: scale(1.05); /* Slight pop-out effect */
+        .practice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-color: #3498db;
         }
 
-        .practice-box:active, .resource-box:active {
-            transform: scale(0.95); /* Slight press effect */
+        .practice-card h3 {
+            color: #3498db;
+            margin: 0 0 10px 0;
+            font-size: 1.1em;
+        }
+
+        .resources-section {
+            background: #f8f9fa;
+            border-color: #2ecc71;
+            margin-top: 30px;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 6px;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: #34495e;
+            border: 1px solid #e0e0e0;
+        }
+
+        .resource-link:hover {
+            transform: translateX(5px);
+            border-color: #2ecc71;
+        }
+
+        .unit-header {
+            text-align: center;
+            margin-bottom: 30px;
         }
     </style>
 <body>
@@ -83,21 +136,55 @@
         </ul>
     </nav>
      <main>
-        <section>
-            <h2>Welcome to Linear Equations & Inequalities</h2>
-            <h3>Extra Practice</h3>
-            <div class="extra-practice">
-                <a href="m9_equations1.html" class="practice-box">6.1 – Solving Equations Using Inverse Operations</a>
-                <a href="m9_equations2.html" class="practice-box"> 6.2 – Solving Equations Using Balance Strategies</a>
-                <a href="m9_equations3.html" class="practice-box"> 6.3 – Introduction to Linear Inequalities</a>
-                <a href="m9_equations4.html" class="practice-box"> 6.4 & 6.5 – Solving Linear Inequalities</a>
+        <div class="content-wrapper">
+            <div class="content-box">
+                <div class="unit-header">
+                    <h2>Math 9 - Unit 6</h2>
+                    <h3>Linear Equations & Inequalities</h3>
+                </div>
+
+                <div class="content-box">
+                    <h2>Extra Practice</h2>
+                    <div class="practice-grid">
+                        <a href="m9_equations1.html" class="practice-card">
+                            <h3>6.1 – Inverse Operations</h3>
+                            <p>Solve equations using reverse operations</p>
+                        </a>
+                        
+                        <a href="m9_equations2.html" class="practice-card">
+                            <h3>6.2 – Balance Strategies</h3>
+                            <p>Maintain equality using scale models</p>
+                        </a>
+
+                        <a href="m9_equations3.html" class="practice-card">
+                            <h3>6.3 – Linear Inequalities</h3>
+                            <p>Introduction to inequality symbols and graphs</p>
+                        </a>
+
+                        <a href="m9_equations4.html" class="practice-card">
+                            <h3>6.4 & 6.5 – Solving Inequalities</h3>
+                            <p>Advanced inequality solutions and number lines</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="content-box resources-section">
+                    <h2>Learning Resources</h2>
+                    <a href="SA_pics/march12_notes.pdf" class="resource-link">
+                        Completed March 12 Notes
+                    </a>
+                    <a href="#" class="resource-link">
+                        Equation Solving Video Guide
+                    </a>
+                    <a href="#" class="resource-link">
+                        Interactive Practice Sheets
+                    </a>
+                    <a href="#" class="resource-link">
+                        Inequality Graphing Tool
+                    </a>
+                </div>
             </div>
-                        <!-- New Resources Section -->
-            <h3>Resources</h3>
-            <div class="resources">
-                <a href="SA_pics/march12_notes.pdf" class="resource-box">Completed March 12 Notes</a>
-            </div>
-        </section>
+        </div>
     </main>
     <footer>
         <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
