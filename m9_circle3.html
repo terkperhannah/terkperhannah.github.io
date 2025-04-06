@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" async
+    src="https://polyfill.io/v3/polyfill.min.js?features=es6">
+</script>
+<script type="text/javascript" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <nav>
+        <ul>
+<li class="dropdown">
+            <a href="index.html">Home</a>
+            <ul class="submenu">
+                <li><a href="iste-standards.html">ISTE Standards</a></li>
+                <li><a href="ai-guidelines.html">AI Guidelines</a></li>
+                <li><a href="oer-resources.html">OER Resources</a></li>
+            </ul> 
+            <li class="dropdown">
+                <a href="#">Math</a>
+                <ul class="submenu">
+                    <li><a href="math7.html">Math 7</a></li>
+                    <li><a href="math8.html">Math 8</a></li>
+                    <li><a href="math9.html">Math 9</a></li>
+                    <li><a href="math10.html">Math 10</a></li>
+                    <li><a href="math11.html">Math 11</a></li>
+                    <li><a href="math12.html">Math 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Science</a>
+                <ul class="submenu">
+                    <li><a href="science7.html">Science 7</a></li>
+                    <li><a href="science8.html">Science 8</a></li>
+                    <li><a href="science9.html">Science 9</a></li>
+                    <li><a href="science10.html">Science 10</a></li>
+                    <li><a href="science11.html">Science 11</a></li>
+                    <li><a href="science12.html">Science 12</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Computer Science</a>
+                <ul class="submenu">
+                    <li><a href="cs-general.html">General</a></li>
+                    <li><a href="cs-robotics.html">Robotics</a></li>
+                    <li><a href="VGD.html">Video Game Design</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">M.Ed-Courses</a>
+                <ul class="submenu">
+                    <li><a href="med-general.html">General</a></li>
+                    <li><a href="edu714.html">EDU 714</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+        .options {
+            display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin: 15px 0;
+        }
+        .option {
+            padding: 12px 15px;
+        background-color: #f8f9fa;
+        border: 2px solid #dee2e6;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 15px;
+        text-align: left;
+        transition: all 0.2s ease;
+        color: #212529;
+        }
+        .option:hover {
+        background-color: #e9ecef;
+        transform: translateY(-2px);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .option:active {
+        transform: translateY(0);
+    }
+
+    /* Disabled State */
+    .option:disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+    /* Correct/Incorrect Feedback */
+    .option.correct {
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+        color: #155724;
+    }
+
+    .option.incorrect {
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        color: #721c24;
+    }
+        .whiteboard {
+        width: 800px;
+        height: 500px;
+        border: 2px solid #333;
+        margin: 15px auto;
+        display: block;
+        background-color: white;
+        touch-action: none;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+        /* Whiteboard Controls */
+    .whiteboard-controls {
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .whiteboard-controls button {
+        padding: 8px 15px;
+        background-color: #6c757d;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .whiteboard-controls button:hover {
+        background-color: #5a6268;
+    }
+
+        .feedback {
+            margin-top: 10px;
+            padding: 5px;
+            border-radius: 4px;
+        }
+    </style>
+        <h1 style="text-align: center;"> CURRENTLY BUIDLING</h1>
+        <section>
+            <h1 style="text-align: center;"> Section 3 – Properties of Angles in a Circle</h1>
+
+<!-- Question 1 -->
+        <div class="question">
+            <p>1. Identify the diameter of the circle</p>
+           <img src="SA_pics/circle1.png" alt="Linear Inequality" style="width: 300px; height: auto;">
+            <div class="options">
+                <button class="option" onclick="checkAnswer(1, 'a')">A) BA</button>
+                <button class="option" onclick="checkAnswer(1, 'b')">B) BC</button>
+                <button class="option" onclick="checkAnswer(1, 'c')">C) BAC</button>
+                <button class="option" onclick="checkAnswer(1, 'd')">D) A</button>
+            </div>
+            <div class="feedback" id="feedback1"></div>
+            <canvas class="whiteboard" id="whiteboard1"></canvas>
+            <div class="whiteboard-controls">
+                <button onclick="undoDrawing(1)">Undo</button>
+                <button onclick="clearWhiteboard(1)">Clear</button>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <p>2.Identify the radius of the circle</p>
+           <img src="SA_pics/circle1.png" alt="Linear Inequality" style="width: 300px; height: auto;">
+            <div class="options">
+                <button class="option" onclick="checkAnswer(2, 'a')">A) BA</button>
+                <button class="option" onclick="checkAnswer(2, 'b')">B) BC</button>
+                <button class="option" onclick="checkAnswer(2, 'c')">C) BAC</button>
+                <button class="option" onclick="checkAnswer(2, 'd')">D) A</button>
+            </div>
+            <div class="feedback" id="feedback2"></div>
+            <canvas class="whiteboard" id="whiteboard2"></canvas>
+            <div class="whiteboard-controls">
+                <button onclick="undoDrawing(2)">Undo</button>
+                <button onclick="clearWhiteboard(2)">Clear</button>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+<div class="question">
+            <p>3.Identify the center of the circle</p>
+           <img src="SA_pics/circle1.png" alt="Linear Inequality" style="width: 300px; height: auto;">
+            <div class="options">
+                <button class="option" onclick="checkAnswer(3, 'a')">A) BA</button>
+                <button class="option" onclick="checkAnswer(3, 'b')">B) BC</button>
+                <button class="option" onclick="checkAnswer(3, 'c')">C) BAC</button>
+                <button class="option" onclick="checkAnswer(3, 'd')">D) A</button>
+            </div>
+    <div class="feedback" id="feedback3"></div>
+    <canvas class="whiteboard" id="whiteboard3"></canvas>
+    <div class="whiteboard-controls">
+        <button onclick="undoDrawing(3)">Undo</button>
+        <button onclick="clearWhiteboard(3)">Clear</button>
+    </div>
+</div>
+
+<!-- Question 4 -->
+<div class="question">
+    <p> 4. Find the value of \(x)</p>
+    <img src="SA_pics/circle2.png" style="width: 300px; height: auto;">
+    <div class="options">
+        <button class="option" onclick="checkAnswer(4, 'a')">A) 8</button>
+        <button class="option" onclick="checkAnswer(4, 'b')">B) 4</button>
+        <button class="option" onclick="checkAnswer(4, 'c')">C) 2</button>
+        <button class="option" onclick="checkAnswer(4, 'd')">D) 1</button>
+    </div>
+    <div class="feedback" id="feedback4"></div>
+    <canvas class="whiteboard" id="whiteboard4"></canvas>
+    <div class="whiteboard-controls">
+        <button onclick="undoDrawing(4)">Undo</button>
+        <button onclick="clearWhiteboard(4)">Clear</button>
+    </div>
+</div>
+
+<!-- Question 5 -->
+<div class="question">
+    <p>5. RS is tangent to the circle with center C at S and RT is tangent to the circle with center C at T. RT = 3x + 4 and RS = 28 Find the value of x </p>
+    <div class="options">
+        <button class="option" onclick="checkAnswer(5, 'a')">A) 8</button>
+        <button class="option" onclick="checkAnswer(5, 'b')">B) 10</button>
+        <button class="option" onclick="checkAnswer(5, 'c')">C) 12</button>
+        <button class="option" onclick="checkAnswer(5, 'd')">D) 14</button>
+    </div>
+    <div class="feedback" id="feedback5"></div>
+    <canvas class="whiteboard" id="whiteboard5"></canvas>
+    <div class="whiteboard-controls">
+        <button onclick="undoDrawing(5)">Undo</button>
+        <button onclick="clearWhiteboard(5)">Clear</button>
+    </div>
+</div>
+
+<!-- Question 6 -->
+<div class="question">
+    <p>6. Find the radius</p>
+    <img src="SA_pics/circle3.png" style="width: 300px; height: auto;">
+    <div class="options">
+        <button class="option" onclick="checkAnswer(6, 'a')">A) 39 ft</button>
+        <button class="option" onclick="checkAnswer(6, 'b')">B) 45 ft</button>
+        <button class="option" onclick="checkAnswer(6, 'c')">C) 16 ft</button>
+        <button class="option" onclick="checkAnswer(6, 'd')">D) 25 ft</button>
+    </div>
+    <div class="feedback" id="feedback6"></div>
+    <canvas class="whiteboard" id="whiteboard6"></canvas>
+    <div class="whiteboard-controls">
+        <button onclick="undoDrawing(6)">Undo</button>
+        <button onclick="clearWhiteboard(6)">Clear</button>
+    </div>
+</div>
+
+<!-- Question 7 -->
+<div class="question">
+    <p>7. GPS satellites orbit about 11,000 miles above Earth. The mean radius of Earth is about 3959 miles. Because GPS signals cannot travel through Earth, a satellite can transmit signals only as far as points A and C from point B, as shown. Find BA and BC to the nearest mile using Pythagoras theorem .</p>
+        <img src="SA_pics/circle4.png" style="width: 300px; height: auto;">
+    <div class="options">
+        <button class="option" onclick="checkAnswer(7, 'a')">A) 12425.60 mi </button>
+        <button class="option" onclick="checkAnswer(7, 'b')">B) 14425.60 mi </button>
+        <button class="option" onclick="checkAnswer(7, 'c')">C) 36223.60 mi </button>
+        <button class="option" onclick="checkAnswer(7, 'd')">D) 394425.60 mi </button>
+    </div>
+    <div class="feedback" id="feedback7"></div>
+    <canvas class="whiteboard" id="whiteboard7"></canvas>
+    <div class="whiteboard-controls">
+        <button onclick="undoDrawing(7)">Undo</button>
+        <button onclick="clearWhiteboard(7)">Clear</button>
+    </div>
+</div>
+
+<!-- Question 8 -->
+<div class="question">
+    <p>8. Find the value of x following figure</p>
+         <img src="SA_pics/circle5.png" alt="Linear Inequality" style="width: 500px; height: auto;">
+    <div class="options">
+        <button class="option" onclick="checkAnswer(8, 'a')">A) 90 degrees</button>
+        <button class="option" onclick="checkAnswer(8, 'b')">B) 180 degrees</button>
+        <button class="option" onclick="checkAnswer(8, 'c')">C) 50 degrees</button>
+        <button class="option" onclick="checkAnswer(8, 'd')">D) 100 degrees</button>
+    </div>
+    <div class="feedback" id="feedback8"></div>
+    <canvas class="whiteboard" id="whiteboard8"></canvas>
+    <div class="whiteboard-controls">
+        <button onclick="undoDrawing(8)">Undo</button>
+        <button onclick="clearWhiteboard(8)">Clear</button>
+    </div>
+</div>
+
+            <!-- Question 9 -->
+<div class="question">
+    <p>9. Find the value of y following figure</p>
+        <img src="SA_pics/circle5.png" style="width: 300px; height: auto;">
+    <div class="options">
+        <button class="option" onclick="checkAnswer(9, 'a')">A) 90 degrees </button>
+        <button class="option" onclick="checkAnswer(9, 'b')">B) 180 degrees </button>
+        <button class="option" onclick="checkAnswer(9, 'c')">C) 50 degrees </button>
+        <button class="option" onclick="checkAnswer(9, 'd')">D) 100 degrees </button>
+    </div>
+    <div class="feedback" id="feedback9"></div>
+    <canvas class="whiteboard" id="whiteboard9"></canvas>
+    <div class="whiteboard-controls">
+        <button onclick="undoDrawing(9)">Undo</button>
+        <button onclick="clearWhiteboard(9)">Clear</button>
+    </div>
+</div>
+
+            <!-- Question 10 -->
+<div class="question">
+    <p>10. If JG is a tangent to the circle, what is the
+value of x and and the measure of ∠JGH?</p>
+        <img src="SA_pics/circle6.png" style="width: 300px; height: auto;">
+    <div class="options">
+        <button class="option" onclick="checkAnswer(10, 'a')">A) x = 11, ∠JGH = 53° </button>
+        <button class="option" onclick="checkAnswer(10, 'b')">B) x = 2, ∠JGH = 53° </button>
+        <button class="option" onclick="checkAnswer(10, 'c')">C) x = 11, ∠JGH = 90° </button>
+        <button class="option" onclick="checkAnswer(10, 'd')">D) x = 8, ∠JGH = 45° </button>
+    </div>
+    <div class="feedback" id="feedback10"></div>
+    <canvas class="whiteboard" id="whiteboard10"></canvas>
+    <div class="whiteboard-controls">
+        <button onclick="undoDrawing(10)">Undo</button>
+        <button onclick="clearWhiteboard(10)">Clear</button>
+    </div>
+</div>
+            
+    </main>
+
+    <script>
+    // Whiteboard initialization and drawing history
+    const whiteboards = {};
+    const MAX_HISTORY = 50;
+    const correctAnswers = {
+        1: 'b', 2: 'a', 3: 'd', 4: 'b',
+        5: 'a', 6: 'a', 7: 'b', 8: 'c', 9: 'c', 10: 'a', 11: 'a', 12: 'c', 13: 'c', 14: 'b', 15: 'd'
+    };
+    const attempts = { 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0, 10:0, 11:0, 12:0, 13:0, 14:0, 15:0 };
+
+    // Initialize all whiteboards
+    for(let i = 1; i <= 15; i++) {
+        initializeWhiteboard(i);
+    }
+
+    function initializeWhiteboard(qNum) {
+        const canvas = document.getElementById(`whiteboard${qNum}`);
+        const ctx = canvas.getContext('2d');
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        
+        // Set white background
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        whiteboards[qNum] = {
+            ctx: ctx,
+            isDrawing: false,
+            history: [],
+            currentStep: -1
+        };
+
+        // Event listeners for both mouse and touch
+        canvas.addEventListener('mousedown', startDrawing.bind(null, qNum));
+        canvas.addEventListener('mousemove', draw.bind(null, qNum));
+        canvas.addEventListener('mouseup', stopDrawing.bind(null, qNum));
+        canvas.addEventListener('mouseout', stopDrawing.bind(null, qNum));
+        
+        canvas.addEventListener('touchstart', handleTouchStart.bind(null, qNum));
+        canvas.addEventListener('touchmove', handleTouchMove.bind(null, qNum));
+        canvas.addEventListener('touchend', stopDrawing.bind(null, qNum));
+
+        saveState(qNum);
+    }
+
+    // Touch event handlers
+    function handleTouchStart(qNum, e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const rect = e.target.getBoundingClientRect();
+        startDrawing(qNum, {
+            offsetX: touch.clientX - rect.left,
+            offsetY: touch.clientY - rect.top
+        });
+    }
+
+    function handleTouchMove(qNum, e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const rect = e.target.getBoundingClientRect();
+        draw(qNum, {
+            offsetX: touch.clientX - rect.left,
+            offsetY: touch.clientY - rect.top
+        });
+    }
+
+    // Drawing functions
+    function startDrawing(qNum, e) {
+        whiteboards[qNum].isDrawing = true;
+        whiteboards[qNum].ctx.beginPath();
+        whiteboards[qNum].ctx.moveTo(e.offsetX, e.offsetY);
+    }
+
+    function draw(qNum, e) {
+        if(!whiteboards[qNum].isDrawing) return;
+        whiteboards[qNum].ctx.lineTo(e.offsetX, e.offsetY);
+        whiteboards[qNum].ctx.strokeStyle = 'black';
+        whiteboards[qNum].ctx.lineWidth = 2;
+        whiteboards[qNum].ctx.stroke();
+    }
+
+    function stopDrawing(qNum) {
+        if(whiteboards[qNum].isDrawing) {
+            saveState(qNum);
+        }
+        whiteboards[qNum].isDrawing = false;
+    }
+
+    // Whiteboard utilities
+    function saveState(qNum) {
+        const canvas = document.getElementById(`whiteboard${qNum}`);
+        const state = whiteboards[qNum].ctx.getImageData(0, 0, canvas.width, canvas.height);
+        whiteboards[qNum].history = whiteboards[qNum].history.slice(0, whiteboards[qNum].currentStep + 1);
+        whiteboards[qNum].history.push(state);
+        whiteboards[qNum].currentStep = Math.min(whiteboards[qNum].currentStep + 1, MAX_HISTORY - 1);
+    }
+
+    function undoDrawing(qNum) {
+        if(whiteboards[qNum].currentStep > 0) {
+            whiteboards[qNum].currentStep--;
+            whiteboards[qNum].ctx.putImageData(
+                whiteboards[qNum].history[whiteboards[qNum].currentStep],
+                0, 0
+            );
+        }
+    }
+
+    function clearWhiteboard(qNum) {
+        const canvas = document.getElementById(`whiteboard${qNum}`);
+        whiteboards[qNum].ctx.clearRect(0, 0, canvas.width, canvas.height);
+        whiteboards[qNum].ctx.fillStyle = 'white';
+        whiteboards[qNum].ctx.fillRect(0, 0, canvas.width, canvas.height);
+        whiteboards[qNum].history = [];
+        saveState(qNum);
+    }
+
+    // Answer checking logic
+    function checkAnswer(qNum, selected) {
+        const feedback = document.getElementById(`feedback${qNum}`);
+        const questionDiv = document.querySelector(`#whiteboard${qNum}`).closest('.question');
+        const options = questionDiv.querySelectorAll('.option');
+
+        if(attempts[qNum] >= 2) return;
+
+        if(selected === correctAnswers[qNum]) {
+            feedback.textContent = "Correct!";
+            feedback.style.backgroundColor = '#d4edda';
+            options.forEach(opt => opt.disabled = true);
+        } else {
+            attempts[qNum]++;
+            const remaining = 2 - attempts[qNum];
+            
+            if(remaining > 0) {
+                feedback.textContent = `Incorrect. Attempts remaining: ${remaining}`;
+                feedback.style.backgroundColor = '#f8d7da';
+            } else {
+                feedback.textContent = `Correct answer: ${correctAnswers[qNum].toUpperCase()}`;
+                feedback.style.backgroundColor = '#fff3cd';
+                options.forEach(opt => opt.disabled = true);
+            }
+        }
+    }
+</script>
+           
+   
+    <footer>
+        <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+    </footer>
+</body>
+</html>
