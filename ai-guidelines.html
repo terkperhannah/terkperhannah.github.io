@@ -5,59 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ms. Terkper's Digital Classroom</title>
     <style>
-       
+    /* AI Guidelines Styling */
+    .ai-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        font-family: 'Segoe UI', system-ui, sans-serif;
+    }
 
-        /* Color variations for visual interest */
-        .content-box:nth-child(odd) {
-            border-color: #3498db;
-        }
+    .content-box {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+        border-left: 5px solid #6c5ce7;
+        transition: transform 0.3s ease;
+    }
 
-        .content-box:nth-child(odd) h2 {
-            border-color: #3498db;
-        }
-
-        .content-box:nth-child(even) {
-            border-color: #2ecc71;
-        }
-
-        .content-box:nth-child(even) h2 {
-            border-color: #2ecc71;
-        }
-      .ai-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 40px 20px;
+    .content-box:hover {
+        transform: translateY(-3px);
     }
 
     .content-box h2 {
-      color: #2c3e50;
-      border-bottom: 3px solid #3498db;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-      font-size: 24px;
+        color: #2d3436;
+        font-size: 1.8em;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #a8a5e6;
     }
 
     .content-box ul {
-      padding-left: 20px;
-      font-size: 16px;
-      line-height: 1.6;
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .content-box li {
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+        font-size: 1.1em;
+        position: relative;
+        padding-left: 35px;
+    }
+
+    .content-box li:before {
+        content: "•";
+        color: #6c5ce7;
+        font-size: 1.4em;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
     }
 
     .ai-img-link {
-      display: block;
-      margin: 20px auto;
-      max-width: 300px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
+        display: block;
+        margin: 25px auto;
+        max-width: 250px;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+
+    .ai-img-link:hover {
+        transform: scale(1.03);
+        border-color: #6c5ce7;
+    }
+
+    .ai-img-link img {
+        width: 100%;
+        height: auto;
+        padding: 15px;
+        background: #f8f9fa;
     }
 
     .img-caption {
-      font-size: 0.9em;
-      color: #666;
-      text-align: center;
-      margin-top: 5px;
+        font-size: 0.95em;
+        color: #636e72;
+        text-align: center;
+        margin-top: 10px;
+        font-style: italic;
     }
-    </style>
+
+    .img-caption a {
+        color: #6c5ce7;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .img-caption a:hover {
+        text-decoration: underline;
+    }
+
+    .highlight {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+        border-left: 3px solid #6c5ce7;
+    }
+</style>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -122,63 +170,69 @@
 
   <main class="ai-container">
     <!-- Intro Section -->
-    <div class="content-box">
-      <h2>Using AI Responsibly in Our Classroom</h2>
-      <p>Artificial Intelligence (AI) tools like ChatGPT, Grammarly, and Canva AI can support your learning in exciting ways. However, it's important to use them responsibly, ethically, and in a way that helps you grow as a learner. These guidelines explain when and how to use AI appropriately.</p>
+    <div class="content-box" style="border-color: #00b894;">
+        <h2>Using AI Responsibly in Our Classroom</h2>
+        <p>Artificial Intelligence (AI) tools like ChatGPT, Grammarly, and Canva AI can be powerful learning assistants when used properly. This guide helps you use AI ethically while developing your own skills and creativity.</p>
     </div>
 
     <!-- Responsible Uses -->
     <div class="content-box">
-      <h2>When It's Okay to Use AI</h2>
-      <ul>
-        <li>Brainstorming ideas for writing assignments or projects</li>
-        <li>Getting feedback on grammar or spelling (e.g., Grammarly)</li>
-        <li>Summarizing or simplifying hard-to-understand texts</li>
-        <li>Practicing coding with AI suggestions in IDEs like Visual Studio Code</li>
-        <li>Generating quiz or review questions for personal study</li>
-      </ul>
+        <h2>Approved AI Uses</h2>
+        <ul>
+            <li>Brainstorming project ideas or writing topics</li>
+            <li>Improving grammar/spelling with tools like Grammarly</li>
+            <li>Simplifying complex texts for better understanding</li>
+            <li>Getting coding suggestions in Visual Studio Code</li>
+            <li>Creating practice questions for self-study</li>
+        </ul>
     </div>
 
     <!-- Misuse Warning -->
     <div class="content-box">
-      <h2>When NOT to Use AI</h2>
-      <ul>
-        <li>Submitting AI-written content as your own work</li>
-        <li>Using AI to complete math or coding problems without trying first</li>
-        <li>Asking AI to do full assignments or reflections</li>
-        <li>Using AI to look up test answers during assessments</li>
-      </ul>
+        <h2>Restricted AI Uses</h2>
+        <ul>
+            <li>Submitting AI-generated content as your own work</li>
+            <li>Solving math/coding problems without attempting first</li>
+            <li>Completing entire assignments using AI</li>
+            <li>Accessing test answers during assessments</li>
+        </ul>
     </div>
 
     <!-- Academic Integrity -->
     <div class="content-box">
-      <h2>Academic Integrity & Citation</h2>
-      <p>If you use AI to support your learning, you must be transparent about how. This includes noting which tool you used, what you asked it, and how it helped you.</p>
-      <p><strong>Example citation (APA 7):</strong>  
-      ChatGPT. (2024, April 12). Response to “Give three pros of using AI in education.” OpenAI. https://chat.openai.com/</p>
-      <p>We value your original voice — AI should support your thinking, not replace it.</p>
+        <h2>Academic Integrity & Citation</h2>
+        <p>When using AI tools, always disclose:</p>
+        <div class="highlight">
+            <p><strong>Example Citation (APA 7):</strong><br>
+            ChatGPT. (2024, April 12). Response to "Three educational benefits of AI". OpenAI. https://chat.openai.com/</p>
+        </div>
+        <p>Remember: AI should enhance your learning, not replace your original thinking!</p>
     </div>
 
-    <!-- AI Tools Logos Section -->
+    <!-- AI Tools Section -->
     <div class="content-box">
-      <h2>Explore These Helpful AI Tools</h2>
+        <h2>Recommended AI Tools</h2>
+        
+        <a href="https://chat.openai.com/" target="_blank">
+            <img src="SA_pics/chatgpt.png" alt="ChatGPT" class="ai-img-link">
+        </a>
+        <p class="img-caption">ChatGPT - AI assistant for brainstorming<br>
+        <a href="https://chat.openai.com/" target="_blank">Visit Site</a></p>
 
-      <a href="https://chat.openai.com/" target="_blank">
-        <img src="SA_pics/chatgpt.png" alt="ChatGPT Logo" class="ai-img-link">
-      </a>
-      <p class="img-caption">ChatGPT by OpenAI | <a href="https://chat.openai.com/" target="_blank">chat.openai.com</a></p>
+        <a href="https://www.grammarly.com/" target="_blank">
+            <img src="SA_pics/grammarly.png" alt="Grammarly" class="ai-img-link">
+        </a>
+        <p class="img-caption">Grammarly - Writing enhancement tool<br>
+        <a href="https://www.grammarly.com/" target="_blank">Visit Site</a></p>
 
-      <a href="https://www.grammarly.com/" target="_blank">
-        <img src="SA_pics/grammarly.png" alt="Grammarly Logo" class="ai-img-link">
-      </a>
-      <p class="img-caption">Grammarly | <a href="https://www.grammarly.com/" target="_blank">grammarly.com</a></p>
-
-      <a href="https://www.canva.com/ai-image-generator/" target="_blank">
-        <img src="SA_pics/canvaai.png" alt="Canva AI Logo" class="ai-img-link">
-      </a>
-      <p class="img-caption">Canva Magic Tools | <a href="https://www.canva.com/ai-image-generator/" target="_blank">canva.com</a></p>
+        <a href="https://www.canva.com/ai-image-generator/" target="_blank">
+            <img src="SA_pics/canvaai.png" alt="Canva AI" class="ai-img-link">
+        </a>
+        <p class="img-caption">Canva Magic Tools - Design assistance<br>
+        <a href="https://www.canva.com/" target="_blank">Visit Site</a></p>
     </div>
-  </main>
+</main>
+
 
   <footer>
     <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
