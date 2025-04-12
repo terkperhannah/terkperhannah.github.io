@@ -5,130 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ms. Terkper's Digital Classroom</title>
     <style>
-        /* Added styling for content boxes */
-        .content-box {
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 30px;
-            background-color: #ffffff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .content-box h2 {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-
-        .content-box p {
-            line-height: 1.6;
-            color: #34495e;
-            font-size: 16px;
-        }
-
-        .content-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Color variations for visual interest */
-        .content-box:nth-child(odd) {
-            border-color: #3498db;
-        }
-
-        .content-box:nth-child(odd) h2 {
-            border-color: #3498db;
-        }
-
-        .content-box:nth-child(even) {
-            border-color: #2ecc71;
-        }
-
-        .content-box:nth-child(even) h2 {
-            border-color: #2ecc71;
-        }
-      /* Updated ISTE Standards Styling */
-    .iste-container {
+        .iste-container {
         max-width: 1000px;
         margin: 0 auto;
         padding: 40px 20px;
+        font-family: 'Segoe UI', system-ui, sans-serif;
     }
 
-    .iste-card {
-        border: 2px solid #2a7f4f;
+    .content-box {
+        background: #ffffff;
         border-radius: 15px;
-        background-color: #f8f9fa;
-        padding: 25px;
-        margin-bottom: 40px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
+        padding: 30px;
+        margin-bottom: 35px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        border-left: 5px solid #0984e3;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .iste-card:hover {
+    .content-box:hover {
         transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(9, 132, 227, 0.15);
     }
 
-    .iste-card h3 {
-        color: #2a7f4f;
-        font-size: 1.6em;
-        margin-bottom: 15px;
-        padding-bottom: 10px;
-        border-bottom: 2px solid #2a7f4f;
+    .content-box h2 {
+        color: #2d3436;
+        font-size: 1.9em;
+        margin: 0 0 25px 0;
+        padding-bottom: 15px;
+        border-bottom: 3px solid #74b9ff;
+        display: flex;
+        align-items: center;
+        gap: 12px;
     }
 
-    .iste-card p {
-        font-size: 1.1em;
-        color: #444;
-        line-height: 1.7;
-        margin-bottom: 20px;
+    .content-box h2::before {
+        content: "🌐";
+        font-size: 1.2em;
+    }
+
+    .highlight {
+        background: #f8f9ff;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 25px 0;
+        border-left: 4px solid #74b9ff;
     }
 
     .iste-img-link {
         display: block;
-        margin: 20px 0;
-        border: 2px solid #ddd;
+        margin: 25px auto;
+        max-width: 320px;
         border-radius: 12px;
-        overflow: hidden;
+        border: 2px solid transparent;
         transition: all 0.3s ease;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
+        overflow: hidden;
     }
 
     .iste-img-link:hover {
-        border-color: #2a7f4f;
-        box-shadow: 0 4px 15px rgba(42, 127, 79, 0.2);
+        transform: scale(1.03);
+        border-color: #0984e3;
+        box-shadow: 0 5px 15px rgba(9, 132, 227, 0.2);
     }
 
     .iste-img-link img {
         width: 100%;
         height: auto;
         padding: 15px;
-        object-fit: contain;
+        background: #f8f9ff;
     }
 
     .img-caption {
-        font-size: 0.9em;
-        color: #666;
-        margin-top: 10px;
+        font-size: 0.95em;
+        color: #636e72;
         text-align: center;
+        margin-top: 12px;
         line-height: 1.4;
     }
 
     .img-caption a {
-        color: #2a7f4f;
+        color: #0984e3;
         text-decoration: none;
-        font-weight: 500;
+        font-weight: 600;
+        border-bottom: 1px dotted currentColor;
     }
 
     .img-caption a:hover {
-        text-decoration: underline;
+        color: #74b9ff;
+        text-decoration: none;
     }
-    </style>
+
+    .standard-badge {
+        background: #e3f2fd;
+        color: #0984e3;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-weight: 600;
+        display: inline-block;
+        margin: 15px 0;
+    }
+</style>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -192,83 +168,96 @@
   </header>
 
   <main class="iste-container">
-    <p class="page-intro">Explore the 7 ISTE Standards for Students through practical classroom applications and digital tools. Each standard includes real-world examples and recommended resources to enhance your learning experience.</p>
+    <p class="page-intro">Explore the 7 ISTE Standards through practical classroom applications. Each standard includes implementation strategies and digital tools to enhance student learning outcomes.</p>
 
     <!-- Standard 1 -->
-    <div class="iste-card">
-        <h3>1. Empowered Learner</h3>
-        <p><strong>Student-Friendly Explanation:</strong> Take ownership of your learning journey by setting personal goals, monitoring your progress with digital tools, and seeking feedback.</p>
-        <p><strong>Classroom Connection:</strong> Track your math skill development using Khan Academy's progress dashboard and personalized practice recommendations.</p>
-        <a class="iste-img-link" href="https://www.khanacademy.org" target="_blank">
-            <img src="SA_pics/khan.png" alt="Khan Academy dashboard interface">
+    <div class="content-box" style="border-color: #00cec9;">
+        <h2>Empowered Learner</h2>
+        <div class="standard-badge">Core Concept</div>
+        <p>Students leverage technology to take an active role in choosing, achieving, and demonstrating competency in their learning goals.</p>
+        <div class="standard-badge">Implementation Strategy</div>
+        <p>Utilize Khan Academy's progress dashboards for student-led goal setting and personalized skill development tracking.</p>
+        <a href="https://www.khanacademy.org" class="iste-img-link" target="_blank">
+            <img src="SA_pics/khan.png" alt="Khan Academy dashboard">
         </a>
-        <p class="img-caption">Visual: Khan Academy progress tracking. Explore their <a href="https://www.khanacademy.org" target="_blank">learning platform</a>.</p>
+        <p class="img-caption">Progress tracking interface: <a href="https://www.khanacademy.org" target="_blank">khanacademy.org</a></p>
     </div>
 
     <!-- Standard 2 -->
-    <div class="iste-card">
-        <h3>2. Digital Citizen</h3>
-        <p><strong>Student-Friendly Explanation:</strong> Practice safe, ethical, and responsible use of digital resources in all online interactions.</p>
-        <p><strong>Classroom Connection:</strong> Properly attribute Creative Commons licensed images in your science presentations using Wikimedia Commons.</p>
-        <a class="iste-img-link" href="https://commons.wikimedia.org" target="_blank">
-            <img src="SA_pics/creative.png" alt="Creative Commons attribution example">
+    <div class="content-box">
+        <h2>Digital Citizen</h2>
+        <div class="standard-badge">Ethical Focus</div>
+        <p>Students recognize the rights, responsibilities, and opportunities of living in a digital world.</p>
+        <div class="standard-badge">Classroom Activity</div>
+        <p>Create multimedia projects using properly attributed Creative Commons resources from Wikimedia Commons.</p>
+        <a href="https://commons.wikimedia.org" class="iste-img-link" target="_blank">
+            <img src="SA_pics/creative.png" alt="Creative Commons examples">
         </a>
-        <p class="img-caption">Example of proper image attribution. Learn about <a href="https://creativecommons.org" target="_blank">CC licenses</a>.</p>
+        <p class="img-caption">Digital citizenship in practice: <a href="https://creativecommons.org" target="_blank">creativecommons.org</a></p>
     </div>
 
     <!-- Standard 3 -->
-    <div class="iste-card">
-        <h3>3. Knowledge Constructor</h3>
-        <p><strong>Student-Friendly Explanation:</strong> Curate and synthesize information from digital sources to create meaningful projects.</p>
-        <p><strong>Classroom Connection:</strong> Develop a climate change presentation using trusted sources and PowerPoint's research tools.</p>
-        <a class="iste-img-link" href="https://www.microsoft.com/powerpoint" target="_blank">
-            <img src="SA_pics/powerpoint.png" alt="PowerPoint presentation example">
+    <div class="content-box">
+        <h2>Knowledge Constructor</h2>
+        <div class="standard-badge">Research Skills</div>
+        <p>Students critically curate resources using digital tools to build knowledge and create meaningful products.</p>
+        <div class="standard-badge">Technology Integration</div>
+        <p>Develop research presentations using PowerPoint's integrated citation tools and multimedia features.</p>
+        <a href="https://www.microsoft.com/powerpoint" class="iste-img-link" target="_blank">
+            <img src="SA_pics/powerpoint.png" alt="PowerPoint interface">
         </a>
-        <p class="img-caption">Presentation creation in PowerPoint. <a href="https://www.microsoft.com" target="_blank">Microsoft 365</a> tools for education.</p>
+        <p class="img-caption">Presentation design tool: <a href="https://www.microsoft.com" target="_blank">microsoft.com</a></p>
     </div>
-
-    <!-- Standard 4 -->
-    <div class="iste-card">
-        <h3>4. Innovative Designer</h3>
-        <p><strong>Student-Friendly Explanation:</strong> Develop creative solutions to real-world problems through iterative design processes.</p>
-        <p><strong>Classroom Connection:</strong> Prototype an educational video game about ecosystems using MakeCode Arcade.</p>
-        <a class="iste-img-link" href="https://arcade.makecode.com" target="_blank">
+<!-- Standard 4 -->
+    <div class="content-box" style="border-color: #6c5ce7;">
+        <h2>Innovative Designer</h2>
+        <div class="standard-badge">Design Thinking</div>
+        <p>Students use varied technologies to identify design constraints, prototype solutions, and test iterative improvements in authentic contexts.</p>
+        <div class="standard-badge">Project Example</div>
+        <p>Design and test a recycling awareness game using MakeCode Arcade's block-based programming interface.</p>
+        <a href="https://arcade.makecode.com" class="iste-img-link" target="_blank">
             <img src="SA_pics/arcade.png" alt="MakeCode Arcade interface">
         </a>
-        <p class="img-caption">Game design with MakeCode. Explore <a href="https://arcade.makecode.com" target="_blank">coding projects</a>.</p>
+        <p class="img-caption">Game development platform: <a href="https://arcade.makecode.com" target="_blank">arcade.makecode.com</a></p>
     </div>
 
     <!-- Standard 5 -->
-    <div class="iste-card">
-        <h3>5. Computational Thinker</h3>
-        <p><strong>Student-Friendly Explanation:</strong> Solve complex problems by breaking them into logical steps supported by technology.</p>
-        <p><strong>Classroom Connection:</strong> Program a micro:bit sensor system to monitor classroom air quality.</p>
-        <a class="iste-img-link" href="https://makecode.microbit.org" target="_blank">
-            <img src="SA_pics/microbit.png" alt="Micro:bit programming example">
+    <div class="content-box" style="border-color: #00b894;">
+        <h2>Computational Thinker</h2>
+        <div class="standard-badge">Problem Solving</div>
+        <p>Students develop logical workflows and leverage automation to analyze data and solve complex problems systematically.</p>
+        <div class="standard-badge">STEM Integration</div>
+        <p>Program environmental sensors using micro:bit's block coding interface to collect and analyze classroom air quality data.</p>
+        <a href="https://makecode.microbit.org" class="iste-img-link" target="_blank">
+            <img src="SA_pics/microbit.png" alt="Micro:bit programming interface">
         </a>
-        <p class="img-caption">Physical computing with micro:bit. <a href="https://makecode.microbit.org" target="_blank">Start coding</a>.</p>
+        <p class="img-caption">Physical computing toolkit: <a href="https://makecode.microbit.org" target="_blank">makecode.microbit.org</a></p>
     </div>
 
     <!-- Standard 6 -->
-    <div class="iste-card">
-        <h3>6. Creative Communicator</h3>
-        <p><strong>Student-Friendly Explanation:</strong> Express ideas effectively using multimedia tools tailored to your audience.</p>
-        <p><strong>Classroom Connection:</strong> Create an interactive Canva infographic to explain historical events.</p>
-        <a class="iste-img-link" href="https://www.canva.com/education" target="_blank">
+    <div class="content-box" style="border-color: #e84393;">
+        <h2>Creative Communicator</h2>
+        <div class="standard-badge">Digital Expression</div>
+        <p>Students craft compelling multimedia messages tailored to specific audiences and communication goals.</p>
+        <div class="standard-badge">Visual Literacy</div>
+        <p>Develop interactive history timelines using Canva's graphic design tools and animation features.</p>
+        <a href="https://www.canva.com/education" class="iste-img-link" target="_blank">
             <img src="SA_pics/canva.png" alt="Canva design interface">
         </a>
-        <p class="img-caption">Digital design with Canva. <a href="https://www.canva.com" target="_blank">Explore templates</a>.</p>
+        <p class="img-caption">Design platform: <a href="https://www.canva.com" target="_blank">canva.com</a></p>
     </div>
 
     <!-- Standard 7 -->
-    <div class="iste-card">
-        <h3>7. Global Collaborator</h3>
-        <p><strong>Student-Friendly Explanation:</strong> Collaborate across distances using digital tools to address worldwide challenges.</p>
-        <p><strong>Classroom Connection:</strong> Co-author a multicultural cookbook with international peers using Teams shared documents.</p>
-        <a class="iste-img-link" href="https://www.microsoft.com/teams" target="_blank">
-            <img src="SA_pics/teams.png" alt="Microsoft Teams collaboration">
+    <div class="content-box" style="border-color: #fdcb6e;">
+        <h2>Global Collaborator</h2>
+        <div class="standard-badge">Digital Teamwork</div>
+        <p>Students use collaborative technologies to work effectively with diverse teams and broaden multicultural understanding.</p>
+        <div class="standard-badge">Cross-Cultural Project</div>
+        <p>Co-author a global recipe book using Microsoft Teams' shared documents and real-time collaboration features.</p>
+        <a href="https://www.microsoft.com/teams" class="iste-img-link" target="_blank">
+            <img src="SA_pics/teams.png" alt="Microsoft Teams interface">
         </a>
-        <p class="img-caption">Virtual teamwork in Teams. <a href="https://www.microsoft.com/teams" target="_blank">Learn about collaboration</a>.</p>
+        <p class="img-caption">Collaboration suite: <a href="https://www.microsoft.com/teams" target="_blank">microsoft.com/teams</a></p>
     </div>
 </main>
 
