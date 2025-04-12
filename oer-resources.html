@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ms. Terkper's Digital Classroom</title>
     <style>
-    /* AI Guidelines Styling */
-    .ai-container {
+    .oer-container {
         max-width: 1000px;
         margin: 0 auto;
         padding: 40px 20px;
@@ -15,95 +14,101 @@
 
     .content-box {
         background: #ffffff;
-        border-radius: 12px;
+        border-radius: 15px;
         padding: 30px;
-        margin-bottom: 30px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
-        border-left: 5px solid #6c5ce7;
-        transition: transform 0.3s ease;
+        margin-bottom: 35px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        border-left: 5px solid #0984e3;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .content-box:hover {
-        transform: translateY(-3px);
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(9, 132, 227, 0.15);
     }
 
     .content-box h2 {
         color: #2d3436;
-        font-size: 1.8em;
-        margin-bottom: 25px;
+        font-size: 1.9em;
+        margin: 0 0 25px 0;
         padding-bottom: 15px;
-        border-bottom: 2px solid #a8a5e6;
+        border-bottom: 3px solid #74b9ff;
+        display: flex;
+        align-items: center;
+        gap: 12px;
     }
 
-    .content-box ul {
-        list-style: none;
-        padding-left: 0;
+    .content-box h2::before {
+        content: "📘";
+        font-size: 1.2em;
     }
 
-    .content-box li {
-        padding: 12px 0;
-        border-bottom: 1px solid #eee;
-        font-size: 1.1em;
-        position: relative;
-        padding-left: 35px;
+    .content-box p {
+        font-size: 1.12em;
+        line-height: 1.8;
+        color: #444;
+        margin-bottom: 20px;
     }
 
-    .content-box li:before {
-        content: "•";
-        color: #6c5ce7;
-        font-size: 1.4em;
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
+    .highlight {
+        background: #f8f9ff;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 25px 0;
+        border-left: 4px solid #74b9ff;
     }
 
-    .ai-img-link {
+    .oer-img-link {
         display: block;
         margin: 25px auto;
-        max-width: 250px;
-        border-radius: 8px;
-        overflow: hidden;
-        transition: all 0.3s ease;
+        max-width: 320px;
+        border-radius: 12px;
         border: 2px solid transparent;
+        transition: all 0.3s ease;
+        overflow: hidden;
     }
 
-    .ai-img-link:hover {
+    .oer-img-link:hover {
         transform: scale(1.03);
-        border-color: #6c5ce7;
+        border-color: #0984e3;
+        box-shadow: 0 5px 15px rgba(9, 132, 227, 0.2);
     }
 
-    .ai-img-link img {
+    .oer-img-link img {
         width: 100%;
         height: auto;
         padding: 15px;
-        background: #f8f9fa;
+        background: #f8f9ff;
     }
 
     .img-caption {
         font-size: 0.95em;
         color: #636e72;
         text-align: center;
-        margin-top: 10px;
-        font-style: italic;
+        margin-top: 12px;
+        line-height: 1.4;
     }
 
     .img-caption a {
-        color: #6c5ce7;
+        color: #0984e3;
         text-decoration: none;
-        font-weight: 500;
+        font-weight: 600;
+        border-bottom: 1px dotted currentColor;
     }
 
     .img-caption a:hover {
-        text-decoration: underline;
+        color: #74b9ff;
+        text-decoration: none;
     }
 
-    .highlight {
-        background: #f8f9fa;
-        padding: 20px;
-        border-radius: 8px;
-        margin: 20px 0;
-        border-left: 3px solid #6c5ce7;
+    .feature-badge {
+        background: #e3f2fd;
+        color: #0984e3;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-weight: 600;
+        display: inline-block;
+        margin: 15px 0;
     }
 </style>
     <link rel="stylesheet" href="style.css">
@@ -165,75 +170,77 @@
 <script async src="https://cse.google.com/cse.js?cx=55023492bbb93437c">
 </script>
 <header>
-    <h1>AI Guidelines for Students</h1>
+    <h1>OER Resources for Learning<</h1>
   </header>
 
-  <main class="ai-container">
-    <!-- Intro Section -->
-    <div class="content-box" style="border-color: #00b894;">
-        <h2>Using AI Responsibly in Our Classroom</h2>
-        <p>Artificial Intelligence (AI) tools like ChatGPT, Grammarly, and Canva AI can be powerful learning assistants when used properly. This guide helps you use AI ethically while developing your own skills and creativity.</p>
-    </div>
+  <main class="oer-container">
 
-    <!-- Responsible Uses -->
-    <div class="content-box">
-        <h2>Approved AI Uses</h2>
-        <ul>
-            <li>Brainstorming project ideas or writing topics</li>
-            <li>Improving grammar/spelling with tools like Grammarly</li>
-            <li>Simplifying complex texts for better understanding</li>
-            <li>Getting coding suggestions in Visual Studio Code</li>
-            <li>Creating practice questions for self-study</li>
-        </ul>
-    </div>
-
-    <!-- Misuse Warning -->
-    <div class="content-box">
-        <h2>Restricted AI Uses</h2>
-        <ul>
-            <li>Submitting AI-generated content as your own work</li>
-            <li>Solving math/coding problems without attempting first</li>
-            <li>Completing entire assignments using AI</li>
-            <li>Accessing test answers during assessments</li>
-        </ul>
-    </div>
-
-    <!-- Academic Integrity -->
-    <div class="content-box">
-        <h2>Academic Integrity & Citation</h2>
-        <p>When using AI tools, always disclose:</p>
+    <!-- What is OER -->
+    <div class="content-box" style="border-color: #00cec9;">
+        <h2>Understanding Open Educational Resources</h2>
+        <p>Open Educational Resources (OER) are freely accessible, openly licensed materials that transform traditional learning paradigms. These educator-created resources empower students to:</p>
         <div class="highlight">
-            <p><strong>Example Citation (APA 7):</strong><br>
-            ChatGPT. (2024, April 12). Response to "Three educational benefits of AI". OpenAI. https://chat.openai.com/</p>
+            <p>• Access high-quality materials without cost barriers<br>
+            • Adapt content to personal learning needs<br>
+            • Engage with interactive, multimodal learning tools<br>
+            • Collaborate in global knowledge-sharing communities</p>
         </div>
-        <p>Remember: AI should enhance your learning, not replace your original thinking!</p>
+        <p>In our classroom, OERs serve as foundational tools for differentiated instruction and self-directed learning journeys.</p>
     </div>
 
-    <!-- AI Tools Section -->
+    <!-- CK-12 -->
     <div class="content-box">
-        <h2>Recommended AI Tools</h2>
-        
-        <a href="https://chat.openai.com/" target="_blank">
-            <img src="SA_pics/chatgpt.png" alt="ChatGPT" class="ai-img-link">
+        <h2>CK-12 Foundation</h2>
+        <div class="feature-badge">Key Features</div>
+        <p>Multimodal learning platform offering adaptive practice, interactive simulations, and competency-based progress tracking across STEM disciplines.</p>
+        <div class="feature-badge">Classroom Application</div>
+        <p>Utilize for pre-assessment diagnostics, flipped classroom models, and individualized math remediation pathways.</p>
+        <a href="https://www.ck12.org/student/" target="_blank">
+            <img src="SA_pics/ck12.png" alt="CK-12 Interface" class="oer-img-link">
         </a>
-        <p class="img-caption">ChatGPT - AI assistant for brainstorming<br>
-        <a href="https://chat.openai.com/" target="_blank">Visit Site</a></p>
-
-        <a href="https://www.grammarly.com/" target="_blank">
-            <img src="SA_pics/grammarly.png" alt="Grammarly" class="ai-img-link">
-        </a>
-        <p class="img-caption">Grammarly - Writing enhancement tool<br>
-        <a href="https://www.grammarly.com/" target="_blank">Visit Site</a></p>
-
-        <a href="https://www.canva.com/ai-image-generator/" target="_blank">
-            <img src="SA_pics/canvaai.png" alt="Canva AI" class="ai-img-link">
-        </a>
-        <p class="img-caption">Canva Magic Tools - Design assistance<br>
-        <a href="https://www.canva.com/" target="_blank">Visit Site</a></p>
+        <p class="img-caption">Explore adaptive learning at <a href="https://www.ck12.org" target="_blank">ck12.org</a></p>
     </div>
+
+    <!-- PhET Simulations -->
+    <div class="content-box">
+        <h2>PhET Interactive Simulations</h2>
+        <div class="feature-badge">Pedagogical Value</div>
+        <p>Research-based virtual labs that promote scientific inquiry through gamified experimentation and discovery learning.</p>
+        <div class="feature-badge">Implementation Strategy</div>
+        <p>Employ as pre-lab conceptual frameworks, hypothesis-testing environments, or phenomena-based learning anchors.</p>
+        <a href="https://phet.colorado.edu/" target="_blank">
+            <img src="SA_pics/phet.png" alt="PhET Simulation Example" class="oer-img-link">
+        </a>
+        <p class="img-caption">Interactive STEM exploration: <a href="https://phet.colorado.edu" target="_blank">phet.colorado.edu</a></p>
+    </div>
+
+    <!-- OER Commons -->
+    <div class="content-box">
+        <h2>OER Commons Hub</h2>
+        <div class="feature-badge">Curatorial Advantage</div>
+        <p>Global repository featuring peer-reviewed, standards-aligned resources with advanced filtering and remix capabilities.</p>
+        <div class="feature-badge">Instructional Integration</div>
+        <p>Leverage for project-based learning resources, cross-cultural content, and open pedagogy development.</p>
+        <a href="https://www.oercommons.org/" target="_blank">
+            <img src="SA_pics/oercommons.png" alt="OER Commons Dashboard" class="oer-img-link">
+        </a>
+        <p class="img-caption">Global OER repository: <a href="https://www.oercommons.org" target="_blank">oercommons.org</a></p>
+    </div>
+
+    <!-- Khan Academy -->
+    <div class="content-box">
+        <h2>Khan Academy</h2>
+        <div class="feature-badge">Learning Analytics</div>
+        <p>Personalized learning paths with mastery tracking and micro-credentialing across academic domains.</p>
+        <div class="feature-badge">Implementation Framework</div>
+        <p>Utilize for competency-based progression, gap analysis, and metacognitive skill development through video annotations.</p>
+        <a href="https://www.khanacademy.org" target="_blank">
+            <img src="SA_pics/khan.png" alt="Khan Academy Dashboard" class="oer-img-link">
+        </a>
+        <p class="img-caption">Personalized learning platform: <a href="https://www.khanacademy.org" target="_blank">khanacademy.org</a></p>
+    </div>
+
 </main>
-
-
   <footer>
     <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
   </footer>
