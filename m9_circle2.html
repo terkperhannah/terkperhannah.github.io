@@ -16,7 +16,7 @@
     :root {
         --primary: #00cec9;
         --secondary: #6c5ce7;
-        --dark: #2d3436;
+        --dark: ##fafcfc;
         --light: #f8f9fa;
         --white: #ffffff;
         --success: #d4edda;
@@ -63,6 +63,10 @@
         transition: transform 0.3s ease;
     }
 
+    header:hover h1::after {
+        transform: scaleX(1);
+    }
+
     /* ===== Navigation ===== */
     nav {
         background: rgba(255, 255, 255, 0.95);
@@ -98,6 +102,15 @@
         transform: translateY(-2px);
     }
 
+    .submenu {
+        background: var(--white);
+        border-radius: 8px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        min-width: 200px;
+        list-style: none;
+    }
+
     /* ===== Main Content ===== */
     main {
         max-width: 800px;
@@ -108,7 +121,7 @@
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
     }
 
-    /* ===== Quiz Components ===== */
+    /* ===== Question Components ===== */
     .question {
         margin-bottom: 2rem;
         padding: 1.5rem;
@@ -134,7 +147,6 @@
         font-size: 0.9rem;
         text-align: left;
         transition: var(--transition);
-        color: var(--dark);
     }
 
     .option:hover {
@@ -151,13 +163,11 @@
     .option.correct {
         background-color: var(--success);
         border-color: #c3e6cb;
-        color: #155724;
     }
 
     .option.incorrect {
         background-color: var(--error);
         border-color: #f5c6cb;
-        color: #721c24;
     }
 
     /* ===== Whiteboard ===== */
@@ -188,6 +198,10 @@
         transition: background-color 0.2s;
     }
 
+    .whiteboard-controls button:hover {
+        background-color: #5a6268;
+    }
+
     /* ===== Feedback ===== */
     .feedback {
         margin-top: 0.5rem;
@@ -204,6 +218,11 @@
         text-align: center;
         font-size: 0.9rem;
         margin-top: 4rem;
+    }
+
+    footer p {
+        margin: 0;
+        opacity: 0.8;
     }
 
     /* ===== Responsive Design ===== */
@@ -228,7 +247,6 @@
     }
 </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-
 </head>
 <body>
     <header>
