@@ -6,63 +6,241 @@
     <title>Math 9 Unit 4: Similar Triangles and Applications</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f9f9f9;
+    /* ===== CSS Variables ===== */
+    :root {
+        --primary: #00cec9;
+        --secondary: #6c5ce7;
+        --dark: ##fafcfc;
+        --light: #f8f9fa;
+        --white: #ffffff;
+        --success: #d4edda;
+        --error: #f8d7da;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ===== Base Styles ===== */
+    body {
+        font-family: 'Poppins', Arial, sans-serif;
+        margin: 0;
+        background-color: #f9f9f9;
+        color: #444;
+    }
+
+    /* ===== Header ===== */
+    header {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        padding: 2.5rem 1.25rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    header h1 {
+        text-align: center;
+        font-size: 2.8rem;
+        color: var(--white);
+        margin: 0;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1::after {
+        content: "";
+        display: block;
+        width: 120px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.8);
+        margin: 1.25rem auto;
+        border-radius: 2px;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    header:hover h1::after {
+        transform: scaleX(1);
+    }
+
+    /* ===== Navigation ===== */
+    nav {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(5px);
+        padding: 1rem;
+        position: sticky;
+        top: 0;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        z-index: 1000;
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .dropdown > a {
+        color: var(--dark);
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        transition: var(--transition);
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .dropdown:hover > a {
+        background: var(--light);
+        color: var(--secondary);
+        transform: translateY(-2px);
+    }
+
+    .submenu {
+        background: var(--white);
+        border-radius: 8px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        min-width: 200px;
+        list-style: none;
+    }
+
+    /* ===== Main Content ===== */
+    main {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background-color: var(--white);
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    /* ===== Question Components ===== */
+    .question {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        border: 1px solid #dee2e6;
+        border-radius: 16px;
+        background-color: var(--white);
+        transition: var(--transition);
+    }
+
+    .options {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        margin: 1rem 0;
+    }
+
+    .option {
+        padding: 0.75rem 1rem;
+        background-color: var(--light);
+        border: 2px solid #dee2e6;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        text-align: left;
+        transition: var(--transition);
+    }
+
+    .option:hover {
+        background-color: #e9ecef;
+        transform: translateY(-2px);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .option:disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+    .option.correct {
+        background-color: var(--success);
+        border-color: #c3e6cb;
+    }
+
+    .option.incorrect {
+        background-color: var(--error);
+        border-color: #f5c6cb;
+    }
+
+    /* ===== Whiteboard ===== */
+    .whiteboard {
+        width: 100%;
+        height: 500px;
+        border: 2px solid var(--dark);
+        margin: 1rem auto;
+        background-color: var(--white);
+        touch-action: none;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .whiteboard-controls {
+        margin-top: 0.5rem;
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .whiteboard-controls button {
+        padding: 0.5rem 1rem;
+        background-color: #6c757d;
+        color: var(--white);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .whiteboard-controls button:hover {
+        background-color: #5a6268;
+    }
+
+    /* ===== Feedback ===== */
+    .feedback {
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+        border-radius: 4px;
+        font-size: 0.9rem;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+        background: var(--dark);
+        color: var(--white);
+        padding: 2rem;
+        text-align: center;
+        font-size: 0.9rem;
+        margin-top: 4rem;
+    }
+
+    footer p {
+        margin: 0;
+        opacity: 0.8;
+    }
+
+    /* ===== Responsive Design ===== */
+    @media (max-width: 768px) {
+        nav ul {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .options {
+            grid-template-columns: 1fr;
+        }
+
+        .whiteboard {
+            height: 300px;
         }
 
         main {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 1rem;
+            padding: 1rem;
         }
-
-        .question {
-            margin-bottom: 30px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #ffffff;
-        }
-
-        .question img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 10px 0;
-        }
-
-        input {
-            padding: 8px;
-            width: calc(100% - 100px);
-            margin-right: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            padding: 8px 12px;
-            background-color: #4caf50;
-            color: #ffffff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #388e3c;
-        }
-
-        .feedback {
-            margin-top: 10px;
-            font-weight: bold;
-        }
-    </style>
+    }
+</style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
