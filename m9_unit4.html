@@ -3,64 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math 9 Unit 4: Geometry of a Polygon</title>
+    <title>Math 9</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Inline CSS for green boxes */
-        .extra-practice {
-            text-align: center;
-            margin: 40px 0;
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content-box {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .content-box h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 24px;
         }
 
         .practice-grid {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
+            margin-top: 25px;
         }
 
-        .practice-box {
-            background-color: #4caf50;
-            color: white;
+        .practice-card {
             padding: 20px;
             border-radius: 8px;
-            text-align: center;
+            background: #f8f9fa;
+            transition: transform 0.3s ease;
+            border: 1px solid #e0e0e0;
             text-decoration: none;
+            color: #34495e;
+        }
+
+        .practice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-color: #3498db;
+        }
+
+        .practice-card h3 {
+            color: #3498db;
+            margin: 0 0 10px 0;
+            font-size: 1.1em;
+        }
+
+        .unit-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .learning-outcomes li {
+            margin: 15px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .learning-outcomes li::before {
+            content: "•";
+            color: #3498db;
+            position: absolute;
+            left: 0;
             font-weight: bold;
-            width: 200px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .practice-box:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-            background-color: #388e3c;
-        }
-
-        .practice-box span {
-            display: block;
-            margin-top: 10px;
-            font-size: 0.9em;
         }
 
         .interactive-container {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 40px;
-    }
-
-    .interactive-section,
-    .practice-section {
-        flex: 1;
-        min-width: 300px; /* Ensures responsiveness */
-    }
-
-    .interactive-section h2,
-    .practice-section h2 {
-        text-align: center;
-    }
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 25px;
+        }
     </style>
 </head>
 <body>
@@ -69,7 +91,13 @@
     </header>
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
+<li class="dropdown">
+            <a href="index.html">Home</a>
+            <ul class="submenu">
+                <li><a href="iste-standards.html">ISTE Standards</a></li>
+                <li><a href="ai-guidelines.html">AI Guidelines</a></li>
+                <li><a href="oer-resources.html">OER Resources</a></li>
+            </ul>
             <li class="dropdown">
                 <a href="#">Math</a>
                 <ul class="submenu">
@@ -77,8 +105,8 @@
                     <li><a href="math8.html">Math 8</a></li>
                     <li><a href="math9.html">Math 9</a></li>
                     <li><a href="math10.html">Math 10</a></li>
-                    <li><a href="math11.html">Math 11</a></li>
-                    <li><a href="math12.html">Math 12</a></li>
+                    <li><a href="math20-1.html">Math 11</a></li>
+                    <li><a href="math30-1.html">Math 12</a></li>
                 </ul>
             </li>
             <li class="dropdown">
@@ -88,8 +116,8 @@
                     <li><a href="science8.html">Science 8</a></li>
                     <li><a href="science9.html">Science 9</a></li>
                     <li><a href="science10.html">Science 10</a></li>
-                    <li><a href="science11.html">Science 11</a></li>
-                    <li><a href="science12.html">Science 12</a></li>
+                    <li><a href="Bio20.html">Science 11</a></li>
+                    <li><a href="Bio30.html">Science 12</a></li>
                 </ul>
             </li>
             <li class="dropdown">
@@ -109,57 +137,75 @@
             </li>
         </ul>
     </nav>
-<section>
-            <h2>Welcome to Math 9 Unit 4: Geometry of Polygons</h2>
-        <h2>Outcomes</h2>
-            <ul>
-            <li>determine surface area of 3D objects </li>
-
-            <li>explain how polygons are similar</li> 
-
-            <li>solve problems using similar polygons</li>
-
-            <li>draw and interpret scale diagrams of 2D shapes</li> 
-
-            <li>demonstrate an understanding of line and rotation symmetry</li> 
-            </ul>
-        </section>
     <main>
+        <div class="content-wrapper">
+            <div class="content-box">
+                <div class="unit-header">
+                    <h2>Math 9 - Unit 4</h2>
+                    <h3>Geometry of Polygons</h3>
+                </div>
 
-        <section>
-    <div class="interactive-container">
-    <!-- Interactives Section (Left) -->
-    <section class="interactive-section">
-        <h2>Interactives</h2>
-        <div class="extra-practice">
-            <div class="practice-grid">
-                <a href="m9_reflections.html" class="practice-box">Reflections<span>Explore line symmetry</span></a>
-                <a href="m9_rotations.html" class="practice-box">Rotations<span>Practice rotational symmetry</span></a>
-                <a href="m9_translations.html" class="practice-box">Translations<span>Understand translations</span></a>
+                <div class="content-box">
+                    <h2>Learning Outcomes</h2>
+                    <ul class="learning-outcomes">
+                        <li>Determine surface area of 3D objects</li>
+                        <li>Explain and apply properties of similar polygons</li>
+                        <li>Create and interpret scale diagrams of 2D shapes</li>
+                        <li>Analyze line and rotation symmetry</li>
+                        <li>Solve problems using geometric transformations</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h2>Interactive Explorations</h2>
+                    <div class="interactive-container">
+                        <a href="m9_reflections.html" class="practice-card">
+                            <h3>Reflections & Symmetry</h3>
+                            <p>Explore line symmetry through interactive models</p>
+                        </a>
+                        <a href="m9_rotations.html" class="practice-card">
+                            <h3>Rotational Symmetry</h3>
+                            <p>Investigate rotational patterns and properties</p>
+                        </a>
+                        <a href="m9_translations.html" class="practice-card">
+                            <h3>Translations</h3>
+                            <p>Understand geometric transformations</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <h2>Practice Modules</h2>
+                    <div class="practice-grid">
+                        <a href="m9_unit4_1.html" class="practice-card">
+                            <h3>Surface Area Fundamentals</h3>
+                            <p>Practice with cylinders and prisms</p>
+                        </a>
+                        <a href="m9_unit4_2.html" class="practice-card">
+                            <h3>Advanced 3D Shapes</h3>
+                            <p>Calculate surface areas of complex objects</p>
+                        </a>
+                        <a href="m9_unit4_3.html" class="practice-card">
+                            <h3>Scale Diagrams</h3>
+                            <p>Master scaling techniques</p>
+                        </a>
+                        <a href="m9_unit4_4.html" class="practice-card">
+                            <h3>Similar Polygons</h3>
+                            <p>Understand proportional relationships</p>
+                        </a>
+                        <a href="m9_unit4_5.html" class="practice-card">
+                            <h3>Triangle Similarity</h3>
+                            <p>Apply similarity theorems</p>
+                        </a>
+                        <a href="m9_unit4_6.html" class="practice-card">
+                            <h3>Symmetry Applications</h3>
+                            <p>Real-world symmetry problems</p>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
-
-    <!-- Extra Practice Section (Right) -->
-    <section class="practice-section">
-        <h2>Extra Practice</h2>
-        <div class="extra-practice">
-            <div class="practice-grid">
-                <a href="m9_unit4_1.html" class="practice-box">Surface Area 1<span>Practice with cylinders</span></a>
-                <a href="m9_unit4_2.html" class="practice-box">Surface Area 2<span>Advanced 3D shapes</span></a>
-                <a href="m9_unit4_3.html" class="practice-box">Scale Diagrams<span>Work on scaling</span></a>
-                <a href="m9_unit4_4.html" class="practice-box">Similar Polygons<span>Understand similar shapes</span></a>
-                <a href="m9_unit4_5.html" class="practice-box">Similar Triangles<span>Triangle relationships</span></a>
-                <a href="m9_unit4_6.html" class="practice-box">Reflections and Symmetry 1<span>Line and rotation symmetry</span></a>
-                <a href="m9_unit4_6_2.html" class="practice-box">Reflections and Symmetry 2<span>Line and rotation symmetry</span></a>
-                <a href="m9_unit4_7.html" class="practice-box">Rotation<span>Practice rotational symmetry</span></a>
-                <a href="m9_unit4_8.html" class="practice-box">Translation<span>Practice translation</span></a>
-            </div>
-        </div>
-    </section>
-</div>
     </main>
-
     <footer>
         <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
     </footer>
