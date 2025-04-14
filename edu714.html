@@ -10,15 +10,173 @@
     <header>
         <h1>Ms. Terkper's Digital Classroom</h1>
     </header>
+    <style>
+    /* Modern header styling */
+    header {
+        background: linear-gradient(135deg, #00cec9 0%, #6c5ce7 100%);
+        padding: 40px 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    header h1 {
+        text-align: center;
+        font-size: 2.8em;
+        color: #ffffff;
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1::after {
+        content: "";
+        display: block;
+        width: 120px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.8);
+        margin: 20px auto;
+        border-radius: 2px;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    header:hover h1::after {
+        transform: scaleX(1);
+    }
+
+    /* Modern navigation styling */
+    nav {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(5px);
+        padding: 1rem;
+        position: sticky;
+        top: 0;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        z-index: 1000;
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin: 0;
+        padding: 0;
+    }
+
+    .dropdown > a {
+        color: #fafcfc;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .dropdown:hover > a {
+        background: #f8f9fa;
+        color: #6c5ce7;
+        transform: translateY(-2px);
+    }
+
+    .submenu {
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        min-width: 200px;
+    }
+
+    /* Modern content boxes */
+    .content-box {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+        border-left: 0;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .content-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: #00cec9;
+        transition: width 0.3s ease;
+    }
+
+    .content-box:nth-child(even)::before {
+        background: #6c5ce7;
+    }
+
+    .content-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .content-box:hover::before {
+        width: 8px;
+    }
+
+    .content-box h2 {
+        color: #2d3436;
+        font-size: 1.8em;
+        margin: 0 0 1.5rem 0;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid rgba(116, 185, 255, 0.3);
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+    }
+
+    /* Modern footer */
+    footer {
+        background: #2d3436;
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        font-size: 0.9em;
+        margin-top: 4rem;
+    }
+
+    footer p {
+        margin: 0;
+        opacity: 0.8;
+    }
+
+    /* Search bar styling */
+    .gcse-search {
+        margin: 30px 0;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
     <nav>
         <ul>
-<li class="dropdown">
+            <li class="dropdown">
             <a href="index.html">Home</a>
             <ul class="submenu">
                 <li><a href="iste-standards.html">ISTE Standards</a></li>
                 <li><a href="ai-guidelines.html">AI Guidelines</a></li>
                 <li><a href="oer-resources.html">OER Resources</a></li>
-            </ul>            
+            </ul>
+        </li>
             <li class="dropdown">
                 <a href="#">Math</a>
                 <ul class="submenu">
