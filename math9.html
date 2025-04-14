@@ -30,12 +30,18 @@
             font-size: 24px;
         }
 
-        .units-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
+          .units-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 25px 0;
+}
+
+@media (min-width: 1200px) {
+    .units-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
 
         .unit-card {
             padding: 20px;
@@ -216,12 +222,11 @@
         <p>Collect, analyze, and interpret data while exploring experimental and theoretical probability.</p>
         <a href="m9_unit8.html" class="resource-link">Practice Unit 8 →</a>
     </article>
-</div>
 
-     <article class="unit-card">
+    <article class="unit-card">
         <h3>Final Review</h3>
         <p>Review key concepts of Math 9</p>
-        <a href="m9_review.html" class="resource-link">Practice Rreview problems →</a>
+        <a href="m9_review.html" class="resource-link">Practice Review problems →</a>
     </article>
 </div>
 
