@@ -62,6 +62,17 @@
     }
 
     /* ===== Navigation ===== */
+
+        nav li > a {
+    color: var(--dark);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    transition: var(--transition);
+    text-decoration: none;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
     nav {
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(5px);
@@ -82,13 +93,9 @@
     }
 
     .dropdown > a {
-        color: var(--dark);
-        padding: 1rem 1.5rem;
-        border-radius: 8px;
-        transition: var(--transition);
-        text-decoration: none;
-        font-weight: 500;
-    }
+    /* Remove duplicate properties and keep dropdown-specific styles if needed */
+    position: relative;
+}
 
     .dropdown:hover > a {
         background: var(--light);
