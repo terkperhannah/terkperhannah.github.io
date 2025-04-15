@@ -50,7 +50,7 @@ header:hover h1::after {
 
 /* === NAVIGATION BAR === */
 .main-navbar {
-  background: linear-gradient(to right, #00cec9, #6c5ce7);
+  background: linear-gradient(to right, #ffffff, #f1f9ff); /* Soft gradient */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   font-family: 'Poppins', sans-serif;
   position: sticky;
