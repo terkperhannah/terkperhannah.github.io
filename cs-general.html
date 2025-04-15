@@ -1,1 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science Resources</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Consistent with main course pages */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
+        .content-box {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .content-box h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .resource-card {
+            padding: 20px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            transition: transform 0.3s ease;
+            border: 1px solid #e0e0e0;
+            text-decoration: none;
+            color: #34495e;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-color: #3498db;
+        }
+
+        .activity-item {
+            padding: 20px;
+            margin: 15px 0;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background: #ffffff;
+        }
+
+        .activity-item h3 {
+            color: #2ecc71;
+            margin-top: 0;
+        }
+
+        .iste-standard {
+            color: #e67e22;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Computer Science Resources</h1>
+    </header>
+    <div id="navbar-placeholder"></div>
+
+    <main>
+        <div class="content-wrapper">
+            <div class="content-box">
+                <h2>Core Programming Resources</h2>
+                <div class="grid-container">
+                    <a href="https://makecode.microbit.org/" class="resource-card" target="_blank">
+                        <h3>MakeCode Micro:bit</h3>
+                        <p>Block-based and Python programming for physical computing</p>
+                    </a>
+                    <a href="https://unity.com/learn" class="resource-card" target="_blank">
+                        <h3>Unity Learn</h3>
+                        <p>Official tutorials for game development and VR creation</p>
+                    </a>
+                    <a href="https://www.w3schools.com/python/" class="resource-card" target="_blank">
+                        <h3>Python Fundamentals</h3>
+                        <p>Interactive tutorials for Python programming</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="content-box assignment-section">
+                <h2>CS Activities & Projects</h2>
+                
+                <div class="activity-item">
+                    <h3>OER Microbit Environmental Monitor</h3>
+                    <p>Students create a sustainable environment monitoring system using Micro:bits and Python. They collect real-time data and visualize it through a web interface they design. This open educational resource project emphasizes collaborative problem-solving.</p>
+                    <p><span class="iste-standard">ISTE Standards:</span> 1.4.c (Global Collaborator), 1.5.d (Computational Thinker), 1.6.b (Creative Communicator)</p>
+                </div>
+
+                <div class="activity-item">
+                    <h3>VR Physics Lab in Unity</h3>
+                    <p>Using Unity's XR toolkit, students design immersive VR environments demonstrating physics concepts. They program interactions using C# and test their simulations with VR headsets. Includes creating documentation websites for their projects.</p>
+                    <p><span class="iste-standard">ISTE Standards:</span> 1.3.d (Knowledge Constructor), 1.5.c (Computational Thinker), 1.7.c (Global Collaborator)</p>
+                </div>
+
+                <div class="activity-item">
+                    <h3>Accessible Web Design Challenge</h3>
+                    <p>Teams create WCAG-compliant websites addressing community needs using HTML/CSS/JavaScript. Includes peer reviews using WAVE accessibility tools and presentations to local organizations. OER resources from MDN Web Docs are utilized.</p>
+                    <p><span class="iste-standard">ISTE Standards:</span> 1.2.d (Digital Citizen), 1.6.b (Creative Communicator), 1.7.d (Global Collaborator)</p>
+                </div>
+
+                <div class="activity-item">
+                    <h3>AI-Powered Game NPCs</h3>
+                    <p>Using Python and machine learning libraries, students develop intelligent NPC behavior for Unity games. Includes ethical discussions about AI implementation and creating technical documentation.</p>
+                    <p><span class="iste-standard">ISTE Standards:</span> 1.5.a (Computational Thinker), 1.7.b (Global Collaborator), 1.3.c (Knowledge Constructor)</p>
+                </div>
+            </div>
+
+            <div class="content-box">
+                <h2>Extended Learning Tools</h2>
+                <div class="grid-container">
+                    <a href="https://arcade.makecode.com/" class="resource-card" target="_blank">
+                        <h3>MakeCode Arcade</h3>
+                        <p>Create retro-style games with JavaScript/Python</p>
+                    </a>
+                    <a href="https://cospaces.io/edu/" class="resource-card" target="_blank">
+                        <h3>CoSpaces EDU</h3>
+                        <p>Build VR/AR experiences with block coding</p>
+                    </a>
+                    <a href="https://www.codecademy.com/catalog/subject/web-development" class="resource-card" target="_blank">
+                        <h3>Codecademy Web</h3>
+                        <p>Interactive web development courses</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+    </footer>
+</body>
+</html>
