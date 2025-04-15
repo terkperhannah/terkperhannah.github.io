@@ -14,7 +14,7 @@ body {
 
 /* ===== Header ===== */
 header {
-    background: linear-gradient(135deg, #00cec9 0%, #6c5ce7 100%);
+    background: linear-gradient(135deg, #43a047, #1b5e20); /* Green tones */
     padding: 40px 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     position: relative;
