@@ -22,78 +22,80 @@ h1 {
     margin: 0;
 }
 
-nav {
-    background-color: #222;
-    color: white;
-    padding: 10px 0;
-    position: relative;
-    z-index: 1000;
+/* === NAVIGATION BAR === */
+.main-navbar {
+  background: linear-gradient(to right, #74b9ff, #55efc4); /* soft blue to green */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: 'Poppins', sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+
 }
 
-nav ul li {
-    position: relative;
-    margin: 0 10px;
+.nav-links > li {
+  position: relative;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1em; /* Increased font size */
-    padding: 10px 15px; /* Adjusted padding */
-    font-weight: bold;
-    border-radius: 5px; /* Add border radius for styling */
-    background-color: #444; /* Subtle background color for contrast */
-    transition: color 0.3s, background-color 0.3s;
+.nav-links a {
+  display: block;
+  padding: 1rem 1.5rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease, color 0.3s ease;
+  border-radius: 6px;
 }
 
-nav ul li a:hover {
-    background-color: #555;
-    color: #ffd700;
+.nav-links > li:hover > a {
+  background-color: #ffffff;
+  color: #2f3542;
 }
 
-nav ul li .submenu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #333;
-    border: 1px solid #4caf50;
-    padding: 10px 0;
-    list-style: none;
-    z-index: 1000;
-    min-width: 150px;
+/* === DROPDOWN === */
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  min-width: 200px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  z-index: 1001;
 }
 
-nav ul li:hover .submenu {
-    display: block;
+.dropdown li {
+  margin: 0;
 }
 
-nav ul li .submenu li {
-    padding: 5px 15px;
+.dropdown a {
+  color: #2d3436;
+  padding: 10px 20px;
+  border-radius: 0;
 }
 
-nav ul li .submenu li a {
-    font-size: 0.9em;
-    padding: 5px 10px;
-    display: block;
-    text-align: left;
-    background-color: #444;
-    border-radius: 3px;
+.dropdown a:hover {
+  background-color: #f1f1f1;
+  color: #00cec9;
 }
 
-nav ul li .submenu li a:hover {
-    background-color: #555;
-    color: #ffd700;
+/* Reveal dropdown on hover */
+.nav-links li:hover .dropdown {
+  display: block;
 }
+
 
 main {
     padding: 20px;
