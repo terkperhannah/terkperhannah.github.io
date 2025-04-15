@@ -10,48 +10,19 @@
     <header>
         <h1>Ms. Terkper's Digital Classroom</h1>
     </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li class="dropdown">
-                <a href="#">Math</a>
-                <ul class="submenu">
-                    <li><a href="math7.html">Math 7</a></li>
-                    <li><a href="math8.html">Math 8</a></li>
-                    <li><a href="math9.html">Math 9</a></li>
-                    <li><a href="math10.html">Math 10</a></li>
-                    <li><a href="math11.html">Math 11</a></li>
-                    <li><a href="math12.html">Math 12</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#">Science</a>
-                <ul class="submenu">
-                    <li><a href="science7.html">Science 7</a></li>
-                    <li><a href="science8.html">Science 8</a></li>
-                    <li><a href="science9.html">Science 9</a></li>
-                    <li><a href="science10.html">Science 10</a></li>
-                    <li><a href="science11.html">Science 11</a></li>
-                    <li><a href="science12.html">Science 12</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#">Computer Science</a>
-                <ul class="submenu">
-                    <li><a href="cs-general.html">General</a></li>
-                    <li><a href="cs-robotics.html">Robotics</a></li>
-                    <li><a href="VGD.html">Video Game Design</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#">M.Ed-Courses</a>
-                <ul class="submenu">
-                    <li><a href="med-general.html">General</a></li>
-                    <li><a href="edu714.html">EDU 714</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
+    <div id="navbar-placeholder"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      })
+      .catch(err => console.error("Navbar failed to load:", err));
+  });
+</script>
+
+
     <main>
         <section>
             <h2>Welcome to Math 9 Unit 8</h2>
