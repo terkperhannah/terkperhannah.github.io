@@ -50,13 +50,14 @@ header:hover h1::after {
 
 /* === NAVIGATION BAR === */
 .main-navbar {
-  background: linear-gradient(to right, #2c3e50, #636e72); /* dark slate to medium grey */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(to right, #2f3542, #57606f); /* Dark grey to cool grey */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   font-family: 'Poppins', sans-serif;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
+
 
 
 .nav-links {
@@ -66,6 +67,7 @@ header:hover h1::after {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
+
 }
 
 .nav-links > li {
@@ -84,7 +86,7 @@ header:hover h1::after {
 
 .nav-links > li:hover > a {
   background-color: #ffffff;
-  color: #0984e3;
+  color: #2f3542;
 }
 
 /* === DROPDOWN === */
