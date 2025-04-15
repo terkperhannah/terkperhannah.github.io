@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Science</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Consistent with main course pages */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content-box {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .content-box h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .units-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .unit-card {
+            padding: 20px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            transition: transform 0.3s ease;
+            border: 1px solid #e0e0e0;
+            text-decoration: none;
+            color: #34495e;
+        }
+
+        .unit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .unit-card h3 {
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .unit-card p {
+            line-height: 1.5;
+        }
+
+        .outcomes-list {
+            columns: 2;
+            gap: 30px;
+            padding-left: 20px;
+        }
+
+        .outcomes-list li {
+            margin-bottom: 12px;
+            break-inside: avoid;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .outcomes-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #2ecc71;
+        }
+
+        .resources-box {
+            background: #f8f9fa;
+            border-color: #2ecc71;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 6px;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: #34495e;
+            border: 1px solid #e0e0e0;
+        }
+
+        .resource-link:hover {
+            transform: translateX(5px);
+            border-color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+  <h2>CURRENTLY BUILDING</h2>
+    <div id="navbar-placeholder"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      })
+      .catch(err => console.error("Navbar failed to load:", err));
+  });
+</script>
+
+
+    
+    <footer>
+        <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+    </footer>
+</body>
+</html>
