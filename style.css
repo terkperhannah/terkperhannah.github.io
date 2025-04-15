@@ -11,7 +11,6 @@ body {
     background-size: cover;
     background-attachment: fixed;
 }
-
 /* ===== Header ===== */
 header {
     background: linear-gradient(135deg, #00cec9 0%, #6c5ce7 100%);
