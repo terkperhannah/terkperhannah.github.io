@@ -12,18 +12,7 @@
         <h1>Ms. Terkper's Digital Classroom</h1>
     </header>
 
-<nav id="navbar-placeholder"></nav>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    fetch('navbar.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-      })
-      .catch(err => console.error("Navbar failed to load:", err));
-  });
-</script>
+<div id="navbar-placeholder"></div>
 
 
     <main>
@@ -59,5 +48,17 @@ I'm excited to share this space with you — a place to learn, grow, and discove
     <footer>
         <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
     </footer>
+
+     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('navbar.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                })
+                .catch(err => console.error("Navbar failed to load:", err));
+        });
+    </script>
+    
 </body>
 </html>
