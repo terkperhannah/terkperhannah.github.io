@@ -11,6 +11,7 @@ body {
     background-size: cover;
     background-attachment: fixed;
 }
+
 /* ===== Header ===== */
 header {
     background: linear-gradient(135deg, #00cec9 0%, #6c5ce7 100%);
@@ -81,17 +82,10 @@ nav ul li {
     font-family: 'Poppins', sans-serif; /* Add font family */
 }
 
-.dropdown:hover > .submenu {
+/* Update hover behavior */
+.dropdown:hover .submenu {
     display: block;
 }
-
-/* Add hover effect for links */
-.dropdown > a:hover {
-    background: #f8f9fa;
-    color: #6c5ce7;
-    transform: translateY(-2px);
-}
-
 
 /* Add this for proper dropdown spacing */
 .submenu li {
@@ -108,24 +102,8 @@ nav ul li {
     position: absolute;
     top: 100%;
     left: 0;
-    z-index: 1001;
-    margin-top: 8px; /* Add space between menu and dropdown */
+    z-index: 1001; /* Add z-index */
 }
-
-.submenu a {
-    color: #2d3436 !important;
-    padding: 0.5rem 1rem;
-    display: block;
-    transition: all 0.2s ease;
-}
-
-.submenu a:hover {
-    background: #f8f9fa;
-    transform: translateX(5px);
-}
-
-
-
 nav ul li:hover .submenu {
     display: block;
 }
