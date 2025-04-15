@@ -69,15 +69,17 @@ nav ul {
 
 nav ul li {
     position: relative;
+    list-style: none;
 }
 
 .dropdown > a {
-    color: #fafcfc;
+    color: #2d3436;
     padding: 1rem 1.5rem;
     border-radius: 8px;
     transition: all 0.3s ease;
     text-decoration: none;
     font-weight: 500;
+    font-family: 'Poppins', sans-serif;
 }
 
 .dropdown:hover > a {
@@ -96,9 +98,23 @@ nav ul li {
     position: absolute;
     top: 100%;
     left: 0;
+    z-index: 1001;
+    margin-top: 0.5rem;
 }
 
-nav ul li:hover .submenu {
+.submenu a {
+    color: #2d3436;
+    padding: 0.5rem 1rem;
+    display: block;
+    transition: all 0.2s ease;
+}
+
+.submenu a:hover {
+    background: #f8f9fa;
+    transform: translateX(5px);
+}
+
+.dropdown:hover .submenu {
     display: block;
 }
 
