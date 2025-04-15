@@ -13,7 +13,16 @@
     </header>
 
 <div id="navbar-placeholder"></div>
-
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      })
+      .catch(err => console.error("Navbar failed to load:", err));
+  });
+</script>
 
     <main>
 <script async src="https://cse.google.com/cse.js?cx=55023492bbb93437c">
@@ -48,17 +57,6 @@ I'm excited to share this space with you — a place to learn, grow, and discove
     <footer>
         <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
     </footer>
-
-     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            fetch('navbar.html')
-                .then(res => res.text())
-                .then(data => {
-                    document.getElementById('navbar-placeholder').innerHTML = data;
-                })
-                .catch(err => console.error("Navbar failed to load:", err));
-        });
-    </script>
     
 </body>
 </html>
