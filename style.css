@@ -420,3 +420,29 @@ footer p {
         padding: 10px;
     }
 }
+
+.activity-button {
+    display: inline-block;
+    padding: 12px 25px;
+    margin-top: 15px;
+    background: linear-gradient(135deg, #3498db, #2ecc71);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.activity-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    background: linear-gradient(135deg, #2ecc71, #3498db);
+}
+
+.activity-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
