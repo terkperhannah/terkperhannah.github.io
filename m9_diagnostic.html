@@ -3,157 +3,177 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grade 9 Diagnostic Practice</title>
+  <title>Math 9 - Whiteboard Test</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <style>
-    .question {
-      margin-bottom: 2rem;
-      padding: 1.5rem;
-      border: 1px solid #dee2e6;
-      border-radius: 16px;
-      background-color: #fff;
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 2rem;
     }
-    .whiteboard {
+    h1 {
+      text-align: center;
+      color: #0984e3;
+    }
+    .chatgpt-box {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .question-box {
+      background: #ffffff;
+      border-left: 5px solid #00cec9;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    canvas.whiteboard {
       width: 100%;
       height: 300px;
       border: 2px solid #ccc;
-      background: #fff;
       border-radius: 8px;
       margin-top: 1rem;
     }
-    .whiteboard-controls {
+    .controls {
       margin-top: 0.5rem;
     }
-    .whiteboard-controls button {
-      padding: 0.4rem 1rem;
+    .controls button {
       margin-right: 0.5rem;
+      padding: 0.5rem 1rem;
       border: none;
+      border-radius: 5px;
       background: #6c5ce7;
       color: white;
-      border-radius: 5px;
       cursor: pointer;
     }
-    .whiteboard-controls button:hover {
-      background: #5a4edb;
+    .controls button:hover {
+      background: #5a4fcf;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Grade 9 Fraction & Decimal Diagnostic</h1>
-  </header>
-  <main>
-    <div class="content-wrapper">
-      <!-- Questions 1 to 12 -->
-      <script>
-        const questions = [
-          'Evaluate: 1/6 + 2/6 + 3/6',
-          'Evaluate: 5/6 × 12/11',
-          'Evaluate: 5/6 ÷ (-10/12)',
-          'Evaluate: 1/2 × 4/3 × 4/22 × 33/8',
-          'Evaluate: 1 1/3 ÷ (1/2 + 1/3)',
-          'Evaluate: 5 + (-3) + (-4)',
-          'Evaluate: -2 - (-2) - 2',
-          'Evaluate: -1 × (-2) × (-3)',
-          'Evaluate: 1 3/4 ÷ (-3/2)',
-          'Evaluate: 2.45 + 0.5',
-          'Evaluate: 1.234 × 0.01',
-          'Evaluate: 5.4 × 1.2'
-        ];
-      </script>
+  <h1>Grade 9 Practice Test</h1>
 
-      <div id="question-container"></div>
-    </div>
-  </main>
+  <div class="chatgpt-box">
+    <label for="studentQuestion"><strong>Ask ChatGPT for help:</strong></label><br>
+    <textarea id="studentQuestion" rows="3" style="width: 100%; margin: 0.5rem 0;"></textarea><br>
+    <button onclick="askChatGPT()">Submit</button>
+    <p id="chatgptResponse" style="margin-top: 1rem;"></p>
+  </div>
+
+  <div id="questions-container"></div>
 
   <script>
-    const container = document.getElementById('question-container');
+    const container = document.getElementById('questions-container');
+    const questions = [
+      () => `\\( \frac{1}{${randInt(2, 9)}} + \frac{2}{${randInt(2, 9)}} \)`,
+      () => `\\( \frac{${randInt(2, 9)}}{6} \times \frac{12}{11} \)`,
+      () => `\\( \frac{5}{6} \div \left(-\frac{10}{12}\right) \)`,
+      () => `\\( \frac{1}{2} \times \frac{4}{3} \times \frac{4}{22} \times \frac{33}{8} \)`,
+      () => `\\( \frac{4}{3} \div \left(\frac{1}{2} + \frac{1}{3}\right) \)`,
+      () => `\\( 5 + (-3) + (-4) \)`,
+      () => `\\( -2 - (-2) -2 \)`,
+      () => `\\( -1(-2)(-3) \)`,
+      () => `\\( 1 \frac{3}{4} \div \left(-\frac{3}{2}\right) \)`,
+      () => `\\( ${randFloat(1, 3).toFixed(2)} + ${randFloat(0.2, 1.5).toFixed(2)} \)`,
+      () => `\\( ${randFloat(1, 2).toFixed(3)} \times 0.01 \)`,
+      () => `\\( 5.4 \times 1.2 \)`
+    ];
 
-    questions.forEach((q, i) => {
-      const qNum = i + 1;
+    for (let i = 1; i <= 12; i++) {
+      addQuestion(i);
+    }
+
+    function addQuestion(i) {
+      const questionId = `q${i}`;
+      const question = questions[i - 1]();
       const div = document.createElement('div');
-      div.className = 'question';
+      div.className = 'question-box';
       div.innerHTML = `
-        <p><strong>${qNum}.</strong> ${q}</p>
-        <canvas class="whiteboard" id="whiteboard${qNum}"></canvas>
-        <div class="whiteboard-controls">
-          <button onclick="undoDrawing(${qNum})">Undo</button>
-          <button onclick="clearWhiteboard(${qNum})">Clear</button>
+        <p><strong>Question ${i}:</strong> <span class="math">${question}</span></p>
+        <canvas class="whiteboard" id="whiteboard${i}"></canvas>
+        <div class="controls">
+          <button onclick="clearWhiteboard(${i})">Clear</button>
+          <button onclick="generateNewQuestion(${i - 1}, ${i})">New Problem</button>
         </div>
       `;
       container.appendChild(div);
-    });
-
-    const whiteboards = {};
-    for (let i = 1; i <= 12; i++) {
-      initializeWhiteboard(i);
+      initWhiteboard(i);
     }
 
-    function initializeWhiteboard(qNum) {
-      const canvas = document.getElementById(`whiteboard${qNum}`);
+    function generateNewQuestion(qIndex, i) {
+      const newQuestion = questions[qIndex]();
+      const qBox = document.querySelectorAll('.question-box')[i - 1];
+      qBox.querySelector('.math').innerHTML = newQuestion;
+      MathJax.typesetPromise();
+      clearWhiteboard(i);
+    }
+
+    function randInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function randFloat(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function initWhiteboard(i) {
+      const canvas = document.getElementById(`whiteboard${i}`);
       const ctx = canvas.getContext('2d');
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
       ctx.fillStyle = 'white';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      whiteboards[qNum] = { ctx, isDrawing: false, history: [], currentStep: -1 };
 
-      canvas.addEventListener('mousedown', e => startDrawing(qNum, e));
-      canvas.addEventListener('mousemove', e => draw(qNum, e));
-      canvas.addEventListener('mouseup', () => stopDrawing(qNum));
-      canvas.addEventListener('mouseout', () => stopDrawing(qNum));
+      let isDrawing = false;
 
-      saveState(qNum);
+      canvas.addEventListener('mousedown', e => {
+        isDrawing = true;
+        ctx.beginPath();
+        ctx.moveTo(e.offsetX, e.offsetY);
+      });
+
+      canvas.addEventListener('mousemove', e => {
+        if (isDrawing) {
+          ctx.lineTo(e.offsetX, e.offsetY);
+          ctx.strokeStyle = 'black';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+      });
+
+      canvas.addEventListener('mouseup', () => isDrawing = false);
+      canvas.addEventListener('mouseout', () => isDrawing = false);
     }
 
-    function startDrawing(qNum, e) {
-      whiteboards[qNum].isDrawing = true;
-      whiteboards[qNum].ctx.beginPath();
-      whiteboards[qNum].ctx.moveTo(e.offsetX, e.offsetY);
+    function clearWhiteboard(i) {
+      const canvas = document.getElementById(`whiteboard${i}`);
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'white';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 
-    function draw(qNum, e) {
-      if (!whiteboards[qNum].isDrawing) return;
-      whiteboards[qNum].ctx.lineTo(e.offsetX, e.offsetY);
-      whiteboards[qNum].ctx.strokeStyle = 'black';
-      whiteboards[qNum].ctx.lineWidth = 2;
-      whiteboards[qNum].ctx.stroke();
-    }
-
-    function stopDrawing(qNum) {
-      if (whiteboards[qNum].isDrawing) saveState(qNum);
-      whiteboards[qNum].isDrawing = false;
-    }
-
-    function saveState(qNum) {
-      const canvas = document.getElementById(`whiteboard${qNum}`);
-      const state = whiteboards[qNum].ctx.getImageData(0, 0, canvas.width, canvas.height);
-      whiteboards[qNum].history.push(state);
-      whiteboards[qNum].currentStep++;
-    }
-
-    function undoDrawing(qNum) {
-      if (whiteboards[qNum].currentStep > 0) {
-        whiteboards[qNum].currentStep--;
-        whiteboards[qNum].ctx.putImageData(
-          whiteboards[qNum].history[whiteboards[qNum].currentStep],
-          0, 0
-        );
+    function askChatGPT() {
+      const q = document.getElementById('studentQuestion').value;
+      const output = document.getElementById('chatgptResponse');
+      if (q.trim() === '') {
+        output.textContent = 'Please type a question first.';
+      } else {
+        output.textContent = `You asked: "${q}"\nChatGPT says: Great question! Try solving step-by-step and checking if your math adds up.`;
       }
     }
 
-    function clearWhiteboard(qNum) {
-      const canvas = document.getElementById(`whiteboard${qNum}`);
-      whiteboards[qNum].ctx.clearRect(0, 0, canvas.width, canvas.height);
-      whiteboards[qNum].ctx.fillStyle = 'white';
-      whiteboards[qNum].ctx.fillRect(0, 0, canvas.width, canvas.height);
-      whiteboards[qNum].history = [];
-      saveState(qNum);
-    }
+    MathJax.typesetPromise();
   </script>
-
-  <footer>
-    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
-  </footer>
 </body>
 </html>
