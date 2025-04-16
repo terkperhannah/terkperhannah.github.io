@@ -1,318 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<style>
-        :root {
-            --primary-color: #007bff;
-            --secondary-color: #6c757d;
-            --success-color: #28a745;
-            --danger-color: #dc3545;
-            --warning-color: #ffc107;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-        }
-
-        main {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .whiteboard-container {
-            position: relative;
-            width: 100%;
-            border: 2px solid #dee2e6;
-            border-radius: 8px;
-            background: white;
-        }
-
-        .whiteboard-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .controls {
-            margin-top: 10px;
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        button {
-            padding: 8px 12px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-
-        button:hover { opacity: 0.8; }
-
-        .question {
-            margin: 20px 0;
-            padding: 15px;
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-        }
-
-        .options {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin: 15px 0;
-        }
-
-        .option {
-            padding: 10px;
-            background: #f8f9fa;
-            border: 2px solid #dee2e6;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .feedback {
-            margin-top: 10px;
-            padding: 10px;
-            border-radius: 4px;
-            display: none;
-        }
-
-        .whiteboard-image {
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-    </style>
-</head>
-<body>
-    <main>
-        <section>
-            <h2>Matching Equations and Using Graphs to Estimate Values</h2>
-            
-            <!-- Image Whiteboard -->
-            <div class="whiteboard-container whiteboard-image" style="height: 300px; background-image: url('SA_pics/graphe_1.png')">
-                <canvas class="whiteboard-canvas" id="image-whiteboard"></canvas>
-            </div>
-            <div class="controls">
-                <button style="background: var(--warning-color);" onclick="whiteboards.image.undo()">Undo</button>
-                <button style="background: var(--danger-color); color: white" onclick="whiteboards.image.clear()">Clear</button>
-            </div>
-
-            <!-- Question 1 -->
-            <div class="question">
-                <p>1. Estimate how many Calories Kendall burns in 20 min.</p>
-                <div class="options">
-    <button class="option" data-answer="a">A) 300 calories</button>
-    <button class="option" data-answer="b">B) 400 calories</button>
-    <button class="option" data-answer="c">C) 500 calories</button>
-    <button class="option" data-answer="d">D) 600 calories</button>
-</div>
-<div class="feedback" id="feedback1"></div>
-
-            </div>
-
-            <!-- Grid Whiteboard -->
-            <div class="whiteboard-container" style="height: 400px;">
-                <canvas class="whiteboard-canvas" id="grid-layer"></canvas>
-                <canvas class="whiteboard-canvas" id="drawing-layer"></canvas>
-            </div>
-            <div class="controls">
-                <button style="background: var(--primary-color); color: white" onclick="whiteboards.grid.toggleGrid()">Toggle Grid</button>
-                <button style="background: var(--warning-color);" onclick="whiteboards.grid.undo()">Undo</button>
-                <button style="background: var(--danger-color); color: white" onclick="whiteboards.grid.clear()">Clear</button>
-            </div>
-        </section>
-    </main>
-
-    <script>
-        class Whiteboard {
-            constructor(canvasId, options = {}) {
-                this.canvas = document.getElementById(canvasId);
-                this.ctx = this.canvas.getContext('2d');
-                this.drawing = false;
-                this.history = [];
-                this.currentStep = -1;
-                this.options = {
-                    grid: false,
-                    image: null,
-                    ...options
-                };
-
-                this.init();
-            }
-
-            init() {
-                // Set canvas size
-                const container = this.canvas.parentElement;
-                this.canvas.width = container.offsetWidth;
-                this.canvas.height = container.offsetHeight;
-
-                // Set default styles
-                this.ctx.lineWidth = 2;
-                this.ctx.lineCap = 'round';
-                this.ctx.strokeStyle = '#000';
-
-                // Event listeners
-                this.canvas.addEventListener('mousedown', this.startDrawing.bind(this));
-                this.canvas.addEventListener('mousemove', this.draw.bind(this));
-                this.canvas.addEventListener('mouseup', this.stopDrawing.bind(this));
-                this.canvas.addEventListener('mouseout', this.stopDrawing.bind(this));
-
-                if (this.options.grid) this.drawGrid();
-                if (this.options.image) this.loadImage();
-            }
-
-            startDrawing(e) {
-                this.drawing = true;
-                const { offsetX: x, offsetY: y } = e;
-                this.ctx.beginPath();
-                this.ctx.moveTo(x, y);
-                this.saveState();
-            }
-
-            draw(e) {
-                if (!this.drawing) return;
-                const { offsetX: x, offsetY: y } = e;
-                this.ctx.lineTo(x, y);
-                this.ctx.stroke();
-            }
-
-            stopDrawing() {
-                this.drawing = false;
-                this.ctx.closePath();
-            }
-
-            drawGrid() {
-                this.ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
-                for (let x = 0; x <= this.canvas.width; x += 20) {
-                    this.ctx.beginPath();
-                    this.ctx.moveTo(x, 0);
-                    this.ctx.lineTo(x, this.canvas.height);
-                    this.ctx.stroke();
-                }
-                for (let y = 0; y <= this.canvas.height; y += 20) {
-                    this.ctx.beginPath();
-                    this.ctx.moveTo(0, y);
-                    this.ctx.lineTo(this.canvas.width, y);
-                    this.ctx.stroke();
-                }
-            }
-
-            toggleGrid() {
-                this.options.grid = !this.options.grid;
-                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-                if (this.options.grid) this.drawGrid();
-                this.restoreDrawing();
-            }
-
-            saveState() {
-                const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
-                this.history = this.history.slice(0, this.currentStep + 1);
-                this.history.push(imageData);
-                this.currentStep = Math.min(this.currentStep + 1, 49);
-            }
-
-            undo() {
-                if (this.currentStep > 0) {
-                    this.currentStep--;
-                    this.ctx.putImageData(this.history[this.currentStep], 0, 0);
-                }
-            }
-
-            clear() {
-                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-                if (this.options.grid) this.drawGrid();
-                this.history = [];
-                this.currentStep = -1;
-                this.saveState();
-            }
-
-            loadImage() {
-                const img = new Image();
-                img.src = this.options.image;
-                img.onload = () => {
-                    this.ctx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height);
-                    this.saveState();
-                };
-            }
-
-            restoreDrawing() {
-                if (this.history.length > 0) {
-                    this.ctx.putImageData(this.history[this.currentStep], 0, 0);
-                }
-            }
-        }
-
-        // Initialize whiteboards
-        const whiteboards = {
-            image: new Whiteboard('image-whiteboard', { image: 'SA_pics/graphe_1.png' }),
-            grid: new Whiteboard('drawing-layer', { grid: true })
-        };
-
-        // Correct answers
-const correctAnswers = { 1: "a" };
-const attempts = { 1: 0 };
-const maxAttempts = 2;
-
-// Function to check answer
-function checkAnswer(qNum, selected) {
-    const feedback = document.getElementById(`feedback${qNum}`);
-    const buttons = document.querySelectorAll(`.question:nth-of-type(${qNum}) .option`);
-    const correctKey = correctAnswers[qNum];
-
-    if (attempts[qNum] >= maxAttempts) return; // Stop if max attempts reached
-
-    attempts[qNum]++;
-
-    // Clear previous styles
-    buttons.forEach((btn) => btn.classList.remove("correct", "incorrect"));
-
-    if (selected === correctKey) {
-        feedback.innerHTML = "✅ Correct!";
-        feedback.style.backgroundColor = "#d4edda";
-        feedback.style.display = "block";
-        buttons.forEach((btn) => (btn.disabled = true));
-        document.querySelector(`.question:nth-of-type(${qNum}) .option[data-answer="${correctKey}"]`).classList.add("correct");
-    } else {
-        if (attempts[qNum] < maxAttempts) {
-            feedback.innerHTML = `❌ Incorrect (${maxAttempts - attempts[qNum]} attempt(s) left)`;
-            feedback.style.backgroundColor = "#f8d7da";
-        } else {
-            feedback.innerHTML = `📘 Correct answer: <strong>${
-                document.querySelector(`.question:nth-of-type(${qNum}) .option[data-answer="${correctKey}"]`).textContent
-            }</strong>`;
-            feedback.style.backgroundColor = "#fff3cd";
-            buttons.forEach((btn) => (btn.disabled = true));
-            document.querySelector(`.question:nth-of-type(${qNum}) .option[data-answer="${correctKey}"]`).classList.add("correct");
-        }
-        feedback.style.display = "block";
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math 9 - Whiteboard Test</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 2rem;
     }
-}
+    h1 {
+      text-align: center;
+      color: #0984e3;
+    }
+    .chatgpt-box {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .question-box {
+      background: #ffffff;
+      border-left: 5px solid #00cec9;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    canvas.whiteboard {
+      width: 100%;
+      height: 300px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+    .controls {
+      margin-top: 0.5rem;
+    }
+    .controls button {
+      margin-right: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      background: #6c5ce7;
+      color: white;
+      cursor: pointer;
+    }
+    .controls button:hover {
+      background: #5a4fcf;
+    }
+  </style>
+</head>
+<body>
+  <h1>Grade 9 Practice Test</h1>
 
-// Attach event listeners to answer buttons
-document.querySelectorAll(".option").forEach((button) => {
-    button.addEventListener("click", function () {
-        const qNum = this.closest(".question").querySelector(".feedback").id.replace("feedback", "");
-        const selected = this.getAttribute("data-answer");
-        checkAnswer(qNum, selected);
-    });
-});
+  <div class="chatgpt-box">
+    <label for="studentQuestion"><strong>Ask ChatGPT for help:</strong></label><br>
+    <textarea id="studentQuestion" rows="3" style="width: 100%; margin: 0.5rem 0;"></textarea><br>
+    <button onclick="askChatGPT()">Submit</button>
+    <p id="chatgptResponse" style="margin-top: 1rem;"></p>
+  </div>
 
-    </script>
+  <div id="questions-container"></div>
+
+  <script>
+    const container = document.getElementById('questions-container');
+    const questions = [
+  // Q1 - Simple addition of fractions
+  () => `\\( \\frac{1}{${randInt(2, 6)}} + \\frac{2}{${randInt(2, 6)}} + \\frac{3}{${randInt(2, 6)}} \\)`,
+
+  // Q2 - Multiplication of two fractions
+  () => `\\( \\frac{${randInt(1, 9)}}{${randInt(2, 9)}} \\times \\frac{${randInt(10, 20)}}{${randInt(10, 20)}} \\)`,
+
+  // Q3 - Division of fractions with a negative
+  () => `\\( \\frac{${randInt(3, 9)}}{${randInt(4, 10)}} \\div \\left(-\\frac{${randInt(4, 10)}}{${randInt(4, 10)}}\\right) \\)`,
+
+  // Q4 - Multi-step fraction multiplication
+  () => `\\( \\frac{${randInt(1, 3)}}{${randInt(2, 5)}} \\times \\frac{${randInt(3, 6)}}{${randInt(4, 8)}} \\times \\frac{${randInt(2, 6)}}{${randInt(5, 10)}} \\)`,
+
+  // Q5 - Division with grouped addition in the denominator
+  () => `\\( \\frac{${randInt(1, 3)}}{${randInt(1, 3)}} \\div \\left(\\frac{1}{2} + \\frac{1}{3}\\right) \\)`,
+
+  // Q6 - Integer addition with negatives
+  () => `\\( ${randInt(3, 8)} + (${randInt(-5, -1)}) + (${randInt(-6, -2)}) \\)`,
+
+  // Q7 - Integer subtraction with negatives
+  () => `\\( -${randInt(1, 4)} - (-${randInt(1, 4)}) - ${randInt(1, 4)} \\)`,
+
+  // Q8 - Multiplication of negative integers
+  () => `\\( -${randInt(1, 3)} \\times -${randInt(2, 4)} \\times -${randInt(2, 4)} \\)`,
+
+  // Q9 - Mixed number converted to improper fraction division
+  () => {
+    const whole = randInt(1, 2);
+    const num = randInt(1, 3);
+    const den = randInt(2, 4);
+    return `\\( \\frac{${whole * den + num}}{${den}} \\div \\left(-\\frac{${randInt(2, 4)}}{${randInt(2, 4)}}\\right) \\)`;
+  },
+
+  // Q10 - Decimal addition
+  () => `\\( ${randFloat(1, 3).toFixed(2)} + ${randFloat(0.2, 1.5).toFixed(2)} \\)`,
+
+  // Q11 - Decimal multiplication
+  () => `\\( ${randFloat(1, 2).toFixed(3)} \\times 0.01 \\)`,
+
+  // Q12 - Multiply 2 decimals
+  () => `\\( ${randFloat(1, 9).toFixed(1)} \\times ${randFloat(1, 3).toFixed(1)} \\)`
+];
+
+
+    for (let i = 1; i <= 12; i++) {
+      addQuestion(i);
+    }
+
+    function addQuestion(i) {
+      const questionId = `q${i}`;
+      const question = questions[i - 1]();
+      const div = document.createElement('div');
+      div.className = 'question-box';
+      div.innerHTML = `
+        <p><strong>Question ${i}:</strong> <span class="math">${question}</span></p>
+        <canvas class="whiteboard" id="whiteboard${i}"></canvas>
+        <div class="controls">
+          <button onclick="clearWhiteboard(${i})">Clear</button>
+          <button onclick="generateNewQuestion(${i - 1}, ${i})">New Problem</button>
+        </div>
+      `;
+      container.appendChild(div);
+      initWhiteboard(i);
+    }
+
+    function generateNewQuestion(qIndex, i) {
+      const newQuestion = questions[qIndex]();
+      const qBox = document.querySelectorAll('.question-box')[i - 1];
+      qBox.querySelector('.math').innerHTML = newQuestion;
+      MathJax.typesetPromise();
+      clearWhiteboard(i);
+    }
+
+    function randInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function randFloat(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function initWhiteboard(i) {
+      const canvas = document.getElementById(`whiteboard${i}`);
+      const ctx = canvas.getContext('2d');
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      ctx.fillStyle = 'white';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      let isDrawing = false;
+
+      canvas.addEventListener('mousedown', e => {
+        isDrawing = true;
+        ctx.beginPath();
+        ctx.moveTo(e.offsetX, e.offsetY);
+      });
+
+      canvas.addEventListener('mousemove', e => {
+        if (isDrawing) {
+          ctx.lineTo(e.offsetX, e.offsetY);
+          ctx.strokeStyle = 'black';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+      });
+
+      canvas.addEventListener('mouseup', () => isDrawing = false);
+      canvas.addEventListener('mouseout', () => isDrawing = false);
+    }
+
+    function clearWhiteboard(i) {
+      const canvas = document.getElementById(`whiteboard${i}`);
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'white';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function askChatGPT() {
+      const q = document.getElementById('studentQuestion').value;
+      const output = document.getElementById('chatgptResponse');
+      if (q.trim() === '') {
+        output.textContent = 'Please type a question first.';
+      } else {
+        output.textContent = `You asked: "${q}"\nChatGPT says: Great question! Try solving step-by-step and checking if your math adds up.`;
+      }
+    }
+
+    MathJax.typesetPromise();
+  </script>
 </body>
-
 </html>
