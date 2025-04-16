@@ -3,14 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math</title>
+    <title>Math 9 - Data Analysis</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Add custom styles for probability visualizations */
+        .probability-scale {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .probability-term {
+            text-align: center;
+            padding: 10px;
+            flex: 1;
+        }
+        
+        .sampling-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .method-card {
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            background: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>Ms. Terkper's Digital Classroom</h1>
     </header>
-    <div id="navbar-placeholder"></div>
+<div id="navbar-placeholder"></div>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     fetch('navbar.html')
@@ -22,13 +53,150 @@
   });
 </script>
 
-
     <main>
-        <section>
-            <h2>Welcome to Math 9 Unit 8</h2>
-    
-        </section>
+        <div class="content-wrapper">
+            <div class="content-box">
+                <div class="unit-header">
+                    <h2>Math 9 - Unit 9</h2>
+                    <h3>Data Analysis & Probability</h3>
+                </div>
+
+                <!-- Section 1: Probability in Society -->
+                <div class="content-box">
+                    <h2>Section 1: Probability in Society</h2>
+                    <div class="probability-scale">
+                        <div class="probability-term">Impossible</div>
+                        <div class="probability-term">Unlikely</div>
+                        <div class="probability-term">Even Chance</div>
+                        <div class="probability-term">Likely</div>
+                        <div class="probability-term">Certain</div>
+                    </div>
+
+                    <h3>Experimental vs Theoretical Probability</h3>
+                    <div class="practice-grid">
+                        <div class="practice-card">
+                            <h3>Experimental Probability</h3>
+                            <p>\[P(\text{event}) = \frac{\text{observed occurrences}}{\text{total trials}}\]</p>
+                            <p>Example: 7 heads in 10 coin tosses → 7/10</p>
+                        </div>
+                        
+                        <div class="practice-card">
+                            <h3>Theoretical Probability</h3>
+                            <p>\[P(\text{event}) = \frac{\text{favorable outcomes}}{\text{possible outcomes}}\]</p>
+                            <p>Example: Fair coin → 1/2 chance each side</p>
+                        </div>
+                    </div>
+
+                    <h3>Practice Problems</h3>
+                    <div class="practice-card">
+                        <p>A bag has 15 red and 5 blue marbles. What's P(red)?</p>
+                        <button class="solution-toggle">Show Solution</button>
+                        <div class="solution" hidden>
+                            <p>Theoretical probability = 15/20 = 3/4 = 75%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Data Collection Problems -->
+                <div class="content-box">
+                    <h2>Section 2: Potential Data Collection Problems</h2>
+                    <div class="sampling-methods">
+                        <div class="method-card">
+                            <h4>Bias</h4>
+                            <p>"Don't you think movie prices are too high?" → Leading question</p>
+                        </div>
+                        
+                        <div class="method-card">
+                            <h4>Timing</h4>
+                            <p>Ski jacket survey in summer vs winter</p>
+                        </div>
+                        
+                        <div class="method-card">
+                            <h4>Cultural Sensitivity</h4>
+                            <p>Christmas-focused survey in multicultural community</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Ethical Considerations</h3>
+                    <ul>
+                        <li>Privacy concerns with personal data</li>
+                        <li>Proper use of collected information</li>
+                        <li>Cost vs benefit analysis</li>
+                    </ul>
+                </div>
+
+                <!-- Section 3: Samples & Populations -->
+                <div class="content-box">
+                    <h2>Section 3: Samples & Populations</h2>
+                    <div class="practice-grid">
+                        <div class="practice-card">
+                            <h3>Census</h3>
+                            <p>Entire population surveyed</p>
+                            <ul>
+                                <li>Costly but accurate</li>
+                                <li>Practical for small groups</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="practice-card">
+                            <h3>Sampling Methods</h3>
+                            <ul>
+                                <li>Random: Names from hat</li>
+                                <li>Systematic: Every 10th person</li>
+                                <li>Stratified: Proportional groups</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h3>Project Planning Steps</h3>
+                    <ol>
+                        <li>Prepare unbiased questions</li>
+                        <li>Identify population/sample</li>
+                        <li>Collect data ethically</li>
+                        <li>Analyze & visualize results</li>
+                        <li>Evaluate methodology</li>
+                    </ol>
+                </div>
+
+                <!-- Resources Section -->
+                <div class="content-box resources-section">
+                    <h2>Learning Resources</h2>
+                    <a href="DATA_ANALYSIS.pdf" class="resource-link" target="_blank">
+                        <div class="resource-text">
+                            <h3>Unit Notes (PDF)</h3>
+                            <p>Complete textbook chapter on probability & statistics</p>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.khanacademy.org/math/statistics-probability" class="resource-link" target="_blank">
+                        <div class="resource-text">
+                            <h3>Khan Academy Course</h3>
+                            <p>Interactive probability lessons & practice problems</p>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.random.org/" class="resource-link" target="_blank">
+                        <div class="resource-text">
+                            <h3>Random Sampling Tool</h3>
+                            <p>Generate true random numbers for experiments</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
     </main>
+
+    <script>
+        // Toggle solution visibility
+        document.querySelectorAll('.solution-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const solution = button.nextElementSibling;
+                solution.hidden = !solution.hidden;
+                button.textContent = solution.hidden ? 'Show Solution' : 'Hide Solution';
+            });
+        });
+    </script>
+
     <footer>
         <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
     </footer>
