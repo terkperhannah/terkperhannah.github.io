@@ -367,10 +367,235 @@
         <p class="img-caption">Collaboration suite: <a href="https://www.microsoft.com/teams" target="_blank">microsoft.com/teams</a></p>
     </div>
 
-      <div class="content-box">
-    <h2>Reflection</h2>
-    <p>Which ISTE standard do you feel most confident in? Which one do you want to improve? Think about how you use technology in and outside of school, and how you can grow as a responsible digital learner.</p>
+      <div class="content-box interactive-reflection">
+    <h2>Digital Reflection Zone</h2>
+    
+    <div class="reflection-progress">
+        <div class="progress-bar"></div>
+    </div>
+
+    <form id="reflectionForm" class="reflection-form">
+        <div class="form-group">
+            <label for="confidentStandard">🌟 Which ISTE standard do you feel most confident in?</label>
+            <select id="confidentStandard" class="reflection-input" required>
+                <option value="">Choose a standard</option>
+                <option>Empowered Learner</option>
+                <option>Digital Citizen</option>
+                <option>Knowledge Constructor</option>
+                <option>Innovative Designer</option>
+                <option>Computational Thinker</option>
+                <option>Creative Communicator</option>
+                <option>Global Collaborator</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="improvementArea">📈 Which standard needs more attention?</label>
+            <select id="improvementArea" class="reflection-input" required>
+                <option value="">Choose a standard</option>
+                <option>Empowered Learner</option>
+                <option>Digital Citizen</option>
+                <option>Knowledge Constructor</option>
+                <option>Innovative Designer</option>
+                <option>Computational Thinker</option>
+                <option>Creative Communicator</option>
+                <option>Global Collaborator</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="techUsage">💡 How do you use technology outside school?</label>
+            <textarea id="techUsage" class="reflection-input" rows="3" 
+                      placeholder="Examples: Creating content, solving problems, communicating..." required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="growthPlan">🚀 Your digital growth plan:</label>
+            <textarea id="growthPlan" class="reflection-input" rows="3" 
+                      placeholder="What specific actions will you take to improve?" required></textarea>
+        </div>
+
+        <button type="submit" class="reflection-submit">Save Reflection</button>
+    </form>
+
+    <div class="reflection-response hidden">
+        <h3>📌 Your Digital Growth Snapshot</h3>
+        <div class="response-card">
+            <p><strong>Your Strength:</strong> <span id="responseStrength"></span></p>
+            <p><strong>Growth Area:</strong> <span id="responseGrowth"></span></p>
+            <p><strong>Tech Usage:</strong> <span id="responseUsage"></span></p>
+            <p><strong>Action Plan:</strong> <span id="responsePlan"></span></p>
+        </div>
+        <button class="edit-reflection">✏️ Edit Responses</button>
+    </div>
 </div>
+
+<style>
+.interactive-reflection {
+    background: #f8f9ff;
+    border-color: #74b9ff !important;
+}
+
+.reflection-progress {
+    height: 8px;
+    background: #dfe6e9;
+    border-radius: 4px;
+    margin-bottom: 25px;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #0984e3;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.reflection-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.reflection-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #2d3436;
+    font-weight: 500;
+}
+
+.reflection-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #dfe6e9;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.reflection-input:focus {
+    border-color: #74b9ff;
+    box-shadow: 0 0 8px rgba(116, 185, 255, 0.3);
+    outline: none;
+}
+
+.reflection-submit {
+    background: #0984e3;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 25px auto 0;
+}
+
+.reflection-submit:hover {
+    background: #74b9ff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(9, 132, 227, 0.3);
+}
+
+.reflection-response {
+    margin-top: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.response-card p {
+    margin: 15px 0;
+    padding: 15px;
+    background: #f8f9ff;
+    border-radius: 8px;
+}
+
+.edit-reflection {
+    background: none;
+    border: 2px solid #0984e3;
+    color: #0984e3;
+    padding: 8px 20px;
+    border-radius: 20px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.edit-reflection:hover {
+    background: #0984e3;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('reflectionForm');
+    const progressBar = document.querySelector('.progress-bar');
+    const inputs = document.querySelectorAll('.reflection-input');
+    
+    // Update progress bar
+    inputs.forEach(input => {
+        input.addEventListener('input', updateProgress);
+    });
+
+    function updateProgress() {
+        const completed = Array.from(inputs).filter(input => 
+            (input.type === 'textarea' && input.value.trim()) ||
+            (input.tagName === 'SELECT' && input.value)
+        ).length;
+        
+        const progress = (completed / inputs.length) * 100;
+        progressBar.style.width = `${progress}%`;
+    }
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Show response section
+        document.querySelector('.reflection-response').classList.remove('hidden');
+        form.classList.add('hidden');
+        
+        // Populate response
+        document.getElementById('responseStrength').textContent = 
+            document.getElementById('confidentStandard').value;
+        document.getElementById('responseGrowth').textContent = 
+            document.getElementById('improvementArea').value;
+        document.getElementById('responseUsage').textContent = 
+            document.getElementById('techUsage').value;
+        document.getElementById('responsePlan').textContent = 
+            document.getElementById('growthPlan').value;
+    });
+
+    document.querySelector('.edit-reflection').addEventListener('click', () => {
+        document.querySelector('.reflection-response').classList.add('hidden');
+        form.classList.remove('hidden');
+    });
+});
+
+    // Save to localStorage
+localStorage.setItem('reflectionData', JSON.stringify({
+    strength: document.getElementById('confidentStandard').value,
+    growth: document.getElementById('improvementArea').value,
+    usage: document.getElementById('techUsage').value,
+    plan: document.getElementById('growthPlan').value
+}));
+
+// Load from localStorage on page load
+const savedData = localStorage.getItem('reflectionData');
+if (savedData) {
+    const data = JSON.parse(savedData);
+    document.getElementById('confidentStandard').value = data.strength;
+    document.getElementById('improvementArea').value = data.growth;
+    document.getElementById('techUsage').value = data.usage;
+    document.getElementById('growthPlan').value = data.plan;
+    updateProgress();
+};
+</script>
 
 </main>
 
