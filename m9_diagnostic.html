@@ -99,7 +99,8 @@
       const div = document.createElement('div');
       div.className = 'question-box';
       div.innerHTML = `
-        <p><strong>Question ${i}:</strong> <span class="math">${question}</span></p>
+        <p><strong>Question ${i}:</strong> <span class="math">${question.replace(/\\/g, '\\\\')}</span>
+</p>
         <canvas class="whiteboard" id="whiteboard${i}"></canvas>
         <div class="controls">
           <button onclick="clearWhiteboard(${i})">Clear</button>
