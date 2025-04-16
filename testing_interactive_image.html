@@ -99,12 +99,12 @@
   // Q8 - Multiplication of negative integers
   () => `\\( -${randInt(1, 3)} \\times -${randInt(2, 4)} \\times -${randInt(2, 4)} \\)`,
 
-  // Q9 - Mixed number converted to improper fraction division
+    // Q9 - Mixed number division (updated to show mixed numbers)
   () => {
     const whole = randInt(1, 2);
     const num = randInt(1, 3);
     const den = randInt(2, 4);
-    return `\\( \\frac{${whole * den + num}}{${den}} \\div \\left(-\\frac{${randInt(2, 4)}}{${randInt(2, 4)}}\\right) \\)`;
+    return `\\( ${whole}\\frac{${num}}{${den}} \\div \\left(-\\frac{${randInt(2, 4)}}{${randInt(2, 4)}}\\right) \\)`;
   },
 
   // Q10 - Decimal addition
