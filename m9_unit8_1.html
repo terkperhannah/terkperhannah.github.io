@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Statistics & Probability Interactive Quiz</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2 {
+      color: #6c5ce7;
+      text-align: center;
+    }
+    .question {
+      margin: 1.5rem 0;
+      background: #f8f9fa;
+      padding: 1rem;
+      border-left: 5px solid #00cec9;
+      border-radius: 8px;
+    }
+    select, input[type="text"] {
+      padding: 5px;
+      border-radius: 4px;
+      margin-top: 0.5rem;
+    }
+    .check-btn {
+      margin-top: 2rem;
+      padding: 10px 20px;
+      background: #6c5ce7;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .check-btn:hover {
+      background: #5944d1;
+    }
+    .feedback {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Statistics & Probability Quiz</h1>
+    <p style="text-align:center;">Test your understanding of key terms and concepts!</p>
+
+    <!-- Question 1 -->
+    <div class="question">
+      <label><strong>1. Probability</strong> – The chance or
+        <select id="q1">
+          <option value="">--Select--</option>
+          <option value="probability">probability</option>
+          <option value="likelihood">likelihood</option>
+          <option value="survey">survey</option>
+        </select>
+        that a particular event will occur.
+      </label>
+      <div id="feedback1" class="feedback"></div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question">
+      <label><strong>2. Sample</strong> – A
+        <select id="q2">
+          <option value="">--Select--</option>
+          <option value="survey">survey</option>
+          <option value="subset">subset</option>
+          <option value="census">census</option>
+        </select>
+        of a population used to draw conclusions about the whole group.
+      </label>
+      <div id="feedback2" class="feedback"></div>
+    </div>
+
+    <!-- Question 3 (Fill in the blank) -->
+    <div class="question">
+      <label><strong>3. Fill in:</strong> When a
+        <input type="text" id="q3a" size="10" placeholder="?" />
+        is conducted, data are collected from all people or items in the
+        <input type="text" id="q3b" size="10" placeholder="?" />.
+      </label>
+      <div id="feedback3" class="feedback"></div>
+    </div>
+
+    <!-- Question 4 (Matching Sampling Methods) -->
+    <div class="question">
+      <label><strong>4. Match the sampling method:</strong></label><br><br>
+      <strong>A.</strong> Every 10th name is chosen →
+      <select id="q4a">
+        <option value="">--Select--</option>
+        <option value="Systematic">Systematic</option>
+        <option value="Stratified">Stratified</option>
+        <option value="Cluster">Cluster</option>
+      </select><br><br>
+      <strong>B.</strong> One class out of five is chosen →
+      <select id="q4b">
+        <option value="">--Select--</option>
+        <option value="Systematic">Systematic</option>
+        <option value="Stratified">Stratified</option>
+        <option value="Cluster">Cluster</option>
+      </select>
+      <div id="feedback4" class="feedback"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAnswers()">Check Answers</button>
+  </div>
+
+  <script>
+    function checkAnswers() {
+      // Q1
+      const q1 = document.getElementById("q1").value;
+      const f1 = document.getElementById("feedback1");
+      f1.textContent = q1 === "likelihood" ? "✔ Correct!" : "✖ Try again.";
+      f1.className = "feedback " + (q1 === "likelihood" ? "correct" : "incorrect");
+
+      // Q2
+      const q2 = document.getElementById("q2").value;
+      const f2 = document.getElementById("feedback2");
+      f2.textContent = q2 === "subset" ? "✔ Correct!" : "✖ Try again.";
+      f2.className = "feedback " + (q2 === "subset" ? "correct" : "incorrect");
+
+      // Q3
+      const q3a = document.getElementById("q3a").value.trim().toLowerCase();
+      const q3b = document.getElementById("q3b").value.trim().toLowerCase();
+      const f3 = document.getElementById("feedback3");
+      f3.textContent = (q3a === "census" && q3b === "population") ? "✔ Correct!" : "✖ Try again.";
+      f3.className = "feedback " + ((q3a === "census" && q3b === "population") ? "correct" : "incorrect");
+
+      // Q4
+      const q4a = document.getElementById("q4a").value;
+      const q4b = document.getElementById("q4b").value;
+      const f4 = document.getElementById("feedback4");
+      if (q4a === "Systematic" && q4b === "Cluster") {
+        f4.textContent = "✔ Correct!";
+        f4.className = "feedback correct";
+      } else {
+        f4.textContent = "✖ Try again.";
+        f4.className = "feedback incorrect";
+      }
+    }
+  </script>
+</body>
+</html>
