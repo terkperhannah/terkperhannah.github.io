@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math 7 - Diagnostic Practice</title>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      color: #0984e3;
+    }
+
+    .question-box {
+      background: #ffffff;
+      border-left: 5px solid #00cec9;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    canvas.whiteboard {
+      width: 100%;
+      height: 300px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+    .controls {
+      margin-top: 0.5rem;
+    }
+    .controls button {
+      margin-right: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      background: #6c5ce7;
+      color: white;
+      cursor: pointer;
+    }
+    .controls button:hover {
+      background: #5a4fcf;
+    }
+  </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="intro-section">
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <div id="navbar-placeholder"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      })
+      .catch(err => console.error("Navbar failed to load:", err));
+  });
+</script>
+
+    <main>
+<script async src="https://cse.google.com/cse.js?cx=55023492bbb93437c">
+</script>
+
+<header>
+  <h2>Grade 7 Diagnostic Practice Test</h2>
+  <h3>These are based on questions you should have mastered in grade 6.</h3>
+</header>
+  
+<section class="help-section">
+  <p><strong>Need to check your solutions?</strong> Click below to ask ChatGPT on Poe:</p>
+  <a href="https://poe.com/ChatGPT" target="_blank" class="poe-button">Ask ChatGPT on Poe</a>
+</section>
+
+
+
+ <div id="questions-container"></div>
+
+  <script>
+    const container = document.getElementById('questions-container');
+    const questions = [
+      `\\( 4905 + 3868 \\)`,
+      `\\( \\$1.50 + \\$2.45 \\)`,
+      `\\( 27.6 - 12.3 \\)`,
+      `\\( 15 \\times 50 \\)`,
+      `\\( 316 \\div 4 \\)`,
+      `\\( 7 + 0.9 + 1.62 \\)`,
+      `\\( 70365 - 63575 \\)`,
+      `\\( 40.5 \\times 2 \\)`,
+      `\\( 950.4 \\times 7 = 665\\_\\_.8 \\)`,
+      `\\( 24.6 \\div 2 \\)`,
+      `\\( 3.27 \\div 3 \\)`,
+      `\\( 9.9 - 6.45 \\)`,
+      `\\( 7 - 4.09 \\)`,
+      `\\( 78.03 \\div 9 \\)`,
+      `\\( 58 \\times 72 \\)`
+    ];
+
+    for (let i = 0; i < questions.length; i++) {
+      addQuestion(i + 1, questions[i]);
+    }
+
+    function addQuestion(i, question) {
+      const div = document.createElement('div');
+      div.className = 'question-box';
+      div.innerHTML = `
+        <p><strong>Question ${i}:</strong> <span class="math">${question}</span></p>
+        <canvas class="whiteboard" id="whiteboard${i}"></canvas>
+        <div class="controls">
+          <button onclick="clearWhiteboard(${i})">Clear</button>
+        </div>
+      `;
+      container.appendChild(div);
+      initWhiteboard(i);
+    }
+
+    function initWhiteboard(i) {
+      const canvas = document.getElementById(`whiteboard${i}`);
+      const ctx = canvas.getContext('2d');
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      ctx.fillStyle = 'white';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      let isDrawing = false;
+
+      canvas.addEventListener('mousedown', e => {
+        isDrawing = true;
+        ctx.beginPath();
+        ctx.moveTo(e.offsetX, e.offsetY);
+      });
+
+      canvas.addEventListener('mousemove', e => {
+        if (isDrawing) {
+          ctx.lineTo(e.offsetX, e.offsetY);
+          ctx.strokeStyle = 'black';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+      });
+
+      canvas.addEventListener('mouseup', () => isDrawing = false);
+      canvas.addEventListener('mouseout', () => isDrawing = false);
+    }
+
+    function clearWhiteboard(i) {
+      const canvas = document.getElementById(`whiteboard${i}`);
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'white';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    MathJax.typesetPromise();
+  </script>
+</body>
+</html>
