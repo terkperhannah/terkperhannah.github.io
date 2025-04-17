@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Circle Geometry Progress Tracker</title>
-  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="style.css" />
   <style>
     .tracker-container {
       max-width: 800px;
@@ -44,8 +44,22 @@
   </style>
 </head>
 <body>
+  <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+  <div id="navbar-placeholder"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      })
+      .catch(err => console.error("Navbar failed to load:", err));
+  });
+</script>
   <div class="tracker-container">
-    <h2>🧠 Circle Geometry Mastery Tracker</h2>
+    <h2>Circle Geometry Mastery Tracker</h2>
     <p><strong>Solve problems and justify the solution strategy, using the following circle properties:</strong></p>
 
     <div class="skill">
@@ -137,5 +151,11 @@
 
     loadProgress();
   </script>
+  footer>
+    <p style="color: #34495e; font-size: 1.1em; line-height: 1.8; font-family: 'Poppins', sans-serif;">
+        Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching
+    </p>
+</footer>
 </body>
+  
 </html>
