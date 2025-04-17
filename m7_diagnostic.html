@@ -82,86 +82,162 @@
   <a href="https://poe.com/ChatGPT" target="_blank" class="poe-button">Ask ChatGPT on Poe</a>
 </section>
 
+      <div id="questions-container"></div>
 
+    <script>
+      const container = document.getElementById('questions-container');
+      
+      function randInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
 
- <div id="questions-container"></div>
+      function randFloat(min, max) {
+        return Math.random() * (max - min) + min;
+      }
 
-  <script>
-    const container = document.getElementById('questions-container');
-    const questions = [
-      `\\( 4905 + 3868 \\)`,
-      `\\( \\$1.50 + \\$2.45 \\)`,
-      `\\( 27.6 - 12.3 \\)`,
-      `\\( 15 \\times 50 \\)`,
-      `\\( 316 \\div 4 \\)`,
-      `\\( 7 + 0.9 + 1.62 \\)`,
-      `\\( 70365 - 63575 \\)`,
-      `\\( 40.5 \\times 2 \\)`,
-      `\\( 950.4 \\times 7 = 665\\_\\_.8 \\)`,
-      `\\( 24.6 \\div 2 \\)`,
-      `\\( 3.27 \\div 3 \\)`,
-      `\\( 9.9 - 6.45 \\)`,
-      `\\( 7 - 4.09 \\)`,
-      `\\( 78.03 \\div 9 \\)`,
-      `\\( 58 \\times 72 \\)`
-    ];
+      const questions = [
+        // Question 1: 4-digit addition
+        () => `\\( ${randInt(1000, 9999)} + ${randInt(1000, 9999)} \\)`,
 
-    for (let i = 0; i < questions.length; i++) {
-      addQuestion(i + 1, questions[i]);
-    }
+        // Question 2: Money addition
+        () => {
+          const d1 = randInt(1, 3);
+          const c1 = randInt(0, 99).toString().padStart(2, '0');
+          const d2 = randInt(1, 3);
+          const c2 = randInt(0, 99).toString().padStart(2, '0');
+          return `\\( \\$${d1}.${c1} + \\$${d2}.${c2} \\)`;
+        },
 
-    function addQuestion(i, question) {
-      const div = document.createElement('div');
-      div.className = 'question-box';
-      div.innerHTML = `
-        <p><strong>Question ${i}:</strong> <span class="math">${question}</span></p>
-        <canvas class="whiteboard" id="whiteboard${i}"></canvas>
-        <div class="controls">
-          <button onclick="clearWhiteboard(${i})">Clear</button>
-        </div>
-      `;
-      container.appendChild(div);
-      initWhiteboard(i);
-    }
+        // Question 3: Decimal subtraction
+        () => {
+          const a = randFloat(10, 30).toFixed(1);
+          const b = randFloat(10, parseFloat(a)).toFixed(1);
+          return `\\( ${a} - ${b} \\)`;
+        },
 
-    function initWhiteboard(i) {
-      const canvas = document.getElementById(`whiteboard${i}`);
-      const ctx = canvas.getContext('2d');
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-      ctx.fillStyle = 'white';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // Question 4: Multiplication with multiples
+        () => `\\( ${randInt(1, 20)*5} \\times ${randInt(1, 10)*10} \\)`,
 
-      let isDrawing = false;
+        // Question 5: Whole number division
+        () => {
+          const divisor = randInt(2, 5);
+          const quotient = randInt(50, 100);
+          return `\\( ${divisor * quotient} \\div ${divisor} \\)`;
+        },
 
-      canvas.addEventListener('mousedown', e => {
-        isDrawing = true;
-        ctx.beginPath();
-        ctx.moveTo(e.offsetX, e.offsetY);
-      });
+        // Question 6: Mixed number addition
+        () => {
+          const a = randInt(1, 10);
+          const b = randFloat(0.1, 1.0).toFixed(1);
+          const c = randFloat(1.0, 2.0).toFixed(2);
+          return `\\( ${a} + ${b} + ${c} \\)`;
+        },
 
-      canvas.addEventListener('mousemove', e => {
-        if (isDrawing) {
-          ctx.lineTo(e.offsetX, e.offsetY);
-          ctx.strokeStyle = 'black';
-          ctx.lineWidth = 2;
-          ctx.stroke();
-        }
-      });
+        // Question 7: Large number subtraction
+        () => {
+          const a = randInt(60000, 80000);
+          return `\\( ${a} - ${randInt(50000, a)} \\)`;
+        },
 
-      canvas.addEventListener('mouseup', () => isDrawing = false);
-      canvas.addEventListener('mouseout', () => isDrawing = false);
-    }
+        // Question 8: Decimal multiplication
+        () => `\\( ${randFloat(20.0, 50.0).toFixed(1)} \\times 2 \\)`,
 
-    function clearWhiteboard(i) {
-      const canvas = document.getElementById(`whiteboard${i}`);
-      const ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = 'white';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
+        // Question 9: Decimal multiplication
+        () => `\\( ${randFloat(100, 1000).toFixed(1)} \\times ${randInt(2,9)} \\)`,
 
-    MathJax.typesetPromise();
-  </script>
+        // Question 10: Decimal division
+        () => `\\( ${(randInt(10, 50) + 0.6).toFixed(1)} \\div 2 \\)`,
+
+        // Question 11: Decimal division
+        () => `\\( ${randInt(1,9)}.${randInt(10,99)} \\div 3 \\)`,
+
+        // Question 12: Decimal subtraction
+        () => {
+          const a = randFloat(5, 10).toFixed(1);
+          const b = randFloat(1, 5).toFixed(2);
+          return `\\( ${a} - ${b} \\)`;
+        },
+
+        // Question 13: Whole number minus decimal
+        () => {
+          const whole = randInt(5, 10);
+          return `\\( ${whole} - ${randFloat(1, whole-1).toFixed(2)} \\)`;
+        },
+
+        // Question 14: Decimal division
+        () => `\\( ${(randInt(50, 100) + randFloat(0.01, 0.99).toFixed(2)} \\div ${randInt(2,9)} \\)`,
+
+        // Question 15: Two-digit multiplication
+        () => `\\( ${randInt(10,99)} \\times ${randInt(10,99)} \\)`
+      ];
+
+      for (let i = 1; i <= 15; i++) {
+        addQuestion(i);
+      }
+
+      function addQuestion(i) {
+        const question = questions[i - 1]();
+        const div = document.createElement('div');
+        div.className = 'question-box';
+        div.innerHTML = `
+          <p><strong>Question ${i}:</strong> <span class="math">${question}</span></p>
+          <canvas class="whiteboard" id="whiteboard${i}"></canvas>
+          <div class="controls">
+            <button onclick="clearWhiteboard(${i})">Clear</button>
+            <button onclick="generateNewQuestion(${i - 1}, ${i})">New Problem</button>
+          </div>
+        `;
+        container.appendChild(div);
+        initWhiteboard(i);
+      }
+
+      function generateNewQuestion(qIndex, i) {
+        const newQuestion = questions[qIndex]();
+        const qBox = document.querySelectorAll('.question-box')[i - 1];
+        qBox.querySelector('.math').innerHTML = newQuestion;
+        MathJax.typesetPromise();
+        clearWhiteboard(i);
+      }
+
+      function initWhiteboard(i) {
+        const canvas = document.getElementById(`whiteboard${i}`);
+        const ctx = canvas.getContext('2d');
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        let isDrawing = false;
+
+        canvas.addEventListener('mousedown', e => {
+          isDrawing = true;
+          ctx.beginPath();
+          ctx.moveTo(e.offsetX, e.offsetY);
+        });
+
+        canvas.addEventListener('mousemove', e => {
+          if (isDrawing) {
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+          }
+        });
+
+        canvas.addEventListener('mouseup', () => isDrawing = false);
+        canvas.addEventListener('mouseout', () => isDrawing = false);
+      }
+
+      function clearWhiteboard(i) {
+        const canvas = document.getElementById(`whiteboard${i}`);
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+
+      MathJax.typesetPromise();
+    </script>
+  </main>
 </body>
 </html>
