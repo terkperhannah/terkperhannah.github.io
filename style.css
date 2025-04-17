@@ -478,6 +478,22 @@ footer p {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 /* ===== Poe AI ===== */
+.intro-section {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.help-section {
+  max-width: 600px;
+  margin: 1rem auto 2rem auto;
+  padding: 1.5rem;
+  text-align: center;
+  background-color: #f0f4ff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  font-size: 1.1rem;
+}
+
 .poe-button {
   display: inline-block;
   background-color: #6c5ce7;
@@ -486,8 +502,11 @@ footer p {
   text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
+  margin-top: 1rem;
   transition: background 0.3s ease;
 }
+
 .poe-button:hover {
   background-color: #5a4fcf;
 }
+
