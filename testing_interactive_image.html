@@ -85,8 +85,7 @@
 
 
  <div id="questions-container"></div>
-
-  <script>
+<script>
   const container = document.getElementById('questions-container');
 
   const questions = [
@@ -115,7 +114,7 @@
     const div = document.createElement('div');
     div.className = 'question-box';
     div.innerHTML = `
-      <p><strong>Question ${i}:</strong> <span class="math">${questionFunc()}</span></p>
+      <p><strong>Question ${i}:</strong> <span id="math-question-${i}">${questionFunc()}</span></p>
       <canvas class="whiteboard" id="whiteboard${i}"></canvas>
       <div class="controls">
         <button onclick="clearWhiteboard(${i})">Clear</button>
@@ -128,8 +127,7 @@
 
   function generateNewQuestion(qIndex, i) {
     const newQuestion = questions[qIndex]();
-    const qBox = document.querySelectorAll('.question-box')[i - 1];
-    qBox.querySelector('.math').innerHTML = newQuestion;
+    document.getElementById(`math-question-${i}`).innerHTML = newQuestion;
     MathJax.typesetPromise();
     clearWhiteboard(i);
   }
@@ -173,6 +171,7 @@
 
   MathJax.typesetPromise();
 </script>
+
 
 </body>
 </html>
