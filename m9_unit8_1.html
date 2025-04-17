@@ -113,6 +113,9 @@
         <option value="Systematic">Systematic</option>
         <option value="Stratified">Stratified</option>
         <option value="Cluster">Cluster</option>
+        <option value="Simple">Simple</option>
+        <option value="Convenience">Convenience</option>
+        <option value="Self-Selected">Self-Selected</option>
       </select><br><br>
       <strong>B.</strong> One class out of five is chosen →
       <select id="q4b">
@@ -120,6 +123,49 @@
         <option value="Systematic">Systematic</option>
         <option value="Stratified">Stratified</option>
         <option value="Cluster">Cluster</option>
+        <option value="Simple">Simple</option>
+        <option value="Convenience">Convenience</option>
+        <option value="Self-Selected">Self-Selected</option>
+      </select><br><br>
+      <strong>C.</strong> Students volunteer to take a survey →
+      <select id="q4c">
+        <option value="">--Select--</option>
+        <option value="Systematic">Systematic</option>
+        <option value="Stratified">Stratified</option>
+        <option value="Cluster">Cluster</option>
+        <option value="Simple">Simple</option>
+        <option value="Convenience">Convenience</option>
+        <option value="Self-Selected">Self-Selected</option>
+      </select><br><br>
+      <strong>D.</strong> The first three students the teacher sees are chosen →
+      <select id="q4d">
+        <option value="">--Select--</option>
+        <option value="Systematic">Systematic</option>
+        <option value="Stratified">Stratified</option>
+        <option value="Cluster">Cluster</option>
+        <option value="Simple">Simple</option>
+        <option value="Convenience">Convenience</option>
+        <option value="Self-Selected">Self-Selected</option>
+      </select><br><br>
+      <strong>E.</strong> Random draw of names from a hat →
+      <select id="q4e">
+        <option value="">--Select--</option>
+        <option value="Systematic">Systematic</option>
+        <option value="Stratified">Stratified</option>
+        <option value="Cluster">Cluster</option>
+        <option value="Simple">Simple</option>
+        <option value="Convenience">Convenience</option>
+        <option value="Self-Selected">Self-Selected</option>
+      </select><br><br>
+      <strong>F.</strong> Selecting 20 students from each grade →
+      <select id="q4f">
+        <option value="">--Select--</option>
+        <option value="Systematic">Systematic</option>
+        <option value="Stratified">Stratified</option>
+        <option value="Cluster">Cluster</option>
+        <option value="Simple">Simple</option>
+        <option value="Convenience">Convenience</option>
+        <option value="Self-Selected">Self-Selected</option>
       </select>
       <div id="feedback4" class="feedback"></div>
     </div>
@@ -149,16 +195,25 @@
       f3.className = "feedback " + ((q3a === "census" && q3b === "population") ? "correct" : "incorrect");
 
       // Q4
-      const q4a = document.getElementById("q4a").value;
-      const q4b = document.getElementById("q4b").value;
-      const f4 = document.getElementById("feedback4");
-      if (q4a === "Systematic" && q4b === "Cluster") {
-        f4.textContent = "✔ Correct!";
-        f4.className = "feedback correct";
-      } else {
-        f4.textContent = "✖ Try again.";
-        f4.className = "feedback incorrect";
+      const answers = {
+        q4a: "Systematic",
+        q4b: "Cluster",
+        q4c: "Self-Selected",
+        q4d: "Convenience",
+        q4e: "Simple",
+        q4f: "Stratified"
+      };
+      let allCorrect = true;
+      for (const id in answers) {
+        const val = document.getElementById(id).value;
+        if (val !== answers[id]) {
+          allCorrect = false;
+          break;
+        }
       }
+      const f4 = document.getElementById("feedback4");
+      f4.textContent = allCorrect ? "✔ Correct!" : "✖ Try again.";
+      f4.className = "feedback " + (allCorrect ? "correct" : "incorrect");
     }
   </script>
 </body>
