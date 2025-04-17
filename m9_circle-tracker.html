@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Circle Geometry Progress Tracker</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../style.css" />
   <style>
     .tracker-container {
       max-width: 800px;
@@ -16,6 +16,10 @@
     }
     .tracker-container h2 {
       color: #6c5ce7;
+      text-align: center;
+    }
+    .tracker-container p {
+      margin-bottom: 1.5rem;
       text-align: center;
     }
     .skill {
@@ -32,19 +36,23 @@
       padding: 0.4rem;
       border-radius: 5px;
     }
-    .emoji {
-      font-size: 1.5rem;
-      margin-left: 1rem;
+    .example {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 0.25rem;
     }
   </style>
 </head>
 <body>
   <div class="tracker-container">
     <h2>🧠 Circle Geometry Mastery Tracker</h2>
-    <p>Select your confidence level for each concept below. Your progress will be saved on this device.</p>
+    <p><strong>Solve problems and justify the solution strategy, using the following circle properties:</strong></p>
 
     <div class="skill">
-      <span>The perpendicular from the center of a circle to a chord bisects the chord</span>
+      <div>
+        <div>The perpendicular from the center of a circle to a chord bisects the chord</div>
+        <div class="example">Example: Draw a radius that intersects a chord and prove the chord is bisected.</div>
+      </div>
       <select onchange="saveProgress(0, this.value)">
         <option value="">Not started</option>
         <option value="low">😐 Low</option>
@@ -54,7 +62,10 @@
     </div>
 
     <div class="skill">
-      <span>The central angle is equal to twice the inscribed angle subtended by the same arc</span>
+      <div>
+        <div>The central angle is equal to twice the inscribed angle subtended by the same arc</div>
+        <div class="example">Example: Given a central and inscribed angle from the same arc, calculate the missing one.</div>
+      </div>
       <select onchange="saveProgress(1, this.value)">
         <option value="">Not started</option>
         <option value="low">😐 Low</option>
@@ -64,7 +75,10 @@
     </div>
 
     <div class="skill">
-      <span>Inscribed angles subtended by the same arc are congruent</span>
+      <div>
+        <div>Inscribed angles subtended by the same arc are congruent</div>
+        <div class="example">Example: Show that angle ABC and angle ADC subtended by the same arc AC are equal.</div>
+      </div>
       <select onchange="saveProgress(2, this.value)">
         <option value="">Not started</option>
         <option value="low">😐 Low</option>
@@ -74,7 +88,10 @@
     </div>
 
     <div class="skill">
-      <span>A tangent to a circle is perpendicular to the radius at the point of tangency</span>
+      <div>
+        <div>A tangent to a circle is perpendicular to the radius at the point of tangency</div>
+        <div class="example">Example: Given a tangent and radius, prove they meet at a right angle.</div>
+      </div>
       <select onchange="saveProgress(3, this.value)">
         <option value="">Not started</option>
         <option value="low">😐 Low</option>
@@ -84,7 +101,10 @@
     </div>
 
     <div class="skill">
-      <span>Can solve problems using one or more circle properties</span>
+      <div>
+        <div>Can solve problems using one or more circle properties</div>
+        <div class="example">Example: Use a combination of circle rules to solve for unknown angles or segment lengths in a complex diagram.</div>
+      </div>
       <select onchange="saveProgress(4, this.value)">
         <option value="">Not started</option>
         <option value="low">😐 Low</option>
