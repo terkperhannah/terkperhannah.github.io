@@ -85,83 +85,158 @@
 
 
  <div id="questions-container"></div>
+<script>
+  const container = document.getElementById('questions-container');
 
-  <script>
-    const container = document.getElementById('questions-container');
-    const questions = [
-      `\\( 4905 + 3868 \\)`,
-      `\\( \\$1.50 + \\$2.45 \\)`,
-      `\\( 27.6 - 12.3 \\)`,
-      `\\( 15 \\times 50 \\)`,
-      `\\( 316 \\div 4 \\)`,
-      `\\( 7 + 0.9 + 1.62 \\)`,
-      `\\( 70365 - 63575 \\)`,
-      `\\( 40.5 \\times 2 \\)`,
-      `\\( 950.4 \\times 7 = 665\\_\\_.8 \\)`,
-      `\\( 24.6 \\div 2 \\)`,
-      `\\( 3.27 \\div 3 \\)`,
-      `\\( 9.9 - 6.45 \\)`,
-      `\\( 7 - 4.09 \\)`,
-      `\\( 78.03 \\div 9 \\)`,
-      `\\( 58 \\times 72 \\)`
-    ];
+  // Random number generators
+  function randInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
-    for (let i = 0; i < questions.length; i++) {
-      addQuestion(i + 1, questions[i]);
+  function randDecimal(min, max, decimals) {
+    return (Math.random() * (max - min) + min).toFixed(decimals);
+  }
+
+  // Dynamic question templates
+  const questions = [
+    () => {
+      const a = randInt(1000, 5000);
+      const b = randInt(1000, 5000);
+      return `\\( ${a} + ${b} \\)`;
+    },
+    () => {
+      const a = randDecimal(1, 5, 2);
+      const b = randDecimal(1, 5, 2);
+      return `\\( \\$${a} + \\$${b} \\)`;
+    },
+    () => {
+      const a = randDecimal(10, 30, 1);
+      const b = randDecimal(5, 15, 1);
+      return `\\( ${a} - ${b} \\)`;
+    },
+    () => {
+      const a = randInt(10, 50);
+      const b = randInt(5, 10);
+      return `\\( ${a} \\times ${b} \\)`;
+    },
+    () => {
+      const dividend = randInt(200, 400);
+      const divisor = randInt(2, 9);
+      return `\\( ${dividend} \\div ${divisor} \\)`;
+    },
+    () => {
+      const nums = [randInt(1, 9), randDecimal(0, 2, 1), randDecimal(1, 2, 2)];
+      return `\\( ${nums.join(' + ')} \\)`;
+    },
+    () => {
+      const a = randInt(50000, 80000);
+      const b = randInt(50000, 80000);
+      return `\\( ${Math.max(a, b)} - ${Math.min(a, b)} \\)`;
+    },
+    () => `\\( ${randDecimal(20, 50, 1)} \\times 2 \\)`,
+    () => {
+      const whole = randInt(800, 999);
+      const result = whole * 7;
+      return `\\( ${whole}.4 \\times 7 = ${String(result).slice(0,-1)}\\_\\_.8 \\)`;
+    },
+    () => `\\( ${randDecimal(20, 30, 1)} \\div 2 \\)`,
+    () => `\\( ${randDecimal(2, 5, 2)} \\div 3 \\)`,
+    () => {
+      const a = randDecimal(5, 10, 1);
+      const b = randDecimal(2, 5, 2);
+      return `\\( ${a} - ${b} \\)`;
+    },
+    () => {
+      const a = randInt(5, 9);
+      const b = randDecimal(3, 5, 2);
+      return `\\( ${a} - ${b} \\)`;
+    },
+    () => `\\( ${randDecimal(70, 80, 2)} \\div 9 \\)`,
+    () => {
+      const a = randInt(50, 100);
+      const b = randInt(50, 100);
+      return `\\( ${a} \\times ${b} \\)`;
     }
+  ];
 
-    function addQuestion(i, question) {
-      const div = document.createElement('div');
-      div.className = 'question-box';
-      div.innerHTML = `
-        <p><strong>Question ${i}:</strong> <span class="math">${question}</span></p>
-        <canvas class="whiteboard" id="whiteboard${i}"></canvas>
-        <div class="controls">
-          <button onclick="clearWhiteboard(${i})">Clear</button>
-        </div>
-      `;
-      container.appendChild(div);
-      initWhiteboard(i);
-    }
+  // Initialize questions
+  for (let i = 0; i < questions.length; i++) {
+    addQuestion(i + 1, questions[i], i);
+  }
 
-    function initWhiteboard(i) {
-      const canvas = document.getElementById(`whiteboard${i}`);
-      const ctx = canvas.getContext('2d');
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-      ctx.fillStyle = 'white';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+  function addQuestion(i, questionFunc, index) {
+    const div = document.createElement('div');
+    div.className = 'question-box';
+    div.innerHTML = `
+      <p><strong>Question ${i}:</strong> <span id="math-question-${i}">${questionFunc()}</span></p>
+      <canvas class="whiteboard" id="whiteboard${i}"></canvas>
+      <div class="controls">
+        <button onclick="clearWhiteboard(${i})">Clear</button>
+        <button onclick="generateNewQuestion(${index}, ${i})">New Problem</button>
+      </div>
+    `;
+    container.appendChild(div);
+    initWhiteboard(i);
+    MathJax.typesetPromise([div.querySelector('.math')]);
+  }
 
-      let isDrawing = false;
+  function generateNewQuestion(qIndex, i) {
+    const newQuestion = questions[qIndex]();
+    const questionElement = document.getElementById(`math-question-${i}`);
+    questionElement.innerHTML = newQuestion;
+    
+    // Update MathJax rendering
+    MathJax.typesetPromise([questionElement]).then(() => {
+      clearWhiteboard(i);
+    }).catch((err) => console.error('MathJax error:', err));
+  }
 
-      canvas.addEventListener('mousedown', e => {
-        isDrawing = true;
-        ctx.beginPath();
-        ctx.moveTo(e.offsetX, e.offsetY);
-      });
+  // Rest of your existing JavaScript (initWhiteboard, clearWhiteboard) remains the same
 
-      canvas.addEventListener('mousemove', e => {
-        if (isDrawing) {
-          ctx.lineTo(e.offsetX, e.offsetY);
-          ctx.strokeStyle = 'black';
-          ctx.lineWidth = 2;
-          ctx.stroke();
-        }
-      });
 
-      canvas.addEventListener('mouseup', () => isDrawing = false);
-      canvas.addEventListener('mouseout', () => isDrawing = false);
-    }
+  function initWhiteboard(i) {
+    const canvas = document.getElementById(`whiteboard${i}`);
+    const ctx = canvas.getContext('2d');
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    function clearWhiteboard(i) {
-      const canvas = document.getElementById(`whiteboard${i}`);
-      const ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = 'white';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
+    let isDrawing = false;
 
-    MathJax.typesetPromise();
-  </script>
+    canvas.addEventListener('mousedown', e => {
+      isDrawing = true;
+      ctx.beginPath();
+      ctx.moveTo(e.offsetX, e.offsetY);
+    });
+
+    canvas.addEventListener('mousemove', e => {
+      if (isDrawing) {
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+    });
+
+    canvas.addEventListener('mouseup', () => isDrawing = false);
+    canvas.addEventListener('mouseout', () => isDrawing = false);
+  }
+
+  function clearWhiteboard(i) {
+    const canvas = document.getElementById(`whiteboard${i}`);
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
+
+  MathJax.typesetPromise();
+</script>
+
+
 </body>
+  <footer>
+        <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+    </footer>
 </html>
