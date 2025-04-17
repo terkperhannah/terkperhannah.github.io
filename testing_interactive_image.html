@@ -18,16 +18,7 @@
       text-align: center;
       color: #0984e3;
     }
-    .chatgpt-box {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 1rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+
     .question-box {
       background: #ffffff;
       border-left: 5px solid #00cec9;
@@ -61,14 +52,14 @@
   </style>
 </head>
 <body>
-  <h1>Grade 9 Practice Test</h1>
+  <h1>Grade 9 Diagnostic Practice Test</h1>
+  <p>These are based on questions you should have mastered in grade 8.</p>
 
-  <div class="chatgpt-box">
-    <label for="studentQuestion"><strong>Ask ChatGPT for help:</strong></label><br>
-    <textarea id="studentQuestion" rows="3" style="width: 100%; margin: 0.5rem 0;"></textarea><br>
-    <button onclick="askChatGPT()">Submit</button>
-    <p id="chatgptResponse" style="margin-top: 1rem;"></p>
-  </div>
+<div class="chatgpt-box" style="text-align: center;">
+  <p><strong>Need help?</strong> Click below to ask ChatGPT on Poe:</p>
+  <a href="https://poe.com/ChatGPT" target="_blank" class="poe-button">Ask ChatGPT on Poe</a>
+</div>
+
 
   <div id="questions-container"></div>
 
