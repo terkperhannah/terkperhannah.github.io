@@ -477,3 +477,17 @@ footer p {
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+/* ===== Poe AI ===== */
+.poe-button {
+  display: inline-block;
+  background-color: #6c5ce7;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+.poe-button:hover {
+  background-color: #5a4fcf;
+}
