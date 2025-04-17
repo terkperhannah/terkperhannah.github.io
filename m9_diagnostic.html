@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Math 9 - Whiteboard Test</title>
+  <title>Math 9 - Diagnostic Practice</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -18,16 +18,7 @@
       text-align: center;
       color: #0984e3;
     }
-    .chatgpt-box {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 1rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+
     .question-box {
       background: #ffffff;
       border-left: 5px solid #00cec9;
@@ -61,33 +52,77 @@
   </style>
 </head>
 <body>
-  <h1>Grade 9 Practice Test</h1>
+  <header class="intro-section">
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    <div id="navbar-placeholder"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      })
+      .catch(err => console.error("Navbar failed to load:", err));
+  });
+</script>
+  <h2>Grade 9 Diagnostic Practice Test</h2>
+  <h3>These are based on questions you should have mastered in grade 8.</h3>
+</header>
 
-  <div class="chatgpt-box">
-    <label for="studentQuestion"><strong>Ask ChatGPT for help:</strong></label><br>
-    <textarea id="studentQuestion" rows="3" style="width: 100%; margin: 0.5rem 0;"></textarea><br>
-    <button onclick="askChatGPT()">Submit</button>
-    <p id="chatgptResponse" style="margin-top: 1rem;"></p>
-  </div>
+<section class="help-section">
+  <p><strong>Need to check your solutions?</strong> Click below to ask ChatGPT on Poe:</p>
+  <a href="https://poe.com/ChatGPT" target="_blank" class="poe-button">Ask ChatGPT on Poe</a>
+</section>
+
+
 
   <div id="questions-container"></div>
 
   <script>
     const container = document.getElementById('questions-container');
     const questions = [
-  () => `\\( \\frac{1}{${randInt(2, 9)}} + \\frac{2}{${randInt(2, 9)}} \\)`,
-  () => `\\( \\frac{${randInt(2, 9)}}{6} \\times \\frac{12}{11} \\)`,
-  () => `\\( \\frac{5}{6} \\div \\left(-\\frac{10}{12}\\right) \\)`,
-  () => `\\( \\frac{1}{2} \\times \\frac{4}{3} \\times \\frac{4}{22} \\times \\frac{33}{8} \\)`,
-  () => `\\( \\frac{4}{3} \\div \\left(\\frac{1}{2} + \\frac{1}{3}\\right) \\)`,
-  () => `\\( 5 + (-3) + (-4) \\)`,
-  () => `\\( -2 - (-2) -2 \\)`,
-  () => `\\( -1(-2)(-3) \\)`,
-  () => `\\( 1 \\frac{3}{4} \\div \\left(-\\frac{3}{2}\\right) \\)`,
+  // Q1 - Simple addition of fractions
+  () => `\\( \\frac{1}{${randInt(2, 6)}} + \\frac{2}{${randInt(2, 6)}} + \\frac{3}{${randInt(2, 6)}} \\)`,
+
+  // Q2 - Multiplication of two fractions
+  () => `\\( \\frac{${randInt(1, 9)}}{${randInt(2, 9)}} \\times \\frac{${randInt(10, 20)}}{${randInt(10, 20)}} \\)`,
+
+  // Q3 - Division of fractions with a negative
+  () => `\\( \\frac{${randInt(3, 9)}}{${randInt(4, 10)}} \\div \\left(-\\frac{${randInt(4, 10)}}{${randInt(4, 10)}}\\right) \\)`,
+
+  // Q4 - Multi-step fraction multiplication
+  () => `\\( \\frac{${randInt(1, 3)}}{${randInt(2, 5)}} \\times \\frac{${randInt(3, 6)}}{${randInt(4, 8)}} \\times \\frac{${randInt(2, 6)}}{${randInt(5, 10)}} \\)`,
+
+  // Q5 - Division with grouped addition in the denominator
+  () => `\\( \\frac{${randInt(1, 3)}}{${randInt(1, 3)}} \\div \\left(\\frac{1}{2} + \\frac{1}{3}\\right) \\)`,
+
+  // Q6 - Integer addition with negatives
+  () => `\\( ${randInt(3, 8)} + (${randInt(-5, -1)}) + (${randInt(-6, -2)}) \\)`,
+
+  // Q7 - Integer subtraction with negatives
+  () => `\\( -${randInt(1, 4)} - (-${randInt(1, 4)}) - ${randInt(1, 4)} \\)`,
+
+  // Q8 - Multiplication of negative integers
+  () => `\\( -${randInt(1, 3)} \\times -${randInt(2, 4)} \\times -${randInt(2, 4)} \\)`,
+
+    // Q9 - Mixed number division (updated to show mixed numbers)
+  () => {
+    const whole = randInt(1, 2);
+    const num = randInt(1, 3);
+    const den = randInt(2, 4);
+    return `\\( ${whole}\\frac{${num}}{${den}} \\div \\left(-\\frac{${randInt(2, 4)}}{${randInt(2, 4)}}\\right) \\)`;
+  },
+
+  // Q10 - Decimal addition
   () => `\\( ${randFloat(1, 3).toFixed(2)} + ${randFloat(0.2, 1.5).toFixed(2)} \\)`,
+
+  // Q11 - Decimal multiplication
   () => `\\( ${randFloat(1, 2).toFixed(3)} \\times 0.01 \\)`,
-  () => `\\( 5.4 \\times 1.2 \\)`
+
+  // Q12 - Multiply 2 decimals
+  () => `\\( ${randFloat(1, 9).toFixed(1)} \\times ${randFloat(1, 3).toFixed(1)} \\)`
 ];
+
 
     for (let i = 1; i <= 12; i++) {
       addQuestion(i);
