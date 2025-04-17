@@ -62,6 +62,21 @@
   </style>
 </head>
 <body>
+  <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+<div id="navbar-placeholder"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      })
+      .catch(err => console.error("Navbar failed to load:", err));
+  });
+</script>
+  
   <div class="container">
     <h1>Statistics & Probability Quiz</h1>
     <p style="text-align:center;">Test your understanding of key terms and concepts!</p>
@@ -216,5 +231,9 @@
       f4.className = "feedback " + (allCorrect ? "correct" : "incorrect");
     }
   </script>
+
+  <footer>
+        <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+    </footer>
 </body>
 </html>
