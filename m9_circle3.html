@@ -17,7 +17,17 @@
     <header>
         <h1>Ms. Terkper's Digital Classroom</h1>
     </header>
-    <nav>
+     <div id="navbar-placeholder"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      })
+      .catch(err => console.error("Navbar failed to load:", err));
+  });
+</script>
         <ul>
 <li class="dropdown">
             <a href="index.html">Home</a>
