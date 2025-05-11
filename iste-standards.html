@@ -213,17 +213,17 @@
 
 
     .img-caption {
-        font-size: 0.95em;
-        color: #636e72;
+        color: #2d3436; /* ★ Darker caption text */
+        font-size: 0.9em;
         text-align: center;
         margin-top: 12px;
         line-height: 1.4;
     }
 
     .img-caption a {
-        color: #0984e3;
-        text-decoration: none;
+        color: #1565c0; /* ★ Higher contrast link color */
         font-weight: 600;
+        text-decoration: none;
         border-bottom: 1px dotted currentColor;
     }
 
@@ -233,14 +233,25 @@
     }
 
     .standard-badge {
-        background: #e3f2fd;
-        color: #0984e3;
+        background: #0d47a1; /* ★ Darker blue background */
+        color: #ffffff !important; /* ★ Pure white text */
+        font-weight: 600;
         padding: 8px 15px;
         border-radius: 20px;
-        font-weight: 600;
         display: inline-block;
         margin: 15px 0;
     }
+
+    /* ===== Interactive Reflection ===== */
+.reflection-form label {
+    color: #212121; /* ★ Darker label text */
+}
+
+.reflection-input:focus {
+    outline: 3px solid #ff5722; /* ★ High contrast focus indicator */
+    outline-offset: 2px;
+}
+        
 </style>
 
     <link rel="stylesheet" href="style.css">
