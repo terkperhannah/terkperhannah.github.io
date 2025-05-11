@@ -14,7 +14,7 @@ body {
 
 /* ===== Header ===== */
 header {
-    background: linear-gradient(135deg, #1de9b6, #43a047); /* Modern green-aqua blend */
+    background: linear-gradient(135deg, #00796b, #303f9f);
     padding: 40px 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -29,7 +29,7 @@ header h1 {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     letter-spacing: -0.5px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 header h1::after {
@@ -50,7 +50,7 @@ header:hover h1::after {
 
 /* === NAVIGATION BAR === */
 .main-navbar {
-  background: linear-gradient(to right, #74b9ff, #55efc4); /* soft blue to green */
+  background: linear-gradient(to right, #1976d2, #00796b);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   font-family: 'Poppins', sans-serif;
   position: sticky;
@@ -78,7 +78,7 @@ header:hover h1::after {
   padding: 1rem 1.5rem;
   color: #ffffff;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   transition: background 0.3s ease, color 0.3s ease;
   border-radius: 6px;
 }
@@ -107,14 +107,15 @@ header:hover h1::after {
 }
 
 .dropdown a {
-  color: #2d3436;
+  color: #212121;
+  font-weight: 500;
   padding: 10px 20px;
   border-radius: 0;
 }
 
 .dropdown a:hover {
   background-color: #f1f1f1;
-  color: #00cec9;
+  color: #0d47a1;
 }
 
 /* Reveal dropdown on hover */
@@ -204,6 +205,12 @@ main {
     text-align: center;
 }
 
+/* ===== Content Boxes ===== */
+.content-box p {
+    color: #212121; /* ★ Darker text color */
+    line-height: 1.6; /* ★ Improved readability */
+}
+
 /* ===== Footer ===== */
 footer {
     background-color: #2d3436;
@@ -240,6 +247,7 @@ footer p {
 .option {
     padding: 0.75rem 1rem;
     background-color: #f8f9fa;
+    color: #212121;
     border: 2px solid #dee2e6;
     border-radius: 8px;
     cursor: pointer;
@@ -387,7 +395,7 @@ footer p {
 .resource-text p {
     margin: 0;
     font-size: 1em;
-    color: #636e72;
+    color: #424242; 
 }
 
 /* ===== Unit List ===== */
@@ -529,3 +537,14 @@ footer p {
   z-index: 10000;
   border: 2px solid #000;
 }
+
+/* ===== Universal Accessibility ===== */
+a:focus,
+button:focus {
+    outline: 3px solid #ff5722; /* ★ Orange focus indicator */
+    outline-offset: 3px;
+}
+
+[role="banner"],
+[aria-label] {
+    /* Struc
