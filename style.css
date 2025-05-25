@@ -665,3 +665,72 @@ html, body {
     display: block;
   }
 }
+
+/* ===== Vertical Mobile Fixes ===== */
+@media (max-width: 768px) and (orientation: portrait) {
+    /* Nuclear containment */
+    body, main, .content-box, .stream-container, .units-grid {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 10px !important;
+        transform: translateX(0) !important;
+    }
+
+    /* Force single-column layout */
+    .stream-container {
+        display: block !important;
+    }
+
+    /* Nested content reset */
+    .content-box .content-box {
+        padding: 12px !important;
+        margin: 8px 0 !important;
+    }
+
+    /* Text containment */
+    h1, h2, h3, p, .unit-card {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+    }
+
+    /* Grid system override */
+    .units-grid {
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
+    }
+
+    /* Unit card dimensions */
+    .unit-card {
+        width: calc(100% - 20px) !important;
+        min-width: 0 !important;
+        margin: 5px !important;
+    }
+
+    /* Font size reduction */
+    h1 { font-size: 1.6rem !important; }
+    h2 { font-size: 1.3rem !important; }
+    p { font-size: 0.9rem !important; }
+    
+    /* Prevent any horizontal bleed */
+    * {
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+}
+
+/* Orientation lock for portrait */
+@media (max-width: 768px) and (orientation: portrait) {
+    html {
+        overflow-x: hidden !important;
+        width: 100vw !important;
+    }
+    
+    body {
+        position: relative !important;
+        width: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+    }
+}
