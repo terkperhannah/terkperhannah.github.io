@@ -597,3 +597,71 @@ html, body {
     min-width: 0 !important;
     max-width: 100% !important;
 }
+
+/* ===== Final Mobile Overhaul for Overflow Fixes ===== */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body, main, .content-wrapper, .content-box,
+  .stream-container, .units-grid, .unit-card {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 10px !important;
+    overflow-x: hidden !important;
+  }
+
+  .stream-container,
+  .units-grid {
+    display: block !important;
+  }
+
+  .unit-card {
+    display: block;
+    min-width: unset !important;
+    overflow: visible !important;
+    word-wrap: break-word;
+  }
+
+  .content-box .content-box {
+    margin: 10px 0 !important;
+    padding: 15px !important;
+  }
+
+  .nav-links {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .dropdown {
+    position: static !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    background: #f4f4f4 !important;
+  }
+
+  header h1 {
+    font-size: 1.5rem !important;
+  }
+
+  h2 {
+    font-size: 1.2rem !important;
+  }
+
+  p, .unit-card p {
+    font-size: 0.9rem !important;
+    word-wrap: break-word;
+  }
+
+  img, iframe, video {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+  }
+}
