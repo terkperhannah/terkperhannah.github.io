@@ -2,23 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
     <title>Math 30</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Consistent with main course pages */
-        .content-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+        /* Mobile-first responsive design */
+        * {
+            box-sizing: border-box;
         }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        .content-wrapper {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 10px;
+        }
+        
         .content-box {
             border: 2px solid #e0e0e0;
             border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 30px;
+            padding: 15px;
+            margin-bottom: 15px;
             background-color: #ffffff;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 100%;
         }
 
         .content-box h2 {
@@ -26,45 +40,47 @@
             border-bottom: 3px solid #3498db;
             padding-bottom: 10px;
             margin-bottom: 20px;
-            font-size: 24px;
+            font-size: 20px;
         }
 
+        /* Mobile-first grid layouts */
         .stream-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
+            display: block;
             margin-top: 25px;
         }
 
         .units-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            display: block;
             margin-top: 20px;
         }
 
         .unit-card {
-            padding: 20px;
+            display: block;
+            padding: 15px;
+            margin: 10px 0;
             border-radius: 8px;
             background: #f8f9fa;
             transition: transform 0.3s ease;
             border: 1px solid #e0e0e0;
             text-decoration: none;
             color: #34495e;
+            width: 100%;
         }
 
         .unit-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .unit-card h3 {
             color: #3498db;
             margin-bottom: 10px;
+            font-size: 18px;
         }
 
         .unit-card p {
             line-height: 1.5;
+            margin: 0;
         }
 
         .resources-box {
@@ -73,8 +89,7 @@
         }
 
         .resource-link {
-            display: flex;
-            align-items: center;
+            display: block;
             padding: 12px;
             margin: 10px 0;
             background: white;
@@ -89,22 +104,40 @@
             transform: translateX(5px);
             border-color: #3498db;
         }
-        @media (max-width: 768px) {
-    .stream-container .content-box {
-        padding: 15px;
-        margin-bottom: 15px;
-    }
-    
-    .unit-card h3 {
-        font-size: 1.1em;
-    }
-    
-    .unit-card p {
-        font-size: 0.9em;
-    }
-}
 
-        
+        /* Desktop styles - only apply on larger screens */
+        @media (min-width: 769px) {
+            .content-wrapper {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            
+            .content-box {
+                padding: 25px;
+                margin-bottom: 30px;
+            }
+            
+            .content-box h2 {
+                font-size: 24px;
+            }
+            
+            .stream-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+                gap: 30px;
+            }
+
+            .units-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 20px;
+            }
+            
+            .unit-card {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -112,22 +145,20 @@
         <h1>Ms. Terkper's Digital Classroom</h1>
     </header>
     <div id="navbar-placeholder"></div>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    fetch('navbar.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-        // Initialize mobile navigation after navbar is loaded
-        if (typeof initMobileNav === 'function') {
-          initMobileNav();
-        }
-      })
-      .catch(err => console.error("Navbar failed to load:", err));
-  });
-</script>
-<script src="mobile-nav.js"></script>
-
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        fetch('navbar.html')
+          .then(res => res.text())
+          .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+            if (typeof initMobileNav === 'function') {
+              initMobileNav();
+            }
+          })
+          .catch(err => console.error("Navbar failed to load:", err));
+      });
+    </script>
+    <script src="mobile-nav.js"></script>
 
     <main>
         <div class="content-wrapper">
@@ -137,7 +168,6 @@
 
             <div class="content-box">
                 <div class="stream-container">
-                    <!-- Math 30-1 Stream -->
                     <div class="content-box">
                         <h2>Math 30-1</h2>
                         <div class="units-grid">
@@ -164,7 +194,6 @@
                         </div>
                     </div>
 
-                    <!-- Math 30-2 Stream -->
                     <div class="content-box">
                         <h2>Math 30-2</h2>
                         <div class="units-grid">
