@@ -118,12 +118,20 @@
       .then(res => res.text())
       .then(data => {
         document.getElementById('navbar-placeholder').innerHTML = data;
+        // Initialize mobile navigation after navbar is loaded
+        if (typeof initMobileNav === 'function') {
+          initMobileNav();
+        }
       })
       .catch(err => console.error("Navbar failed to load:", err));
   });
 </script>
+<script src="mobile-nav.js"></script>
 
-
+    <main>
+        <script async src="https://cse.google.com/cse.js?cx=55023492bbb93437c"></script>
+        <div class="gcse-search"></div>
+    </main>
     
     <footer>
         <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
