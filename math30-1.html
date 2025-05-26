@@ -118,10 +118,15 @@
       .then(res => res.text())
       .then(data => {
         document.getElementById('navbar-placeholder').innerHTML = data;
+        // Initialize mobile navigation after navbar is loaded
+        if (typeof initMobileNav === 'function') {
+          initMobileNav();
+        }
       })
       .catch(err => console.error("Navbar failed to load:", err));
   });
 </script>
+<script src="mobile-nav.js"></script>
 
 
     <main>
@@ -207,7 +212,9 @@
         </div>
     </main>
     <footer>
-        <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+        <p style="color: #ffffff; font-size: clamp(0.9rem, 2.5vw, 1.1rem); line-height: 1.8; font-family: 'Poppins', sans-serif;">
+            Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching
+        </p>
     </footer>
 </body>
 </html>
