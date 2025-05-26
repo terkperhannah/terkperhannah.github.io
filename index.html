@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
     <title>Ms. Terkper's Digital Classroom</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style>
     /* Paragraph styling directly here */
     p {
-      font-size: 1.1em;
+      font-size: clamp(1rem, 2.5vw, 1.1rem);
       line-height: 1.8;
       color: #34495e;
       font-family: 'Poppins', sans-serif;
@@ -18,7 +20,7 @@
     /* Custom header style for h2 in content boxes */
     .content-box h2 {
       color: #0984e3;
-      font-size: 1.8em;
+      font-size: clamp(1.5rem, 4vw, 1.8rem);
       font-weight: 600;
       font-family: 'Poppins', sans-serif;
       border-bottom: 2px solid rgba(116, 185, 255, 0.3);
@@ -35,63 +37,66 @@
     <header>
         <h1>Ms. Terkper's Digital Classroom</h1>
     </header>
-<div id="navbar-placeholder"></div>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    fetch('navbar.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-      })
-      .catch(err => console.error("Navbar failed to load:", err));
-  });
-</script>
+    
+    <div id="navbar-placeholder"></div>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        fetch('navbar.html')
+          .then(res => res.text())
+          .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+            // Initialize mobile navigation after navbar is loaded
+            if (typeof initMobileNav === 'function') {
+              initMobileNav();
+            }
+          })
+          .catch(err => console.error("Navbar failed to load:", err));
+      });
+    </script>
+    <script src="mobile-nav.js"></script>
 
     <main>
-<script async src="https://cse.google.com/cse.js?cx=55023492bbb93437c">
-</script>
-<div class="gcse-search"></div>
-    <div class="content-wrapper">
-
-        <div class="content-box">
-            <h2>Welcome to My Digital Classroom!</h2>
-            <p>
-Hi! I'm Hannah Terkper, a STEM educator based in Edmonton with a love for learning, creativity, and helping students thrive. I hold a Bachelor of Education from the University of Alberta, where I majored in biological sciences, minored in mathematics, and earned a certification in Sustainability. I’m currently pursuing my Master of Education in Emerging Technologies, where I get to explore the intersection of innovation and education.
-
-Outside the classroom, I’m passionate about designing meaningful learning experiences, exploring new tech tools, and sharing my journey as an educator on social media. When I’m not teaching you’ll probably find me exploring nature, trying out new recipes, or deep in a sci-fi novel.
-
-I'm excited to share this space with you — a place to learn, grow, and discover together. Whether you're here for extra support, inspiration, or just to explore, I hope you find something that sparks your curiosity.
-                  </p>
-        </div>
-
-        <div class="content-box">
-            <h2>Educational Setting and Audience</h2>
-            <p>
-                This website is designed as a digital extension of my classroom. The primary audience for this site includes students in Grades 7 through 12 who are enrolled in Mathematics, Science, and Computer Science courses following the Alberta Program of Studies. The resources on this site aim to support them in building foundational knowledge, extending their learning beyond the classroom, and preparing for assessments.
-            </p>
-            <p>
-                The website also serves as a support tool for students, parents, and guardians by providing access to curated resources, interactive practice opportunities, and supplemental learning tools. As a STEM-focused educator with a passion for emerging technologies, I have tailored the content to engage digital-age learners through hands-on, accessible, and differentiated materials aligned with curriculum outcomes and ISTE student standards.
-            </p>
-        </div>
-
-    </div>
-
-        <p style="text-align: center; font-size: 0.85em; color: #444; margin-top: 20px;">
-  Original content created by Hannah Terkper. Licensed under 
-  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color: #064178;">
-    CC BY 4.0
-  </a>.
-</p>
+        <script async src="https://cse.google.com/cse.js?cx=55023492bbb93437c"></script>
+        <div class="gcse-search"></div>
         
-</main>
+        <div class="content-wrapper">
+            <div class="content-box">
+                <h2>Welcome to My Digital Classroom!</h2>
+                <p>
+                    Hi! I'm Hannah Terkper, a STEM educator based in Edmonton with a love for learning, creativity, and helping students thrive. I hold a Bachelor of Education from the University of Alberta, where I majored in biological sciences, minored in mathematics, and earned a certification in Sustainability. I'm currently pursuing my Master of Education in Emerging Technologies, where I get to explore the intersection of innovation and education.
+                </p>
+                <p>
+                    Outside the classroom, I'm passionate about designing meaningful learning experiences, exploring new tech tools, and sharing my journey as an educator on social media. When I'm not teaching you'll probably find me exploring nature, trying out new recipes, or deep in a sci-fi novel.
+                </p>
+                <p>
+                    I'm excited to share this space with you — a place to learn, grow, and discover together. Whether you're here for extra support, inspiration, or just to explore, I hope you find something that sparks your curiosity.
+                </p>
+            </div>
 
-    
+            <div class="content-box">
+                <h2>Educational Setting and Audience</h2>
+                <p>
+                    This website is designed as a digital extension of my classroom. The primary audience for this site includes students in Grades 7 through 12 who are enrolled in Mathematics, Science, and Computer Science courses following the Alberta Program of Studies. The resources on this site aim to support them in building foundational knowledge, extending their learning beyond the classroom, and preparing for assessments.
+                </p>
+                <p>
+                    The website also serves as a support tool for students, parents, and guardians by providing access to curated resources, interactive practice opportunities, and supplemental learning tools. As a STEM-focused educator with a passion for emerging technologies, I have tailored the content to engage digital-age learners through hands-on, accessible, and differentiated materials aligned with curriculum outcomes and ISTE student standards.
+                </p>
+            </div>
+        </div>
 
-   <footer>
-    <p style="color: #ffffff; font-size: 1.1em; line-height: 1.8; font-family: 'Poppins', sans-serif;">
-        Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching
-    </p>
-</footer>
+        <p style="text-align: center; font-size: clamp(0.75rem, 2vw, 0.85rem); color: #444; margin-top: 20px;">
+            Original content created by Hannah Terkper. Licensed under 
+            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color: #064178;">
+                CC BY 4.0
+            </a>.
+        </p>
+    </main>
 
+    <footer>
+        <p style="color: #ffffff; font-size: clamp(0.9rem, 2.5vw, 1.1rem); line-height: 1.8; font-family: 'Poppins', sans-serif;">
+            Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching
+        </p>
+    </footer>
 </body>
 </html>
