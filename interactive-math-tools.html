@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
+    <title>Interactive Math Tools | Ms. Terkper's Digital Classroom</title>
+    <meta name="description" content="Interactive math tools for visualizing and practicing Math 9 concepts including polynomial operations, linear equations, transformations, and more.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .tools-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-right: 15px;
+        }
+
+        .tool-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .tool-description {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .tool-interface {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #34495e;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .calculate-btn {
+            background: #3498db;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .calculate-btn:hover {
+            background: #2980b9;
+        }
+
+        .result-area {
+            background: #e8f5e8;
+            border: 2px solid #27ae60;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            min-height: 60px;
+        }
+
+        .result-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #27ae60;
+        }
+
+        .graph-canvas {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            margin-top: 15px;
+            width: 100%;
+            height: 300px;
+        }
+
+        .steps-container {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .step {
+            margin-bottom: 10px;
+            padding: 8px;
+            background: white;
+            border-radius: 5px;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .tools-container {
+                padding: 15px;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tool-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .tool-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    
+    <div id="navbar-placeholder"></div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('navbar.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                    if (typeof initMobileNav === 'function') {
+                        initMobileNav();
+                    }
+                })
+                .catch(err => console.error("Navbar failed to load:", err));
+        });
+    </script>
+    <script src="mobile-nav.js"></script>
+
+    <main class="tools-container">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h1 style="color: #2c3e50; margin-bottom: 15px;">Interactive Math Tools</h1>
+            <p style="color: #7f8c8d; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
+                Explore mathematical concepts with these hands-on tools designed to help you visualize and understand Math 9 topics.
+            </p>
+        </div>
+
+        <div class="tools-grid">
+            <!-- Polynomial Calculator -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">🧮</div>
+                    <div class="tool-title">Polynomial Calculator</div>
+                </div>
+                <div class="tool-description">
+                    Add, subtract, and multiply polynomials step by step. Perfect for practicing polynomial operations from Unit 3.
+                </div>
+                <div class="tool-interface">
+                    <div class="input-group">
+                        <label for="poly1">First Polynomial (e.g., 2x^2 + 3x - 1):</label>
+                        <input type="text" id="poly1" placeholder="2x^2 + 3x - 1">
+                    </div>
+                    <div class="input-group">
+                        <label for="poly-operation">Operation:</label>
+                        <select id="poly-operation">
+                            <option value="add">Add (+)</option>
+                            <option value="subtract">Subtract (-)</option>
+                            <option value="multiply">Multiply (×)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="poly2">Second Polynomial (e.g., x^2 - 2x + 5):</label>
+                        <input type="text" id="poly2" placeholder="x^2 - 2x + 5">
+                    </div>
+                    <button class="calculate-btn" onclick="calculatePolynomial()">Calculate</button>
+                    <div id="poly-result" class="result-area" style="display: none;">
+                        <div class="result-text" id="poly-answer"></div>
+                    </div>
+                    <div id="poly-steps" class="steps-container" style="display: none;">
+                        <strong>Solution Steps:</strong>
+                        <div id="poly-steps-content"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Linear Equation Grapher -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">📈</div>
+                    <div class="tool-title">Linear Equation Grapher</div>
+                </div>
+                <div class="tool-description">
+                    Graph linear equations and explore slope-intercept form. Visualize how changes in slope and y-intercept affect the line.
+                </div>
+                <div class="tool-interface">
+                    <div class="input-group">
+                        <label for="slope">Slope (m):</label>
+                        <input type="number" id="slope" value="1" step="0.1">
+                    </div>
+                    <div class="input-group">
+                        <label for="y-intercept">Y-Intercept (b):</label>
+                        <input type="number" id="y-intercept" value="0" step="0.1">
+                    </div>
+                    <button class="calculate-btn" onclick="graphLinearEquation()">Graph Equation</button>
+                    <canvas id="linear-canvas" class="graph-canvas"></canvas>
+                    <div id="linear-equation" class="result-area">
+                        <div class="result-text">Equation: y = x</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exponent Laws Calculator -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">⚡</div>
+                    <div class="tool-title">Exponent Laws Calculator</div>
+                </div>
+                <div class="tool-description">
+                    Practice the laws of exponents with step-by-step solutions. Great for Unit 2 concepts.
+                </div>
+                <div class="tool-interface">
+                    <div class="input-group">
+                        <label for="base1">Base:</label>
+                        <input type="number" id="base1" value="2">
+                    </div>
+                    <div class="input-group">
+                        <label for="exp1">First Exponent:</label>
+                        <input type="number" id="exp1" value="3">
+                    </div>
+                    <div class="input-group">
+                        <label for="exp-operation">Operation:</label>
+                        <select id="exp-operation">
+                            <option value="multiply">Multiply (same base)</option>
+                            <option value="divide">Divide (same base)</option>
+                            <option value="power">Power of a Power</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="exp2">Second Exponent:</label>
+                        <input type="number" id="exp2" value="2">
+                    </div>
+                    <button class="calculate-btn" onclick="calculateExponent()">Calculate</button>
+                    <div id="exp-result" class="result-area" style="display: none;">
+                        <div class="result-text" id="exp-answer"></div>
+                    </div>
+                    <div id="exp-steps" class="steps-container" style="display: none;">
+                        <strong>Solution Steps:</strong>
+                        <div id="exp-steps-content"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transformation Visualizer -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">🔄</div>
+                    <div class="tool-title">Transformation Visualizer</div>
+                </div>
+                <div class="tool-description">
+                    Visualize geometric transformations including translations, reflections, and rotations.
+                </div>
+                <div class="tool-interface">
+                    <div class="input-group">
+                        <label for="transform-type">Transformation Type:</label>
+                        <select id="transform-type">
+                            <option value="translation">Translation</option>
+                            <option value="reflection">Reflection</option>
+                            <option value="rotation">Rotation</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="dx">Horizontal Change (dx):</label>
+                        <input type="number" id="dx" value="3">
+                    </div>
+                    <div class="input-group">
+                        <label for="dy">Vertical Change (dy):</label>
+                        <input type="number" id="dy" value="2">
+                    </div>
+                    <button class="calculate-btn" onclick="visualizeTransformation()">Apply Transformation</button>
+                    <canvas id="transform-canvas" class="graph-canvas"></canvas>
+                    <div id="transform-result" class="result-area">
+                        <div class="result-text">Original triangle shown in blue, transformed triangle in red</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rational Number Calculator -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">🔢</div>
+                    <div class="tool-title">Rational Number Calculator</div>
+                </div>
+                <div class="tool-description">
+                    Practice operations with fractions, decimals, and mixed numbers from Unit 1.
+                </div>
+                <div class="tool-interface">
+                    <div class="input-group">
+                        <label for="frac1-num">First Fraction - Numerator:</label>
+                        <input type="number" id="frac1-num" value="3">
+                    </div>
+                    <div class="input-group">
+                        <label for="frac1-den">First Fraction - Denominator:</label>
+                        <input type="number" id="frac1-den" value="4">
+                    </div>
+                    <div class="input-group">
+                        <label for="frac-operation">Operation:</label>
+                        <select id="frac-operation">
+                            <option value="add">Add (+)</option>
+                            <option value="subtract">Subtract (-)</option>
+                            <option value="multiply">Multiply (×)</option>
+                            <option value="divide">Divide (÷)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="frac2-num">Second Fraction - Numerator:</label>
+                        <input type="number" id="frac2-num" value="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="frac2-den">Second Fraction - Denominator:</label>
+                        <input type="number" id="frac2-den" value="2">
+                    </div>
+                    <button class="calculate-btn" onclick="calculateFraction()">Calculate</button>
+                    <div id="frac-result" class="result-area" style="display: none;">
+                        <div class="result-text" id="frac-answer"></div>
+                    </div>
+                    <div id="frac-steps" class="steps-container" style="display: none;">
+                        <strong>Solution Steps:</strong>
+                        <div id="frac-steps-content"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Calculator -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">📊</div>
+                    <div class="tool-title">Statistics Calculator</div>
+                </div>
+                <div class="tool-description">
+                    Calculate mean, median, mode, and range for data sets. Perfect for Unit 7 statistics work.
+                </div>
+                <div class="tool-interface">
+                    <div class="input-group">
+                        <label for="data-set">Data Set (comma-separated numbers):</label>
+                        <input type="text" id="data-set" placeholder="12, 15, 18, 12, 20, 25, 18">
+                    </div>
+                    <button class="calculate-btn" onclick="calculateStatistics()">Calculate Statistics</button>
+                    <div id="stats-result" class="result-area" style="display: none;">
+                        <div class="result-text" id="stats-answer"></div>
+                    </div>
+                    <div id="stats-steps" class="steps-container" style="display: none;">
+                        <strong>Calculations:</strong>
+                        <div id="stats-steps-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Polynomial Calculator
+        function calculatePolynomial() {
+            const poly1 = document.getElementById('poly1').value.trim();
+            const poly2 = document.getElementById('poly2').value.trim();
+            const operation = document.getElementById('poly-operation').value;
+            
+            if (!poly1 || !poly2) {
+                alert('Please enter both polynomials');
+                return;
+            }
+            
+            let result = '';
+            let steps = [];
+            
+            try {
+                switch(operation) {
+                    case 'add':
+                        result = `(${poly1}) + (${poly2})`;
+                        steps = [`Step 1: Write the polynomials: (${poly1}) + (${poly2})`, 
+                                'Step 2: Group like terms together', 
+                                'Step 3: Combine coefficients of like terms'];
+                        break;
+                    case 'subtract':
+                        result = `(${poly1}) - (${poly2})`;
+                        steps = [`Step 1: Write the polynomials: (${poly1}) - (${poly2})`, 
+                                'Step 2: Distribute the negative sign', 
+                                'Step 3: Group like terms and combine'];
+                        break;
+                    case 'multiply':
+                        result = `(${poly1}) × (${poly2})`;
+                        steps = [`Step 1: Write the polynomials: (${poly1}) × (${poly2})`, 
+                                'Step 2: Use FOIL or distributive property', 
+                                'Step 3: Multiply each term in first polynomial by each term in second', 
+                                'Step 4: Combine like terms'];
+                        break;
+                }
+                
+                document.getElementById('poly-answer').textContent = `Result: ${result}`;
+                document.getElementById('poly-steps-content').innerHTML = steps.map(step => `<div class="step">${step}</div>`).join('');
+                document.getElementById('poly-result').style.display = 'block';
+                document.getElementById('poly-steps').style.display = 'block';
+            } catch (error) {
+                alert('Please check your polynomial format');
+            }
+        }
+
+        // Linear Equation Grapher
+        function graphLinearEquation() {
+            const slope = parseFloat(document.getElementById('slope').value) || 0;
+            const yIntercept = parseFloat(document.getElementById('y-intercept').value) || 0;
+            
+            const canvas = document.getElementById('linear-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas size
+            canvas.width = canvas.offsetWidth;
+            canvas.height = 300;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Set up coordinate system
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const scale = 20;
+            
+            // Draw axes
+            ctx.strokeStyle = '#ddd';
+            ctx.lineWidth = 1;
+            
+            // Grid lines
+            for (let i = -10; i <= 10; i++) {
+                // Vertical lines
+                ctx.beginPath();
+                ctx.moveTo(centerX + i * scale, 0);
+                ctx.lineTo(centerX + i * scale, canvas.height);
+                ctx.stroke();
+                
+                // Horizontal lines
+                ctx.beginPath();
+                ctx.moveTo(0, centerY + i * scale);
+                ctx.lineTo(canvas.width, centerY + i * scale);
+                ctx.stroke();
+            }
+            
+            // Main axes
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 2;
+            
+            // X-axis
+            ctx.beginPath();
+            ctx.moveTo(0, centerY);
+            ctx.lineTo(canvas.width, centerY);
+            ctx.stroke();
+            
+            // Y-axis
+            ctx.beginPath();
+            ctx.moveTo(centerX, 0);
+            ctx.lineTo(centerX, canvas.height);
+            ctx.stroke();
+            
+            // Draw the line
+            ctx.strokeStyle = '#3498db';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            
+            const x1 = -10;
+            const y1 = slope * x1 + yIntercept;
+            const x2 = 10;
+            const y2 = slope * x2 + yIntercept;
+            
+            ctx.moveTo(centerX + x1 * scale, centerY - y1 * scale);
+            ctx.lineTo(centerX + x2 * scale, centerY - y2 * scale);
+            ctx.stroke();
+            
+            // Update equation display
+            const equation = slope === 1 ? `y = x${yIntercept >= 0 ? ' + ' + yIntercept : ' - ' + Math.abs(yIntercept)}` :
+                           slope === -1 ? `y = -x${yIntercept >= 0 ? ' + ' + yIntercept : ' - ' + Math.abs(yIntercept)}` :
+                           `y = ${slope}x${yIntercept >= 0 ? ' + ' + yIntercept : ' - ' + Math.abs(yIntercept)}`;
+            
+            document.querySelector('#linear-equation .result-text').textContent = `Equation: ${equation}`;
+        }
+
+        // Exponent Laws Calculator
+        function calculateExponent() {
+            const base = parseInt(document.getElementById('base1').value) || 2;
+            const exp1 = parseInt(document.getElementById('exp1').value) || 3;
+            const exp2 = parseInt(document.getElementById('exp2').value) || 2;
+            const operation = document.getElementById('exp-operation').value;
+            
+            let result = '';
+            let steps = [];
+            
+            switch(operation) {
+                case 'multiply':
+                    result = `${base}^${exp1 + exp2} = ${Math.pow(base, exp1 + exp2)}`;
+                    steps = [
+                        `Step 1: ${base}^${exp1} × ${base}^${exp2}`,
+                        `Step 2: When multiplying powers with same base, add exponents: ${exp1} + ${exp2} = ${exp1 + exp2}`,
+                        `Step 3: ${base}^${exp1 + exp2} = ${Math.pow(base, exp1 + exp2)}`
+                    ];
+                    break;
+                case 'divide':
+                    result = `${base}^${exp1 - exp2} = ${Math.pow(base, exp1 - exp2)}`;
+                    steps = [
+                        `Step 1: ${base}^${exp1} ÷ ${base}^${exp2}`,
+                        `Step 2: When dividing powers with same base, subtract exponents: ${exp1} - ${exp2} = ${exp1 - exp2}`,
+                        `Step 3: ${base}^${exp1 - exp2} = ${Math.pow(base, exp1 - exp2)}`
+                    ];
+                    break;
+                case 'power':
+                    result = `${base}^${exp1 * exp2} = ${Math.pow(base, exp1 * exp2)}`;
+                    steps = [
+                        `Step 1: (${base}^${exp1})^${exp2}`,
+                        `Step 2: When raising a power to a power, multiply exponents: ${exp1} × ${exp2} = ${exp1 * exp2}`,
+                        `Step 3: ${base}^${exp1 * exp2} = ${Math.pow(base, exp1 * exp2)}`
+                    ];
+                    break;
+            }
+            
+            document.getElementById('exp-answer').textContent = `Result: ${result}`;
+            document.getElementById('exp-steps-content').innerHTML = steps.map(step => `<div class="step">${step}</div>`).join('');
+            document.getElementById('exp-result').style.display = 'block';
+            document.getElementById('exp-steps').style.display = 'block';
+        }
+
+        // Transformation Visualizer
+        function visualizeTransformation() {
+            const transformType = document.getElementById('transform-type').value;
+            const dx = parseInt(document.getElementById('dx').value) || 0;
+            const dy = parseInt(document.getElementById('dy').value) || 0;
+            
+            const canvas = document.getElementById('transform-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = canvas.offsetWidth;
+            canvas.height = 300;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const scale = 15;
+            
+            // Draw grid
+            ctx.strokeStyle = '#eee';
+            ctx.lineWidth = 1;
+            for (let i = -20; i <= 20; i++) {
+                ctx.beginPath();
+                ctx.moveTo(centerX + i * scale, 0);
+                ctx.lineTo(centerX + i * scale, canvas.height);
+                ctx.stroke();
+                
+                ctx.beginPath();
+                ctx.moveTo(0, centerY + i * scale);
+                ctx.lineTo(canvas.width, centerY + i * scale);
+                ctx.stroke();
+            }
+            
+            // Draw axes
+            ctx.strokeStyle = '#999';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(0, centerY);
+            ctx.lineTo(canvas.width, centerY);
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.moveTo(centerX, 0);
+            ctx.lineTo(centerX, canvas.height);
+            ctx.stroke();
+            
+            // Original triangle vertices
+            const originalVertices = [
+                {x: -2, y: -1},
+                {x: 2, y: -1},
+                {x: 0, y: 2}
+            ];
+            
+            // Draw original triangle (blue)
+            ctx.fillStyle = 'rgba(52, 152, 219, 0.7)';
+            ctx.strokeStyle = '#3498db';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(centerX + originalVertices[0].x * scale, centerY - originalVertices[0].y * scale);
+            originalVertices.forEach(vertex => {
+                ctx.lineTo(centerX + vertex.x * scale, centerY - vertex.y * scale);
+            });
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            
+            // Apply transformation
+            let transformedVertices = [];
+            switch(transformType) {
+                case 'translation':
+                    transformedVertices = originalVertices.map(v => ({x: v.x + dx, y: v.y + dy}));
+                    break;
+                case 'reflection':
+                    if (dx !== 0) { // Reflect over y-axis
+                        transformedVertices = originalVertices.map(v => ({x: -v.x, y: v.y}));
+                    } else { // Reflect over x-axis
+                        transformedVertices = originalVertices.map(v => ({x: v.x, y: -v.y}));
+                    }
+                    break;
+                case 'rotation':
+                    // 90-degree rotation
+                    transformedVertices = originalVertices.map(v => ({x: -v.y, y: v.x}));
+                    break;
+            }
+            
+            // Draw transformed triangle (red)
+            ctx.fillStyle = 'rgba(231, 76, 60, 0.7)';
+            ctx.strokeStyle = '#e74c3c';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(centerX + transformedVertices[0].x * scale, centerY - transformedVertices[0].y * scale);
+            transformedVertices.forEach(vertex => {
+                ctx.lineTo(centerX + vertex.x * scale, centerY - vertex.y * scale);
+            });
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+        }
+
+        // Fraction Calculator
+        function calculateFraction() {
+            const num1 = parseInt(document.getElementById('frac1-num').value) || 0;
+            const den1 = parseInt(document.getElementById('frac1-den').value) || 1;
+            const num2 = parseInt(document.getElementById('frac2-num').value) || 0;
+            const den2 = parseInt(document.getElementById('frac2-den').value) || 1;
+            const operation = document.getElementById('frac-operation').value;
+            
+            if (den1 === 0 || den2 === 0) {
+                alert('Denominator cannot be zero');
+                return;
+            }
+            
+            let resultNum, resultDen;
+            let steps = [];
+            
+            switch(operation) {
+                case 'add':
+                    resultNum = num1 * den2 + num2 * den1;
+                    resultDen = den1 * den2;
+                    steps = [
+                        `Step 1: ${num1}/${den1} + ${num2}/${den2}`,
+                        `Step 2: Find common denominator: ${den1} × ${den2} = ${resultDen}`,
+                        `Step 3: Convert fractions: ${num1 * den2}/${resultDen} + ${num2 * den1}/${resultDen}`,
+                        `Step 4: Add numerators: ${num1 * den2} + ${num2 * den1} = ${resultNum}`
+                    ];
+                    break;
+                case 'subtract':
+                    resultNum = num1 * den2 - num2 * den1;
+                    resultDen = den1 * den2;
+                    steps = [
+                        `Step 1: ${num1}/${den1} - ${num2}/${den2}`,
+                        `Step 2: Find common denominator: ${den1} × ${den2} = ${resultDen}`,
+                        `Step 3: Convert fractions: ${num1 * den2}/${resultDen} - ${num2 * den1}/${resultDen}`,
+                        `Step 4: Subtract numerators: ${num1 * den2} - ${num2 * den1} = ${resultNum}`
+                    ];
+                    break;
+                case 'multiply':
+                    resultNum = num1 * num2;
+                    resultDen = den1 * den2;
+                    steps = [
+                        `Step 1: ${num1}/${den1} × ${num2}/${den2}`,
+                        `Step 2: Multiply numerators: ${num1} × ${num2} = ${resultNum}`,
+                        `Step 3: Multiply denominators: ${den1} × ${den2} = ${resultDen}`
+                    ];
+                    break;
+                case 'divide':
+                    resultNum = num1 * den2;
+                    resultDen = den1 * num2;
+                    steps = [
+                        `Step 1: ${num1}/${den1} ÷ ${num2}/${den2}`,
+                        `Step 2: Multiply by reciprocal: ${num1}/${den1} × ${den2}/${num2}`,
+                        `Step 3: Multiply numerators: ${num1} × ${den2} = ${resultNum}`,
+                        `Step 4: Multiply denominators: ${den1} × ${num2} = ${resultDen}`
+                    ];
+                    break;
+            }
+            
+            // Simplify fraction
+            const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
+            const commonFactor = gcd(Math.abs(resultNum), Math.abs(resultDen));
+            const simplifiedNum = resultNum / commonFactor;
+            const simplifiedDen = resultDen / commonFactor;
+            
+            let result = `${simplifiedNum}/${simplifiedDen}`;
+            if (simplifiedDen === 1) result = simplifiedNum.toString();
+            if (simplifiedNum === 0) result = '0';
+            
+            document.getElementById('frac-answer').textContent = `Result: ${result}`;
+            if (commonFactor > 1) {
+                steps.push(`Step 5: Simplify by dividing by GCD(${Math.abs(resultNum)}, ${Math.abs(resultDen)}) = ${commonFactor}`);
+            }
+            
+            document.getElementById('frac-steps-content').innerHTML = steps.map(step => `<div class="step">${step}</div>`).join('');
+            document.getElementById('frac-result').style.display = 'block';
+            document.getElementById('frac-steps').style.display = 'block';
+        }
+
+        // Statistics Calculator
+        function calculateStatistics() {
+            const dataInput = document.getElementById('data-set').value.trim();
+            if (!dataInput) {
+                alert('Please enter a data set');
+                return;
+            }
+            
+            const data = dataInput.split(',').map(x => parseFloat(x.trim())).filter(x => !isNaN(x));
+            if (data.length === 0) {
+                alert('Please enter valid numbers');
+                return;
+            }
+            
+            // Sort data
+            const sortedData = [...data].sort((a, b) => a - b);
+            
+            // Mean
+            const mean = data.reduce((sum, x) => sum + x, 0) / data.length;
+            
+            // Median
+            const median = sortedData.length % 2 === 0 
+                ? (sortedData[sortedData.length / 2 - 1] + sortedData[sortedData.length / 2]) / 2
+                : sortedData[Math.floor(sortedData.length / 2)];
+            
+            // Mode
+            const frequency = {};
+            data.forEach(x => frequency[x] = (frequency[x] || 0) + 1);
+            const maxFreq = Math.max(...Object.values(frequency));
+            const modes = Object.keys(frequency).filter(x => frequency[x] === maxFreq);
+            const mode = maxFreq > 1 ? modes.join(', ') : 'No mode';
+            
+            // Range
+            const range = Math.max(...data) - Math.min(...data);
+            
+            const steps = [
+                `Data set: [${sortedData.join(', ')}] (sorted)`,
+                `Mean: (${data.join(' + ')}) ÷ ${data.length} = ${mean.toFixed(2)}`,
+                `Median: Middle value(s) = ${median}`,
+                `Mode: Most frequent value(s) = ${mode}`,
+                `Range: ${Math.max(...data)} - ${Math.min(...data)} = ${range}`
+            ];
+            
+            document.getElementById('stats-answer').innerHTML = `
+                Mean: ${mean.toFixed(2)}<br>
+                Median: ${median}<br>
+                Mode: ${mode}<br>
+                Range: ${range}
+            `;
+            
+            document.getElementById('stats-steps-content').innerHTML = steps.map(step => `<div class="step">${step}</div>`).join('');
+            document.getElementById('stats-result').style.display = 'block';
+            document.getElementById('stats-steps').style.display = 'block';
+        }
+
+        // Initialize graphs on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            graphLinearEquation();
+            visualizeTransformation();
+        });
+    </script>
+
+    <footer>
+        <p style="color: #ffffff; font-size: clamp(0.9rem, 2.5vw, 1.1rem); line-height: 1.8; font-family: 'Poppins', sans-serif;">
+            Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching
+        </p>
+    </footer>
+</body>
+</html>
