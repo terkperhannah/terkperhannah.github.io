@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
+    <title>Math 9 Practice Test 2 - Final Review | Ms. Terkper's Digital Classroom</title>
+    <meta name="description" content="Interactive Math 9 practice test based on 2008 Alberta Education Achievement Test questions. Practice with proper mathematical notation.">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- MathJax for beautiful mathematical notation -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    
+    <style>
+        .test-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .test-header {
+            background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .test-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #8e44ad;
+        }
+
+        .question-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .question-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .question-number {
+            background: #8e44ad;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .math-expression {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+
+        .options-container {
+            display: grid;
+            gap: 12px;
+        }
+
+        .option {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .option:hover {
+            background: #e3f2fd;
+            border-color: #8e44ad;
+        }
+
+        .option.selected {
+            background: #e3f2fd;
+            border-color: #8e44ad;
+            color: #7b1fa2;
+            font-weight: 500;
+        }
+
+        .option.correct {
+            background: #d4edda;
+            border-color: #27ae60;
+            color: #155724;
+        }
+
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #e74c3c;
+            color: #721c24;
+        }
+
+        .option-letter {
+            background: #6c757d;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .option.selected .option-letter {
+            background: #8e44ad;
+        }
+
+        .option.correct .option-letter {
+            background: #27ae60;
+        }
+
+        .option.incorrect .option-letter {
+            background: #e74c3c;
+        }
+
+        .submit-btn {
+            background: #8e44ad;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background: #7b1fa2;
+        }
+
+        .submit-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            border: 2px solid #27ae60;
+            color: #155724;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            border: 2px solid #e74c3c;
+            color: #721c24;
+        }
+
+        .results-summary {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            display: none;
+        }
+
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .numerical-response {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .numerical-input {
+            width: 80px;
+            padding: 8px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1.1rem;
+            margin: 0 5px;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .test-container {
+                padding: 15px;
+            }
+            
+            .question-card {
+                padding: 20px;
+            }
+            
+            .test-header {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    
+    <div id="navbar-placeholder"></div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('navbar.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                    if (typeof initMobileNav === 'function') {
+                        initMobileNav();
+                    }
+                })
+                .catch(err => console.error("Navbar failed to load:", err));
+        });
+    </script>
+    <script src="mobile-nav.js"></script>
+
+    <main class="test-container">
+        <div class="test-header">
+            <h1>Math 9 Practice Test 2 - Final Review</h1>
+            <p>Based on 2008 Alberta Education Achievement Test Questions</p>
+        </div>
+
+        <div class="test-info">
+            <h3>Test Instructions:</h3>
+            <ul>
+                <li>This practice test contains 15 questions from the official 2008 Alberta Grade 9 Mathematics Achievement Test</li>
+                <li>Mathematical expressions are displayed with proper notation for easy reading</li>
+                <li>Select your answer for each multiple choice question</li>
+                <li>For numerical response questions, enter your answer in the provided boxes</li>
+                <li>Click "Check Answer" to see immediate feedback</li>
+                <li>Your final score will be displayed at the end</li>
+            </ul>
+        </div>
+
+        <div id="questions-container">
+            <!-- Questions will be populated by JavaScript -->
+        </div>
+
+        <div class="results-summary" id="results-summary">
+            <h2>Practice Test Complete!</h2>
+            <div class="score-circle" id="score-circle">0%</div>
+            <h3 id="score-text">Your Score: 0/15</h3>
+            <p id="performance-message"></p>
+            <button class="submit-btn" onclick="retakeTest()">Retake Test</button>
+        </div>
+    </main>
+
+    <script>
+        // Practice test questions based on 2008 Alberta Education Achievement Test
+        const questions = [
+            {
+                id: 1,
+                type: 'numerical-response',
+                question: 'The following expressions are examples of powers:',
+                mathExpression: '$$(2)^{-2}, \\quad -(2)^2, \\quad (-2)^2, \\quad -(2)^{-2}$$$$\\text{numbered } 1, \\quad 2, \\quad 3, \\quad 4$$Listed in order of increasing value, the expressions numbered above are:',
+                inputs: 4,
+                correct: ['2', '4', '1', '3'],
+                explanation: 'Calculate each: $(2)^{-2} = \\frac{1}{4} = 0.25$, $-(2)^2 = -4$, $(-2)^2 = 4$, $-(2)^{-2} = -\\frac{1}{4} = -0.25$. In increasing order: $-4, -0.25, 0.25, 4$ which corresponds to expressions 2, 4, 1, 3.',
+                strand: 'Number',
+                outcome: 'Apply exponent laws for powers with integral exponents'
+            },
+            {
+                id: 2,
+                type: 'multiple-choice',
+                question: 'What is the value of x in the equation $(2a^{-3})(6a^x) = 12a^{15}$?',
+                options: [
+                    'A. -18',
+                    'B. -12',
+                    'C. 12',
+                    'D. 18'
+                ],
+                correct: 'D',
+                explanation: 'Using exponent laws: $(2a^{-3})(6a^x) = 12a^{-3+x} = 12a^{15}$. Therefore $-3 + x = 15$, so $x = 18$.',
+                strand: 'Number',
+                outcome: 'Apply exponent laws to solve equations'
+            },
+            {
+                id: 3,
+                type: 'multiple-choice',
+                question: 'The estimated mass of one of the smallest living organisms is $1.0 \\times 10^{-16}$ g. How many of these organisms are needed to have a total mass of 1 g?',
+                options: [
+                    'A. $1 \\times 10^{16}$',
+                    'B. $1 \\times 10^{15}$',
+                    'C. $1 \\times 10^{-15}$',
+                    'D. $1 \\times 10^{-16}$'
+                ],
+                correct: 'A',
+                explanation: 'To find the number of organisms: $\\frac{1 \\text{ g}}{1.0 \\times 10^{-16} \\text{ g}} = 1 \\times 10^{16}$ organisms.',
+                strand: 'Number',
+                outcome: 'Perform operations with scientific notation'
+            },
+            {
+                id: 4,
+                type: 'multiple-choice',
+                question: 'The perimeter of a triangle is $24x - 6$. The lengths of two sides of the triangle are represented by the expressions $5x - 7$ and $2x + 5$. Which expression represents the length of the third side?',
+                options: [
+                    'A. $17x + 8$',
+                    'B. $17x - 8$',
+                    'C. $17x + 4$',
+                    'D. $17x - 4$'
+                ],
+                correct: 'D',
+                explanation: 'Third side = Perimeter - Sum of other two sides = $(24x - 6) - [(5x - 7) + (2x + 5)] = (24x - 6) - (7x - 2) = 17x - 4$.',
+                strand: 'Patterns and Relations',
+                outcome: 'Determine binomial expressions'
+            },
+            {
+                id: 5,
+                type: 'multiple-choice',
+                question: 'Ross conducts a survey to determine the demand for a skateboard park. Ross can best minimize the bias in his survey by surveying people',
+                options: [
+                    'A. at only one location',
+                    'B. who have skateboards',
+                    'C. who are different ages',
+                    'D. at the same time of day'
+                ],
+                correct: 'C',
+                explanation: 'To minimize bias, Ross should survey people of different ages to get a representative sample of the population, not just those who already have skateboards or from one location.',
+                strand: 'Statistics and Probability',
+                outcome: 'Determine data collection methods that minimize bias'
+            },
+            {
+                id: 6,
+                type: 'multiple-choice',
+                question: 'The square PQRS has been dilated to form the square P\'Q\'R\'S\'. What is the scale factor of the dilation?',
+                options: [
+                    'A. $\\frac{1}{6}$',
+                    'B. $\\frac{1}{5}$',
+                    'C. 5',
+                    'D. 6'
+                ],
+                correct: 'B',
+                explanation: 'By comparing corresponding sides, the smaller square has sides that are $\\frac{1}{5}$ the length of the larger square, so the scale factor is $\\frac{1}{5}$.',
+                strand: 'Shape and Space',
+                outcome: 'Determine scale factor of dilations'
+            },
+            {
+                id: 7,
+                type: 'multiple-choice',
+                question: 'Which calculator keystroke sequence would give the solution to $\\frac{33 + 9}{6 \\times (5 - 2)}$?',
+                options: [
+                    'A. 33 + 9 ÷ 6 × ( 5 - 2 ) =',
+                    'B. ( 33 + 9 ) ÷ 6 × ( 5 - 2 ) =',
+                    'C. 33 + 9 ÷ ( 6 × ( 5 - 2 ) ) =',
+                    'D. ( 33 + 9 ) ÷ ( 6 × ( 5 - 2 ) ) ='
+                ],
+                correct: 'D',
+                explanation: 'The expression requires parentheses around both the numerator $(33 + 9)$ and denominator $(6 \\times (5 - 2))$ to ensure correct order of operations.',
+                strand: 'Number',
+                outcome: 'Determine proper calculator keystroke sequences'
+            },
+            {
+                id: 8,
+                type: 'multiple-choice',
+                question: 'Cailey earns $15 an hour and her monthly expenses are $1,150. Which inequality can be used to determine the number of hours, t, that Cailey must work in one month to save at least $200?',
+                options: [
+                    'A. $15t + 1150 \\geq 200$',
+                    'B. $15t + 1150 \\leq 200$',
+                    'C. $15t - 1150 \\geq 200$',
+                    'D. $15t - 1150 \\leq 200$'
+                ],
+                correct: 'C',
+                explanation: 'Income minus expenses must be at least $200: $15t - 1150 \\geq 200$, where $15t$ is total income and $1150$ represents expenses.',
+                strand: 'Patterns and Relations',
+                outcome: 'Identify inequalities representing word problems'
+            },
+            {
+                id: 9,
+                type: 'multiple-choice',
+                question: 'The tail rotor blade of a helicopter rotates 4 times for every 1 main rotor blade rotation. How many times will the main rotor blade rotate if the tail rotor blade rotates 600,000,000 times?',
+                options: [
+                    'A. $1.5 \\times 10^8$',
+                    'B. $1.5 \\times 10^9$',
+                    'C. $2.4 \\times 10^8$',
+                    'D. $2.4 \\times 10^9$'
+                ],
+                correct: 'A',
+                explanation: 'If tail rotor rotates 4 times per 1 main rotor rotation, then main rotor rotations = $\\frac{600,000,000}{4} = 150,000,000 = 1.5 \\times 10^8$.',
+                strand: 'Number',
+                outcome: 'Solve problems with rational numbers in scientific notation'
+            },
+            {
+                id: 10,
+                type: 'multiple-choice',
+                question: 'Francis has an equal number of nickels, dimes, and quarters. If she has $4.40 in coins, then the total number of nickels that she has is',
+                options: [
+                    'A. 33',
+                    'B. 30',
+                    'C. 11',
+                    'D. 10'
+                ],
+                correct: 'C',
+                explanation: 'Let $n$ = number of each type of coin. Total value: $0.05n + 0.10n + 0.25n = 4.40$, so $0.40n = 4.40$, therefore $n = 11$.',
+                strand: 'Patterns and Relations',
+                outcome: 'Solve word problems leading to linear equations'
+            },
+            {
+                id: 11,
+                type: 'multiple-choice',
+                question: 'A student made a mistake solving $\\frac{x}{40} + \\frac{x}{60} = 1$. In which step was the mistake made?',
+                mathExpression: '$$\\begin{align}\\text{Step 1: } & 120\\left(\\frac{x}{40} + \\frac{x}{60}\\right) = 1 \\\\ \\text{Step 2: } & \\frac{120x}{40} + \\frac{120x}{60} = 1 \\\\ \\text{Step 3: } & 3x + 2x = 1 \\\\ \\text{Step 4: } & 5x = 1\\end{align}$$',
+                options: [
+                    'A. Step 1',
+                    'B. Step 2',
+                    'C. Step 3',
+                    'D. Step 4'
+                ],
+                correct: 'A',
+                explanation: 'In Step 1, the student should multiply both sides by 120, getting $120 \\cdot 1 = 120$ on the right side, not just 1.',
+                strand: 'Patterns and Relations',
+                outcome: 'Identify errors in solving equations'
+            },
+            {
+                id: 12,
+                type: 'multiple-choice',
+                question: 'What is the value of the expression $2x^2 - 3x + 2x - 3$ if $x = 8$?',
+                options: [
+                    'A. 53',
+                    'B. 85',
+                    'C. 101',
+                    'D. 117'
+                ],
+                correct: 'D',
+                explanation: 'Substitute $x = 8$: $2(8)^2 - 3(8) + 2(8) - 3 = 2(64) - 24 + 16 - 3 = 128 - 24 + 16 - 3 = 117$.',
+                strand: 'Patterns and Relations',
+                outcome: 'Evaluate polynomial expressions'
+            },
+            {
+                id: 13,
+                type: 'multiple-choice',
+                question: 'If the expression $-3x + 5 + x - 8 + 5x - 7$ is simplified, which row identifies the coefficient and the constant?',
+                options: [
+                    'A. Coefficient: 3, Constant: 10',
+                    'B. Coefficient: 3, Constant: -10',
+                    'C. Coefficient: -3, Constant: 10',
+                    'D. Coefficient: -3, Constant: -10'
+                ],
+                correct: 'B',
+                explanation: 'Combine like terms: $(-3x + x + 5x) + (5 - 8 - 7) = 3x + (-10) = 3x - 10$. Coefficient is 3, constant is -10.',
+                strand: 'Patterns and Relations',
+                outcome: 'Evaluate expressions and identify coefficients'
+            },
+            {
+                id: 14,
+                type: 'numerical-response',
+                question: 'Cailey is training for a race. Each day she runs 2 km more than she did the previous day. If Cailey ran a total of 21 km in 3 days, then how many kilometres did she run on the first day?',
+                inputs: 1,
+                correct: ['5'],
+                explanation: 'Let $x$ = first day distance. Then: Day 1: $x$, Day 2: $x+2$, Day 3: $x+4$. Total: $x + (x+2) + (x+4) = 21$, so $3x + 6 = 21$, therefore $3x = 15$ and $x = 5$ km.',
+                strand: 'Patterns and Relations',
+                outcome: 'Create and solve equations modeling patterns'
+            },
+            {
+                id: 15,
+                type: 'multiple-choice',
+                question: 'Two friends spent a total of $3\\frac{1}{2}$ hours at various places in a mall. They spent 25% of the time in the food court. How many minutes did they spend in the food court?',
+                options: [
+                    'A. 11.4 min',
+                    'B. 28.5 min',
+                    'C. 52.5 min',
+                    'D. 81.3 min'
+                ],
+                correct: 'C',
+                explanation: 'Total time: $3\\frac{1}{2} = 3.5$ hours = $3.5 \\times 60 = 210$ minutes. Food court time: $25\\% \\times 210 = 0.25 \\times 210 = 52.5$ minutes.',
+                strand: 'Number',
+                outcome: 'Solve problems with mixed fractions and percentages'
+            }
+        ];
+
+        let currentAnswers = {};
+        let testCompleted = false;
+
+        function renderQuestions() {
+            const container = document.getElementById('questions-container');
+            container.innerHTML = '';
+
+            questions.forEach(question => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question-card';
+                questionDiv.innerHTML = `
+                    <div class="question-number">${question.id}</div>
+                    <div class="question-text">${question.question}</div>
+                    ${question.mathExpression ? `<div class="math-expression">${question.mathExpression}</div>` : ''}
+                    ${question.type === 'multiple-choice' ? renderMultipleChoice(question) : renderNumericalResponse(question)}
+                    <button class="submit-btn" onclick="checkAnswer(${question.id})" id="btn-${question.id}">Check Answer</button>
+                    <div class="feedback" id="feedback-${question.id}"></div>
+                `;
+                container.appendChild(questionDiv);
+            });
+            
+            // Re-render MathJax after adding new content
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        function renderMultipleChoice(question) {
+            return `
+                <div class="options-container" id="options-${question.id}">
+                    ${question.options.map((option, index) => `
+                        <div class="option" onclick="selectOption(${question.id}, '${String.fromCharCode(65 + index)}')">
+                            <div class="option-letter">${String.fromCharCode(65 + index)}</div>
+                            <div>${option.substring(3)}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function renderNumericalResponse(question) {
+            const inputs = Array.from({length: question.inputs}, (_, i) => 
+                `<input type="text" class="numerical-input" id="input-${question.id}-${i}" maxlength="4">`
+            ).join('');
+            
+            return `
+                <div class="numerical-response">
+                    <strong>Numerical Response:</strong> Enter your answer(s) in the boxes below:
+                    <div style="margin-top: 10px;">${inputs}</div>
+                </div>
+            `;
+        }
+
+        function selectOption(questionId, option) {
+            // Clear previous selections
+            const options = document.querySelectorAll(`#options-${questionId} .option`);
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Select current option
+            event.currentTarget.classList.add('selected');
+            currentAnswers[questionId] = option;
+        }
+
+        function checkAnswer(questionId) {
+            const question = questions.find(q => q.id === questionId);
+            const feedbackDiv = document.getElementById(`feedback-${questionId}`);
+            const button = document.getElementById(`btn-${questionId}`);
+            
+            let isCorrect = false;
+            let userAnswer;
+
+            if (question.type === 'multiple-choice') {
+                userAnswer = currentAnswers[questionId];
+                isCorrect = userAnswer === question.correct;
+                
+                // Show correct/incorrect styling on options
+                const options = document.querySelectorAll(`#options-${questionId} .option`);
+                options.forEach((option, index) => {
+                    const letter = String.fromCharCode(65 + index);
+                    if (letter === question.correct) {
+                        option.classList.add('correct');
+                    } else if (letter === userAnswer && letter !== question.correct) {
+                        option.classList.add('incorrect');
+                    }
+                });
+            } else {
+                // Numerical response
+                const inputs = [];
+                for (let i = 0; i < question.inputs; i++) {
+                    const input = document.getElementById(`input-${questionId}-${i}`);
+                    inputs.push(input.value.trim());
+                }
+                userAnswer = inputs;
+                
+                // Check if answers match (order matters for this test)
+                if (question.inputs === 1) {
+                    isCorrect = inputs[0] === question.correct[0];
+                } else {
+                    // For multiple inputs, check exact order
+                    isCorrect = question.correct.every((correct, index) => inputs[index] === correct);
+                }
+            }
+
+            // Show feedback
+            feedbackDiv.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+            feedbackDiv.innerHTML = `
+                <strong>${isCorrect ? 'Correct!' : 'Incorrect'}</strong><br>
+                ${question.explanation}<br>
+                <small><strong>Strand:</strong> ${question.strand} | <strong>Outcome:</strong> ${question.outcome}</small>
+            `;
+            feedbackDiv.style.display = 'block';
+            
+            // Re-render MathJax in feedback
+            if (window.MathJax) {
+                MathJax.typesetPromise([feedbackDiv]);
+            }
+            
+            // Disable button
+            button.disabled = true;
+            button.textContent = 'Answered';
+            
+            // Check if all questions are answered
+            checkTestCompletion();
+        }
+
+        function checkTestCompletion() {
+            const answeredQuestions = document.querySelectorAll('.submit-btn:disabled').length;
+            if (answeredQuestions === questions.length) {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            const correctAnswers = document.querySelectorAll('.feedback.correct').length;
+            const totalQuestions = questions.length;
+            const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+            
+            const resultsSummary = document.getElementById('results-summary');
+            const scoreCircle = document.getElementById('score-circle');
+            const scoreText = document.getElementById('score-text');
+            const performanceMessage = document.getElementById('performance-message');
+            
+            // Set score circle color based on performance
+            if (percentage >= 80) {
+                scoreCircle.style.background = '#27ae60';
+                performanceMessage.textContent = 'Outstanding work! You\'re excellently prepared for your final exam.';
+            } else if (percentage >= 70) {
+                scoreCircle.style.background = '#8e44ad';
+                performanceMessage.textContent = 'Great job! Review the missed questions and you\'ll be ready.';
+            } else if (percentage >= 60) {
+                scoreCircle.style.background = '#f39c12';
+                performanceMessage.textContent = 'Good progress! Focus on the challenging areas.';
+            } else {
+                scoreCircle.style.background = '#e74c3c';
+                performanceMessage.textContent = 'Keep practicing! Review the concepts and try again.';
+            }
+            
+            scoreCircle.textContent = `${percentage}%`;
+            scoreText.textContent = `Your Score: ${correctAnswers}/${totalQuestions}`;
+            resultsSummary.style.display = 'block';
+            
+            // Scroll to results
+            resultsSummary.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function retakeTest() {
+            // Reset everything
+            currentAnswers = {};
+            testCompleted = false;
+            document.getElementById('results-summary').style.display = 'none';
+            renderQuestions();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize the test
+        document.addEventListener('DOMContentLoaded', () => {
+            renderQuestions();
+        });
+    </script>
+
+    <footer>
+        <p style="color: #ffffff; font-size: clamp(0.9rem, 2.5vw, 1.1rem); line-height: 1.8; font-family: 'Poppins', sans-serif;">
+            Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching
+        </p>
+    </footer>
+</body>
+</html>
