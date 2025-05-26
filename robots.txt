@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Priority pages for educational content
+Allow: /math*.html
+Allow: /science*.html
+Allow: /m9_*.html
+Allow: /edu*.html
+Allow: /cs-*.html
+Allow: /robotics*.html
+Allow: /csharp*.html
+
+# Sitemap location
+Sitemap: https://terkperhannah.github.io/sitemap.xml
+
+# Block unnecessary files
+Disallow: /*.pdf$
+Disallow: /*.png$
+Disallow: /*.jpg$
+Disallow: /*.jpeg$
+Disallow: /attached_assets/
