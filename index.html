@@ -40,6 +40,15 @@
             line-height: 1.2;
         }
         
+        /* Hide desktop title on mobile, show mobile title */
+        .desktop-title {
+            display: none;
+        }
+        
+        .mobile-title {
+            display: block;
+        }
+        
         .hero-subtitle {
             font-size: 1rem;
             line-height: 1.4;
@@ -161,6 +170,15 @@
                 margin-bottom: 20px;
             }
             
+            /* Show desktop title on large screens, hide mobile title */
+            .desktop-title {
+                display: block;
+            }
+            
+            .mobile-title {
+                display: none;
+            }
+            
             .hero-subtitle {
                 font-size: 1.2rem;
             }
@@ -220,7 +238,8 @@
     <main class="content-wrapper">
         <section class="hero-section">
             <div class="hero-content">
-                <h1>Welcome to Hannah Terkper's Digital Classroom</h1>
+                <h1 class="desktop-title">Welcome to Hannah Terkper's Digital Classroom</h1>
+                <h1 class="mobile-title">Welcome to the Mobile Version of Ms. Terkper's Digital Classroom</h1>
                 <p class="hero-subtitle">Your comprehensive educational resource hub spanning from Grade 7 through Graduate level courses</p>
             </div>
         </section>
