@@ -775,6 +775,109 @@ textarea:focus {
   }
 }
 
+/* ===== Universal Grid and Layout Fixes ===== */
+.stream-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+  width: 100%;
+}
+
+@media (min-width: 769px) {
+  .stream-container {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+}
+
+.units-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  .units-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media (min-width: 769px) {
+  .units-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+  }
+}
+
+.unit-card {
+  padding: var(--spacing-md);
+  border-radius: 8px;
+  background: #f8f9fa;
+  transition: transform 0.3s ease;
+  border: 1px solid #e0e0e0;
+  text-decoration: none;
+  color: var(--text-medium);
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.unit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px var(--shadow-medium);
+  border-color: var(--primary-blue);
+}
+
+.unit-card h3 {
+  color: var(--primary-blue);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-lg);
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.unit-card p {
+  line-height: 1.6;
+  font-size: var(--font-size-sm);
+  margin: 0;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.resources-box {
+  background: #f8f9fa;
+  border: 2px solid #2ecc71;
+}
+
+.resource-link {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-sm);
+  margin: var(--spacing-sm) 0;
+  background: white;
+  border-radius: 6px;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  color: var(--text-medium);
+  border: 1px solid #e0e0e0;
+  min-height: 44px;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.resource-link:hover {
+  transform: translateX(5px);
+  border-color: var(--primary-blue);
+  color: var(--primary-blue);
+}
+
 /* ===== Additional Mobile Optimizations ===== */
 @media (max-width: 480px) {
   :root {
