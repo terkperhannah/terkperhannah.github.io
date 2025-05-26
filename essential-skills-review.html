@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
+    <title>Essential Skills Review - Math 9 PAT Prep | Ms. Terkper's Digital Classroom</title>
+    <meta name="description" content="Complete Math 9 essential skills review and key concepts summary sheet for Alberta PAT preparation.">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- MathJax for beautiful mathematical notation -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    
+    <style>
+        .review-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .review-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .skill-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            border-left: 5px solid #3498db;
+        }
+
+        .skill-header {
+            background: #3498db;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: -25px -25px 20px -25px;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .concept-section {
+            margin-bottom: 20px;
+        }
+
+        .concept-title {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 5px;
+        }
+
+        .concept-list {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .concept-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f8f9fa;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .concept-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .formula-box {
+            background: #f8f9fa;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .example-box {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .tip-box {
+            background: #d1ecf1;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .tip-title {
+            font-weight: bold;
+            color: #0c5460;
+            margin-bottom: 8px;
+        }
+
+        .quick-reference {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            margin-top: 30px;
+        }
+
+        .reference-header {
+            background: #e74c3c;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: -25px -25px 20px -25px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .reference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .reference-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #e74c3c;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .review-container {
+                padding: 15px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skill-card {
+                padding: 20px;
+            }
+            
+            .skill-header {
+                margin: -20px -20px 15px -20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    
+    <div id="navbar-placeholder"></div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('navbar.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                    if (typeof initMobileNav === 'function') {
+                        initMobileNav();
+                    }
+                })
+                .catch(err => console.error("Navbar failed to load:", err));
+        });
+    </script>
+    <script src="mobile-nav.js"></script>
+
+    <main class="review-container">
+        <div class="review-header">
+            <h1>Essential Skills Review</h1>
+            <h2>Math 9 PAT Key Concepts Summary</h2>
+            <p>Master these essential skills for success on your Provincial Achievement Test</p>
+        </div>
+
+        <div class="skills-grid">
+            <!-- Chapter 1: Symmetry and Surface Area -->
+            <div class="skill-card">
+                <div class="skill-header">Chapter 1: Symmetry & Surface Area</div>
+                
+                <div class="concept-section">
+                    <div class="concept-title">Line & Rotational Symmetry</div>
+                    <ul class="concept-list">
+                        <li>Identify lines of symmetry in 2D shapes</li>
+                        <li>Determine order of rotational symmetry</li>
+                        <li>Create symmetric designs</li>
+                    </ul>
+                </div>
+
+                <div class="concept-section">
+                    <div class="concept-title">Surface Area</div>
+                    <ul class="concept-list">
+                        <li>Right prisms and cylinders</li>
+                        <li>Composite 3D objects</li>
+                        <li>Using nets to calculate surface area</li>
+                    </ul>
+                </div>
+
+                <div class="formula-box">
+                    <strong>Surface Area Formulas:</strong><br>
+                    Rectangular Prism: $SA = 2(lw + lh + wh)$<br>
+                    Cylinder: $SA = 2\pi r^2 + 2\pi rh$
+                </div>
+
+                <div class="tip-box">
+                    <div class="tip-title">PAT Tip:</div>
+                    Always check if you need to find surface area of composite objects by adding or subtracting areas.
+                </div>
+            </div>
+
+            <!-- Chapter 2: Numbers -->
+            <div class="skill-card">
+                <div class="skill-header">Chapter 2: Numbers</div>
+                
+                <div class="concept-section">
+                    <div class="concept-title">Rational Numbers</div>
+                    <ul class="concept-list">
+                        <li>Compare and order rational numbers</li>
+                        <li>Add, subtract, multiply, divide fractions</li>
+                        <li>Convert between fractions, decimals, percents</li>
+                        <li>Solve problems with mixed numbers</li>
+                    </ul>
+                </div>
+
+                <div class="concept-section">
+                    <div class="concept-title">Square Roots</div>
+                    <ul class="concept-list">
+                        <li>Perfect squares and square roots</li>
+                        <li>Estimate square roots of non-perfect squares</li>
+                        <li>Solve problems involving square roots</li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <div class="example-title">Example:</div>
+                    $\sqrt{50}$ is between $\sqrt{49} = 7$ and $\sqrt{64} = 8$<br>
+                    So $\sqrt{50} \approx 7.1$
+                </div>
+            </div>
+
+            <!-- Chapter 3: Powers -->
+            <div class="skill-card">
+                <div class="skill-header">Chapter 3: Powers & Exponents</div>
+                
+                <div class="concept-section">
+                    <div class="concept-title">Exponent Laws</div>
+                    <ul class="concept-list">
+                        <li>Product law: $a^m \times a^n = a^{m+n}$</li>
+                        <li>Quotient law: $a^m \div a^n = a^{m-n}$</li>
+                        <li>Power law: $(a^m)^n = a^{mn}$</li>
+                        <li>Zero exponent: $a^0 = 1$ (where $a \neq 0$)</li>
+                        <li>Negative exponents: $a^{-n} = \frac{1}{a^n}$</li>
+                    </ul>
+                </div>
+
+                <div class="concept-section">
+                    <div class="concept-title">Scientific Notation</div>
+                    <ul class="concept-list">
+                        <li>Express large and small numbers</li>
+                        <li>Operations with scientific notation</li>
+                        <li>Solve real-world problems</li>
+                    </ul>
+                </div>
+
+                <div class="formula-box">
+                    <strong>Scientific Notation:</strong><br>
+                    $a \times 10^n$ where $1 \leq a < 10$ and $n$ is an integer
+                </div>
+            </div>
+
+            <!-- Chapter 4: Scale Factors & Similarity -->
+            <div class="skill-card">
+                <div class="skill-header">Chapter 4: Scale Factors & Similarity</div>
+                
+                <div class="concept-section">
+                    <div class="concept-title">Similar Figures</div>
+                    <ul class="concept-list">
+                        <li>Identify similar polygons</li>
+                        <li>Calculate scale factors</li>
+                        <li>Find missing side lengths</li>
+                        <li>Solve problems using similarity</li>
+                    </ul>
+                </div>
+
+                <div class="concept-section">
+                    <div class="concept-title">Transformations</div>
+                    <ul class="concept-list">
+                        <li>Dilations (enlargements/reductions)</li>
+                        <li>Scale factor relationships</li>
+                        <li>Area and perimeter changes</li>
+                    </ul>
+                </div>
+
+                <div class="tip-box">
+                    <div class="tip-title">Remember:</div>
+                    If scale factor is $k$, then area changes by $k^2$ and volume by $k^3$.
+                </div>
+            </div>
+
+            <!-- Chapter 5 & 7: Polynomials -->
+            <div class="skill-card">
+                <div class="skill-header">Chapters 5 & 7: Polynomials</div>
+                
+                <div class="concept-section">
+                    <div class="concept-title">Polynomial Operations</div>
+                    <ul class="concept-list">
+                        <li>Add and subtract polynomials</li>
+                        <li>Multiply polynomials by monomials</li>
+                        <li>Multiply binomials (FOIL)</li>
+                        <li>Identify degree and number of terms</li>
+                    </ul>
+                </div>
+
+                <div class="concept-section">
+                    <div class="concept-title">Factoring</div>
+                    <ul class="concept-list">
+                        <li>Factor out common factors</li>
+                        <li>Factor trinomials</li>
+                        <li>Factor by grouping</li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <div class="example-title">FOIL Example:</div>
+                    $(x + 3)(x + 5) = x^2 + 5x + 3x + 15 = x^2 + 8x + 15$
+                </div>
+            </div>
+
+            <!-- Chapter 6: Linear Relations -->
+            <div class="skill-card">
+                <div class="skill-header">Chapter 6: Linear Relations</div>
+                
+                <div class="concept-section">
+                    <div class="concept-title">Slope & Y-Intercept</div>
+                    <ul class="concept-list">
+                        <li>Calculate slope using two points</li>
+                        <li>Identify y-intercept from graph or equation</li>
+                        <li>Write equations in slope-intercept form</li>
+                        <li>Graph linear equations</li>
+                    </ul>
+                </div>
+
+                <div class="concept-section">
+                    <div class="concept-title">Linear Patterns</div>
+                    <ul class="concept-list">
+                        <li>Extend number patterns</li>
+                        <li>Write equations from tables</li>
+                        <li>Solve pattern problems</li>
+                    </ul>
+                </div>
+
+                <div class="formula-box">
+                    <strong>Slope Formula:</strong><br>
+                    $m = \frac{y_2 - y_1}{x_2 - x_1} = \frac{\text{rise}}{\text{run}}$<br>
+                    <strong>Slope-Intercept Form:</strong> $y = mx + b$
+                </div>
+            </div>
+
+            <!-- Chapters 8 & 9: Linear Equations & Inequalities -->
+            <div class="skill-card">
+                <div class="skill-header">Chapters 8 & 9: Linear Equations & Inequalities</div>
+                
+                <div class="concept-section">
+                    <div class="concept-title">Solving Linear Equations</div>
+                    <ul class="concept-list">
+                        <li>One-step and multi-step equations</li>
+                        <li>Equations with variables on both sides</li>
+                        <li>Equations with fractions</li>
+                        <li>Word problems leading to equations</li>
+                    </ul>
+                </div>
+
+                <div class="concept-section">
+                    <div class="concept-title">Linear Inequalities</div>
+                    <ul class="concept-list">
+                        <li>Solve one-variable inequalities</li>
+                        <li>Graph solutions on number lines</li>
+                        <li>Write inequalities from word problems</li>
+                    </ul>
+                </div>
+
+                <div class="tip-box">
+                    <div class="tip-title">Important:</div>
+                    When multiplying or dividing by a negative number, flip the inequality sign!
+                </div>
+            </div>
+
+            <!-- Chapter 10: Circle Geometry -->
+            <div class="skill-card">
+                <div class="skill-header">Chapter 10: Circle Geometry</div>
+                
+                <div class="concept-section">
+                    <div class="concept-title">Circle Properties</div>
+                    <ul class="concept-list">
+                        <li>Radius, diameter, circumference</li>
+                        <li>Central and inscribed angles</li>
+                        <li>Chords and arcs</li>
+                        <li>Circle theorems</li>
+                    </ul>
+                </div>
+
+                <div class="concept-section">
+                    <div class="concept-title">Problem Solving</div>
+                    <ul class="concept-list">
+                        <li>Find missing angles</li>
+                        <li>Calculate arc lengths</li>
+                        <li>Apply circle theorems</li>
+                    </ul>
+                </div>
+
+                <div class="formula-box">
+                    <strong>Circle Formulas:</strong><br>
+                    Circumference: $C = 2\pi r = \pi d$<br>
+                    Area: $A = \pi r^2$
+                </div>
+            </div>
+
+            <!-- Chapter 11: Data Analysis -->
+            <div class="skill-card">
+                <div class="skill-header">Chapter 11: Data Analysis & Statistics</div>
+                
+                <div class="concept-section">
+                    <div class="concept-title">Measures of Central Tendency</div>
+                    <ul class="concept-list">
+                        <li>Calculate mean, median, mode</li>
+                        <li>Determine which measure is most appropriate</li>
+                        <li>Analyze data sets</li>
+                    </ul>
+                </div>
+
+                <div class="concept-section">
+                    <div class="concept-title">Data Collection & Bias</div>
+                    <ul class="concept-list">
+                        <li>Identify sources of bias</li>
+                        <li>Evaluate sampling methods</li>
+                        <li>Interpret graphs and charts</li>
+                        <li>Probability calculations</li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <div class="example-title">Remember:</div>
+                    Mean is affected by outliers, median is not. Mode is the most frequent value.
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Reference Section -->
+        <div class="quick-reference">
+            <div class="reference-header">Quick Reference for PAT Success</div>
+            
+            <div class="reference-grid">
+                <div class="reference-section">
+                    <h4>Test-Taking Strategies</h4>
+                    <ul>
+                        <li>Read questions carefully</li>
+                        <li>Show all work clearly</li>
+                        <li>Check answers when possible</li>
+                        <li>Manage your time wisely</li>
+                        <li>Use estimation to verify</li>
+                    </ul>
+                </div>
+
+                <div class="reference-section">
+                    <h4>Common Mistakes to Avoid</h4>
+                    <ul>
+                        <li>Sign errors with negative numbers</li>
+                        <li>Forgetting to flip inequality signs</li>
+                        <li>Order of operations mistakes</li>
+                        <li>Confusing area vs. perimeter</li>
+                        <li>Not simplifying final answers</li>
+                    </ul>
+                </div>
+
+                <div class="reference-section">
+                    <h4>Key Formulas to Memorize</h4>
+                    <ul>
+                        <li>$a^m \times a^n = a^{m+n}$</li>
+                        <li>$(x + a)(x + b) = x^2 + (a+b)x + ab$</li>
+                        <li>$m = \frac{y_2 - y_1}{x_2 - x_1}$</li>
+                        <li>$A = \pi r^2$, $C = 2\pi r$</li>
+                        <li>$SA_{cylinder} = 2\pi r^2 + 2\pi rh$</li>
+                    </ul>
+                </div>
+
+                <div class="reference-section">
+                    <h4>Problem-Solving Steps</h4>
+                    <ul>
+                        <li><strong>Understand:</strong> What is being asked?</li>
+                        <li><strong>Plan:</strong> What strategy will you use?</li>
+                        <li><strong>Solve:</strong> Work through the problem</li>
+                        <li><strong>Check:</strong> Does your answer make sense?</li>
+                        <li><strong>Communicate:</strong> Show your reasoning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p style="color: #ffffff; font-size: clamp(0.9rem, 2.5vw, 1.1rem); line-height: 1.8; font-family: 'Poppins', sans-serif;">
+            Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching
+        </p>
+    </footer>
+</body>
+</html>
