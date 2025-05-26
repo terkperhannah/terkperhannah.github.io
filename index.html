@@ -3,75 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
-    <title>Hannah Terkper - Digital Classroom</title>
+    <title>Ms. Terkper's Digital Classroom</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style>
-        /* Keep original desktop styles, add mobile-only fixes */
-        .hero-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            margin-bottom: 50px;
+        /* Paragraph styling directly here */
+        p {
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            line-height: 1.8;
+            color: #34495e;
+            font-family: 'Poppins', sans-serif;
         }
-        
-        .hero-content h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            font-weight: 300;
+
+        /* Custom header style for h2 in content boxes */
+        .content-box h2 {
+            color: #0984e3;
+            font-size: clamp(1.5rem, 4vw, 1.8rem);
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            border-bottom: 2px solid rgba(116, 185, 255, 0.3);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
         }
-        
-        .course-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
+
+        .content-box:nth-child(even) h2 {
+            color: #00cec9;
         }
-        
-        .course-card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            padding: 25px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .course-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .course-card h3 {
-            color: #2c3e50;
-            margin: 0 0 15px 0;
-        }
-        
-        .btn {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.3s ease;
-        }
-        
-        .btn:hover {
-            background-color: #0056b3;
-        }
-        
-        .category-section {
-            margin: 50px 0;
-        }
-        
-        .category-section h2 {
-            font-size: 2em;
-            margin-bottom: 30px;
-            color: #2c3e50;
-        }
-        
-        /* Mobile-only improvements */
+
+        /* Mobile-only fixes - don't change desktop appearance */
         @media (max-width: 768px) {
             * {
                 box-sizing: border-box;
@@ -81,33 +42,22 @@
                 overflow-x: hidden;
             }
             
-            .hero-content h1 {
-                font-size: 1.8em;
-                line-height: 1.2;
+            .content-wrapper {
+                padding: 10px;
             }
             
-            .hero-section {
-                padding: 40px 15px;
-                margin-bottom: 30px;
-            }
-            
-            .course-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-                margin: 20px 0;
-            }
-            
-            .course-card {
-                padding: 20px;
-                margin: 0;
-                width: 100%;
-                max-width: 100%;
-            }
-            
-            .category-section h2 {
-                font-size: 1.5em;
-                text-align: center;
+            .content-box {
                 margin-bottom: 20px;
+                padding: 15px;
+            }
+            
+            .content-box h2 {
+                font-size: clamp(1.3rem, 4vw, 1.5rem);
+            }
+            
+            p {
+                font-size: clamp(0.9rem, 2.5vw, 1rem);
+                line-height: 1.6;
             }
         }
     </style>
@@ -116,131 +66,66 @@
     <header>
         <h1>Ms. Terkper's Digital Classroom</h1>
     </header>
-    <div id="navbar-container"></div>
-
-    <main class="content-wrapper">
-        <section class="hero-section">
-            <div class="hero-content">
-                <h1>Welcome to Hannah Terkper's Digital Classroom</h1>
-                <p class="hero-subtitle">Your comprehensive educational resource hub spanning from Grade 7 through Graduate level courses</p>
-            </div>
-        </section>
-
-        <section class="course-categories">
-            <h2>Mathematics Courses</h2>
-            <div class="course-grid">
-                <div class="course-card">
-                    <h3>Grade 7 Mathematics</h3>
-                    <p>Foundational math concepts including integers, fractions, and basic algebra</p>
-                    <a href="math7.html" class="btn">Enter Course</a>
-                </div>
-                <div class="course-card">
-                    <h3>Grade 8 Mathematics</h3>
-                    <p>Building on fundamentals with linear relationships and geometric concepts</p>
-                    <a href="math8.html" class="btn">Enter Course</a>
-                </div>
-                <div class="course-card" style="border: 3px solid #28a745;">
-                    <h3>Grade 9 Mathematics</h3>
-                    <p>Comprehensive curriculum with 8 complete units, interactive activities, and assessments</p>
-                    <div style="margin: 15px 0;">
-                        <span style="background-color: #e8f5e8; color: #28a745; padding: 4px 8px; border-radius: 12px; font-size: 12px; margin: 2px;">✓ 8 Complete Units</span>
-                        <span style="background-color: #e8f5e8; color: #28a745; padding: 4px 8px; border-radius: 12px; font-size: 12px; margin: 2px;">✓ Interactive Activities</span>
-                        <span style="background-color: #e8f5e8; color: #28a745; padding: 4px 8px; border-radius: 12px; font-size: 12px; margin: 2px;">✓ Answer Keys</span>
-                    </div>
-                    <a href="math9.html" class="btn" style="background-color: #28a745;">Enter Course</a>
-                </div>
-                <div class="course-card">
-                    <h3>Grade 10 Mathematics</h3>
-                    <p>Advanced concepts preparing students for high school mathematics</p>
-                    <a href="math10.html" class="btn">Enter Course</a>
-                </div>
-                <div class="course-card">
-                    <h3>Math 20-1</h3>
-                    <p>High school level mathematics with advanced algebraic concepts</p>
-                    <a href="math20-1.html" class="btn">Enter Course</a>
-                </div>
-                <div class="course-card">
-                    <h3>Math 30-1</h3>
-                    <p>Pre-calculus mathematics preparing for university-level studies</p>
-                    <a href="math30-1.html" class="btn">Enter Course</a>
-                </div>
-            </div>
-
-            <h2>Science Courses</h2>
-            <div class="course-grid">
-                <div class="course-card">
-                    <h3>Grade 7 Science</h3>
-                    <p>Introduction to scientific concepts and laboratory skills</p>
-                    <a href="science7.html" class="btn">Enter Course</a>
-                </div>
-                <div class="course-card">
-                    <h3>Grade 8 Science</h3>
-                    <p>Expanding scientific knowledge with hands-on experiments</p>
-                    <a href="science8.html" class="btn">Enter Course</a>
-                </div>
-                <div class="course-card">
-                    <h3>Grade 9 Science</h3>
-                    <p>Comprehensive science curriculum with interactive labs</p>
-                    <a href="science9.html" class="btn">Enter Course</a>
-                </div>
-                <div class="course-card">
-                    <h3>Grade 10 Science</h3>
-                    <p>Advanced scientific concepts and research methods</p>
-                    <a href="science10.html" class="btn">Enter Course</a>
-                </div>
-            </div>
-
-            <h2>Computer Science</h2>
-            <div class="course-grid">
-                <div class="course-card">
-                    <h3>Robotics Programming</h3>
-                    <p>Learn robotics fundamentals with hands-on programming projects including Microbit environmental monitoring</p>
-                    <a href="robotics_basics1.html" class="btn">Start Learning</a>
-                </div>
-                <div class="course-card">
-                    <h3>C# Programming</h3>
-                    <p>Master C# programming from basics to advanced concepts</p>
-                    <a href="csharp_basics1.html" class="btn">Start Learning</a>
-                </div>
-                <div class="course-card">
-                    <h3>AI & VR Projects</h3>
-                    <p>Explore artificial intelligence and virtual reality development with CoSpaces</p>
-                    <a href="ai-guidelines.html" class="btn">Explore Projects</a>
-                </div>
-            </div>
-
-            <h2>Graduate Courses</h2>
-            <div class="course-grid">
-                <div class="course-card">
-                    <h3>EDU 714</h3>
-                    <p>Advanced educational theory and practice</p>
-                    <a href="edu714.html" class="btn">Enter Course</a>
-                </div>
-                <div class="course-card">
-                    <h3>EDU 724</h3>
-                    <p>Educational leadership and curriculum development</p>
-                    <a href="edu724.html" class="btn">Enter Course</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
+    
+    <div id="navbar-placeholder"></div>
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             fetch('navbar.html')
-                .then(response => response.text())
+                .then(res => res.text())
                 .then(data => {
-                    document.getElementById('navbar-container').innerHTML = data;
-                    // Initialize mobile navigation after navbar loads
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                    // Initialize mobile navigation after navbar is loaded
                     if (typeof initMobileNav === 'function') {
                         initMobileNav();
                     }
                 })
-                .catch(error => {
-                    console.error('Error loading navbar:', error);
-                });
+                .catch(err => console.error("Navbar failed to load:", err));
         });
     </script>
     <script src="mobile-nav.js"></script>
+
+    <main>
+        <script async src="https://cse.google.com/cse.js?cx=55023492bbb93437c"></script>
+        <div class="gcse-search"></div>
+        
+        <div class="content-wrapper">
+            <div class="content-box">
+                <h2>Welcome to My Digital Classroom!</h2>
+                <p>
+                    Hi! I'm Hannah Terkper, a STEM educator based in Edmonton with a love for learning, creativity, and helping students thrive. I hold a Bachelor of Education from the University of Alberta, where I majored in biological sciences, minored in mathematics, and earned a certification in Sustainability. I'm currently pursuing my Master of Education in Emerging Technologies, where I get to explore the intersection of innovation and education.
+                </p>
+                <p>
+                    Outside the classroom, I'm passionate about designing meaningful learning experiences, exploring new tech tools, and sharing my journey as an educator on social media. When I'm not teaching you'll probably find me exploring nature, trying out new recipes, or deep in a sci-fi novel.
+                </p>
+                <p>
+                    I'm excited to share this space with you — a place to learn, grow, and discover together. Whether you're here for extra support, inspiration, or just to explore, I hope you find something that sparks your curiosity.
+                </p>
+            </div>
+
+            <div class="content-box">
+                <h2>Educational Setting and Audience</h2>
+                <p>
+                    This website is designed as a digital extension of my classroom. The primary audience for this site includes students in Grades 7 through 12 who are enrolled in Mathematics, Science, and Computer Science courses following the Alberta Program of Studies. The resources on this site aim to support them in building foundational knowledge, extending their learning beyond the classroom, and preparing for assessments.
+                </p>
+                <p>
+                    The website also serves as a support tool for students, parents, and guardians by providing access to curated resources, interactive practice opportunities, and supplemental learning tools. As a STEM-focused educator with a passion for emerging technologies, I have tailored the content to engage digital-age learners through hands-on, accessible, and differentiated materials aligned with curriculum outcomes and ISTE student standards.
+                </p>
+            </div>
+        </div>
+
+        <p style="text-align: center; font-size: clamp(0.75rem, 2vw, 0.85rem); color: #444; margin-top: 20px;">
+            Original content created by Hannah Terkper. Licensed under 
+            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color: #064178;">
+                CC BY 4.0
+            </a>.
+        </p>
+    </main>
+
+    <footer>
+        <p style="color: #ffffff; font-size: clamp(0.9rem, 2.5vw, 1.1rem); line-height: 1.8; font-family: 'Poppins', sans-serif;">
+            Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching
+        </p>
+    </footer>
 </body>
 </html>
