@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
+    <title>Math 9 Practice Test - Final Review | Ms. Terkper's Digital Classroom</title>
+    <meta name="description" content="Interactive Math 9 practice test based on Alberta Education Achievement Test questions. Practice for your final exam with instant feedback.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .test-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .test-header {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .test-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+        }
+
+        .question-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .question-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .question-number {
+            background: #3498db;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .options-container {
+            display: grid;
+            gap: 12px;
+        }
+
+        .option {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .option:hover {
+            background: #e3f2fd;
+            border-color: #3498db;
+        }
+
+        .option.selected {
+            background: #e3f2fd;
+            border-color: #3498db;
+            color: #2980b9;
+            font-weight: 500;
+        }
+
+        .option.correct {
+            background: #d4edda;
+            border-color: #27ae60;
+            color: #155724;
+        }
+
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #e74c3c;
+            color: #721c24;
+        }
+
+        .option-letter {
+            background: #6c757d;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .option.selected .option-letter {
+            background: #3498db;
+        }
+
+        .option.correct .option-letter {
+            background: #27ae60;
+        }
+
+        .option.incorrect .option-letter {
+            background: #e74c3c;
+        }
+
+        .submit-btn {
+            background: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background: #2980b9;
+        }
+
+        .submit-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            border: 2px solid #27ae60;
+            color: #155724;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            border: 2px solid #e74c3c;
+            color: #721c24;
+        }
+
+        .results-summary {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            display: none;
+        }
+
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .numerical-response {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .numerical-input {
+            width: 80px;
+            padding: 8px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1.1rem;
+            margin: 0 5px;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .test-container {
+                padding: 15px;
+            }
+            
+            .question-card {
+                padding: 20px;
+            }
+            
+            .test-header {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    
+    <div id="navbar-placeholder"></div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('navbar.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                    if (typeof initMobileNav === 'function') {
+                        initMobileNav();
+                    }
+                })
+                .catch(err => console.error("Navbar failed to load:", err));
+        });
+    </script>
+    <script src="mobile-nav.js"></script>
+
+    <main class="test-container">
+        <div class="test-header">
+            <h1>Math 9 Practice Test - Final Review</h1>
+            <p>Based on Alberta Education Achievement Test Questions</p>
+        </div>
+
+        <div class="test-info">
+            <h3>Test Instructions:</h3>
+            <ul>
+                <li>This practice test contains 15 questions from the official Alberta Grade 9 Mathematics Achievement Test</li>
+                <li>Select your answer for each multiple choice question</li>
+                <li>For numerical response questions, enter your answer in the provided boxes</li>
+                <li>Click "Check Answer" to see immediate feedback</li>
+                <li>Your final score will be displayed at the end</li>
+            </ul>
+        </div>
+
+        <div id="questions-container">
+            <!-- Questions will be populated by JavaScript -->
+        </div>
+
+        <div class="results-summary" id="results-summary">
+            <h2>Practice Test Complete!</h2>
+            <div class="score-circle" id="score-circle">0%</div>
+            <h3 id="score-text">Your Score: 0/15</h3>
+            <p id="performance-message"></p>
+            <button class="submit-btn" onclick="retakeTest()">Retake Test</button>
+        </div>
+    </main>
+
+    <script>
+        // Practice test questions based on Alberta Education Achievement Test
+        const questions = [
+            {
+                id: 1,
+                type: 'multiple-choice',
+                question: 'Another representation of the expression (e^6)/(3^4) is',
+                options: [
+                    'A. (2+4)/(3+4)',
+                    'B. (2×4)/(3×4)', 
+                    'C. (2+2+2+2)/(3+3+3+3)',
+                    'D. (2×2×2×2)/(3×3×3×3)'
+                ],
+                correct: 'D',
+                explanation: 'Using exponent laws, (e^6)/(3^4) = (2^6)/(3^4) = (2×2×2×2×2×2)/(3×3×3×3). Answer D shows the correct repeated multiplication form.',
+                strand: 'Number',
+                outcome: 'Apply knowledge of exponent laws'
+            },
+            {
+                id: 2,
+                type: 'multiple-choice',
+                question: 'Aaron buys a cheeseburger for $6.50 and a container of milk for $0.80. Sam buys a tossed salad and a bowl of soup. The soup costs $2.00 more than the salad. Sam\'s meal is less expensive than Aaron\'s meal. Which number line could represent the price of Sam\'s salad?',
+                options: [
+                    'A. Values less than $2.65',
+                    'B. Values greater than $2.65', 
+                    'C. Values less than $5.30',
+                    'D. Values greater than $5.30'
+                ],
+                correct: 'A',
+                explanation: 'Aaron\'s total: $6.50 + $0.80 = $7.30. Let x = salad price. Sam\'s total: x + (x + 2) = 2x + 2. Since 2x + 2 < 7.30, then 2x < 5.30, so x < 2.65.',
+                strand: 'Patterns and Relations',
+                outcome: 'Write and solve linear inequalities'
+            },
+            {
+                id: 3,
+                type: 'multiple-choice',
+                question: 'The letters p and q in the expression (p + q)/2 represent consecutive perfect square numbers. Which number line best represents the value of (p + q)/2?',
+                options: [
+                    'A. Between 4 and 5',
+                    'B. Between 8 and 9',
+                    'C. Between 12 and 13', 
+                    'D. Between 16 and 17'
+                ],
+                correct: 'C',
+                explanation: 'Consecutive perfect squares could be 9 and 16. So (9 + 16)/2 = 25/2 = 12.5, which is between 12 and 13.',
+                strand: 'Number',
+                outcome: 'Determine square root values'
+            },
+            {
+                id: 4,
+                type: 'multiple-choice',
+                question: 'How many of these expressions have a value larger than 3^7?\n(3^4)^2, 3^12/3^4, 3^5 + 3^3, [(3^10)^0]^2, (3×2)^6/2^6, 3^8 - 3^4',
+                options: [
+                    'A. 2',
+                    'B. 3',
+                    'C. 4',
+                    'D. 5'
+                ],
+                correct: 'B',
+                explanation: '3^7 = 2187. Check each: (3^4)^2 = 3^8 = 6561 ✓, 3^12/3^4 = 3^8 = 6561 ✓, 3^5 + 3^3 = 243 + 27 = 270 ✗, [(3^10)^0]^2 = 1^2 = 1 ✗, (3×2)^6/2^6 = 6^6/2^6 = 3^6 = 729 ✗, 3^8 - 3^4 = 6561 - 81 = 6480 ✓. Three expressions are larger.',
+                strand: 'Number',
+                outcome: 'Apply exponent laws'
+            },
+            {
+                id: 5,
+                type: 'multiple-choice',
+                question: 'Catherine sells cupcakes, c, for $1.50 each. The ingredients for each cupcake cost her $0.30, and the sum of all her other expenses is $20.00/month. Which expression represents Catherine\'s profit each month?',
+                options: [
+                    'A. 1.5c - (20 + 0.3c)',
+                    'B. 20c - (1.5 + 0.3c)',
+                    'C. (20 + 0.3c) - 1.5c',
+                    'D. (1.5 + 0.3c) - 20c'
+                ],
+                correct: 'A',
+                explanation: 'Profit = Revenue - Expenses. Revenue = 1.5c. Expenses = ingredient costs (0.3c) + other expenses (20) = 20 + 0.3c. So profit = 1.5c - (20 + 0.3c).',
+                strand: 'Patterns and Relations',
+                outcome: 'Select algebraic expressions for real-life contexts'
+            },
+            {
+                id: 6,
+                type: 'multiple-choice',
+                question: 'Jennifer\'s goal is to save $1,200. Each week she saves 20% of her weekly income of $576. How many weeks will it take Jennifer to reach her goal?',
+                options: [
+                    'A. 10',
+                    'B. 11',
+                    'C. 12',
+                    'D. 29'
+                ],
+                correct: 'B',
+                explanation: 'Weekly savings = 20% of $576 = 0.20 × 576 = $115.20. Weeks needed = 1200 ÷ 115.20 = 10.42 weeks. Since she can\'t save partial weeks, she needs 11 weeks.',
+                strand: 'Patterns and Relations',
+                outcome: 'Solve linear inequalities'
+            },
+            {
+                id: 7,
+                type: 'multiple-choice',
+                question: 'The values of 4^5 and 5^4 are ___ because ___.',
+                options: [
+                    'A. equal; 4 × 5 has the same value as 5 × 4',
+                    'B. equal; both powers represent the same model',
+                    'C. not equal; two powers cannot have the same value',
+                    'D. not equal; they cannot be written using the same repeated multiplication'
+                ],
+                correct: 'D',
+                explanation: '4^5 = 1024 and 5^4 = 625, so they are not equal. 4^5 = 4×4×4×4×4 while 5^4 = 5×5×5×5, showing different repeated multiplication patterns.',
+                strand: 'Number',
+                outcome: 'Explain differences between powers'
+            },
+            {
+                id: 8,
+                type: 'multiple-choice',
+                question: 'A manager selected 25 watches from 750 watches and found 3 defective. He concluded 12% of all 750 watches were defective. Which assumption did he make?',
+                options: [
+                    'A. The testing process was unreliable',
+                    'B. The parts used are rarely defective',
+                    'C. The sample was representative of the population',
+                    'D. The watches were made by the same employee'
+                ],
+                correct: 'C',
+                explanation: 'To generalize from a sample of 25 to the entire population of 750, the manager assumes the sample is representative of the whole population.',
+                strand: 'Statistics and Probability',
+                outcome: 'Identify assumptions in surveys'
+            },
+            {
+                id: 9,
+                type: 'multiple-choice',
+                question: 'The area of four square carpets is shown: Carpet 1: A = 18, Carpet 2: A = 15, Carpet 3: A = 20, Carpet 4: A = 12. Which carpet will cover the most floor area in a 4.5m × 4.5m room without touching walls?',
+                options: [
+                    'A. Carpet 1',
+                    'B. Carpet 2', 
+                    'C. Carpet 3',
+                    'D. Carpet 4'
+                ],
+                correct: 'B',
+                explanation: 'Room area = 4.5² = 20.25 m². Side lengths: Carpet 1: √18 ≈ 4.24m, Carpet 2: √15 ≈ 3.87m, Carpet 3: √20 ≈ 4.47m, Carpet 4: √12 ≈ 3.46m. Only Carpet 2 fits without touching walls (3.87 < 4.5).',
+                strand: 'Number',
+                outcome: 'Solve problems with square roots'
+            },
+            {
+                id: 10,
+                type: 'multiple-choice',
+                question: 'A graph shows rental costs at 4 companies. Which company has the smallest charge per kilometre?',
+                options: [
+                    'A. Company W (steepest slope)',
+                    'B. Company X (medium slope)',
+                    'C. Company Y (gentle slope)',
+                    'D. Company Z (flattest slope)'
+                ],
+                correct: 'D',
+                explanation: 'The charge per kilometre is represented by the slope of the line. Company Z has the flattest slope, meaning the smallest rate of change (lowest cost per kilometre).',
+                strand: 'Statistics and Probability',
+                outcome: 'Analyze linear relations'
+            },
+            {
+                id: 11,
+                type: 'numerical-response',
+                question: 'Match each rational number to its point on the number line:\n-1¾ is at Point ___\n13/8 is at Point ___\n1.125 is at Point ___\n-0.875 is at Point ___',
+                inputs: 4,
+                correct: ['1', '7', '6', '4'],
+                explanation: 'Convert to decimals: -1¾ = -1.75 (Point 1), 13/8 = 1.625 (Point 7), 1.125 stays same (Point 6), -0.875 stays same (Point 4).',
+                strand: 'Number',
+                outcome: 'Graph rational numbers'
+            },
+            {
+                id: 12,
+                type: 'numerical-response',
+                question: 'Based on the linear relation shown in the graph, when the y-coordinate is 3, the x-coordinate is ___.',
+                inputs: 1,
+                correct: ['7'],
+                explanation: 'Following the line on the graph to where y = 3, we find that x = 7.',
+                strand: 'Patterns and Relations',
+                outcome: 'Extend linear relations'
+            },
+            {
+                id: 13,
+                type: 'numerical-response',
+                question: 'Four wind turbines are shown with different proportions. The two turbines that are proportional to each other are turbines ___ and ___.',
+                inputs: 2,
+                correct: ['2', '3'],
+                explanation: 'Turbines 2 and 3 have proportional blade length to height ratios.',
+                strand: 'Shape and Space',
+                outcome: 'Determine similar objects'
+            },
+            {
+                id: 14,
+                type: 'numerical-response',
+                question: 'A 2-D design needs completion using a single transformation. Given its line of symmetry, the missing part is at position ___.',
+                inputs: 1,
+                correct: ['3'],
+                explanation: 'Using the line of symmetry, the reflection creates the missing part at position 3.',
+                strand: 'Shape and Space',
+                outcome: 'Complete transformations'
+            },
+            {
+                id: 15,
+                type: 'numerical-response',
+                question: 'Solve the equation 3x + 7 = 52 for x. The value of x is ___.',
+                inputs: 1,
+                correct: ['15'],
+                explanation: '3x + 7 = 52. Subtract 7: 3x = 45. Divide by 3: x = 15.',
+                strand: 'Patterns and Relations',
+                outcome: 'Solve linear equations'
+            }
+        ];
+
+        let currentAnswers = {};
+        let testCompleted = false;
+
+        function renderQuestions() {
+            const container = document.getElementById('questions-container');
+            container.innerHTML = '';
+
+            questions.forEach(question => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question-card';
+                questionDiv.innerHTML = `
+                    <div class="question-number">${question.id}</div>
+                    <div class="question-text">${question.question}</div>
+                    ${question.type === 'multiple-choice' ? renderMultipleChoice(question) : renderNumericalResponse(question)}
+                    <button class="submit-btn" onclick="checkAnswer(${question.id})" id="btn-${question.id}">Check Answer</button>
+                    <div class="feedback" id="feedback-${question.id}"></div>
+                `;
+                container.appendChild(questionDiv);
+            });
+        }
+
+        function renderMultipleChoice(question) {
+            return `
+                <div class="options-container" id="options-${question.id}">
+                    ${question.options.map((option, index) => `
+                        <div class="option" onclick="selectOption(${question.id}, '${String.fromCharCode(65 + index)}')">
+                            <div class="option-letter">${String.fromCharCode(65 + index)}</div>
+                            <div>${option.substring(3)}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function renderNumericalResponse(question) {
+            const inputs = Array.from({length: question.inputs}, (_, i) => 
+                `<input type="text" class="numerical-input" id="input-${question.id}-${i}" maxlength="4">`
+            ).join('');
+            
+            return `
+                <div class="numerical-response">
+                    <strong>Numerical Response:</strong> Enter your answer(s) in the boxes below:
+                    <div style="margin-top: 10px;">${inputs}</div>
+                </div>
+            `;
+        }
+
+        function selectOption(questionId, option) {
+            // Clear previous selections
+            const options = document.querySelectorAll(`#options-${questionId} .option`);
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Select current option
+            event.currentTarget.classList.add('selected');
+            currentAnswers[questionId] = option;
+        }
+
+        function checkAnswer(questionId) {
+            const question = questions.find(q => q.id === questionId);
+            const feedbackDiv = document.getElementById(`feedback-${questionId}`);
+            const button = document.getElementById(`btn-${questionId}`);
+            
+            let isCorrect = false;
+            let userAnswer;
+
+            if (question.type === 'multiple-choice') {
+                userAnswer = currentAnswers[questionId];
+                isCorrect = userAnswer === question.correct;
+                
+                // Show correct/incorrect styling on options
+                const options = document.querySelectorAll(`#options-${questionId} .option`);
+                options.forEach((option, index) => {
+                    const letter = String.fromCharCode(65 + index);
+                    if (letter === question.correct) {
+                        option.classList.add('correct');
+                    } else if (letter === userAnswer && letter !== question.correct) {
+                        option.classList.add('incorrect');
+                    }
+                });
+            } else {
+                // Numerical response
+                const inputs = [];
+                for (let i = 0; i < question.inputs; i++) {
+                    const input = document.getElementById(`input-${questionId}-${i}`);
+                    inputs.push(input.value.trim());
+                }
+                userAnswer = inputs;
+                
+                // Check if answers match (order doesn't matter for some questions)
+                if (question.inputs === 1) {
+                    isCorrect = inputs[0] === question.correct[0];
+                } else {
+                    // For multiple inputs, check if they contain the correct values
+                    isCorrect = question.correct.every(correct => inputs.includes(correct));
+                }
+            }
+
+            // Show feedback
+            feedbackDiv.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+            feedbackDiv.innerHTML = `
+                <strong>${isCorrect ? 'Correct!' : 'Incorrect'}</strong><br>
+                ${question.explanation}<br>
+                <small><strong>Strand:</strong> ${question.strand} | <strong>Outcome:</strong> ${question.outcome}</small>
+            `;
+            feedbackDiv.style.display = 'block';
+            
+            // Disable button
+            button.disabled = true;
+            button.textContent = 'Answered';
+            
+            // Check if all questions are answered
+            checkTestCompletion();
+        }
+
+        function checkTestCompletion() {
+            const answeredQuestions = document.querySelectorAll('.submit-btn:disabled').length;
+            if (answeredQuestions === questions.length) {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            const correctAnswers = document.querySelectorAll('.feedback.correct').length;
+            const totalQuestions = questions.length;
+            const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+            
+            const resultsSummary = document.getElementById('results-summary');
+            const scoreCircle = document.getElementById('score-circle');
+            const scoreText = document.getElementById('score-text');
+            const performanceMessage = document.getElementById('performance-message');
+            
+            // Set score circle color based on performance
+            if (percentage >= 80) {
+                scoreCircle.style.background = '#27ae60';
+                performanceMessage.textContent = 'Excellent work! You\'re well prepared for your final exam.';
+            } else if (percentage >= 70) {
+                scoreCircle.style.background = '#3498db';
+                performanceMessage.textContent = 'Good job! Review the questions you missed and you\'ll be ready.';
+            } else if (percentage >= 60) {
+                scoreCircle.style.background = '#f39c12';
+                performanceMessage.textContent = 'You\'re on the right track. Focus on the areas where you struggled.';
+            } else {
+                scoreCircle.style.background = '#e74c3c';
+                performanceMessage.textContent = 'Keep practicing! Review the concepts and try again.';
+            }
+            
+            scoreCircle.textContent = `${percentage}%`;
+            scoreText.textContent = `Your Score: ${correctAnswers}/${totalQuestions}`;
+            resultsSummary.style.display = 'block';
+            
+            // Scroll to results
+            resultsSummary.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function retakeTest() {
+            // Reset everything
+            currentAnswers = {};
+            testCompleted = false;
+            document.getElementById('results-summary').style.display = 'none';
+            renderQuestions();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize the test
+        document.addEventListener('DOMContentLoaded', () => {
+            renderQuestions();
+        });
+    </script>
+
+    <footer>
+        <p style="color: #ffffff; font-size: clamp(0.9rem, 2.5vw, 1.1rem); line-height: 1.8; font-family: 'Poppins', sans-serif;">
+            Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching
+        </p>
+    </footer>
+</body>
+</html>
