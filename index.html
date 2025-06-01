@@ -148,6 +148,33 @@
       });
     </script>
     <script src="mobile-nav.js"></script>
+    <script>
+        // Mobile detection and UI adjustments
+        function isMobileDevice() {
+            return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+        
+        function updateMobileUI() {
+            const isMobile = isMobileDevice();
+            const desktopWelcome = document.querySelector('.desktop-welcome');
+            const mobileWelcome = document.querySelector('.mobile-welcome');
+            const mobileNotice = document.querySelector('.mobile-notice');
+            
+            if (isMobile) {
+                if (desktopWelcome) desktopWelcome.style.display = 'none';
+                if (mobileWelcome) mobileWelcome.style.display = 'block';
+                if (mobileNotice) mobileNotice.style.display = 'block';
+            } else {
+                if (desktopWelcome) desktopWelcome.style.display = 'block';
+                if (mobileWelcome) mobileWelcome.style.display = 'none';
+                if (mobileNotice) mobileNotice.style.display = 'none';
+            }
+        }
+        
+        // Run on load and resize
+        document.addEventListener('DOMContentLoaded', updateMobileUI);
+        window.addEventListener('resize', updateMobileUI);
+    </script>
 
     <main>
         <script async src="https://cse.google.com/cse.js?cx=55023492bbb93437c"></script>
@@ -155,7 +182,11 @@
         
         <div class="content-wrapper">
             <div class="content-box">
-                <h2>Welcome to My Digital Classroom!</h2>
+                <h2 class="desktop-welcome">Welcome to My Digital Classroom!</h2>
+                <h2 class="mobile-welcome" style="display: none;">Welcome to Ms. Terkper's Mobile Digital Classroom!</h2>
+                <div class="mobile-notice" style="display: none; background: #e3f2fd; border: 2px solid #2196f3; border-radius: 8px; padding: 15px; margin-bottom: 20px; font-size: 0.95em; color: #1565c0;">
+                    📱 You're viewing the mobile version. For full access to all interactive features and content, please visit on a desktop or laptop computer.
+                </div>
                 <p>
                     Hi! I'm Hannah Terkper, a STEM educator based in Edmonton with a love for learning, creativity, and helping students thrive. I hold a Bachelor of Education from the University of Alberta, where I majored in biological sciences, minored in mathematics, and earned a certification in Sustainability. I'm currently pursuing my Master of Education in Emerging Technologies, where I get to explore the intersection of innovation and education.
                 </p>
@@ -191,5 +222,6 @@
             Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching
         </p>
     </footer>
+    <script src="universal-mobile-fix.js"></script>
 </body>
 </html>
