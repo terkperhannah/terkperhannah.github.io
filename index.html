@@ -3,70 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
-    <title>Ms. Terkper's Digital Classroom | Alberta Math Science Computer Science Education</title>
-    <meta name="description" content="Hannah Terkper's comprehensive digital classroom for Alberta students. Complete Math 7-12, Science 7-10, Computer Science, and Robotics curriculum with interactive activities, answer keys, and educational resources.">
-    <meta name="keywords" content="Alberta education, Math 9, Math 30-1, Science curriculum, Computer Science, Robotics programming, STEM education, Hannah Terkper, digital classroom, Alberta Program of Studies">
+    <title>Hannah Terkper - Educator | Ms. Terkper's Digital Classroom</title>
+    <meta name="description" content="Hannah Terkper's educational portfolio and digital classroom featuring comprehensive math, science, and computer science resources for grades 7-12 and graduate studies.">
+    <meta name="keywords" content="Hannah Terkper, educator, teacher, digital classroom, math education, science curriculum, Alberta education, Grade 9 math, interactive learning">
     <meta name="author" content="Hannah Terkper">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Ms. Terkper's Digital Classroom - Alberta STEM Education">
-    <meta property="og:description" content="Complete educational resources for Alberta students from Grade 7 through university level. Math, Science, Computer Science, and graduate courses.">
-    <meta property="og:url" content="https://terkperhannah.github.io">
-    <meta property="og:type" content="website">
-    <link rel="canonical" href="https://terkperhannah.github.io">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style>
-        /* Paragraph styling directly here */
-        p {
-            font-size: clamp(1rem, 2.5vw, 1.1rem);
-            line-height: 1.8;
-            color: #34495e;
-            font-family: 'Poppins', sans-serif;
-        }
+    /* Paragraph styling directly here */
+    p {
+      font-size: clamp(1rem, 2.5vw, 1.1rem);
+      line-height: 1.8;
+      color: #34495e;
+      font-family: 'Poppins', sans-serif;
+    }
 
-        /* Custom header style for h2 in content boxes */
-        .content-box h2 {
-            color: #0984e3;
-            font-size: clamp(1.5rem, 4vw, 1.8rem);
-            font-weight: 600;
-            font-family: 'Poppins', sans-serif;
-            border-bottom: 2px solid rgba(116, 185, 255, 0.3);
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
+    /* Custom header style for h2 in content boxes */
+    .content-box h2 {
+      color: #0984e3;
+      font-size: clamp(1.5rem, 4vw, 1.8rem);
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      border-bottom: 2px solid rgba(116, 185, 255, 0.3);
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
 
-        .content-box:nth-child(even) h2 {
-            color: #00cec9;
-        }
-
-        /* Mobile-only fixes - don't change desktop appearance */
+    .content-box:nth-child(even) h2 {
+      color: #00cec9;
+    }
+  
+        /* Mobile Responsiveness Fixes */
         @media (max-width: 768px) {
-            * {
-                box-sizing: border-box;
-            }
-            
-            body {
-                overflow-x: hidden;
-            }
-            
             .content-wrapper {
-                padding: 10px;
+                padding: 10px !important;
+                margin: 0 !important;
             }
             
             .content-box {
-                margin-bottom: 20px;
-                padding: 15px;
+                padding: 15px !important;
+                margin-bottom: 15px !important;
             }
             
-            .content-box h2 {
-                font-size: clamp(1.3rem, 4vw, 1.5rem);
+            /* Fix grid layouts */
+            .stream-container {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
             }
             
-            p {
-                font-size: clamp(0.9rem, 2.5vw, 1rem);
-                line-height: 1.6;
+            .units-grid {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
+            }
+            
+            .course-grid {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
+            }
+            
+            /* Fix minimum widths that cause overflow */
+            .unit-card, .content-card, .resource-card {
+                min-width: auto !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                padding: 15px !important;
+            }
+            
+            /* Fix tables */
+            table {
+                width: 100% !important;
+                font-size: 0.9em !important;
+                overflow-x: auto !important;
+                display: block !important;
+                white-space: nowrap !important;
+            }
+            
+            /* Fix text sizing */
+            h1 { font-size: clamp(1.5rem, 5vw, 2rem) !important; }
+            h2 { font-size: clamp(1.2rem, 4vw, 1.5rem) !important; }
+            h3 { font-size: clamp(1rem, 3vw, 1.2rem) !important; }
+            p { font-size: clamp(0.9rem, 2.5vw, 1rem) !important; }
+            
+            /* Fix navigation and links */
+            .nav-links, .resource-links {
+                flex-direction: column !important;
+            }
+            
+            .resource-link {
+                padding: 10px !important;
+                font-size: 0.9em !important;
+                margin: 5px 0 !important;
+            }
+            
+            /* Fix images and media */
+            img {
+                max-width: 100% !important;
+                height: auto !important;
+            }
+            
+            /* Fix any fixed widths */
+            * {
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+        }
+        
+        /* Additional mobile fixes for specific patterns */
+        @media (max-width: 480px) {
+            .content-wrapper {
+                padding: 5px !important;
+            }
+            
+            .content-box {
+                padding: 10px !important;
+            }
+            
+            .unit-card {
+                padding: 10px !important;
             }
         }
     </style>
@@ -79,18 +134,18 @@
     <div id="navbar-placeholder"></div>
     
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            fetch('navbar.html')
-                .then(res => res.text())
-                .then(data => {
-                    document.getElementById('navbar-placeholder').innerHTML = data;
-                    // Initialize mobile navigation after navbar is loaded
-                    if (typeof initMobileNav === 'function') {
-                        initMobileNav();
-                    }
-                })
-                .catch(err => console.error("Navbar failed to load:", err));
-        });
+      document.addEventListener('DOMContentLoaded', () => {
+        fetch('navbar.html')
+          .then(res => res.text())
+          .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+            // Initialize mobile navigation after navbar is loaded
+            if (typeof initMobileNav === 'function') {
+              initMobileNav();
+            }
+          })
+          .catch(err => console.error("Navbar failed to load:", err));
+      });
     </script>
     <script src="mobile-nav.js"></script>
 
