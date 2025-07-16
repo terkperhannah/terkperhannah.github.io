@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math 8</title>
+    <title>Math 8 - Ms. Terkper's Digital Classroom</title>
+    <meta name="description" content="Comprehensive Grade 8 Mathematics curriculum with interactive practice tests, downloadable PDFs, and engaging activities aligned with Alberta standards.">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Consistent content box styling */
+        /* Enhanced content styling */
         .content-wrapper {
             max-width: 1200px;
             margin: 0 auto;
@@ -20,96 +22,196 @@
             margin-bottom: 30px;
             background-color: #ffffff;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .content-box:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .content-box h2 {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
+            color: #1976d2;
+            border-bottom: 3px solid linear-gradient(to right, #1976d2, #00796b);
             padding-bottom: 10px;
             margin-bottom: 20px;
             font-size: 24px;
         }
 
-        /* Unit grid styling */
+        /* Unit grid with enhanced cards */
         .units-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
             margin: 25px 0;
         }
 
         .unit-card {
-            padding: 20px;
-            border-radius: 8px;
-            background: #f8f9fa;
-            transition: transform 0.3s ease;
+            padding: 25px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f8f9fa, #e3f2fd);
+            transition: all 0.3s ease;
             border: 1px solid #e0e0e0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .unit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, #1976d2, #00796b);
         }
 
         .unit-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(25, 118, 210, 0.15);
         }
 
         .unit-card h3 {
-            color: #3498db;
-            margin-bottom: 10px;
+            color: #1976d2;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            font-weight: 600;
         }
 
         .unit-card p {
             color: #34495e;
-            line-height: 1.5;
-        }
-
-        /* Outcomes list styling */
-        .outcomes-list {
-            columns: 2;
-            gap: 30px;
-            padding-left: 20px;
-        }
-
-        .outcomes-list li {
-            margin-bottom: 12px;
-            break-inside: avoid;
             line-height: 1.6;
-            position: relative;
-            padding-left: 25px;
+            margin-bottom: 20px;
         }
 
-        .outcomes-list li::before {
-            content: "▹";
-            position: absolute;
-            left: 0;
-            color: #2ecc71;
+        /* Interactive buttons */
+        .unit-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .practice-btn {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+        }
+
+        .practice-btn:hover {
+            background: linear-gradient(135deg, #27ae60, #229954);
+            transform: translateY(-2px);
+        }
+
+        .pdf-btn {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+
+        .pdf-btn:hover {
+            background: linear-gradient(135deg, #c0392b, #a93226);
+            transform: translateY(-2px);
+        }
+
+        .explore-btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+
+        .explore-btn:hover {
+            background: linear-gradient(135deg, #2980b9, #21618c);
+            transform: translateY(-2px);
+        }
+
+        /* Progress tracking section */
+        .progress-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+        }
+
+        .progress-section h2 {
+            color: white;
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .progress-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .progress-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
 
         /* Resources section */
         .resources-box {
-            background: #f8f9fa;
-            border-color: #2ecc71;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            border: none;
         }
 
-        .resources-box h3 {
-            color: #2ecc71;
-            margin-bottom: 15px;
+        .resources-box h2 {
+            color: white;
+            border-color: rgba(255,255,255,0.3);
         }
 
         .resource-link {
             display: flex;
             align-items: center;
-            padding: 12px;
-            margin: 10px 0;
-            background: white;
-            border-radius: 6px;
-            transition: transform 0.3s ease;
+            padding: 15px 20px;
+            margin: 15px 0;
+            background: rgba(255,255,255,0.9);
+            border-radius: 10px;
+            transition: all 0.3s ease;
             text-decoration: none;
-            color: #34495e;
-            border: 1px solid #e0e0e0;
+            color: #2c3e50;
+            font-weight: 500;
         }
 
         .resource-link:hover {
-            transform: translateX(5px);
-            border-color: #3498db;
+            transform: translateX(10px);
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .resource-icon {
+            font-size: 1.5em;
+            margin-right: 15px;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .units-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .unit-actions {
+                flex-direction: column;
+            }
+            
+            .action-btn {
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -117,101 +219,229 @@
     <header>
         <h1>Ms. Terkper's Digital Classroom</h1>
     </header>
+    
     <div id="navbar-placeholder"></div>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    fetch('navbar.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-      })
-      .catch(err => console.error("Navbar failed to load:", err));
-  });
-</script>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('navbar.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                })
+                .catch(err => console.error("Navbar failed to load:", err));
+        });
+    </script>
 
     <main>
         <div class="content-wrapper">
             <div class="content-box">
-                <h2>Math 8 Curriculum</h2>
+                <h2>Grade 8 Mathematics - Interactive Learning Hub</h2>
+                <p>Welcome to your comprehensive Grade 8 math journey! Explore each unit with interactive practice tests, downloadable study guides, and engaging activities. All content is aligned with Alberta Education standards and designed to strengthen mathematical reasoning and problem-solving skills.</p>
                 
-                <h3>Course Units</h3>
                 <div class="units-grid">
                     <article class="unit-card">
                         <h3>Unit 1: Square Roots & Pythagorean Theorem</h3>
-                        <p>Calculate square roots and apply the Pythagorean theorem.</p>
-                        <a href="m8_unit1.html" class="resource-link">Practice Unit 1 →</a>
+                        <p>Calculate square roots and apply the Pythagorean theorem to solve real-world problems involving right triangles and geometric relationships.</p>
+                        <div class="unit-actions">
+                            <a href="m8_unit1_practice.html" class="action-btn practice-btn">
+                                Interactive Practice
+                            </a>
+                            <a href="resources1/M8_Square Roots_The_Pythagorean_Theorem.pdf" class="action-btn pdf-btn">
+                                Study Guide PDF
+                            </a>
+                        </div>
                     </article>
 
                     <article class="unit-card">
                         <h3>Unit 2: Integer Operations</h3>
-                        <p>Master positive/negative number operations.</p>
-                        <a href="m8_unit2.html" class="resource-link">Practice Unit 2 →</a>
+                        <p>Master operations with positive and negative numbers using visual models, number lines, and real-world contexts.</p>
+                        <div class="unit-actions">
+                            <a href="m8_unit2_practice.html" class="action-btn practice-btn">
+                                Interactive Practice
+                            </a>
+                            <a href="resources1/M8_Integers.pdf" class="action-btn pdf-btn">
+                                Study Guide PDF
+                            </a>
+                        </div>
                     </article>
 
                     <article class="unit-card">
-                        <h3>Unit 3: Fraction Operations</h3>
-                        <p>Solve complex fraction problems.</p>
-                        <a href="m8_unit3.html" class="resource-link">Practice Unit 3 →</a>
+                        <h3>Unit 3: Operations with Fractions</h3>
+                        <p>Solve complex fraction problems including multiplication, division, and mixed operations with proper mathematical reasoning.</p>
+                        <div class="unit-actions">
+                            <a href="m8_unit3_practice.html" class="action-btn practice-btn">
+                                Interactive Practice
+                            </a>
+                            <a href="resources1/M8_Operations_with_fractions.pdf" class="action-btn pdf-btn">
+                                Study Guide PDF
+                            </a>
+                        </div>
                     </article>
 
                     <article class="unit-card">
                         <h3>Unit 4: Prisms & Cylinders</h3>
-                        <p>Calculate surface area and volume.</p>
-                        <a href="m8_unit4.html" class="resource-link">Practice Unit 4 →</a>
+                        <p>Calculate surface area and volume of 3D shapes using nets, formulas, and geometric visualization techniques.</p>
+                        <div class="unit-actions">
+                            <a href="m8_unit4_practice.html" class="action-btn practice-btn">
+                                Interactive Practice
+                            </a>
+                            <a href="resources1/M8_Prisms_Cylinders.pdf" class="action-btn pdf-btn">
+                                Study Guide PDF
+                            </a>
+                        </div>
                     </article>
 
                     <article class="unit-card">
                         <h3>Unit 5: Percent, Ratio & Rate</h3>
-                        <p>Analyze real-world data using proportional reasoning and conversion strategies.</p>
-                        <a href="m8_unit5.html" class="resource-link">Practice Unit 5 →</a>
+                        <p>Analyze real-world data using proportional reasoning, conversion strategies, and percentage calculations in various contexts.</p>
+                        <div class="unit-actions">
+                            <a href="m8_unit5_practice.html" class="action-btn practice-btn">
+                                Interactive Practice
+                            </a>
+                            <a href="resources1/M8_Percent_Ratio_Rate.pdf" class="action-btn pdf-btn">
+                                Study Guide PDF
+                            </a>
+                        </div>
                     </article>
 
                     <article class="unit-card">
-                        <h3>Unit 6: Linear Equations</h3>
-                        <p>Graph and solve equations.</p>
-                        <a href="m8_unit6.html" class="resource-link">Practice Unit 6 →</a>
+                        <h3>Unit 6: Linear Equations & Graphing</h3>
+                        <p>Graph linear relationships and solve equations using algebraic methods, balance scales, and coordinate systems.</p>
+                        <div class="unit-actions">
+                            <a href="m8_unit6_practice.html" class="action-btn practice-btn">
+                                Interactive Practice
+                            </a>
+                            <a href="resources1/M8_Linear_Equations.pdf" class="action-btn pdf-btn">
+                                Study Guide PDF
+                            </a>
+                        </div>
                     </article>
 
                     <article class="unit-card">
-                        <h3>Unit 7: Data & Probability</h3>
-                        <p>Predict outcomes using probability models and statistical analysis.</p>
-                        <a href="m8_unit7.html" class="resource-link">Practice Unit 7 →</a>
-                    </article>
+                        <h3>Unit 7: Data Analysis & Probability</h3>
+                        <p>Predict outcomes using probability models and statistical analysis, interpreting graphs and making data-driven decisions.</p>
+                        <div class="unit-actions">
+                            <a href="m8_unit7_practice.html" class="action-btn practice-btn">
+                                Interactive Practice
+                            </a>
+                            <a href="resources1/M8_Data_Analysis_Probability.pdf" class="action-btn pdf-btn">
+                                Study Guide PDF
+                            </a>
 
                     <article class="unit-card">
                         <h3>Unit 8: Transformational Geometry</h3>
                         <p>Rotations, reflections, and translations questions.</p>
                         <a href="m8_unit8.html" class="resource-link">Practice Unit 8 →</a>
                     </article>
+                            
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="content-box progress-section">
+                <h2>Your Math 8 Progress</h2>
+                <p>Track your learning journey through Grade 8 Mathematics with comprehensive assessment and practice opportunities.</p>
+                <div class="progress-grid">
+                    <div class="progress-item">
+                        <div class="progress-number">7</div>
+                        <p>Core Units</p>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-number">250+</div>
+                        <p>Practice Questions</p>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-number">100%</div>
+                        <p>Alberta Aligned</p>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-number">8</div>
+                        <p>Learning Outcomes</p>
+                    </div>
                 </div>
             </div>
 
             <div class="content-box">
-                <h2>Alberta Math 8 Outcomes</h2>
-                <ul class="outcomes-list">
-                    <li>Execute operations with integers and rational numbers</li>
-                    <li>Apply Pythagorean theorem in 2D/3D contexts</li>
-                    <li>Solve linear equations and graph relationships</li>
-                    <li>Calculate surface area/volume of prisms/cylinders</li>
-                    <li>Analyze data using measures of central tendency</li>
-                    <li>Determine probabilities for independent events</li>
-                    <li>Demonstrate transformational geometry concepts</li>
-                    <li>Communicate mathematical reasoning clearly</li>
-                </ul>
+                <h2>Alberta Math 8 Learning Outcomes</h2>
+                <div style="columns: 2; gap: 30px; padding-left: 20px;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 12px; break-inside: avoid; line-height: 1.6; position: relative; padding-left: 25px;">
+                            <span style="position: absolute; left: 0; color: #2ecc71;">▹</span>
+                            Execute operations with integers and rational numbers using multiple strategies
+                        </li>
+                        <li style="margin-bottom: 12px; break-inside: avoid; line-height: 1.6; position: relative; padding-left: 25px;">
+                            <span style="position: absolute; left: 0; color: #2ecc71;">▹</span>
+                            Apply Pythagorean theorem in 2D and 3D problem-solving contexts
+                        </li>
+                        <li style="margin-bottom: 12px; break-inside: avoid; line-height: 1.6; position: relative; padding-left: 25px;">
+                            <span style="position: absolute; left: 0; color: #2ecc71;">▹</span>
+                            Solve linear equations and graph linear relationships accurately
+                        </li>
+                        <li style="margin-bottom: 12px; break-inside: avoid; line-height: 1.6; position: relative; padding-left: 25px;">
+                            <span style="position: absolute; left: 0; color: #2ecc71;">▹</span>
+                            Calculate surface area and volume of prisms and cylinders
+                        </li>
+                        <li style="margin-bottom: 12px; break-inside: avoid; line-height: 1.6; position: relative; padding-left: 25px;">
+                            <span style="position: absolute; left: 0; color: #2ecc71;">▹</span>
+                            Analyze data using measures of central tendency and spread
+                        </li>
+                        <li style="margin-bottom: 12px; break-inside: avoid; line-height: 1.6; position: relative; padding-left: 25px;">
+                            <span style="position: absolute; left: 0; color: #2ecc71;">▹</span>
+                            Determine probabilities for independent and dependent events
+                        </li>
+                        <li style="margin-bottom: 12px; break-inside: avoid; line-height: 1.6; position: relative; padding-left: 25px;">
+                            <span style="position: absolute; left: 0; color: #2ecc71;">▹</span>
+                            Apply proportional reasoning to solve percent, ratio, and rate problems
+                        </li>
+                        <li style="margin-bottom: 12px; break-inside: avoid; line-height: 1.6; position: relative; padding-left: 25px;">
+                            <span style="position: absolute; left: 0; color: #2ecc71;">▹</span>
+                            Communicate mathematical reasoning clearly using appropriate terminology
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <div class="content-box resources-box">
-                <h3>Learning Resources</h3>
-                <a href="m8_diagnostic.html" class="resource-link">Diagnostic Practice Test</a>
-                <a href="#" class="resource-link">3D Geometry Simulator</a>
-                <a href="#" class="resource-link">Probability Challenge Games</a>
-                <a href="#" class="resource-link">Video Solution Library</a>
+                <h2>Additional Learning Resources</h2>
+                <a href="interactive-math-tools.html" class="resource-link">
+                    <span class="resource-icon">🔧</span>
+                    Interactive Math Tools & Calculators
+                </a>
+                <a href="progress-dashboard.html" class="resource-link">
+                    <span class="resource-icon">📊</span>
+                    Student Progress Dashboard
+                </a>
+                <a href="final_review1.html" class="resource-link">
+                    <span class="resource-icon">📝</span>
+                    Final Review Practice Tests
+                </a>
+                <a href="essential-skills-review.html" class="resource-link">
+                    <span class="resource-icon">⭐</span>
+                    Essential Skills Review
+                </a>
             </div>
         </div>
     </main>
-    <footer>
-        <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+
+    <footer style="background: linear-gradient(135deg, #2c3e50, #3498db); color: white; text-align: center; padding: 40px 20px; margin-top: 50px; border-radius: 0;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <p style="font-size: 1.1em; margin-bottom: 20px; font-weight: 500;">Connect with Ms. Terkper's Digital Classroom</p>
+            <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 20px;">
+                <a href="mailto:terkperhannah@gmail.com" style="color: #ecf0f1; text-decoration: none; font-weight: 500; transition: color 0.3s ease;">
+                    📧 terkperhannah@gmail.com
+                </a>
+                <a href="https://instagram.com/hannah.attempts.teaching" target="_blank" style="color: #ecf0f1; text-decoration: none; font-weight: 500; transition: color 0.3s ease;">
+                    📱 Instagram: hannah.attempts.teaching
+                </a>
+                <a href="https://tiktok.com/@hannah.attempts.teaching" target="_blank" style="color: #ecf0f1; text-decoration: none; font-weight: 500; transition: color 0.3s ease;">
+                    🎵 TikTok: hannah.attempts.teaching
+                </a>
+            </div>
+            <p style="margin: 0; opacity: 0.8; font-size: 0.9em;">© 2025 Ms. Terkper's Digital Classroom. Empowering students through interactive learning.</p>
+        </div>
     </footer>
+
+    <script src="universal-mobile-fix.js"></script>
 </body>
 </html>
