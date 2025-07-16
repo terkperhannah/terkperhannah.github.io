@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math 7</title>
+    <title>Math 7 - Ms. Terkper's Digital Classroom</title>
+    <meta name="description" content="Comprehensive Grade 7 Mathematics curriculum with interactive practice tests, downloadable PDFs, and engaging activities aligned with Alberta standards.">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Consistent content box styling */
+        /* Enhanced content styling */
         .content-wrapper {
             max-width: 1200px;
             margin: 0 auto;
@@ -20,96 +22,196 @@
             margin-bottom: 30px;
             background-color: #ffffff;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .content-box:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .content-box h2 {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
+            color: #1976d2;
+            border-bottom: 3px solid linear-gradient(to right, #1976d2, #00796b);
             padding-bottom: 10px;
             margin-bottom: 20px;
             font-size: 24px;
         }
 
-        /* Unit grid styling */
+        /* Unit grid with enhanced cards */
         .units-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
             margin: 25px 0;
         }
 
         .unit-card {
-            padding: 20px;
-            border-radius: 8px;
-            background: #f8f9fa;
-            transition: transform 0.3s ease;
+            padding: 25px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f8f9fa, #e3f2fd);
+            transition: all 0.3s ease;
             border: 1px solid #e0e0e0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .unit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, #1976d2, #00796b);
         }
 
         .unit-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(25, 118, 210, 0.15);
         }
 
         .unit-card h3 {
-            color: #3498db;
-            margin-bottom: 10px;
+            color: #1976d2;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            font-weight: 600;
         }
 
         .unit-card p {
             color: #34495e;
-            line-height: 1.5;
-        }
-
-        /* Outcomes list styling */
-        .outcomes-list {
-            columns: 2;
-            gap: 30px;
-            padding-left: 20px;
-        }
-
-        .outcomes-list li {
-            margin-bottom: 12px;
-            break-inside: avoid;
             line-height: 1.6;
-            position: relative;
-            padding-left: 25px;
+            margin-bottom: 20px;
         }
 
-        .outcomes-list li::before {
-            content: "▹";
-            position: absolute;
-            left: 0;
-            color: #2ecc71;
+        /* Interactive buttons */
+        .unit-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .practice-btn {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+        }
+
+        .practice-btn:hover {
+            background: linear-gradient(135deg, #27ae60, #229954);
+            transform: translateY(-2px);
+        }
+
+        .pdf-btn {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+
+        .pdf-btn:hover {
+            background: linear-gradient(135deg, #c0392b, #a93226);
+            transform: translateY(-2px);
+        }
+
+        .explore-btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+
+        .explore-btn:hover {
+            background: linear-gradient(135deg, #2980b9, #21618c);
+            transform: translateY(-2px);
+        }
+
+        /* Progress tracking section */
+        .progress-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+        }
+
+        .progress-section h2 {
+            color: white;
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .progress-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .progress-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
 
         /* Resources section */
         .resources-box {
-            background: #f8f9fa;
-            border-color: #2ecc71;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            border: none;
         }
 
-        .resources-box h3 {
-            color: #2ecc71;
-            margin-bottom: 15px;
+        .resources-box h2 {
+            color: white;
+            border-color: rgba(255,255,255,0.3);
         }
 
         .resource-link {
             display: flex;
             align-items: center;
-            padding: 12px;
-            margin: 10px 0;
-            background: white;
-            border-radius: 6px;
-            transition: transform 0.3s ease;
+            padding: 15px 20px;
+            margin: 15px 0;
+            background: rgba(255,255,255,0.9);
+            border-radius: 10px;
+            transition: all 0.3s ease;
             text-decoration: none;
-            color: #34495e;
-            border: 1px solid #e0e0e0;
+            color: #2c3e50;
+            font-weight: 500;
         }
 
         .resource-link:hover {
-            transform: translateX(5px);
-            border-color: #3498db;
+            transform: translateX(10px);
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .resource-icon {
+            font-size: 1.5em;
+            margin-right: 15px;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .units-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .unit-actions {
+                flex-direction: column;
+            }
+            
+            .action-btn {
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -117,103 +219,297 @@
     <header>
         <h1>Ms. Terkper's Digital Classroom</h1>
     </header>
+    
     <div id="navbar-placeholder"></div>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    fetch('navbar.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-      })
-      .catch(err => console.error("Navbar failed to load:", err));
-  });
-</script>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('navbar.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                })
+                .catch(err => console.error("Navbar failed to load:", err));
+        });
+    </script>
 
     <main>
         <div class="content-wrapper">
             <div class="content-box">
-                <h2>Math 7 Curriculum</h2>
-                <p>Explore our comprehensive Math 7 program aligned with Alberta's curriculum standards. Engage with interactive resources and build strong mathematical foundations.</p>
+                <h2>📚 Grade 7 Mathematics - Interactive Learning Hub</h2>
+                <p>Welcome to your comprehensive Grade 7 math journey! Explore each unit with interactive practice tests, downloadable study guides, and engaging activities. All content is aligned with Alberta Education standards and designed to build strong mathematical foundations.</p>
                 
-                <h3>Course Units</h3>
                 <div class="units-grid">
                     <article class="unit-card">
-    <h3>Unit 1: Patterns & Relations</h3>
-    <p>Use patterns to explore divisibility rules.</p>
-    <a href="m7_unit1.html" class="resource-link">Explore Patterns →</a>
-</article>
+                        <h3>Unit 1: Patterns & Relations</h3>
+                        <p>Master divisibility rules, explore number patterns, and build algebraic thinking with hands-on activities and real-world applications.</p>
+                        <div class="unit-actions">
+                            <a href="m7_unit1_practice.html" class="action-btn practice-btn">
+                                🎯 Interactive Practice
+                            </a>
+                            <a href="#" onclick="openPDF('M7_Patterns_Relations.pdf')" class="action-btn pdf-btn">
+                                📄 Study Guide PDF
+                            </a>
+                        </div>
+                    </article>
 
-<article class="unit-card">
-    <h3>Unit 2: Integers</h3>
-    <p>Adding & Subtracting Integers.</p>
-    <a href="m7_unit2.html" class="resource-link">Practice Integers →</a>
-</article>
+                    <article class="unit-card">
+                        <h3>Unit 2: Integers</h3>
+                        <p>Dive into positive and negative numbers with visual models, number lines, and practical problem-solving scenarios.</p>
+                        <div class="unit-actions">
+                            <a href="m7_unit2_practice.html" class="action-btn practice-btn">
+                                🎯 Interactive Practice
+                            </a>
+                            <a href="#" onclick="openPDF('M7_Integers.pdf')" class="action-btn pdf-btn">
+                                📄 Study Guide PDF
+                            </a>
+                        </div>
+                    </article>
 
-<article class="unit-card">
-    <h3>Unit 3: Fractions, Decimals, Percents</h3>
-    <p>Convert between forms and solve word problems.</p>
-    <a href="m7_unit3.html" class="resource-link">Convert Numbers →</a>
-</article>
+                    <article class="unit-card">
+                        <h3>Unit 3: Fractions, Decimals & Percents</h3>
+                        <p>Convert between number forms, solve real-world problems, and build confidence with rational numbers through step-by-step practice.</p>
+                        <div class="unit-actions">
+                            <a href="m7_unit3_practice.html" class="action-btn practice-btn">
+                                🎯 Interactive Practice
+                            </a>
+                            <a href="#" onclick="openPDF('M7_Fractions_Decimals_Percentage.pdf')" class="action-btn pdf-btn">
+                                📄 Study Guide PDF
+                            </a>
+                        </div>
+                    </article>
 
-<article class="unit-card">
-    <h3>Unit 4: Circles & Area</h3>
-    <p>Investigate and explain the relationships among the radius, diameter, and circumference of a circle.</p>
-    <a href="m7_unit4.html" class="resource-link">Design Circles →</a>
-</article>
+                    <article class="unit-card">
+                        <h3>Unit 4: Circles & Area</h3>
+                        <p>Explore relationships between radius, diameter, and circumference while calculating areas of various shapes with practical applications.</p>
+                        <div class="unit-actions">
+                            <a href="m7_unit4_practice.html" class="action-btn practice-btn">
+                                🎯 Interactive Practice
+                            </a>
+                            <a href="#" onclick="openPDF('M7_Circles_Area.pdf')" class="action-btn pdf-btn">
+                                📄 Study Guide PDF
+                            </a>
+                        </div>
+                    </article>
 
-<article class="unit-card">
-    <h3>Unit 5: Fraction Operations</h3>
-    <p>Add/subtract/multiply/divide fraction.</p>
-    <a href="m7_unit5.html" class="resource-link">Work with Fractions →</a>
-</article>
+                    <article class="unit-card">
+                        <h3>Unit 5: Fraction Operations</h3>
+                        <p>Master adding, subtracting, multiplying, and dividing fractions with visual models and real-world problem solving.</p>
+                        <div class="unit-actions">
+                            <a href="m7_unit5_practice.html" class="action-btn practice-btn">
+                                🎯 Interactive Practice
+                            </a>
+                            <a href="#" onclick="openPDF('M7_operations_fractions.pdf')" class="action-btn pdf-btn">
+                                📄 Study Guide PDF
+                            </a>
+                        </div>
+                    </article>
 
-<article class="unit-card">
-    <h3>Unit 6: Equations</h3>
-    <p>Solve algebraic equations through balance scales and real-world problem solving.</p>
-    <a href="m7_unit6.html" class="resource-link">Solve Equations →</a>
-</article>
+                    <article class="unit-card">
+                        <h3>Unit 6: Equations</h3>
+                        <p>Solve algebraic equations using balance models, develop problem-solving strategies, and connect math to everyday situations.</p>
+                        <div class="unit-actions">
+                            <a href="m7_unit6_practice.html" class="action-btn practice-btn">
+                                🎯 Interactive Practice
+                            </a>
+                            <a href="#" onclick="openPDF('M7_Equations.pdf')" class="action-btn pdf-btn">
+                                📄 Study Guide PDF
+                            </a>
+                        </div>
+                    </article>
 
-<article class="unit-card">
-    <h3>Unit 7: Data Analysis</h3>
-    <p>Interpret graphs and statistics.</p>
-    <a href="m7_unit7.html" class="resource-link">Analyze Data →</a>
-</article>
+                    <article class="unit-card">
+                        <h3>Unit 7: Data Analysis</h3>
+                        <p>Interpret graphs, calculate statistics, understand probability, and make data-driven decisions in real-world contexts.</p>
+                        <div class="unit-actions">
+                            <a href="m7_unit7_practice.html" class="action-btn practice-btn">
+                                🎯 Interactive Practice
+                            </a>
+                            <a href="#" onclick="openPDF('M7_Data_Analysis.pdf')" class="action-btn pdf-btn">
+                                📄 Study Guide PDF
+                            </a>
+                        </div>
+                    </article>
 
-<article class="unit-card">
-    <h3>Unit 8: Geometry</h3>
-    <p>Explore symmetry and transformations.</p>
-    <a href="m7_unit8.html" class="resource-link">Create Geometry →</a>
-</article>
+                    <article class="unit-card">
+                        <h3>Unit 8: Geometry</h3>
+                        <p>Explore symmetry, transformations, and spatial reasoning through hands-on activities and creative design challenges.</p>
+                        <div class="unit-actions">
+                            <a href="m7_unit8_practice.html" class="action-btn practice-btn">
+                                🎯 Interactive Practice
+                            </a>
+                            <a href="m7_geometry_activities.html" class="action-btn explore-btn">
+                                🔍 Explore Activities
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="content-box progress-section">
+                <h2>📊 Your Learning Progress</h2>
+                <div class="progress-grid">
+                    <div class="progress-item">
+                        <div class="progress-number">8</div>
+                        <p>Units Available</p>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-number">200+</div>
+                        <p>Practice Questions</p>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-number">7</div>
+                        <p>Study Guide PDFs</p>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-number">100%</div>
+                        <p>Alberta Aligned</p>
+                    </div>
                 </div>
             </div>
 
             <div class="content-box">
-                <h2>Alberta Math 7 Outcomes</h2>
-                <ul class="outcomes-list">
-                    <li>Develop number sense with fractions, decimals, and percents</li>
-                    <li>Analyze patterns and algebraic relationships</li>
-                    <li>Apply geometric properties and transformations</li>
-                    <li>Interpret data using statistical methods</li>
-                    <li>Solve real-world problems mathematically</li>
-                    <li>Communicate mathematical reasoning effectively</li>
-                    <li>Demonstrate perseverance in problem-solving</li>
-                    <li>Connect mathematics to daily life</li>
-                </ul>
+                <h2>🎯 Alberta Math 7 Learning Outcomes</h2>
+                <div style="columns: 2; gap: 30px; padding: 20px 0;">
+                    <div style="break-inside: avoid; margin-bottom: 15px; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #1976d2;">
+                        <strong>Number Sense:</strong> Develop fluency with fractions, decimals, and percents in real-world contexts
+                    </div>
+                    <div style="break-inside: avoid; margin-bottom: 15px; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #00796b;">
+                        <strong>Patterns & Relations:</strong> Analyze mathematical patterns and solve algebraic equations
+                    </div>
+                    <div style="break-inside: avoid; margin-bottom: 15px; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #1976d2;">
+                        <strong>Geometry:</strong> Apply geometric properties and explore transformations and symmetry
+                    </div>
+                    <div style="break-inside: avoid; margin-bottom: 15px; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #00796b;">
+                        <strong>Statistics:</strong> Collect, organize, and interpret data using statistical methods
+                    </div>
+                    <div style="break-inside: avoid; margin-bottom: 15px; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #1976d2;">
+                        <strong>Problem Solving:</strong> Apply mathematical reasoning to solve complex real-world problems
+                    </div>
+                    <div style="break-inside: avoid; margin-bottom: 15px; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #00796b;">
+                        <strong>Communication:</strong> Express mathematical thinking clearly using proper terminology
+                    </div>
+                </div>
             </div>
 
             <div class="content-box resources-box">
-                <h3>Learning Resources</h3>
-                <a href="resources1/Math-Makes-Sense-7.pdf" class="resource-link">Math Makes Sense 7 Textbook</a>
-                <a href="m7_diagnostic.html" class="resource-link">Diagnostic Practice Test</a>
-                <a href="#" class="resource-link">Video Tutorial Library</a>
-                <a href="#" class="resource-link">Downloadable Worksheets</a>
-                <a href="#" class="resource-link">Assessment Guides</a>
+                <h2>🚀 Additional Learning Resources</h2>
+                <a href="math7_complete_review.html" class="resource-link">
+                    <span class="resource-icon">📋</span>
+                    <span>Complete Math 7 Review Test</span>
+                </a>
+                <a href="math7_diagnostic.html" class="resource-link">
+                    <span class="resource-icon">🎯</span>
+                    <span>Diagnostic Assessment</span>
+                </a>
+                <a href="interactive-math-tools.html" class="resource-link">
+                    <span class="resource-icon">🛠️</span>
+                    <span>Interactive Math Tools</span>
+                </a>
+                <a href="math7_study_guides.html" class="resource-link">
+                    <span class="resource-icon">📚</span>
+                    <span>Study Guides & Worksheets</span>
+                </a>
+                <a href="progress-dashboard.html" class="resource-link">
+                    <span class="resource-icon">📊</span>
+                    <span>Progress Dashboard</span>
+                </a>
             </div>
         </div>
     </main>
-    <footer>
-        <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+
+    <footer style="
+        background: linear-gradient(to right, #1976d2, #00796b);
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        margin-top: 40px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    ">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h3 style="margin: 0 0 20px 0; font-size: 1.4em; font-weight: 600;">Connect with Ms. Terkper</h3>
+            
+            <div style="display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 25px; flex-wrap: wrap;">
+                <!-- Email -->
+                <a href="mailto:terkperhannah@gmail.com" style="
+                    color: white;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 12px 20px;
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 25px;
+                    transition: all 0.3s ease;
+                    font-size: 0.95em;
+                " onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'" title="Click to email terkperhannah@gmail.com">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    terkperhannah@gmail.com
+                </a>
+                
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/hannah.attempts.teaching/" target="_blank" style="
+                    color: white;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 12px 20px;
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 25px;
+                    transition: all 0.3s ease;
+                    font-size: 0.95em;
+                " onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3z"/>
+                    </svg>
+                    Instagram
+                </a>
+                
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@hannah.attempts.teaching" target="_blank" style="
+                    color: white;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 12px 20px;
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 25px;
+                    transition: all 0.3s ease;
+                    font-size: 0.95em;
+                " onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/>
+                    </svg>
+                    TikTok
+                </a>
+            </div>
+            
+            <div style="
+                border-top: 1px solid rgba(255,255,255,0.2);
+                padding-top: 20px;
+                font-size: 0.9em;
+                opacity: 0.9;
+                line-height: 1.6;
+            ">
+                <p style="margin: 0 0 8px 0;">Hannah Terkper | STEM Educator</p>
+                <p style="margin: 0; font-size: 0.85em;">
+                    Original content licensed under 
+                    <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color: #e3f2fd; text-decoration: underline;">CC BY 4.0</a>
+                </p>
+            </div>
+        </div>
     </footer>
+
+    <script src="universal-mobile-fix.js"></script>
+    <script>
+        function openPDF(filename) {
+            // Create a modal or new window to display PDF
+            window.open(`resources/math7/${filename}`, '_blank');
+        }
+    </script>
 </body>
 </html>
