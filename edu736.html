@@ -102,9 +102,15 @@
             font-size: 0.95rem;
         }
 
-        input[type="password"] {
+        .password-input-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="password"], input[type="text"] {
             width: 100%;
-            padding: 15px 20px;
+            padding: 15px 50px 15px 20px;
             border: 2px solid #e1e1e1;
             border-radius: 12px;
             font-size: 1rem;
@@ -113,11 +119,45 @@
             background: rgba(255, 255, 255, 0.9);
         }
 
-        input[type="password"]:focus {
+        input[type="password"]:focus, input[type="text"]:focus {
             outline: none;
             border-color: var(--primary-blue);
             box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
             background: white;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            cursor: pointer;
+            color: #666;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+            user-select: none;
+        }
+
+        .toggle-password:hover {
+            color: var(--primary-blue);
+        }
+
+        .show-password-text {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .show-password-text button {
+            background: none;
+            border: none;
+            color: var(--primary-blue);
+            text-decoration: underline;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+        }
+
+        .show-password-text button:hover {
+            color: var(--primary-teal);
         }
 
         .login-btn {
@@ -200,7 +240,13 @@
         <form id="loginForm">
             <div class="form-group">
                 <label for="password">Access Code</label>
-                <input type="password" id="password" name="password" placeholder="Enter access code" required>
+                <div class="password-input-container">
+                    <input type="password" id="password" name="password" placeholder="Enter access code" required>
+                    <span class="toggle-password" onclick="togglePasswordVisibility()">👁️</span>
+                </div>
+                <div class="show-password-text">
+                    <button type="button" onclick="togglePasswordVisibility()">See what you've typed</button>
+                </div>
             </div>
             
             <button type="submit" class="login-btn">Access Leadership Portfolio</button>
@@ -242,6 +288,23 @@
                 }, 3000);
             }
         });
+
+        // Toggle password visibility
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById('password');
+            const toggleIcon = document.querySelector('.toggle-password');
+            const toggleText = document.querySelector('.show-password-text button');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleIcon.textContent = '🙈';
+                toggleText.textContent = 'Hide what you\'ve typed';
+            } else {
+                passwordField.type = 'password';
+                toggleIcon.textContent = '👁️';
+                toggleText.textContent = 'See what you\'ve typed';
+            }
+        }
 
         // Focus on password field when page loads
         window.addEventListener('load', function() {
