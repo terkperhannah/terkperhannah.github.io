@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Access Edu 736 Leadership Showcase - Hannah Terkper</title>
+    <title>Access Leadership Showcase - Hannah Terkper</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -102,15 +102,9 @@
             font-size: 0.95rem;
         }
 
-        .password-input-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
         input[type="password"], input[type="text"] {
             width: 100%;
-            padding: 15px 50px 15px 20px;
+            padding: 15px 20px;
             border: 2px solid #e1e1e1;
             border-radius: 12px;
             font-size: 1rem;
@@ -124,20 +118,6 @@
             border-color: var(--primary-blue);
             box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
             background: white;
-        }
-
-        .toggle-password {
-            position: absolute;
-            right: 15px;
-            cursor: pointer;
-            color: #666;
-            font-size: 1.2rem;
-            transition: color 0.3s ease;
-            user-select: none;
-        }
-
-        .toggle-password:hover {
-            color: var(--primary-blue);
         }
 
         .show-password-text {
@@ -240,10 +220,7 @@
         <form id="loginForm">
             <div class="form-group">
                 <label for="password">Access Code</label>
-                <div class="password-input-container">
-                    <input type="password" id="password" name="password" placeholder="Enter access code" required>
-                    <span class="toggle-password" onclick="togglePasswordVisibility()">👁️</span>
-                </div>
+                <input type="password" id="password" name="password" placeholder="Enter access code" required>
                 <div class="show-password-text">
                     <button type="button" onclick="togglePasswordVisibility()">See what you've typed</button>
                 </div>
@@ -292,16 +269,13 @@
         // Toggle password visibility
         function togglePasswordVisibility() {
             const passwordField = document.getElementById('password');
-            const toggleIcon = document.querySelector('.toggle-password');
             const toggleText = document.querySelector('.show-password-text button');
             
             if (passwordField.type === 'password') {
                 passwordField.type = 'text';
-                toggleIcon.textContent = '🙈';
                 toggleText.textContent = 'Hide what you\'ve typed';
             } else {
                 passwordField.type = 'password';
-                toggleIcon.textContent = '👁️';
                 toggleText.textContent = 'See what you\'ve typed';
             }
         }
