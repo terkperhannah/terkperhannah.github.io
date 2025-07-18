@@ -674,10 +674,13 @@
             <section class="section animate-on-scroll">
                 <div class="framework-showcase">
                     <div class="framework-tabs">
-                        <button class="tab-button active" onclick="showReferencesTab('references')">Academic References</button>
+                        <button class="tab-button" onclick="toggleReferences()" id="references-toggle">
+                            <span id="references-text">Show Academic References</span>
+                            <span id="references-arrow" style="margin-left: 8px; transition: transform 0.3s ease;">▼</span>
+                        </button>
                     </div>
 
-                    <div id="references" class="tab-content active">
+                    <div id="references" class="tab-content" style="display: none;">
                         <h2 style="text-align: center; margin-bottom: 30px;">References</h2>
                         <div style="text-align: left; max-width: 900px; margin: 0 auto; line-height: 1.8;">
                             <p style="margin-bottom: 20px; text-indent: -40px; padding-left: 40px;">
@@ -782,15 +785,27 @@
             event.target.classList.add('active');
         }
 
-        // References tab functionality
-        function showReferencesTab(tabName) {
-            // This is a standalone tab, so we just ensure it's visible
-            const content = document.getElementById(tabName);
-            const button = event.target;
+        // Collapsible references functionality
+        function toggleReferences() {
+            const content = document.getElementById('references');
+            const button = document.getElementById('references-toggle');
+            const text = document.getElementById('references-text');
+            const arrow = document.getElementById('references-arrow');
             
-            if (content && button) {
+            if (content.style.display === 'none' || content.style.display === '') {
+                // Show references
+                content.style.display = 'block';
                 content.classList.add('active');
                 button.classList.add('active');
+                text.textContent = 'Hide Academic References';
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                // Hide references
+                content.style.display = 'none';
+                content.classList.remove('active');
+                button.classList.remove('active');
+                text.textContent = 'Show Academic References';
+                arrow.style.transform = 'rotate(0deg)';
             }
         }
 
