@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hannah AI Tutor - Ms. Terkper's Digital Classroom</title>
+    <meta name="description" content="Meet Hannah, your friendly AI tutor for grades 7-12. Get personalized help with Math, Science, and more!">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1976d2;
+            --primary-teal: #00796b;
+            --accent-purple: #667eea;
+            --accent-pink: #f093fb;
+            --text-dark: #2c3e50;
+            --text-light: #34495e;
+            --success-green: #2ecc71;
+            --warning-orange: #f39c12;
+            --light-gray: #f8f9fa;
+            --chat-bg: #ffffff;
+            --user-message: #e3f2fd;
+            --ai-message: #f1f8e9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light-gray);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: -30px auto 0;
+            padding: 0 20px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .chat-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-teal));
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .hannah-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: white;
+            color: var(--primary-blue);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .chat-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .chat-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: var(--chat-bg);
+        }
+
+        .message {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .message.user .message-avatar {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .message.ai .message-avatar {
+            background: var(--success-green);
+            color: white;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 15px 20px;
+            border-radius: 20px;
+            line-height: 1.5;
+        }
+
+        .message.user .message-content {
+            background: var(--user-message);
+            border-bottom-right-radius: 5px;
+        }
+
+        .message.ai .message-content {
+            background: var(--ai-message);
+            border-bottom-left-radius: 5px;
+        }
+
+        .chat-input-area {
+            padding: 20px;
+            background: var(--light-gray);
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .usage-counter {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .input-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .chat-input:focus {
+            border-color: var(--primary-blue);
+        }
+
+        .send-button {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .send-button:hover:not(:disabled) {
+            background: var(--primary-teal);
+            transform: scale(1.05);
+        }
+
+        .send-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .feature-card:nth-child(1) .feature-icon { background: var(--primary-blue); }
+        .feature-card:nth-child(2) .feature-icon { background: var(--success-green); }
+        .feature-card:nth-child(3) .feature-icon { background: var(--warning-orange); }
+        .feature-card:nth-child(4) .feature-icon { background: var(--accent-purple); }
+
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .feature-description {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .typing-indicator {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            margin: 10px 0;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--success-green);
+            animation: typing 1.4s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes typing {
+            0%, 80%, 100% { opacity: 0.3; }
+            40% { opacity: 1; }
+        }
+
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .welcome-message {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-light);
+        }
+
+        .welcome-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .subject-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .subject-btn {
+            background: var(--light-gray);
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .subject-btn:hover {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+
+        @media (max-width: 768px) {
+            .hero-section { padding: 40px 20px; }
+            .content-wrapper { margin-top: -20px; }
+            .chat-container { height: 500px; }
+            .message-content { max-width: 85%; }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    
+    <div id="navbar-placeholder"></div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('navbar.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                })
+                .catch(err => console.error("Navbar failed to load:", err));
+        });
+    </script>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Meet Hannah, Your AI Tutor</h1>
+                <p class="hero-subtitle">Friendly, intelligent tutoring for grades 7-12</p>
+            </div>
+        </section>
+
+        <div class="content-wrapper">
+            <!-- Chat Interface -->
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div class="hannah-avatar">H</div>
+                    <h2 class="chat-title">Hannah AI Tutor</h2>
+                    <p class="chat-subtitle">Your friendly learning companion</p>
+                </div>
+
+                <div class="chat-messages" id="chatMessages">
+                    <div class="welcome-message">
+                        <h3 class="welcome-title">Hi! I'm Hannah 👋</h3>
+                        <p>I'm here to help you learn and succeed in your studies! I can help with Math, Science, English, and more for grades 7-12.</p>
+                        
+                        <div class="subject-buttons">
+                            <button class="subject-btn" onclick="startSubject('Math')">📊 Math Help</button>
+                            <button class="subject-btn" onclick="startSubject('Science')">🔬 Science Help</button>
+                            <button class="subject-btn" onclick="startSubject('English')">📚 English Help</button>
+                            <button class="subject-btn" onclick="startSubject('Study Tips')">💡 Study Tips</button>
+                        </div>
+                        
+                        <p style="font-size: 0.9rem; margin-top: 20px;">
+                            Just type your question below or click a subject to get started!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="typing-indicator" id="typingIndicator">
+                    <div class="message-avatar" style="background: var(--success-green); color: white;">H</div>
+                    <div style="background: var(--ai-message); padding: 10px 15px; border-radius: 15px; border-bottom-left-radius: 5px;">
+                        Hannah is thinking
+                        <div class="typing-dots">
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-area">
+                    <div class="usage-counter" id="usageCounter">
+                        Questions today: <span id="questionCount">0</span>/5
+                    </div>
+                    <div class="input-container">
+                        <input 
+                            type="text" 
+                            class="chat-input" 
+                            id="chatInput" 
+                            placeholder="Ask Hannah anything about your studies..."
+                            onkeypress="handleKeyPress(event)"
+                        >
+                        <button class="send-button" id="sendButton" onclick="sendMessage()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Adaptive Learning</h3>
+                    <p class="feature-description">Hannah analyzes your responses and creates personalized learning paths just for you</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3 class="feature-title">Intelligent Tutoring</h3>
+                    <p class="feature-description">Get instant feedback and step-by-step guidance through any problem</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3 class="feature-title">Progress Analytics</h3>
+                    <p class="feature-description">Track your learning patterns and see exactly where to focus your efforts</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3 class="feature-title">Custom Content</h3>
+                    <p class="feature-description">Hannah creates practice problems and explanations tailored to your needs</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="
+        background: linear-gradient(to right, #1976d2, #00796b);
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        margin-top: 40px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    ">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h3 style="margin: 0 0 20px 0; font-size: 1.4em; font-weight: 600;">Connect with Ms. Terkper</h3>
+            
+            <div style="display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 25px; flex-wrap: wrap;">
+                <!-- Email -->
+                <a href="mailto:terkperhannah@gmail.com" style="
+                    color: white;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 12px 20px;
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 25px;
+                    transition: all 0.3s ease;
+                    font-size: 0.95em;
+                " onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'" title="Click to email terkperhannah@gmail.com">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    terkperhannah@gmail.com
+                </a>
+                
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/hannah.attempts.teaching/" target="_blank" style="
+                    color: white;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 12px 20px;
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 25px;
+                    transition: all 0.3s ease;
+                    font-size: 0.95em;
+                " onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3z"/>
+                    </svg>
+                    Instagram
+                </a>
+                
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@hannah.attempts.teaching" target="_blank" style="
+                    color: white;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 12px 20px;
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 25px;
+                    transition: all 0.3s ease;
+                    font-size: 0.95em;
+                " onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/>
+                    </svg>
+                    TikTok
+                </a>
+            </div>
+            
+            <div style="
+                border-top: 1px solid rgba(255,255,255,0.2);
+                padding-top: 20px;
+                font-size: 0.9em;
+                opacity: 0.9;
+                line-height: 1.6;
+            ">
+                <p style="margin: 0 0 8px 0;">Hannah Terkper | STEM Educator</p>
+                <p style="margin: 0; font-size: 0.85em;">
+                    Original content licensed under 
+                    <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color: #e3f2fd; text-decoration: underline;">CC BY 4.0</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let messageHistory = [];
+        let questionCount = 0;
+        const maxQuestions = 5;
+
+        // Load usage from localStorage
+        function loadUsage() {
+            const today = new Date().toDateString();
+            const savedData = localStorage.getItem('hannahUsage');
+            
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                if (data.date === today) {
+                    questionCount = data.count;
+                } else {
+                    questionCount = 0;
+                    localStorage.setItem('hannahUsage', JSON.stringify({date: today, count: 0}));
+                }
+            } else {
+                localStorage.setItem('hannahUsage', JSON.stringify({date: today, count: 0}));
+            }
+            
+            updateUsageDisplay();
+        }
+
+        function updateUsage() {
+            questionCount++;
+            const today = new Date().toDateString();
+            localStorage.setItem('hannahUsage', JSON.stringify({date: today, count: questionCount}));
+            updateUsageDisplay();
+        }
+
+        function updateUsageDisplay() {
+            document.getElementById('questionCount').textContent = questionCount;
+            const sendButton = document.getElementById('sendButton');
+            const chatInput = document.getElementById('chatInput');
+            
+            if (questionCount >= maxQuestions) {
+                sendButton.disabled = true;
+                chatInput.disabled = true;
+                chatInput.placeholder = "Daily limit reached. Come back tomorrow!";
+            }
+        }
+
+        function startSubject(subject) {
+            const messages = {
+                'Math': `Hi! I'd love to help you with Math! What specific topic are you working on? Algebra, Geometry, Functions, or something else?`,
+                'Science': `Great choice! I can help with Biology, Chemistry, Physics, and more. What science topic interests you today?`,
+                'English': `Perfect! I can help with reading comprehension, writing, grammar, literature analysis, and more. What would you like to work on?`,
+                'Study Tips': `I'd be happy to share some effective study strategies! Are you looking for general study tips, test preparation strategies, or help with time management?`
+            };
+            
+            clearWelcomeMessage();
+            addMessage('ai', messages[subject]);
+        }
+
+        function clearWelcomeMessage() {
+            const welcomeMsg = document.querySelector('.welcome-message');
+            if (welcomeMsg) {
+                welcomeMsg.remove();
+            }
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (!message || questionCount >= maxQuestions) return;
+            
+            // Clear welcome message if present
+            clearWelcomeMessage();
+            
+            // Add user message
+            addMessage('user', message);
+            input.value = '';
+            
+            // Update usage
+            updateUsage();
+            
+            // Show typing indicator
+            showTypingIndicator();
+            
+            try {
+                // Send to Hannah AI
+                const response = await fetch('/api/hannah-chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        history: messageHistory.slice(-6) // Send last 6 messages for context
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                
+                const data = await response.json();
+                hideTypingIndicator();
+                addMessage('ai', data.response);
+                
+            } catch (error) {
+                hideTypingIndicator();
+                addMessage('ai', "I'm sorry, I'm having trouble connecting right now. Please try again in a moment!");
+                console.error('Error:', error);
+            }
+        }
+
+        function addMessage(sender, content) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            
+            const avatar = document.createElement('div');
+            avatar.className = 'message-avatar';
+            avatar.textContent = sender === 'user' ? 'You' : 'H';
+            
+            const messageContent = document.createElement('div');
+            messageContent.className = 'message-content';
+            messageContent.textContent = content;
+            
+            messageDiv.appendChild(avatar);
+            messageDiv.appendChild(messageContent);
+            messagesContainer.appendChild(messageDiv);
+            
+            // Store in history
+            messageHistory.push({sender, content});
+            
+            // Scroll to bottom
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            document.getElementById('typingIndicator').style.display = 'flex';
+            const messagesContainer = document.getElementById('chatMessages');
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            document.getElementById('typingIndicator').style.display = 'none';
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUsage();
+        });
+    </script>
+</body>
+</html>
