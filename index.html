@@ -124,6 +124,29 @@
                 padding: 10px !important;
             }
         }
+        
+        /* Animation keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -177,51 +200,277 @@
     </script>
 
     <main>
-        <script async src="https://cse.google.com/cse.js?cx=55023492bbb93437c"></script>
-        <div class="gcse-search"></div>
+        <!-- Hero Section -->
+        <section style="
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin: 0 0 40px 0;
+            position: relative;
+            overflow: hidden;
+        ">
+            <div style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"grain\" width=\"100\" height=\"100\" patternUnits=\"userSpaceOnUse\"><circle cx=\"50\" cy=\"50\" r=\"1\" fill=\"white\" fill-opacity=\"0.1\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23grain)\"/></svg>') repeat;
+                opacity: 0.3;
+            "></div>
+            <div style="position: relative; z-index: 2; max-width: 800px; margin: 0 auto;">
+                <h1 style="
+                    font-size: clamp(2.5rem, 6vw, 4rem);
+                    font-weight: 700;
+                    margin: 0 0 20px 0;
+                    text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+                    animation: fadeInUp 1s ease-out;
+                ">Ms. Terkper's Digital Classroom</h1>
+                <p style="
+                    font-size: clamp(1.2rem, 3vw, 1.5rem);
+                    font-weight: 300;
+                    margin: 0 0 30px 0;
+                    opacity: 0.95;
+                    animation: fadeInUp 1s ease-out 0.2s both;
+                ">Empowering STEM Learning Through Innovation & Technology</p>
+                <div style="
+                    display: flex;
+                    gap: 20px;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    animation: fadeInUp 1s ease-out 0.4s both;
+                ">
+                    <a href="hannah-ai-tutor.html" style="
+                        background: rgba(255,255,255,0.2);
+                        backdrop-filter: blur(10px);
+                        color: white;
+                        padding: 15px 30px;
+                        border-radius: 30px;
+                        text-decoration: none;
+                        font-weight: 500;
+                        transition: all 0.3s ease;
+                        border: 1px solid rgba(255,255,255,0.3);
+                    " onmouseover="this.style.background='rgba(255,255,255,0.3)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)'">
+                        Try Hannah AI Tutor
+                    </a>
+                    <a href="learning-toolkit-hub.html" style="
+                        background: white;
+                        color: #667eea;
+                        padding: 15px 30px;
+                        border-radius: 30px;
+                        text-decoration: none;
+                        font-weight: 600;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                    " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.2)'">
+                        Explore Learning Tools
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Section -->
+        <div style="text-align: center; margin: 0 0 40px 0; padding: 0 20px;">
+            <script async src="https://cse.google.com/cse.js?cx=55023492bbb93437c"></script>
+            <div class="gcse-search"></div>
+        </div>
+
+        <!-- Features Showcase -->
+        <section style="padding: 0 20px 40px 20px;" class="animate-on-scroll">
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <h2 style="
+                    text-align: center;
+                    font-size: clamp(2rem, 5vw, 2.5rem);
+                    color: #2c3e50;
+                    margin-bottom: 50px;
+                    font-weight: 700;
+                ">What Makes This Classroom Special?</h2>
+                
+                <div style="
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                    gap: 30px;
+                    margin-bottom: 50px;
+                ">
+                    <div style="
+                        background: white;
+                        padding: 30px;
+                        border-radius: 20px;
+                        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                        text-align: center;
+                        transition: all 0.3s ease;
+                        border: 1px solid #e8f4f8;
+                    " onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.1)'">
+                        <div style="
+                            width: 80px;
+                            height: 80px;
+                            background: linear-gradient(135deg, #667eea, #764ba2);
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin: 0 auto 20px auto;
+                            font-size: 2rem;
+                        ">🤖</div>
+                        <h3 style="
+                            font-size: 1.3rem;
+                            color: #2c3e50;
+                            margin-bottom: 15px;
+                            font-weight: 600;
+                        ">AI-Powered Tutoring</h3>
+                        <p style="
+                            color: #7f8c8d;
+                            line-height: 1.6;
+                            margin: 0;
+                        ">Meet Hannah, your personal AI tutor powered by Google Gemini. Get instant help with grades 7-12 subjects, personalized explanations, and 24/7 study support.</p>
+                    </div>
+                    
+                    <div style="
+                        background: white;
+                        padding: 30px;
+                        border-radius: 20px;
+                        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                        text-align: center;
+                        transition: all 0.3s ease;
+                        border: 1px solid #e8f4f8;
+                    " onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.1)'">
+                        <div style="
+                            width: 80px;
+                            height: 80px;
+                            background: linear-gradient(135deg, #00cec9, #0984e3);
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin: 0 auto 20px auto;
+                            font-size: 2rem;
+                        ">📚</div>
+                        <h3 style="
+                            font-size: 1.3rem;
+                            color: #2c3e50;
+                            margin-bottom: 15px;
+                            font-weight: 600;
+                        ">Comprehensive Resources</h3>
+                        <p style="
+                            color: #7f8c8d;
+                            line-height: 1.6;
+                            margin: 0;
+                        ">Access complete study guides, practice materials, and interactive tools for Math, Science, and Computer Science aligned with Alberta curriculum.</p>
+                    </div>
+                    
+                    <div style="
+                        background: white;
+                        padding: 30px;
+                        border-radius: 20px;
+                        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                        text-align: center;
+                        transition: all 0.3s ease;
+                        border: 1px solid #e8f4f8;
+                    " onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.1)'">
+                        <div style="
+                            width: 80px;
+                            height: 80px;
+                            background: linear-gradient(135deg, #fd79a8, #fdcb6e);
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin: 0 auto 20px auto;
+                            font-size: 2rem;
+                        ">🌟</div>
+                        <h3 style="
+                            font-size: 1.3rem;
+                            color: #2c3e50;
+                            margin-bottom: 15px;
+                            font-weight: 600;
+                        ">Innovation Focus</h3>
+                        <p style="
+                            color: #7f8c8d;
+                            line-height: 1.6;
+                            margin: 0;
+                        ">Explore cutting-edge educational technologies, emerging tools, and evidence-based learning strategies designed for the modern classroom.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
         
         <div class="content-wrapper">
-            <div class="content-box">
-                <h2 class="desktop-welcome">Welcome to My Digital Classroom!</h2>
-                <h2 class="mobile-welcome" style="display: none;">Welcome to Ms. Terkper's Mobile Digital Classroom!</h2>
+            <div class="content-box animate-on-scroll" style="
+                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+                border: none;
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            ">
+                <h2 class="desktop-welcome" style="
+                    color: #2c3e50;
+                    text-align: center;
+                    margin-bottom: 30px;
+                ">Welcome to My Digital Classroom!</h2>
+                <h2 class="mobile-welcome" style="
+                    display: none;
+                    color: #2c3e50;
+                    text-align: center;
+                    margin-bottom: 30px;
+                ">Welcome to Ms. Terkper's Mobile Digital Classroom!</h2>
                 <div class="mobile-notice" style="display: none; background: #e3f2fd; border: 2px solid #2196f3; border-radius: 8px; padding: 15px; margin-bottom: 20px; font-size: 0.95em; color: #1565c0;">
                     📱 You're viewing the mobile version. For full access to all interactive features and content, please visit on a desktop or laptop computer.
                 </div>
-                <p>
-    Hi! I'm Hannah Terkper, a STEM educator based in Edmonton with a love for learning, creativity, and helping students thrive. 
-    I hold a Bachelor of Education with a major in biological sciences, a minor in mathematics, and a certification in Sustainability. I’m currently pursuing my Master of Education in Emerging Technologies, where I explore 
-    the intersection of innovation, equity, and digital learning.
-  </p>
-  <p>
-    Outside the classroom, I’m passionate about designing meaningful, student-centred learning experiences and developing accessible 
-    educational tools. I also enjoy experimenting with emerging technologies, building inclusive STEM programs, and reflecting on my 
-    practice as an educator through social media and academic research. When I’m not teaching, you’ll likely find me outdoors, trying 
-    new recipes, or reading a good sci-fi novel.
-  </p>
-  <p>
-    This site brings together my teaching, research, and innovation projects. Whether you're here to explore resources, try out the AI tutor, 
-    or connect with new tools and strategies, I hope you find something that supports your growth.
-  </p>
+                <div style="
+                    display: grid;
+                    grid-template-columns: 1fr 3px 1fr;
+                    gap: 30px;
+                    align-items: center;
+                " class="mobile-responsive-grid">
+                    <div>
+                        <p style="margin-bottom: 20px;">
+                            Hi! I'm Hannah Terkper, a STEM educator based in Edmonton with a love for learning, creativity, and helping students thrive. I hold a Bachelor of Education from the University of Alberta, where I majored in biological sciences, minored in mathematics, and earned a certification in Sustainability. I'm currently pursuing my Master of Education in Emerging Technologies, where I get to explore the intersection of innovation and education.
+                        </p>
+                        <p style="margin-bottom: 20px;">
+                            Outside the classroom, I'm passionate about designing meaningful learning experiences, exploring new tech tools, and sharing my journey as an educator on social media. When I'm not teaching you'll probably find me exploring nature, trying out new recipes, or deep in a sci-fi novel.
+                        </p>
+                    </div>
+                    <div style="
+                        background: linear-gradient(135deg, #667eea, #764ba2);
+                        width: 3px;
+                        height: 100px;
+                        border-radius: 2px;
+                    " class="mobile-divider"></div>
+                    <div>
+                        <p style="margin-bottom: 20px;">
+                            I'm excited to share this space with you — a place to learn, grow, and discover together. Whether you're here for extra support, inspiration, or just to explore, I hope you find something that sparks your curiosity.
+                        </p>
+                        <div style="
+                            background: linear-gradient(135deg, #00cec9, #0984e3);
+                            color: white;
+                            padding: 20px;
+                            border-radius: 15px;
+                            text-align: center;
+                            margin-top: 20px;
+                        ">
+                            <p style="
+                                margin: 0;
+                                font-weight: 500;
+                                color: white;
+                            ">Ready to enhance your learning experience?</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="content-box">
-                <h2>Educational Setting and Audience</h2>
+            <div class="content-box animate-on-scroll" style="
+                background: white;
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                border-left: 5px solid #00cec9;
+            ">
+                <h2 style="color: #00cec9;">Educational Setting and Audience</h2>
                 <p>
-    This website serves as a digital extension of my classroom and educational practice. The primary audience includes students in 
-    Grades 7 through 12 enrolled in Mathematics, Science, and Computer Science courses aligned with the Alberta Program of Studies. 
-    All resources are designed to support the development of foundational knowledge, reinforce key concepts, and prepare students 
-    for both classroom assessments and real-world applications.
-  </p>
-  <p>
-    In addition to student support, this website is designed to serve a broader educational community. Parents, guardians, and fellow 
-    educators can access curated resources, learning strategies, and interactive tools to help foster deeper understanding and engagement. 
-    The addition of the Learning Toolkit Hub and the Hannah AI Tutor reflects my commitment to making learning 
-    accessible, responsive, and innovative.
-  </p>
-  <p>
-    As a STEM-focused educator with a passion for equitable access to emerging technologies, I aim to provide tools that empower all learners, especially 
-    girls and students from underserved communities. The materials shared here are aligned with curriculum outcomes, ISTE standards, and inclusive design practices.
-  </p>
+                    This website is designed as a digital extension of my classroom. The primary audience for this site includes students in Grades 7 through 12 who are enrolled in Mathematics, Science, and Computer Science courses following the Alberta Program of Studies. The resources on this site aim to support them in building foundational knowledge, extending their learning beyond the classroom, and preparing for assessments.
+                </p>
+                <p>
+                    The website also serves as a support tool for students, parents, and guardians by providing access to curated resources, interactive practice opportunities, and supplemental learning tools. As a STEM-focused educator with a passion for emerging technologies, I have tailored the content to engage digital-age learners through hands-on, accessible, and differentiated materials aligned with curriculum outcomes and ISTE student standards.
+                </p>
             </div>
         </div>
 
@@ -232,6 +481,46 @@
             </a>.
         </p>
     </main>
+    
+    <style>
+        /* Mobile responsiveness for the enhanced design */
+        @media (max-width: 768px) {
+            .mobile-responsive-grid {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+            
+            .mobile-divider {
+                display: none !important;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
+    
+    <script>
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
 
                     <footer style="
         background: linear-gradient(to right, #1976d2, #00796b);
