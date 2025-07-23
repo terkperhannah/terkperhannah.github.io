@@ -200,75 +200,52 @@
     </script>
 
     <main>
-        <!-- Hero Section -->
-        <section style="
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 80px 20px;
+        <!-- Tagline Section -->
+        <div style="
             text-align: center;
-            margin: 0 0 40px 0;
-            position: relative;
-            overflow: hidden;
+            padding: 30px 20px 20px 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            margin: 0 0 30px 0;
         ">
+            <p style="
+                font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+                color: #667eea;
+                font-weight: 500;
+                margin: 0 0 25px 0;
+                opacity: 0.9;
+            ">Empowering STEM Learning Through Innovation & Technology</p>
             <div style="
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"grain\" width=\"100\" height=\"100\" patternUnits=\"userSpaceOnUse\"><circle cx=\"50\" cy=\"50\" r=\"1\" fill=\"white\" fill-opacity=\"0.1\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23grain)\"/></svg>') repeat;
-                opacity: 0.3;
-            "></div>
-            <div style="position: relative; z-index: 2; max-width: 800px; margin: 0 auto;">
-                <h1 style="
-                    font-size: clamp(2.5rem, 6vw, 4rem);
-                    font-weight: 700;
-                    margin: 0 0 20px 0;
-                    text-shadow: 0 4px 8px rgba(0,0,0,0.3);
-                    animation: fadeInUp 1s ease-out;
-                ">Ms. Terkper's Digital Classroom</h1>
-                <p style="
-                    font-size: clamp(1.2rem, 3vw, 1.5rem);
-                    font-weight: 300;
-                    margin: 0 0 30px 0;
-                    opacity: 0.95;
-                    animation: fadeInUp 1s ease-out 0.2s both;
-                ">Empowering STEM Learning Through Innovation & Technology</p>
-                <div style="
-                    display: flex;
-                    gap: 20px;
-                    justify-content: center;
-                    flex-wrap: wrap;
-                    animation: fadeInUp 1s ease-out 0.4s both;
-                ">
-                    <a href="hannah-ai-tutor.html" style="
-                        background: rgba(255,255,255,0.2);
-                        backdrop-filter: blur(10px);
-                        color: white;
-                        padding: 15px 30px;
-                        border-radius: 30px;
-                        text-decoration: none;
-                        font-weight: 500;
-                        transition: all 0.3s ease;
-                        border: 1px solid rgba(255,255,255,0.3);
-                    " onmouseover="this.style.background='rgba(255,255,255,0.3)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)'">
-                        Try Hannah AI Tutor
-                    </a>
-                    <a href="learning-toolkit-hub.html" style="
-                        background: white;
-                        color: #667eea;
-                        padding: 15px 30px;
-                        border-radius: 30px;
-                        text-decoration: none;
-                        font-weight: 600;
-                        transition: all 0.3s ease;
-                        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-                    " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.2)'">
-                        Explore Learning Tools
-                    </a>
-                </div>
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            ">
+                <a href="hannah-ai-tutor.html" style="
+                    background: linear-gradient(135deg, #667eea, #764ba2);
+                    color: white;
+                    padding: 12px 25px;
+                    border-radius: 25px;
+                    text-decoration: none;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+                " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(102, 126, 234, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.3)'">
+                    Try Hannah AI Tutor
+                </a>
+                <a href="learning-toolkit-hub.html" style="
+                    background: white;
+                    color: #667eea;
+                    padding: 12px 25px;
+                    border-radius: 25px;
+                    text-decoration: none;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                    border: 2px solid #667eea;
+                " onmouseover="this.style.background='#667eea'; this.style.color='white'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='white'; this.style.color='#667eea'; this.style.transform='translateY(0)'">
+                    Explore Learning Tools
+                </a>
             </div>
-        </section>
+        </div>
 
         <!-- Search Section -->
         <div style="text-align: center; margin: 0 0 40px 0; padding: 0 20px;">
@@ -440,20 +417,24 @@
                         <p style="margin-bottom: 20px;">
                             I'm excited to share this space with you — a place to learn, grow, and discover together. Whether you're here for extra support, inspiration, or just to explore, I hope you find something that sparks your curiosity.
                         </p>
-                        <div style="
+                        <a href="learning-toolkit-hub.html" style="
+                            display: block;
                             background: linear-gradient(135deg, #00cec9, #0984e3);
                             color: white;
                             padding: 20px;
                             border-radius: 15px;
                             text-align: center;
                             margin-top: 20px;
-                        ">
+                            text-decoration: none;
+                            transition: all 0.3s ease;
+                            cursor: pointer;
+                        " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(0, 206, 201, 0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                             <p style="
                                 margin: 0;
                                 font-weight: 500;
                                 color: white;
                             ">Ready to enhance your learning experience?</p>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
