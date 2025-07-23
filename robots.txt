@@ -14,8 +14,10 @@ Allow: /csharp*.html
 Sitemap: https://terkperhannah.github.io/sitemap.xml
 
 # Block unnecessary files
-Disallow: /*.pdf$
-Disallow: /*.png$
-Disallow: /*.jpg$
-Disallow: /*.jpeg$
 Disallow: /attached_assets/
+Disallow: /*.md$
+Disallow: /temp-repo/
+Disallow: /github-deploy/
+
+# Important: Allow main resource images
+Allow: /resources1/index_image.JPG
