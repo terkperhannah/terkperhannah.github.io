@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emerging Technology Tools - Ms. Terkper's Digital Classroom</title>
+    <meta name="description" content="Cutting-edge AI-powered educational tools designed to revolutionize learning and teaching in the digital age.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1976d2;
+            --primary-teal: #00796b;
+            --accent-purple: #667eea;
+            --accent-pink: #f093fb;
+            --text-dark: #2c3e50;
+            --text-light: #34495e;
+            --success-green: #2ecc71;
+            --warning-orange: #f39c12;
+            --light-gray: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light-gray);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20" fill="white" opacity="0.1"><polygon points="10,5 30,15 50,8 70,12 90,6"/></svg>') repeat;
+            animation: tech-flow 15s infinite linear;
+        }
+
+        @keyframes tech-flow {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100px); }
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero-description {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: -50px auto 0;
+            padding: 0 20px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .section {
+            background: white;
+            margin-bottom: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-teal));
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .section-content {
+            padding: 40px;
+        }
+
+        .ai-engine-showcase {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-engine-showcase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="white" opacity="0.05"><circle cx="20" cy="20" r="5"/><circle cx="80" cy="30" r="3"/><circle cx="60" cy="70" r="4"/><circle cx="30" cy="80" r="2"/></svg>') repeat;
+            animation: ai-particles 20s infinite linear;
+        }
+
+        @keyframes ai-particles {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+
+        .ai-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .ai-description {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 2;
+        }
+
+        .ai-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .ai-feature {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .ai-feature:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .feature-description {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .development-roadmap {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .roadmap-title {
+            font-size: 2.2rem;
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .roadmap-phases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .phase-card {
+            background: var(--light-gray);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        .phase-card:hover {
+            background: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .phase-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .phase-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .phase-description {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .tech-stack {
+            background: var(--text-dark);
+            color: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .tech-stack-title {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .tech-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        .tech-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .tech-purpose {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .coming-soon-banner {
+            background: linear-gradient(135deg, var(--warning-orange), #e67e22);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .coming-soon-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .beta-signup {
+            background: linear-gradient(135deg, var(--success-green), #27ae60);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .beta-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .beta-description {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .beta-button {
+            display: inline-block;
+            background: white;
+            color: var(--success-green);
+            padding: 15px 40px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .beta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255,255,255,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .hero-section { padding: 60px 20px; }
+            .section-content { padding: 25px; }
+            .ai-engine-showcase { padding: 40px 25px; }
+            .development-roadmap { padding: 25px; }
+            .tech-stack { padding: 25px; }
+            .content-wrapper { margin-top: -30px; }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    
+    <div id="navbar-placeholder"></div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('navbar.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                })
+                .catch(err => console.error("Navbar failed to load:", err));
+        });
+    </script>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Emerging Technology Tools</h1>
+                <p class="hero-subtitle">Pioneering AI-Powered Educational Innovation</p>
+                <div class="hero-description">
+                    Leveraging cutting-edge artificial intelligence to create personalized, adaptive learning experiences 
+                    that meet every student where they are and help them reach their full potential.
+                </div>
+            </div>
+        </section>
+
+        <div class="content-wrapper">
+            <!-- AI Engine Showcase -->
+            <section class="ai-engine-showcase animate-on-scroll">
+                <h2 class="ai-title">AI Learning Engine</h2>
+                <p class="ai-description">
+                    Revolutionary artificial intelligence system designed to personalize education and optimize learning outcomes 
+                    for students across all subjects and grade levels.
+                </p>
+                
+                <div class="ai-features">
+                    <div class="ai-feature">
+                        <h3 class="feature-title">Adaptive Learning Paths</h3>
+                        <p class="feature-description">AI analyzes student performance and creates customized learning sequences</p>
+                    </div>
+                    <div class="ai-feature">
+                        <h3 class="feature-title">Intelligent Tutoring</h3>
+                        <p class="feature-description">24/7 AI tutor providing instant feedback and guided problem-solving</p>
+                    </div>
+                    <div class="ai-feature">
+                        <h3 class="feature-title">Progress Analytics</h3>
+                        <p class="feature-description">Real-time insights into learning patterns and knowledge gaps</p>
+                    </div>
+                    <div class="ai-feature">
+                        <h3 class="feature-title">Content Generation</h3>
+                        <p class="feature-description">AI creates practice problems and explanations tailored to student needs</p>
+                    </div>
+                </div>
+
+                <div class="coming-soon-banner">
+                    <div class="coming-soon-text">Currently in Development - Launching 2025</div>
+                </div>
+            </section>
+
+            <!-- Development Roadmap -->
+            <section class="development-roadmap animate-on-scroll">
+                <h2 class="roadmap-title">Development Roadmap</h2>
+                <div class="roadmap-phases">
+                    <div class="phase-card">
+                        <div class="phase-number">Phase 1</div>
+                        <h3 class="phase-title">Research & Foundation</h3>
+                        <p class="phase-description">
+                            Comprehensive research into AI educational applications, technology stack selection, 
+                            and initial prototype development focusing on core learning algorithms.
+                        </p>
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-number">Phase 2</div>
+                        <h3 class="phase-title">MVP Development</h3>
+                        <p class="phase-description">
+                            Building minimum viable product with basic AI tutoring capabilities, 
+                            student assessment tools, and initial adaptive learning features.
+                        </p>
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-number">Phase 3</div>
+                        <h3 class="phase-title">Beta Testing</h3>
+                        <p class="phase-description">
+                            Limited beta release with select students and educators to gather feedback, 
+                            refine algorithms, and optimize user experience.
+                        </p>
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-number">Phase 4</div>
+                        <h3 class="phase-title">Full Launch</h3>
+                        <p class="phase-description">
+                            Complete AI engine deployment with advanced features, scalable infrastructure, 
+                            and comprehensive teacher dashboard for classroom integration.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technology Stack -->
+            <section class="tech-stack animate-on-scroll">
+                <h2 class="tech-stack-title">Planned Technology Stack</h2>
+                <p style="margin-bottom: 30px; opacity: 0.9;">Cutting-edge technologies powering the next generation of educational AI</p>
+                
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <div class="tech-name">Machine Learning</div>
+                        <div class="tech-purpose">Adaptive learning algorithms and pattern recognition</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-name">Natural Language Processing</div>
+                        <div class="tech-purpose">AI tutoring and automated feedback generation</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-name">Learning Analytics</div>
+                        <div class="tech-purpose">Student progress tracking and predictive modeling</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-name">Cloud Computing</div>
+                        <div class="tech-purpose">Scalable infrastructure and data processing</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-name">Real-time Analytics</div>
+                        <div class="tech-purpose">Instant performance insights and recommendations</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-name">Responsive Design</div>
+                        <div class="tech-purpose">Seamless experience across all devices</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Beta Signup -->
+            <section class="beta-signup">
+                <h2 class="beta-title">Join the Beta Program</h2>
+                <p class="beta-description">
+                    Be among the first to experience revolutionary AI-powered education. 
+                    Early beta testers will help shape the future of personalized learning.
+                </p>
+                <a href="mailto:terkperhannah@gmail.com?subject=AI Engine Beta Interest" class="beta-button">
+                    Express Interest
+                </a>
+            </section>
+        </div>
+    </main>
+
+    <footer style="
+        background: linear-gradient(to right, #1976d2, #00796b);
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        margin-top: 40px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    ">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h3 style="margin: 0 0 20px 0; font-size: 1.4em; font-weight: 600;">Connect with Ms. Terkper</h3>
+            
+            <div style="display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 25px; flex-wrap: wrap;">
+                <!-- Email -->
+                <a href="mailto:terkperhannah@gmail.com" style="
+                    color: white;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 12px 20px;
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 25px;
+                    transition: all 0.3s ease;
+                    font-size: 0.95em;
+                " onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'" title="Click to email terkperhannah@gmail.com">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    terkperhannah@gmail.com
+                </a>
+                
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/hannah.attempts.teaching/" target="_blank" style="
+                    color: white;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 12px 20px;
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 25px;
+                    transition: all 0.3s ease;
+                    font-size: 0.95em;
+                " onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3z"/>
+                    </svg>
+                    Instagram
+                </a>
+                
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@hannah.attempts.teaching" target="_blank" style="
+                    color: white;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 12px 20px;
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 25px;
+                    transition: all 0.3s ease;
+                    font-size: 0.95em;
+                " onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/>
+                    </svg>
+                    TikTok
+                </a>
+            </div>
+            
+            <div style="
+                border-top: 1px solid rgba(255,255,255,0.2);
+                padding-top: 20px;
+                font-size: 0.9em;
+                opacity: 0.9;
+                line-height: 1.6;
+            ">
+                <p style="margin: 0 0 8px 0;">Hannah Terkper | STEM Educator</p>
+                <p style="margin: 0; font-size: 0.85em;">
+                    Original content licensed under 
+                    <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color: #e3f2fd; text-decoration: underline;">CC BY 4.0</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
