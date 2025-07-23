@@ -204,15 +204,28 @@
         <div style="
             text-align: center;
             padding: 30px 20px 20px 20px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            background: linear-gradient(135deg, #1976d2 0%, #00796b 100%);
             margin: 0 0 30px 0;
+            position: relative;
+            overflow: hidden;
         ">
+            <div style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(255,255,255,0.05);
+                backdrop-filter: blur(5px);
+            "></div>
+            <div style="position: relative; z-index: 2;">
             <p style="
                 font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-                color: #667eea;
+                color: white;
                 font-weight: 500;
                 margin: 0 0 25px 0;
-                opacity: 0.9;
+                opacity: 0.95;
+                text-shadow: 0 2px 4px rgba(0,0,0,0.2);
             ">Empowering STEM Learning Through Innovation & Technology</p>
             <div style="
                 display: flex;
@@ -221,29 +234,33 @@
                 flex-wrap: wrap;
             ">
                 <a href="hannah-ai-tutor.html" style="
-                    background: linear-gradient(135deg, #667eea, #764ba2);
+                    background: rgba(255,255,255,0.2);
+                    backdrop-filter: blur(10px);
                     color: white;
                     padding: 12px 25px;
                     border-radius: 25px;
                     text-decoration: none;
                     font-weight: 500;
                     transition: all 0.3s ease;
-                    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-                " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(102, 126, 234, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.3)'">
+                    border: 1px solid rgba(255,255,255,0.3);
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                " onmouseover="this.style.background='rgba(255,255,255,0.3)'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.1)'">
                     Try Hannah AI Tutor
                 </a>
                 <a href="learning-toolkit-hub.html" style="
                     background: white;
-                    color: #667eea;
+                    color: #1976d2;
                     padding: 12px 25px;
                     border-radius: 25px;
                     text-decoration: none;
-                    font-weight: 500;
+                    font-weight: 600;
                     transition: all 0.3s ease;
-                    border: 2px solid #667eea;
-                " onmouseover="this.style.background='#667eea'; this.style.color='white'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='white'; this.style.color='#667eea'; this.style.transform='translateY(0)'">
+                    border: none;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+                " onmouseover="this.style.background='#f8f9fa'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.2)'" onmouseout="this.style.background='white'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.15)'">
                     Explore Learning Tools
                 </a>
+            </div>
             </div>
         </div>
 
@@ -253,124 +270,6 @@
             <div class="gcse-search"></div>
         </div>
 
-        <!-- Features Showcase -->
-        <section style="padding: 0 20px 40px 20px;" class="animate-on-scroll">
-            <div style="max-width: 1200px; margin: 0 auto;">
-                <h2 style="
-                    text-align: center;
-                    font-size: clamp(2rem, 5vw, 2.5rem);
-                    color: #2c3e50;
-                    margin-bottom: 50px;
-                    font-weight: 700;
-                ">What Makes This Classroom Special?</h2>
-                
-                <div style="
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-                    gap: 30px;
-                    margin-bottom: 50px;
-                ">
-                    <div style="
-                        background: white;
-                        padding: 30px;
-                        border-radius: 20px;
-                        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-                        text-align: center;
-                        transition: all 0.3s ease;
-                        border: 1px solid #e8f4f8;
-                    " onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.1)'">
-                        <div style="
-                            width: 80px;
-                            height: 80px;
-                            background: linear-gradient(135deg, #667eea, #764ba2);
-                            border-radius: 50%;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            margin: 0 auto 20px auto;
-                            font-size: 2rem;
-                        ">🤖</div>
-                        <h3 style="
-                            font-size: 1.3rem;
-                            color: #2c3e50;
-                            margin-bottom: 15px;
-                            font-weight: 600;
-                        ">AI-Powered Tutoring</h3>
-                        <p style="
-                            color: #7f8c8d;
-                            line-height: 1.6;
-                            margin: 0;
-                        ">Meet Hannah, your personal AI tutor powered by Google Gemini. Get instant help with grades 7-12 subjects, personalized explanations, and 24/7 study support.</p>
-                    </div>
-                    
-                    <div style="
-                        background: white;
-                        padding: 30px;
-                        border-radius: 20px;
-                        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-                        text-align: center;
-                        transition: all 0.3s ease;
-                        border: 1px solid #e8f4f8;
-                    " onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.1)'">
-                        <div style="
-                            width: 80px;
-                            height: 80px;
-                            background: linear-gradient(135deg, #00cec9, #0984e3);
-                            border-radius: 50%;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            margin: 0 auto 20px auto;
-                            font-size: 2rem;
-                        ">📚</div>
-                        <h3 style="
-                            font-size: 1.3rem;
-                            color: #2c3e50;
-                            margin-bottom: 15px;
-                            font-weight: 600;
-                        ">Comprehensive Resources</h3>
-                        <p style="
-                            color: #7f8c8d;
-                            line-height: 1.6;
-                            margin: 0;
-                        ">Access complete study guides, practice materials, and interactive tools for Math, Science, and Computer Science aligned with Alberta curriculum.</p>
-                    </div>
-                    
-                    <div style="
-                        background: white;
-                        padding: 30px;
-                        border-radius: 20px;
-                        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-                        text-align: center;
-                        transition: all 0.3s ease;
-                        border: 1px solid #e8f4f8;
-                    " onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.1)'">
-                        <div style="
-                            width: 80px;
-                            height: 80px;
-                            background: linear-gradient(135deg, #fd79a8, #fdcb6e);
-                            border-radius: 50%;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            margin: 0 auto 20px auto;
-                            font-size: 2rem;
-                        ">🌟</div>
-                        <h3 style="
-                            font-size: 1.3rem;
-                            color: #2c3e50;
-                            margin-bottom: 15px;
-                            font-weight: 600;
-                        ">Innovation Focus</h3>
-                        <p style="
-                            color: #7f8c8d;
-                            line-height: 1.6;
-                            margin: 0;
-                        ">Explore cutting-edge educational technologies, emerging tools, and evidence-based learning strategies designed for the modern classroom.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
         
         <div class="content-wrapper">
             <div class="content-box animate-on-scroll" style="
@@ -415,7 +314,7 @@
                     " class="mobile-divider"></div>
                     <div>
                         <p style="margin-bottom: 20px;">
-                            I'm excited to share this space with you — a place to learn, grow, and discover together. Whether you're here for extra support, inspiration, or just to explore, I hope you find something that sparks your curiosity.
+                            I'm excited to share this space with you, a place to learn, grow, and discover together. Whether you're here for extra support, inspiration, or just to explore, I hope you find something that sparks your curiosity.
                         </p>
                         <a href="learning-toolkit-hub.html" style="
                             display: block;
