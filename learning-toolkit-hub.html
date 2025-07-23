@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Toolkit Hub - Ms. Terkper's Digital Classroom</title>
+    <meta name="description" content="Comprehensive learning tools, study resources, and educational insights designed to empower learners worldwide with effective study strategies and metacognitive skills.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1976d2;
+            --primary-teal: #00796b;
+            --accent-purple: #667eea;
+            --accent-pink: #f093fb;
+            --text-dark: #2c3e50;
+            --text-light: #34495e;
+            --success-green: #2ecc71;
+            --warning-orange: #f39c12;
+            --light-gray: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light-gray);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-teal));
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20" fill="white" opacity="0.1"><circle cx="20" cy="10" r="3"/><circle cx="40" cy="10" r="2"/><circle cx="60" cy="10" r="4"/><circle cx="80" cy="10" r="2"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100px); }
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero-mission {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: -50px auto 0;
+            padding: 0 20px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .section {
+            background: white;
+            margin-bottom: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .section-content {
+            padding: 40px;
+        }
+
+        .toolkit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .toolkit-item {
+            background: var(--light-gray);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .toolkit-item:hover {
+            background: white;
+            border-color: var(--primary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .toolkit-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .toolkit-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .toolkit-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--success-green), #27ae60);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.3);
+        }
+
+        .guide-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .guide-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--primary-blue);
+            transition: all 0.3s ease;
+        }
+
+        .guide-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        .guide-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .guide-content {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .video-thumbnail {
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-teal));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .video-content {
+            padding: 25px;
+        }
+
+        .video-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .video-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .watch-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .watch-btn:hover {
+            background: var(--primary-teal);
+            transform: translateY(-2px);
+        }
+
+        .coming-soon {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .coming-soon h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .impact-stats {
+            background: var(--text-dark);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--success-green);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-teal));
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 20px;
+            margin: 50px 0;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .cta-description {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary-blue);
+            padding: 15px 40px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255,255,255,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .hero-section { padding: 60px 20px; }
+            .section-content { padding: 25px; }
+            .toolkit-grid { grid-template-columns: 1fr; }
+            .guide-cards { grid-template-columns: 1fr; }
+            .video-grid { grid-template-columns: 1fr; }
+            .content-wrapper { margin-top: -30px; }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    
+    <div id="navbar-placeholder"></div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('navbar.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                })
+                .catch(err => console.error("Navbar failed to load:", err));
+        });
+    </script>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Learning Toolkit Hub</h1>
+                <p class="hero-subtitle">Empowering Learners Worldwide with Evidence-Based Study Strategies</p>
+                <div class="hero-mission">
+                    <strong>Our Mission:</strong> Making quality educational resources accessible to every learner, 
+                    with special focus on empowering girls globally through innovative learning tools and metacognitive strategies.
+                </div>
+            </div>
+        </section>
+
+        <div class="content-wrapper">
+            <!-- Section 1: Free Learning Toolkit Downloads -->
+            <section id="downloads" class="section animate-on-scroll">
+                <div class="section-header">
+                    <h2 class="section-title">🎯 Free Learning Toolkit Downloads</h2>
+                    <p class="section-description">Evidence-based planning and reflection tools to transform your learning journey</p>
+                </div>
+                <div class="section-content">
+                    <div class="toolkit-grid">
+                        <div class="toolkit-item">
+                            <span class="toolkit-icon">📋</span>
+                            <h3 class="toolkit-title">Strategic Study Planner</h3>
+                            <p class="toolkit-description">Comprehensive planning template incorporating spaced repetition and active recall principles</p>
+                            <div class="coming-soon" style="margin-top: 15px; padding: 15px;">
+                                <small>Coming Soon - Currently in Development</small>
+                            </div>
+                        </div>
+                        <div class="toolkit-item">
+                            <span class="toolkit-icon">🔄</span>
+                            <h3 class="toolkit-title">Metacognitive Reflection Log</h3>
+                            <p class="toolkit-description">Track what works, what doesn't, and optimize your learning strategies using research-backed reflection prompts</p>
+                            <div class="coming-soon" style="margin-top: 15px; padding: 15px;">
+                                <small>Coming Soon - Currently in Development</small>
+                            </div>
+                        </div>
+                        <div class="toolkit-item">
+                            <span class="toolkit-icon">🎯</span>
+                            <h3 class="toolkit-title">SMART Goals Tracker</h3>
+                            <p class="toolkit-description">Goal-setting framework designed for academic success with built-in accountability measures</p>
+                            <div class="coming-soon" style="margin-top: 15px; padding: 15px;">
+                                <small>Coming Soon - Currently in Development</small>
+                            </div>
+                        </div>
+                        <div class="toolkit-item">
+                            <span class="toolkit-icon">🧠</span>
+                            <h3 class="toolkit-title">Weekly Mindset Check-in</h3>
+                            <p class="toolkit-description">Growth mindset development tool with prompts for building resilience and learning persistence</p>
+                            <div class="coming-soon" style="margin-top: 15px; padding: 15px;">
+                                <small>Coming Soon - Currently in Development</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Master the Learning Fundamentals -->
+            <section id="fundamentals" class="section animate-on-scroll">
+                <div class="section-header">
+                    <h2 class="section-title">🎓 Master the Learning Fundamentals</h2>
+                    <p class="section-description">Essential knowledge every successful learner should master</p>
+                </div>
+                <div class="section-content">
+                    <div class="guide-cards">
+                        <div class="guide-card">
+                            <h3 class="guide-title">What Is Metacognition?</h3>
+                            <div class="guide-content">
+                                <p><strong>Definition:</strong> Metacognition is "thinking about thinking" - your awareness and understanding of your own thought processes.</p>
+                                <br>
+                                <p><strong>Key Components:</strong></p>
+                                <ul style="margin: 10px 0 15px 20px;">
+                                    <li>Planning: Setting goals and strategies before learning</li>
+                                    <li>Monitoring: Checking your understanding while learning</li>
+                                    <li>Evaluating: Reflecting on what worked after learning</li>
+                                </ul>
+                                <div class="coming-soon" style="margin-top: 20px; padding: 15px;">
+                                    <small>Interactive Infographic Coming Soon</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="guide-card">
+                            <h3 class="guide-title">Top 5 Study Myths—Debunked</h3>
+                            <div class="guide-content">
+                                <p><strong>Myth 1:</strong> Highlighting helps you learn better<br>
+                                <em>Reality:</em> Active recall and practice testing are more effective</p>
+                                
+                                <p><strong>Myth 2:</strong> Cramming works for long-term retention<br>
+                                <em>Reality:</em> Spaced repetition creates lasting memories</p>
+                                
+                                <p><strong>Myth 3:</strong> You should stick to one learning style<br>
+                                <em>Reality:</em> Multi-modal learning is most effective</p>
+                                
+                                <div class="coming-soon" style="margin-top: 20px; padding: 15px;">
+                                    <small>Complete Guide Coming Soon</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="guide-card">
+                            <h3 class="guide-title">Memory Enhancement Strategies</h3>
+                            <div class="guide-content">
+                                <p><strong>The Science:</strong> Research shows these techniques significantly improve retention:</p>
+                                <br>
+                                <ul style="margin: 10px 0 15px 20px;">
+                                    <li><strong>Elaborative Rehearsal:</strong> Connect new info to existing knowledge</li>
+                                    <li><strong>The Method of Loci:</strong> Use spatial memory for complex information</li>
+                                    <li><strong>Interleaving:</strong> Mix different topics during study sessions</li>
+                                    <li><strong>Self-Testing:</strong> Quiz yourself frequently without looking</li>
+                                </ul>
+                                <div class="coming-soon" style="margin-top: 20px; padding: 15px;">
+                                    <small>Detailed Guide with Examples Coming Soon</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Learn Smarter Video Series -->
+            <section id="videos" class="section animate-on-scroll">
+                <div class="section-header">
+                    <h2 class="section-title">🎬 Learn Smarter Video Series</h2>
+                    <p class="section-description">Expert insights and practical techniques for optimized learning</p>
+                </div>
+                <div class="section-content">
+                    <div class="video-grid">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                🍅
+                            </div>
+                            <div class="video-content">
+                                <h3 class="video-title">Mastering the Pomodoro Technique</h3>
+                                <p class="video-description">Learn how to break study sessions into focused intervals with strategic breaks for maximum productivity and retention.</p>
+                                <div class="coming-soon" style="padding: 15px;">
+                                    <small>Video Content Coming Soon</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                🌱
+                            </div>
+                            <div class="video-content">
+                                <h3 class="video-title">Growth vs. Fixed Mindset</h3>
+                                <p class="video-description">Discover how your beliefs about intelligence affect your learning and practical strategies to develop a growth mindset.</p>
+                                <div class="coming-soon" style="padding: 15px;">
+                                    <small>Video Content Coming Soon</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                🧩
+                            </div>
+                            <div class="video-content">
+                                <h3 class="video-title">Retrieval Practice & Spaced Repetition</h3>
+                                <p class="video-description">Evidence-based techniques that dramatically improve long-term retention and make studying more efficient.</p>
+                                <div class="coming-soon" style="padding: 15px;">
+                                    <small>Video Content Coming Soon</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Impact Statistics -->
+            <section class="impact-stats">
+                <h2 style="margin-bottom: 30px; font-size: 2.2rem;">Our Growing Impact</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">Students Reached</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Resources Created</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Countries Served</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Student Satisfaction</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to Action -->
+            <section class="cta-section">
+                <h2 class="cta-title">Ready to Transform Your Learning?</h2>
+                <p class="cta-description">Join thousands of students worldwide who are using evidence-based strategies to achieve their educational goals. Our mission is to make quality learning accessible to every student, everywhere.</p>
+                <a href="mailto:contact@msterkper.com" class="cta-button">Get Learning Support</a>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Ms. Terkper's Digital Classroom</h3>
+                <p>Empowering learners worldwide through innovative educational technology and evidence-based learning strategies.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="math7.html">Mathematics</a></li>
+                    <li><a href="science.html">Science</a></li>
+                    <li><a href="progress-dashboard.html">Progress Tracker</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Learning Resources</h3>
+                <ul>
+                    <li><a href="interactive-math-tools.html">Interactive Tools</a></li>
+                    <li><a href="learning-toolkit-hub.html">Learning Toolkit</a></li>
+                    <li><a href="final_review1.html">Practice Tests</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <p>Building the future of education, one learner at a time.</p>
+                <p><strong>Mission:</strong> Global access to quality education for all</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Ms. Terkper's Digital Classroom. Empowering Global Education.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
