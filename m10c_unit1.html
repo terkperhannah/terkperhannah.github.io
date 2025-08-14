@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Math 10C - Unit 1 Quiz</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .content-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .content-box {
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 25px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .quiz-question {
+      margin-bottom: 20px;
+    }
+    .quiz-question p {
+      font-weight: bold;
+    }
+    .progress-bar-container {
+      background: #ecf0f1;
+      height: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #3498db, #2ecc71);
+      transition: width 0.5s ease;
+    }
+    #result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    #export-btn {
+      margin-top: 20px;
+      background: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #export-btn:hover {
+      background: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(err => console.error('Navbar failed to load:', err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+      <div class="content-box">
+        <h2>Unit 1 Quiz: Number Sense</h2>
+        <div id="quiz-container"></div>
+        <button id="submit-btn">Submit Answers</button>
+        <div id="result"></div>
+        <div class="progress-bar-container">
+          <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <button id="export-btn">Export Progress</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <script src="unit1-quiz.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('quiz-container');
+      renderUnit1Quiz(container);
+      initUnit1Progress();
+
+      document.getElementById('submit-btn').addEventListener('click', gradeUnit1Quiz);
+      document.getElementById('export-btn').addEventListener('click', exportProgress);
+    });
+  </script>
+</body>
+</html>
