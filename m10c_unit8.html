@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 10C • Unit 8: Characteristics of Linear Relations</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']], processEscapes:true },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] },
+      chtml: { mtextInheritFont:true, matchFontHeight:false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    .content-wrapper{max-width:1200px;margin:0 auto;padding:20px;}
+    .content-box{border:2px solid #e0e0e0;border-radius:12px;padding:28px;margin-bottom:30px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+    .content-box h2{color:#2c3e50;border-bottom:3px solid #3498db;padding-bottom:10px;margin-bottom:18px;}
+    .sub{color:#566573;margin-top:-6px;}
+    .hero{background:linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%);border-color:#cfe8ff;}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#ecf5ff;color:#1d6fa5;font-size:12px;margin:6px 6px 0 0;border:1px solid #d6eaff;}
+
+    .video-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:10px;}
+    .video-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:14px;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .video-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#3498db;}
+    .video-card h4{color:#3498db;margin:6px 0 8px;}
+    .video-card p{margin:0;font-size:.95rem;color:#5a6b7b;}
+    .video-card small{display:block;margin-top:8px;color:#7a8b99;}
+
+    .units-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+    .unit-card{padding:18px;border-radius:10px;background:#f8f9fa;border:1px solid #e0e0e0;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .unit-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#2ecc71;}
+    .unit-card h3{color:#2ecc71;margin:0 0 8px;}
+
+    .pdf-frame{width:100%;height:540px;border:1px solid #e0e0e0;border-radius:10px;}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:#3498db;color:#fff;text-decoration:none;border:0;cursor:pointer;}
+    .btn:hover{background:#2f81bd;}
+    .btn-ghost{background:#fff;color:#3498db;border:1px solid #3498db;}
+    .btn-ghost:hover{background:#ecf5ff;}
+    .muted{color:#7f8c8d;font-size:.95rem;}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+
+    .two-col{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start;}
+    .mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
+    .tool-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:16px;}
+    .tool-card h4{margin:0 0 10px;color:#3498db;}
+    .tool-card label{display:block;font-size:.9rem;margin:6px 0 2px;color:#566573;}
+    .tool-card input,.tool-card select,.tool-card textarea{width:100%;padding:8px 10px;border:1px solid #dfe6ee;border-radius:8px;}
+    .tool-card textarea{min-height:88px;resize:vertical;}
+
+    .svg-plot{width:100%;height:380px;display:block;border:1px solid #e0e0e0;border-radius:10px;background:#fff;}
+    .svg-small{width:100%;height:140px;display:block;border:1px solid #e0e0e0;border-radius:10px;background:#fff;}
+
+    .checklist label{display:flex;gap:10px;align-items:flex-start;margin:8px 0}
+    .checklist input{transform:translateY(3px)}
+    .pill{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid #e0e0e0;background:#f8f9fa;margin-right:6px;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r=>r.text())
+        .then(html => {
+          const el=document.getElementById('navbar-placeholder');
+          el.innerHTML=html;
+          if (window.typesetMath) window.typesetMath(el);
+        })
+        .catch(err=>console.error('Navbar failed to load:',err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Unit 8: Characteristics of Linear Relations (Math 10C)</h2>
+        <p class="sub">Line segments, distance & midpoint, slope, and parallel & perpendicular lines.</p>
+        <div>
+          <span class="badge">Slope \(m=\dfrac{y_2-y_1}{x_2-x_1}\)</span>
+          <span class="badge">Distance \(d=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}\)</span>
+          <span class="badge">Midpoint \(M\!\left(\tfrac{x_1+x_2}{2},\tfrac{y_1+y_2}{2}\right)\)</span>
+          <span class="badge">Parallel: \(m_1=m_2\)</span>
+          <span class="badge">Perpendicular: \(m_1m_2=-1\)</span>
+        </div>
+      </section>
+
+      <!-- Outcomes / Success Criteria -->
+      <section class="content-box">
+        <h2>What You Should Be Able To Do</h2>
+        <div class="two-col">
+          <ul>
+            <li>Find slope from two points, tables, or graphs; identify horizontal/vertical lines.</li>
+            <li>Calculate the distance and midpoint of a segment and sketch accurately.</li>
+            <li>Write and convert linear equations: slope–intercept, point–slope, and standard forms.</li>
+            <li>Determine lines parallel or perpendicular to a given line through a point.</li>
+          </ul>
+
+          <div class="checklist" id="m10c-u8-checklist">
+            <label><input type="checkbox" data-k="slope"> I can compute slope from points/graphs.</label>
+            <label><input type="checkbox" data-k="distmid"> I can find distance & midpoint.</label>
+            <label><input type="checkbox" data-k="forms"> I can switch between line forms.</label>
+            <label><input type="checkbox" data-k="pp"> I can create parallel/perpendicular lines.</label>
+            <button class="btn btn-ghost" id="saveChecklist">Save Progress</button>
+            <small class="muted" id="saveNote" style="display:block;margin-top:6px;">Progress autosaves to this device.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video Library -->
+      <section class="content-box">
+        <h2>Video Library</h2>
+        <div class="video-grid">
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=how+to+find+slope+from+two+points">
+            <h4>Slope from Two Points</h4>
+            <p>Compute, interpret, special cases.</p>
+            <small>youtube.com – “how to find slope from two points”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=distance+and+midpoint+formula">
+            <h4>Distance & Midpoint Formulas</h4>
+            <p>Coordinate geometry essentials.</p>
+            <small>youtube.com – “distance and midpoint formula”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=writing+equations+of+lines+point+slope+and+slope+intercept">
+            <h4>Equations of Lines</h4>
+            <p>Slope–intercept & point–slope, converting forms.</p>
+            <small>youtube.com – “writing equations of lines point slope and slope intercept”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=parallel+and+perpendicular+lines+from+equations">
+            <h4>Parallel & Perpendicular Lines</h4>
+            <p>Slopes, through a given point.</p>
+            <small>youtube.com – “parallel and perpendicular lines from equations”</small>
+          </a>
+        </div>
+      </section>
+
+      <!-- Interactive Tools -->
+      <section class="content-box">
+        <h2>Interactive Tools</h2>
+        <div class="two-col">
+
+          <!-- A. Segment Analyzer -->
+          <div class="tool-card">
+            <h4>Segment Analyzer</h4>
+            <div class="mini-grid">
+              <div><label>\(x_1\)</label><input id="sx1" type="number" step="any" value="-3"></div>
+              <div><label>\(y_1\)</label><input id="sy1" type="number" step="any" value="2"></div>
+              <div><label>\(x_2\)</label><input id="sx2" type="number" step="any" value="5"></div>
+              <div><label>\(y_2\)</label><input id="sy2" type="number" step="any" value="-1"></div>
+            </div>
+            <div class="mini-grid" style="margin-top:6px;">
+              <div><label>x-min</label><input id="sxmin" type="number" step="any" value="-10"></div>
+              <div><label>x-max</label><input id="sxmax" type="number" step="any" value="10"></div>
+              <div><label>y-min</label><input id="symin" type="number" step="any" value="-10"></div>
+              <div><label>y-max</label><input id="symax" type="number" step="any" value="10"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="sDraw">Analyze & Draw</button>
+              <button class="btn btn-ghost" id="sReset">Reset</button>
+            </div>
+            <svg id="sSVG" class="svg-plot" viewBox="0 0 640 380" preserveAspectRatio="none"></svg>
+            <p class="muted mono" id="sOut" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- B. Line Builder -->
+          <div class="tool-card">
+            <h4>Line Builder</h4>
+            <div class="mini-grid">
+              <div>
+                <label>Form</label>
+                <select id="lForm">
+                  <option value="si">Slope–Intercept \(y=mx+b\)</option>
+                  <option value="ps">Point–Slope \(y-y_1=m(x-x_1)\)</option>
+                  <option value="tp">Two Points \((x_1,y_1),(x_2,y_2)\)</option>
+                </select>
+              </div>
+            </div>
+
+            <div id="lSI" class="mini-grid" style="margin-top:6px;">
+              <div><label>\(m\)</label><input id="lm" type="number" step="any" value="1"></div>
+              <div><label>\(b\)</label><input id="lb" type="number" step="any" value="0"></div>
+            </div>
+
+            <div id="lPS" class="mini-grid" style="display:none;margin-top:6px;">
+              <div><label>\(m\)</label><input id="pm" type="number" step="any" value="-0.5"></div>
+              <div><label>\(x_1\)</label><input id="px1" type="number" step="any" value="2"></div>
+              <div><label>\(y_1\)</label><input id="py1" type="number" step="any" value="3"></div>
+            </div>
+
+            <div id="lTP" class="mini-grid" style="display:none;margin-top:6px;">
+              <div><label>\(x_1\)</label><input id="tx1" type="number" step="any" value="-1"></div>
+              <div><label>\(y_1\)</label><input id="ty1" type="number" step="any" value="1"></div>
+              <div><label>\(x_2\)</label><input id="tx2" type="number" step="any" value="4"></div>
+              <div><label>\(y_2\)</label><input id="ty2" type="number" step="any" value="5"></div>
+            </div>
+
+            <div class="mini-grid" style="margin-top:6px;">
+              <div><label>Through point \(P\) (for parallel/perp)</label></div>
+              <div><input id="px" type="number" step="any" value="0" placeholder="x_P"></div>
+              <div><input id="py" type="number" step="any" value="0" placeholder="y_P"></div>
+            </div>
+
+            <div class="mini-grid" style="margin-top:6px;">
+              <div><label>x-min</label><input id="lxmin" type="number" step="any" value="-10"></div>
+              <div><label>x-max</label><input id="lxmax" type="number" step="any" value="10"></div>
+              <div><label>y-min</label><input id="lymin" type="number" step="any" value="-10"></div>
+              <div><label>y-max</label><input id="lymax" type="number" step="any" value="10"></div>
+            </div>
+
+            <div style="margin-top:10px;">
+              <button class="btn" id="lDraw">Draw Line</button>
+              <button class="btn btn-ghost" id="lPar">Draw Parallel through \(P\)</button>
+              <button class="btn btn-ghost" id="lPerp">Draw Perpendicular through \(P\)</button>
+              <button class="btn btn-ghost" id="lReset">Reset</button>
+            </div>
+            <svg id="lSVG" class="svg-plot" viewBox="0 0 640 380" preserveAspectRatio="none"></svg>
+            <p class="muted mono" id="lOut" style="margin-top:8px;"></p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Parallel / Perpendicular Checker -->
+      <section class="content-box">
+        <h2>Parallel & Perpendicular Checker</h2>
+        <div class="two-col">
+          <div class="tool-card">
+            <h4>General Form \(Ax+By+C=0\)</h4>
+            <div class="mini-grid">
+              <div><label>\(A_1\)</label><input id="A1" type="number" step="any" value="1"></div>
+              <div><label>\(B_1\)</label><input id="B1" type="number" step="any" value="-2"></div>
+              <div><label>\(C_1\)</label><input id="C1" type="number" step="any" value="-6"></div>
+              <div><label>\(A_2\)</label><input id="A2" type="number" step="any" value="2"></div>
+              <div><label>\(B_2\)</label><input id="B2" type="number" step="any" value="-4"></div>
+              <div><label>\(C_2\)</label><input id="C2" type="number" step="any" value="3"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="ppCheck">Check</button>
+              <button class="btn btn-ghost" id="ppReset">Reset</button>
+            </div>
+            <p class="muted mono" id="ppOut" style="margin-top:8px;"></p>
+          </div>
+
+          <div class="tool-card">
+            <h4>Slope from a Table (Is it Linear?)</h4>
+            <label>Enter pairs (one per line): <span class="mono">x,y</span> or <span class="mono">(x,y)</span></label>
+            <textarea id="tbPairs" placeholder="-2, -3
+0, 1
+3, 7"></textarea>
+            <div style="margin-top:10px;">
+              <button class="btn" id="tbAnalyze">Analyze</button>
+              <button class="btn btn-ghost" id="tbClear">Clear</button>
+            </div>
+            <svg id="tbSVG" class="svg-plot" viewBox="0 0 640 380" preserveAspectRatio="none"></svg>
+            <p class="muted mono" id="tbOut" style="margin-top:8px;"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quizzes -->
+      <section class="content-box">
+        <h2>Unit 8 Quizzes</h2>
+        <div class="units-grid">
+          <a href="m10c_u8_quiz1.html" class="unit-card">
+            <h3>Quiz 1: Slope, Distance & Midpoint</h3>
+            <p>Compute and interpret; draw accurate segments.</p>
+          </a>
+          <a href="m10c_u8_quiz2.html" class="unit-card">
+            <h3>Quiz 2: Parallel & Perpendicular Lines</h3>
+            <p>Equations in multiple forms; through a given point.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Review PDF -->
+      <section class="content-box">
+        <h2>Downloadable Review</h2>
+        <p>
+          <a class="btn" href="assets/m10c_u8_linear_characteristics_review.pdf" download>Download PDF</a>
+          <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
+        </p>
+        <iframe class="pdf-frame" src="assets/m10c_u8_linear_characteristics_review.pdf#view=FitH"></iframe>
+      </section>
+
+      <!-- Scratchpad -->
+      <section class="content-box">
+        <h2>Quick Practice Scratchpad</h2>
+        <p class="muted">Try: Find slope, distance, and midpoint for \((2,-5)\) to \((-4,7)\). Write a line perpendicular to \(y=\tfrac{2}{3}x-1\) through \((3,-2)\).</p>
+        <textarea id="scratch" style="width:100%;min-height:140px;border-radius:8px;padding:12px;border:1px solid #dfe6ee;resize:vertical;"></textarea>
+        <div style="margin-top:10px;">
+          <button class="btn" id="saveScratch">Save Notes</button>
+          <button class="btn btn-ghost" id="clearScratch">Clear</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <!-- Math helper -->
+  <script>
+    window.typesetMath = function(root){
+      if (window.MathJax && MathJax.typesetPromise){
+        MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
+      }
+    };
+  </script>
+
+  <!-- Page logic -->
+  <script>
+    /* ===== Checklist ===== */
+    (function(){
+      const KEY='m10c_u8_check';
+      const box=document.getElementById('m10c-u8-checklist');
+      const inputs=[...box.querySelectorAll('input[type="checkbox"][data-k]')];
+      const btn=document.getElementById('saveChecklist'), note=document.getElementById('saveNote');
+      function load(){ try{const d=JSON.parse(localStorage.getItem(KEY)||'{}'); inputs.forEach(cb=>cb.checked=!!d[cb.dataset.k]);}catch(e){} }
+      function save(){ const d={}; inputs.forEach(cb=>d[cb.dataset.k]=cb.checked); localStorage.setItem(KEY,JSON.stringify(d)); note.textContent='Saved ✔'; setTimeout(()=>note.textContent='Progress autosaves to this device.',1200); }
+      inputs.forEach(cb=>cb.addEventListener('change',save)); btn.addEventListener('click',save); load();
+    })();
+
+    /* ===== Scratchpad ===== */
+    (function(){
+      const KEY='m10c_u8_scratch', ta=document.getElementById('scratch');
+      const s=document.getElementById('saveScratch'), c=document.getElementById('clearScratch');
+      try{ ta.value=localStorage.getItem(KEY)||'';}catch(e){}
+      s.addEventListener('click',()=>localStorage.setItem(KEY,ta.value));
+      c.addEventListener('click',()=>{ ta.value=''; localStorage.setItem(KEY,''); });
+    })();
+
+    /* ===== Utilities ===== */
+    function approx(n,d=6){ return Number.isFinite(n)? Number(n.toFixed(d)) : NaN; }
+    function parsePairs(text){
+      const pairs=[];
+      const lines=text.split(/\n+/).map(s=>s.trim()).filter(Boolean);
+      for(const line of lines){
+        let m = line.match(/^\(?\s*([+-]?\d*\.?\d+)\s*,\s*([+-]?\d*\.?\d+)\s*\)?$/) || line.match(/^\s*([+-]?\d*\.?\d+)\s+([+-]?\d*\.?\d+)\s*$/);
+        if(m){ pairs.push([parseFloat(m[1]), parseFloat(m[2])]); }
+      }
+      return pairs;
+    }
+
+    /* ===== SVG Grid Helper ===== */
+    function makeGrid(svg, xmin,xmax,ymin,ymax){
+      const W=svg.viewBox.baseVal.width||640, H=svg.viewBox.baseVal.height||380, ns='http://www.w3.org/2000/svg';
+      svg.innerHTML='';
+      function X(x){ return (x - xmin)/(xmax - xmin) * W; }
+      function Y(y){ return H - (y - ymin)/(ymax - ymin) * H; }
+      const g=document.createElementNS(ns,'g'); svg.appendChild(g);
+      for(let x=Math.ceil(xmin); x<=Math.floor(xmax); x++){
+        const L=document.createElementNS(ns,'line');
+        L.setAttribute('x1',X(x)); L.setAttribute('x2',X(x)); L.setAttribute('y1',0); L.setAttribute('y2',H);
+        L.setAttribute('stroke', x===0?'#9bb3c9':'#eef2f6'); L.setAttribute('stroke-width', x===0?2:1);
+        g.appendChild(L);
+      }
+      for(let y=Math.ceil(ymin); y<=Math.floor(ymax); y++){
+        const L=document.createElementNS(ns,'line');
+        L.setAttribute('y1',Y(y)); L.setAttribute('y2',Y(y)); L.setAttribute('x1',0); L.setAttribute('x2',W);
+        L.setAttribute('stroke', y===0?'#9bb3c9':'#eef2f6'); L.setAttribute('stroke-width', y===0?2:1);
+        g.appendChild(L);
+      }
+      return {X,Y,W,H,ns};
+    }
+
+    /* ===== A. Segment Analyzer ===== */
+    (function(){
+      const x1=document.getElementById('sx1'), y1=document.getElementById('sy1'),
+            x2=document.getElementById('sx2'), y2=document.getElementById('sy2');
+      const xmin=document.getElementById('sxmin'), xmax=document.getElementById('sxmax'),
+            ymin=document.getElementById('symin'), ymax=document.getElementById('symax');
+      const svg=document.getElementById('sSVG'), out=document.getElementById('sOut');
+
+      function draw(){
+        const X1=+x1.value, Y1=+y1.value, X2=+x2.value, Y2=+y2.value;
+        const Xmin=+xmin.value, Xmax=+xmax.value, Ymin=+ymin.value, Ymax=+ymax.value;
+
+        const g=makeGrid(svg, Xmin,Xmax,Ymin,Ymax), {X,Y,ns}=g;
+
+        // segment
+        const seg=document.createElementNS(ns,'line');
+        seg.setAttribute('x1',X(X1)); seg.setAttribute('y1',Y(Y1));
+        seg.setAttribute('x2',X(X2)); seg.setAttribute('y2',Y(Y2));
+        seg.setAttribute('stroke','#3d8dff'); seg.setAttribute('stroke-width','3');
+        svg.appendChild(seg);
+
+        // endpoints
+        [['#e67e22',X1,Y1],['#e67e22',X2,Y2]].forEach(([c,xx,yy])=>{
+          const dot=document.createElementNS(ns,'circle');
+          dot.setAttribute('cx',X(xx)); dot.setAttribute('cy',Y(yy)); dot.setAttribute('r',4); dot.setAttribute('fill',c); svg.appendChild(dot);
+        });
+
+        // extended light line (if not vertical)
+        if(Math.abs(X2-X1)>1e-12){
+          const m=(Y2-Y1)/(X2-X1), b=Y1 - m*X1;
+          const yL=m*Xmin+b, yR=m*Xmax+b;
+          const line=document.createElementNS(ns,'line');
+          line.setAttribute('x1',X(Xmin)); line.setAttribute('y1',Y(yL));
+          line.setAttribute('x2',X(Xmax)); line.setAttribute('y2',Y(yR));
+          line.setAttribute('stroke','#9bb3c9'); line.setAttribute('stroke-dasharray','6 6'); line.setAttribute('stroke-width','2'); svg.appendChild(line);
+        }
+
+        // calculations
+        const dx = X2-X1, dy = Y2-Y1;
+        const d = Math.hypot(dx,dy);
+        const mx = (X1+X2)/2, my = (Y1+Y2)/2;
+
+        let slopeText='undefined (vertical line)', ps='n/a', si='x='+approx(X1), std=`${approx(Y1-Y2)}x + ${approx(X2-X1)}y + ${approx(X1*Y2 - X2*Y1)} = 0`;
+        if(Math.abs(dx)>1e-12){
+          const m = dy/dx;
+          const b = Y1 - m*X1;
+          slopeText = m===0 ? '0 (horizontal line)' : approx(m);
+          ps = `y - ${approx(Y1)} = ${approx(m)}(x - ${approx(X1)})`;
+          si = `y = ${approx(m)}x ${b>=0?'+':''} ${approx(b)}`;
+        }
+
+        out.innerHTML = `Slope: <b>${slopeText}</b> • Distance: <b>${approx(d)}</b> • Midpoint: <b>\\(\\left(${approx(mx)},\\,${approx(my)}\\right)\\)</b><br>
+                         Point–slope: \\(${ps}\\) • Slope–intercept: \\(${si}\\)<br>
+                         Standard form: \\(${std}\\)`;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      document.getElementById('sDraw').addEventListener('click', draw);
+      document.getElementById('sReset').addEventListener('click', ()=>{ x1.value=-3;y1.value=2;x2.value=5;y2.value=-1;xmin.value=-10;xmax.value=10;ymin.value=-10;ymax.value=10; svg.innerHTML=''; out.textContent=''; });
+      draw();
+    })();
+
+    /* ===== B. Line Builder ===== */
+    (function(){
+      const form=document.getElementById('lForm');
+      const si=document.getElementById('lSI'), ps=document.getElementById('lPS'), tp=document.getElementById('lTP');
+      const lm=document.getElementById('lm'), lb=document.getElementById('lb');
+      const pm=document.getElementById('pm'), px1=document.getElementById('px1'), py1=document.getElementById('py1');
+      const tx1=document.getElementById('tx1'), ty1=document.getElementById('ty1'), tx2=document.getElementById('tx2'), ty2=document.getElementById('ty2');
+      const px=document.getElementById('px'), py=document.getElementById('py');
+      const xmin=document.getElementById('lxmin'), xmax=document.getElementById('lxmax'), ymin=document.getElementById('lymin'), ymax=document.getElementById('lymax');
+      const svg=document.getElementById('lSVG'), out=document.getElementById('lOut');
+
+      function refresh(){
+        si.style.display = form.value==='si'?'grid':'none';
+        ps.style.display = form.value==='ps'?'grid':'none';
+        tp.style.display = form.value==='tp'?'grid':'none';
+      }
+
+      function lineFromForm(){
+        if(form.value==='si'){
+          const m=+lm.value, b=+lb.value;
+          return {m,b,vertical:false};
+        }else if(form.value==='ps'){
+          const m=+pm.value, x1=+px1.value, y1=+py1.value;
+          const b = y1 - m*x1;
+          return {m,b,vertical:false};
+        }else{
+          const x1=+tx1.value, y1=+ty1.value, x2=+tx2.value, y2=+ty2.value;
+          const dx=x2-x1, dy=y2-y1;
+          if(Math.abs(dx)<1e-12) return {vertical:true, x=x1};
+          const m=dy/dx, b=y1 - m*x1;
+          return {m,b,vertical:false};
+        }
+      }
+
+      function drawMain(extraLines=[]){
+        const Xmin=+xmin.value, Xmax=+xmax.value, Ymin=+ymin.value, Ymax=+ymax.value;
+        const g=makeGrid(svg, Xmin,Xmax,Ymin,Ymax), {X,Y,ns}=g;
+
+        function drawLine(line, color='#3d8dff'){
+          if(line.vertical){
+            const xv=line.x;
+            const L=document.createElementNS(ns,'line');
+            L.setAttribute('x1',X(xv)); L.setAttribute('x2',X(xv)); L.setAttribute('y1',0); L.setAttribute('y2',g.H);
+            L.setAttribute('stroke',color); L.setAttribute('stroke-width','2'); svg.appendChild(L);
+          }else{
+            const yL=line.m*Xmin+line.b, yR=line.m*Xmax+line.b;
+            const L=document.createElementNS(ns,'line');
+            L.setAttribute('x1',X(Xmin)); L.setAttribute('y1',Y(yL));
+            L.setAttribute('x2',X(Xmax)); L.setAttribute('y2',Y(yR));
+            L.setAttribute('stroke',color); L.setAttribute('stroke-width','2'); svg.appendChild(L);
+          }
+        }
+
+        const base=lineFromForm();
+        drawLine(base, '#3d8dff');
+        extraLines.forEach((ln,i)=>drawLine(ln, i===0?'#2ecc71':'#e74c3c'));
+
+        // features
+        let text='';
+        if(base.vertical){
+          text += `Base: \\(x=${approx(base.x)}\\) (vertical). `;
+        }else{
+          const m=base.m, b=base.b;
+          const yint = b;
+          const xint = Math.abs(m)<1e-12? null : -b/m;
+          text += `Base: \\(y=${approx(m)}x ${b>=0?'+':''} ${approx(b)}\\) • y-int \\((0,${approx(yint)})\\) • x-int ${xint!=null?`\\((${approx(xint)},0)\\)`:'none'} • Standard: \\(${approx(m)}x - y + ${approx(b)} = 0\\). `;
+        }
+
+        // parallel/perp slopes
+        if(base.vertical){
+          text += `Parallel slope: undefined (vertical) • Perpendicular slope: 0 (horizontal).`;
+        }else{
+          const mp = base.m;
+          const mperp = Math.abs(mp)<1e-12 ? 'undefined (vertical)' : approx(-1/mp);
+          text += `Parallel slope: ${approx(mp)} • Perpendicular slope: ${mperp}.`;
+        }
+
+        out.innerHTML = text;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      function makeParallelThroughP(base, P){
+        if(base.vertical) return {vertical:true, x:P.x};
+        return {m:base.m, b:P.y - base.m*P.x, vertical:false};
+      }
+      function makePerpThroughP(base, P){
+        if(base.vertical) return {m:0, b:P.y, vertical:false};
+        if(Math.abs(base.m)<1e-12) return {vertical:true, x:P.x};
+        const m=-1/base.m; return {m, b:P.y - m*P.x, vertical:false};
+      }
+
+      document.getElementById('lDraw').addEventListener('click', ()=>drawMain());
+      document.getElementById('lPar').addEventListener('click', ()=>{
+        const base=lineFromForm(); const P={x:+px.value,y:+py.value};
+        drawMain([makeParallelThroughP(base,P)]);
+      });
+      document.getElementById('lPerp').addEventListener('click', ()=>{
+        const base=lineFromForm(); const P={x:+px.value,y:+py.value};
+        drawMain([makePerpThroughP(base,P)]);
+      });
+      document.getElementById('lReset').addEventListener('click', ()=>{
+        form.value='si'; refresh(); lm.value=1; lb.value=0; pm.value=-0.5; px1.value=2; py1.value=3; tx1.value=-1; ty1.value=1; tx2.value=4; ty2.value=5;
+        px.value=0; py.value=0; xmin.value=-10; xmax.value=10; ymin.value=-10; ymax.value=10; svg.innerHTML=''; out.textContent='';
+      });
+      form.addEventListener('change', refresh);
+      refresh(); drawMain();
+    })();
+
+    /* ===== Parallel/Perpendicular Checker ===== */
+    (function(){
+      const A1=document.getElementById('A1'), B1=document.getElementById('B1'), C1=document.getElementById('C1');
+      const A2=document.getElementById('A2'), B2=document.getElementById('B2'), C2=document.getElementById('C2');
+      const out=document.getElementById('ppOut');
+
+      function classify(){
+        const a1=+A1.value, b1=+B1.value, c1=+C1.value;
+        const a2=+A2.value, b2=+B2.value, c2=+C2.value;
+
+        let m1=null, m2=null, v1=false, v2=false, h1=false, h2=false;
+        if(Math.abs(b1)<1e-12){ v1=true; } else { m1 = -a1/b1; if(Math.abs(m1)<1e-12) h1=true; }
+        if(Math.abs(b2)<1e-12){ v2=true; } else { m2 = -a2/b2; if(Math.abs(m2)<1e-12) h2=true; }
+
+        let par=false, perp=false;
+        if(v1 && v2) par=true;
+        else if(h1 && h2) par=true;
+        else if(m1!=null && m2!=null && Math.abs(m1-m2)<1e-9) par=true;
+
+        if( (v1 && h2) || (h1 && v2) ) perp=true;
+        else if(m1!=null && m2!=null && Math.abs(m1*m2 + 1)<1e-9) perp=true;
+
+        const s1 = v1? 'undefined (vertical)' : approx(m1);
+        const s2 = v2? 'undefined (vertical)' : approx(m2);
+
+        out.innerHTML = `Line 1 slope: <b>${s1}</b> • Line 2 slope: <b>${s2}</b><br>
+                         Parallel? <b>${par?'Yes ✅':'No ❌'}</b> • Perpendicular? <b>${perp?'Yes ✅':'No ❌'}</b>`;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      document.getElementById('ppCheck').addEventListener('click', classify);
+      document.getElementById('ppReset').addEventListener('click', ()=>{ A1.value=1;B1.value=-2;C1.value=-6; A2.value=2;B2.value=-4;C2.value=3; out.textContent=''; });
+      classify();
+    })();
+
+    /* ===== Table slope (is it linear?) ===== */
+    (function(){
+      const ta=document.getElementById('tbPairs');
+      const btn=document.getElementById('tbAnalyze');
+      const clr=document.getElementById('tbClear');
+      const svg=document.getElementById('tbSVG');
+      const out=document.getElementById('tbOut');
+
+      function draw(pairs){
+        if(!pairs.length){ svg.innerHTML=''; return; }
+        const xs=pairs.map(p=>p[0]), ys=pairs.map(p=>p[1]);
+        let xmin=Math.min(...xs), xmax=Math.max(...xs), ymin=Math.min(...ys), ymax=Math.max(...ys);
+        if(xmin===xmax){ xmin-=1; xmax+=1; }
+        if(ymin===ymax){ ymin-=1; ymax+=1; }
+        const padX=0.2*(xmax-xmin), padY=0.2*(ymax-ymin);
+        xmin-=padX; xmax+=padX; ymin-=padY; ymax+=padY;
+        const g=makeGrid(svg, xmin,xmax,ymin,ymax), {X,Y,ns}=g;
+
+        // points
+        for(const [x,y] of pairs){
+          const c=document.createElementNS(ns,'circle');
+          c.setAttribute('cx',X(x)); c.setAttribute('cy',Y(y)); c.setAttribute('r',4); c.setAttribute('fill','#2ecc71');
+          svg.appendChild(c);
+        }
+      }
+
+      function analyze(){
+        const pairs=parsePairs(ta.value);
+        draw(pairs);
+        if(pairs.length<2){ out.textContent='Enter at least two points.'; return; }
+
+        // slopes between consecutive x (sorted by x)
+        const pts=[...pairs].sort((a,b)=>a[0]-b[0]);
+        let slopes=[], consistent=true;
+        for(let i=1;i<pts.length;i++){
+          const [x0,y0]=pts[i-1], [x1,y1]=pts[i];
+          const dx=x1-x0, dy=y1-y0;
+          const m = Math.abs(dx)<1e-12 ? Infinity : dy/dx;
+          slopes.push(m);
+          if(i>1){
+            const prev=slopes[i-2];
+            if((!Number.isFinite(m) || !Number.isFinite(prev)) ? (m!==prev) : Math.abs(m-prev)>1e-9) consistent=false;
+          }
+        }
+        out.innerHTML = `Slopes between consecutive points: <b>${slopes.map(s=>Number.isFinite(s)?approx(s):'undefined').join(', ')}</b><br>
+                         Linear relation? <b>${consistent?'Yes ✅':'No / Not enough evidence ❌'}</b>`;
+      }
+
+      btn.addEventListener('click', analyze);
+      clr.addEventListener('click', ()=>{ ta.value=''; svg.innerHTML=''; out.textContent=''; });
+      analyze();
+    })();
+
+    // Typeset after load
+    window.addEventListener('load', ()=>{ if(window.typesetMath) window.typesetMath(); });
+  </script>
+</body>
+</html>
