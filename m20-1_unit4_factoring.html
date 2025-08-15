@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 20-1 • Unit 4: Factoring & Applications</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']], processEscapes:true },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] },
+      chtml: { mtextInheritFont:true, matchFontHeight:false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    .content-wrapper{max-width:1200px;margin:0 auto;padding:20px;}
+    .content-box{border:2px solid #e0e0e0;border-radius:12px;padding:28px;margin-bottom:30px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+    .content-box h2{color:#2c3e50;border-bottom:3px solid #3498db;padding-bottom:10px;margin-bottom:18px;}
+    .sub{color:#566573;margin-top:-6px;}
+    .hero{background:linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%);border-color:#cfe8ff;}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#ecf5ff;color:#1d6fa5;font-size:12px;margin:6px 6px 0 0;border:1px solid #d6eaff;}
+
+    .two-col{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start;}
+    .checklist label{display:flex;align-items:flex-start;gap:10px;line-height:1.4;margin:10px 0;}
+    .checklist input{transform:translateY(3px);}
+
+    .video-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:10px;}
+    .video-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:14px;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .video-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#3498db;}
+    .video-card h4{color:#3498db;margin:6px 0 8px;}
+    .video-card p{margin:0;font-size:.95rem;color:#5a6b7b;}
+    .video-card small{display:block;margin-top:8px;color:#7a8b99;}
+
+    .units-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+    .unit-card{padding:18px;border-radius:10px;background:#f8f9fa;border:1px solid #e0e0e0;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .unit-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#2ecc71;}
+    .unit-card h3{color:#2ecc71;margin:0 0 8px;}
+
+    .pdf-frame{width:100%;height:540px;border:1px solid #e0e0e0;border-radius:10px;}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:#3498db;color:#fff;text-decoration:none;border:0;cursor:pointer;}
+    .btn:hover{background:#2f81bd;}
+    .btn-ghost{background:#fff;color:#3498db;border:1px solid #3498db;}
+    .btn-ghost:hover{background:#ecf5ff;}
+    .muted{color:#7f8c8d;font-size:.95rem;}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+
+    .mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+    .tool-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:16px;}
+    .tool-card h4{margin:0 0 10px;color:#3498db;}
+    .tool-card label{display:block;font-size:.9rem;margin:6px 0 2px;color:#566573;}
+    .tool-card input,.tool-card select,.tool-card textarea{width:100%;padding:8px 10px;border:1px solid #dfe6ee;border-radius:8px;}
+    .tool-card textarea{min-height:72px;resize:vertical;}
+
+    .table-mini{width:100%;border-collapse:collapse;margin-top:8px;}
+    .table-mini th,.table-mini td{border:1px solid #e6e6e6;padding:6px 8px;text-align:right;}
+    .table-mini th{background:#f2f6ff;color:#2c3e50;text-align:left;}
+    .ok{color:#2ecc71;font-weight:600;}
+    .bad{color:#e74c3c;font-weight:600;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r=>r.text())
+        .then(html => {
+          const el=document.getElementById('navbar-placeholder');
+          el.innerHTML=html;
+          if (window.typesetMath) window.typesetMath(el);
+        })
+        .catch(err=>console.error('Navbar failed to load:',err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Unit 4: Factoring & Applications (Math 20-1)</h2>
+        <p class="sub">Review; trinomials; special forms; solving quadratic & radical equations by factoring.</p>
+        <div>
+          <span class="badge">GCF</span>
+          <span class="badge">\((x+m)(x+n)\)</span>
+          <span class="badge">AC-Method</span>
+          <span class="badge">Perfect Squares</span>
+          <span class="badge">Difference of Squares</span>
+          <span class="badge">Domain & Extraneous</span>
+        </div>
+      </section>
+
+      <!-- Outcomes -->
+      <section class="content-box">
+        <h2>What You Should Be Able To Do</h2>
+        <div class="two-col">
+          <ul>
+            <li>Factor \(x^2+bx+c\) and \(ax^2+bx+c\) (\(a\neq0\)) and recognize special forms (perfect square trinomials, differences of squares).</li>
+            <li>Factor completely, including a numerical/variable GCF, and verify by expansion.</li>
+            <li>Solve quadratic equations by factoring and interpret solutions (x-intercepts, number of roots).</li>
+            <li>Solve simple radical equations by isolating radicals, squaring, and <em>checking for extraneous solutions</em>; state domain restrictions.</li>
+          </ul>
+
+          <div class="checklist" id="m201-u4-checklist">
+            <label><input type="checkbox" data-k="tri"> I can factor \(x^2+bx+c\) and \(ax^2+bx+c\).</label>
+            <label><input type="checkbox" data-k="spec"> I can identify perfect squares and differences of squares.</label>
+            <label><input type="checkbox" data-k="solveq"> I can solve quadratics by factoring.</label>
+            <label><input type="checkbox" data-k="rad"> I can solve radical equations and check for extraneous roots.</label>
+            <button class="btn btn-ghost" id="saveChecklist">Save Progress</button>
+            <small class="muted" id="saveNote" style="display:block;margin-top:6px;">Progress autosaves to this device.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Videos -->
+      <section class="content-box">
+        <h2>Video Library</h2>
+        <div class="video-grid">
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=factoring+trinomials+ac+method">
+            <h4>Factoring \(ax^2+bx+c\) (AC-Method)</h4>
+            <p>Split the middle term & factor by grouping.</p>
+            <small>youtube.com – “factoring trinomials ac method”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=perfect+square+trinomials+and+difference+of+squares">
+            <h4>Special Forms: PST & DoS</h4>
+            <p>Recognize and factor quickly.</p>
+            <small>youtube.com – “perfect square trinomials and difference of squares”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=solving+quadratics+by+factoring">
+            <h4>Solving Quadratics by Factoring</h4>
+            <p>Zero-product property and intercepts.</p>
+            <small>youtube.com – “solving quadratics by factoring”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=radical+equations+extraneous+solutions">
+            <h4>Radical Equations & Extraneous Solutions</h4>
+            <p>Isolate, square, solve, and check.</p>
+            <small>youtube.com – “radical equations extraneous solutions”</small>
+          </a>
+        </div>
+      </section>
+
+      <!-- Interactive Tools -->
+      <section class="content-box">
+        <h2>Interactive Tools</h2>
+        <div class="mini-grid">
+
+          <!-- Classifier & Special Forms -->
+          <div class="tool-card">
+            <h4>Form Classifier & Fast Factor</h4>
+            <label>Quadratic \(ax^2+bx+c\) (integers)</label>
+            <div class="mini-grid">
+              <input id="cfA" type="number" step="1" value="1" placeholder="a">
+              <input id="cfB" type="number" step="1" value="6" placeholder="b">
+              <input id="cfC" type="number" step="1" value="9" placeholder="c">
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="cfGo">Classify</button>
+              <button class="btn btn-ghost" id="cfReset">Reset</button>
+            </div>
+            <p class="muted mono" id="cfOut" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- Quadratic Factorer & Solver -->
+          <div class="tool-card">
+            <h4>Quadratic Factorer & Solver</h4>
+            <div class="mini-grid">
+              <div><label>\(a\)</label><input id="qsA" type="number" step="1" value="2"></div>
+              <div><label>\(b\)</label><input id="qsB" type="number" step="1" value="7"></div>
+              <div><label>\(c\)</label><input id="qsC" type="number" step="1" value="3"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="qsGo">Factor / Solve</button>
+              <button class="btn btn-ghost" id="qsRand">Random</button>
+            </div>
+            <p class="muted mono" id="qsOut" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- Solve by Factoring Practice -->
+          <div class="tool-card">
+            <h4>Solve by Factoring – Practice</h4>
+            <p class="muted">Enter roots in any order (decimals allowed if needed).</p>
+            <p class="mono" id="sfQ"></p>
+            <div class="mini-grid">
+              <input id="sfR1" placeholder="root 1">
+              <input id="sfR2" placeholder="root 2">
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="sfCheck">Check</button>
+              <button class="btn btn-ghost" id="sfNew">New</button>
+            </div>
+            <p class="muted mono" id="sfOut" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- Radical Equation Solver (with check) -->
+          <div class="tool-card">
+            <h4>Radical Equations (Check for Extraneous)</h4>
+            <label>Mode</label>
+            <select id="reMode">
+              <option value="sqrt_eq_const">\( \sqrt{ax+b}=k \)</option>
+              <option value="sqrt_eq_sqrt">\( \sqrt{ax+b}=\sqrt{cx+d} \)</option>
+            </select>
+
+            <div class="mini-grid" style="margin-top:6px;">
+              <div><label>\(a\)</label><input id="reA" type="number" step="any" value="3"></div>
+              <div><label>\(b\)</label><input id="reB" type="number" step="any" value="-5"></div>
+              <div id="reKWrap"><label>\(k\)</label><input id="reK" type="number" step="any" value="7"></div>
+              <div id="reCWrap" style="display:none;"><label>\(c\)</label><input id="reC" type="number" step="any" value="1"></div>
+              <div id="reDWrap" style="display:none;"><label>\(d\)</label><input id="reD" type="number" step="any" value="11"></div>
+            </div>
+
+            <div style="margin-top:10px;">
+              <button class="btn" id="reSolve">Solve & Check</button>
+              <button class="btn btn-ghost" id="reReset">Reset</button>
+            </div>
+            <p class="muted mono" id="reOut" style="margin-top:8px;"></p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Quizzes -->
+      <section class="content-box">
+        <h2>Unit 4 Quizzes</h2>
+        <div class="units-grid">
+          <a href="m201_u4_quiz1.html" class="unit-card">
+            <h3>Quiz 1: Factoring & Special Forms</h3>
+            <p>GCF, trinomials, PST, DoS.</p>
+          </a>
+          <a href="m201_u4_quiz2.html" class="unit-card">
+            <h3>Quiz 2: Solve by Factoring (incl. Radical Equations)</h3>
+            <p>Quadratics & radical equations with checks.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Review PDF -->
+      <section class="content-box">
+        <h2>Downloadable Review</h2>
+        <p>
+          <a class="btn" href="assets/m201_u4_factoring_applications_review.pdf" download>Download PDF</a>
+          <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
+        </p>
+        <iframe class="pdf-frame" src="assets/m201_u4_factoring_applications_review.pdf#view=FitH"></iframe>
+      </section>
+
+      <!-- Scratchpad -->
+      <section class="content-box">
+        <h2>Quick Practice Scratchpad</h2>
+        <p class="muted">Try: factor \(9x^2-24x+16\), solve \(6x^2+11x-10=0\), and solve \(\sqrt{3x-5}=7\); \(\sqrt{2x+9}=\sqrt{x+3}\).</p>
+        <textarea id="scratch" style="width:100%;min-height:140px;border-radius:8px;padding:12px;border:1px solid #dfe6ee;resize:vertical;"></textarea>
+        <div style="margin-top:10px;">
+          <button class="btn" id="saveScratch">Save Notes</button>
+          <button class="btn btn-ghost" id="clearScratch">Clear</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <!-- Math helper -->
+  <script>
+    window.typesetMath = function(root){
+      if (window.MathJax && MathJax.typesetPromise){
+        MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
+      }
+    };
+  </script>
+
+  <!-- Page logic -->
+  <script>
+    /* ===== Checklist ===== */
+    (function(){
+      const KEY='m201_u4_check';
+      const box=document.getElementById('m201-u4-checklist');
+      const inputs=[...box.querySelectorAll('input[type="checkbox"][data-k]')];
+      const saveBtn=document.getElementById('saveChecklist'), saveNote=document.getElementById('saveNote');
+      function load(){ try{const d=JSON.parse(localStorage.getItem(KEY)||'{}'); inputs.forEach(cb=>cb.checked=!!d[cb.dataset.k]);}catch(e){} }
+      function save(){ const d={}; inputs.forEach(cb=>d[cb.dataset.k]=cb.checked); localStorage.setItem(KEY,JSON.stringify(d)); saveNote.textContent='Saved ✔'; setTimeout(()=>saveNote.textContent='Progress autosaves to this device.',1200); }
+      inputs.forEach(cb=>cb.addEventListener('change',save));
+      saveBtn.addEventListener('click',save);
+      load();
+    })();
+
+    /* ===== Scratchpad ===== */
+    (function(){
+      const SKEY='m201_u4_scratch';
+      const ta=document.getElementById('scratch');
+      const s=document.getElementById('saveScratch'), c=document.getElementById('clearScratch');
+      try{ ta.value=localStorage.getItem(SKEY)||'';}catch(e){}
+      s.addEventListener('click',()=>localStorage.setItem(SKEY,ta.value));
+      c.addEventListener('click',()=>{ ta.value=''; localStorage.setItem(SKEY,''); });
+    })();
+
+    /* ===== Utilities ===== */
+    function gcd(a,b){ a=Math.round(Math.abs(a)); b=Math.round(Math.abs(b)); while(b){ const t=b; b=a%b; a=t; } return a||1; }
+    function isInt(n){ return Number.isFinite(n) && Math.abs(n - Math.round(n)) < 1e-9; }
+    function approx(n,d=6){ return Number(n.toFixed(d)); }
+
+    /* ===== Classifier (PST / DoS / Trinomial) ===== */
+    (function(){
+      const A=document.getElementById('cfA'), B=document.getElementById('cfB'), C=document.getElementById('cfC');
+      const out=document.getElementById('cfOut');
+      function classify(){
+        let a=+A.value, b=+B.value, c=+C.value;
+        if(a===0){ out.textContent='a cannot be 0.'; return; }
+        const D=b*b-4*a*c;
+
+        // Perfect square trinomial test: a>0, c>0, and b^2 = 4ac
+        const isPST = D===0 && a>0 && c>0;
+        // Difference of squares form: b=0 and a,c have same sign, c<0 for a^2x^2 - d^2
+        const isDoS = (b===0) && (a!==0) && (c<0);
+
+        let fact='';
+        if(isPST){
+          const r=b/(2*a);
+          // (sqrt(a)x + sqrt(c))^2; for integer-friendly, assume a is square and c is square
+          const sa=Math.sqrt(a), sc=Math.sqrt(c);
+          if(isInt(sa) && isInt(sc) && approx(2*sa*sc)===Math.abs(b)){
+            const sgn = (b>0? '+':'-');
+            fact = `\\((${sa}x ${sgn} ${sc})^2\\)`;
+          }else{
+            fact = `\\(a(x - ${(-r)})^2\\)`;
+          }
+          out.innerHTML = `PST (Δ=0). Factorization: <b>${fact}</b>`;
+        }else if(isDoS){
+          const sa=Math.sqrt(Math.abs(a)), sc=Math.sqrt(Math.abs(c));
+          if(isInt(sa) && isInt(sc)){
+            fact = `\\((${sa}x-${sc})(${sa}x+${sc})\\)`;
+          }else{
+            fact = `Difference of squares pattern; factor numeric GCF first if needed.`;
+          }
+          out.innerHTML = `Difference of Squares. Factorization: <b>${fact}</b>`;
+        }else{
+          out.innerHTML = `General trinomial. Discriminant \\(\\Delta=${D}\\). Use AC-method or quadratic formula if not factorable over integers.`;
+        }
+        if(window.typesetMath) window.typesetMath(out);
+      }
+      document.getElementById('cfGo').addEventListener('click', classify);
+      document.getElementById('cfReset').addEventListener('click', ()=>{ A.value=1;B.value=6;C.value=9; out.textContent=''; });
+      classify();
+    })();
+
+    /* ===== Quadratic Factorer & Solver ===== */
+    (function(){
+      const A=document.getElementById('qsA'), B=document.getElementById('qsB'), C=document.getElementById('qsC');
+      const out=document.getElementById('qsOut');
+
+      function factorAC(a,b,c){
+        // Extract GCF first
+        let g=gcd(gcd(a,b),c);
+        if(g<0) g=-g;
+        a/=g; b/=g; c/=g;
+
+        // try integer factorization via AC
+        const ac=a*c, L=Math.abs(ac);
+        for(let d=1; d<=L; d++){
+          if(L%d) continue;
+          const pairs=[[d,ac/d],[-d,-ac/d]];
+          for(const [m,n] of pairs){
+            if(m+n===b){
+              // grouping: (ax^2+mx)+(nx+c) = (px+q)(rx+s)
+              // one construction: p=a, q=m, r=1, s=n then factor GCFs
+              // compute factors (a x + m)(1 x + n) then normalize by common factors
+              const p1=gcd(a,m), p2=gcd(n,c);
+              const f1=[a/p1,'x',m/p1];
+              const f2=[p1,'x',n/p1]; // common binomial (should match with p2 route)
+              const g1=[p2,'x',c/p2];
+              // final factors (ax + m)(x + n/a) might be fractional—use integer-friendly:
+              const P=[p1,'x',m/p1], Q=[a/p1,'x',n/p1]; // (p1 x + m/p1)( (a/p1) x + n/p1 )
+              return {g, factors:[P,Q]};
+            }
+          }
+        }
+        return {g, prime:true};
+      }
+
+      function stringifyFactor(f){
+        const [k,_,t] = f; return `(${k===1?'':k}x${t<0?t:`+${t}`})`;
+      }
+
+      function run(){
+        let a=parseInt(A.value), b=parseInt(B.value), c=parseInt(C.value);
+        if(!isFinite(a) || a===0){ out.textContent='a must be a nonzero integer.'; return; }
+        const D=b*b-4*a*c;
+        const res=factorAC(a,b,c);
+        if(res.prime){
+          // not factorable over integers; show roots
+          if(D<0){
+            out.innerHTML = `Not factorable over integers. \\(\\Delta=${D}<0\\Rightarrow\\) no real roots.`;
+          }else{
+            const r1=(-b+Math.sqrt(D))/(2*a), r2=(-b-Math.sqrt(D))/(2*a);
+            out.innerHTML = `Not factorable over integers. Real roots: \\(x=${approx(r1)}\\), \\(x=${approx(r2)}\\).`;
+          }
+          if(window.typesetMath) window.typesetMath(out);
+          return;
+        }
+        const [F1,F2]=res.factors;
+        const gStr = res.g!==1 ? `${res.g}` : '';
+        const fact = `${gStr}${gStr? '':''}${stringifyFactor(F1)}${stringifyFactor(F2)}`;
+        // solutions (if real)
+        let sol='';
+        if(D>=0){
+          const r1=(-b+Math.sqrt(D))/(2*a), r2=(-b-Math.sqrt(D))/(2*a);
+          sol = ` • Solutions: \\(x=${approx(r1)}\\), \\(x=${approx(r2)}\\)`;
+        }
+        out.innerHTML = `Factored form: <b>\\(${fact}\\)</b>${sol}`;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      function rando(){
+        // (px+q)(rx+s) with small integers
+        function nz(){ let v=0; while(v===0) v=Math.floor(Math.random()*7)-3; return v; }
+        const p=nz(), q=nz(), r=nz(), s=nz();
+        const a=p*r, b=p*s+q*r, c=q*s;
+        A.value=a; B.value=b; C.value=c; run();
+      }
+
+      document.getElementById('qsGo').addEventListener('click', run);
+      document.getElementById('qsRand').addEventListener('click', rando);
+      run();
+    })();
+
+    /* ===== Solve by Factoring – Practice ===== */
+    (function(){
+      const Q=document.getElementById('sfQ'), R1=document.getElementById('sfR1'), R2=document.getElementById('sfR2');
+      const Out=document.getElementById('sfOut');
+      let roots=[0,0];
+
+      function gen(){
+        // build (px+q)(rx+s)=0 with integer roots
+        function nz(){ let v=0; while(v===0) v=Math.floor(Math.random()*11)-5; return v; }
+        const rA=nz(), rB=nz();
+        roots=[-rA,-rB]; // actual roots
+        const p = (Math.floor(Math.random()*3)+1), r = (Math.floor(Math.random()*3)+1);
+        const q = -p*rA, s = -r*rB;
+        const a=p*r, b=p*s+q*r, c=q*s;
+        Q.textContent = `Solve: ${a}x^2 + ${b}x + ${c} = 0`;
+        R1.value=''; R2.value=''; Out.textContent='';
+      }
+
+      function check(){
+        const a=parseFloat(R1.value), b=parseFloat(R2.value);
+        if(!isFinite(a) || !isFinite(b)){ Out.textContent='Enter two numbers.'; return; }
+        // orderless compare with tolerance
+        function eq(x,y){ return Math.abs(x-y)<1e-6; }
+        const ok = (eq(a,roots[0]) && eq(b,roots[1])) || (eq(a,roots[1]) && eq(b,roots[0]));
+        Out.innerHTML = ok ? '<span class="ok">✅ Correct!</span>' : `<span class="bad">❌ Not quite.</span> Roots are <b>${roots[0]}</b> and <b>${roots[1]}</b>.`;
+      }
+
+      document.getElementById('sfNew').addEventListener('click', gen);
+      document.getElementById('sfCheck').addEventListener('click', check);
+      gen();
+    })();
+
+    /* ===== Radical Equation Solver (with extraneous check) ===== */
+    (function(){
+      const mode=document.getElementById('reMode');
+      const A=document.getElementById('reA'), B=document.getElementById('reB'), K=document.getElementById('reK');
+      const C=document.getElementById('reC'), D=document.getElementById('reD');
+      const KWrap=document.getElementById('reKWrap'), CWrap=document.getElementById('reCWrap'), DWrap=document.getElementById('reDWrap');
+      const out=document.getElementById('reOut');
+
+      function refresh(){
+        if(mode.value==='sqrt_eq_const'){ KWrap.style.display='block'; CWrap.style.display='none'; DWrap.style.display='none'; }
+        else { KWrap.style.display='none'; CWrap.style.display='block'; DWrap.style.display='block'; }
+        out.textContent='';
+      }
+
+      function solve(){
+        const a=+A.value, b=+B.value;
+        if(mode.value==='sqrt_eq_const'){
+          const k=+K.value;
+          // Domain: ax+b >= 0 and k >= 0 (since LHS sqrt ≥ 0)
+          if(k<0){ out.textContent='No solution (√… ≥ 0 cannot equal negative k).'; return; }
+          // Square: ax+b = k^2 => x = (k^2 - b)/a
+          if(a===0){ out.textContent='a cannot be 0.'; return; }
+          const x = (k*k - b)/a;
+          const rad = a*x + b;
+          const L = Math.sqrt(Math.max(0,rad)), R = k;
+          const ok = (rad >= -1e-9) && (Math.abs(L - R) < 1e-6);
+          out.innerHTML = ok
+            ? `Solution: \\(x=${approx(x)}\\) (domain check: \\(ax+b=${approx(rad)}\\ge 0\\))`
+            : `Candidate \\(x=${approx(x)}\\) is extraneous (fails original).`;
+          if(window.typesetMath) window.typesetMath(out);
+        }else{
+          const c=+C.value, d=+D.value;
+          // Domain: ax+b ≥ 0 and cx+d ≥ 0
+          if(a===0 && c===0){ out.textContent='a and c cannot both be 0.'; return; }
+          // Square both sides: ax+b = cx+d ⇒ (a-c)x = d-b
+          if(a===c){
+            if(b===d){
+              out.textContent='Infinite solutions within domain (both radicands identical).';
+              return;
+            }else{
+              out.textContent='No solution (radicands cannot be equal for any x).';
+              return;
+            }
+          }
+          const x = (d - b)/(a - c);
+          const r1 = a*x + b, r2 = c*x + d;
+          const ok = (r1 >= -1e-9) && (r2 >= -1e-9) && (Math.abs(Math.sqrt(Math.max(0,r1)) - Math.sqrt(Math.max(0,r2))) < 1e-6);
+          out.innerHTML = ok
+            ? `Solution: \\(x=${approx(x)}\\) with domain checks \\(ax+b=${approx(r1)}\\ge 0\\), \\(cx+d=${approx(r2)}\\ge 0\\).`
+            : `Candidate \\(x=${approx(x)}\\) is extraneous or outside the domain.`;
+          if(window.typesetMath) window.typesetMath(out);
+        }
+      }
+
+      document.getElementById('reSolve').addEventListener('click', solve);
+      document.getElementById('reReset').addEventListener('click', ()=>{ mode.value='sqrt_eq_const'; A.value=3;B.value=-5;K.value=7;C.value=1;D.value=11; out.textContent=''; refresh(); });
+      mode.addEventListener('change', refresh);
+      refresh();
+    })();
+  </script>
+</body>
+</html>
