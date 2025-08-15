@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 20-1 • Unit 1 (Lessons 5–8): Geometric Sequences & Series — Quiz</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- MathJax (robust + queue-safe) -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(','\\)'], ['$', '$']],
+        displayMath: [['\\[','\\]'], ['$$','$$']],
+        processEscapes: true
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] },
+      chtml: { mtextInheritFont: true, matchFontHeight: false },
+      startup: { typeset: false }
+    };
+  </script>
+  <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
+  <script>
+    /* Queue-safe typeset helper */
+    (function(){
+      const pending = [];
+      window.typesetMath = function(root){
+        if (window.MathJax && MathJax.typesetPromise) {
+          MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
+        } else {
+          pending.push(root || null);
+        }
+      };
+      function flush(){
+        if (!(window.MathJax && MathJax.typesetPromise)) return;
+        const batch = pending.splice(0);
+        if (!batch.length) return;
+        Promise.all(batch.map(r => MathJax.typesetPromise(r ? [r] : undefined))).catch(console.error);
+      }
+      document.addEventListener('DOMContentLoaded', ()=>{
+        if (window.MathJax?.startup?.promise) MathJax.startup.promise.then(flush);
+        else document.getElementById('MathJax-script')?.addEventListener('load', flush);
+      });
+    })();
+  </script>
+
+  <style>
+    .content-wrapper{max-width:1100px;margin:0 auto;padding:20px;}
+    .content-box{border:2px solid #e0e0e0;border-radius:12px;padding:24px;margin-bottom:24px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+    .content-box h2{color:#2c3e50;border-bottom:3px solid #3498db;padding-bottom:10px;margin-bottom:16px}
+
+    .hero{background:linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%);border-color:#cfe8ff}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{padding:6px 10px;border-radius:999px;background:#ecf5ff;border:1px solid #d6eaff;color:#1d6fa5;font-size:12px}
+
+    .question{border:1px solid #e7eaef;border-radius:12px;padding:16px;margin:18px 0;background:#f9fbfd}
+    .q-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .q-title{font-weight:700;color:#2c3e50}
+    .options{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-top:10px}
+    .option{padding:10px;border:1px solid #dfe6ee;border-radius:8px;background:#fff;cursor:pointer;text-align:left}
+    .option:hover{border-color:#3498db;box-shadow:0 3px 12px rgba(52,152,219,.15)}
+    .feedback{margin-top:8px;padding:8px;border-radius:6px;font-weight:600}
+    .soln{margin-top:10px;display:none;background:#fff;border:1px dashed #dfe6ee;border-radius:8px;padding:12px}
+
+    /* Whiteboard */
+    .wb-wrap{margin-top:10px;border:1px solid #e0e0e0;border-radius:10px;background:#fff}
+    .wb-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px;background:#f5f7fa;border-bottom:1px solid #e0e0e0;border-radius:10px 10px 0 0}
+    .wb-toolbar label{font-size:.85rem;color:#5b6b7b}
+    .wb-toolbar .btn{padding:8px 10px;border-radius:8px;border:1px solid #cbd6e2;background:#fff;cursor:pointer}
+    .wb-toolbar .btn:hover{background:#ecf5ff;border-color:#3498db}
+    .wb-stack{position:relative;width:100%;height:260px;border-radius:0 0 10px 10px;overflow:hidden}
+    .wb-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:crosshair; z-index:1;}
+    .wb-grid{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.9; z-index:2;}
+    .toolbar-sep{flex:1}
+
+    .progress{height:16px;background:#ecf0f1;border-radius:10px;overflow:hidden}
+    .bar{height:100%;width:0;background:linear-gradient(90deg,#3498db,#2ecc71)}
+    .stats{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+
+    .btn-primary{background:#3498db;color:#fff;border:0;border-radius:8px;padding:8px 12px;cursor:pointer}
+    .btn-primary:hover{background:#2f81bd}
+    .muted{color:#7f8c8d}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r=>r.text())
+        .then(html => {
+          const el=document.getElementById('navbar-placeholder');
+          el.innerHTML=html;
+          window.typesetMath?.(el);
+        })
+        .catch(err => console.error("Navbar failed to load:", err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+      <section class="content-box hero">
+        <h2>Unit 1 • Lessons 5–8 (Geometric Sequences & Series) — Quiz</h2>
+        <p class="muted">Geometric sequences • Growth/decay \(A_n=A_0 r^n\) • Geometric series • Infinite series</p>
+        <div class="badges">
+          <span class="badge">Explicit \(t_n=a_1 r^{n-1}\)</span>
+          <span class="badge">Common Ratio \(r\)</span>
+          <span class="badge">Growth/Decay Models</span>
+          <span class="badge">Sum \(S_n=a_1\frac{r^n-1}{r-1}\)</span>
+          <span class="badge">Infinite \(S_\infty=\frac{a_1}{1-r}\) (|r|&lt;1)</span>
+        </div>
+      </section>
+
+      <section class="content-box">
+        <h2>Practice Set</h2>
+        <p>Each question allows <b>2 attempts</b>. Use the <b>whiteboard</b> below each problem, then click <i>Reveal Solution</i> if needed.</p>
+      </section>
+
+      <section id="questions" class="content-box">
+        <!-- Q1 -->
+        <div class="question" id="q1">
+          <div class="q-head">
+            <div class="q-title">1) Explicit Rule</div>
+            <span class="muted">For \(3,6,12,24,\dots\) choose the correct explicit rule.</span>
+          </div>
+          <div class="options">
+            <button class="option" onclick="checkAnswer(1,'a')">A) \(t_n=3\cdot 2^{n}\)</button>
+            <button class="option" onclick="checkAnswer(1,'b')">B) \(t_n=3\cdot 2^{\,n-1}\)</button>
+            <button class="option" onclick="checkAnswer(1,'c')">C) \(t_n=6\cdot 2^{\,n-1}\)</button>
+            <button class="option" onclick="checkAnswer(1,'d')">D) \(t_n=3(n-1)\cdot 2\)</button>
+          </div>
+          <div class="feedback" id="f1"></div>
+          <button class="btn-primary" onclick="toggleSoln(1)">Reveal Solution</button>
+          <div class="soln" id="s1">
+            \(a_1=3,\; r=2\Rightarrow t_n=a_1 r^{n-1}=3\cdot 2^{n-1}.\)
+          </div>
+          <div class="wb-wrap">
+            <div class="wb-toolbar">
+              <label>Pen: <input type="color" id="c1" value="#000000"></label>
+              <label>Width: <input type="range" id="w1" min="1" max="12" value="2"></label>
+              <button class="btn" onclick="toggleEraser(1)">Eraser</button>
+              <button class="btn" onclick="undo(1)">Undo</button>
+              <button class="btn" onclick="clearWB(1)">Clear</button>
+              <button class="btn" onclick="toggleGrid(1)">Grid</button>
+              <span class="toolbar-sep"></span>
+              <button class="btn" onclick="downloadWB(1)">Download PNG</button>
+            </div>
+            <div class="wb-stack">
+              <canvas class="wb-grid" id="grid1"></canvas>
+              <canvas class="wb-canvas" id="wb1"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="question" id="q2">
+          <div class="q-head"><div class="q-title">2) Find a Term</div>
+            <span class="muted">For \(a_1=2\) and \(r=3\), find \(t_{8}\).</span>
+          </div>
+          <div class="options">
+            <button class="option" onclick="checkAnswer(2,'a')">A) \(1458\)</button>
+            <button class="option" onclick="checkAnswer(2,'b')">B) \(2187\)</button>
+            <button class="option" onclick="checkAnswer(2,'c')">C) \(4374\)</button>
+            <button class="option" onclick="checkAnswer(2,'d')">D) \(6561\)</button>
+          </div>
+          <div class="feedback" id="f2"></div>
+          <button class="btn-primary" onclick="toggleSoln(2)">Reveal Solution</button>
+          <div class="soln" id="s2">
+            \(t_8=a_1 r^{7}=2\cdot 3^{7}=2\cdot 2187=4374.\)
+          </div>
+          <div class="wb-wrap">
+            <div class="wb-toolbar">
+              <label>Pen: <input type="color" id="c2" value="#000000"></label>
+              <label>Width: <input type="range" id="w2" min="1" max="12" value="2"></label>
+              <button class="btn" onclick="toggleEraser(2)">Eraser</button>
+              <button class="btn" onclick="undo(2)">Undo</button>
+              <button class="btn" onclick="clearWB(2)">Clear</button>
+              <button class="btn" onclick="toggleGrid(2)">Grid</button>
+              <span class="toolbar-sep"></span>
+              <button class="btn" onclick="downloadWB(2)">Download PNG</button>
+            </div>
+            <div class="wb-stack">
+              <canvas class="wb-grid" id="grid2"></canvas>
+              <canvas class="wb-canvas" id="wb2"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="question" id="q3">
+          <div class="q-head"><div class="q-title">3) Identify Ratio</div>
+            <span class="muted">For \(81,27,9,3,\dots\), select the correct common ratio.</span>
+          </div>
+          <div class="options">
+            <button class="option" onclick="checkAnswer(3,'a')">A) \(r=\tfrac{1}{3}\)</button>
+            <button class="option" onclick="checkAnswer(3,'b')">B) \(r=3\)</button>
+            <button class="option" onclick="checkAnswer(3,'c')">C) \(r=-3\)</button>
+            <button class="option" onclick="checkAnswer(3,'d')">D) Not geometric</button>
+          </div>
+          <div class="feedback" id="f3"></div>
+          <button class="btn-primary" onclick="toggleSoln(3)">Reveal Solution</button>
+          <div class="soln" id="s3">
+            Each term is a third of the previous: \(r=\frac{1}{3}\).
+          </div>
+          <div class="wb-wrap">
+            <div class="wb-toolbar">
+              <label>Pen: <input type="color" id="c3" value="#000000"></label>
+              <label>Width: <input type="range" id="w3" min="1" max="12" value="2"></label>
+              <button class="btn" onclick="toggleEraser(3)">Eraser</button>
+              <button class="btn" onclick="undo(3)">Undo</button>
+              <button class="btn" onclick="clearWB(3)">Clear</button>
+              <button class="btn" onclick="toggleGrid(3)">Grid</button>
+              <span class="toolbar-sep"></span>
+              <button class="btn" onclick="downloadWB(3)">Download PNG</button>
+            </div>
+            <div class="wb-stack">
+              <canvas class="wb-grid" id="grid3"></canvas>
+              <canvas class="wb-canvas" id="wb3"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="question" id="q4">
+          <div class="q-head"><div class="q-title">4) Growth Model</div>
+            <span class="muted">A culture starts with \(600\) cells and doubles each hour. After \(5\) hours?</span>
+          </div>
+          <div class="options">
+            <button class="option" onclick="checkAnswer(4,'a')">A) \(9600\)</button>
+            <button class="option" onclick="checkAnswer(4,'b')">B) \(12000\)</button>
+            <button class="option" onclick="checkAnswer(4,'c')">C) \(19200\)</button>
+            <button class="option" onclick="checkAnswer(4,'d')">D) \(24000\)</button>
+          </div>
+          <div class="feedback" id="f4"></div>
+          <button class="btn-primary" onclick="toggleSoln(4)">Reveal Solution</button>
+          <div class="soln" id="s4">
+            \(A=600\cdot 2^{5}=600\cdot 32=19200.\)
+          </div>
+          <div class="wb-wrap">
+            <div class="wb-toolbar">
+              <label>Pen: <input type="color" id="c4" value="#000000"></label>
+              <label>Width: <input type="range" id="w4" min="1" max="12" value="2"></label>
+              <button class="btn" onclick="toggleEraser(4)">Eraser</button>
+              <button class="btn" onclick="undo(4)">Undo</button>
+              <button class="btn" onclick="clearWB(4)">Clear</button>
+              <button class="btn" onclick="toggleGrid(4)">Grid</button>
+              <span class="toolbar-sep"></span>
+              <button class="btn" onclick="downloadWB(4)">Download PNG</button>
+            </div>
+            <div class="wb-stack">
+              <canvas class="wb-grid" id="grid4"></canvas>
+              <canvas class="wb-canvas" id="wb4"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="question" id="q5">
+          <div class="q-head"><div class="q-title">5) Decay Model</div>
+            <span class="muted">A sample decreases by \(20\%\) each day. If \(A_0=1000\), find \(A_7\) (nearest whole).</span>
+          </div>
+          <div class="options">
+            <button class="option" onclick="checkAnswer(5,'a')">A) \(262\)</button>
+            <button class="option" onclick="checkAnswer(5,'b')">B) \(210\)</button>
+            <button class="option" onclick="checkAnswer(5,'c')">C) \(134\)</button>
+            <button class="option" onclick="checkAnswer(5,'d')">D) \(512\)</button>
+          </div>
+          <div class="feedback" id="f5"></div>
+          <button class="btn-primary" onclick="toggleSoln(5)">Reveal Solution</button>
+          <div class="soln" id="s5">
+            \(A_7=1000(0.8)^7\approx 209.7\approx 210.\)
+          </div>
+          <div class="wb-wrap">
+            <div class="wb-toolbar">
+              <label>Pen: <input type="color" id="c5" value="#000000"></label>
+              <label>Width: <input type="range" id="w5" min="1" max="12" value="2"></label>
+              <button class="btn" onclick="toggleEraser(5)">Eraser</button>
+              <button class="btn" onclick="undo(5)">Undo</button>
+              <button class="btn" onclick="clearWB(5)">Clear</button>
+              <button class="btn" onclick="toggleGrid(5)">Grid</button>
+              <span class="toolbar-sep"></span>
+              <button class="btn" onclick="downloadWB(5)">Download PNG</button>
+            </div>
+            <div class="wb-stack">
+              <canvas class="wb-grid" id="grid5"></canvas>
+              <canvas class="wb-canvas" id="wb5"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="question" id="q6">
+          <div class="q-head"><div class="q-title">6) Finite Geometric Series</div>
+            <span class="muted">Find \(S_6\) for \(a_1=4,\; r=3\).</span>
+          </div>
+          <div class="options">
+            <button class="option" onclick="checkAnswer(6,'a')">A) \(1094\)</button>
+            <button class="option" onclick="checkAnswer(6,'b')">B) \(1456\)</button>
+            <button class="option" onclick="checkAnswer(6,'c')">C) \(2184\)</button>
+            <button class="option" onclick="checkAnswer(6,'d')">D) \(364\)</button>
+          </div>
+          <div class="feedback" id="f6"></div>
+          <button class="btn-primary" onclick="toggleSoln(6)">Reveal Solution</button>
+          <div class="soln" id="s6">
+            \(S_6=a_1\frac{r^6-1}{r-1}=4\cdot\frac{3^6-1}{2}=4\cdot\frac{729-1}{2}=1456.\)
+          </div>
+          <div class="wb-wrap">
+            <div class="wb-toolbar">
+              <label>Pen: <input type="color" id="c6" value="#000000"></label>
+              <label>Width: <input type="range" id="w6" min="1" max="12" value="2"></label>
+              <button class="btn" onclick="toggleEraser(6)">Eraser</button>
+              <button class="btn" onclick="undo(6)">Undo</button>
+              <button class="btn" onclick="clearWB(6)">Clear</button>
+              <button class="btn" onclick="toggleGrid(6)">Grid</button>
+              <span class="toolbar-sep"></span>
+              <button class="btn" onclick="downloadWB(6)">Download PNG</button>
+            </div>
+            <div class="wb-stack">
+              <canvas class="wb-grid" id="grid6"></canvas>
+              <canvas class="wb-canvas" id="wb6"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="question" id="q7">
+          <div class="q-head"><div class="q-title">7) Finite Series with \(r=\tfrac12\)</div>
+            <span class="muted">For \(a_1=10,\; r=\tfrac12,\; n=5\), compute \(S_5\).</span>
+          </div>
+          <div class="options">
+            <button class="option" onclick="checkAnswer(7,'a')">A) \(18.75\)</button>
+            <button class="option" onclick="checkAnswer(7,'b')">B) \(19.375\)</button>
+            <button class="option" onclick="checkAnswer(7,'c')">C) \(20\)</button>
+            <button class="option" onclick="checkAnswer(7,'d')">D) \(21\)</button>
+          </div>
+          <div class="feedback" id="f7"></div>
+          <button class="btn-primary" onclick="toggleSoln(7)">Reveal Solution</button>
+          <div class="soln" id="s7">
+            \(S_5=10\frac{1-(1/2)^5}{1-1/2}=10\cdot\frac{31}{32}\cdot 2= \tfrac{310}{16}=19.375.\)
+          </div>
+          <div class="wb-wrap">
+            <div class="wb-toolbar">
+              <label>Pen: <input type="color" id="c7" value="#000000"></label>
+              <label>Width: <input type="range" id="w7" min="1" max="12" value="2"></label>
+              <button class="btn" onclick="toggleEraser(7)">Eraser</button>
+              <button class="btn" onclick="undo(7)">Undo</button>
+              <button class="btn" onclick="clearWB(7)">Clear</button>
+              <button class="btn" onclick="toggleGrid(7)">Grid</button>
+              <span class="toolbar-sep"></span>
+              <button class="btn" onclick="downloadWB(7)">Download PNG</button>
+            </div>
+            <div class="wb-stack">
+              <canvas class="wb-grid" id="grid7"></canvas>
+              <canvas class="wb-canvas" id="wb7"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="question" id="q8">
+          <div class="q-head"><div class="q-title">8) Infinite Geometric Series</div>
+            <span class="muted">For \(a_1=12,\; r=\tfrac14\), find \(S_\infty\).</span>
+          </div>
+          <div class="options">
+            <button class="option" onclick="checkAnswer(8,'a')">A) \(12\)</button>
+            <button class="option" onclick="checkAnswer(8,'b')">B) \(15\)</button>
+            <button class="option" onclick="checkAnswer(8,'c')">C) \(16\)</button>
+            <button class="option" onclick="checkAnswer(8,'d')">D) \(18\)</button>
+          </div>
+          <div class="feedback" id="f8"></div>
+          <button class="btn-primary" onclick="toggleSoln(8)">Reveal Solution</button>
+          <div class="soln" id="s8">
+            Since \(|r|&lt;1\): \(S_\infty=\dfrac{a_1}{1-r}=\dfrac{12}{1-\tfrac14}=\dfrac{12}{\tfrac34}=16.\)
+          </div>
+          <div class="wb-wrap">
+            <div class="wb-toolbar">
+              <label>Pen: <input type="color" id="c8" value="#000000"></label>
+              <label>Width: <input type="range" id="w8" min="1" max="12" value="2"></label>
+              <button class="btn" onclick="toggleEraser(8)">Eraser</button>
+              <button class="btn" onclick="undo(8)">Undo</button>
+              <button class="btn" onclick="clearWB(8)">Clear</button>
+              <button class="btn" onclick="toggleGrid(8)">Grid</button>
+              <span class="toolbar-sep"></span>
+              <button class="btn" onclick="downloadWB(8)">Download PNG</button>
+            </div>
+            <div class="wb-stack">
+              <canvas class="wb-grid" id="grid8"></canvas>
+              <canvas class="wb-canvas" id="wb8"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-box">
+        <h2>Progress</h2>
+        <div class="stats">
+          <div>Score: <b id="score">0</b>/8</div>
+          <div class="progress" style="flex:1;min-width:180px"><div id="bar" class="bar"></div></div>
+          <button class="btn-primary" onclick="resetQuiz()">Reset Quiz</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <script>
+    /* ---------- Quiz Logic ---------- */
+    const correct = {1:'b',2:'c',3:'a',4:'c',5:'b',6:'b',7:'b',8:'c'};
+    const attempts = {}; Object.keys(correct).forEach(k=>attempts[k]=0);
+    const done = {}; Object.keys(correct).forEach(k=>done[k]=false);
+
+    function setFeedback(id, msg, ok=null){
+      const el = document.getElementById('f'+id);
+      el.textContent = msg;
+      el.style.backgroundColor = ok===true ? '#d4edda' : ok===false ? '#f8d7da' : '#fff3cd';
+      el.style.border = '1px solid ' + (ok===true ? '#b7e0c2' : ok===false ? '#f5c2c7' : '#ffe69c');
+    }
+    function disableOptions(id){
+      const q = document.getElementById('q'+id);
+      q.querySelectorAll('.option').forEach(b=> b.disabled = true);
+    }
+    function updateScore(){
+      const total=Object.keys(correct).length;
+      const got = Object.values(done).filter(Boolean).length;
+      document.getElementById('score').textContent = got;
+      document.getElementById('bar').style.width = (100*got/total)+'%';
+    }
+    function checkAnswer(id, choice){
+      if (done[id] || attempts[id]>=2) return;
+      if (choice === correct[id]){
+        setFeedback(id,'Correct! ✔', true);
+        done[id] = true;
+        disableOptions(id);
+      } else {
+        attempts[id]++;
+        const left = 2 - attempts[id];
+        if (left>0) setFeedback(id, `Incorrect. Attempts remaining: ${left}`, false);
+        else { setFeedback(id, `Out of attempts. Correct: ${correct[id].toUpperCase()}`); disableOptions(id); }
+      }
+      updateScore();
+      window.typesetMath?.(document.getElementById('q'+id));
+    }
+    function toggleSoln(id){
+      const s = document.getElementById('s'+id);
+      s.style.display = (s.style.display==='block' ? 'none' : 'block');
+      if (s.style.display==='block') window.typesetMath?.(s);
+    }
+    function resetQuiz(){
+      Object.keys(correct).forEach(k=>{ attempts[k]=0; done[k]=false; });
+      for (let i=1;i<=8;i++){
+        const q=document.getElementById('q'+i);
+        q.querySelectorAll('.option').forEach(b=>b.disabled=false);
+        setFeedback(i,'');
+      }
+      updateScore();
+    }
+
+    /* ---------- Whiteboard Engine (pointer events + crisp grid) ---------- */
+    const WBs = {};
+
+    function initWB(i){
+      const drawCanvas = document.getElementById('wb'+i);
+      const gridCanvas = document.getElementById('grid'+i);
+      const dctx = drawCanvas.getContext('2d');
+      const gctx = gridCanvas.getContext('2d');
+
+      function size(){
+        const dpr = window.devicePixelRatio || 1;
+        const rect = drawCanvas.getBoundingClientRect();
+
+        [drawCanvas, gridCanvas].forEach(c=>{
+          c.width = Math.max(1, Math.floor(rect.width * dpr));
+          c.height = Math.max(1, Math.floor(rect.height * dpr));
+        });
+
+        dctx.setTransform(dpr,0,0,dpr,0,0);
+        gctx.setTransform(dpr,0,0,dpr,0,0);
+
+        dctx.clearRect(0,0,rect.width,rect.height);
+        dctx.fillStyle = '#ffffff';
+        dctx.fillRect(0,0,rect.width,rect.height);
+
+        if (WBs[i]?.gridOn) drawGrid();
+        else gctx.clearRect(0,0,rect.width,rect.height);
+      }
+
+      function drawGrid(){
+        const rect = gridCanvas.getBoundingClientRect();
+        gctx.clearRect(0,0,rect.width,rect.height);
+        const step = 20;
+        gctx.strokeStyle = '#e9eef3';
+        gctx.lineWidth = 1;
+        for(let x=0.5; x<=rect.width; x+=step){ gctx.beginPath(); gctx.moveTo(x,0); gctx.lineTo(x,rect.height); gctx.stroke(); }
+        for(let y=0.5; y<=rect.height; y+=step){ gctx.beginPath(); gctx.moveTo(0,y); gctx.lineTo(rect.width,y); gctx.stroke(); }
+      }
+
+      size();
+      window.addEventListener('resize', size);
+
+      WBs[i] = {
+        color: document.getElementById('c'+i).value,
+        width: parseInt(document.getElementById('w'+i).value,10),
+        erasing:false,
+        gridOn:false,
+        history:[]
+      };
+
+      function save(){
+        const rect = drawCanvas.getBoundingClientRect();
+        const snap = dctx.getImageData(0,0,rect.width,rect.height);
+        WBs[i].history.push(snap);
+        if (WBs[i].history.length>50) WBs[i].history.shift();
+      }
+      save();
+
+      let drawing=false;
+      function pos(e){
+        const r = drawCanvas.getBoundingClientRect();
+        return { x: e.clientX - r.left, y: e.clientY - r.top };
+      }
+      drawCanvas.addEventListener('pointerdown', e=>{
+        drawCanvas.setPointerCapture(e.pointerId);
+        drawing=true; dctx.beginPath();
+        const p = pos(e); dctx.moveTo(p.x,p.y); save();
+      });
+      drawCanvas.addEventListener('pointermove', e=>{
+        if(!drawing) return;
+        const p = pos(e);
+        dctx.lineTo(p.x,p.y);
+        dctx.strokeStyle = WBs[i].erasing ? '#ffffff' : WBs[i].color;
+        dctx.lineWidth = WBs[i].width;
+        dctx.lineCap = 'round'; dctx.lineJoin = 'round';
+        dctx.stroke();
+      });
+      drawCanvas.addEventListener('pointerup', ()=>{ drawing=false; });
+      drawCanvas.addEventListener('pointercancel', ()=>{ drawing=false; });
+
+      document.getElementById('c'+i).addEventListener('input',e=>WBs[i].color=e.target.value);
+      document.getElementById('w'+i).addEventListener('input',e=>WBs[i].width=parseInt(e.target.value,10));
+
+      WBs[i].clear = ()=>{
+        const rect = drawCanvas.getBoundingClientRect();
+        dctx.clearRect(0,0,rect.width,rect.height);
+        dctx.fillStyle='#ffffff'; dctx.fillRect(0,0,rect.width,rect.height);
+        save();
+      };
+      WBs[i].undo = ()=>{
+        if (WBs[i].history.length>1){
+          WBs[i].history.pop();
+          const last = WBs[i].history[WBs[i].history.length-1];
+          dctx.putImageData(last,0,0);
+        }
+      };
+      WBs[i].toggleGrid = ()=>{
+        WBs[i].gridOn = !WBs[i].gridOn;
+        if (WBs[i].gridOn) drawGrid();
+        else {
+          const rect = gridCanvas.getBoundingClientRect();
+          gctx.clearRect(0,0,rect.width,rect.height);
+        }
+      };
+      WBs[i].download = ()=>{
+        const tmp = document.createElement('canvas');
+        const r = drawCanvas.getBoundingClientRect();
+        tmp.width = r.width; tmp.height = r.height;
+        const tctx = tmp.getContext('2d');
+        tctx.drawImage(gridCanvas,0,0,r.width,r.height);
+        tctx.drawImage(drawCanvas,0,0,r.width,r.height);
+        const link=document.createElement('a');
+        link.download = `m201_u1_l5-8_q${i}_work.png`;
+        link.href = tmp.toDataURL('image/png');
+        link.click();
+      };
+    }
+
+    function toggleEraser(i){ WBs[i].erasing = !WBs[i].erasing; }
+    function undo(i){ WBs[i].undo(); }
+    function clearWB(i){ WBs[i].clear(); }
+    function toggleGrid(i){ WBs[i].toggleGrid(); }
+    function downloadWB(i){ WBs[i].download(); }
+
+    window.toggleEraser=toggleEraser;
+    window.undo=undo;
+    window.clearWB=clearWB;
+    window.toggleGrid=toggleGrid;
+    window.downloadWB=downloadWB;
+
+    document.addEventListener('DOMContentLoaded', ()=>{
+      for(let i=1;i<=8;i++) initWB(i);
+      window.typesetMath?.(document.getElementById('questions'));
+      updateScore();
+    });
+    window.addEventListener('load', ()=> window.typesetMath?.());
+  </script>
+</body>
+</html>
