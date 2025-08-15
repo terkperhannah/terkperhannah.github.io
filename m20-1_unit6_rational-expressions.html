@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 20-1 • Unit 6: Rational Expressions & Equations</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']], processEscapes:true },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] },
+      chtml: { mtextInheritFont:true, matchFontHeight:false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    .content-wrapper{max-width:1200px;margin:0 auto;padding:20px;}
+    .content-box{border:2px solid #e0e0e0;border-radius:12px;padding:28px;margin-bottom:30px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+    .content-box h2{color:#2c3e50;border-bottom:3px solid #3498db;padding-bottom:10px;margin-bottom:18px;}
+    .sub{color:#566573;margin-top:-6px;}
+    .hero{background:linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%);border-color:#cfe8ff;}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#ecf5ff;color:#1d6fa5;font-size:12px;margin:6px 6px 0 0;border:1px solid #d6eaff;}
+
+    .two-col{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start;}
+    .checklist label{display:flex;align-items:flex-start;gap:10px;line-height:1.4;margin:10px 0;}
+    .checklist input{transform:translateY(3px);}
+
+    .video-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:10px;}
+    .video-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:14px;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .video-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#3498db;}
+    .video-card h4{color:#3498db;margin:6px 0 8px;}
+    .video-card p{margin:0;font-size:.95rem;color:#5a6b7b;}
+    .video-card small{display:block;margin-top:8px;color:#7a8b99;}
+
+    .units-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+    .unit-card{padding:18px;border-radius:10px;background:#f8f9fa;border:1px solid #e0e0e0;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .unit-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#2ecc71;}
+    .unit-card h3{color:#2ecc71;margin:0 0 8px;}
+
+    .pdf-frame{width:100%;height:540px;border:1px solid #e0e0e0;border-radius:10px;}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:#3498db;color:#fff;text-decoration:none;border:0;cursor:pointer;}
+    .btn:hover{background:#2f81bd;}
+    .btn-ghost{background:#fff;color:#3498db;border:1px solid #3498db;}
+    .btn-ghost:hover{background:#ecf5ff;}
+    .muted{color:#7f8c8d;font-size:.95rem;}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+
+    .mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+    .tool-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:16px;}
+    .tool-card h4{margin:0 0 10px;color:#3498db;}
+    .tool-card label{display:block;font-size:.9rem;margin:6px 0 2px;color:#566573;}
+    .tool-card input,.tool-card select,.tool-card textarea{width:100%;padding:8px 10px;border:1px solid #dfe6ee;border-radius:8px;}
+    .tool-card textarea{min-height:72px;resize:vertical;}
+
+    .table-mini{width:100%;border-collapse:collapse;margin-top:8px;}
+    .table-mini th,.table-mini td{border:1px solid #e6e6e6;padding:6px 8px;text-align:right;}
+    .table-mini th{background:#f2f6ff;color:#2c3e50;text-align:left;}
+    .ok{color:#2ecc71;font-weight:600;}
+    .bad{color:#e74c3c;font-weight:600;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r=>r.text())
+        .then(html => {
+          const el=document.getElementById('navbar-placeholder');
+          el.innerHTML=html;
+          if (window.typesetMath) window.typesetMath(el);
+        })
+        .catch(err=>console.error('Navbar failed to load:',err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Unit 6: Rational Expressions & Equations (Math 20-1)</h2>
+        <p class="sub">Simplify; add/subtract; multiply/divide; solve rational equations & applied problems (with domain restrictions & extraneous checks).</p>
+        <div>
+          <span class="badge">Restrictions (N.P.V.)</span>
+          <span class="badge">LCD</span>
+          <span class="badge">Cancel Common Factors</span>
+          <span class="badge">Cross-Multiplication</span>
+          <span class="badge">Extraneous Solutions</span>
+        </div>
+      </section>
+
+      <!-- Outcomes -->
+      <section class="content-box">
+        <h2>What You Should Be Able To Do</h2>
+        <div class="two-col">
+          <ul>
+            <li>State non-permissible values (values that make a denominator zero).</li>
+            <li>Simplify rational expressions by factoring and cancelling common factors.</li>
+            <li>Add/subtract rational expressions using the LCD; simplify the result.</li>
+            <li>Multiply/divide rational expressions; simplify and state restrictions.</li>
+            <li>Solve rational equations and check for extraneous solutions; model contextual problems.</li>
+          </ul>
+
+          <div class="checklist" id="m201-u6-checklist">
+            <label><input type="checkbox" data-k="npv"> I can find all non-permissible values.</label>
+            <label><input type="checkbox" data-k="simplify"> I can factor & cancel to simplify.</label>
+            <label><input type="checkbox" data-k="addsub"> I can build an LCD and combine terms.</label>
+            <label><input type="checkbox" data-k="multdiv"> I can multiply/divide and simplify.</label>
+            <label><input type="checkbox" data-k="solve"> I can solve equations & check solutions.</label>
+            <button class="btn btn-ghost" id="saveChecklist">Save Progress</button>
+            <small class="muted" id="saveNote" style="display:block;margin-top:6px;">Progress autosaves to this device.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Videos -->
+      <section class="content-box">
+        <h2>Video Library</h2>
+        <div class="video-grid">
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=rational+expressions+simplify+factoring+cancel">
+            <h4>Simplifying Rational Expressions</h4>
+            <p>Factor, restrict, cancel, and simplify.</p>
+            <small>youtube.com – “rational expressions simplify factoring cancel”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=adding+subtracting+rational+expressions+LCD">
+            <h4>Adding & Subtracting (LCD)</h4>
+            <p>Build a common denominator and combine.</p>
+            <small>youtube.com – “adding subtracting rational expressions LCD”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=multiply+divide+rational+expressions+cancel">
+            <h4>Multiply/Divide & Cancel</h4>
+            <p>Cancel before multiplying to simplify.</p>
+            <small>youtube.com – “multiply divide rational expressions cancel”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=solve+rational+equations+extraneous+solutions">
+            <h4>Solve Rational Equations</h4>
+            <p>Restrictions, solving, and extraneous roots.</p>
+            <small>youtube.com – “solve rational equations extraneous solutions”</small>
+          </a>
+        </div>
+      </section>
+
+      <!-- Interactive Tools -->
+      <section class="content-box">
+        <h2>Interactive Tools</h2>
+        <div class="mini-grid">
+
+          <!-- Restrictions & Simplify -->
+          <div class="tool-card">
+            <h4>Restrictions & Simplify</h4>
+            <p class="muted">Enter numerator and denominator (degree ≤ 2). The tool factors where possible, finds N.P.V., and cancels common linear factors.</p>
+            <div class="mini-grid">
+              <div>
+                <label>Numerator \(a_n x^2 + b_n x + c_n\)</label>
+                <div class="mini-grid">
+                  <input id="sAn" type="number" step="1" value="1" placeholder="aₙ">
+                  <input id="sBn" type="number" step="1" value="-1" placeholder="bₙ">
+                  <input id="sCn" type="number" step="1" value="-6" placeholder="cₙ">
+                </div>
+              </div>
+              <div>
+                <label>Denominator \(a_d x^2 + b_d x + c_d\)</label>
+                <div class="mini-grid">
+                  <input id="sAd" type="number" step="1" value="1" placeholder="a_d">
+                  <input id="sBd" type="number" step="1" value="2" placeholder="b_d">
+                  <input id="sCd" type="number" step="1" value="-8" placeholder="c_d">
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="sGo">Simplify</button>
+              <button class="btn btn-ghost" id="sReset">Reset</button>
+            </div>
+            <p class="muted mono" id="sOut" style="margin-top:8px;"></p>
+            <table class="table-mini">
+              <thead><tr><th>Original Denominator Roots (N.P.V.)</th><th>Value</th></tr></thead>
+              <tbody id="sNPV"></tbody>
+            </table>
+          </div>
+
+          <!-- LCD Builder (Add/Subtract) -->
+          <div class="tool-card">
+            <h4>Add/Subtract with LCD (Linear/Linear)</h4>
+            <p class="muted">Two terms \((a_1x+b_1)/(c_1x+d_1)\) and \((a_2x+b_2)/(c_2x+d_2)\).</p>
+            <div class="mini-grid">
+              <div>
+                <label>Term 1</label>
+                <div class="mini-grid">
+                  <input id="a1" type="number" step="1" value="1" placeholder="a₁">
+                  <input id="b1" type="number" step="1" value="3" placeholder="b₁">
+                  <input id="c1" type="number" step="1" value="1" placeholder="c₁">
+                  <input id="d1" type="number" step="1" value="-4" placeholder="d₁">
+                </div>
+              </div>
+              <div>
+                <label>Term 2</label>
+                <div class="mini-grid">
+                  <input id="a2" type="number" step="1" value="2" placeholder="a₂">
+                  <input id="b2" type="number" step="1" value="-1" placeholder="b₂">
+                  <input id="c2" type="number" step="1" value="1" placeholder="c₂">
+                  <input id="d2" type="number" step="1" value="1" placeholder="d₂">
+                </div>
+              </div>
+            </div>
+            <div class="mini-grid" style="margin-top:6px;">
+              <div>
+                <label>Operation</label>
+                <select id="opAS">
+                  <option value="add">Addition</option>
+                  <option value="sub">Subtraction</option>
+                </select>
+              </div>
+              <div style="align-self:end;">
+                <button class="btn" id="asGo">Combine</button>
+                <button class="btn btn-ghost" id="asReset">Reset</button>
+              </div>
+            </div>
+            <p class="muted mono" id="asOut" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- Multiply / Divide Simplifier -->
+          <div class="tool-card">
+            <h4>Multiply / Divide Rational Expressions (Linear/Linear)</h4>
+            <div class="mini-grid">
+              <div>
+                <label>Left \((a_1x+b_1)/(c_1x+d_1)\)</label>
+                <div class="mini-grid">
+                  <input id="mda1" type="number" step="1" value="1">
+                  <input id="mdb1" type="number" step="1" value="2">
+                  <input id="mdc1" type="number" step="1" value="1">
+                  <input id="mdd1" type="number" step="1" value="-3">
+                </div>
+              </div>
+              <div>
+                <label>Right \((a_2x+b_2)/(c_2x+d_2)\)</label>
+                <div class="mini-grid">
+                  <input id="mda2" type="number" step="1" value="2">
+                  <input id="mdb2" type="number" step="1" value="-6">
+                  <input id="mdc2" type="number" step="1" value="1">
+                  <input id="mdd2" type="number" step="1" value="-3">
+                </div>
+              </div>
+            </div>
+            <div class="mini-grid" style="margin-top:6px;">
+              <div>
+                <label>Operation</label>
+                <select id="opMD">
+                  <option value="mult">Multiply</option>
+                  <option value="div">Divide</option>
+                </select>
+              </div>
+              <div style="align-self:end;">
+                <button class="btn" id="mdGo">Compute</button>
+                <button class="btn btn-ghost" id="mdReset">Reset</button>
+              </div>
+            </div>
+            <p class="muted mono" id="mdOut" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- Solve Rational Equation (Linear/Linear) -->
+          <div class="tool-card">
+            <h4>Solve Rational Equation (Linear/Linear)</h4>
+            <p class="muted">Solve \(\dfrac{a_1x+b_1}{c_1x+d_1} = \dfrac{a_2x+b_2}{c_2x+d_2}\) or \(\dfrac{a_1x+b_1}{c_1x+d_1}=k\). Automatically checks restrictions & extraneous.</p>
+            <div class="mini-grid">
+              <div><label>\(a_1\)</label><input id="ra1" type="number" step="any" value="1"></div>
+              <div><label>\(b_1\)</label><input id="rb1" type="number" step="any" value="3"></div>
+              <div><label>\(c_1\)</label><input id="rc1" type="number" step="any" value="1"></div>
+              <div><label>\(d_1\)</label><input id="rd1" type="number" step="any" value="-4"></div>
+            </div>
+            <div class="mini-grid" style="margin-top:6px;">
+              <div><label>\(a_2\)</label><input id="ra2" type="number" step="any" value="2"></div>
+              <div><label>\(b_2\)</label><input id="rb2" type="number" step="any" value="-1"></div>
+              <div><label>\(c_2\)</label><input id="rc2" type="number" step="any" value="1"></div>
+              <div><label>\(d_2\)</label><input id="rd2" type="number" step="any" value="1"></div>
+            </div>
+            <div class="mini-grid" style="margin-top:6px;">
+              <div>
+                <label>Right side</label>
+                <select id="reqMode">
+                  <option value="rhsFrac">Fraction (use a₂…d₂)</option>
+                  <option value="rhsConst">Constant \(k\)</option>
+                </select>
+              </div>
+              <div id="kWrap"><label>\(k\)</label><input id="rk" type="number" step="any" value="1"></div>
+              <div style="align-self:end;">
+                <button class="btn" id="rSolve">Solve</button>
+                <button class="btn btn-ghost" id="rReset">Reset</button>
+              </div>
+            </div>
+            <p class="muted mono" id="rOut" style="margin-top:8px;"></p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Quizzes -->
+      <section class="content-box">
+        <h2>Unit 6 Quizzes</h2>
+        <div class="units-grid">
+          <a href="m201_u6_quiz1.html" class="unit-card">
+            <h3>Quiz 1: Simplify & LCD</h3>
+            <p>Restrictions, cancel common factors, build LCD.</p>
+          </a>
+          <a href="m201_u6_quiz2.html" class="unit-card">
+            <h3>Quiz 2: Multiply/Divide & Equations</h3>
+            <p>Simplify products/quotients, solve equations & applications.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Review PDF -->
+      <section class="content-box">
+        <h2>Downloadable Review</h2>
+        <p>
+          <a class="btn" href="assets/m201_u6_rational_review.pdf" download>Download PDF</a>
+          <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
+        </p>
+        <iframe class="pdf-frame" src="assets/m201_u6_rational_review.pdf#view=FitH"></iframe>
+      </section>
+
+      <!-- Scratchpad -->
+      <section class="content-box">
+        <h2>Quick Practice Scratchpad</h2>
+        <p class="muted">Try: \(\dfrac{x^2-1}{x^2-5x+6}\) simplify; \(\dfrac{3}{x-4}+\dfrac{2}{x+1}\); \(\dfrac{x+2}{x-3}\cdot\dfrac{x-3}{2x}\); solve \(\dfrac{2x-1}{x+3}=\dfrac{x+5}{x-2}\).</p>
+        <textarea id="scratch" style="width:100%;min-height:140px;border-radius:8px;padding:12px;border:1px solid #dfe6ee;resize:vertical;"></textarea>
+        <div style="margin-top:10px;">
+          <button class="btn" id="saveScratch">Save Notes</button>
+          <button class="btn btn-ghost" id="clearScratch">Clear</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <!-- Math helper -->
+  <script>
+    window.typesetMath = function(root){
+      if (window.MathJax && MathJax.typesetPromise){
+        MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
+      }
+    };
+  </script>
+
+  <!-- Page logic -->
+  <script>
+    /* ===== Checklist ===== */
+    (function(){
+      const KEY='m201_u6_check';
+      const box=document.getElementById('m201-u6-checklist');
+      const inputs=[...box.querySelectorAll('input[type="checkbox"][data-k]')];
+      const saveBtn=document.getElementById('saveChecklist'), saveNote=document.getElementById('saveNote');
+      function load(){ try{const d=JSON.parse(localStorage.getItem(KEY)||'{}'); inputs.forEach(cb=>cb.checked=!!d[cb.dataset.k]);}catch(e){} }
+      function save(){ const d={}; inputs.forEach(cb=>d[cb.dataset.k]=cb.checked); localStorage.setItem(KEY,JSON.stringify(d)); saveNote.textContent='Saved ✔'; setTimeout(()=>saveNote.textContent='Progress autosaves to this device.',1200); }
+      inputs.forEach(cb=>cb.addEventListener('change',save));
+      saveBtn.addEventListener('click',save);
+      load();
+    })();
+
+    /* ===== Scratchpad ===== */
+    (function(){
+      const SKEY='m201_u6_scratch';
+      const ta=document.getElementById('scratch');
+      const s=document.getElementById('saveScratch'), c=document.getElementById('clearScratch');
+      try{ ta.value=localStorage.getItem(SKEY)||'';}catch(e){}
+      s.addEventListener('click',()=>localStorage.setItem(SKEY,ta.value));
+      c.addEventListener('click',()=>{ ta.value=''; localStorage.setItem(SKEY,''); });
+    })();
+
+    /* ===== Math helpers / factoring ===== */
+    function gcd(a,b){ a=Math.round(Math.abs(a)); b=Math.round(Math.abs(b)); while(b){ const t=b; b=a%b; a=t; } return a||1; }
+    function approx(n,d=6){ return Number.isFinite(n)? Number(n.toFixed(d)) : NaN; }
+
+    // Factor quadratic ax^2+bx+c over integers if possible: returns {g, lin:[[p,q],[r,s]]} meaning g*(px+q)(rx+s)
+    function factorQuadraticZ(a,b,c){
+      if(a===0){ // linear
+        const g=gcd(b,c); return {g, lin:[[b/g, c/g]]}; // g*( (b/g)x + (c/g) )
+      }
+      let g=gcd(gcd(a,b),c); if(g<0) g=-g;
+      let A=a/g, B=b/g, C=c/g;
+
+      // Try x factor if C==0
+      if(C===0){ return {g, lin:[[1,0],[A,B]]}; }
+
+      const ac=A*C, L=Math.abs(ac);
+      for(let d=1; d<=L; d++){
+        if(L%d) continue;
+        for(const [m,n] of [[d,ac/d],[-d,-ac/d]]){
+          if(m+n===B){
+            // (px+q)(rx+s) with p*r=A, q*s=C, p*s+q*r=B
+            // Construct via grouping
+            // Split Bx into mx + nx
+            // Factor (A x^2 + m x) + (n x + C)
+            const g1=gcd(A,m), g2=gcd(n,C);
+            const p=A/g1, q=m/g1, r=g2, s=C/g2; // yields (p x + q)(r x + s)
+            // Fix signs if needed by checking expansion
+            function expand(p,q,r,s){ return [p*r, p*s+q*r, q*s]; }
+            let [A2,B2,C2]=expand(p,q,r,s);
+            if(A2===A && B2===B && C2===C){
+              return {g, lin:[[p,q],[r,s]]};
+            }
+            // Try swapped grouping
+            const p2=g2, q2=n/g2, r2=A/g1, s2=C/g1;
+            [A2,B2,C2]=expand(p2,q2,r2,s2);
+            if(A2===A && B2===B && C2===C){
+              return {g, lin:[[p2,q2],[r2,s2]]};
+            }
+          }
+        }
+      }
+      // Check difference of squares: B==0, A>0, C<0, |A| and |C| perfect squares
+      if(B===0){
+        const sA=Math.sqrt(Math.abs(A)), sC=Math.sqrt(Math.abs(C));
+        if(Number.isInteger(sA) && Number.isInteger(sC) && A>0 && C<0){
+          return {g, lin:[[sA, -sC],[sA, sC]]};
+        }
+      }
+      return {g, lin:null}; // irreducible over Z
+    }
+
+    function quadRoots(a,b,c){
+      if(a===0){ if(b===0) return []; return [-c/b]; }
+      const D=b*b-4*a*c;
+      if(D<0) return [];
+      if(D===0) return [-b/(2*a)];
+      const s=Math.sqrt(D);
+      return [(-b+s)/(2*a), (-b-s)/(2*a)];
+    }
+
+    function sameLinearFactor(p,q,r,s){ // px+q  ~  rx+s ?
+      // Equivalent iff p*s - r*q == 0 (proportional)
+      return Math.abs(p*s - r*q) < 1e-12;
+    }
+
+    function factorPolyDegLe2(a,b,c){
+      if(a===0){ // linear
+        const g=gcd(b,c); return {coeff:g, lin:[[b/g, c/g]], irred:[]};
+      }
+      const fac=factorQuadraticZ(a,b,c);
+      if(fac.lin){ return {coeff:fac.g, lin:fac.lin, irred:[]}; }
+      return {coeff:fac.g, lin:[], irred:[[a/fac.g,b/fac.g,c/fac.g]]}; // irreducible quadratic
+    }
+
+    function listNPV(a,b,c){
+      const roots=quadRoots(a,b,c);
+      return roots.map(r=>approx(r,6));
+    }
+
+    function fmtLinear(p,q){ // px+q
+      return `(${p===1?'':p===-1?'-':''}${(Math.abs(p)===1)?'x':p+'x'}${q<0?q:`+${q}`})`;
+    }
+    function fmtQuad(a,b,c){
+      return `(${a===1?'':a}x^2 ${b<0?'-':'+'} ${Math.abs(b)}x ${c<0?'-':'+'} ${Math.abs(c)})`;
+    }
+    function buildFactorString(obj){
+      let num = obj.coeff===1? '' : obj.coeff.toString();
+      const parts=[];
+      obj.lin.forEach(([p,q])=>parts.push(fmtLinear(p,q)));
+      obj.irred.forEach(([a,b,c])=>parts.push(fmtQuad(a,b,c)));
+      return (num? num : '') + (parts.length? (num? '' : '') + parts.join('') : (num? '' : '1'));
+    }
+
+    /* ===== Restrictions & Simplify ===== */
+    (function(){
+      const An=document.getElementById('sAn'), Bn=document.getElementById('sBn'), Cn=document.getElementById('sCn');
+      const Ad=document.getElementById('sAd'), Bd=document.getElementById('sBd'), Cd=document.getElementById('sCd');
+      const out=document.getElementById('sOut'), npvBody=document.getElementById('sNPV');
+
+      function simplify(){
+        let an=+An.value, bn=+Bn.value, cn=+Cn.value;
+        let ad=+Ad.value, bd=+Bd.value, cd=+Cd.value;
+
+        // N.P.V. from original denominator
+        const npv=listNPV(ad,bd,cd);
+        npvBody.innerHTML='';
+        if(npv.length===0){
+          npvBody.innerHTML='<tr><td>No real restrictions</td><td>—</td></tr>';
+        }else{
+          npv.forEach(v=>{
+            const tr=document.createElement('tr');
+            tr.innerHTML=`<td>x ≠</td><td>${v}</td>`;
+            npvBody.appendChild(tr);
+          });
+        }
+
+        // Factor numerator & denominator
+        const NF=factorPolyDegLe2(an,bn,cn);
+        const DF=factorPolyDegLe2(ad,bd,cd);
+
+        // Cancel common linear factors (by proportionality)
+        const nLin=[...NF.lin];
+        const dLin=[...DF.lin];
+        for(let i=0;i<nLin.length;i++){
+          if(!nLin[i]) continue;
+          for(let j=0;j<dLin.length;j++){
+            if(!dLin[j]) continue;
+            const [p,q]=nLin[i], [r,s]=dLin[j];
+            if(sameLinearFactor(p,q,r,s)){
+              // cancel one copy
+              nLin[i]=null; dLin[j]=null;
+              break;
+            }
+          }
+        }
+
+        const nRemain = {coeff:NF.coeff, lin:nLin.filter(Boolean), irred:NF.irred};
+        const dRemain = {coeff:DF.coeff, lin:dLin.filter(Boolean), irred:DF.irred};
+
+        const nStr = buildFactorString(nRemain);
+        const dStr = buildFactorString(dRemain);
+
+        out.innerHTML = `Original: \\(\\dfrac{${fmtQuad(an,bn,cn).slice(1,-1)}}{${fmtQuad(ad,bd,cd).slice(1,-1)}}\\)<br>
+                         Factored: \\(\\dfrac{${buildFactorString(NF)}}{${buildFactorString(DF)}}\\)<br>
+                         Simplified: <b>\\(\\dfrac{${nStr}}{${dStr}}\\)</b>`;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      document.getElementById('sGo').addEventListener('click', simplify);
+      document.getElementById('sReset').addEventListener('click', ()=>{ An.value=1;Bn.value=-1;Cn.value=-6;Ad.value=1;Bd.value=2;Cd.value=-8; out.textContent=''; npvBody.innerHTML=''; });
+      simplify();
+    })();
+
+    /* ===== Add/Subtract (LCD) for linear/linear ===== */
+    (function(){
+      const a1=document.getElementById('a1'), b1=document.getElementById('b1'), c1=document.getElementById('c1'), d1=document.getElementById('d1');
+      const a2=document.getElementById('a2'), b2=document.getElementById('b2'), c2=document.getElementById('c2'), d2=document.getElementById('d2');
+      const op=document.getElementById('opAS'), out=document.getElementById('asOut');
+
+      function combine(){
+        const A1=+a1.value, B1=+b1.value, C1=+c1.value, D1=+d1.value;
+        const A2=+a2.value, B2=+b2.value, C2=+c2.value, D2=+d2.value;
+        const sign = (op.value==='add') ? 1 : -1;
+
+        // LCD = (C1x+D1)(C2x+D2), result numerator:
+        // (A1x+B1)(C2x+D2) ± (A2x+B2)(C1x+D1)
+        const nA = A1*C2 + sign*A2*C1; // x^2 coefficient
+        const nB = A1*D2 + B1*C2 + sign*(A2*D1 + B2*C1); // x coefficient
+        const nC = B1*D2 + sign*B2*D1; // constant
+        const dA = C1*C2, dB = C1*D2 + C2*D1, dC = D1*D2;
+
+        // Try to factor/cancel a common linear factor equal to one of denominators
+        const NF=factorPolyDegLe2(nA,nB,nC), DF=factorPolyDegLe2(dA,dB,dC);
+        // cancel if any numerator linear equals any denominator linear
+        let cancelled=false;
+        for(let i=0;i<NF.lin.length;i++){
+          for(let j=0;j<DF.lin.length;j++){
+            if(NF.lin[i] && DF.lin[j] && sameLinearFactor(NF.lin[i][0],NF.lin[i][1], DF.lin[j][0],DF.lin[j][1])){
+              NF.lin[i]=null; DF.lin[j]=null; cancelled=true;
+              break;
+            }
+          }
+        }
+        const nRemain={coeff:NF.coeff, lin:NF.lin.filter(Boolean), irred:NF.irred};
+        const dRemain={coeff:DF.coeff, lin:DF.lin.filter(Boolean), irred:DF.irred};
+
+        out.innerHTML = `LCD: \\((${C1}x${D1<0?D1:`+${D1}`})(${C2}x${D2<0?D2:`+${D2}`})\\)<br>
+                         Combined numerator: \\(${fmtQuad(nA,nB,nC).slice(1,-1)}\\)<br>
+                         Result: \\(\\dfrac{${buildFactorString(NF)}}{${buildFactorString(DF)}}\\)${cancelled?` → <b>\\(\\dfrac{${buildFactorString(nRemain)}}{${buildFactorString(dRemain)}}\\)</b>`:''}`;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      document.getElementById('asGo').addEventListener('click', combine);
+      document.getElementById('asReset').addEventListener('click', ()=>{ a1.value=1;b1.value=3;c1.value=1;d1.value=-4;a2.value=2;b2.value=-1;c2.value=1;d2.value=1; out.textContent=''; });
+      combine();
+    })();
+
+    /* ===== Multiply / Divide (linear/linear) ===== */
+    (function(){
+      const a1=document.getElementById('mda1'), b1=document.getElementById('mdb1'), c1=document.getElementById('mdc1'), d1=document.getElementById('mdd1');
+      const a2=document.getElementById('mda2'), b2=document.getElementById('mdb2'), c2=document.getElementById('mdc2'), d2=document.getElementById('mdd2');
+      const op=document.getElementById('opMD'), out=document.getElementById('mdOut');
+
+      function run(){
+        let A1=+a1.value, B1=+b1.value, C1=+c1.value, D1=+d1.value;
+        let A2=+a2.value, B2=+b2.value, C2=+c2.value, D2=+d2.value;
+
+        if(op.value==='div'){ // (A1x+B1)/(C1x+D1) ÷ (A2x+B2)/(C2x+D2) = (A1x+B1)(C2x+D2)/(C1x+D1)(A2x+B2)
+          [A2,B2,C2,D2] = [C2,D2,A2,B2]; // invert the right fraction
+        }
+        // Multiply across: numerator quadratic, denominator quadratic
+        const nA = A1*A2, nB = A1*B2 + B1*A2, nC = B1*B2;
+        const dA = C1*C2, dB = C1*D2 + D1*C2, dC = D1*D2;
+
+        // Factor then cancel matching linear factors
+        const NF=factorPolyDegLe2(nA,nB,nC), DF=factorPolyDegLe2(dA,dB,dC);
+        let cancelled=false;
+        for(let i=0;i<NF.lin.length;i++){
+          for(let j=0;j<DF.lin.length;j++){
+            if(NF.lin[i] && DF.lin[j] && sameLinearFactor(NF.lin[i][0],NF.lin[i][1], DF.lin[j][0],DF.lin[j][1])){
+              NF.lin[i]=null; DF.lin[j]=null; cancelled=true;
+              break;
+            }
+          }
+        }
+        const nRemain={coeff:NF.coeff, lin:NF.lin.filter(Boolean), irred:NF.irred};
+        const dRemain={coeff:DF.coeff, lin:DF.lin.filter(Boolean), irred:DF.irred};
+
+        out.innerHTML = `Product: \\(\\dfrac{${buildFactorString(NF)}}{${buildFactorString(DF)}}\\)${cancelled?` → <b>\\(\\dfrac{${buildFactorString(nRemain)}}{${buildFactorString(dRemain)}}\\)</b>`:''}`;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      document.getElementById('mdGo').addEventListener('click', run);
+      document.getElementById('mdReset').addEventListener('click', ()=>{ a1.value=1;b1.value=2;c1.value=1;d1.value=-3;a2.value=2;b2.value=-6;c2.value=1;d2.value=-3; op.value='mult'; out.textContent=''; });
+      run();
+    })();
+
+    /* ===== Solve Rational Equation (linear/linear) ===== */
+    (function(){
+      const a1=document.getElementById('ra1'), b1=document.getElementById('rb1'), c1=document.getElementById('rc1'), d1=document.getElementById('rd1');
+      const a2=document.getElementById('ra2'), b2=document.getElementById('rb2'), c2=document.getElementById('rc2'), d2=document.getElementById('rd2');
+      const mode=document.getElementById('reqMode'), k=document.getElementById('rk'), kWrap=document.getElementById('kWrap'), out=document.getElementById('rOut');
+
+      function refresh(){ kWrap.style.display = (mode.value==='rhsConst') ? 'block' : 'none'; out.textContent=''; }
+
+      function solve(){
+        const A1=+a1.value, B1=+b1.value, C1=+c1.value, D1=+d1.value;
+        const A2=+a2.value, B2=+b2.value, C2=+c2.value, D2=+d2.value;
+
+        // Restrictions: C1x+D1 ≠ 0, and also right denom if used
+        const npv = [];
+        const r1 = quadRoots(C1, D1, 0); if(r1.length) npv.push(r1[0]);
+        if(mode.value==='rhsFrac'){ const r2 = quadRoots(C2, D2, 0); if(r2.length) npv.push(r2[0]); }
+
+        let sol=null, steps='';
+        if(mode.value==='rhsConst'){
+          const K=+k.value;
+          // (A1x+B1)/(C1x+D1) = K → A1x+B1 = K(C1x+D1)
+          const a = A1 - K*C1;
+          const b = B1 - K*D1;
+          if(Math.abs(a)<1e-12){
+            if(Math.abs(b)<1e-12){ steps='Identity (infinitely many) for x not in N.P.V.'; }
+            else { steps='No solution (inconsistent).'; }
+          }else{
+            sol = -b/a;
+            steps = `Cross-multiply → ${A1}x+${B1} = ${K}(${C1}x+${D1}) → ${(A1-K*C1)}x+${(B1-K*D1)}=0 → x=${approx(sol)}`;
+          }
+        }else{
+          // (A1x+B1)/(C1x+D1) = (A2x+B2)/(C2x+D2) → cross-multiply
+          // (A1x+B1)(C2x+D2) = (A2x+B2)(C1x+D1) → linear eqn in x
+          const L2 = A1*C2 - A2*C1; // x^2 cancel out in linear/linear (should be 0)
+          const L1 = A1*D2 + B1*C2 - (A2*D1 + B2*C1);
+          const L0 = B1*D2 - B2*D1;
+          if(Math.abs(L2)>1e-10){
+            // In rare param cases it could become quadratic; handle:
+            const roots=quadRoots(L2,L1,L0);
+            if(!roots.length){ steps='No real solution.'; }
+            else{
+              const valid=roots.filter(x=>npv.every(v=>Math.abs(x-v)>1e-9));
+              steps = `Solve ${(L2)}x^2 + ${(L1)}x + ${(L0)} = 0 → x = ${valid.map(v=>approx(v)).join(', ')||'∅ (excluded)'} `;
+              sol = valid.length? valid : null;
+            }
+          }else{
+            if(Math.abs(L1)<1e-12){
+              if(Math.abs(L0)<1e-12) steps='Identity (infinitely many) for x not in N.P.V.';
+              else steps='No solution (inconsistent).';
+            }else{
+              const x = -L0/L1;
+              steps = `${A1}x+${B1}\\over ${C1}x+${D1} = ${A2}x+${B2}\\over ${C2}x+${D2} → ${L1}x+${L0}=0 → x=${approx(x)}`;
+              sol = x;
+            }
+          }
+        }
+
+        let npvText = npv.length? npv.map(v=>`x\\neq ${approx(v)}`).join(', ') : 'None';
+        let solText = (sol==null)? '∅' : (Array.isArray(sol)? sol.map(v=>approx(v)).join(', ') : approx(sol).toString());
+
+        // Exclude N.P.V. if matches
+        if(sol!=null && !Array.isArray(sol)){
+          if(npv.some(v=>Math.abs(sol-v)<1e-9)) { steps += ' • Candidate is excluded (denominator zero).'; solText='∅'; }
+        }else if(Array.isArray(sol)){
+          const valid=sol.filter(v=>npv.every(n=>Math.abs(v-n)>1e-9));
+          if(valid.length!==sol.length){ steps += ' • Some candidates excluded by restrictions.'; }
+          solText = valid.length? valid.map(v=>approx(v)).join(', ') : '∅';
+        }
+
+        out.innerHTML = `N.P.V.: ${npvText}<br> Solution(s): <b>${solText}</b><br> ${steps}`;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      document.getElementById('rSolve').addEventListener('click', solve);
+      document.getElementById('rReset').addEventListener('click', ()=>{ ra1.value=1;rb1.value=3;rc1.value=1;rd1.value=-4; ra2.value=2;rb2.value=-1;rc2.value=1;rd2.value=1; rk.value=1; mode.value='rhsFrac'; out.textContent=''; refresh(); });
+      mode.addEventListener('change', refresh);
+      refresh();
+    })();
+  </script>
+</body>
+</html>
