@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 10C • Unit 2 Review – Exponents</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* Page-specific polish (keeps your global theme) */
+    .content-wrapper { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    .content-box {
+      border: 2px solid #e0e0e0; border-radius: 12px; padding: 28px; margin-bottom: 30px;
+      background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,.07);
+    }
+    .content-box h2 { color:#2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; margin-bottom: 18px; }
+    .sub { color:#566573; margin-top:-6px; }
+
+    .hero {
+      background: linear-gradient(135deg,#eef7ff 0,#fffaf2 100%);
+      border-color:#cfe8ff;
+    }
+    .badge {
+      display:inline-block; padding:6px 10px; border-radius:999px; background:#ecf5ff; color:#1d6fa5;
+      font-size:12px; margin:6px 6px 0 0; border:1px solid #d6eaff;
+    }
+
+    .two-col {
+      display:grid; gap:20px; grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      align-items:start;
+    }
+
+    .checklist label { display:flex; align-items:flex-start; gap:10px; line-height:1.4; margin:10px 0; }
+    .checklist input { transform: translateY(3px); }
+
+    .video-grid {
+      display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      margin-top:10px;
+    }
+    .video-card{
+      background:#f8f9fa; border:1px solid #e0e0e0; border-radius:10px; padding:14px;
+      transition: transform .2s ease, box-shadow .2s ease; text-decoration:none; color:#34495e;
+      display:block;
+    }
+    .video-card:hover{ transform: translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,.08); border-color:#3498db; }
+    .video-card h4{ color:#3498db; margin:6px 0 8px; }
+    .video-card p{ margin:0; font-size:.95rem; color:#5a6b7b; }
+    .video-card small{ display:block; margin-top:8px; color:#7a8b99; }
+
+    .units-grid {
+      display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:16px;
+    }
+    .unit-card {
+      padding:18px; border-radius:10px; background:#f8f9fa; border:1px solid #e0e0e0;
+      transition:.2s; text-decoration:none; color:#34495e; display:block;
+    }
+    .unit-card:hover{ transform:translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,.08); border-color:#2ecc71; }
+    .unit-card h3{ color:#2ecc71; margin:0 0 8px; }
+
+    .pdf-frame{ width:100%; height:540px; border:1px solid #e0e0e0; border-radius:10px; }
+    .btn { display:inline-block; padding:10px 14px; border-radius:8px; background:#3498db; color:#fff; text-decoration:none; border:0; cursor:pointer; }
+    .btn:hover{ background:#2f81bd; }
+    .btn-ghost { background:#fff; color:#3498db; border:1px solid #3498db; }
+    .btn-ghost:hover { background:#ecf5ff; }
+
+    .practice-card textarea{
+      width:100%; min-height:140px; border-radius:8px; padding:12px; border:1px solid #dfe6ee; resize:vertical;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    .tips li{ margin:6px 0; }
+    .muted { color:#7f8c8d; font-size:.95rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r => r.text())
+        .then(html => document.getElementById('navbar-placeholder').innerHTML = html)
+        .catch(err => console.error('Navbar failed to load:', err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Unit 2 Review: Exponents</h2>
+        <p class="sub">Whole-number & integral exponents • Exponent laws • Scientific notation • Rational exponents</p>
+        <div>
+          <span class="badge">Whole-Number Exponents</span>
+          <span class="badge">Zero & Negative Exponents</span>
+          <span class="badge">Exponent Laws</span>
+          <span class="badge">Scientific Notation</span>
+          <span class="badge">Rational Exponents ↔ Radicals</span>
+        </div>
+      </section>
+
+      <!-- Outcomes & Checklist -->
+      <section class="content-box">
+        <h2>What You Should Be Able To Do</h2>
+        <div class="two-col">
+          <ul class="tips">
+            <li>Evaluate expressions with whole-number and integral (zero/negative) exponents.</li>
+            <li>Apply exponent laws: product, quotient, power of a power, power of a product/quotient.</li>
+            <li>Write numbers in scientific notation and standard form; compute with scientific notation.</li>
+            <li>Convert between radicals and rational exponents; simplify expressions with rational exponents.</li>
+            <li>Explain and justify steps using properties of exponents in algebraic contexts.</li>
+          </ul>
+
+          <div class="checklist" id="u2-checklist">
+            <label><input type="checkbox" data-k="wh"> I can evaluate powers with whole-number exponents.</label>
+            <label><input type="checkbox" data-k="neg0"> I can use zero & negative exponent rules correctly.</label>
+            <label><input type="checkbox" data-k="laws"> I can simplify using product/quotient/power laws.</label>
+            <label><input type="checkbox" data-k="sci"> I can convert to/from scientific notation and operate with it.</label>
+            <label><input type="checkbox" data-k="rat"> I can switch between radicals and rational exponents.</label>
+            <button class="btn btn-ghost" id="saveChecklist">Save Progress</button>
+            <small class="muted" id="saveNote" style="display:block;margin-top:6px;">Progress autosaves to this device.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIDEO LIBRARY -->
+      <section class="content-box">
+        <h2>Video Library</h2>
+        <p class="muted">Curated YouTube searches—swap in your exact videos anytime.</p>
+        <div class="video-grid">
+          <a class="video-card" target="_blank"
+             href="https://www.youtube.com/results?search_query=exponent+rules+khan+academy">
+            <h4>Exponent Laws (All Rules)</h4>
+            <p>Product, quotient, power rules with variables.</p>
+            <small>youtube.com – “exponent rules khan academy”</small>
+          </a>
+
+          <a class="video-card" target="_blank"
+             href="https://www.youtube.com/results?search_query=zero+and+negative+exponents+math+antics">
+            <h4>Zero & Negative Exponents</h4>
+            <p>Why a<sup>0</sup>=1 and how negative exponents create reciprocals.</p>
+            <small>youtube.com – “zero and negative exponents math antics”</small>
+          </a>
+
+          <a class="video-card" target="_blank"
+             href="https://www.youtube.com/results?search_query=scientific+notation+operations+eddie+woo">
+            <h4>Scientific Notation</h4>
+            <p>Write, compare, multiply/divide, add/subtract with powers of 10.</p>
+            <small>youtube.com – “scientific notation operations eddie woo”</small>
+          </a>
+
+          <a class="video-card" target="_blank"
+             href="https://www.youtube.com/results?search_query=rational+exponents+to+radicals+khan+academy">
+            <h4>Rational Exponents & Radicals</h4>
+            <p>Convert a<sup>m/n</sup> ↔ <span style="white-space:nowrap;">ⁿ√(a^m)</span> and simplify.</p>
+            <small>youtube.com – “rational exponents to radicals khan academy”</small>
+          </a>
+        </div>
+      </section>
+
+      <!-- QUIZZES -->
+      <section class="content-box">
+        <h2>Unit 2 Quizzes</h2>
+        <div class="units-grid">
+          <a href="m10c_u2_quiz1.html" class="unit-card">
+            <h3>Quiz 1: Integral Exponents & Laws</h3>
+            <p>Zero/negative exponents, product/quotient/power rules, simplifying algebraic expressions.</p>
+          </a>
+          <a href="m10c_u2_quiz2.html" class="unit-card">
+            <h3>Quiz 2: Scientific Notation & Rational Exponents</h3>
+            <p>Operations in scientific notation; convert & simplify with rational exponents.</p>
+          </a>
+        </div>
+        <p class="muted" style="margin-top:10px;">
+          Update these links to your actual quiz files.
+        </p>
+      </section>
+
+      <!-- DOWNLOAD / PDF REVIEW -->
+      <section class="content-box">
+        <h2>Downloadable Review</h2>
+        <p>Full set of Unit 2 practice questions as a printable PDF.</p>
+        <p>
+          <a class="btn" href="assets/m10c_unit2_review.pdf" download>Download PDF</a>
+          <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
+        </p>
+        <iframe class="pdf-frame" src="assets/m10c_unit2_review.pdf#view=FitH"></iframe>
+        <p class="muted" style="margin-top:6px;">
+          Put your file at <code>/assets/m10c_unit2_review.pdf</code> or adjust the path above.
+        </p>
+      </section>
+
+      <!-- QUICK PRACTICE -->
+      <section class="content-box practice-card">
+        <h2>Quick Practice Scratchpad</h2>
+        <p class="muted">Try: simplify \((3x^2y^{-1})^3\), write \(0.000027\) in scientific notation, convert \(27^{2/3}\) to radical form.</p>
+        <textarea id="scratch"></textarea>
+        <div style="margin-top:10px;">
+          <button class="btn" id="saveScratch">Save Notes</button>
+          <button class="btn btn-ghost" id="clearScratch">Clear</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <script>
+    /* Checklist + Scratchpad persistence (Unit 2) */
+    (function(){
+      const KEY = 'm10c_u2_checklist';
+      const box = document.getElementById('u2-checklist');
+      const saveBtn = document.getElementById('saveChecklist');
+      const saveNote = document.getElementById('saveNote');
+      const inputs = [...box.querySelectorAll('input[type="checkbox"][data-k]')];
+
+      function load(){
+        try{
+          const data = JSON.parse(localStorage.getItem(KEY) || '{}');
+          inputs.forEach(cb => cb.checked = !!data[cb.dataset.k]);
+        }catch(e){}
+      }
+      function save(){
+        const data = {};
+        inputs.forEach(cb => data[cb.dataset.k] = cb.checked);
+        localStorage.setItem(KEY, JSON.stringify(data));
+        saveNote.textContent = 'Saved ✔';
+        setTimeout(()=> saveNote.textContent = 'Progress autosaves to this device.', 1200);
+      }
+      inputs.forEach(cb => cb.addEventListener('change', save));
+      saveBtn.addEventListener('click', save);
+      load();
+    })();
+
+    (function(){
+      const SKEY='m10c_u2_scratch';
+      const ta = document.getElementById('scratch');
+      const saveBtn = document.getElementById('saveScratch');
+      const clearBtn = document.getElementById('clearScratch');
+      try{ ta.value = localStorage.getItem(SKEY) || ''; }catch(e){}
+      saveBtn.addEventListener('click', ()=> localStorage.setItem(SKEY, ta.value));
+      clearBtn.addEventListener('click', ()=> { ta.value=''; localStorage.setItem(SKEY, ''); });
+    })();
+  </script>
+</body>
+</html>
