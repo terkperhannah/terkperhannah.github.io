@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 10C • Unit 6 Review – Factoring Polynomial Expressions</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']], processEscapes:true },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] },
+      chtml: { mtextInheritFont:true, matchFontHeight:false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    .content-wrapper{max-width:1200px;margin:0 auto;padding:20px;}
+    .content-box{border:2px solid #e0e0e0;border-radius:12px;padding:28px;margin-bottom:30px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+    .content-box h2{color:#2c3e50;border-bottom:3px solid #3498db;padding-bottom:10px;margin-bottom:18px;}
+    .sub{color:#566573;margin-top:-6px;}
+    .hero{background:linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%);border-color:#cfe8ff;}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#ecf5ff;color:#1d6fa5;font-size:12px;margin:6px 6px 0 0;border:1px solid #d6eaff;}
+
+    .two-col{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start;}
+    .checklist label{display:flex;align-items:flex-start;gap:10px;line-height:1.4;margin:10px 0;}
+    .checklist input{transform:translateY(3px);}
+
+    .video-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:10px;}
+    .video-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:14px;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .video-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#3498db;}
+    .video-card h4{color:#3498db;margin:6px 0 8px;}
+    .video-card p{margin:0;font-size:.95rem;color:#5a6b7b;}
+    .video-card small{display:block;margin-top:8px;color:#7a8b99;}
+
+    .units-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+    .unit-card{padding:18px;border-radius:10px;background:#f8f9fa;border:1px solid #e0e0e0;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .unit-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#2ecc71;}
+    .unit-card h3{color:#2ecc71;margin:0 0 8px;}
+
+    .pdf-frame{width:100%;height:540px;border:1px solid #e0e0e0;border-radius:10px;}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:#3498db;color:#fff;text-decoration:none;border:0;cursor:pointer;}
+    .btn:hover{background:#2f81bd;}
+    .btn-ghost{background:#fff;color:#3498db;border:1px solid #3498db;}
+    .btn-ghost:hover{background:#ecf5ff;}
+    .muted{color:#7f8c8d;font-size:.95rem;}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+
+    .mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+    .tool-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:16px;}
+    .tool-card h4{margin:0 0 10px;color:#3498db;}
+    .tool-card label{display:block;font-size:.9rem;margin:6px 0 2px;color:#566573;}
+    .tool-card input,.tool-card select, .tool-card textarea{width:100%;padding:8px 10px;border:1px solid #dfe6ee;border-radius:8px;}
+    .tool-card textarea{min-height:72px;resize:vertical;}
+
+    .table-mini{width:100%;border-collapse:collapse;margin-top:8px;}
+    .table-mini th,.table-mini td{border:1px solid #e6e6e6;padding:6px 8px;text-align:right;}
+    .table-mini th{background:#f2f6ff;color:#2c3e50;text-align:left;}
+    .ok{color:#2ecc71;font-weight:600;}
+    .bad{color:#e74c3c;font-weight:600;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r=>r.text())
+        .then(html => {
+          const el=document.getElementById('navbar-placeholder');
+          el.innerHTML=html;
+          if (window.typesetMath) window.typesetMath(el);
+        })
+        .catch(err=>console.error('Navbar failed to load:',err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Unit 6 Review: Factoring Polynomial Expressions</h2>
+        <p class="sub">Common factors, trinomials, difference of squares, factoring \(ax^2+bx+c\), and solving by factoring.</p>
+        <div>
+          <span class="badge">GCF</span>
+          <span class="badge">\((x+m)(x+n)=x^2+(m+n)x+mn\)</span>
+          <span class="badge">AC-method for \(ax^2+bx+c\)</span>
+          <span class="badge">Diff. of Squares \(a^2-b^2=(a-b)(a+b)\)</span>
+          <span class="badge">Zero-Product Property</span>
+        </div>
+      </section>
+
+      <!-- Outcomes -->
+      <section class="content-box">
+        <h2>What You Should Be Able To Do</h2>
+        <div class="two-col">
+          <ul>
+            <li>Factor out the greatest common factor (numeric and powers of \(x\)).</li>
+            <li>Factor trinomials \(x^2+bx+c\) using integer factor pairs of \(c\) that sum to \(b\).</li>
+            <li>Factor quadratics \(ax^2+bx+c\ (a\neq 0)\) using the AC-method or grouping.</li>
+            <li>Recognize and factor differences of squares.</li>
+            <li>Factor completely and verify by expansion.</li>
+            <li>Solve quadratic equations by factoring and relate factors to x-intercepts.</li>
+          </ul>
+
+          <div class="checklist" id="m10c-u6-checklist">
+            <label><input type="checkbox" data-k="gcf"> I can extract the numerical & variable GCF.</label>
+            <label><input type="checkbox" data-k="triSimple"> I can factor \(x^2+bx+c\) quickly.</label>
+            <label><input type="checkbox" data-k="triGeneral"> I can factor \(ax^2+bx+c\) using AC/grouping.</label>
+            <label><input type="checkbox" data-k="dos"> I can spot and factor \(a^2-b^2\).</label>
+            <label><input type="checkbox" data-k="solve"> I can solve \(ax^2+bx+c=0\) by factoring.</label>
+            <button class="btn btn-ghost" id="saveChecklist">Save Progress</button>
+            <small class="muted" id="saveNote" style="display:block;margin-top:6px;">Progress autosaves to this device.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Videos -->
+      <section class="content-box">
+        <h2>Video Library</h2>
+        <div class="video-grid">
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=factoring+greatest+common+factor+polynomials">
+            <h4>Greatest Common Factor (GCF)</h4>
+            <p>Factor out numeric and variable common factors.</p>
+            <small>youtube.com – “factoring greatest common factor polynomials”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=factor+x%5E2%2Bbx%2Bc+trinomials">
+            <h4>Trinomials \(x^2+bx+c\)</h4>
+            <p>Find factor pairs of \(c\) that sum to \(b\).</p>
+            <small>youtube.com – “factor x^2+bx+c trinomials”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=ac+method+factoring+ax%5E2%2Bbx%2Bc">
+            <h4>AC-Method for \(ax^2+bx+c\)</h4>
+            <p>Split the middle term and factor by grouping.</p>
+            <small>youtube.com – “ac method factoring ax^2+bx+c”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=difference+of+squares+factoring">
+            <h4>Difference of Squares</h4>
+            <p>Recognize \(a^2-b^2\) and factor.</p>
+            <small>youtube.com – “difference of squares factoring”</small>
+          </a>
+        </div>
+      </section>
+
+      <!-- Tools -->
+      <section class="content-box">
+        <h2>Interactive Tools</h2>
+        <div class="mini-grid">
+
+          <!-- GCF Extractor -->
+          <div class="tool-card">
+            <h4>GCF Extractor</h4>
+            <label>Polynomial in \(x\) (e.g., <span class="mono">12x^3 - 18x^2 + 6x</span>)</label>
+            <input id="gcfInput" placeholder="e.g. 12x^3 - 18x^2 + 6x">
+            <div style="margin-top:10px;">
+              <button class="btn" id="gcfGo">Factor Out GCF</button>
+              <button class="btn btn-ghost" id="gcfClear">Clear</button>
+            </div>
+            <p class="muted mono" id="gcfOut" style="margin-top:8px;"></p>
+            <table class="table-mini" id="gcfTable">
+              <thead><tr><th>Term</th><th>After GCF</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <!-- x^2 + bx + c Factorer -->
+          <div class="tool-card">
+            <h4>Trinomial Factorer: \(x^2 + bx + c\)</h4>
+            <div class="mini-grid">
+              <div><label>\(b\)</label><input id="tcB" type="number" step="1" value="5"></div>
+              <div><label>\(c\)</label><input id="tcC" type="number" step="1" value="6"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="tcGo">Factor</button>
+              <button class="btn btn-ghost" id="tcRand">Random</button>
+            </div>
+            <p class="muted mono" id="tcOut" style="margin-top:8px;"></p>
+            <table class="table-mini" id="tcTable">
+              <thead><tr><th>Pair (m,n)</th><th>m+n</th><th>m·n</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <!-- ax^2 + bx + c Factorer & Solver -->
+          <div class="tool-card">
+            <h4>Quadratic Factorer & Solver: \(ax^2 + bx + c\)</h4>
+            <div class="mini-grid">
+              <div><label>\(a\)</label><input id="qcA" type="number" step="1" value="2"></div>
+              <div><label>\(b\)</label><input id="qcB" type="number" step="1" value="7"></div>
+              <div><label>\(c\)</label><input id="qcC" type="number" step="1" value="3"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="qcGo">Factor / Solve</button>
+              <button class="btn btn-ghost" id="qcRand">Random</button>
+            </div>
+            <p class="muted mono" id="qcOut" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- Difference of Squares Checker -->
+          <div class="tool-card">
+            <h4>Difference of Squares Checker</h4>
+            <label>Expression (single variable \(x\); e.g., <span class="mono">9x^2 - 25</span>, <span class="mono">4x^2-81</span>)</label>
+            <input id="dosInput" placeholder="e.g. x^2 - 36">
+            <div style="margin-top:10px;">
+              <button class="btn" id="dosGo">Check & Factor</button>
+              <button class="btn btn-ghost" id="dosClear">Clear</button>
+            </div>
+            <p class="muted mono" id="dosOut" style="margin-top:8px;"></p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Practice (Factor Fully) -->
+      <section class="content-box">
+        <h2>Factor Fully – Practice</h2>
+        <p class="muted">Enter your factorization with parentheses, e.g., <span class="mono">3x(x+4)</span>, <span class="mono">(2x-3)(x+5)</span>.</p>
+        <p class="mono" id="ffQ"></p>
+        <input id="ffAns" placeholder="Your factorization">
+        <div style="margin-top:10px;">
+          <button class="btn" id="ffCheck">Check</button>
+          <button class="btn btn-ghost" id="ffNew">New Question</button>
+        </div>
+        <p class="muted mono" id="ffOut" style="margin-top:8px;"></p>
+      </section>
+
+      <!-- Quizzes -->
+      <section class="content-box">
+        <h2>Unit 6 Quizzes</h2>
+        <div class="units-grid">
+          <a href="m10c_u6_quiz1.html" class="unit-card">
+            <h3>Quiz 1: GCF, Trinomials & DoS</h3>
+            <p>Factor out GCF, factor \(x^2+bx+c\), and differences of squares.</p>
+          </a>
+          <a href="m10c_u6_quiz2.html" class="unit-card">
+            <h3>Quiz 2: \(ax^2+bx+c\) & Solving</h3>
+            <p>AC-method, factor completely, solve by factoring.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Review PDF -->
+      <section class="content-box">
+        <h2>Downloadable Review</h2>
+        <p>
+          <a class="btn" href="assets/m10c_u6_review.pdf" download>Download PDF</a>
+          <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
+        </p>
+        <iframe class="pdf-frame" src="assets/m10c_u6_review.pdf#view=FitH"></iframe>
+      </section>
+
+      <!-- Scratchpad -->
+      <section class="content-box">
+        <h2>Quick Practice Scratchpad</h2>
+        <p class="muted">Try: \(12x^2-8x\), \(x^2+9x+14\), \(6x^2+11x-10\), \(49x^2-25\), solve \(2x^2-5x-12=0\).</p>
+        <textarea id="scratch" style="width:100%;min-height:140px;border-radius:8px;padding:12px;border:1px solid #dfe6ee;resize:vertical;"></textarea>
+        <div style="margin-top:10px;">
+          <button class="btn" id="saveScratch">Save Notes</button>
+          <button class="btn btn-ghost" id="clearScratch">Clear</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <!-- Math helper -->
+  <script>
+    window.typesetMath = function(root){
+      if (window.MathJax && MathJax.typesetPromise){
+        MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
+      }
+    };
+  </script>
+
+  <!-- Page logic -->
+  <script>
+    /* ===== Checklist ===== */
+    (function(){
+      const KEY='m10c_u6_check';
+      const box=document.getElementById('m10c-u6-checklist');
+      const inputs=[...box.querySelectorAll('input[type="checkbox"][data-k]')];
+      const saveBtn=document.getElementById('saveChecklist'), saveNote=document.getElementById('saveNote');
+      function load(){ try{const d=JSON.parse(localStorage.getItem(KEY)||'{}'); inputs.forEach(cb=>cb.checked=!!d[cb.dataset.k]);}catch(e){} }
+      function save(){ const d={}; inputs.forEach(cb=>d[cb.dataset.k]=cb.checked); localStorage.setItem(KEY,JSON.stringify(d)); saveNote.textContent='Saved ✔'; setTimeout(()=>saveNote.textContent='Progress autosaves to this device.',1200); }
+      inputs.forEach(cb=>cb.addEventListener('change',save));
+      saveBtn.addEventListener('click',save);
+      load();
+    })();
+
+    /* ===== Scratchpad ===== */
+    (function(){
+      const SKEY='m10c_u6_scratch';
+      const ta=document.getElementById('scratch');
+      const s=document.getElementById('saveScratch'), c=document.getElementById('clearScratch');
+      try{ ta.value=localStorage.getItem(SKEY)||'';}catch(e){}
+      s.addEventListener('click',()=>localStorage.setItem(SKEY,ta.value));
+      c.addEventListener('click',()=>{ ta.value=''; localStorage.setItem(SKEY,''); });
+    })();
+
+    /* ===== Helpers ===== */
+    function cleanExpr(str){ return (str||'').replace(/−/g,'-').replace(/\s+/g,'').replace(/\*\*/g,'^'); }
+    function gcd(a,b){ a=Math.abs(a); b=Math.abs(b); while(b){ const t=b; b=a%b; a=t; } return a||0; }
+    function isInt(n){ return Number.isFinite(n) && Math.abs(n - Math.round(n)) < 1e-9; }
+    function perfectSquare(n){ if(n<0) return null; const r=Math.round(Math.sqrt(n)); return r*r===Math.round(n)? r : null; }
+
+    // Parse limited polynomials in x: sum of terms like kx^n or k or x^n/x
+    // Returns map {exp: coeff}
+    function parsePoly(str){
+      str = cleanExpr(str);
+      if(!str) return {};
+      if(str[0]==='-') str='0'+str;
+      str=str.replace(/-/g,'+-');
+      const parts=str.split('+').filter(Boolean);
+      const map={};
+      for(const p of parts){
+        let m;
+        if(m=p.match(/^([+-]?\d+)?x(?:\^([+-]?\d+))?$/)){
+          const c=(m[1]===''||m[1]==='+'||m[1]==null)?1:(m[1]==='-'?-1:parseFloat(m[1]));
+          const e=m[2]!=null?parseInt(m[2]):1;
+          map[e]=(map[e]||0)+c;
+        }else if(m=p.match(/^([+-]?\d+)$/)){
+          map[0]=(map[0]||0)+parseFloat(m[1]);
+        }else if(m=p.match(/^([+-]?\d+)\*?x\^([+-]?\d+)$/)){
+          const c=parseFloat(m[1]), e=parseInt(m[2]); map[e]=(map[e]||0)+c;
+        }
+      }
+      return map;
+    }
+    function stringifyPoly(map){
+      const exps=Object.keys(map).map(e=>+e).filter(e=>map[e]&&Math.abs(map[e])>1e-12).sort((a,b)=>b-a);
+      if(!exps.length) return '0';
+      const parts=[];
+      exps.forEach((e,i)=>{
+        let c=map[e]; const s=c<0?' - ':' + '; c=Math.abs(c);
+        let t=''; if(e===0) t=c.toString(); else if(e===1) t=(c===1?'':'{'+c+'}')+'x'; else t=(c===1?'':'{'+c+'}')+'x^'+e;
+        parts.push((i? s:'')+t);
+      });
+      return (map[exps[0]]<0?'-':'')+parts.join('').replace(/^(\s[\+\-]\s)/,'').trim();
+    }
+
+    /* ===== GCF Extractor ===== */
+    (function(){
+      const input=document.getElementById('gcfInput');
+      const go=document.getElementById('gcfGo'), clr=document.getElementById('gcfClear');
+      const out=document.getElementById('gcfOut'), tbody=document.getElementById('gcfTable').querySelector('tbody');
+
+      function run(){
+        const map=parsePoly(input.value);
+        const exps=Object.keys(map).map(e=>+e);
+        if(!exps.length){ out.textContent='Enter a polynomial.'; tbody.innerHTML=''; return; }
+        // numeric gcd
+        let g=0; exps.forEach(e=>{ g=gcd(g, Math.round(map[e])); });
+        if(g===0) g=1;
+        // variable gcd = min exponent >=0 among nonzero coeff terms
+        const minExp = Math.min(...exps);
+        const k = Math.max(0, minExp);
+        const factorMap={[k]: g};
+        // divide out
+        const rem={};
+        exps.forEach(e=>{ rem[e-k]=(rem[e-k]||0)+map[e]/g; });
+        // pretty
+        const factorStr = (g!==1? g : '') + (k>0? 'x' + (k>1? '^'+k:'') : '');
+        out.innerHTML = `GCF = <b>${factorStr||1}</b> &nbsp; ⇒ &nbsp; \\(${stringifyPoly(map)}= ${factorStr}\\,(${stringifyPoly(rem)})\\)`;
+        if(window.typesetMath) window.typesetMath(out);
+
+        tbody.innerHTML='';
+        exps.sort((a,b)=>b-a).forEach(e=>{
+          const tr=document.createElement('tr');
+          tr.innerHTML = `<td>${(map[e]||0)}x^${e}</td><td>${(rem[e-k]||0)}x^${(e-k)}</td>`;
+          tbody.appendChild(tr);
+        });
+      }
+      go.addEventListener('click', run);
+      clr.addEventListener('click', ()=>{ input.value=''; out.textContent=''; tbody.innerHTML=''; });
+    })();
+
+    /* ===== x^2 + bx + c Factorer ===== */
+    (function(){
+      const bEl=document.getElementById('tcB'), cEl=document.getElementById('tcC');
+      const go=document.getElementById('tcGo'), rand=document.getElementById('tcRand');
+      const out=document.getElementById('tcOut'), tbody=document.getElementById('tcTable').querySelector('tbody');
+
+      function factorSimple(b,c){
+        const pairs=[]; // factor pairs of c (include negatives)
+        const L = Math.abs(c);
+        for(let d=1; d<=L; d++){
+          if(L%d===0){
+            pairs.push([d, c/d]);
+            pairs.push([-d, -c/d]);
+          }
+        }
+        for(const [m,n] of pairs){
+          if(m+n===b) return {m,n,pairs};
+        }
+        return {m:null,n:null,pairs};
+      }
+
+      function run(){
+        const b=+bEl.value, c=+cEl.value;
+        const res=factorSimple(b,c);
+        tbody.innerHTML='';
+        res.pairs.slice(0,50).forEach(p=>{
+          const tr=document.createElement('tr');
+          tr.innerHTML=`<td>(${p[0]}, ${p[1]})</td><td>${p[0]+p[1]}</td><td>${p[0]*p[1]}</td>`;
+          tbody.appendChild(tr);
+        });
+        if(res.m!=null){
+          out.innerHTML = `\\(x^2+${b}x+${c}=(x+${res.m})(x+${res.n})\\)`;
+        }else{
+          out.innerHTML = `No integer pair \\(m,n\\) with \\(m+n=${b},\\ mn=${c}\\). Trinomial is prime over integers.`;
+        }
+        if(window.typesetMath) window.typesetMath(out);
+      }
+      function rando(){
+        // pick m,n in [-9..9]\{0} and build b,c
+        function pick(){ let v=0; while(v===0) v=Math.floor(Math.random()*19)-9; return v; }
+        const m=pick(), n=pick(); bEl.value=m+n; cEl.value=m*n; run();
+      }
+      go.addEventListener('click', run);
+      rand.addEventListener('click', rando);
+      run();
+    })();
+
+    /* ===== ax^2 + bx + c Factorer & Solver (AC method) ===== */
+    (function(){
+      const A=document.getElementById('qcA'), B=document.getElementById('qcB'), C=document.getElementById('qcC');
+      const go=document.getElementById('qcGo'), rand=document.getElementById('qcRand');
+      const out=document.getElementById('qcOut');
+
+      function factorAC(a,b,c){
+        // first pull GCF of coefficients
+        let g=gcd(gcd(Math.round(a),Math.round(b)),Math.round(c));
+        if(g===0) g=1; if(g<0){ g=-g; a=-a; b=-b; c=-c; }
+        let a1=a/g, b1=b/g, c1=c/g;
+
+        // try special: difference of squares when b1==0 and a1,c1 perfect squares with opposite sign for c1
+        if(b1===0 && c1<0){
+          const s1=perfectSquare(a1), s2=perfectSquare(-c1);
+          if(s1&&s2){ return {g, factors:[ [s1,'x',-s2], [s1,'x',s2] ], solved:true}; }
+        }
+
+        const ac=a1*c1, L=Math.abs(ac);
+        for(let d=1; d<=L; d++){
+          if(L%d!==0) continue;
+          const candidates=[[d,ac/d],[-d,-ac/d]];
+          for(const [m,n] of candidates){
+            if(m+n===b1){
+              // ax^2+bx+c => a x^2 + m x + n x + c => group
+              // factor by grouping
+              // (ax^2 + m x) + (n x + c)
+              const g1=gcd(a1,m), g2=gcd(n,c1);
+              const aL=a1/g1, mL=m/g1;
+              const nR=n/g2, cR=c1/g2;
+              if(mL===aL && cR===nR){ /* just a check */ }
+              const f1=[g1,'x',m/g1]; // g1 x + m/g1
+              const f2=[g2,'x',c1/g2]; // g2 x + c/g2
+              // common binomial should be (a1/g1 x + n/g2)
+              const bin=[a1/g1,'x',n/g2];
+              // But easier: compute p and q so that (p x + q)(r x + s)
+              // with p*r=a1, q*s=c1, p*s + q*r = b1.
+              // We can build by splitting m,n relative to a1.
+              for(let p=1; p<=Math.abs(a1); p++){
+                if(Math.abs(a1)%p) continue;
+                let r=a1/p;
+                // Solve q,s from ps+qr=b1 and q*s=c1 over integers; can get from m,n trick:
+              }
+              // Use standard construction:
+              // (a x^2 + m x) + (n x + c) = x(ax + m) + 1(n x + c), then factor common binomial by scaling:
+              // Instead derive factors directly:
+              const p = gcd(a1,m);
+              const q = gcd(n,c1);
+              const factor1 = [p,'x', m/p];         // p x + m/p
+              const factor2 = [q,'x', c1/q];        // q x + c/q
+              // common binomial should match
+              return {g, factors:[factor1, factor2], solved:true};
+            }
+          }
+        }
+        // not factorable over integers -> use quadratic formula to show roots if rational/irrational
+        const D=b1*b1-4*a1*c1;
+        if(D<0) return {g, prime:true, disc:D};
+        const sD=Math.sqrt(D);
+        if(!isInt(sD)) return {g, prime:true, disc:D};
+        // integer roots exist => factors with a leading coeff a1
+        const r1=(-b1+sD)/(2*a1), r2=(-b1-sD)/(2*a1);
+        // write factors a1x^2+... = a1(x-r1)(x-r2)
+        return {g, roots:[r1,r2], solved:true, viaRoots:true};
+      }
+
+      function stringifyFactors(res){
+        if(res.prime) return `\\(${res.g!==1?res.g:''}(\\text{prime over }\\mathbb{Z}})\\)`;
+        const gStr = res.g!==1 ? res.g : '';
+        if(res.viaRoots){
+          const [r1,r2]=res.roots;
+          const f1 = r1<0? `(x+${(-r1)})` : `(x-${r1})`;
+          const f2 = r2<0? `(x+${(-r2)})` : `(x-${r2})`;
+          return `${gStr}${gStr? '':''}${f1}${f2}`;
+        }else{
+          const [f1,f2]=res.factors;
+          const s = (f)=>`${f[0]===1?'':f[0]}x${f[2]<0?f[2]:`+${f[2]}`}`;
+          return `${gStr}${gStr? '':''}(${s(f1)})(${s(f2)})`;
+        }
+      }
+
+      function run(){
+        const a=parseInt(A.value), b=parseInt(B.value), c=parseInt(C.value);
+        if(!a){ out.textContent='a cannot be 0.'; return; }
+        const D=b*b-4*a*c;
+        const res=factorAC(a,b,c);
+        let html='';
+        if(res.prime){
+          html=`Discriminant \\(\\Delta=${D}\\). Not factorable over integers.`;
+        }else{
+          html=`Factored form: <b>\\(${stringifyFactors(res)}\\)</b>`;
+          // Solve by factoring if integer roots exist
+          const D2=(b*b-4*a*c);
+          if(D2>=0){
+            const r1=(-b+Math.sqrt(D2))/(2*a), r2=(-b-Math.sqrt(D2))/(2*a);
+            html += ` &nbsp; ⇒ &nbsp; Solutions: \\(x=${r1}\\), \\(x=${r2}\\).`;
+          }
+        }
+        out.innerHTML=html;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      function rando(){
+        // Create a random factorable quadratic (ax+b)(cx+d)
+        function nz(){ let v=0; while(v===0) v=Math.floor(Math.random()*7)-3; return v; }
+        let p=nz(), q=nz(), r=nz(), s=nz();
+        const a=p*r, b=p*s+q*r, c=q*s;
+        A.value=a; B.value=b; C.value=c; run();
+      }
+
+      go.addEventListener('click', run);
+      rand.addEventListener('click', rando);
+      run();
+    })();
+
+    /* ===== Difference of Squares Checker ===== */
+    (function(){
+      const inp=document.getElementById('dosInput');
+      const go=document.getElementById('dosGo'), clr=document.getElementById('dosClear');
+      const out=document.getElementById('dosOut');
+
+      function run(){
+        const s=cleanExpr(inp.value);
+        // parse as ax^2 + bx + c
+        const m=parsePoly(s);
+        const a=m[2]||0, b=m[1]||0, c=m[0]||0;
+        if(b!==0){ out.textContent='Not a difference of squares (middle term present).'; return; }
+        if(a===0 || c===0 || Math.sign(c)!==-1){ out.textContent='Enter something like ax^2 - d^2.'; return; }
+        const s1=perfectSquare(Math.abs(a)), s2=perfectSquare(Math.abs(-c));
+        if(!s1 || !s2){ out.textContent='Coefficients are not perfect squares.'; return; }
+        out.innerHTML = `\\(${s}\\ =\\ (${s1}x-${s2})(${s1}x+${s2})\\)`;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+      go.addEventListener('click', run);
+      clr.addEventListener('click', ()=>{ inp.value=''; out.textContent=''; });
+    })();
+
+    /* ===== Factor Fully Practice ===== */
+    (function(){
+      const Q=document.getElementById('ffQ'), A=document.getElementById('ffAns'), Check=document.getElementById('ffCheck'), New=document.getElementById('ffNew'), Out=document.getElementById('ffOut');
+      let current = {expr:'', factored:''};
+
+      function gen(){
+        // Randomly choose type: GCF then trinomial; a*x^2+bx+c; diff of squares
+        const t = Math.random();
+        if(t<0.33){
+          // (k)(x^2+bx+c) with factorable inside
+          const k = Math.floor(Math.random()*6)+2; // 2..7
+          let m=0,n=0; while(m===0) m=Math.floor(Math.random()*11)-5; while(n===0) n=Math.floor(Math.random()*11)-5;
+          const b=m+n, c=m*n;
+          current.expr = `${k}x^2 + ${k*b}x + ${k*c}`;
+          current.factored = `${k}(x+${m})(x+${n})`;
+        }else if(t<0.66){
+          // (px+q)(rx+s)
+          function nz(){ let v=0; while(v===0) v=Math.floor(Math.random()*5)-2; return v; }
+          const p=nz(), q=nz(), r=nz(), s=nz();
+          const a=p*r, b=p*s+q*r, c=q*s;
+          current.expr = `${a}x^2 + ${b}x + ${c}`;
+          current.factored = `(${p}x${q<0?q:`+${q}`})(${r}x${s<0?s:`+${s}`})`;
+        }else{
+          // Difference of squares possibly with k
+          const k = Math.floor(Math.random()*5)+1;
+          const u = Math.floor(Math.random()*9)+1;
+          const v = Math.floor(Math.random()*9)+1;
+          current.expr = `${k*(u*u)}x^2 - ${k*(v*v)}`;
+          const a = Math.sqrt(k*(u*u))/u; // if k not a square, factor k out: we’ll keep as k(...)
+          if(Number.isInteger(Math.sqrt(k))){
+            const s1 = Math.sqrt(k)*u, s2 = Math.sqrt(k)*v;
+            current.factored = `(${s1}x-${s2})(${s1}x+${s2})`;
+          }else{
+            current.factored = `${k}(${u}x-${v})(${u}x+${v})`;
+          }
+        }
+        Q.textContent=current.expr.replace(/\+\s-/g,'- ');
+        A.value=''; Out.textContent='';
+      }
+
+      function norm(s){
+        return cleanExpr(s).replace(/\s+/g,'').toLowerCase();
+      }
+
+      function check(){
+        if(!A.value.trim()){ Out.textContent='Enter your factorization.'; return; }
+        // Quick check: expand user's answer numerically for random x and compare
+        function evalPolyStr(polyStr, x){
+          // replace x with (*)
+          const s = cleanExpr(polyStr)
+            .replace(/x/g, `(${x})`)
+            .replace(/\^/g,'**');
+          try{ return Function(`"use strict";return (${s});`)(); }catch{ return NaN; }
+        }
+        const xs=[-2,-1,0,1,2,3];
+        let ok=true;
+        for(const x of xs){
+          const L=evalPolyStr(A.value, x);
+          const R=evalPolyStr(current.factored, x);
+          if(!(isFinite(L)&&isFinite(R)) || Math.abs(L-R)>1e-6){ ok=false; break; }
+        }
+        Out.innerHTML = ok? '<span class="ok">✅ Correct!</span>' : `<span class="bad">❌ Keep working.</span> &nbsp; One correct form: <b>${current.factored}</b>`;
+      }
+
+      Check.addEventListener('click', check);
+      New.addEventListener('click', gen);
+      gen();
+    })();
+  </script>
+</body>
+</html>
