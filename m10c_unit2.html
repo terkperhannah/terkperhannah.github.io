@@ -69,6 +69,22 @@
     .tips li{ margin:6px 0; }
     .muted { color:#7f8c8d; font-size:.95rem; }
   </style>
+  <!-- MathJax v3: render \( … \), \[ … \], $…$, $$…$$ -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['\\(','\\)'], ['$', '$']],
+      displayMath: [['\\[','\\]'], ['$$','$$']],
+      processEscapes: true
+    },
+    // keep your page layout from shifting
+    chtml: { mtextInheritFont: true, matchFontHeight: false }
+  };
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
 </head>
 <body>
   <header>
@@ -128,7 +144,6 @@
       <!-- VIDEO LIBRARY -->
       <section class="content-box">
         <h2>Video Library</h2>
-        <p class="muted">Curated YouTube searches—swap in your exact videos anytime.</p>
         <div class="video-grid">
           <a class="video-card" target="_blank"
              href="https://www.youtube.com/results?search_query=exponent+rules+khan+academy">
@@ -173,9 +188,7 @@
             <p>Operations in scientific notation; convert & simplify with rational exponents.</p>
           </a>
         </div>
-        <p class="muted" style="margin-top:10px;">
-          Update these links to your actual quiz files.
-        </p>
+        
       </section>
 
       <!-- DOWNLOAD / PDF REVIEW -->
@@ -187,15 +200,13 @@
           <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
         </p>
         <iframe class="pdf-frame" src="assets/m10c_unit2_review.pdf#view=FitH"></iframe>
-        <p class="muted" style="margin-top:6px;">
-          Put your file at <code>/assets/m10c_unit2_review.pdf</code> or adjust the path above.
-        </p>
+        
       </section>
 
       <!-- QUICK PRACTICE -->
       <section class="content-box practice-card">
         <h2>Quick Practice Scratchpad</h2>
-        <p class="muted">Try: simplify \((3x^2y^{-1})^3\), write \(0.000027\) in scientific notation, convert \(27^{2/3}\) to radical form.</p>
+<p class="muted">Try: simplify \((3x^2y^{-1})^3\), write \(0.000027\) in scientific notation, convert \(27^{2/3}\) to radical form.</p>
         <textarea id="scratch"></textarea>
         <div style="margin-top:10px;">
           <button class="btn" id="saveScratch">Save Notes</button>
@@ -246,5 +257,14 @@
       clearBtn.addEventListener('click', ()=> { ta.value=''; localStorage.setItem(SKEY, ''); });
     })();
   </script>
+  <script>
+  function typesetMath(root){
+    if (window.MathJax && MathJax.typesetPromise) {
+      MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
+    }
+  }
+  document.addEventListener('DOMContentLoaded', () => typesetMath());
+</script>
+
 </body>
 </html>
