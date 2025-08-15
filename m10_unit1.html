@@ -6,15 +6,50 @@
   <title>Math 10C • Unit 1: Number (Review)</title>
   <link rel="stylesheet" href="style.css"/>
 
-  <!-- MathJax -->
+  <!-- MathJax (robust, deferred, with early helper) -->
   <script>
+    // Configure MathJax
     window.MathJax = {
-      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']], processEscapes:true },
+      tex: {
+        inlineMath: [['\\(','\\)'], ['$', '$']],
+        displayMath: [['\\[','\\]'], ['$$','$$']],
+        processEscapes: true
+      },
       options: { skipHtmlTags: ['script','noscript','style','textarea'] },
-      chtml: { mtextInheritFont:true, matchFontHeight:false }
+      chtml: { mtextInheritFont: true, matchFontHeight: false },
+      startup: { typeset: false } // we'll trigger typeset manually when ready
     };
   </script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
+  <script>
+    // Early, queue-safe typeset helper available before any dynamic inserts
+    (function(){
+      const pending = [];
+      window.typesetMath = function(root){
+        if (window.MathJax && MathJax.typesetPromise) {
+          MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
+        } else {
+          pending.push(root || null);
+        }
+      };
+      function flush(){
+        if (!(window.MathJax && MathJax.typesetPromise)) return;
+        const items = pending.splice(0);
+        if (!items.length) return;
+        // typeset each root (null means whole doc)
+        Promise.all(items.map(r => MathJax.typesetPromise(r ? [r] : undefined))).catch(console.error);
+      }
+      // Flush when MathJax is ready (defer loads before DOMContentLoaded)
+      document.addEventListener('DOMContentLoaded', () => {
+        if (window.MathJax && MathJax.startup && MathJax.startup.promise) {
+          MathJax.startup.promise.then(flush);
+        } else {
+          const s = document.getElementById('MathJax-script');
+          if (s) s.addEventListener('load', flush);
+        }
+      });
+    })();
+  </script>
 
   <style>
     .content-wrapper{max-width:1200px;margin:0 auto;padding:20px;}
@@ -120,7 +155,7 @@
       <section class="content-box">
         <h2>Video Library</h2>
         <div class="video-grid">
-          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=prime+factorization">
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search=query=prime+factorization">
             <h4>Prime Factorization</h4>
             <p>Tree method and exponent form.</p>
           </a>
@@ -248,15 +283,6 @@
   <footer>
     <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
   </footer>
-
-  <!-- Math helper -->
-  <script>
-    window.typesetMath = function(root){
-      if (window.MathJax && MathJax.typesetPromise){
-        MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
-      }
-    };
-  </script>
 
   <!-- Page logic -->
   <script>
@@ -407,8 +433,7 @@
           if(sign<0) N = -N;
           let D = den;
           function bgcd(x,y){ x=x<0n?-x:x; y=y<0n?-y:y; while(y){ const t=x%y; x=y; y=t; } return x; }
-          const G = bgcd(N,D);
-          N/=G; D/=G;
+          const G = bgcd(N,D); N/=G; D/=G;
           const label = s.replace(/\(/,'\\overline{').replace(/\)/,'}');
           return {label:`\\(${label}\\)`, rational:true, reason:`\\(\\frac{${N.toString()}}{${D.toString()}}\\)`};
         }
@@ -476,7 +501,7 @@
         return {a,b};
       }
 
-      // ✅ FIXED regex .match() lines
+      // Regex-safe parser
       function parseExpr(s){
         s = s.trim();
         // a*sqrt(b)
@@ -546,7 +571,7 @@
       build();
     })();
 
-    // Typeset after load
+    // Typeset whole page after load (in case anything remained un-queued)
     window.addEventListener('load', ()=>{ if(window.typesetMath) window.typesetMath(); });
   </script>
 </body>
