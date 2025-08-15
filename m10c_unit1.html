@@ -1,88 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Math 10C - Unit 1 Quiz</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 10C • Unit 1 (Lessons 1–4): Numbers</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- MathJax (robust + queue-safe) -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(','\\)'], ['$', '$']],
+        displayMath: [['\\[','\\]'], ['$$','$$']],
+        processEscapes: true
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] },
+      chtml: { mtextInheritFont: true, matchFontHeight: false },
+      startup: { typeset: false }
+    };
+  </script>
+  <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
+  <script>
+    (function(){
+      const pending = [];
+      window.typesetMath = function(root){
+        if (window.MathJax && MathJax.typesetPromise) {
+          MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
+        } else { pending.push(root||null); }
+      };
+      document.addEventListener('DOMContentLoaded', ()=>{
+        const flush = ()=> {
+          if (!(window.MathJax && MathJax.typesetPromise)) return;
+          const batch = pending.splice(0);
+          if (batch.length) Promise.all(batch.map(r=>MathJax.typesetPromise(r?[r]:undefined))).catch(console.error);
+        };
+        if (window.MathJax && MathJax.startup && MathJax.startup.promise) MathJax.startup.promise.then(flush);
+        else {
+          const s=document.getElementById('MathJax-script');
+          if (s) s.addEventListener('load', flush);
+        }
+      });
+    })();
+  </script>
+
   <style>
-    .content-wrapper {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    .content-box {
-      border: 2px solid #e0e0e0;
-      border-radius: 10px;
-      padding: 25px;
-      background-color: #ffffff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .quiz-question {
-      margin-bottom: 20px;
-    }
-    .quiz-question p {
-      font-weight: bold;
-    }
-    .progress-bar-container {
-      background: #ecf0f1;
-      height: 20px;
-      border-radius: 10px;
-      overflow: hidden;
-      margin-top: 20px;
-    }
-    .progress-bar {
-      height: 100%;
-      width: 0;
-      background: linear-gradient(90deg, #3498db, #2ecc71);
-      transition: width 0.5s ease;
-    }
-    #result {
-      margin-top: 10px;
-      font-weight: bold;
-    }
-    #export-btn {
-      margin-top: 20px;
-      background: #3498db;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    #export-btn:hover {
-      background: #2980b9;
-    }
+    /* Page container */
+    .content-wrapper{max-width:1100px;margin:0 auto;padding:20px;}
+    .content-box{border:2px solid #e0e0e0;border-radius:12px;padding:24px;margin-bottom:24px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+    .content-box h2{color:#2c3e50;border-bottom:3px solid #3498db;padding-bottom:10px;margin-bottom:16px}
+
+    /* Hero */
+    .hero{background:linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%);border-color:#cfe8ff}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{padding:6px 10px;border-radius:999px;background:#ecf5ff;border:1px solid #d6eaff;color:#1d6fa5;font-size:12px}
+
+    /* Question card */
+    .question{border:1px solid #e7eaef;border-radius:12px;padding:16px;margin:18px 0;background:#f9fbfd}
+    .q-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .q-title{font-weight:700;color:#2c3e50}
+    .options{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-top:10px}
+    .option{padding:10px;border:1px solid #dfe6ee;border-radius:8px;background:#fff;cursor:pointer;text-align:left}
+    .option:hover{border-color:#3498db;box-shadow:0 3px 12px rgba(52,152,219,.15)}
+    .feedback{margin-top:8px;padding:8px;border-radius:6px;font-weight:600}
+    .soln{margin-top:10px;display:none;background:#fff;border:1px dashed #dfe6ee;border-radius:8px;padding:12px}
+
+    /* Whiteboard */
+    .wb-wrap{margin-top:10px;border:1px solid #e0e0e0;border-radius:10px;background:#fff}
+    .wb-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px;background:#f5f7fa;border-bottom:1px solid #e0e0e0;border-radius:10px 10px 0 0}
+    .wb-toolbar label{font-size:.85rem;color:#5b6b7b}
+    .wb-toolbar .btn{padding:8px 10px;border-radius:8px;border:1px solid #cbd6e2;background:#fff;cursor:pointer}
+    .wb-toolbar .btn:hover{background:#ecf5ff;border-color:#3498db}
+    .wb-canvas{width:100%;height:260px;display:block;border-radius:0 0 10px 10px;background:#fff}
+    .toolbar-sep{flex:1}
+
+    /* Footer summary */
+    .progress{height:16px;background:#ecf0f1;border-radius:10px;overflow:hidden}
+    .bar{height:100%;width:0;background:linear-gradient(90deg,#3498db,#2ecc71)}
+    .stats{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+
+    /* Small utils */
+    .btn-primary{background:#3498db;color:#fff;border:0;border-radius:8px;padding:8px 12px;cursor:pointer}
+    .btn-primary:hover{background:#2f81bd}
+    .muted{color:#7f8c8d}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
   </style>
 </head>
 <body>
   <header>
     <h1>Ms. Terkper's Digital Classroom</h1>
   </header>
+
   <div id="navbar-placeholder"></div>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       fetch('navbar.html')
-        .then(res => res.text())
-        .then(data => {
-          document.getElementById('navbar-placeholder').innerHTML = data;
+        .then(r=>r.text())
+        .then(html => {
+          const el=document.getElementById('navbar-placeholder');
+          el.innerHTML=html;
+          if (window.typesetMath) window.typesetMath(el);
         })
-        .catch(err => console.error('Navbar failed to load:', err));
+        .catch(err => console.error("Navbar failed to load:", err));
     });
   </script>
 
   <main>
     <div class="content-wrapper">
-      <div class="content-box">
-        <h2>Unit 1 Quiz: Number Sense</h2>
-        <div id="quiz-container"></div>
-        <button id="submit-btn">Submit Answers</button>
-        <div id="result"></div>
-        <div class="progress-bar-container">
-          <div id="progress-bar" class="progress-bar"></div>
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Unit 1 • Lessons 1–4 (Numbers)</h2>
+        <p class="muted">Prime factors • Applications of prime factors (GCF/LCM) • Rational vs. irrational • Number systems</p>
+        <div class="badges">
+          <span class="badge">Prime Factorization</span>
+          <span class="badge">GCF &amp; LCM</span>
+          <span class="badge">Rationality</span>
+          <span class="badge">Real Number System</span>
+          <span class="badge">Practice + Whiteboard</span>
         </div>
-        <button id="export-btn">Export Progress</button>
-      </div>
+      </section>
+
+      <!-- DIRECTIONS -->
+      <section class="content-box">
+        <h2>Practice Set</h2>
+        <p>Each question allows <b>2 attempts</b>. Use the built-in <b>whiteboard</b> to work out your thinking, then click <i>Reveal Solution</i> if needed.</p>
+        <p class="muted">Symbols: ℕ (natural), W (whole), ℤ (integers), ℚ (rational), ℝ∖ℚ (irrational).</p>
+      </section>
+
+      <!-- QUESTIONS -->
+      <section id="questions" class="content-box">
+        <!-- Q1 -->
+        <div class="question" id="q1">
+          <div class="q-head">
+            <div class="q-title">1) Prime Factors</div>
+            <span class="muted">Factorize \(360\) in exponent form.</span>
+          </div>
+          <div class="options">
+            <button class="option" onclick="checkAnswer(1,'a')">A) \(2^2\cdot 3^2\cdot 5^2\)</button>
+            <button class="option" onclick="checkAnswer(1,'b')">B) \(2^3\cdot 3^2\cdot 5\)</button>
+            <button class="option" onclick="checkAnswer(1,'c')">C) \(2^3\cdot 3\cdot 5^2\)</button>
+            <button class="option" onclick="checkAnswer(1,'d')">D) \(2^2\cdot 3^3\cdot 5\)</button>
+          </div>
+          <div class="feedback" id="f1"></div>
+          <button class="btn-primary" onclick="toggleSoln(1)">Reveal Solution</button>
+          <div class="soln" id="s1">
+            \(360=36\cdot 10=(2^2\cdot 3^2)\cdot(2\cdot 5)=2^{\bf 3}\cdot 3^{\bf 2}\cdot 5\).
+          </div>
+          <div class="wb-wrap">
+            <div class="wb-toolbar">
+              <label>Pen: <input type="color" id="c1" value="#000000"></label>
+              <label>Width: <input type="range" id="w1" min="1" max="12" value="2"></label>
+              <button class="btn" onclick="toggleEraser(1)">Eraser</button>
+              <button class="btn" onclick="undo(1)">Undo</button>
+              <button class="btn" onclick="clearWB(1)">Clear</button>
+              <button class="btn" onclick="toggleGrid(1)">Grid</button>
+              <span class="toolbar-sep"></span>
+              <button class="btn" onclick="downloadWB(1)">Download PNG</button>
+            </div>
+            <canvas class="wb-canvas" id="wb1"></canvas>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="question" id="q2">
+          <div class="q-head">
+            <div class="q-title">2) GCF</div>
+            <span class="muted">Find \(\mathrm{GCF}(84,\,210)\).</span>
+          </div>
+          <div class="options">
+            <button class="option" onclick="checkAnswer(2,'a')">A) \(14\)</button>
+            <button class="option" onclick="checkAnswer(2,'b')">B) \(28\)</button>
+            <button class="option" onclick="checkAnswer(2,'c')">C) \(42\)</button>
+            <button class="option" onclick="checkAnswer(2,'d')">D) \(70\)</button>
+          </div>
+          <div class="feedback" id="f2"></div>
+          <button class="btn-primary" onclick="toggleSoln(2)">Reveal Solution</button>
+          <div class="soln" id="s2">
+            \(84=2^2\cdot 3\cdot 7\), \(210=2\cdot 3\cdot 5\cdot 7\Rightarrow \mathrm{GCF}=2\cdot 3\cdot 7=42.\)
+          </div>
+          <div class="wb-wrap">
+            <div class="wb-toolbar">
+              <label>Pen: <input type="color" id="c2" value="#000000"></label>
+              <label>Width: <input type="range" id="w2" min="1" max="12" value="2"></label>
+              <button class="btn" onclick="toggleEraser(2)">Eraser</button>
+              <button class="btn" onclick="undo(2)">Undo</button>
+              <button class="btn" onclick="clearWB(2)">Clear</button>
+              <button class="btn" onclick="toggleGrid(2)">Grid</button>
+              <span class="toolbar-sep"></span>
+              <button class="btn" onclick="downloadWB(2)">Download PNG</button>
+            </div>
+            <canvas class="wb-canvas" id="wb2"></canvas>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="question" id="q3">
+          <div class="q-head">
+            <div class="q-title">3) LCM</div>
+            <span class="muted">Find \(\mathrm{LCM}(18,\,24)\).</span>
+          </div>
+          <div class="options">
+            <button class="option" onclick="checkAnswer(3,'a')">A) \(36\)</button>
+            <button class="option" onclick="checkAnswer(3,'b')">B) \(48\)</button>
+            <button class="option" onclick="checkAnswer(3,'c')">C) \(72\)</button>
+            <button class="option" onclick="checkAnswer(3,'d')">D) \(96\)</button>
+          </div>
+          <div class="feedback" id="f3"></div>
+          <button class="btn-primary" onclick="toggleSoln(3)">Reveal Solution</button>
+          <div class="soln" id="s3">
+            \(18=2\cdot 3^2,\; 24=2^3\cdot 3\Rightarrow \mathrm{LCM}=2^3\cdot 3^2=72.\)
+          </div>
+          <div class="wb-wrap">
+            <div class="wb-toolbar">
+              <label>Pen: <input type="color" id="c3" value="#000000"></label>
+              <label>Width: <input type="range" id="w3" min="1" max="12" value="2"></label>
+              <button class="btn" onclick="toggleEraser(3)">Eraser</button>
+              <button class="btn" onclick="undo(3)">Undo</button>
+              <button class="btn" onclick="clearWB(3)">Clear</button>
+              <button class="btn" onclick="toggleGrid(3)">Grid</button>
+              <span class="toolbar-sep"></span>
+              <button class="btn" onclick="downloadWB(3)">Download PNG</button>
+            </div>
+            <canvas class="wb-canvas" id="wb3"></canvas>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="question" id="q4">
+          <div class="q-head">
+            <div class="q-title">4) Rational vs. Irrational</div>
+            <span class="muted">Which number is <b>irrational</b>?</span>
+          </div>
+          <div class="options">
+            <button class="option" onclick="checkAnswer(4,'a')">A) \(\sqrt{81}\)</button>
+            <button class="option" onclick="checkAnswer(4,'b')">B) \(\dfrac{7}{22}\)</button>
+            <button class="option" onclick="checkAnswer(4,'c')">C) \(0.12\overline{3}\)</button>
+            <button class="option" onclick="checkAnswer(4,'d')">D) \(\sqrt{50}\)</button>
+          </div>
+          <div class="feedback" id="f4"></div>
+          <button class="btn-primary" onclick="toggleSoln(4)">Reveal Solution</button>
+          <div class="soln" id="s4">
+            \(\sqrt{50}\) is not a perfect square \(\Rightarrow\) irrational. Others are rational.
+          </div>
+          <div class="wb-wrap">
+            <div class="wb-toolbar">
+              <label>Pen: <input type="color" id="c4" value="#000000"></label>
+              <label>Width: <input type="range" id="w4" min="1" max="12" value="2"></label>
+              <button class="btn" onclick="toggleEraser(4)">Eraser</button>
+              <button class="btn" onclick="undo(4)">Undo</button>
+              <button class="btn" onclick="clearWB(4)">Clear</button>
+              <button class="btn" onclick="toggleGrid(4)">Grid</button>
+              <span class="toolbar-sep"></span>
+              <button class="btn" onclick="downloadWB(4)">Download PNG</button>
+            </div>
+            <canvas class="wb-canvas" id="wb4"></canvas>
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="question" id="q5">
+          <div class="q-head">
+            <div class="q-title">5) Number Systems</div>
+            <span class="muted">Smallest set containing \(-3.5\) is…</span>
+          </div>
+          <div class="options">
+            <button class="option" onclick="checkAnswer(5,'a')">A) ℕ</button>
+            <button class="option" onclick="checkAnswer(5,'b')">B) W</button>
+            <button class="option" onclick="checkAnswer(5,'c')">C) ℤ</button>
+            <button class="option" onclick="checkAnswer(5,'d')">D) ℚ</button>
+          </div>
+          <div class="feedback" id="f5"></div>
+          <button class="btn-primary" onclick="toggleSoln(5)">Reveal Solution</button>
+          <div class="soln" id="s5">
+            \(-3.5=\frac{-7}{2}\) is rational. It’s not whole or integer. Smallest set: ℚ.
+          </div>
+          <div class="wb-wrap">
+            <div class="wb-toolbar">
+              <label>Pen: <input type="color" id="c5" value="#000000"></label>
+              <label>Width: <input type="range" id="w5" min="1" max="12" value="2"></label>
+              <button class="btn" onclick="toggleEraser(5)">Eraser</button>
+              <button class="btn" onclick="undo(5)">Undo</button>
+              <button class="btn" onclick="clearWB(5)">Clear</button>
+              <button class="btn" onclick="toggleGrid(5)">Grid</button>
+              <span class="toolbar-sep"></span>
+              <button class="btn" onclick="downloadWB(5)">Download PNG</button>
+            </div>
+            <canvas class="wb-canvas" id="wb5"></canvas>
+          </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="question" id="q6">
+          <div class="q-head">
+            <div class="q-title">6) Repeating Decimals</div>
+            <span class="muted">Convert \(0.\overline{27}\) to a fraction in lowest terms.</span>
+          </div>
+          <div class="options">
+            <button class="option" onclick="checkAnswer(6,'a')">A) \(\dfrac{27}{90}\)</button>
+            <button class="option" onclick="checkAnswer(6,'b')">B) \(\dfrac{27}{100}\)</button>
+            <button class="option" onclick="checkAnswer(6,'c')">C) \(\dfrac{3}{11}\)</button>
+            <button class="option" onclick="checkAnswer(6,'d')">D) \(\dfrac{27}{999}\)</button>
+          </div>
+          <div class="feedback" id="f6"></div>
+          <button class="btn-primary" onclick="toggleSoln(6)">Reveal Solution</button>
+          <div class="soln" id="s6">
+            \(0.\overline{27}=\frac{27}{99}=\frac{3}{11}\).
+          </div>
+          <div class="wb-wrap">
+            <div class="wb-toolbar">
+              <label>Pen: <input type="color" id="c6" value="#000000"></label>
+              <label>Width: <input type="range" id="w6" min="1" max="12" value="2"></label>
+              <button class="btn" onclick="toggleEraser(6)">Eraser</button>
+              <button class="btn" onclick="undo(6)">Undo</button>
+              <button class="btn" onclick="clearWB(6)">Clear</button>
+              <button class="btn" onclick="toggleGrid(6)">Grid</button>
+              <span class="toolbar-sep"></span>
+              <button class="btn" onclick="downloadWB(6)">Download PNG</button>
+            </div>
+            <canvas class="wb-canvas" id="wb6"></canvas>
+          </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="question" id="q7">
+          <div class="q-head">
+            <div class="q-title">7) Radicals</div>
+            <span class="muted">Simplify \(\sqrt{180}\).</span>
+          </div>
+          <div class="options">
+            <button class="option" onclick="checkAnswer(7,'a')">A) \(3\sqrt{20}\)</button>
+            <button class="option" onclick="checkAnswer(7,'b')">B) \(6\sqrt{5}\)</button>
+            <button class="option" onclick="checkAnswer(7,'c')">C) \(\sqrt{18\cdot 10}\)</button>
+            <button class="option" onclick="checkAnswer(7,'d')">D) \(9\sqrt{2}\)</button>
+          </div>
+          <div class="feedback" id="f7"></div>
+          <button class="btn-primary" onclick="toggleSoln(7)">Reveal Solution</button>
+          <div class="soln" id="s7">
+            \(180=36\cdot 5\Rightarrow \sqrt{180}=6\sqrt{5}\).
+          </div>
+          <div class="wb-wrap">
+            <div class="wb-toolbar">
+              <label>Pen: <input type="color" id="c7" value="#000000"></label>
+              <label>Width: <input type="range" id="w7" min="1" max="12" value="2"></label>
+              <button class="btn" onclick="toggleEraser(7)">Eraser</button>
+              <button class="btn" onclick="undo(7)">Undo</button>
+              <button class="btn" onclick="clearWB(7)">Clear</button>
+              <button class="btn" onclick="toggleGrid(7)">Grid</button>
+              <span class="toolbar-sep"></span>
+              <button class="btn" onclick="downloadWB(7)">Download PNG</button>
+            </div>
+            <canvas class="wb-canvas" id="wb7"></canvas>
+          </div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="question" id="q8">
+          <div class="q-head">
+            <div class="q-title">8) Application (LCM)</div>
+            <span class="muted">Pencils come in boxes of 12; erasers in boxes of 18. Choose the smallest combination that makes equal numbers of each.</span>
+          </div>
+          <div class="options">
+            <button class="option" onclick="checkAnswer(8,'a')">A) 2 pencil boxes &amp; 3 eraser boxes</button>
+            <button class="option" onclick="checkAnswer(8,'b')">B) 3 pencil boxes &amp; 2 eraser boxes</button>
+            <button class="option" onclick="checkAnswer(8,'c')">C) 4 pencil boxes &amp; 3 eraser boxes</button>
+            <button class="option" onclick="checkAnswer(8,'d')">D) 1 pencil box &amp; 1 eraser box</button>
+          </div>
+          <div class="feedback" id="f8"></div>
+          <button class="btn-primary" onclick="toggleSoln(8)">Reveal Solution</button>
+          <div class="soln" id="s8">
+            \(\mathrm{LCM}(12,18)=36\). \(3\times 12=36\) and \(2\times 18=36\Rightarrow\) choice B.
+          </div>
+          <div class="wb-wrap">
+            <div class="wb-toolbar">
+              <label>Pen: <input type="color" id="c8" value="#000000"></label>
+              <label>Width: <input type="range" id="w8" min="1" max="12" value="2"></label>
+              <button class="btn" onclick="toggleEraser(8)">Eraser</button>
+              <button class="btn" onclick="undo(8)">Undo</button>
+              <button class="btn" onclick="clearWB(8)">Clear</button>
+              <button class="btn" onclick="toggleGrid(8)">Grid</button>
+              <span class="toolbar-sep"></span>
+              <button class="btn" onclick="downloadWB(8)">Download PNG</button>
+            </div>
+            <canvas class="wb-canvas" id="wb8"></canvas>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- SUMMARY -->
+      <section class="content-box">
+        <h2>Progress</h2>
+        <div class="stats">
+          <div>Score: <b id="score">0</b>/8</div>
+          <div class="progress" style="flex:1;min-width:180px"><div id="bar" class="bar"></div></div>
+          <button class="btn-primary" onclick="resetQuiz()">Reset Quiz</button>
+        </div>
+      </section>
+
     </div>
   </main>
 
@@ -90,15 +404,187 @@
     <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
   </footer>
 
-  <script src="unit1-quiz.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const container = document.getElementById('quiz-container');
-      renderUnit1Quiz(container);
-      initUnit1Progress();
+    /* ---------- Quiz Logic ---------- */
+    const correct = {1:'b',2:'c',3:'c',4:'d',5:'d',6:'c',7:'b',8:'b'};
+    const attempts = {}; Object.keys(correct).forEach(k=>attempts[k]=0);
+    const done = {}; Object.keys(correct).forEach(k=>done[k]=false);
 
-      document.getElementById('submit-btn').addEventListener('click', gradeUnit1Quiz);
-      document.getElementById('export-btn').addEventListener('click', exportProgress);
+    function setFeedback(id, msg, ok=null){
+      const el = document.getElementById('f'+id);
+      el.textContent = msg;
+      el.style.backgroundColor = ok===true ? '#d4edda' : ok===false ? '#f8d7da' : '#fff3cd';
+      el.style.border = '1px solid ' + (ok===true ? '#b7e0c2' : ok===false ? '#f5c2c7' : '#ffe69c');
+    }
+
+    function disableOptions(id){
+      const q = document.getElementById('q'+id);
+      q.querySelectorAll('.option').forEach(b=> b.disabled = true);
+    }
+
+    function updateScore(){
+      const total=Object.keys(correct).length;
+      const got = Object.values(done).filter(Boolean).length;
+      document.getElementById('score').textContent = got;
+      document.getElementById('bar').style.width = (100*got/total)+'%';
+    }
+
+    function checkAnswer(id, choice){
+      if (done[id]) return;
+      if (attempts[id] >= 2) return;
+
+      if (choice === correct[id]){
+        setFeedback(id,'Correct! ✔', true);
+        done[id] = true;
+        disableOptions(id);
+      } else {
+        attempts[id]++;
+        const left = 2 - attempts[id];
+        if (left>0) setFeedback(id, `Incorrect. Attempts remaining: ${left}`, false);
+        else {
+          setFeedback(id, `Out of attempts. Correct answer: ${correct[id].toUpperCase()}`, null);
+          disableOptions(id);
+        }
+      }
+      updateScore();
+      if (window.typesetMath) window.typesetMath(document.getElementById('q'+id));
+    }
+
+    function toggleSoln(id){
+      const s = document.getElementById('s'+id);
+      s.style.display = (s.style.display==='block' ? 'none' : 'block');
+      if (s.style.display==='block' && window.typesetMath) window.typesetMath(s);
+    }
+
+    function resetQuiz(){
+      Object.keys(correct).forEach(k=>{ attempts[k]=0; done[k]=false; });
+      for (let i=1;i<=8;i++){
+        const q=document.getElementById('q'+i);
+        q.querySelectorAll('.option').forEach(b=>b.disabled=false);
+        setFeedback(i,'');
+      }
+      updateScore();
+    }
+
+    /* ---------- Whiteboard Engine ---------- */
+    const WBs = {}; // per question
+    function initWB(i){
+      const canvas = document.getElementById('wb'+i);
+      const ctx = canvas.getContext('2d');
+      // HiDPI setup
+      function sizeCanvas(){
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = 260 * dpr;
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+        drawGrid(i,true); // redraw base grid if on
+      }
+      sizeCanvas(); window.addEventListener('resize', sizeCanvas);
+
+      WBs[i] = {
+        ctx, drawing:false, erasing:false, color: document.getElementById('c'+i).value,
+        width: parseInt(document.getElementById('w'+i).value,10),
+        history: [], grid:false
+      };
+
+      const start = (x,y)=>{ WBs[i].drawing=true; ctx.beginPath(); ctx.moveTo(x,y); saveState(i); };
+      const move = (x,y)=>{
+        if(!WBs[i].drawing) return;
+        ctx.lineTo(x,y);
+        ctx.strokeStyle = WBs[i].erasing ? '#ffffff' : WBs[i].color;
+        ctx.lineWidth = WBs[i].width;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+      };
+      const stop = ()=>{ WBs[i].drawing=false; };
+
+      // Mouse
+      canvas.addEventListener('mousedown',e=>start(e.offsetX,e.offsetY));
+      canvas.addEventListener('mousemove',e=>move(e.offsetX,e.offsetY));
+      canvas.addEventListener('mouseup',stop);
+      canvas.addEventListener('mouseleave',stop);
+
+      // Touch
+      canvas.addEventListener('touchstart',e=>{
+        e.preventDefault();
+        const r=canvas.getBoundingClientRect();
+        const t=e.touches[0]; start(t.clientX-r.left,t.clientY-r.top);
+      },{passive:false});
+      canvas.addEventListener('touchmove',e=>{
+        e.preventDefault();
+        const r=canvas.getBoundingClientRect();
+        const t=e.touches[0]; move(t.clientX-r.left,t.clientY-r.top);
+      },{passive:false});
+      canvas.addEventListener('touchend',stop);
+
+      // Controls
+      document.getElementById('c'+i).addEventListener('input',e=>WBs[i].color=e.target.value);
+      document.getElementById('w'+i).addEventListener('input',e=>WBs[i].width=parseInt(e.target.value,10));
+
+      // Initial background (white)
+      ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,canvas.width,canvas.height);
+      saveState(i);
+    }
+
+    function saveState(i){
+      const c=document.getElementById('wb'+i), ctx=WBs[i].ctx;
+      WBs[i].history.push(ctx.getImageData(0,0,c.width,c.height));
+      if (WBs[i].history.length>50) WBs[i].history.shift();
+    }
+
+    function undo(i){
+      const c=document.getElementById('wb'+i), ctx=WBs[i].ctx;
+      if (WBs[i].history.length>1){
+        WBs[i].history.pop();
+        ctx.putImageData(WBs[i].history[WBs[i].history.length-1],0,0);
+      }
+    }
+
+    function clearWB(i){
+      const c=document.getElementById('wb'+i), ctx=WBs[i].ctx;
+      ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,c.width,c.height);
+      if (WBs[i].grid) drawGrid(i,true);
+      saveState(i);
+    }
+
+    function toggleEraser(i){ WBs[i].erasing = !WBs[i].erasing; }
+
+    function drawGrid(i,forceRedraw=false){
+      const c=document.getElementById('wb'+i), ctx=WBs[i].ctx;
+      if (!forceRedraw && !WBs[i].grid) return;
+      const step=20; ctx.save();
+      ctx.strokeStyle='#eef2f6'; ctx.lineWidth=1;
+      for(let x=0;x<c.width;x+=step) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,c.height); ctx.stroke(); }
+      for(let y=0;y<c.height;y+=step){ ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(c.width,y); ctx.stroke(); }
+      ctx.restore();
+    }
+
+    function toggleGrid(i){
+      WBs[i].grid = !WBs[i].grid;
+      if (WBs[i].grid) { drawGrid(i,true); saveState(i); }
+      else { clearWB(i); } // clear removes grid
+    }
+
+    function downloadWB(i){
+      const c=document.getElementById('wb'+i);
+      const link=document.createElement('a');
+      link.download = `u1q${i}_work.png`;
+      link.href = c.toDataURL('image/png');
+      link.click();
+    }
+
+    window.toggleEraser=toggleEraser;
+    window.undo=undo;
+    window.clearWB=clearWB;
+    window.toggleGrid=toggleGrid;
+    window.downloadWB=downloadWB;
+
+    // Init all whiteboards and initial MathJax typeset
+    document.addEventListener('DOMContentLoaded', ()=>{
+      for(let i=1;i<=8;i++) initWB(i);
+      if (window.typesetMath) window.typesetMath(document.getElementById('questions'));
+      updateScore();
     });
   </script>
 </body>
