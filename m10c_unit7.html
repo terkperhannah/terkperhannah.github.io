@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 10C • Unit 7: Relations & Functions</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']], processEscapes:true },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] },
+      chtml: { mtextInheritFont:true, matchFontHeight:false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    .content-wrapper{max-width:1200px;margin:0 auto;padding:20px;}
+    .content-box{border:2px solid #e0e0e0;border-radius:12px;padding:28px;margin-bottom:30px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+    .content-box h2{color:#2c3e50;border-bottom:3px solid #3498db;padding-bottom:10px;margin-bottom:18px;}
+    .sub{color:#566573;margin-top:-6px;}
+    .hero{background:linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%);border-color:#cfe8ff;}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#ecf5ff;color:#1d6fa5;font-size:12px;margin:6px 6px 0 0;border:1px solid #d6eaff;}
+
+    .video-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:10px;}
+    .video-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:14px;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .video-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#3498db;}
+    .video-card h4{color:#3498db;margin:6px 0 8px;}
+    .video-card p{margin:0;font-size:.95rem;color:#5a6b7b;}
+    .video-card small{display:block;margin-top:8px;color:#7a8b99;}
+
+    .units-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+    .unit-card{padding:18px;border-radius:10px;background:#f8f9fa;border:1px solid #e0e0e0;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .unit-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#2ecc71;}
+    .unit-card h3{color:#2ecc71;margin:0 0 8px;}
+
+    .pdf-frame{width:100%;height:540px;border:1px solid #e0e0e0;border-radius:10px;}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:#3498db;color:#fff;text-decoration:none;border:0;cursor:pointer;}
+    .btn:hover{background:#2f81bd;}
+    .btn-ghost{background:#fff;color:#3498db;border:1px solid #3498db;}
+    .btn-ghost:hover{background:#ecf5ff;}
+    .muted{color:#7f8c8d;font-size:.95rem;}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+
+    .two-col{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start;}
+    .mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;}
+    .tool-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:16px;}
+    .tool-card h4{margin:0 0 10px;color:#3498db;}
+    .tool-card label{display:block;font-size:.9rem;margin:6px 0 2px;color:#566573;}
+    .tool-card input,.tool-card select,.tool-card textarea{width:100%;padding:8px 10px;border:1px solid #dfe6ee;border-radius:8px;}
+    .tool-card textarea{min-height:88px;resize:vertical;}
+
+    .svg-plot{width:100%;height:380px;display:block;border:1px solid #e0e0e0;border-radius:10px;background:#fff;}
+    .svg-small{width:100%;height:140px;display:block;border:1px solid #e0e0e0;border-radius:10px;background:#fff;}
+
+    .checklist label{display:flex;gap:10px;align-items:flex-start;margin:8px 0}
+    .checklist input{transform:translateY(3px)}
+    .pill{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid #e0e0e0;background:#f8f9fa;margin-right:6px;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r=>r.text())
+        .then(html => {
+          const el=document.getElementById('navbar-placeholder');
+          el.innerHTML=html;
+          if (window.typesetMath) window.typesetMath(el);
+        })
+        .catch(err=>console.error('Navbar failed to load:',err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Unit 7: Relations & Functions (Math 10C)</h2>
+        <p class="sub">Relations, intercepts, domain & range, function notation, and interpreting & using graphs.</p>
+        <div>
+          <span class="badge">Vertical Line Test</span>
+          <span class="badge">Domain & Range</span>
+          <span class="badge">Intercepts</span>
+          <span class="badge">Function Notation \(f(x)\)</span>
+          <span class="badge">Graph Interpretation</span>
+        </div>
+      </section>
+
+      <!-- Outcomes / Success Criteria -->
+      <section class="content-box">
+        <h2>What You Should Be Able To Do</h2>
+        <div class="two-col">
+          <ul>
+            <li>Identify whether a relation is a function (vertical line test, mappings, tables).</li>
+            <li>Find x- and y-intercepts from equations, tables, or graphs.</li>
+            <li>State domain and range using set/interval notation as appropriate.</li>
+            <li>Use and interpret function notation \(f(x)\); evaluate and solve \(f(x)=k\).</li>
+            <li>Interpret features of graphs and connect multiple representations.</li>
+          </ul>
+
+          <div class="checklist" id="m10c-u7-checklist">
+            <label><input type="checkbox" data-k="func"> I can decide if a relation is a function.</label>
+            <label><input type="checkbox" data-k="intercepts"> I can find intercepts.</label>
+            <label><input type="checkbox" data-k="dr"> I can state domain & range.</label>
+            <label><input type="checkbox" data-k="fx"> I can use \(f(x)\) correctly.</label>
+            <button class="btn btn-ghost" id="saveChecklist">Save Progress</button>
+            <small class="muted" id="saveNote" style="display:block;margin-top:6px;">Progress autosaves to this device.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video Library -->
+      <section class="content-box">
+        <h2>Video Library</h2>
+        <div class="video-grid">
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=relations+vs+functions+vertical+line+test">
+            <h4>Relations vs Functions</h4>
+            <p>Mapping diagrams, VLT, examples.</p>
+            <small>youtube.com – “relations vs functions vertical line test”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=domain+and+range+from+graphs">
+            <h4>Domain & Range from Graphs</h4>
+            <p>Interval/set notation and endpoints.</p>
+            <small>youtube.com – “domain and range from graphs”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=function+notation+evaluate+f(x)">
+            <h4>Function Notation \(f(x)\)</h4>
+            <p>Evaluate \(f(a)\), solve \(f(x)=k\).</p>
+            <small>youtube.com – “function notation evaluate f(x)”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=find+intercepts+linear+quadratic+graph">
+            <h4>Intercepts (Linear/Quadratic)</h4>
+            <p>From equations, tables, and graphs.</p>
+            <small>youtube.com – “find intercepts linear quadratic graph”</small>
+          </a>
+        </div>
+      </section>
+
+      <!-- Interactive Tools -->
+      <section class="content-box">
+        <h2>Interactive Tools</h2>
+        <div class="two-col">
+
+          <!-- A. Ordered-Pair Analyzer (VLT, Domain/Range, Intercepts) -->
+          <div class="tool-card">
+            <h4>Ordered-Pair Analyzer (VLT + Domain/Range + Intercepts)</h4>
+            <label>Paste points (formats accepted: <span class="mono">(x,y)</span> or <span class="mono">x,y</span>, one per line)</label>
+            <textarea id="pairsText" placeholder="(−3,2)
+(−1,0)
+(0,4)
+(2,0)
+(2,3)"></textarea>
+            <div style="margin-top:10px;">
+              <button class="btn" id="pairsAnalyze">Analyze & Plot</button>
+              <button class="btn btn-ghost" id="pairsClear">Clear</button>
+            </div>
+            <svg id="pairsSVG" class="svg-plot" viewBox="0 0 640 380" preserveAspectRatio="none"></svg>
+            <p class="muted mono" id="pairsOut" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- B. Grapher (Linear/Quadratic) + Intercepts, Domain/Range, f(x) -->
+          <div class="tool-card">
+            <h4>Grapher & Function Notation</h4>
+            <div class="mini-grid">
+              <div>
+                <label>Type</label>
+                <select id="gType">
+                  <option value="linear">Linear \(y=mx+b\)</option>
+                  <option value="quadratic">Quadratic \(y=ax^2+bx+c\)</option>
+                </select>
+              </div>
+              <div id="linWrap">
+                <label>Linear coefficients</label>
+                <div class="mini-grid">
+                  <input id="m" type="number" step="any" value="1" placeholder="m">
+                  <input id="b" type="number" step="any" value="0" placeholder="b">
+                </div>
+              </div>
+              <div id="quadWrap" style="display:none;">
+                <label>Quadratic coefficients</label>
+                <div class="mini-grid">
+                  <input id="a" type="number" step="any" value="1" placeholder="a">
+                  <input id="bb" type="number" step="any" value="0" placeholder="b">
+                  <input id="c" type="number" step="any" value="0" placeholder="c">
+                </div>
+              </div>
+            </div>
+            <div class="mini-grid" style="margin-top:6px;">
+              <div><label>x-min</label><input id="gxmin" type="number" step="any" value="-10"></div>
+              <div><label>x-max</label><input id="gxmax" type="number" step="any" value="10"></div>
+              <div><label>y-min</label><input id="gymin" type="number" step="any" value="-10"></div>
+              <div><label>y-max</label><input id="gymax" type="number" step="any" value="10"></div>
+            </div>
+            <div class="mini-grid" style="margin-top:6px;">
+              <div><label>Evaluate \(f(x)\) at \(x=\)</label><input id="xval" type="number" step="any" value="2"></div>
+              <div><label>Solve \(f(x)=k\) with \(k=\)</label><input id="kval" type="number" step="any" value="3"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="gDraw">Draw & Analyze</button>
+              <button class="btn btn-ghost" id="gReset">Reset</button>
+            </div>
+            <svg id="gSVG" class="svg-plot" viewBox="0 0 640 380" preserveAspectRatio="none"></svg>
+            <p class="muted mono" id="gOut" style="margin-top:8px;"></p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Quizzes -->
+      <section class="content-box">
+        <h2>Unit 7 Quizzes</h2>
+        <div class="units-grid">
+          <a href="m10c_u7_quiz1.html" class="unit-card">
+            <h3>Quiz 1: Relations & Functions</h3>
+            <p>VLT, mappings, reading tables/graphs.</p>
+          </a>
+          <a href="m10c_u7_quiz2.html" class="unit-card">
+            <h3>Quiz 2: Domain, Range & Intercepts</h3>
+            <p>From equations and graphs; function notation.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Review PDF -->
+      <section class="content-box">
+        <h2>Downloadable Review</h2>
+        <p>
+          <a class="btn" href="assets/m10c_u7_relations_functions_review.pdf" download>Download PDF</a>
+          <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
+        </p>
+        <iframe class="pdf-frame" src="assets/m10c_u7_relations_functions_review.pdf#view=FitH"></iframe>
+      </section>
+
+      <!-- Scratchpad -->
+      <section class="content-box">
+        <h2>Quick Practice Scratchpad</h2>
+        <p class="muted">Try: Is \(\{(-1,3),(0,2),(0,-2),(4,1)\}\) a function? For \(y=2x-5\), find intercepts & domain/range. For \(f(x)=x^2-4x+1\), compute \(f(3)\) and solve \(f(x)=5\).</p>
+        <textarea id="scratch" style="width:100%;min-height:140px;border-radius:8px;padding:12px;border:1px solid #dfe6ee;resize:vertical;"></textarea>
+        <div style="margin-top:10px;">
+          <button class="btn" id="saveScratch">Save Notes</button>
+          <button class="btn btn-ghost" id="clearScratch">Clear</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <!-- Math helper -->
+  <script>
+    window.typesetMath = function(root){
+      if (window.MathJax && MathJax.typesetPromise){
+        MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
+      }
+    };
+  </script>
+
+  <!-- Page logic -->
+  <script>
+    /* ===== Checklist ===== */
+    (function(){
+      const KEY='m10c_u7_check';
+      const box=document.getElementById('m10c-u7-checklist');
+      const inputs=[...box.querySelectorAll('input[type="checkbox"][data-k]')];
+      const btn=document.getElementById('saveChecklist'), note=document.getElementById('saveNote');
+      function load(){ try{const d=JSON.parse(localStorage.getItem(KEY)||'{}'); inputs.forEach(cb=>cb.checked=!!d[cb.dataset.k]);}catch(e){} }
+      function save(){ const d={}; inputs.forEach(cb=>d[cb.dataset.k]=cb.checked); localStorage.setItem(KEY,JSON.stringify(d)); note.textContent='Saved ✔'; setTimeout(()=>note.textContent='Progress autosaves to this device.',1200); }
+      inputs.forEach(cb=>cb.addEventListener('change',save)); btn.addEventListener('click',save); load();
+    })();
+
+    /* ===== Scratchpad ===== */
+    (function(){
+      const KEY='m10c_u7_scratch', ta=document.getElementById('scratch');
+      const s=document.getElementById('saveScratch'), c=document.getElementById('clearScratch');
+      try{ ta.value=localStorage.getItem(KEY)||'';}catch(e){}
+      s.addEventListener('click',()=>localStorage.setItem(KEY,ta.value));
+      c.addEventListener('click',()=>{ ta.value=''; localStorage.setItem(KEY,''); });
+    })();
+
+    /* ===== Utilities ===== */
+    function approx(n,d=6){ return Number.isFinite(n)? Number(n.toFixed(d)) : NaN; }
+    function uniqSorted(arr){ return [...new Set(arr)].sort((a,b)=>a-b); }
+
+    /* ===== SVG Grid Helper ===== */
+    function makeGrid(svg, xmin,xmax,ymin,ymax){
+      const W=svg.viewBox.baseVal.width||640, H=svg.viewBox.baseVal.height||380, ns='http://www.w3.org/2000/svg';
+      svg.innerHTML='';
+      function X(x){ return (x - xmin)/(xmax - xmin) * W; }
+      function Y(y){ return H - (y - ymin)/(ymax - ymin) * H; }
+      const g=document.createElementNS(ns,'g'); svg.appendChild(g);
+      for(let x=Math.ceil(xmin); x<=Math.floor(xmax); x++){
+        const L=document.createElementNS(ns,'line');
+        L.setAttribute('x1',X(x)); L.setAttribute('x2',X(x)); L.setAttribute('y1',0); L.setAttribute('y2',H);
+        L.setAttribute('stroke', x===0?'#9bb3c9':'#eef2f6'); L.setAttribute('stroke-width', x===0?2:1);
+        g.appendChild(L);
+      }
+      for(let y=Math.ceil(ymin); y<=Math.floor(ymax); y++){
+        const L=document.createElementNS(ns,'line');
+        L.setAttribute('y1',Y(y)); L.setAttribute('y2',Y(y)); L.setAttribute('x1',0); L.setAttribute('x2',W);
+        L.setAttribute('stroke', y===0?'#9bb3c9':'#eef2f6'); L.setAttribute('stroke-width', y===0?2:1);
+        g.appendChild(L);
+      }
+      return {X,Y,W,H,ns};
+    }
+
+    /* ===== A. Ordered-Pair Analyzer ===== */
+    (function(){
+      const ta=document.getElementById('pairsText');
+      const btn=document.getElementById('pairsAnalyze');
+      const clr=document.getElementById('pairsClear');
+      const svg=document.getElementById('pairsSVG');
+      const out=document.getElementById('pairsOut');
+
+      function parsePairs(text){
+        const pairs=[];
+        const lines=text.split(/\n+/).map(s=>s.trim()).filter(Boolean);
+        for(const line of lines){
+          // Accept (x,y) OR x,y OR x y
+          let m = line.match(/^\(?\s*([+-]?\d*\.?\d+)\s*,\s*([+-]?\d*\.?\d+)\s*\)?$/);
+          if(!m){
+            m = line.match(/^\s*([+-]?\d*\.?\d+)\s+([+-]?\d*\.?\d+)\s*$/);
+          }
+          if(m){
+            pairs.push([parseFloat(m[1]), parseFloat(m[2])]);
+          }
+        }
+        return pairs;
+      }
+
+      function draw(pairs){
+        if(!pairs.length){ svg.innerHTML=''; out.textContent='Enter some points first.'; return; }
+        const xs=pairs.map(p=>p[0]), ys=pairs.map(p=>p[1]);
+        let xmin=Math.min(...xs), xmax=Math.max(...xs), ymin=Math.min(...ys), ymax=Math.max(...ys);
+        if(xmin===xmax){ xmin-=1; xmax+=1; }
+        if(ymin===ymax){ ymin-=1; ymax+=1; }
+        const padX=0.2*(xmax-xmin), padY=0.2*(ymax-ymin);
+        xmin-=padX; xmax+=padX; ymin-=padY; ymax+=padY;
+
+        const g=makeGrid(svg, xmin,xmax,ymin,ymax), {X,Y,ns}=g;
+
+        // points
+        for(const [x,y] of pairs){
+          const c=document.createElementNS(ns,'circle');
+          c.setAttribute('cx',X(x)); c.setAttribute('cy',Y(y)); c.setAttribute('r',4); c.setAttribute('fill','#3d8dff');
+          svg.appendChild(c);
+        }
+      }
+
+      function analyze(){
+        const pairs=parsePairs(ta.value);
+        draw(pairs);
+        if(!pairs.length){ return; }
+
+        // domain & range
+        const domain=uniqSorted(pairs.map(p=>approx(p[0]))), range=uniqSorted(pairs.map(p=>approx(p[1])));
+
+        // function? (no x repeats with different y)
+        const map=new Map();
+        const offending=[];
+        for(const [x,y] of pairs){
+          const key=approx(x);
+          if(map.has(key) && approx(map.get(key))!==approx(y)){ offending.push(key); }
+          map.set(key,y);
+        }
+        const isFunc = offending.length===0;
+
+        // intercepts
+        const xints = uniqSorted(pairs.filter(p=>Math.abs(p[1])<1e-12).map(p=>approx(p[0])));
+        const yints = uniqSorted(pairs.filter(p=>Math.abs(p[0])<1e-12).map(p=>approx(p[1])));
+
+        out.innerHTML = `Domain: \\(\\{${domain.join(',\\, ')}\\}\\) • Range: \\(\\{${range.join(',\\, ')}\\}\\)<br>
+                         Function? <b>${isFunc?'Yes ✅':'No ❌'}</b>${!isFunc?` • Offending x-value(s): ${[...new Set(offending.map(approx))].join(', ')}`:''}<br>
+                         x-intercept(s): ${xints.length? xints.map(v=>`\\(${v},0\\)`).join(', ') : 'none'} • y-intercept(s): ${yints.length? yints.map(v=>`\\(0,${v}\\)`).join(', ') : 'none'}`;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      btn.addEventListener('click', analyze);
+      clr.addEventListener('click', ()=>{ ta.value=''; svg.innerHTML=''; out.textContent=''; });
+      analyze(); // initial example
+    })();
+
+    /* ===== B. Grapher (Linear/Quadratic) & f(x) ===== */
+    (function(){
+      const type=document.getElementById('gType');
+      const linWrap=document.getElementById('linWrap'), quadWrap=document.getElementById('quadWrap');
+      const m=document.getElementById('m'), b=document.getElementById('b');
+      const a=document.getElementById('a'), bb=document.getElementById('bb'), c=document.getElementById('c');
+      const xmin=document.getElementById('gxmin'), xmax=document.getElementById('gxmax'), ymin=document.getElementById('gymin'), ymax=document.getElementById('gymax');
+      const xval=document.getElementById('xval'), kval=document.getElementById('kval');
+      const svg=document.getElementById('gSVG'), out=document.getElementById('gOut');
+
+      function refresh(){ const lin=type.value==='linear'; linWrap.style.display=lin?'block':'none'; quadWrap.style.display=lin?'none':'block'; }
+
+      function rootsLinear(m,b){ if(Math.abs(m)<1e-12) return []; return [-b/m]; }
+      function rootsQuadratic(a,b,c){
+        if(Math.abs(a)<1e-12){ return rootsLinear(b,c); }
+        const D=b*b-4*a*c;
+        if(D<0) return [];
+        if(D===0) return [-b/(2*a)];
+        const s=Math.sqrt(D);
+        return [(-b+s)/(2*a), (-b-s)/(2*a)].sort((u,v)=>u-v);
+      }
+
+      function draw(){
+        const Xmin=+xmin.value, Xmax=+xmax.value, Ymin=+ymin.value, Ymax=+ymax.value;
+        const g=makeGrid(svg, Xmin,Xmax,Ymin,Ymax), {X,Y,ns}=g;
+
+        let f, info=[], xints=[], yint=null, drDomain='\\(( -\\infty,\\,\\infty )\\)', drRange='\\(( -\\infty,\\,\\infty )\\)';
+
+        if(type.value==='linear'){
+          const M=+m.value, B=+b.value;
+          f = x => M*x + B;
+
+          // draw line segment across window
+          const yL=f(Xmin), yR=f(Xmax);
+          const line=document.createElementNS(ns,'line');
+          line.setAttribute('x1',X(Xmin)); line.setAttribute('y1',Y(yL));
+          line.setAttribute('x2',X(Xmax)); line.setAttribute('y2',Y(yR));
+          line.setAttribute('stroke','#3d8dff'); line.setAttribute('stroke-width','2');
+          svg.appendChild(line);
+
+          xints = rootsLinear(M,B);
+          yint = f(0);
+
+        }else{
+          const A=+a.value, B=+bb.value, C=+c.value;
+          f = x => A*x*x + B*x + C;
+
+          // draw parabola
+          const steps=500, dx=(Xmax-Xmin)/steps;
+          let d=''; for(let i=0;i<=steps;i++){ const x=Xmin+i*dx, y=f(x); d+=(i?' L':'M')+X(x)+' '+Y(y); }
+          const path=document.createElementNS(ns,'path'); path.setAttribute('d',d); path.setAttribute('fill','none'); path.setAttribute('stroke','#3d8dff'); path.setAttribute('stroke-width','2');
+          svg.appendChild(path);
+
+          // vertex & range
+          const h = -B/(2*A||1), k = f(h);
+          const dot=document.createElementNS(ns,'circle'); dot.setAttribute('cx',X(h)); dot.setAttribute('cy',Y(k)); dot.setAttribute('r',4); dot.setAttribute('fill','#e67e22'); svg.appendChild(dot);
+          drRange = A>0 ? `\\([${approx(k)},\\,\\infty)\\)` : `(−\\infty, ${approx(k)}]`;
+
+          xints = rootsQuadratic(A,B,C);
+          yint = f(0);
+          info.push(`Vertex \\((${approx(h)}, ${approx(k)})\\)`);
+        }
+
+        // Evaluate f(x) at xval
+        const xv = +xval.value, fx = Number.isFinite(xv) ? f(xv) : NaN;
+        info.push(`\\(f(${approx(xv)})=${approx(fx)}\\)`);
+
+        // Solve f(x)=k
+        const k0 = +kval.value;
+        let solText='n/a';
+        if(type.value==='linear'){
+          const M=+m.value, B=+b.value;
+          if(Math.abs(M)<1e-12){ solText = Math.abs(B-k0)<1e-12 ? 'all real x' : 'no solution'; }
+          else solText = `x=${approx((k0-B)/M)}`;
+        }else{
+          const A=+a.value, B=+bb.value, C=+c.value;
+          const r=rootsQuadratic(A,B,C-k0);
+          solText = r.length? r.map(v=>approx(v)).join(', ') : 'no real solution';
+        }
+
+        // Output
+        const xintText = xints.length? xints.map(v=>`\\(${approx(v)},0\\)`).join(', ') : 'none';
+        out.innerHTML = `Domain: ${drDomain} • Range: ${drRange}<br>
+                         y-intercept: ${yint!=null?`\\( (0, ${approx(yint)}) \\)`:'none'} • x-intercept(s): ${xintText}<br>
+                         ${info.join(' • ')} • Solve \\(f(x)=${approx(k0)}\\): ${solText}`;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      function reset(){
+        type.value='linear'; m.value=1; b.value=0; a.value=1; bb.value=0; c.value=0;
+        xmin.value=-10; xmax.value=10; ymin.value=-10; ymax.value=10; xval.value=2; kval.value=3;
+        svg.innerHTML=''; out.textContent='';
+        refresh();
+      }
+
+      type.addEventListener('change', refresh);
+      document.getElementById('gDraw').addEventListener('click', draw);
+      document.getElementById('gReset').addEventListener('click', reset);
+      refresh(); draw();
+    })();
+  </script>
+</body>
+</html>
