@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 10C • Unit 9: Equations of Linear Relations</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']], processEscapes:true },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] },
+      chtml: { mtextInheritFont:true, matchFontHeight:false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    .content-wrapper{max-width:1200px;margin:0 auto;padding:20px;}
+    .content-box{border:2px solid #e0e0e0;border-radius:12px;padding:28px;margin-bottom:30px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+    .content-box h2{color:#2c3e50;border-bottom:3px solid #3498db;padding-bottom:10px;margin-bottom:18px;}
+    .sub{color:#566573;margin-top:-6px;}
+    .hero{background:linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%);border-color:#cfe8ff;}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#ecf5ff;color:#1d6fa5;font-size:12px;margin:6px 6px 0 0;border:1px solid #d6eaff;}
+
+    .video-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:10px;}
+    .video-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:14px;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .video-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#3498db;}
+    .video-card h4{color:#3498db;margin:6px 0 8px;}
+    .video-card p{margin:0;font-size:.95rem;color:#5a6b7b;}
+
+    .units-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+    .unit-card{padding:18px;border-radius:10px;background:#f8f9fa;border:1px solid #e0e0e0;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .unit-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#2ecc71;}
+    .unit-card h3{color:#2ecc71;margin:0 0 8px;}
+
+    .pdf-frame{width:100%;height:540px;border:1px solid #e0e0e0;border-radius:10px;}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:#3498db;color:#fff;text-decoration:none;border:0;cursor:pointer;}
+    .btn:hover{background:#2f81bd;}
+    .btn-ghost{background:#fff;color:#3498db;border:1px solid #3498db;}
+    .btn-ghost:hover{background:#ecf5ff;}
+    .muted{color:#7f8c8d;font-size:.95rem;}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+
+    .two-col{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start;}
+    .mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
+    .tool-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:16px;}
+    .tool-card h4{margin:0 0 10px;color:#3498db;}
+    .tool-card label{display:block;font-size:.9rem;margin:6px 0 2px;color:#566573;}
+    .tool-card input,.tool-card select,.tool-card textarea{width:100%;padding:8px 10px;border:1px solid #dfe6ee;border-radius:8px;}
+    .tool-card textarea{min-height:88px;resize:vertical;}
+
+    .svg-plot{width:100%;height:380px;display:block;border:1px solid #e0e0e0;border-radius:10px;background:#fff;}
+    .checklist label{display:flex;gap:10px;align-items:flex-start;margin:8px 0}
+    .checklist input{transform:translateY(3px)}
+    .pill{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid #e0e0e0;background:#f8f9fa;margin-right:6px;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r=>r.text())
+        .then(html => {
+          const el=document.getElementById('navbar-placeholder');
+          el.innerHTML=html;
+          if (window.typesetMath) window.typesetMath(el);
+        })
+        .catch(err=>console.error('Navbar failed to load:',err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Unit 9: Equations of Linear Relations (Math 10C)</h2>
+        <p class="sub">Slope-intercept, writing linear equations, general form, point-slope, graphing, and rate of change.</p>
+        <div>
+          <span class="badge">Slope-Intercept \(y=mx+b\)</span>
+          <span class="badge">Point-Slope \(y-y_1=m(x-x_1)\)</span>
+          <span class="badge">General \(Ax+By+C=0\)</span>
+          <span class="badge">Rate of Change \(\Delta y/\Delta x\)</span>
+          <span class="badge">Graphing & Intercepts</span>
+        </div>
+      </section>
+
+      <!-- Outcomes / Success Criteria -->
+      <section class="content-box">
+        <h2>What You Should Be Able To Do</h2>
+        <div class="two-col">
+          <ul>
+            <li>Write equations of lines from slope & intercept, one point & slope, two points, or general form.</li>
+            <li>Convert between slope-intercept, point-slope, and general forms; identify intercepts.</li>
+            <li>Graph linear relations accurately and interpret slope as rate of change.</li>
+            <li>Determine rate of change from tables, graphs, or context and connect to \(m\).</li>
+          </ul>
+
+          <div class="checklist" id="m10c-u9-checklist">
+            <label><input type="checkbox" data-k="write"> I can write a line from any given info.</label>
+            <label><input type="checkbox" data-k="convert"> I can convert between forms.</label>
+            <label><input type="checkbox" data-k="graph"> I can graph and find intercepts.</label>
+            <label><input type="checkbox" data-k="roc"> I can interpret rate of change.</label>
+            <button class="btn btn-ghost" id="saveChecklist">Save Progress</button>
+            <small class="muted" id="saveNote" style="display:block;margin-top:6px;">Progress autosaves to this device.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video Library -->
+      <section class="content-box">
+        <h2>Video Library</h2>
+        <div class="video-grid">
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=slope+intercept+form+y%3Dmx%2Bb">
+            <h4>Slope-Intercept Form</h4>
+            <p>Write and graph \(y=mx+b\).</p>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=write+equation+of+a+line+from+two+points">
+            <h4>Line from Two Points</h4>
+            <p>Find \(m\), then any form you like.</p>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=point+slope+form+to+slope+intercept">
+            <h4>Point-Slope & Conversions</h4>
+            <p>Switch between forms cleanly.</p>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=rate+of+change+from+table+graph">
+            <h4>Rate of Change</h4>
+            <p>From table/graph to \(m\) and equation.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Interactive Tools -->
+      <section class="content-box">
+        <h2>Interactive Tools</h2>
+        <div class="two-col">
+
+          <!-- A. Equation Writer / Converter + Grapher -->
+          <div class="tool-card">
+            <h4>Equation Writer / Converter + Grapher</h4>
+
+            <div class="mini-grid">
+              <div>
+                <label>Given</label>
+                <select id="eqGiven">
+                  <option value="si">Slope-Intercept \(y=mx+b\)</option>
+                  <option value="ps">Point-Slope \(y-y_1=m(x-x_1)\)</option>
+                  <option value="tp">Two Points \((x_1,y_1),(x_2,y_2)\)</option>
+                  <option value="gf">General \(Ax+By+C=0\)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- slope-intercept -->
+            <div id="siWrap" class="mini-grid" style="margin-top:6px;">
+              <div><label>\(m\)</label><input id="si_m" type="number" step="any" value="1"></div>
+              <div><label>\(b\)</label><input id="si_b" type="number" step="any" value="0"></div>
+            </div>
+
+            <!-- point-slope -->
+            <div id="psWrap" class="mini-grid" style="display:none;margin-top:6px;">
+              <div><label>\(m\)</label><input id="ps_m" type="number" step="any" value="2"></div>
+              <div><label>\(x_1\)</label><input id="ps_x1" type="number" step="any" value="-1"></div>
+              <div><label>\(y_1\)</label><input id="ps_y1" type="number" step="any" value="3"></div>
+            </div>
+
+            <!-- two points -->
+            <div id="tpWrap" class="mini-grid" style="display:none;margin-top:6px;">
+              <div><label>\(x_1\)</label><input id="tp_x1" type="number" step="any" value="-2"></div>
+              <div><label>\(y_1\)</label><input id="tp_y1" type="number" step="any" value="1"></div>
+              <div><label>\(x_2\)</label><input id="tp_x2" type="number" step="any" value="3"></div>
+              <div><label>\(y_2\)</label><input id="tp_y2" type="number" step="any" value="6"></div>
+            </div>
+
+            <!-- general form -->
+            <div id="gfWrap" class="mini-grid" style="display:none;margin-top:6px;">
+              <div><label>\(A\)</label><input id="gf_A" type="number" step="any" value="1"></div>
+              <div><label>\(B\)</label><input id="gf_B" type="number" step="any" value="-1"></div>
+              <div><label>\(C\)</label><input id="gf_C" type="number" step="any" value="-4"></div>
+            </div>
+
+            <div class="mini-grid" style="margin-top:6px;">
+              <div><label>x-min</label><input id="eq_xmin" type="number" step="any" value="-10"></div>
+              <div><label>x-max</label><input id="eq_xmax" type="number" step="any" value="10"></div>
+              <div><label>y-min</label><input id="eq_ymin" type="number" step="any" value="-10"></div>
+              <div><label>y-max</label><input id="eq_ymax" type="number" step="any" value="10"></div>
+            </div>
+
+            <div style="margin-top:10px;">
+              <button class="btn" id="eqDraw">Convert & Graph</button>
+              <button class="btn btn-ghost" id="eqReset">Reset</button>
+            </div>
+
+            <svg id="eqSVG" class="svg-plot" viewBox="0 0 640 380" preserveAspectRatio="none"></svg>
+            <p class="muted mono" id="eqOut" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- B. Table → Line & Rate of Change -->
+          <div class="tool-card">
+            <h4>Table → Line & Rate of Change</h4>
+            <label>Enter points (one per line): <span class="mono">x,y</span> or <span class="mono">(x,y)</span></label>
+            <textarea id="tabText" placeholder="-2, -1
+0, 3
+4, 11"></textarea>
+
+            <div class="mini-grid" style="margin-top:6px;">
+              <div><label>Average ROC between \(x=a\)</label><input id="rocA" type="number" step="any" value="0"></div>
+              <div><label>and \(x=b\)</label><input id="rocB" type="number" step="any" value="4"></div>
+            </div>
+
+            <div style="margin-top:10px;">
+              <button class="btn" id="tabAnalyze">Analyze & Graph</button>
+              <button class="btn btn-ghost" id="tabClear">Clear</button>
+            </div>
+
+            <svg id="tabSVG" class="svg-plot" viewBox="0 0 640 380" preserveAspectRatio="none"></svg>
+            <p class="muted mono" id="tabOut" style="margin-top:8px;"></p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Context Builder -->
+      <section class="content-box">
+        <h2>Context Builder (Rate & Initial Value → Equation)</h2>
+        <div class="two-col">
+          <div class="tool-card">
+            <h4>Build \(y=mx+b\) from Words</h4>
+            <div class="mini-grid">
+              <div><label>Rate \(m\) (per 1 \(x\))</label><input id="ctx_m" type="number" step="any" value="2.5"></div>
+              <div><label>Initial value \(b\) (at \(x=0\))</label><input id="ctx_b" type="number" step="any" value="10"></div>
+              <div><label>Predict at \(x=\)</label><input id="ctx_x" type="number" step="any" value="6"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="ctxBuild">Create & Graph</button>
+              <button class="btn btn-ghost" id="ctxReset">Reset</button>
+            </div>
+            <svg id="ctxSVG" class="svg-plot" viewBox="0 0 640 380" preserveAspectRatio="none"></svg>
+            <p class="muted mono" id="ctxOut" style="margin-top:8px;"></p>
+          </div>
+
+          <div class="tool-card">
+            <h4>Quick Reminders</h4>
+            <ul>
+              <li>Slope \(m=\dfrac{\Delta y}{\Delta x}=\dfrac{y_2-y_1}{x_2-x_1}\).</li>
+              <li>From two points: find \(m\), then \(b=y_1-mx_1\).</li>
+              <li>General \(\to\) slope-intercept: if \(B\neq0\), \(y=-\dfrac{A}{B}x-\dfrac{C}{B}\).</li>
+              <li>Vertical line: \(x=k\) (no slope, no \(y\)-intercept).</li>
+              <li>Horizontal line: \(y=k\) (\(m=0\)).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quizzes -->
+      <section class="content-box">
+        <h2>Unit 9 Quizzes</h2>
+        <div class="units-grid">
+          <a href="m10c_u9_quiz1.html" class="unit-card">
+            <h3>Quiz 1: Write & Convert Forms</h3>
+            <p>Slope-intercept, point-slope, general; find intercepts.</p>
+          </a>
+          <a href="m10c_u9_quiz2.html" class="unit-card">
+            <h3>Quiz 2: Graphing & Rate of Change</h3>
+            <p>From tables/graphs; context to equation.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Review PDF -->
+      <section class="content-box">
+        <h2>Downloadable Review</h2>
+        <p>
+          <a class="btn" href="assets/m10c_u9_linear_equations_review.pdf" download>Download PDF</a>
+          <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
+        </p>
+        <iframe class="pdf-frame" src="assets/m10c_u9_linear_equations_review.pdf#view=FitH"></iframe>
+      </section>
+
+      <!-- Scratchpad -->
+      <section class="content-box">
+        <h2>Quick Practice Scratchpad</h2>
+        <p class="muted">Try: Line through \((-3,5)\) with slope \(-\tfrac{2}{3}\). Convert \(3x-2y+6=0\) to \(y=mx+b\). From points \((1,4)\) and \((5,12)\), write the equation.</p>
+        <textarea id="scratch" style="width:100%;min-height:140px;border-radius:8px;padding:12px;border:1px solid #dfe6ee;resize:vertical;"></textarea>
+        <div style="margin-top:10px;">
+          <button class="btn" id="saveScratch">Save Notes</button>
+          <button class="btn btn-ghost" id="clearScratch">Clear</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <!-- Math helper -->
+  <script>
+    window.typesetMath = function(root){
+      if (window.MathJax && MathJax.typesetPromise){
+        MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
+      }
+    };
+  </script>
+
+  <!-- Page logic -->
+  <script>
+    /* ===== Checklist ===== */
+    (function(){
+      const KEY='m10c_u9_check';
+      const box=document.getElementById('m10c-u9-checklist');
+      const inputs=[...box.querySelectorAll('input[type="checkbox"][data-k]')];
+      const btn=document.getElementById('saveChecklist'), note=document.getElementById('saveNote');
+      function load(){ try{const d=JSON.parse(localStorage.getItem(KEY)||'{}'); inputs.forEach(cb=>cb.checked=!!d[cb.dataset.k]);}catch(e){} }
+      function save(){ const d={}; inputs.forEach(cb=>d[cb.dataset.k]=cb.checked); localStorage.setItem(KEY,JSON.stringify(d)); note.textContent='Saved ✔'; setTimeout(()=>note.textContent='Progress autosaves to this device.',1200); }
+      inputs.forEach(cb=>cb.addEventListener('change',save)); btn.addEventListener('click',save); load();
+    })();
+
+    /* ===== Scratchpad ===== */
+    (function(){
+      const KEY='m10c_u9_scratch', ta=document.getElementById('scratch');
+      const s=document.getElementById('saveScratch'), c=document.getElementById('clearScratch');
+      try{ ta.value=localStorage.getItem(KEY)||'';}catch(e){}
+      s.addEventListener('click',()=>localStorage.setItem(KEY,ta.value));
+      c.addEventListener('click',()=>{ ta.value=''; localStorage.setItem(KEY,''); });
+    })();
+
+    /* ===== Utilities ===== */
+    function approx(n,d=6){ return Number.isFinite(n)? Number(n.toFixed(d)) : NaN; }
+    function parsePairs(text){
+      const pairs=[]; const lines=text.split(/\n+/).map(s=>s.trim()).filter(Boolean);
+      for(const line of lines){
+        let m = line.match(/^\(?\s*([+-]?\d*\.?\d+)\s*,\s*([+-]?\d*\.?\d+)\s*\)?$/) || line.match(/^\s*([+-]?\d*\.?\d+)\s+([+-]?\d*\.?\d+)\s*$/);
+        if(m){ pairs.push([parseFloat(m[1]), parseFloat(m[2])]); }
+      }
+      return pairs;
+    }
+
+    /* ===== SVG Grid Helper ===== */
+    function makeGrid(svg, xmin,xmax,ymin,ymax){
+      const W=svg.viewBox.baseVal.width||640, H=svg.viewBox.baseVal.height||380, ns='http://www.w3.org/2000/svg';
+      svg.innerHTML='';
+      function X(x){ return (x - xmin)/(xmax - xmin) * W; }
+      function Y(y){ return H - (y - ymin)/(ymax - ymin) * H; }
+      const g=document.createElementNS(ns,'g'); svg.appendChild(g);
+      for(let x=Math.ceil(xmin); x<=Math.floor(xmax); x++){
+        const L=document.createElementNS(ns,'line');
+        L.setAttribute('x1',X(x)); L.setAttribute('x2',X(x)); L.setAttribute('y1',0); L.setAttribute('y2',H);
+        L.setAttribute('stroke', x===0?'#9bb3c9':'#eef2f6'); L.setAttribute('stroke-width', x===0?2:1);
+        g.appendChild(L);
+      }
+      for(let y=Math.ceil(ymin); y<=Math.floor(ymax); y++){
+        const L=document.createElementNS(ns,'line');
+        L.setAttribute('y1',Y(y)); L.setAttribute('y2',Y(y)); L.setAttribute('x1',0); L.setAttribute('x2',W);
+        L.setAttribute('stroke', y===0?'#9bb3c9':'#eef2f6'); L.setAttribute('stroke-width', y===0?2:1);
+        g.appendChild(L);
+      }
+      return {X,Y,W,H,ns};
+    }
+
+    /* ===== A. Equation Writer / Converter + Grapher ===== */
+    (function(){
+      const given=document.getElementById('eqGiven');
+      const siW=document.getElementById('siWrap'), psW=document.getElementById('psWrap'), tpW=document.getElementById('tpWrap'), gfW=document.getElementById('gfWrap');
+      const si_m=document.getElementById('si_m'), si_b=document.getElementById('si_b');
+      const ps_m=document.getElementById('ps_m'), ps_x1=document.getElementById('ps_x1'), ps_y1=document.getElementById('ps_y1');
+      const tp_x1=document.getElementById('tp_x1'), tp_y1=document.getElementById('tp_y1'), tp_x2=document.getElementById('tp_x2'), tp_y2=document.getElementById('tp_y2');
+      const gf_A=document.getElementById('gf_A'), gf_B=document.getElementById('gf_B'), gf_C=document.getElementById('gf_C');
+      const xmin=document.getElementById('eq_xmin'), xmax=document.getElementById('eq_xmax'), ymin=document.getElementById('eq_ymin'), ymax=document.getElementById('eq_ymax');
+      const svg=document.getElementById('eqSVG'), out=document.getElementById('eqOut');
+
+      function refresh(){ siW.style.display=given.value==='si'?'grid':'none'; psW.style.display=given.value==='ps'?'grid':'none'; tpW.style.display=given.value==='tp'?'grid':'none'; gfW.style.display=given.value==='gf'?'grid':'none'; }
+
+      function toAllForms(){
+        // returns {vertical, x, m, b, psPoint:[x1,y1], general:[A,B,C]}
+        if(given.value==='si'){
+          const m=+si_m.value, b=+si_b.value;
+          return {vertical:false, m, b, psPoint:[0,b], general:[m,-1,b]};
+        }
+        if(given.value==='ps'){
+          const m=+ps_m.value, x1=+ps_x1.value, y1=+ps_y1.value;
+          const b = y1 - m*x1;
+          return {vertical:false, m, b, psPoint:[x1,y1], general:[m,-1,b]};
+        }
+        if(given.value==='tp'){
+          const x1=+tp_x1.value, y1=+tp_y1.value, x2=+tp_x2.value, y2=+tp_y2.value;
+          const dx=x2-x1, dy=y2-y1;
+          if(Math.abs(dx)<1e-12){ return {vertical:true, x:x1, general:[1,0,-x1]}; }
+          const m=dy/dx, b=y1 - m*x1;
+          return {vertical:false, m, b, psPoint:[x1,y1], general:[m,-1,b]};
+        }
+        // gf
+        const A=+gf_A.value, B=+gf_B.value, C=+gf_C.value;
+        if(Math.abs(B)<1e-12){ // vertical
+          const xv = -C/(A||1);
+          return {vertical:true, x:xv, general:[A,B,C]};
+        }
+        const m = -A/B, b = -C/B;
+        return {vertical:false, m, b, psPoint:[0,b], general:[A,B,C]};
+      }
+
+      function draw(){
+        const Xmin=+xmin.value, Xmax=+xmax.value, Ymin=+ymin.value, Ymax=+ymax.value;
+        const g=makeGrid(svg, Xmin,Xmax,Ymin,Ymax), {X,Y,ns}=g;
+
+        const f = toAllForms();
+        let text='';
+        if(f.vertical){
+          // x = constant
+          const xv=f.x;
+          const L=document.createElementNS(ns,'line');
+          L.setAttribute('x1',X(xv)); L.setAttribute('x2',X(xv)); L.setAttribute('y1',0); L.setAttribute('y2',g.H);
+          L.setAttribute('stroke','#3d8dff'); L.setAttribute('stroke-width','2'); svg.appendChild(L);
+
+          text = `Vertical line: \\(x=${approx(xv)}\\) • No slope, no \\(y\\)-intercept • General: \\(1\\cdot x + 0\\cdot y ${xv>=0?'-':'+'} ${Math.abs(approx(xv))}=0\\).`;
+        }else{
+          const m=f.m, b=f.b;
+          // main line
+          const yL=m*Xmin+b, yR=m*Xmax+b;
+          const L=document.createElementNS(ns,'line');
+          L.setAttribute('x1',X(Xmin)); L.setAttribute('y1',Y(yL));
+          L.setAttribute('x2',X(Xmax)); L.setAttribute('y2',Y(yR));
+          L.setAttribute('stroke','#3d8dff'); L.setAttribute('stroke-width','2'); svg.appendChild(L);
+
+          // intercepts
+          const yint=b;
+          const xint = Math.abs(m)<1e-12 ? null : -b/m;
+          if(xint!=null){
+            const dot=document.createElementNS(ns,'circle'); dot.setAttribute('cx',X(xint)); dot.setAttribute('cy',Y(0)); dot.setAttribute('r',4); dot.setAttribute('fill','#e67e22'); svg.appendChild(dot);
+          }
+          const dot2=document.createElementNS(ns,'circle'); dot2.setAttribute('cx',X(0)); dot2.setAttribute('cy',Y(yint)); dot2.setAttribute('r',4); dot2.setAttribute('fill','#2ecc71'); svg.appendChild(dot2);
+
+          const ps = f.psPoint ? `y - ${approx(f.psPoint[1])} = ${approx(m)}(x - ${approx(f.psPoint[0])})` : `y - ${approx(b)} = ${approx(m)}x`;
+          const gen = `${approx(m)}x - y ${b>=0?'+':''} ${approx(b)} = 0`;
+
+          text = `Slope-Intercept: \\(y=${approx(m)}x ${b>=0?'+':''} ${approx(b)}\\) • Point-Slope: \\(${ps}\\) • General: \\(${gen}\\)<br>
+                  Intercepts → x: ${xint!=null?`\\((${approx(xint)},0)\\)`:'none'} • y: \\((0,${approx(yint)})\\) • Rate of change \(m=${approx(m)}\\).`;
+        }
+
+        out.innerHTML = text;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      function reset(){
+        given.value='si'; refresh();
+        si_m.value=1; si_b.value=0; ps_m.value=2; ps_x1.value=-1; ps_y1.value=3;
+        tp_x1.value=-2; tp_y1.value=1; tp_x2.value=3; tp_y2.value=6;
+        gf_A.value=1; gf_B.value=-1; gf_C.value=-4;
+        xmin.value=-10; xmax.value=10; ymin.value=-10; ymax.value=10;
+        svg.innerHTML=''; out.textContent='';
+      }
+
+      given.addEventListener('change', refresh);
+      document.getElementById('eqDraw').addEventListener('click', draw);
+      document.getElementById('eqReset').addEventListener('click', reset);
+      refresh(); draw();
+    })();
+
+    /* ===== B. Table → Line & ROC ===== */
+    (function(){
+      const ta=document.getElementById('tabText');
+      const a=document.getElementById('rocA'), b=document.getElementById('rocB');
+      const svg=document.getElementById('tabSVG'), out=document.getElementById('tabOut');
+
+      function analyze(){
+        const pts=parsePairs(ta.value);
+        if(!pts.length){ svg.innerHTML=''; out.textContent='Enter some points first.'; return; }
+
+        // sort and bounding box
+        const P=[...pts].sort((u,v)=>u[0]-v[0]);
+        const xs=P.map(p=>p[0]), ys=P.map(p=>p[1]);
+        let xmin=Math.min(...xs), xmax=Math.max(...xs), ymin=Math.min(...ys), ymax=Math.max(...ys);
+        if(xmin===xmax){ xmin-=1; xmax+=1; }
+        if(ymin===ymax){ ymin-=1; ymax+=1; }
+        const padX=0.2*(xmax-xmin), padY=0.2*(ymax-ymin);
+        xmin-=padX; xmax+=padX; ymin-=padY; ymax+=padY;
+
+        const g=makeGrid(svg, xmin,xmax,ymin,ymax), {X,Y,ns}=g;
+
+        // plot points
+        for(const [x,y] of P){
+          const c=document.createElementNS(ns,'circle'); c.setAttribute('cx',X(x)); c.setAttribute('cy',Y(y)); c.setAttribute('r',4); c.setAttribute('fill','#2ecc71'); svg.appendChild(c);
+        }
+
+        // slopes between consecutive points
+        let slopes=[], consistent=true;
+        for(let i=1;i<P.length;i++){
+          const [x0,y0]=P[i-1], [x1,y1]=P[i];
+          const dx=x1-x0, dy=y1-y0;
+          const m = Math.abs(dx)<1e-12 ? Infinity : dy/dx;
+          slopes.push(m);
+          if(i>1){
+            const prev=slopes[i-2];
+            if((!Number.isFinite(m) || !Number.isFinite(prev)) ? (m!==prev) : Math.abs(m-prev)>1e-9) consistent=false;
+          }
+        }
+
+        let eqText='Not linear (inconsistent slopes).', mLine=null, bLine=null;
+        if(consistent){
+          mLine = slopes.length? slopes[0] : 0;
+          bLine = P[0][1] - mLine*P[0][0];
+          // draw best-fit exact line
+          const yL=mLine*xmin + bLine, yR=mLine*xmax + bLine;
+          const L=document.createElementNS(ns,'line');
+          L.setAttribute('x1',X(xmin)); L.setAttribute('y1',Y(yL));
+          L.setAttribute('x2',X(xmax)); L.setAttribute('y2',Y(yR));
+          L.setAttribute('stroke','#3d8dff'); L.setAttribute('stroke-width','2'); svg.appendChild(L);
+          eqText = `Linear: \\(y=${approx(mLine)}x ${bLine>=0?'+':''} ${approx(bLine)}\\).`;
+        }
+
+        // average ROC between a and b (using line if linear, else secant using nearest points)
+        const xa=+a.value, xb=+b.value;
+        let rocText='';
+        if(Number.isFinite(xa) && Number.isFinite(xb) && xa!==xb){
+          if(consistent && mLine!=null){
+            const ya=mLine*xa + bLine, yb=mLine*xb + bLine;
+            const roc=(yb-ya)/(xb-xa); rocText = `Average ROC on \\([${approx(xa)},${approx(xb)}]\\): <b>${approx(roc)}</b> (equals slope).`;
+          }else{
+            // use nearest known y-values via linear interpolation between closest points
+            function yAt(x){
+              for(let i=1;i<P.length;i++){
+                if((x>=P[i-1][0] && x<=P[i][0]) || (x<=P[i-1][0] && x>=P[i][0])){
+                  const [x0,y0]=P[i-1], [x1,y1]=P[i];
+                  if(Math.abs(x1-x0)<1e-12) return NaN;
+                  const t=(x-x0)/(x1-x0); return y0 + t*(y1-y0);
+                }
+              }
+              return NaN;
+            }
+            const ya=yAt(xa), yb=yAt(xb);
+            if(Number.isFinite(ya) && Number.isFinite(yb)){
+              const roc=(yb-ya)/(xb-xa); rocText = `Average ROC (secant) on \\([${approx(xa)},${approx(xb)}]\\): <b>${approx(roc)}</b>.`;
+            }else{
+              rocText = 'Average ROC: need x-values within the table’s span.';
+            }
+          }
+        }
+
+        out.innerHTML = `Slopes between consecutive points: <b>${slopes.map(s=>Number.isFinite(s)?approx(s):'undefined').join(', ')||'n/a'}</b><br>${eqText} ${rocText?('<br>'+rocText):''}`;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      document.getElementById('tabAnalyze').addEventListener('click', analyze);
+      document.getElementById('tabClear').addEventListener('click', ()=>{ document.getElementById('tabText').value=''; svg.innerHTML=''; out.textContent=''; });
+      analyze();
+    })();
+
+    /* ===== Context Builder ===== */
+    (function(){
+      const m=document.getElementById('ctx_m'), b=document.getElementById('ctx_b'), x=document.getElementById('ctx_x');
+      const svg=document.getElementById('ctxSVG'), out=document.getElementById('ctxOut');
+
+      function draw(){
+        const M=+m.value, B=+b.value, X=+x.value;
+        const xmin=-10, xmax=10, ymin=-10, ymax=10;
+        const g=makeGrid(svg, xmin,xmax,ymin,ymax), {X:GX, Y:GY, ns}=g;
+
+        // line
+        const yL=M*xmin+B, yR=M*xmax+B;
+        const L=document.createElementNS(ns,'line');
+        L.setAttribute('x1',GX(xmin)); L.setAttribute('y1',GY(yL));
+        L.setAttribute('x2',GX(xmax)); L.setAttribute('y2',GY(yR));
+        L.setAttribute('stroke','#3d8dff'); L.setAttribute('stroke-width','2'); svg.appendChild(L);
+
+        // prediction point
+        const Yp=M*X+B;
+        const dot=document.createElementNS(ns,'circle'); dot.setAttribute('cx',GX(X)); dot.setAttribute('cy',GY(Yp)); dot.setAttribute('r',4); dot.setAttribute('fill','#e74c3c'); svg.appendChild(dot);
+
+        out.innerHTML = `Equation: \\(y=${approx(M)}x ${B>=0?'+':''} ${approx(B)}\\) • Predicted at \\(x=${approx(X)}\\): \\(y=${approx(Yp)}\\) • Rate of change: \\(m=${approx(M)}\\) per 1 unit of \(x\).`;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      function reset(){ m.value=2.5; b.value=10; x.value=6; svg.innerHTML=''; out.textContent=''; }
+
+      document.getElementById('ctxBuild').addEventListener('click', draw);
+      document.getElementById('ctxReset').addEventListener('click', reset);
+      draw();
+    })();
+
+    // Typeset after load
+    window.addEventListener('load', ()=>{ if(window.typesetMath) window.typesetMath(); });
+  </script>
+</body>
+</html>
