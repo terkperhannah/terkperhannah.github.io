@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 20-1 • Unit 8: Linear & Quadratic Systems & Inequalities</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']], processEscapes:true },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] },
+      chtml: { mtextInheritFont:true, matchFontHeight:false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    .content-wrapper{max-width:1200px;margin:0 auto;padding:20px;}
+    .content-box{border:2px solid #e0e0e0;border-radius:12px;padding:28px;margin-bottom:30px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+    .content-box h2{color:#2c3e50;border-bottom:3px solid #3498db;padding-bottom:10px;margin-bottom:18px;}
+    .sub{color:#566573;margin-top:-6px;}
+    .hero{background:linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%);border-color:#cfe8ff;}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#ecf5ff;color:#1d6fa5;font-size:12px;margin:6px 6px 0 0;border:1px solid #d6eaff;}
+    .two-col{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start;}
+    .video-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:10px;}
+    .video-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:14px;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .video-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#3498db;}
+    .video-card h4{color:#3498db;margin:6px 0 8px;}
+    .units-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+    .unit-card{padding:18px;border-radius:10px;background:#f8f9fa;border:1px solid #e0e0e0;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .unit-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#2ecc71;}
+    .pdf-frame{width:100%;height:540px;border:1px solid #e0e0e0;border-radius:10px;}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:#3498db;color:#fff;text-decoration:none;border:0;cursor:pointer;}
+    .btn:hover{background:#2f81bd;}
+    .btn-ghost{background:#fff;color:#3498db;border:1px solid #3498db;}
+    .btn-ghost:hover{background:#ecf5ff;}
+    .muted{color:#7f8c8d;font-size:.95rem;}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+    .mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+    .tool-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:16px;}
+    .tool-card h4{margin:0 0 10px;color:#3498db;}
+    .tool-card label{display:block;font-size:.9rem;margin:6px 0 2px;color:#566573;}
+    .tool-card input,.tool-card select,.tool-card textarea{width:100%;padding:8px 10px;border:1px solid #dfe6ee;border-radius:8px;}
+    .tool-card textarea{min-height:72px;resize:vertical;}
+    .svg-plot{width:100%;height:380px;display:block;border:1px solid #e0e0e0;border-radius:10px;background:#fff;}
+    .table-mini{width:100%;border-collapse:collapse;margin-top:8px;}
+    .table-mini th,.table-mini td{border:1px solid #e6e6e6;padding:6px 8px;text-align:right;}
+    .table-mini th{background:#f2f6ff;color:#2c3e50;text-align:left;}
+    .ok{color:#2ecc71;font-weight:600;}
+    .bad{color:#e74c3c;font-weight:600;}
+    .pill{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid #e0e0e0;background:#f8f9fa;margin-right:6px;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r=>r.text())
+        .then(html => {
+          const el=document.getElementById('navbar-placeholder');
+          el.innerHTML=html;
+          if (window.typesetMath) window.typesetMath(el);
+        })
+        .catch(err=>console.error('Navbar failed to load:',err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Unit 8: Linear & Quadratic Systems and Inequalities (Math 20-1)</h2>
+        <p class="sub">Linear–quadratic & quadratic–quadratic systems; inequalities in one/two variables (with & without technology).</p>
+        <div>
+          <span class="badge">Solve by Substitution</span>
+          <span class="badge">Discriminant & Intersections</span>
+          <span class="badge">Sign Charts</span>
+          <span class="badge">Half-planes & Regions</span>
+          <span class="badge">Modelling</span>
+        </div>
+      </section>
+
+      <!-- Outcomes -->
+      <section class="content-box">
+        <h2>What You Should Be Able To Do</h2>
+        <div class="two-col">
+          <ul>
+            <li>Solve linear–quadratic systems (e.g., \(y=ax^2+bx+c\) & \(y=mx+k\)); classify # of intersections via \(\Delta\).</li>
+            <li>Solve quadratic–quadratic systems by equating and solving a quadratic in \(x\).</li>
+            <li>Solve linear and quadratic inequalities in one variable using algebra and sign charts; write solutions in interval notation.</li>
+            <li>Graph and interpret inequalities in two variables (lines/parabolas): boundary type, region, intercepts, and context.</li>
+          </ul>
+
+          <div class="checklist" id="m201-u8-checklist">
+            <label><input type="checkbox" data-k="lq"> I can solve L–Q systems and interpret intersections.</label>
+            <label><input type="checkbox" data-k="qq"> I can solve Q–Q systems.</label>
+            <label><input type="checkbox" data-k="ineq1"> I can solve linear/quadratic inequalities in one variable.</label>
+            <label><input type="checkbox" data-k="ineq2"> I can graph inequalities in two variables and identify regions.</label>
+            <button class="btn btn-ghost" id="saveChecklist">Save Progress</button>
+            <small class="muted" id="saveNote" style="display:block;margin-top:6px;">Progress autosaves to this device.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video Library -->
+      <section class="content-box">
+        <h2>Video Library</h2>
+        <div class="video-grid">
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=linear+quadratic+system+solve+substitution">
+            <h4>Linear–Quadratic Systems</h4>
+            <p>Substitution, # of solutions via discriminant.</p>
+            <small>youtube.com – “linear quadratic system solve substitution”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=solve+quadratic+quadratic+systems">
+            <h4>Quadratic–Quadratic Systems</h4>
+            <p>Equate and solve resulting quadratic.</p>
+            <small>youtube.com – “solve quadratic quadratic systems”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=quadratic+inequalities+sign+chart">
+            <h4>Quadratic Inequalities & Sign Charts</h4>
+            <p>Intervals, open/closed endpoints.</p>
+            <small>youtube.com – “quadratic inequalities sign chart”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=graphing+inequalities+two+variables+parabola+line">
+            <h4>Graphing Inequalities in 2 Variables</h4>
+            <p>Boundary, shading, intercepts & context.</p>
+            <small>youtube.com – “graphing inequalities two variables parabola line”</small>
+          </a>
+        </div>
+      </section>
+
+      <!-- Interactive Tools -->
+      <section class="content-box">
+        <h2>Interactive Tools</h2>
+        <div class="mini-grid">
+
+          <!-- Systems Explorer -->
+          <div class="tool-card">
+            <h4>Systems Explorer (L–Q and Q–Q)</h4>
+            <div class="mini-grid">
+              <div>
+                <label>Mode</label>
+                <select id="sysMode">
+                  <option value="lq">Linear–Quadratic: \(y=ax^2+bx+c\) & \(y=mx+k\)</option>
+                  <option value="qq">Quadratic–Quadratic: \(y=a_1x^2+b_1x+c_1\) & \(y=a_2x^2+b_2x+c_2\)</option>
+                </select>
+              </div>
+            </div>
+
+            <div id="sysLQ" class="mini-grid" style="margin-top:6px;">
+              <div><label>\(a\)</label><input id="qa" type="number" step="any" value="1"></div>
+              <div><label>\(b\)</label><input id="qb" type="number" step="any" value="0"></div>
+              <div><label>\(c\)</label><input id="qc" type="number" step="any" value="0"></div>
+              <div><label>\(m\)</label><input id="lm" type="number" step="any" value="1"></div>
+              <div><label>\(k\)</label><input id="lk" type="number" step="any" value="0"></div>
+            </div>
+
+            <div id="sysQQ" class="mini-grid" style="display:none;margin-top:6px;">
+              <div><label>\(a_1\)</label><input id="q1a" type="number" step="any" value="1"></div>
+              <div><label>\(b_1\)</label><input id="q1b" type="number" step="any" value="0"></div>
+              <div><label>\(c_1\)</label><input id="q1c" type="number" step="any" value="0"></div>
+              <div><label>\(a_2\)</label><input id="q2a" type="number" step="any" value="-1"></div>
+              <div><label>\(b_2\)</label><input id="q2b" type="number" step="any" value="0"></div>
+              <div><label>\(c_2\)</label><input id="q2c" type="number" step="any" value="2"></div>
+            </div>
+
+            <div class="mini-grid" style="margin-top:6px;">
+              <div><label>x-min</label><input id="sysXmin" type="number" step="any" value="-10"></div>
+              <div><label>x-max</label><input id="sysXmax" type="number" step="any" value="10"></div>
+              <div><label>y-min</label><input id="sysYmin" type="number" step="any" value="-10"></div>
+              <div><label>y-max</label><input id="sysYmax" type="number" step="any" value="10"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="sysDraw">Draw</button>
+              <button class="btn btn-ghost" id="sysReset">Reset</button>
+            </div>
+            <svg id="sysSVG" class="svg-plot" viewBox="0 0 640 380" preserveAspectRatio="none"></svg>
+            <p class="muted mono" id="sysOut" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- 1-Variable Inequality Solver -->
+          <div class="tool-card">
+            <h4>Inequalities in One Variable</h4>
+            <div class="mini-grid">
+              <div>
+                <label>Type</label>
+                <select id="oneType">
+                  <option value="linear">Linear: \(ax+b\ \rel\ c\)</option>
+                  <option value="quad">Quadratic: \(ax^2+bx+c\ \rel\ 0\)</option>
+                </select>
+              </div>
+              <div><label>\(a\)</label><input id="iA" type="number" step="any" value="1"></div>
+              <div><label>\(b\)</label><input id="iB" type="number" step="any" value="0"></div>
+              <div><label>\(c\)</label><input id="iC" type="number" step="any" value="0"></div>
+              <div>
+                <label>Relation</label>
+                <select id="iRel">
+                  <option value="<">&lt;</option>
+                  <option value="≤">≤</option>
+                  <option value=">">&gt;</option>
+                  <option value="≥">≥</option>
+                </select>
+              </div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="iSolve">Solve</button>
+              <button class="btn btn-ghost" id="iReset">Reset</button>
+            </div>
+            <svg id="iNumline" class="svg-plot" viewBox="0 0 640 120" preserveAspectRatio="none"></svg>
+            <p class="muted mono" id="iOut" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- 2-Variable Inequality (Line) -->
+          <div class="tool-card">
+            <h4>Graph Linear Inequality \(ax+by\ \rel\ c\)</h4>
+            <div class="mini-grid">
+              <div><label>\(a\)</label><input id="liA" type="number" step="any" value="1"></div>
+              <div><label>\(b\)</label><input id="liB" type="number" step="any" value="1"></div>
+              <div><label>\(c\)</label><input id="liC" type="number" step="any" value="4"></div>
+              <div>
+                <label>Relation</label>
+                <select id="liRel">
+                  <option value="≤">≤</option>
+                  <option value="<">&lt;</option>
+                  <option value="≥">≥</option>
+                  <option value=">">&gt;</option>
+                </select>
+              </div>
+            </div>
+            <div class="mini-grid" style="margin-top:6px;">
+              <div><label>x-min</label><input id="liXmin" type="number" step="any" value="-10"></div>
+              <div><label>x-max</label><input id="liXmax" type="number" step="any" value="10"></div>
+              <div><label>y-min</label><input id="liYmin" type="number" step="any" value="-10"></div>
+              <div><label>y-max</label><input id="liYmax" type="number" step="any" value="10"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="liDraw">Draw</button>
+              <button class="btn btn-ghost" id="liReset">Reset</button>
+            </div>
+            <svg id="liSVG" class="svg-plot" viewBox="0 0 640 380" preserveAspectRatio="none"></svg>
+            <p class="muted mono" id="liOut" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- 2-Variable Inequality (Parabola) -->
+          <div class="tool-card">
+            <h4>Graph Parabolic Inequality \(y\ \rel\ ax^2+bx+c\)</h4>
+            <div class="mini-grid">
+              <div><label>\(a\)</label><input id="piA" type="number" step="any" value="1"></div>
+              <div><label>\(b\)</label><input id="piB" type="number" step="any" value="0"></div>
+              <div><label>\(c\)</label><input id="piC" type="number" step="any" value="0"></div>
+              <div>
+                <label>Relation</label>
+                <select id="piRel">
+                  <option value="≤">≤</option>
+                  <option value="<">&lt;</option>
+                  <option value="≥">≥</option>
+                  <option value=">">&gt;</option>
+                </select>
+              </div>
+            </div>
+            <div class="mini-grid" style="margin-top:6px;">
+              <div><label>x-min</label><input id="piXmin" type="number" step="any" value="-10"></div>
+              <div><label>x-max</label><input id="piXmax" type="number" step="any" value="10"></div>
+              <div><label>y-min</label><input id="piYmin" type="number" step="any" value="-10"></div>
+              <div><label>y-max</label><input id="piYmax" type="number" step="any" value="10"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="piDraw">Draw</button>
+              <button class="btn btn-ghost" id="piReset">Reset</button>
+            </div>
+            <svg id="piSVG" class="svg-plot" viewBox="0 0 640 380" preserveAspectRatio="none"></svg>
+            <p class="muted mono" id="piOut" style="margin-top:8px;"></p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Quizzes -->
+      <section class="content-box">
+        <h2>Unit 8 Quizzes</h2>
+        <div class="units-grid">
+          <a href="m201_u8_quiz1.html" class="unit-card">
+            <h3>Quiz 1: Systems (L–Q & Q–Q)</h3>
+            <p>Solve symbolically and interpret intersections.</p>
+          </a>
+          <a href="m201_u8_quiz2.html" class="unit-card">
+            <h3>Quiz 2: Inequalities</h3>
+            <p>One variable (sign charts) & two-variable graphs.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Review PDF -->
+      <section class="content-box">
+        <h2>Downloadable Review</h2>
+        <p>
+          <a class="btn" href="assets/m201_u8_systems_inequalities_review.pdf" download>Download PDF</a>
+          <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
+        </p>
+        <iframe class="pdf-frame" src="assets/m201_u8_systems_inequalities_review.pdf#view=FitH"></iframe>
+      </section>
+
+      <!-- Scratchpad -->
+      <section class="content-box">
+        <h2>Quick Practice Scratchpad</h2>
+        <p class="muted">Try: solve \(y=x^2-4\) and \(y=2x+1\); solve \(x^2-5x+6\le0\); graph \(2x+3y\ge12\); shade \(y\le -x^2+4\).</p>
+        <textarea id="scratch" style="width:100%;min-height:140px;border-radius:8px;padding:12px;border:1px solid #dfe6ee;resize:vertical;"></textarea>
+        <div style="margin-top:10px;">
+          <button class="btn" id="saveScratch">Save Notes</button>
+          <button class="btn btn-ghost" id="clearScratch">Clear</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <!-- Math helper -->
+  <script>
+    window.typesetMath = function(root){
+      if (window.MathJax && MathJax.typesetPromise){
+        MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
+      }
+    };
+  </script>
+
+  <!-- Page logic -->
+  <script>
+    /* ===== Checklist ===== */
+    (function(){
+      const KEY='m201_u8_check';
+      const box=document.getElementById('m201-u8-checklist');
+      const inputs=[...box.querySelectorAll('input[type="checkbox"][data-k]')];
+      const btn=document.getElementById('saveChecklist'), note=document.getElementById('saveNote');
+      function load(){ try{const d=JSON.parse(localStorage.getItem(KEY)||'{}'); inputs.forEach(cb=>cb.checked=!!d[cb.dataset.k]);}catch(e){} }
+      function save(){ const d={}; inputs.forEach(cb=>d[cb.dataset.k]=cb.checked); localStorage.setItem(KEY,JSON.stringify(d)); note.textContent='Saved ✔'; setTimeout(()=>note.textContent='Progress autosaves to this device.',1200); }
+      inputs.forEach(cb=>cb.addEventListener('change',save)); btn.addEventListener('click',save); load();
+    })();
+
+    /* ===== Scratchpad ===== */
+    (function(){
+      const KEY='m201_u8_scratch', ta=document.getElementById('scratch');
+      const s=document.getElementById('saveScratch'), c=document.getElementById('clearScratch');
+      try{ ta.value=localStorage.getItem(KEY)||'';}catch(e){}
+      s.addEventListener('click',()=>localStorage.setItem(KEY,ta.value));
+      c.addEventListener('click',()=>{ ta.value=''; localStorage.setItem(KEY,''); });
+    })();
+
+    /* ===== SVG grid helper ===== */
+    function makeGrid(svg, xmin,xmax,ymin,ymax){
+      const W=svg.viewBox.baseVal.width||640, H=svg.viewBox.baseVal.height||380, ns='http://www.w3.org/2000/svg';
+      svg.innerHTML='';
+      function X(x){ return (x - xmin)/(xmax - xmin) * W; }
+      function Y(y){ return H - (y - ymin)/(ymax - ymin) * H; }
+      const g=document.createElementNS(ns,'g'); svg.appendChild(g);
+      for(let x=Math.ceil(xmin); x<=Math.floor(xmax); x++){
+        const line=document.createElementNS(ns,'line');
+        line.setAttribute('x1',X(x)); line.setAttribute('x2',X(x)); line.setAttribute('y1',0); line.setAttribute('y2',H);
+        line.setAttribute('stroke', x===0?'#9bb3c9':'#eef2f6'); line.setAttribute('stroke-width', x===0?2:1);
+        g.appendChild(line);
+      }
+      for(let y=Math.ceil(ymin); y<=Math.floor(ymax); y++){
+        const line=document.createElementNS(ns,'line');
+        line.setAttribute('y1',Y(y)); line.setAttribute('y2',Y(y)); line.setAttribute('x1',0); line.setAttribute('x2',W);
+        line.setAttribute('stroke', y===0?'#9bb3c9':'#eef2f6'); line.setAttribute('stroke-width', y===0?2:1);
+        g.appendChild(line);
+      }
+      return {X,Y,W,H,ns};
+    }
+    function approx(n,d=5){ return Number.isFinite(n)? Number(n.toFixed(d)) : NaN; }
+
+    /* ===== Systems Explorer ===== */
+    (function(){
+      const mode=document.getElementById('sysMode');
+      const LQwrap=document.getElementById('sysLQ'), QQwrap=document.getElementById('sysQQ');
+      const qa=document.getElementById('qa'), qb=document.getElementById('qb'), qc=document.getElementById('qc');
+      const lm=document.getElementById('lm'), lk=document.getElementById('lk');
+      const q1a=document.getElementById('q1a'), q1b=document.getElementById('q1b'), q1c=document.getElementById('q1c');
+      const q2a=document.getElementById('q2a'), q2b=document.getElementById('q2b'), q2c=document.getElementById('q2c');
+      const Xmin=document.getElementById('sysXmin'), Xmax=document.getElementById('sysXmax'), Ymin=document.getElementById('sysYmin'), Ymax=document.getElementById('sysYmax');
+      const svg=document.getElementById('sysSVG'), out=document.getElementById('sysOut');
+
+      function refresh(){ const m=mode.value==='lq'; LQwrap.style.display=m?'grid':'none'; QQwrap.style.display=m?'none':'grid'; out.textContent=''; }
+
+      function draw(){
+        const xmin=+Xmin.value, xmax=+Xmax.value, ymin=+Ymin.value, ymax=+Ymax.value;
+        const g=makeGrid(svg, xmin,xmax,ymin,ymax), {X,Y,ns}=g;
+
+        let intersections=[], desc='';
+        // plot functions
+        const pathQ=document.createElementNS(ns,'path'); pathQ.setAttribute('fill','none'); pathQ.setAttribute('stroke','#3d8dff'); pathQ.setAttribute('stroke-width','2');
+        const path2=document.createElementNS(ns,'path'); path2.setAttribute('fill','none'); path2.setAttribute('stroke','#2ecc71'); path2.setAttribute('stroke-width','2');
+
+        if(mode.value==='lq'){
+          const a=+qa.value, b=+qb.value, c=+qc.value, m=+lm.value, k=+lk.value;
+          // parabola
+          let d=''; const steps=400, dx=(xmax-xmin)/steps;
+          for(let i=0;i<=steps;i++){ const x=xmin+i*dx, y=a*x*x+b*x+c; d+=(i?' L':'M')+X(x)+' '+Y(y); }
+          pathQ.setAttribute('d',d); svg.appendChild(pathQ);
+          // line
+          const y1=m*xmin+k, y2=m*xmax+k;
+          const line=document.createElementNS(ns,'line');
+          line.setAttribute('x1',X(xmin)); line.setAttribute('y1',Y(y1));
+          line.setAttribute('x2',X(xmax)); line.setAttribute('y2',Y(y2));
+          line.setAttribute('stroke','#2ecc71'); line.setAttribute('stroke-width','2');
+          svg.appendChild(line);
+
+          // intersections: solve a x^2 + (b - m)x + (c - k) = 0
+          const A=a, B=b-m, C=c-k, D=B*B-4*A*C;
+          if(Math.abs(A)<1e-12){ // becomes linear
+            if(Math.abs(B)<1e-12){ desc='No/infinitely many solutions depending on C.'; }
+            else{ const x=-C/B, y=m*x+k; intersections=[[x,y]]; }
+          }else if(D<0){ desc='No real intersections (Δ<0).'; }
+          else if(D===0){ const x=-B/(2*A), y=m*x+k; intersections=[[x,y]]; desc='Tangent: one intersection (Δ=0).'; }
+          else{ const s=Math.sqrt(D); const x1=(-B+s)/(2*A), x2=(-B-s)/(2*A); intersections=[[x1,m*x1+k],[x2,m*x2+k]]; desc='Two intersections (Δ>0).'; }
+
+        }else{
+          const a1=+q1a.value, b1=+q1b.value, c1=+q1c.value, a2=+q2a.value, b2=+q2b.value, c2=+q2c.value;
+          // q1
+          let d1=''; const steps=400, dx=(xmax-xmin)/steps;
+          for(let i=0;i<=steps;i++){ const x=xmin+i*dx, y=a1*x*x+b1*x+c1; d1+=(i?' L':'M')+X(x)+' '+Y(y); }
+          pathQ.setAttribute('d',d1); svg.appendChild(pathQ);
+          // q2
+          let d2=''; for(let i=0;i<=steps;i++){ const x=xmin+i*dx, y=a2*x*x+b2*x+c2; d2+=(i?' L':'M')+X(x)+' '+Y(y); }
+          path2.setAttribute('d',d2); svg.appendChild(path2);
+
+          // intersections: (a1-a2)x^2+(b1-b2)x+(c1-c2)=0
+          const A=a1-a2, B=b1-b2, C=c1-c2, D=B*B-4*A*C;
+          if(Math.abs(A)<1e-12){ // linear
+            if(Math.abs(B)<1e-12){ desc='No/infinitely many solutions depending on C.'; }
+            else{ const x=-C/B, y=a1*x*x+b1*x+c1; intersections=[[x,y]]; }
+          }else if(D<0){ desc='No real intersections (Δ<0).'; }
+          else if(D===0){ const x=-B/(2*A), y=a1*x*x+b1*x+c1; intersections=[[x,y]]; desc='Tangent: one intersection (Δ=0).'; }
+          else{ const s=Math.sqrt(D); const x1=(-B+s)/(2*A), x2=(-B-s)/(2*A); intersections=[[x1,a1*x1*x1+b1*x1+c1],[x2,a1*x2*x2+b1*x2+c1]]; desc='Two intersections (Δ>0).'; }
+        }
+
+        // dots + output
+        intersections.forEach(([x,y])=>{
+          if(!Number.isFinite(x) || !Number.isFinite(y)) return;
+          const dot=document.createElementNS(ns,'circle'); dot.setAttribute('cx',X(x)); dot.setAttribute('cy',Y(y)); dot.setAttribute('r',4); dot.setAttribute('fill','#e74c3c'); svg.appendChild(dot);
+        });
+        out.innerHTML = (intersections.length? intersections.map(p=>`(x,y)=(${approx(p[0])}, ${approx(p[1])})`).join(' • ') : 'No plotted intersections.') + (desc? ` <span class="pill">${desc}</span>`:'');
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      function reset(){ mode.value='lq'; refresh(); qa.value=1;qb.value=0;qc.value=0; lm.value=1;lk.value=0; q1a.value=1;q1b.value=0;q1c.value=0;q2a.value=-1;q2b.value=0;q2c.value=2; Xmin.value=-10;Xmax.value=10;Ymin.value=-10;Ymax.value=10; svg.innerHTML=''; out.textContent=''; }
+
+      mode.addEventListener('change', refresh);
+      document.getElementById('sysDraw').addEventListener('click', draw);
+      document.getElementById('sysReset').addEventListener('click', reset);
+      refresh(); draw();
+    })();
+
+    /* ===== One-variable inequalities ===== */
+    (function(){
+      const type=document.getElementById('oneType'), A=document.getElementById('iA'), B=document.getElementById('iB'), C=document.getElementById('iC'), rel=document.getElementById('iRel');
+      const svg=document.getElementById('iNumline'), out=document.getElementById('iOut');
+
+      function drawNumline(intervals){
+        const W=640,H=120, ns='http://www.w3.org/2000/svg';
+        svg.innerHTML=''; const xmin=-10, xmax=10; // fixed display window
+        function X(x){ return (x - xmin)/(xmax - xmin) * W; }
+        // axis
+        const axis=document.createElementNS(ns,'line'); axis.setAttribute('x1',0);axis.setAttribute('y1',H/2);axis.setAttribute('x2',W);axis.setAttribute('y2',H/2);axis.setAttribute('stroke','#9bb3c9');axis.setAttribute('stroke-width','2'); svg.appendChild(axis);
+        // marks
+        for(let k=-10;k<=10;k++){
+          const t=document.createElementNS(ns,'line'); t.setAttribute('x1',X(k)); t.setAttribute('x2',X(k)); t.setAttribute('y1',H/2-6); t.setAttribute('y2',H/2+6); t.setAttribute('stroke','#cfd7df'); svg.appendChild(t);
+        }
+        // draw intervals
+        intervals.forEach(iv=>{
+          const [a,b,closedA,closedB]=iv;
+          const L=Math.max(a, xmin), R=Math.min(b, xmax);
+          if(L<=R){
+            const seg=document.createElementNS(ns,'line'); seg.setAttribute('x1',X(L)); seg.setAttribute('y1',H/2); seg.setAttribute('x2',X(R)); seg.setAttribute('y2',H/2); seg.setAttribute('stroke','#3d8dff'); seg.setAttribute('stroke-width','6'); svg.appendChild(seg);
+          }
+          // endpoints
+          const left=document.createElementNS(ns,'circle'); left.setAttribute('cx', X(a)); left.setAttribute('cy', H/2); left.setAttribute('r',6); left.setAttribute('fill', closedA? '#3d8dff':'#fff'); left.setAttribute('stroke','#3d8dff'); left.setAttribute('stroke-width','2'); svg.appendChild(left);
+          const right=document.createElementNS(ns,'circle'); right.setAttribute('cx', X(b)); right.setAttribute('cy', H/2); right.setAttribute('r',6); right.setAttribute('fill', closedB? '#3d8dff':'#fff'); right.setAttribute('stroke','#3d8dff'); right.setAttribute('stroke-width','2'); svg.appendChild(right);
+        });
+      }
+
+      function solve(){
+        const t=type.value, a=+A.value, b=+B.value, c=+C.value, r=rel.value;
+        let text='', intervals=[];
+        if(t==='linear'){
+          // ax+b rel c -> ax rel c-b -> x rel (c-b)/a (flip if a<0)
+          if(Math.abs(a)<1e-12){ text='a=0 → constant inequality.'; out.textContent=text; svg.innerHTML=''; return; }
+          const rhs=(c - b)/a;
+          let relOp=r;
+          if(a<0){ relOp = (r==='<'?'>': r==='>'?'<': r==='≤'?'≥':'≤'); }
+          const closed = (relOp==='≤' || relOp==='≥');
+          if(relOp==='<' || relOp==='≤') intervals=[[Number.NEGATIVE_INFINITY, rhs, false, closed]];
+          else intervals=[[rhs, Number.POSITIVE_INFINITY, closed, false]];
+          text = `Solve: \\(ax+b\\ ${r}\\ c\\Rightarrow x\\ ${relOp}\\ ${approx(rhs)}\\).`;
+        }else{
+          // quadratic: ax^2+bx+c rel 0
+          if(Math.abs(a)<1e-12){ // becomes linear
+            const rhs = -c/b;
+            let relOp=r; if(b<0){ relOp = (r==='<'?'>': r==='>'?'<': r==='≤'?'≥':'≤'); }
+            const closed=(relOp==='≤'||relOp==='≥');
+            if(relOp==='<'||relOp==='≤') intervals=[[Number.NEGATIVE_INFINITY,rhs,false,closed]];
+            else intervals=[[rhs,Number.POSITIVE_INFINITY,closed,false]];
+            text = `Linear case: \\(bx+c\\ ${r}\\ 0\\Rightarrow x\\ ${relOp}\\ ${approx(rhs)}\\).`;
+          }else{
+            const D=b*b-4*a*c;
+            if(D<0){
+              // sign is constant = sign(a)
+              const trueAll = (a>0 && (r==='>'||r==='≥')) || (a<0 && (r==='<'||r==='≤'));
+              const trueNone= (a>0 && (r==='<'||r==='≤')) || (a<0 && (r==='>'||r==='≥'));
+              if(trueAll){ intervals=[[Number.NEGATIVE_INFINITY, Number.POSITIVE_INFINITY, false, false]]; }
+              else if(trueNone){ intervals=[]; }
+              text = `\\(\\Delta<0\\): expression never changes sign (sign of \\(a\\)).`;
+            }else{
+              const s=Math.sqrt(D), x1=(-b-s)/(2*a), x2=(-b+s)/(2*a); const L=Math.min(x1,x2), R=Math.max(x1,x2);
+              const strict=(r==='<'||r==='>'), closedEnds=(r==='≤'||r==='≥');
+              if(r==='<'||r==='≤'){ // less than zero between roots if a>0; outside if a<0
+                if(a>0) intervals=[[L,R,closedEnds,closedEnds]]; else intervals=[[Number.NEGATIVE_INFINITY,L,false,closedEnds],[R,Number.POSITIVE_INFINITY,closedEnds,false]];
+              }else{ // greater than zero
+                if(a>0) intervals=[[Number.NEGATIVE_INFINITY,L,false,closedEnds],[R,Number.POSITIVE_INFINITY,closedEnds,false]];
+                else intervals=[[L,R,closedEnds,closedEnds]];
+              }
+              text = `Roots: \\(x=${approx(L)},\\ ${approx(R)}\\); use sign chart with leading coefficient \\(a=${a}\\).`;
+            }
+          }
+        }
+        out.innerHTML = text + (intervals.length? `<br>Solution set: <b>${intervals.map(([A,B,cl,cr])=>{
+          const L = A===Number.NEGATIVE_INFINITY? '(-\\infty' : (cl?'[':'(')+approx(A);
+          const R = B===Number.POSITIVE_INFINITY? '\\infty)' : approx(B)+(cr?']':')');
+          return `${L}, ${R}`;
+        }).join(' \\cup ')}</b>` : ' • <b>∅</b>');
+        if(window.typesetMath) window.typesetMath(out);
+        // for drawing, clip infinities
+        const drawIv = intervals.map(([A,B,cl,cr])=>[ isFinite(A)?A:-10, isFinite(B)?B:10, cl, cr ]);
+        drawNumline(drawIv);
+      }
+
+      function reset(){ type.value='linear'; A.value=1;B.value=0;C.value=0; rel.value='<'; svg.innerHTML=''; out.textContent=''; }
+
+      document.getElementById('iSolve').addEventListener('click', solve);
+      document.getElementById('iReset').addEventListener('click', reset);
+      solve();
+    })();
+
+    /* ===== Linear inequality in 2 variables (with shading) ===== */
+    (function(){
+      const A=document.getElementById('liA'), B=document.getElementById('liB'), C=document.getElementById('liC'), R=document.getElementById('liRel');
+      const Xmin=document.getElementById('liXmin'), Xmax=document.getElementById('liXmax'), Ymin=document.getElementById('liYmin'), Ymax=document.getElementById('liYmax');
+      const svg=document.getElementById('liSVG'), out=document.getElementById('liOut');
+
+      function draw(){
+        const a=+A.value, b=+B.value, c=+C.value, rel=R.value;
+        const xmin=+Xmin.value, xmax=+Xmax.value, ymin=+Ymin.value, ymax=+Ymax.value;
+        const g=makeGrid(svg, xmin,xmax,ymin,ymax), {X,Y,ns,W,H}=g;
+
+        // Build boundary: ax+by=c
+        let dashed=(rel==='<'||rel==='>');
+        if(Math.abs(b)>1e-12){
+          const yL=(c - a*xmin)/b, yR=(c - a*xmax)/b;
+          const line=document.createElementNS(ns,'line');
+          line.setAttribute('x1',X(xmin)); line.setAttribute('y1',Y(yL));
+          line.setAttribute('x2',X(xmax)); line.setAttribute('y2',Y(yR));
+          line.setAttribute('stroke','#3d8dff'); line.setAttribute('stroke-width','2');
+          if(dashed) line.setAttribute('stroke-dasharray','6 6');
+          svg.appendChild(line);
+
+          // Shade above/below depending on inequality and sign of b
+          const shade=document.createElementNS(ns,'path'); shade.setAttribute('fill','rgba(61,141,255,0.15)');
+          const above = ( (rel==='≥' || rel==='>') && b>0 ) || ( (rel==='≤'||rel==='<') && b<0 );
+          const d = above
+            ? `M ${X(xmin)} 0 L ${X(xmax)} 0 L ${X(xmax)} ${Y(yR)} L ${X(xmin)} ${Y(yL)} Z`
+            : `M ${X(xmin)} ${Y(yL)} L ${X(xmax)} ${Y(yR)} L ${X(xmax)} ${H} L ${X(xmin)} ${H} Z`;
+          shade.setAttribute('d', d); svg.appendChild(shade);
+
+        }else{
+          // vertical line x = c/a
+          if(Math.abs(a)<1e-12){ out.textContent='Invalid: a=b=0.'; return; }
+          const xv = c/a;
+          const line=document.createElementNS(ns,'line');
+          line.setAttribute('x1',X(xv)); line.setAttribute('y1',0);
+          line.setAttribute('x2',X(xv)); line.setAttribute('y2',H);
+          line.setAttribute('stroke','#3d8dff'); line.setAttribute('stroke-width','2');
+          if(dashed) line.setAttribute('stroke-dasharray','6 6');
+          svg.appendChild(line);
+
+          const shade=document.createElementNS(ns,'path'); shade.setAttribute('fill','rgba(61,141,255,0.15)');
+          const left = (rel==='≤'||rel==='<') ? (a>0) : !(a>0); // ax ≤ c -> x ≤ c/a if a>0; reverse if a<0
+          const d = left
+            ? `M 0 0 L ${X(xv)} 0 L ${X(xv)} ${H} L 0 ${H} Z`
+            : `M ${X(xv)} 0 L ${W} 0 L ${W} ${H} L ${X(xv)} ${H} Z`;
+          shade.setAttribute('d', d); svg.appendChild(shade);
+        }
+
+        out.innerHTML = `Boundary: \\(ax+by=${c}\\) (${dashed?'dashed, strict':'solid, inclusive'}) • Region shown by shading. Test point \\((0,0)\\) can confirm.`;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      function reset(){ A.value=1;B.value=1;C.value=4; R.value='≤'; Xmin.value=-10;Xmax.value=10;Ymin.value=-10;Ymax.value=10; svg.innerHTML=''; out.textContent=''; }
+
+      document.getElementById('liDraw').addEventListener('click', draw);
+      document.getElementById('liReset').addEventListener('click', reset);
+      draw();
+    })();
+
+    /* ===== Parabolic inequality y rel ax^2+bx+c (with shading) ===== */
+    (function(){
+      const A=document.getElementById('piA'), B=document.getElementById('piB'), C=document.getElementById('piC'), R=document.getElementById('piRel');
+      const Xmin=document.getElementById('piXmin'), Xmax=document.getElementById('piXmax'), Ymin=document.getElementById('piYmin'), Ymax=document.getElementById('piYmax');
+      const svg=document.getElementById('piSVG'), out=document.getElementById('piOut');
+
+      function draw(){
+        const a=+A.value, b=+B.value, c=+C.value, rel=R.value;
+        const xmin=+Xmin.value, xmax=+Xmax.value, ymin=+Ymin.value, ymax=+Ymax.value;
+        const g=makeGrid(svg, xmin,xmax,ymin,ymax), {X,Y,ns,W,H}=g;
+
+        // curve
+        const steps=600, dx=(xmax-xmin)/steps;
+        let d=''; for(let i=0;i<=steps;i++){ const x=xmin+i*dx, y=a*x*x+b*x+c; d+=(i?' L':'M')+X(x)+' '+Y(y); }
+        const path=document.createElementNS(ns,'path'); path.setAttribute('d', d); path.setAttribute('fill','none'); path.setAttribute('stroke','#3d8dff'); path.setAttribute('stroke-width','2');
+        if(rel==='<'||rel==='>') path.setAttribute('stroke-dasharray','6 6'); svg.appendChild(path);
+
+        // shading as polygon above/below curve
+        let poly='M ';
+        if(rel==='≤' || rel==='<'){ // below
+          for(let i=0;i<=steps;i++){ const x=xmin+i*dx, y=a*x*x+b*x+c; poly += X(x)+' '+Y(y)+' '; }
+          poly += `L ${X(xmax)} ${H} L 0 ${H} Z`;
+        }else{ // ≥ or >
+          for(let i=0;i<=steps;i++){ const x=xmin+i*dx, y=a*x*x+b*x+c; poly += X(x)+' '+Y(y)+' '; }
+          poly += `L ${X(xmax)} 0 L 0 0 Z`;
+        }
+        const shade=document.createElementNS(ns,'path'); shade.setAttribute('d', poly); shade.setAttribute('fill','rgba(61,141,255,0.15)');
+        svg.appendChild(shade);
+
+        // features
+        const h=-b/(2*a||1), k=a*h*h+b*h+c, D=b*b-4*a*c;
+        out.innerHTML = `Boundary: \\(y=${a}x^2${b<0?'':'+'}${b}x${c<0?'':'+'}${c}\\) (${(rel==='<'||rel==='>')?'dashed, strict':'solid, inclusive'}) • Vertex \\((${approx(h)}, ${approx(k)})\\) • \\(\\Delta=${approx(D)}\\).`;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      function reset(){ A.value=1;B.value=0;C.value=0; R.value='≤'; Xmin.value=-10;Xmax.value=10;Ymin.value=-10;Ymax.value=10; svg.innerHTML=''; out.textContent=''; }
+
+      document.getElementById('piDraw').addEventListener('click', draw);
+      document.getElementById('piReset').addEventListener('click', reset);
+      draw();
+    })();
+  </script>
+</body>
+</html>
