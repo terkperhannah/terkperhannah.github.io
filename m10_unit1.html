@@ -107,7 +107,7 @@
 
           <div class="checklist" id="u1-checklist">
             <label><input type="checkbox" data-k="pf"> I can prime-factorize any integer.</label>
-            <label><input type="checkbox" data-k="sys"> I can place numbers in the correct set (ℕ, W, ℤ, ℚ, ℝ\\ℚ).</label>
+            <label><input type="checkbox" data-k="sys"> I can place numbers in the correct set (ℕ, W, ℤ, ℚ, ℝ\ℚ).</label>
             <label><input type="checkbox" data-k="rat"> I can justify rational vs. irrational.</label>
             <label><input type="checkbox" data-k="rad"> I can simplify radicals and convert entire ↔ mixed.</label>
             <button class="btn btn-ghost" id="saveChecklist">Save Progress</button>
@@ -288,7 +288,7 @@
       const res=[]; const map={};
       if(n===0) return {list:[0], map:{0:1}};
       let x=Math.abs(n), sign = n<0?-1:1;
-      for(let p=2;p*p<=x;p+=(p===2?1:2)){ // trial division, skip evens after 2
+      for(let p=2;p*p<=x;p+=(p===2?1:2)){
         while(x%p===0){ map[p]=(map[p]||0)+1; res.push(p); x/=p; }
       }
       if(x>1){ map[x]=(map[x]||0)+1; res.push(x); }
@@ -309,9 +309,8 @@
       function drawTree(n){
         svg.innerHTML='';
         const ns='http://www.w3.org/2000/svg', W=svg.viewBox.baseVal.width||640, H=svg.viewBox.baseVal.height||320;
-        function node(x,y,text){ const g=document.createElementNS(ns,'g');
-          const r=16;
-          const c=document.createElementNS(ns,'circle'); c.setAttribute('cx',x); c.setAttribute('cy',y); c.setAttribute('r',r); c.setAttribute('fill','#ecf5ff'); c.setAttribute('stroke','#3498db'); svg.appendChild(c);
+        function node(x,y,text){
+          const c=document.createElementNS(ns,'circle'); c.setAttribute('cx',x); c.setAttribute('cy',y); c.setAttribute('r',16); c.setAttribute('fill','#ecf5ff'); c.setAttribute('stroke','#3498db'); svg.appendChild(c);
           const t=document.createElementNS(ns,'text'); t.setAttribute('x',x); t.setAttribute('y',y+4); t.setAttribute('text-anchor','middle'); t.setAttribute('font-size','12'); t.textContent=text; svg.appendChild(t);
           return {x,y};
         }
@@ -319,13 +318,8 @@
 
         if(n===0||n===1||n===-1){ node(W/2,30,String(n)); return; }
         const list=primeFactors(n).list.filter(v=>v!==-1);
-        // simple balanced tree: split factors roughly in half downward
         const root=node(W/2,30,String(n));
-        const levelGap=60, colGap=60;
-        // recursive build from list by pairing
-        let level=[{val:String(n), pos:root, children:list.map(x=>String(x))}];
-        // for visuals, just place all primes on bottom row
-        const y = 30 + levelGap*3;
+        const y = 30 + 60*3, colGap=60;
         const startX = W/2 - ((list.length-1)*colGap)/2;
         list.forEach((p,i)=>{
           const child=node(startX+i*colGap, y, String(p));
@@ -370,7 +364,6 @@
         s=s.trim();
         if(!s) return null;
 
-        // recognize pi, e
         if(/^pi$/i.test(s)) return {type:'const', value:Math.PI, label:'\\(\\pi\\)', rational:false, reason:'Irrational constant.'};
         if(/^e$/i.test(s)) return {type:'const', value:Math.E, label:'\\(e\\)', rational:false, reason:'Irrational constant.'};
 
@@ -398,26 +391,21 @@
         m = s.match(/^([-+]?\d*)\.?(\d*)\((\d+)\)$/);
         if(m){
           const sign = (m[1]||'').startsWith('-')?-1:1;
-          const A = (m[1]||'0').replace('+','').replace('-',''); // integer part
-          const B = m[2]||''; // non-repeating
-          const C = m[3];     // repeating
+          const A = (m[1]||'0').replace('+','').replace('-','');
+          const B = m[2]||'';
+          const C = m[3];
           const a = BigInt(A||'0');
           const b = BigInt(B||'0');
           const c = BigInt(C);
           const k = BigInt(B.length);
           const r = BigInt(C.length);
-          // value = a + (B as /10^k) + (C as / (10^k * (10^r-1)))
           const pow10k = BigInt(10)**k;
           const pow10r = BigInt(10)**r;
-          // numerator/denominator for fractional part:
-          // frac = B/10^k + C/(10^k*(10^r-1)) = (B*(10^r-1) + C) / (10^k*(10^r-1))
           const num = b*(pow10r-1n) + c;
           const den = pow10k*(pow10r-1n);
-          // total = a + num/den = (a*den + num)/den
           let N = a*den + num;
           if(sign<0) N = -N;
           let D = den;
-          // reduce
           function bgcd(x,y){ x=x<0n?-x:x; y=y<0n?-y:y; while(y){ const t=x%y; x=y; y=t; } return x; }
           const G = bgcd(N,D);
           N/=G; D/=G;
@@ -425,11 +413,10 @@
           return {label:`\\(${label}\\)`, rational:true, reason:`\\(\\frac{${N.toString()}}{${D.toString()}}\\)`};
         }
 
-        // plain decimal or integer
+        // decimal or integer
         if(!isNaN(Number(s))){
           const v = Number(s);
-          const label = Number.isInteger(v) ? `\\(${s}\\)` : `\\(${s}\\)`;
-          // terminating decimal ⇒ rational (as fraction with power of 10)
+          const label = `\\(${s}\\)`;
           if(String(s).includes('.')){
             const dec = s.split('.')[1].length;
             const p = Math.round(v * 10**dec);
@@ -440,23 +427,7 @@
           return {label, rational:true, reason:'Integer'};
         }
 
-        // fallback
         return {label:s, rational:false, reason:'Unrecognized pattern'};
-      }
-
-      function classify(v){
-        // returns set memberships
-        // NATURAL ℕ: 1,2,3,...; WHOLE W: 0,1,2,...; INTEGERS ℤ: ...,−2,−1,0,1,2,...
-        // RATIONAL ℚ: p/q, q≠0 ; IRRATIONAL ℝ\ℚ: everything else in reals
-        const cls=[];
-        if(/^\\(.+\\)$/.test(v.label) || true){ /* noop to keep formatting */ }
-        // crude numeric detection for set membership
-        // If rational with explicit fraction or integer/decimal, we can parse a numeric example:
-        let numeric = null;
-        try{
-          if(v.label.includes('\\sqrt')){ numeric = null; }
-        }catch(e){}
-        return v;
       }
 
       function run(){
@@ -466,12 +437,9 @@
         for(const s of items){
           const v = parseTerm(s);
           if(!v){ continue; }
-          // set membership text
           let sets = [];
-          // decide sets using the reason/nature of value:
           if(/Undefined/.test(v.reason)){ sets.push('—'); }
           else if(v.rational){
-            // try to see if integer
             const intMatch = v.label.match(/^\\\((-?\d+)\)\\?$/);
             if(intMatch){
               const n = parseInt(intMatch[1],10);
@@ -479,7 +447,6 @@
               else if(n===0) sets.push('W, ℤ, ℚ');
               else sets.push('ℤ, ℚ');
             }else{
-              // rational non-integer
               sets.push('ℚ');
             }
           }else{
@@ -501,7 +468,6 @@
       const inp=document.getElementById('rad_in'), out=document.getElementById('rad_out');
 
       function simpSqrt(n){
-        // returns {a,b} so sqrt(n) = a*sqrt(b), n>=0 integer
         if(n<0) return {a:NaN,b:NaN};
         let a=1, b=n;
         for(let p=2; p*p<=b; p++){
@@ -509,24 +475,25 @@
         }
         return {a,b};
       }
+
+      // ✅ FIXED regex .match() lines
       function parseExpr(s){
-        s=s.trim();
-        // forms: sqrt(72), √72, 5√12, a*sqrt(b) (a,b integers)
-        // handle a*sqrt(b)
+        s = s.trim();
+        // a*sqrt(b)
         let m = s.match(/^([-+]?\d+)\s*\*\s*(?:sqrt\((\d+)\)|√\s*(\d+))$/i);
-        if(m){
-          const a=parseInt(m[1],10);
-          const b=parseInt(m[2]||m[3],10);
+        if (m){
+          const a = parseInt(m[1],10);
+          const b = parseInt(m[2]||m[3],10);
           return {coef:a, rad:b};
         }
-        // handle 5√12
+        // 5√12
         m = s.match(/^([-+]?\d+)\s*(?:√\s*(\d+))$/i);
-        if(m){
+        if (m){
           return {coef:parseInt(m[1],10), rad:parseInt(m[2],10)};
         }
-        // handle sqrt(72) or √72
-        m = s.match/^(?:sqrt\((\d+)\)|√\s*(\d+))$/i;
-        if(m){
+        // sqrt(72) or √72
+        m = s.match(/^(?:sqrt\((\d+)\)|√\s*(\d+))$/i);
+        if (m){
           return {coef:1, rad:parseInt(m[1]||m[2],10)};
         }
         return null;
@@ -538,15 +505,12 @@
         const {coef,rad} = P;
         if(!Number.isFinite(coef) || !Number.isFinite(rad) || rad<0){ out.textContent='Please use integer coefficients and non-negative radicands.'; return; }
 
-        // simplify coef*sqrt(rad)
         const s = simpSqrt(rad);
         const mixedCoef = coef * s.a;
         const mixedRad = s.b;
 
-        // entire radical form: (mixedCoef)√(mixedRad) -> √(mixedCoef^2 * mixedRad)
         const entire = mixedCoef*mixedCoef * mixedRad;
 
-        // pretty strings
         const inStr = P.coef===1 ? `\\(\\sqrt{${rad}}\\)` : `\\(${coef}\\sqrt{${rad}}\\)`;
         const simpStr = mixedRad===1 ? `\\(${mixedCoef}\\)` : (mixedCoef===1 ? `\\(\\sqrt{${mixedRad}}\\)` : `\\(${mixedCoef}\\sqrt{${mixedRad}}\\)`);
         const entireStr = `\\(\\sqrt{${entire}}\\)`;
