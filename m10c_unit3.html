@@ -68,24 +68,25 @@
     .ref-table th { background:#f2f6ff; color:#2c3e50; }
     code.katex { white-space: nowrap; }
   </style>
-  <!-- MathJax v3: render \( ... \), \[ ... \], $...$, $$...$$ -->
-<script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [['\\(','\\)'], ['$', '$']],
-      displayMath: [['\\[','\\]'], ['$$','$$']],
-      processEscapes: true
-    },
-    options: {
-      // We'll typeset everything (we'll handle <code.katex> separately below)
-      skipHtmlTags: ['script','noscript','style','textarea']
-    }
-  };
-</script>
-<script id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
 
+  <!-- MathJax (configured to keep your site’s typography/layout) -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(','\\)'], ['$', '$']],
+        displayMath: [['\\[','\\]'], ['$$','$$']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script','noscript','style','textarea']  // leave markup alone
+      },
+      chtml: {
+        mtextInheritFont: true,   // inherit your site fonts
+        matchFontHeight: false    // reduce layout jumps
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
   <header>
@@ -94,10 +95,15 @@
 
   <div id="navbar-placeholder"></div>
   <script>
+    // Load navbar, then re-typeset any math that might be in it
     document.addEventListener('DOMContentLoaded', () => {
       fetch('navbar.html')
         .then(r => r.text())
-        .then(html => document.getElementById('navbar-placeholder').innerHTML = html)
+        .then(html => {
+          const el = document.getElementById('navbar-placeholder');
+          el.innerHTML = html;
+          if (window.typesetMath) window.typesetMath(el);
+        })
         .catch(err => console.error('Navbar failed to load:', err));
     });
   </script>
@@ -267,6 +273,27 @@
     <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
   </footer>
 
+  <!-- Math helper + converter -->
+  <script>
+    // Helper to (re)typeset a specific root or the whole page
+    window.typesetMath = function(root){
+      if (window.MathJax && MathJax.typesetPromise) {
+        MathJax.typesetPromise(root ? [root] : undefined).catch(err => console.error(err));
+      }
+    };
+
+    // Convert <code class="katex">…</code> into inline TeX so MathJax will render it
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('code.katex').forEach(el => {
+        const span = document.createElement('span');
+        span.textContent = `\\(${el.textContent}\\)`; // keep escapes safe
+        el.replaceWith(span);
+      });
+      window.typesetMath(); // typeset once after conversion
+    });
+  </script>
+
+  <!-- Page logic (unchanged) -->
   <script>
     /* Checklist persistence */
     (function(){
@@ -308,35 +335,25 @@
     /* Quick Unit Converter */
     (function(){
       const defs = {
-        length: { // base: meter
-          m: 1, cm: 0.01, mm: 0.001, km: 1000,
-          in: 0.0254, ft: 0.3048, yd: 0.9144, mi: 1609.34
-        },
-        mass: { // base: kilogram
-          kg: 1, g: 0.001, mg: 1e-6,
-          lb: 0.45359237, oz: 0.0283495231
-        },
-        volume: { // base: liter
-          L: 1, mL: 0.001, "cm³": 0.001, // 1 cm³ = 1 mL
-          "US gal": 3.78541, "US qt": 0.946353, "US pt": 0.473176
-        }
+        length: { m:1, cm:0.01, mm:0.001, km:1000, in:0.0254, ft:0.3048, yd:0.9144, mi:1609.34 },
+        mass:   { kg:1, g:0.001, mg:1e-6, lb:0.45359237, oz:0.0283495231 },
+        volume: { L:1, mL:0.001, "cm³":0.001, "US gal":3.78541, "US qt":0.946353, "US pt":0.473176 }
       };
 
       const typeSel = document.getElementById('convType');
       const fromSel = document.getElementById('fromUnit');
-      const toSel = document.getElementById('toUnit');
-      const valIn = document.getElementById('fromVal');
-      const out = document.getElementById('convResult');
+      const toSel   = document.getElementById('toUnit');
+      const valIn   = document.getElementById('fromVal');
+      const out     = document.getElementById('convResult');
 
       function fillUnits(){
         const type = typeSel.value;
         const units = Object.keys(defs[type]);
         fromSel.innerHTML = units.map(u=>`<option>${u}</option>`).join('');
-        toSel.innerHTML = units.map(u=>`<option>${u}</option>`).join('');
-        // sensible defaults
+        toSel.innerHTML   = units.map(u=>`<option>${u}</option>`).join('');
         if(type==='length'){ fromSel.value='ft'; toSel.value='cm'; }
-        if(type==='mass'){ fromSel.value='lb'; toSel.value='kg'; }
-        if(type==='volume'){ fromSel.value='L'; toSel.value='mL'; }
+        if(type==='mass'){   fromSel.value='lb'; toSel.value='kg'; }
+        if(type==='volume'){ fromSel.value='L';  toSel.value='mL';}
       }
 
       function convert(){
@@ -345,11 +362,7 @@
         if(isNaN(v)){ out.textContent = 'Enter a value to convert.'; return; }
         const base = defs[type];
         const from = fromSel.value, to = toSel.value;
-        // convert to base, then to target
-        let vInBase;
-        if(type==='length'){ vInBase = v * base[from]; }          // meters
-        else if(type==='mass'){ vInBase = v * base[from]; }        // kilograms
-        else { vInBase = v * base[from]; }                         // liters
+        const vInBase = v * base[from];
         const result = vInBase / base[to];
         out.textContent = `${v} ${from} ≈ ${result.toLocaleString(undefined,{maximumSignificantDigits:6})} ${to}`;
       }
@@ -359,18 +372,8 @@
         const a = fromSel.value; fromSel.value = toSel.value; toSel.value = a; convert();
       });
       typeSel.addEventListener('change', fillUnits);
-
       fillUnits();
     })();
   </script>
-  <script>
-  function typesetMath(root) {
-    if (window.MathJax && MathJax.typesetPromise) {
-      MathJax.typesetPromise(root ? [root] : undefined).catch(err => console.error(err));
-    }
-  }
-  document.addEventListener('DOMContentLoaded', () => typesetMath());
-</script>
-
 </body>
 </html>
