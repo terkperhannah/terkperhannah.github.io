@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 20-1 • Unit 1 Review – Sequences & Series</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .content-wrapper { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    .content-box {
+      border: 2px solid #e0e0e0; border-radius: 12px; padding: 28px; margin-bottom: 30px;
+      background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,.07);
+    }
+    .content-box h2 { color:#2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; margin-bottom: 18px; }
+    .sub { color:#566573; margin-top:-6px; }
+
+    .hero {
+      background: linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%);
+      border-color:#cfe8ff;
+    }
+    .badge {
+      display:inline-block; padding:6px 10px; border-radius:999px; background:#ecf5ff; color:#1d6fa5;
+      font-size:12px; margin:6px 6px 0 0; border:1px solid #d6eaff;
+    }
+
+    .two-col { display:grid; gap:20px; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); align-items:start; }
+    .checklist label { display:flex; align-items:flex-start; gap:10px; line-height:1.4; margin:10px 0; }
+    .checklist input { transform: translateY(3px); }
+
+    .video-grid { display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); margin-top:10px; }
+    .video-card{
+      background:#f8f9fa; border:1px solid #e0e0e0; border-radius:10px; padding:14px;
+      transition: transform .2s ease, box-shadow .2s ease; text-decoration:none; color:#34495e; display:block;
+    }
+    .video-card:hover{ transform: translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,.08); border-color:#3498db; }
+    .video-card h4{ color:#3498db; margin:6px 0 8px; }
+    .video-card p{ margin:0; font-size:.95rem; color:#5a6b7b; }
+    .video-card small{ display:block; margin-top:8px; color:#7a8b99; }
+
+    .units-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+    .unit-card {
+      padding:18px; border-radius:10px; background:#f8f9fa; border:1px solid #e0e0e0;
+      transition:.2s; text-decoration:none; color:#34495e; display:block;
+    }
+    .unit-card:hover{ transform:translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,.08); border-color:#2ecc71; }
+    .unit-card h3{ color:#2ecc71; margin:0 0 8px; }
+
+    .pdf-frame{ width:100%; height:540px; border:1px solid #e0e0e0; border-radius:10px; }
+    .btn { display:inline-block; padding:10px 14px; border-radius:8px; background:#3498db; color:#fff; text-decoration:none; border:0; cursor:pointer; }
+    .btn:hover{ background:#2f81bd; }
+    .btn-ghost { background:#fff; color:#3498db; border:1px solid #3498db; }
+    .btn-ghost:hover { background:#ecf5ff; }
+    .muted { color:#7f8c8d; font-size:.95rem; }
+
+    .mini-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+    .tool-card { background:#f8f9fa; border:1px solid #e0e0e0; border-radius:10px; padding:16px; }
+    .tool-card h4 { margin:0 0 10px; color:#3498db; }
+    .tool-card label { display:block; font-size:.9rem; margin:6px 0 2px; color:#566573; }
+    .tool-card input, .tool-card select { width:100%; padding:8px 10px; border:1px solid #dfe6ee; border-radius:8px; }
+    .tool-card table { width:100%; border-collapse:collapse; margin-top:10px; }
+    .tool-card th, .tool-card td { border:1px solid #e6e6e6; padding:6px 8px; text-align:right; }
+    .tool-card th { background:#f2f6ff; color:#2c3e50; text-align:left; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r => r.text())
+        .then(html => document.getElementById('navbar-placeholder').innerHTML = html)
+        .catch(err => console.error('Navbar failed to load:', err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Unit 1 Review: Sequences & Series</h2>
+        <p class="sub">Arithmetic & geometric sequences/series • Growth & decay • Infinite geometric series</p>
+        <div>
+          <span class="badge">Arithmetic: \(t_n=a_1+(n-1)d\)</span>
+          <span class="badge">Geometric: \(t_n=a_1 r^{\,n-1}\)</span>
+          <span class="badge">Sums \(S_n\)</span>
+          <span class="badge">Infinite Series \(S_\infty\)</span>
+          <span class="badge">Growth/Decay \(A_n=A_0 r^n\)</span>
+        </div>
+      </section>
+
+      <!-- Outcomes & Checklist -->
+      <section class="content-box">
+        <h2>What You Should Be Able To Do</h2>
+        <div class="two-col">
+          <ul>
+            <li>Recognize and generate arithmetic and geometric sequences from rules, tables, or context.</li>
+            <li>Use \(t_n=a_1+(n-1)d\) and \(t_n=a_1 r^{n-1}\) to find specific terms and general terms.</li>
+            <li>Compute partial sums: \(S_n=\frac{n}{2}\big(2a_1+(n-1)d\big)\) and \(S_n=\frac{a_1(1-r^n)}{1-r}\)(\(r\neq1\)).</li>
+            <li>Decide when an infinite geometric series converges (\(|r|<1\)) and find \(S_\infty=\frac{a_1}{1-r}\).</li>
+            <li>Model growth/decay with \(A_n=A_0(1+p)^n\) and interpret percent increase/decrease.</li>
+          </ul>
+
+          <div class="checklist" id="m201-u1-checklist">
+            <label><input type="checkbox" data-k="classify"> I can classify a sequence as arithmetic/geometric and justify it.</label>
+            <label><input type="checkbox" data-k="general"> I can write a correct general term \(t_n\).</label>
+            <label><input type="checkbox" data-k="sum"> I can compute partial sums \(S_n\).</label>
+            <label><input type="checkbox" data-k="infinite"> I can test convergence and compute \(S_\infty\) when \(|r|<1\).</label>
+            <label><input type="checkbox" data-k="growth"> I can solve growth/decay problems with percent change.</label>
+            <button class="btn btn-ghost" id="saveChecklist">Save Progress</button>
+            <small class="muted" id="saveNote" style="display:block;margin-top:6px;">Progress autosaves to this device.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video Library -->
+      <section class="content-box">
+        <h2>Video Library</h2>
+        <p class="muted">Swap in your exact favourites later—these are focused searches.</p>
+        <div class="video-grid">
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=arithmetic+sequences+general+term+khan+academy">
+            <h4>Arithmetic Sequences & General Term</h4>
+            <p>Identify \(d\), build \(t_n\), find terms & sums.</p>
+            <small>youtube.com – “arithmetic sequences general term khan academy”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=geometric+sequences+and+series+sum+formula">
+            <h4>Geometric Sequences & Series</h4>
+            <p>\(t_n=a_1 r^{n-1}\), partial sums, applications.</p>
+            <small>youtube.com – “geometric sequences and series sum formula”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=infinite+geometric+series+convergence">
+            <h4>Infinite Geometric Series</h4>
+            <p>Convergence (\(|r|<1\)) and \(S_\infty=\frac{a_1}{1-r}\).</p>
+            <small>youtube.com – “infinite geometric series convergence”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=exponential+growth+and+decay+math+12">
+            <h4>Growth & Decay Models</h4>
+            <p>Percent change \(p\), growth factor \(r=1+p\), interpreting contexts.</p>
+            <small>youtube.com – “exponential growth and decay math”</small>
+          </a>
+        </div>
+      </section>
+
+      <!-- Tools -->
+      <section class="content-box">
+        <h2>Interactive Tools</h2>
+        <div class="mini-grid">
+          <!-- Sequence Explorer -->
+          <div class="tool-card" id="seqBox">
+            <h4>Sequence Explorer</h4>
+            <label>Type</label>
+            <select id="seqType">
+              <option value="arith">Arithmetic (common difference d)</option>
+              <option value="geom">Geometric (common ratio r)</option>
+            </select>
+
+            <label>First term \(a_1\)</label>
+            <input id="a1" type="number" value="3" step="any"/>
+
+            <div id="dWrap">
+              <label>Common difference \(d\)</label>
+              <input id="d" type="number" value="2" step="any"/>
+            </div>
+            <div id="rWrap" style="display:none;">
+              <label>Common ratio \(r\)</label>
+              <input id="r" type="number" value="1.5" step="any"/>
+            </div>
+
+            <div class="mini-grid" style="margin-top:6px;">
+              <div>
+                <label>n (term index)</label>
+                <input id="nVal" type="number" value="10" min="1" step="1"/>
+              </div>
+              <div>
+                <label>Show first k terms</label>
+                <input id="kVal" type="number" value="10" min="1" step="1"/>
+              </div>
+            </div>
+
+            <div style="margin-top:10px;">
+              <button class="btn" id="calcSeq">Calculate</button>
+              <button class="btn btn-ghost" id="copyCSV">Copy Table (CSV)</button>
+            </div>
+
+            <p class="muted mono" id="seqFormulas" style="margin-top:8px;"></p>
+            <p class="muted mono" id="seqResults"></p>
+            <div id="seqTableWrap"></div>
+          </div>
+
+          <!-- Growth/Decay Helper -->
+          <div class="tool-card" id="gdBox">
+            <h4>Growth/Decay Helper</h4>
+            <label>Initial amount \(A_0\)</label>
+            <input id="gdA0" type="number" value="100" step="any"/>
+
+            <label>Percent change per step \(p\) (e.g., 5 for +5%, −12 for −12%)</label>
+            <input id="gdP" type="number" value="5" step="any"/>
+
+            <label>Steps \(n\)</label>
+            <input id="gdN" type="number" value="8" min="0" step="1"/>
+
+            <div style="margin-top:10px;">
+              <button class="btn" id="calcGD">Compute</button>
+            </div>
+
+            <p class="muted mono" id="gdResults" style="margin-top:8px;"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quizzes -->
+      <section class="content-box">
+        <h2>Unit 1 Quizzes</h2>
+        <div class="units-grid">
+          <a href="m201_u1_quiz1.html" class="unit-card">
+            <h3>Quiz 1: Arithmetic Sequences & Series</h3>
+            <p>Identify \(d\), general term, find terms, partial sums.</p>
+          </a>
+          <a href="m201_u1_quiz2.html" class="unit-card">
+            <h3>Quiz 2: Geometric Sequences, Growth/Decay & Infinite Series</h3>
+            <p>Common ratio \(r\), \(t_n\), \(S_n\), convergence & \(S_\infty\).</p>
+          </a>
+        </div>
+        <p class="muted" style="margin-top:10px;">Point these to your two Unit 1 quiz pages.</p>
+      </section>
+
+      <!-- PDF Review -->
+      <section class="content-box">
+        <h2>Downloadable Review</h2>
+        <p>Full set of Unit 1 practice questions as a printable PDF.</p>
+        <p>
+          <a class="btn" href="assets/m201_u1_review.pdf" download>Download PDF</a>
+          <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
+        </p>
+        <iframe class="pdf-frame" src="assets/m201_u1_review.pdf#view=FitH"></iframe>
+        <p class="muted" style="margin-top:6px;">Put your file at <code>/assets/m201_u1_review.pdf</code> or update the path above.</p>
+      </section>
+
+      <!-- Scratchpad -->
+      <section class="content-box">
+        <h2>Quick Practice Scratchpad</h2>
+        <p class="muted">Try: Find the 25th term of \(7, 11, 15,\dots\); sum of first 12 terms; \(a_1=200, r=0.9\) — does \(S_\infty\) exist?</p>
+        <textarea id="scratch" style="width:100%; min-height:140px; border-radius:8px; padding:12px; border:1px solid #dfe6ee; resize:vertical;"></textarea>
+        <div style="margin-top:10px;">
+          <button class="btn" id="saveScratch">Save Notes</button>
+          <button class="btn btn-ghost" id="clearScratch">Clear</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <script>
+    /* ===== Checklist persistence ===== */
+    (function(){
+      const KEY = 'm201_u1_checklist';
+      const box = document.getElementById('m201-u1-checklist');
+      const saveBtn = document.getElementById('saveChecklist');
+      const saveNote = document.getElementById('saveNote');
+      const inputs = [...box.querySelectorAll('input[type="checkbox"][data-k]')];
+
+      function load(){
+        try{
+          const data = JSON.parse(localStorage.getItem(KEY) || '{}');
+          inputs.forEach(cb => cb.checked = !!data[cb.dataset.k]);
+        }catch(e){}
+      }
+      function save(){
+        const data = {};
+        inputs.forEach(cb => data[cb.dataset.k] = cb.checked);
+        localStorage.setItem(KEY, JSON.stringify(data));
+        saveNote.textContent = 'Saved ✔';
+        setTimeout(()=> saveNote.textContent = 'Progress autosaves to this device.', 1200);
+      }
+      inputs.forEach(cb => cb.addEventListener('change', save));
+      saveBtn.addEventListener('click', save);
+      load();
+    })();
+
+    /* ===== Scratchpad persistence ===== */
+    (function(){
+      const SKEY='m201_u1_scratch';
+      const ta = document.getElementById('scratch');
+      const saveBtn = document.getElementById('saveScratch');
+      const clearBtn = document.getElementById('clearScratch');
+      try{ ta.value = localStorage.getItem(SKEY) || ''; }catch(e){}
+      saveBtn.addEventListener('click', ()=> localStorage.setItem(SKEY, ta.value));
+      clearBtn.addEventListener('click', ()=> { ta.value=''; localStorage.setItem(SKEY, ''); });
+    })();
+
+    /* ===== Sequence Explorer ===== */
+    (function(){
+      const typeSel = document.getElementById('seqType');
+      const a1 = document.getElementById('a1');
+      const d = document.getElementById('d');
+      const r = document.getElementById('r');
+      const dWrap = document.getElementById('dWrap');
+      const rWrap = document.getElementById('rWrap');
+      const nVal = document.getElementById('nVal');
+      const kVal = document.getElementById('kVal');
+      const btn = document.getElementById('calcSeq');
+      const copyBtn = document.getElementById('copyCSV');
+      const formulas = document.getElementById('seqFormulas');
+      const results = document.getElementById('seqResults');
+      const tableWrap = document.getElementById('seqTableWrap');
+
+      typeSel.addEventListener('change', () => {
+        if(typeSel.value === 'arith'){ dWrap.style.display='block'; rWrap.style.display='none'; }
+        else { dWrap.style.display='none'; rWrap.style.display='block'; }
+      });
+
+      function fmt(x){ return Number(x).toLocaleString(undefined,{maximumSignificantDigits:8}); }
+
+      function calc(){
+        const type = typeSel.value;
+        const a = parseFloat(a1.value);
+        const n = Math.max(1, parseInt(nVal.value||1));
+        const k = Math.max(1, parseInt(kVal.value||10));
+        tableWrap.innerHTML = '';
+
+        if(!isFinite(a)){ results.textContent='Please enter a valid first term.'; return; }
+
+        if(type==='arith'){
+          const diff = parseFloat(d.value);
+          if(!isFinite(diff)){ results.textContent='Enter a valid common difference d.'; return; }
+          const tn = a + (n-1)*diff;
+          const sn = (n/2)*(2*a + (n-1)*diff);
+          formulas.innerHTML = 'Arithmetic:  tₙ = a₁ + (n−1)d, &nbsp; Sₙ = n/2 · [2a₁ + (n−1)d]';
+          results.innerHTML = `t<sub>${n}</sub> = <b>${fmt(tn)}</b> &nbsp; | &nbsp; S<sub>${n}</sub> = <b>${fmt(sn)}</b>`;
+
+          // table
+          const table = document.createElement('table');
+          table.innerHTML = '<thead><tr><th>n</th><th>tₙ</th><th>Sₙ</th></tr></thead><tbody></tbody>';
+          let body = table.querySelector('tbody');
+          for(let i=1;i<=k;i++){
+            const ti = a + (i-1)*diff;
+            const si = (i/2)*(2*a + (i-1)*diff);
+            body.innerHTML += `<tr><td>${i}</td><td>${fmt(ti)}</td><td>${fmt(si)}</td></tr>`;
+          }
+          tableWrap.appendChild(table);
+        }else{
+          const ratio = parseFloat(r.value);
+          if(!isFinite(ratio)){ results.textContent='Enter a valid common ratio r.'; return; }
+          const tn = a*Math.pow(ratio, n-1);
+          let sn;
+          if(ratio===1) sn = a*n; else sn = a*(1-Math.pow(ratio,n))/(1-ratio);
+          const conv = Math.abs(ratio) < 1;
+          const sinf = conv ? a/(1-ratio) : 'does not exist';
+          formulas.innerHTML = 'Geometric:  tₙ = a₁ r<sup>n−1</sup>, &nbsp; Sₙ = a₁(1−rⁿ)/(1−r), &nbsp; S∞ = a₁/(1−r) for |r|&lt;1';
+          results.innerHTML = `t<sub>${n}</sub> = <b>${fmt(tn)}</b> &nbsp; | &nbsp; S<sub>${n}</sub> = <b>${fmt(sn)}</b> &nbsp; | &nbsp; S<sub>∞</sub> = <b>${conv ? fmt(sinf) : 'diverges'}</b>`;
+
+          const table = document.createElement('table');
+          table.innerHTML = '<thead><tr><th>n</th><th>tₙ</th><th>Sₙ</th></tr></thead><tbody></tbody>';
+          let body = table.querySelector('tbody');
+          for(let i=1;i<=k;i++){
+            const ti = a*Math.pow(ratio, i-1);
+            let si;
+            if(ratio===1) si = a*i; else si = a*(1-Math.pow(ratio,i))/(1-ratio);
+            body.innerHTML += `<tr><td>${i}</td><td>${fmt(ti)}</td><td>${fmt(si)}</td></tr>`;
+          }
+          tableWrap.appendChild(table);
+        }
+      }
+
+      function copyCSVf(){
+        const rows = [...tableWrap.querySelectorAll('tr')].map(tr => [...tr.children].map(td=>td.textContent));
+        if(rows.length===0){ navigator.clipboard.writeText(''); return; }
+        const csv = rows.map(r=>r.join(',')).join('\n');
+        navigator.clipboard.writeText(csv).then(()=> {
+          results.innerHTML += ' &nbsp; <span class="muted">[Table copied]</span>';
+        });
+      }
+
+      btn.addEventListener('click', calc);
+      copyBtn.addEventListener('click', copyCSVf);
+      calc();
+    })();
+
+    /* ===== Growth/Decay Helper ===== */
+    (function(){
+      const A0 = document.getElementById('gdA0');
+      const P  = document.getElementById('gdP');
+      const N  = document.getElementById('gdN');
+      const out = document.getElementById('gdResults');
+      function compute(){
+        const a0 = parseFloat(A0.value); const p = parseFloat(P.value)/100; const n = parseInt(N.value||0);
+        if(!isFinite(a0) || !isFinite(p) || !isFinite(n)){ out.textContent='Enter valid numbers.'; return; }
+        const r = 1 + p;
+        const an = a0*Math.pow(r,n);
+        let dbl = (r>1) ? (Math.log(2)/Math.log(r)) : null;
+        let half = (r<1) ? (Math.log(0.5)/Math.log(r)) : null;
+        out.innerHTML = `r = 1+p = ${r.toFixed(6)} &nbsp; | &nbsp; A<sub>${n}</sub> = <b>${an.toLocaleString(undefined,{maximumSignificantDigits:8})}</b>` +
+                        (dbl ? ` &nbsp; | &nbsp; Doubling time ≈ ${dbl.toFixed(2)} steps` : '') +
+                        (half ? ` &nbsp; | &nbsp; Half-life ≈ ${half.toFixed(2)} steps` : '');
+      }
+      document.getElementById('calcGD').addEventListener('click', compute);
+      compute();
+    })();
+  </script>
+</body>
+</html>
