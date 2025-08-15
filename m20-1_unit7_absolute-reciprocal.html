@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 20-1 • Unit 7: Absolute Value & Reciprocal Functions</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']], processEscapes:true },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] },
+      chtml: { mtextInheritFont:true, matchFontHeight:false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    .content-wrapper{max-width:1200px;margin:0 auto;padding:20px;}
+    .content-box{border:2px solid #e0e0e0;border-radius:12px;padding:28px;margin-bottom:30px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+    .content-box h2{color:#2c3e50;border-bottom:3px solid #3498db;padding-bottom:10px;margin-bottom:18px;}
+    .sub{color:#566573;margin-top:-6px;}
+    .hero{background:linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%);border-color:#cfe8ff;}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#ecf5ff;color:#1d6fa5;font-size:12px;margin:6px 6px 0 0;border:1px solid #d6eaff;}
+
+    .two-col{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start;}
+    .checklist label{display:flex;align-items:flex-start;gap:10px;line-height:1.4;margin:10px 0;}
+    .checklist input{transform:translateY(3px);}
+
+    .video-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:10px;}
+    .video-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:14px;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .video-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#3498db;}
+    .video-card h4{color:#3498db;margin:6px 0 8px;}
+    .video-card p{margin:0;font-size:.95rem;color:#5a6b7b;}
+    .video-card small{display:block;margin-top:8px;color:#7a8b99;}
+
+    .units-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+    .unit-card{padding:18px;border-radius:10px;background:#f8f9fa;border:1px solid #e0e0e0;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .unit-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#2ecc71;}
+    .unit-card h3{color:#2ecc71;margin:0 0 8px;}
+
+    .pdf-frame{width:100%;height:540px;border:1px solid #e0e0e0;border-radius:10px;}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:#3498db;color:#fff;text-decoration:none;border:0;cursor:pointer;}
+    .btn:hover{background:#2f81bd;}
+    .btn-ghost{background:#fff;color:#3498db;border:1px solid #3498db;}
+    .btn-ghost:hover{background:#ecf5ff;}
+    .muted{color:#7f8c8d;font-size:.95rem;}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+
+    .mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+    .tool-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:16px;}
+    .tool-card h4{margin:0 0 10px;color:#3498db;}
+    .tool-card label{display:block;font-size:.9rem;margin:6px 0 2px;color:#566573;}
+    .tool-card input,.tool-card select,.tool-card textarea{width:100%;padding:8px 10px;border:1px solid #dfe6ee;border-radius:8px;}
+    .tool-card textarea{min-height:72px;resize:vertical;}
+
+    .svg-plot{width:100%;height:380px;display:block;border:1px solid #e0e0e0;border-radius:10px;background:#fff;}
+    .table-mini{width:100%;border-collapse:collapse;margin-top:8px;}
+    .table-mini th,.table-mini td{border:1px solid #e6e6e6;padding:6px 8px;text-align:right;}
+    .table-mini th{background:#f2f6ff;color:#2c3e50;text-align:left;}
+    .ok{color:#2ecc71;font-weight:600;}
+    .bad{color:#e74c3c;font-weight:600;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r=>r.text())
+        .then(html => {
+          const el=document.getElementById('navbar-placeholder');
+          el.innerHTML=html;
+          if (window.typesetMath) window.typesetMath(el);
+        })
+        .catch(err=>console.error('Navbar failed to load:',err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Unit 7: Absolute Value & Reciprocal Functions (Math 20-1)</h2>
+        <p class="sub">Absolute value functions & equations; transformations; reciprocal functions, domains & asymptotes; applications.</p>
+        <div>
+          <span class="badge">\(y=a|x-h|+k\)</span>
+          <span class="badge">Piecewise</span>
+          <span class="badge">Reflections & Stretches</span>
+          <span class="badge">Reciprocal \(y=\frac{1}{f(x)}\)</span>
+          <span class="badge">Asymptotes</span>
+          <span class="badge">Restrictions</span>
+        </div>
+      </section>
+
+      <!-- Outcomes -->
+      <section class="content-box">
+        <h2>What You Should Be Able To Do</h2>
+        <div class="two-col">
+          <ul>
+            <li>Model and graph \(y=a|x-h|+k\); identify vertex, axis, intercepts, domain/range; write piecewise form.</li>
+            <li>Solve absolute value equations \(|ax+b|=c\) and interpret solutions.</li>
+            <li>Graph and analyze reciprocal functions \(y=\dfrac{1}{f(x)}\): domain restrictions, vertical/horizontal asymptotes, intercepts.</li>
+            <li>Describe transformations and solve applied problems using absolute value or reciprocal models.</li>
+          </ul>
+
+          <div class="checklist" id="m201-u7-checklist">
+            <label><input type="checkbox" data-k="abs"> I can graph \(y=a|x-h|+k\) & state features.</label>
+            <label><input type="checkbox" data-k="eq"> I can solve \(|ax+b|=c\).</label>
+            <label><input type="checkbox" data-k="rec"> I can analyze \(y=\frac{1}{f(x)}\), incl. asymptotes & restrictions.</label>
+            <label><input type="checkbox" data-k="apps"> I can solve applied problems.</label>
+            <button class="btn btn-ghost" id="saveChecklist">Save Progress</button>
+            <small class="muted" id="saveNote" style="display:block;margin-top:6px;">Progress autosaves to this device.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video Library -->
+      <section class="content-box">
+        <h2>Video Library</h2>
+        <div class="video-grid">
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=graph+absolute+value+function+transformations">
+            <h4>Graphing \(y=a|x-h|+k\)</h4>
+            <p>Vertex, slopes, domain/range, transformations.</p>
+            <small>youtube.com – “graph absolute value function transformations”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=solve+absolute+value+equations+algebraically">
+            <h4>Solving \(|ax+b|=c\)</h4>
+            <p>Two linear cases, extraneous checks if needed.</p>
+            <small>youtube.com – “solve absolute value equations algebraically”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=reciprocal+functions+asymptotes+domain+range">
+            <h4>Reciprocal Functions & Asymptotes</h4>
+            <p>Vertical/horizontal asymptotes, restrictions, key points.</p>
+            <small>youtube.com – “reciprocal functions asymptotes domain range”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=modelling+with+absolute+value+and+reciprocal+functions">
+            <h4>Applications & Modelling</h4>
+            <p>Context problems using |x| and reciprocal models.</p>
+            <small>youtube.com – “modelling with absolute value and reciprocal functions”</small>
+          </a>
+        </div>
+      </section>
+
+      <!-- Interactive Tools -->
+      <section class="content-box">
+        <h2>Interactive Tools</h2>
+        <div class="mini-grid">
+
+          <!-- Absolute Value Explorer -->
+          <div class="tool-card">
+            <h4>Absolute Value Explorer \(y=a|x-h|+k\)</h4>
+            <div class="mini-grid">
+              <div><label>\(a\)</label><input id="avA" type="number" step="any" value="1"></div>
+              <div><label>\(h\)</label><input id="avH" type="number" step="any" value="0"></div>
+              <div><label>\(k\)</label><input id="avK" type="number" step="any" value="0"></div>
+            </div>
+            <div class="mini-grid" style="margin-top:6px;">
+              <div><label>x-min</label><input id="avXmin" type="number" step="any" value="-10"></div>
+              <div><label>x-max</label><input id="avXmax" type="number" step="any" value="10"></div>
+              <div><label>y-min</label><input id="avYmin" type="number" step="any" value="-10"></div>
+              <div><label>y-max</label><input id="avYmax" type="number" step="any" value="10"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="avDraw">Draw</button>
+              <button class="btn btn-ghost" id="avReset">Reset</button>
+            </div>
+            <svg id="avSVG" class="svg-plot" viewBox="0 0 640 380" preserveAspectRatio="none"></svg>
+            <p class="muted mono" id="avInfo" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- Absolute Value Equation Solver -->
+          <div class="tool-card">
+            <h4>Solve \(|ax+b|=c\)</h4>
+            <div class="mini-grid">
+              <div><label>\(a\)</label><input id="aeA" type="number" step="any" value="2"></div>
+              <div><label>\(b\)</label><input id="aeB" type="number" step="any" value="-6"></div>
+              <div><label>\(c\)</label><input id="aeC" type="number" step="any" value="8"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="aeSolve">Solve</button>
+              <button class="btn btn-ghost" id="aeReset">Reset</button>
+            </div>
+            <p class="muted mono" id="aeOut" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- Reciprocal (Hyperbola) Explorer -->
+          <div class="tool-card">
+            <h4>Hyperbola Explorer \(y=\dfrac{A}{x-h}+k\)</h4>
+            <div class="mini-grid">
+              <div><label>\(A\)</label><input id="hyA" type="number" step="any" value="4"></div>
+              <div><label>\(h\)</label><input id="hyH" type="number" step="any" value="0"></div>
+              <div><label>\(k\)</label><input id="hyK" type="number" step="any" value="0"></div>
+            </div>
+            <div class="mini-grid" style="margin-top:6px;">
+              <div><label>x-min</label><input id="hyXmin" type="number" step="any" value="-10"></div>
+              <div><label>x-max</label><input id="hyXmax" type="number" step="any" value="10"></div>
+              <div><label>y-min</label><input id="hyYmin" type="number" step="any" value="-10"></div>
+              <div><label>y-max</label><input id="hyYmax" type="number" step="any" value="10"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="hyDraw">Draw</button>
+              <button class="btn btn-ghost" id="hyReset">Reset</button>
+            </div>
+            <svg id="hySVG" class="svg-plot" viewBox="0 0 640 380" preserveAspectRatio="none"></svg>
+            <p class="muted mono" id="hyInfo" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- Reciprocal of a Base Function -->
+          <div class="tool-card">
+            <h4>Reciprocal of \(f(x)\): plot \(f(x)\) and \(\frac{1}{f(x)}\)</h4>
+            <div class="mini-grid">
+              <div>
+                <label>Base type</label>
+                <select id="rfType">
+                  <option value="linear">Linear \(mx+b\)</option>
+                  <option value="quadratic">Quadratic \(ax^2+bx+c\)</option>
+                </select>
+              </div>
+              <div id="rfLin">
+                <label>Linear coefficients</label>
+                <div class="mini-grid">
+                  <input id="rfM" type="number" step="any" value="1" placeholder="m">
+                  <input id="rfB" type="number" step="any" value="0" placeholder="b">
+                </div>
+              </div>
+              <div id="rfQuad" style="display:none;">
+                <label>Quadratic coefficients</label>
+                <div class="mini-grid">
+                  <input id="rfA" type="number" step="any" value="1" placeholder="a">
+                  <input id="rfBB" type="number" step="any" value="0" placeholder="b">
+                  <input id="rfC" type="number" step="any" value="0" placeholder="c">
+                </div>
+              </div>
+            </div>
+            <div class="mini-grid" style="margin-top:6px;">
+              <div><label>x-min</label><input id="rfXmin" type="number" step="any" value="-10"></div>
+              <div><label>x-max</label><input id="rfXmax" type="number" step="any" value="10"></div>
+              <div><label>y-min</label><input id="rfYmin" type="number" step="any" value="-10"></div>
+              <div><label>y-max</label><input id="rfYmax" type="number" step="any" value="10"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="rfDraw">Draw</button>
+              <button class="btn btn-ghost" id="rfReset">Reset</button>
+            </div>
+            <svg id="rfSVG" class="svg-plot" viewBox="0 0 640 380" preserveAspectRatio="none"></svg>
+            <p class="muted mono" id="rfInfo" style="margin-top:8px;"></p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Quizzes -->
+      <section class="content-box">
+        <h2>Unit 7 Quizzes</h2>
+        <div class="units-grid">
+          <a href="m201_u7_quiz1.html" class="unit-card">
+            <h3>Quiz 1: Absolute Value Functions & Equations</h3>
+            <p>Graphing \(a|x-h|+k\), piecewise, solving \(|ax+b|=c\).</p>
+          </a>
+          <a href="m201_u7_quiz2.html" class="unit-card">
+            <h3>Quiz 2: Reciprocal Functions</h3>
+            <p>Domain restrictions, asymptotes, graphs & applications.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Review PDF -->
+      <section class="content-box">
+        <h2>Downloadable Review</h2>
+        <p>
+          <a class="btn" href="assets/m201_u7_abs_rec_review.pdf" download>Download PDF</a>
+          <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
+        </p>
+        <iframe class="pdf-frame" src="assets/m201_u7_abs_rec_review.pdf#view=FitH"></iframe>
+      </section>
+
+      <!-- Scratchpad -->
+      <section class="content-box">
+        <h2>Quick Practice Scratchpad</h2>
+        <p class="muted">Try: graph \(y=2|x-3|-5\); solve \(|3x-7|=11\); graph \(y=\frac{5}{x+2}-1\); sketch \(y=\frac{1}{x^2-4}\) with asymptotes.</p>
+        <textarea id="scratch" style="width:100%;min-height:140px;border-radius:8px;padding:12px;border:1px solid #dfe6ee;resize:vertical;"></textarea>
+        <div style="margin-top:10px;">
+          <button class="btn" id="saveScratch">Save Notes</button>
+          <button class="btn btn-ghost" id="clearScratch">Clear</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <!-- Math helper -->
+  <script>
+    window.typesetMath = function(root){
+      if (window.MathJax && MathJax.typesetPromise){
+        MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
+      }
+    };
+  </script>
+
+  <!-- Page logic -->
+  <script>
+    /* ===== Checklist ===== */
+    (function(){
+      const KEY='m201_u7_check';
+      const box=document.getElementById('m201-u7-checklist');
+      const inputs=[...box.querySelectorAll('input[type="checkbox"][data-k]')];
+      const saveBtn=document.getElementById('saveChecklist'), saveNote=document.getElementById('saveNote');
+      function load(){ try{const d=JSON.parse(localStorage.getItem(KEY)||'{}'); inputs.forEach(cb=>cb.checked=!!d[cb.dataset.k]);}catch(e){} }
+      function save(){ const d={}; inputs.forEach(cb=>d[cb.dataset.k]=cb.checked); localStorage.setItem(KEY,JSON.stringify(d)); saveNote.textContent='Saved ✔'; setTimeout(()=>saveNote.textContent='Progress autosaves to this device.',1200); }
+      inputs.forEach(cb=>cb.addEventListener('change',save));
+      saveBtn.addEventListener('click',save);
+      load();
+    })();
+
+    /* ===== Scratchpad ===== */
+    (function(){
+      const SKEY='m201_u7_scratch';
+      const ta=document.getElementById('scratch');
+      const s=document.getElementById('saveScratch'), c=document.getElementById('clearScratch');
+      try{ ta.value=localStorage.getItem(SKEY)||'';}catch(e){}
+      s.addEventListener('click',()=>localStorage.setItem(SKEY,ta.value));
+      c.addEventListener('click',()=>{ ta.value=''; localStorage.setItem(SKEY,''); });
+    })();
+
+    /* ===== Utilities ===== */
+    function approx(n,d=6){ return Number.isFinite(n)? Number(n.toFixed(d)) : NaN; }
+
+    /* ===== SVG helpers ===== */
+    function makeGrid(svg, xmin,xmax,ymin,ymax){
+      const W=svg.viewBox.baseVal.width||640, H=svg.viewBox.baseVal.height||380, ns='http://www.w3.org/2000/svg';
+      svg.innerHTML='';
+      function X(x){ return (x - xmin)/(xmax - xmin) * W; }
+      function Y(y){ return H - (y - ymin)/(ymax - ymin) * H; }
+      const g=document.createElementNS(ns,'g'); svg.appendChild(g);
+      for(let x=Math.ceil(xmin); x<=Math.floor(xmax); x++){
+        const line=document.createElementNS(ns,'line');
+        line.setAttribute('x1',X(x)); line.setAttribute('x2',X(x));
+        line.setAttribute('y1',0); line.setAttribute('y2',H);
+        line.setAttribute('stroke', x===0?'#9bb3c9':'#eef2f6'); line.setAttribute('stroke-width', x===0?2:1);
+        g.appendChild(line);
+      }
+      for(let y=Math.ceil(ymin); y<=Math.floor(ymax); y++){
+        const line=document.createElementNS(ns,'line');
+        line.setAttribute('y1',Y(y)); line.setAttribute('y2',Y(y));
+        line.setAttribute('x1',0); line.setAttribute('x2',W);
+        line.setAttribute('stroke', y===0?'#9bb3c9':'#eef2f6'); line.setAttribute('stroke-width', y===0?2:1);
+        g.appendChild(line);
+      }
+      return {X,Y,W,H,ns};
+    }
+
+    /* ===== Absolute Value Explorer ===== */
+    (function(){
+      const A=document.getElementById('avA'), H=document.getElementById('avH'), K=document.getElementById('avK');
+      const Xmin=document.getElementById('avXmin'), Xmax=document.getElementById('avXmax'), Ymin=document.getElementById('avYmin'), Ymax=document.getElementById('avYmax');
+      const svg=document.getElementById('avSVG'), info=document.getElementById('avInfo');
+
+      function draw(){
+        const a=+A.value, h=+H.value, k=+K.value;
+        const xmin=+Xmin.value, xmax=+Xmax.value, ymin=+Ymin.value, ymax=+Ymax.value;
+        if(!(xmax>xmin && ymax>ymin)){ svg.innerHTML=''; info.textContent='Check window values.'; return; }
+
+        const g=makeGrid(svg, xmin,xmax,ymin,ymax), {X,Y,ns}=g;
+
+        // Piecewise: for x<=h, y = -a(x-h)+k; for x>=h, y = a(x-h)+k
+        function pathForSegment(x0,x1, m, b){ // y = m x + b
+          const steps=200, dx=(x1-x0)/steps;
+          let d='';
+          for(let i=0;i<=steps;i++){
+            const x=x0+i*dx, y=m*x+b;
+            d += (i===0? 'M':' L') + X(x) + ' ' + Y(y);
+          }
+          return d;
+        }
+        // Left line (slope -a, passes through (h,k))
+        const mL=-a, bL=k - mL*h;
+        const dL=pathForSegment(xmin, Math.min(h,xmax), mL, bL);
+        const pL=document.createElementNS(ns,'path'); pL.setAttribute('d', dL); pL.setAttribute('fill','none'); pL.setAttribute('stroke','#3d8dff'); pL.setAttribute('stroke-width','2'); svg.appendChild(pL);
+        // Right line (slope +a)
+        const mR= a, bR=k - mR*h;
+        const dR=pathForSegment(Math.max(h,xmin), xmax, mR, bR);
+        const pR=document.createElementNS(ns,'path'); pR.setAttribute('d', dR); pR.setAttribute('fill','none'); pR.setAttribute('stroke','#3d8dff'); pR.setAttribute('stroke-width','2'); svg.appendChild(pR);
+
+        // Vertex
+        const dot=document.createElementNS(ns,'circle'); dot.setAttribute('cx', X(h)); dot.setAttribute('cy', Y(k)); dot.setAttribute('r', 4); dot.setAttribute('fill','#e67e22'); svg.appendChild(dot);
+
+        // Features
+        const domain='\\(( -\\infty,\\,\\infty )\\)';
+        const range = (a>0? `\\([${approx(k,4)},\\,\\infty)\\)` : `(−\\infty, ${approx(k,4)}]`);
+        const axis = `x=${approx(h,4)}`;
+        const xintArg = -k/a; // |x-h| = -k/a
+        let xints='none';
+        if(xintArg>=0){
+          const x1=h - xintArg, x2=h + xintArg;
+          xints = `\\(x=${approx(x1,4)},\\ ${approx(x2,4)}\\)`;
+        }
+        const yint = a*Math.abs(0 - h) + k;
+        info.innerHTML = `Vertex \\((${approx(h,4)},\\,${approx(k,4)})\\) • Axis \\(${axis}\\) • Domain ${domain} • Range ${range}<br>
+                          y-int \\((0,${approx(yint,4)})\\) • x-int(s): ${xints}<br>
+                          Piecewise: \\(y=\\begin{cases}-a(x-h)+k,& x\\le h\\\\ a(x-h)+k,& x\\ge h\\end{cases}\\)`;
+        if(window.typesetMath) window.typesetMath(info);
+      }
+
+      document.getElementById('avDraw').addEventListener('click', draw);
+      document.getElementById('avReset').addEventListener('click', ()=>{ A.value=1;H.value=0;K.value=0; Xmin.value=-10;Xmax.value=10;Ymin.value=-10;Ymax.value=10; svg.innerHTML=''; info.textContent=''; });
+      draw();
+    })();
+
+    /* ===== Absolute Value Equation Solver ===== */
+    (function(){
+      const A=document.getElementById('aeA'), B=document.getElementById('aeB'), C=document.getElementById('aeC');
+      const out=document.getElementById('aeOut');
+      function solve(){
+        const a=+A.value, b=+B.value, c=+C.value;
+        if(c<0){ out.textContent='No solution: |ax+b| cannot equal a negative.'; return; }
+        if(Math.abs(a) < 1e-12){
+          // |b| = c
+          if(Math.abs(Math.abs(b)-c)<1e-12) out.textContent='Infinite solutions for any x (degenerate constant absolute).';
+          else out.textContent='No solution (a=0 and |b|≠c).';
+          return;
+        }
+        // Cases: ax+b = c  OR  ax+b = -c
+        const x1 = (c - b)/a;
+        const x2 = (-c - b)/a;
+        out.innerHTML = `Solutions: \\(x=${approx(x1)}\\) and \\(x=${approx(x2)}\\).<br>
+                         Cases: \\(ax+b=c\\Rightarrow x=\\frac{c-b}{a}\\) and \\(ax+b=-c\\Rightarrow x=\\frac{-c-b}{a}\\).`;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+      document.getElementById('aeSolve').addEventListener('click', solve);
+      document.getElementById('aeReset').addEventListener('click', ()=>{ A.value=2;B.value=-6;C.value=8; out.textContent=''; });
+      solve();
+    })();
+
+    /* ===== Hyperbola Explorer y=A/(x-h)+k ===== */
+    (function(){
+      const A=document.getElementById('hyA'), H=document.getElementById('hyH'), K=document.getElementById('hyK');
+      const Xmin=document.getElementById('hyXmin'), Xmax=document.getElementById('hyXmax'), Ymin=document.getElementById('hyYmin'), Ymax=document.getElementById('hyYmax');
+      const svg=document.getElementById('hySVG'), info=document.getElementById('hyInfo');
+
+      function draw(){
+        const A0=+A.value, h=+H.value, k=+K.value;
+        const xmin=+Xmin.value, xmax=+Xmax.value, ymin=+Ymin.value, ymax=+Ymax.value;
+        if(!(xmax>xmin && ymax>ymin)){ svg.innerHTML=''; info.textContent='Check window values.'; return; }
+
+        const g=makeGrid(svg, xmin,xmax,ymin,ymax), {X,Y,ns}=g;
+
+        // Asymptotes x=h (vertical) and y=k (horizontal)
+        const va=document.createElementNS(ns,'line');
+        va.setAttribute('x1',X(h)); va.setAttribute('x2',X(h)); va.setAttribute('y1',0); va.setAttribute('y2',g.H);
+        va.setAttribute('stroke','#f39c12'); va.setAttribute('stroke-dasharray','6 6'); svg.appendChild(va);
+        const ha=document.createElementNS(ns,'line');
+        ha.setAttribute('y1',Y(k)); ha.setAttribute('y2',Y(k)); ha.setAttribute('x1',0); ha.setAttribute('x2',g.W);
+        ha.setAttribute('stroke','#f39c12'); ha.setAttribute('stroke-dasharray','6 6'); svg.appendChild(ha);
+
+        // Plot both branches, avoiding the vertical asymptote
+        function branch(x0,x1){
+          const steps=600, dx=(x1-x0)/steps;
+          let d='', first=true;
+          for(let i=0;i<=steps;i++){
+            const x=x0+i*dx;
+            if(Math.abs(x-h)<1e-6) { first=true; continue; }
+            const y = A0/(x - h) + k;
+            if(!Number.isFinite(y)) { first=true; continue; }
+            d += (first? 'M':' L') + X(x) + ' ' + Y(y);
+            first=false;
+          }
+          return d;
+        }
+        const left = branch(xmin, Math.min(h-1e-5,xmax));
+        const right= branch(Math.max(h+1e-5,xmin), xmax);
+        const p1=document.createElementNS(ns,'path'); p1.setAttribute('d', left);  p1.setAttribute('fill','none'); p1.setAttribute('stroke','#3d8dff'); p1.setAttribute('stroke-width','2'); svg.appendChild(p1);
+        const p2=document.createElementNS(ns,'path'); p2.setAttribute('d', right); p2.setAttribute('fill','none'); p2.setAttribute('stroke','#3d8dff'); p2.setAttribute('stroke-width','2'); svg.appendChild(p2);
+
+        // Intercepts (if defined)
+        let xint='none', yint='none';
+        if(Math.abs(k) > 1e-12){ // x-int: set y=0 => 0 = A/(x-h)+k → x = h - A/k
+          const xi = h - A0/k; xint = `\\(x=${approx(xi,4)}\\)`;
+        }
+        if(Math.abs(h) > 1e-12){ // y-int: x=0 → y = A/(0-h)+k
+          const yi = A0/(-h) + k; yint = `\\(y=${approx(yi,4)}\\)`;
+        }
+
+        info.innerHTML = `Asymptotes: vertical \\(x=${approx(h,4)}\\), horizontal \\(y=${approx(k,4)}\\).<br>
+                          Intercepts: x-int ${xint}, y-int ${yint}. Domain: \\(x\\ne ${approx(h,4)}\\). Range: \\(y\\ne ${approx(k,4)}\\).`;
+        if(window.typesetMath) window.typesetMath(info);
+      }
+
+      document.getElementById('hyDraw').addEventListener('click', draw);
+      document.getElementById('hyReset').addEventListener('click', ()=>{ A.value=4;H.value=0;K.value=0; Xmin.value=-10;Xmax.value=10;Ymin.value=-10;Ymax.value=10; svg.innerHTML=''; info.textContent=''; });
+      draw();
+    })();
+
+    /* ===== Reciprocal of f(x): plot f and 1/f ===== */
+    (function(){
+      const type=document.getElementById('rfType');
+      const linWrap=document.getElementById('rfLin'), quadWrap=document.getElementById('rfQuad');
+      const M=document.getElementById('rfM'), B=document.getElementById('rfB');
+      const A=document.getElementById('rfA'), BB=document.getElementById('rfBB'), C=document.getElementById('rfC');
+      const Xmin=document.getElementById('rfXmin'), Xmax=document.getElementById('rfXmax'), Ymin=document.getElementById('rfYmin'), Ymax=document.getElementById('rfYmax');
+      const svg=document.getElementById('rfSVG'), info=document.getElementById('rfInfo');
+
+      function refreshUI(){
+        const t=type.value;
+        linWrap.style.display = t==='linear' ? 'block' : 'none';
+        quadWrap.style.display= t==='quadratic' ? 'block' : 'none';
+      }
+
+      function rootsLinear(m,b){
+        if(Math.abs(m)<1e-12) return []; // constant
+        return [-b/m];
+      }
+      function rootsQuadratic(a,b,c){
+        if(Math.abs(a)<1e-12){ if(Math.abs(b)<1e-12) return []; return [-c/b]; }
+        const D=b*b-4*a*c;
+        if(D<0) return [];
+        if(D===0) return [-b/(2*a)];
+        const s=Math.sqrt(D);
+        return [(-b+s)/(2*a), (-b-s)/(2*a)].sort((u,v)=>u-v);
+      }
+
+      function draw(){
+        const xmin=+Xmin.value, xmax=+Xmax.value, ymin=+Ymin.value, ymax=+Ymax.value;
+        if(!(xmax>xmin && ymax>ymin)){ svg.innerHTML=''; info.textContent='Check window values.'; return; }
+
+        const g=makeGrid(svg, xmin,xmax,ymin,ymax), {X,Y,ns}=g;
+
+        // Base f(x)
+        let f, zeros=[];
+        if(type.value==='linear'){
+          const m=+M.value, b=+B.value;
+          f = x => m*x + b;
+          zeros = rootsLinear(m,b);
+          // draw f as dashed line
+          const x0=xmin, x1=xmax, y0=f(x0), y1=f(x1);
+          const line=document.createElementNS(ns,'line');
+          line.setAttribute('x1',X(x0)); line.setAttribute('y1',Y(y0));
+          line.setAttribute('x2',X(x1)); line.setAttribute('y2',Y(y1));
+          line.setAttribute('stroke','#7d8ca1'); line.setAttribute('stroke-dasharray','6 6'); line.setAttribute('stroke-width','2');
+          svg.appendChild(line);
+        }else{
+          const a=+A.value, b=+BB.value, c=+C.value;
+          f = x => a*x*x + b*x + c;
+          zeros = rootsQuadratic(a,b,c);
+          // draw f as dashed curve
+          const steps=400, dx=(xmax-xmin)/steps;
+          let d='';
+          for(let i=0;i<=steps;i++){
+            const x=xmin+i*dx, y=f(x);
+            d += (i===0? 'M':' L') + X(x) + ' ' + Y(y);
+          }
+          const path=document.createElementNS(ns,'path');
+          path.setAttribute('d', d); path.setAttribute('fill','none'); path.setAttribute('stroke','#7d8ca1'); path.setAttribute('stroke-dasharray','6 6'); path.setAttribute('stroke-width','2');
+          svg.appendChild(path);
+        }
+
+        // Vertical asymptotes at zeros of f
+        zeros.forEach(z=>{
+          const va=document.createElementNS(ns,'line');
+          va.setAttribute('x1',X(z)); va.setAttribute('x2',X(z)); va.setAttribute('y1',0); va.setAttribute('y2',g.H);
+          va.setAttribute('stroke','#f39c12'); va.setAttribute('stroke-dasharray','6 6');
+          svg.appendChild(va);
+        });
+
+        // Plot 1/f(x), breaking at asymptotes & near zero
+        const steps=1000, dx=(xmax-xmin)/steps;
+        let d='', first=true, lastSign=null;
+        for(let i=0;i<=steps;i++){
+          const x=xmin+i*dx, y0=f(x);
+          if(Math.abs(y0)<1e-6 || !Number.isFinite(y0)){ first=true; continue; }
+          const y=1/y0;
+          if(!Number.isFinite(y) || y<ymin-1e3 || y>ymax+1e3){ first=true; continue; }
+          const s=Math.sign(y);
+          if(lastSign!==null && s!==lastSign){ first=true; } // avoid vertical join near infinity
+          d += (first? 'M':' L') + X(x) + ' ' + Y(y);
+          first=false; lastSign=s;
+        }
+        const p=document.createElementNS(ns,'path');
+        p.setAttribute('d', d); p.setAttribute('fill','none'); p.setAttribute('stroke','#3d8dff'); p.setAttribute('stroke-width','2');
+        svg.appendChild(p);
+
+        // Horizontal asymptote ~ y=0 (for polynomial bases)
+        const ha=document.createElementNS(ns,'line');
+        ha.setAttribute('y1',Y(0)); ha.setAttribute('y2',Y(0)); ha.setAttribute('x1',0); ha.setAttribute('x2',g.W);
+        ha.setAttribute('stroke','#f39c12'); ha.setAttribute('stroke-dasharray','6 6'); svg.appendChild(ha);
+
+        // Domain/Range notes
+        const domEx = zeros.length ? zeros.map(z=>`x\\neq ${approx(z,4)}`).join(', ') : 'none';
+        const xIntercepts = []; // 1/f(x)=0 has no real solutions (unless undefined), so none
+        const yint = (0>=xmin && 0<=xmax) ? approx(1/f(0)) : null;
+
+        info.innerHTML = `Vertical asymptote(s): ${zeros.length? zeros.map(z=>`x=${approx(z,4)}`).join(', '):'none'} • Horizontal asymptote: \\(y=0\\)<br>
+                          Domain restrictions: ${domEx} • x-int: none • ${yint!=null?`y-int \\((0,${yint})\\)`:'y-int: n/a'}`;
+        if(window.typesetMath) window.typesetMath(info);
+      }
+
+      function reset(){
+        type.value='linear'; M.value=1; B.value=0; A.value=1; BB.value=0; C.value=0;
+        Xmin.value=-10; Xmax.value=10; Ymin.value=-10; Ymax.value=10;
+        svg.innerHTML=''; info.textContent='';
+        refreshUI();
+      }
+
+      document.getElementById('rfDraw').addEventListener('click', draw);
+      document.getElementById('rfReset').addEventListener('click', reset);
+      type.addEventListener('change', refreshUI);
+      refreshUI(); draw();
+    })();
+  </script>
+</body>
+</html>
