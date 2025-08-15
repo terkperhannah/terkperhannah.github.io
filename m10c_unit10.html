@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 10C • Unit 10: Systems of Linear Equations</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']], processEscapes:true },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] },
+      chtml: { mtextInheritFont:true, matchFontHeight:false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    .content-wrapper{max-width:1200px;margin:0 auto;padding:20px;}
+    .content-box{border:2px solid #e0e0e0;border-radius:12px;padding:28px;margin-bottom:30px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+    .content-box h2{color:#2c3e50;border-bottom:3px solid #3498db;padding-bottom:10px;margin-bottom:18px;}
+    .sub{color:#566573;margin-top:-6px;}
+    .hero{background:linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%);border-color:#cfe8ff;}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#ecf5ff;color:#1d6fa5;font-size:12px;margin:6px 6px 0 0;border:1px solid #d6eaff;}
+
+    .video-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:10px;}
+    .video-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:14px;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .video-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#3498db;}
+    .video-card h4{color:#3498db;margin:6px 0 8px;}
+    .video-card p{margin:0;font-size:.95rem;color:#5a6b7b;}
+
+    .units-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+    .unit-card{padding:18px;border-radius:10px;background:#f8f9fa;border:1px solid #e0e0e0;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .unit-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#2ecc71;}
+    .unit-card h3{color:#2ecc71;margin:0 0 8px;}
+
+    .pdf-frame{width:100%;height:540px;border:1px solid #e0e0e0;border-radius:10px;}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:#3498db;color:#fff;text-decoration:none;border:0;cursor:pointer;}
+    .btn:hover{background:#2f81bd;}
+    .btn-ghost{background:#fff;color:#3498db;border:1px solid #3498db;}
+    .btn-ghost:hover{background:#ecf5ff;}
+    .muted{color:#7f8c8d;font-size:.95rem;}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+
+    .two-col{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start;}
+    .mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
+    .tool-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:16px;}
+    .tool-card h4{margin:0 0 10px;color:#3498db;}
+    .tool-card label{display:block;font-size:.9rem;margin:6px 0 2px;color:#566573;}
+    .tool-card input,.tool-card select,.tool-card textarea{width:100%;padding:8px 10px;border:1px solid #dfe6ee;border-radius:8px;}
+    .tool-card textarea{min-height:88px;resize:vertical;}
+
+    .svg-plot{width:100%;height:380px;display:block;border:1px solid #e0e0e0;border-radius:10px;background:#fff;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r=>r.text())
+        .then(html => {
+          const el=document.getElementById('navbar-placeholder');
+          el.innerHTML=html;
+          if (window.typesetMath) window.typesetMath(el);
+        })
+        .catch(err=>console.error('Navbar failed to load:',err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Unit 10: Systems of Linear Equations (Math 10C)</h2>
+        <p class="sub">Solve by graphing, substitution, and elimination; classify number of solutions; apply to real problems.</p>
+        <div>
+          <span class="badge">Graphing</span>
+          <span class="badge">Substitution</span>
+          <span class="badge">Elimination</span>
+          <span class="badge">One / None / Infinite Solutions</span>
+          <span class="badge">Applications</span>
+        </div>
+      </section>
+
+      <!-- Outcomes / Success Criteria -->
+      <section class="content-box">
+        <h2>What You Should Be Able To Do</h2>
+        <div class="two-col">
+          <ul>
+            <li>Solve a system by <b>graphing</b> and interpret the intersection point.</li>
+            <li>Solve by <b>substitution</b> and by <b>elimination</b>; check solutions.</li>
+            <li>Recognize <b>no solution</b> (parallel), <b>infinite solutions</b> (coincident), or <b>one solution</b> (intersecting).</li>
+            <li>Model and solve <b>applications</b> (price/ticket, mixture, motion, etc.).</li>
+          </ul>
+
+          <div class="tool-card">
+            <h4>Quick Reminders</h4>
+            <ul class="muted">
+              <li>Graphing: intersection \((x,y)\) satisfies both lines.</li>
+              <li>Substitution: solve one equation for a variable, substitute in the other.</li>
+              <li>Elimination: line up like terms, multiply if needed, add/subtract to eliminate a variable.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video Library -->
+      <section class="content-box">
+        <h2>Video Library</h2>
+        <div class="video-grid">
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=solve+systems+by+graphing">
+            <h4>Solve by Graphing</h4>
+            <p>Plot both lines; read intersection.</p>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=solve+systems+by+substitution">
+            <h4>Substitution Method</h4>
+            <p>Isolate a variable, plug into the other equation.</p>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=solve+systems+by+elimination">
+            <h4>Elimination Method</h4>
+            <p>Multiply and add/subtract to eliminate a variable.</p>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=system+of+equations+word+problems">
+            <h4>Applications</h4>
+            <p>Translate contexts to equations.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Interactive Tools -->
+      <section class="content-box">
+        <h2>Interactive Tools</h2>
+        <div class="two-col">
+
+          <!-- A. System Grapher & Classifier (Ax+By=C) -->
+          <div class="tool-card">
+            <h4>System Grapher & Classifier (General Form \(Ax+By=C\))</h4>
+            <div class="mini-grid">
+              <div><label>Eqn 1: \(A_1\)</label><input id="A1" type="number" step="any" value="1"></div>
+              <div><label>\(B_1\)</label><input id="B1" type="number" step="any" value="-1"></div>
+              <div><label>\(C_1\)</label><input id="C1" type="number" step="any" value="2"></div>
+              <div><label>Eqn 2: \(A_2\)</label><input id="A2" type="number" step="any" value="2"></div>
+              <div><label>\(B_2\)</label><input id="B2" type="number" step="any" value="1"></div>
+              <div><label>\(C_2\)</label><input id="C2" type="number" step="any" value="7"></div>
+            </div>
+            <div class="mini-grid" style="margin-top:6px;">
+              <div><label>x-min</label><input id="gxmin" type="number" step="any" value="-10"></div>
+              <div><label>x-max</label><input id="gxmax" type="number" step="any" value="10"></div>
+              <div><label>y-min</label><input id="gymin" type="number" step="any" value="-10"></div>
+              <div><label>y-max</label><input id="gymax" type="number" step="any" value="10"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="gSolve">Graph & Classify</button>
+              <button class="btn btn-ghost" id="gReset">Reset</button>
+            </div>
+            <svg id="gSVG" class="svg-plot" viewBox="0 0 640 380" preserveAspectRatio="none"></svg>
+            <p class="muted mono" id="gOut" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- B. Substitution Stepper (y=mx+b) -->
+          <div class="tool-card">
+            <h4>Solve by Substitution (Step-by-Step)</h4>
+            <div class="mini-grid">
+              <div><label>Eqn 1: \(y=m_1x+b_1\) — \(m_1\)</label><input id="sm1" type="number" step="any" value="1"></div>
+              <div><label>\(b_1\)</label><input id="sb1" type="number" step="any" value="2"></div>
+              <div><label>Eqn 2: \(y=m_2x+b_2\) — \(m_2\)</label><input id="sm2" type="number" step="any" value="-2"></div>
+              <div><label>\(b_2\)</label><input id="sb2" type="number" step="any" value="7"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="sSolve">Show Steps</button>
+              <button class="btn btn-ghost" id="sReset">Reset</button>
+            </div>
+            <p class="muted mono" id="sOut" style="margin-top:8px;"></p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Elimination + Applications -->
+      <section class="content-box">
+        <h2>Elimination & Applications</h2>
+        <div class="two-col">
+
+          <!-- C. Elimination Stepper (Ax+By=C) -->
+          <div class="tool-card">
+            <h4>Solve by Elimination (Step-by-Step)</h4>
+            <div class="mini-grid">
+              <div><label>Eqn 1: \(A_1\)</label><input id="eA1" type="number" step="any" value="1"></div>
+              <div><label>\(B_1\)</label><input id="eB1" type="number" step="any" value="1"></div>
+              <div><label>\(C_1\)</label><input id="eC1" type="number" step="any" value="8"></div>
+              <div><label>Eqn 2: \(A_2\)</label><input id="eA2" type="number" step="any" value="2"></div>
+              <div><label>\(B_2\)</label><input id="eB2" type="number" step="any" value="-1"></div>
+              <div><label>\(C_2\)</label><input id="eC2" type="number" step="any" value="2"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="eSolve">Show Steps</button>
+              <button class="btn btn-ghost" id="eReset">Reset</button>
+            </div>
+            <p class="muted mono" id="eOut" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- D. Applications Builder -->
+          <div class="tool-card">
+            <h4>Applications Builder (Create a System)</h4>
+            <div class="mini-grid">
+              <div>
+                <label>Scenario</label>
+                <select id="appType">
+                  <option value="tickets">Tickets (adult/student)</option>
+                  <option value="mixture">Mixture (solutions)</option>
+                  <option value="motion">Motion (distance=speed×time)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Tickets -->
+            <div id="appTickets" class="mini-grid" style="margin-top:6px;">
+              <div><label>Total # sold</label><input id="t_total" type="number" step="1" value="120"></div>
+              <div><label>Revenue ($)</label><input id="t_rev" type="number" step="any" value="860"></div>
+              <div><label>Adult price</label><input id="t_pa" type="number" step="any" value="8"></div>
+              <div><label>Student price</label><input id="t_ps" type="number" step="any" value="5"></div>
+            </div>
+
+            <!-- Mixture -->
+            <div id="appMixture" class="mini-grid" style="display:none;margin-top:6px;">
+              <div><label>Target volume (L)</label><input id="m_V" type="number" step="any" value="20"></div>
+              <div><label>Target %</label><input id="m_T" type="number" step="any" value="30"></div>
+              <div><label>Solution A %</label><input id="m_A" type="number" step="any" value="20"></div>
+              <div><label>Solution B %</label><input id="m_B" type="number" step="any" value="50"></div>
+            </div>
+
+            <!-- Motion -->
+            <div id="appMotion" class="mini-grid" style="display:none;margin-top:6px;">
+              <div><label>Total time (h)</label><input id="mo_T" type="number" step="any" value="5"></div>
+              <div><label>Total distance (km)</label><input id="mo_D" type="number" step="any" value="320"></div>
+              <div><label>Speed 1 (km/h)</label><input id="mo_v1" type="number" step="any" value="60"></div>
+              <div><label>Speed 2 (km/h)</label><input id="mo_v2" type="number" step="any" value="80"></div>
+            </div>
+
+            <div style="margin-top:10px;">
+              <button class="btn" id="appBuild">Build & Solve</button>
+              <button class="btn btn-ghost" id="appReset">Reset</button>
+            </div>
+            <p class="muted mono" id="appOut" style="margin-top:8px;"></p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Quizzes -->
+      <section class="content-box">
+        <h2>Unit 10 Quizzes</h2>
+        <div class="units-grid">
+          <a href="m10c_u10_quiz1.html" class="unit-card">
+            <h3>Quiz 1: Graphing & Substitution</h3>
+            <p>Find intersections and check solutions.</p>
+          </a>
+          <a href="m10c_u10_quiz2.html" class="unit-card">
+            <h3>Quiz 2: Elimination & Applications</h3>
+            <p>Multiple representations and word problems.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Review PDF -->
+      <section class="content-box">
+        <h2>Downloadable Review</h2>
+        <p>
+          <a class="btn" href="assets/m10c_u10_systems_review.pdf" download>Download PDF</a>
+          <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
+        </p>
+        <iframe class="pdf-frame" src="assets/m10c_u10_systems_review.pdf#view=FitH"></iframe>
+      </section>
+
+      <!-- Scratchpad -->
+      <section class="content-box">
+        <h2>Quick Practice Scratchpad</h2>
+        <p class="muted">Try: Solve \(\begin{cases}3x-2y=7\\x+y=5\end{cases}\). Classify \(\begin{cases}2x-4y=8\\x-2y=5\end{cases}\). Write a system for: “Adult t-shirts \$18, youth \$12, sold 110 shirts for \$1680.”</p>
+        <textarea id="scratch" style="width:100%;min-height:140px;border-radius:8px;padding:12px;border:1px solid #dfe6ee;resize:vertical;"></textarea>
+        <div style="margin-top:10px;">
+          <button class="btn" id="saveScratch">Save Notes</button>
+          <button class="btn btn-ghost" id="clearScratch">Clear</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <!-- Math helper -->
+  <script>
+    window.typesetMath = function(root){
+      if (window.MathJax && MathJax.typesetPromise){
+        MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
+      }
+    };
+  </script>
+
+  <!-- Page logic -->
+  <script>
+    /* ===== Scratchpad ===== */
+    (function(){
+      const KEY='m10c_u10_scratch', ta=document.getElementById('scratch');
+      const s=document.getElementById('saveScratch'), c=document.getElementById('clearScratch');
+      try{ ta.value=localStorage.getItem(KEY)||'';}catch(e){}
+      s.addEventListener('click',()=>localStorage.setItem(KEY,ta.value));
+      c.addEventListener('click',()=>{ ta.value=''; localStorage.setItem(KEY,''); });
+    })();
+
+    /* ===== Utilities ===== */
+    function approx(n,d=6){ return Number.isFinite(n)? Number(n.toFixed(d)) : NaN; }
+
+    /* ===== SVG Grid Helper ===== */
+    function makeGrid(svg, xmin,xmax,ymin,ymax){
+      const W=svg.viewBox.baseVal.width||640, H=svg.viewBox.baseVal.height||380, ns='http://www.w3.org/2000/svg';
+      svg.innerHTML='';
+      function X(x){ return (x - xmin)/(xmax - xmin) * W; }
+      function Y(y){ return H - (y - ymin)/(ymax - ymin) * H; }
+      const g=document.createElementNS(ns,'g'); svg.appendChild(g);
+      for(let x=Math.ceil(xmin); x<=Math.floor(xmax); x++){
+        const L=document.createElementNS(ns,'line');
+        L.setAttribute('x1',X(x)); L.setAttribute('x2',X(x)); L.setAttribute('y1',0); L.setAttribute('y2',H);
+        L.setAttribute('stroke', x===0?'#9bb3c9':'#eef2f6'); L.setAttribute('stroke-width', x===0?2:1);
+        g.appendChild(L);
+      }
+      for(let y=Math.ceil(ymin); y<=Math.floor(ymax); y++){
+        const L=document.createElementNS(ns,'line');
+        L.setAttribute('y1',Y(y)); L.setAttribute('y2',Y(y)); L.setAttribute('x1',0); L.setAttribute('x2',W);
+        L.setAttribute('stroke', y===0?'#9bb3c9':'#eef2f6'); L.setAttribute('stroke-width', y===0?2:1);
+        g.appendChild(L);
+      }
+      return {X,Y,W,H,ns};
+    }
+
+    /* ===== A. System Grapher & Classifier ===== */
+    (function(){
+      const A1=document.getElementById('A1'), B1=document.getElementById('B1'), C1=document.getElementById('C1');
+      const A2=document.getElementById('A2'), B2=document.getElementById('B2'), C2=document.getElementById('C2');
+      const xmin=document.getElementById('gxmin'), xmax=document.getElementById('gxmax'), ymin=document.getElementById('gymin'), ymax=document.getElementById('gymax');
+      const svg=document.getElementById('gSVG'), out=document.getElementById('gOut');
+
+      function draw(){
+        const a1=+A1.value, b1=+B1.value, c1=+C1.value;
+        const a2=+A2.value, b2=+B2.value, c2=+C2.value;
+
+        const Xmin=+xmin.value, Xmax=+xmax.value, Ymin=+ymin.value, Ymax=+ymax.value;
+        const grid=makeGrid(svg, Xmin,Xmax,Ymin,Ymax), {X,Y,ns}=grid;
+
+        // helper to draw a line from Ax+By=C
+        function drawLine(a,b,c,color){
+          if(Math.abs(b)<1e-12){ // vertical x = C/A
+            const xv = c/(a||1);
+            const L=document.createElementNS(ns,'line'); L.setAttribute('x1',X(xv)); L.setAttribute('x2',X(xv)); L.setAttribute('y1',0); L.setAttribute('y2',grid.H);
+            L.setAttribute('stroke',color); L.setAttribute('stroke-width','2'); svg.appendChild(L);
+            return {vertical:true, x:xv};
+          }else{
+            const m = -a/b, d = c/b; // y = mx + d
+            const yL=m*Xmin + d, yR=m*Xmax + d;
+            const L=document.createElementNS(ns,'line');
+            L.setAttribute('x1',X(Xmin)); L.setAttribute('y1',Y(yL));
+            L.setAttribute('x2',X(Xmax)); L.setAttribute('y2',Y(yR));
+            L.setAttribute('stroke',color); L.setAttribute('stroke-width','2'); svg.appendChild(L);
+            return {vertical:false, m, b:d};
+          }
+        }
+
+        const L1=drawLine(a1,b1,c1,'#3d8dff');
+        const L2=drawLine(a2,b2,c2,'#e67e22');
+
+        // classification using determinant
+        const D = a1*b2 - a2*b1;
+        let text='';
+
+        if(Math.abs(D)>1e-12){
+          const Dx = c1*b2 - c2*b1;
+          const Dy = a1*c2 - a2*c1;
+          const x = Dx/D, y = Dy/D;
+
+          // plot intersection
+          const P=document.createElementNS(ns,'circle');
+          P.setAttribute('cx',X(x)); P.setAttribute('cy',Y(y)); P.setAttribute('r',4); P.setAttribute('fill','#2ecc71'); svg.appendChild(P);
+
+          // perpendicular?
+          let perp = false;
+          if(!L1.vertical && !L2.vertical) perp = Math.abs(L1.m*L2.m + 1) < 1e-9;
+          else perp = (L1.vertical && !L2.vertical && Math.abs(L2.m)<1e-12) || (L2.vertical && !L1.vertical && Math.abs(L1.m)<1e-12);
+
+          text = `One solution ✅ at \\((${approx(x)}, ${approx(y)})\\). ${perp?'Lines are perpendicular.':''}`;
+        }else{
+          // parallel or coincident
+          if(Math.abs(a1*c2 - a2*c1)<1e-12 && Math.abs(b1*c2 - b2*c1)<1e-12){
+            text = 'Infinite solutions ♾️ (same line / coincident).';
+          }else{
+            text = 'No solution ❌ (parallel distinct lines).';
+          }
+        }
+
+        // show slopes/intercepts (if not vertical)
+        function lineDesc(L){
+          if(L.vertical) return 'vertical (no slope, no y-intercept)';
+          const m=approx(L.m), d=approx(L.b);
+          const xint = Math.abs(L.m)<1e-12 ? null : approx(-d/m);
+          return `\\(y=${m}x ${d>=0?'+':''} ${d}\\) • y-int \\((0,${d})\\) • x-int ${xint!=null?`\\((${xint},0)\\)`:'none'}`;
+        }
+
+        out.innerHTML = `Eqn 1: ${lineDesc(L1)}<br>Eqn 2: ${lineDesc(L2)}<br><b>${text}</b>`;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      document.getElementById('gSolve').addEventListener('click', draw);
+      document.getElementById('gReset').addEventListener('click', ()=>{
+        A1.value=1;B1.value=-1;C1.value=2; A2.value=2;B2.value=1;C2.value=7;
+        xmin.value=-10;xmax.value=10;ymin.value=-10;ymax.value=10;
+        svg.innerHTML=''; out.textContent='';
+      });
+      draw();
+    })();
+
+    /* ===== B. Substitution Stepper ===== */
+    (function(){
+      const m1=document.getElementById('sm1'), b1=document.getElementById('sb1');
+      const m2=document.getElementById('sm2'), b2=document.getElementById('sb2');
+      const out=document.getElementById('sOut');
+
+      function show(){
+        const M1=+m1.value, B1=+b1.value, M2=+m2.value, B2=+b2.value;
+        let html='';
+        if(Math.abs(M1-M2)<1e-12){
+          if(Math.abs(B1-B2)<1e-12){
+            html='\\(m_1=m_2\\) and \\(b_1=b_2\\) → Same line → Infinite solutions.';
+          }else{
+            html='\\(m_1=m_2\\) but \\(b_1\\ne b_2\\) → Parallel lines → No solution.';
+          }
+        }else{
+          const x = (B2 - B1)/(M1 - M2);
+          const y = M1*x + B1;
+          html = [
+            'Set RHS equal: \\(m_1x+b_1 = m_2x+b_2\\).',
+            `\\((m_1-m_2)x = b_2-b_1 \\Rightarrow x = \\dfrac{${approx(B2)}-${approx(B1)}}{${approx(M1)}-${approx(M2)}} = ${approx(x)}\\).`,
+            `Back-sub: \\(y = m_1x+b_1 = ${approx(M1)}(${approx(x)}) ${B1>=0?'+':''} ${approx(B1)} = ${approx(y)}\\).`,
+            `Solution: \\((${approx(x)}, ${approx(y)})\\).`
+          ].join('<br>');
+        }
+        out.innerHTML = html;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      document.getElementById('sSolve').addEventListener('click', show);
+      document.getElementById('sReset').addEventListener('click', ()=>{ m1.value=1;b1.value=2;m2.value=-2;b2.value=7; out.textContent=''; });
+      show();
+    })();
+
+    /* ===== C. Elimination Stepper ===== */
+    (function(){
+      const A1=document.getElementById('eA1'), B1=document.getElementById('eB1'), C1=document.getElementById('eC1');
+      const A2=document.getElementById('eA2'), B2=document.getElementById('eB2'), C2=document.getElementById('eC2');
+      const out=document.getElementById('eOut');
+
+      function steps(){
+        const a1=+A1.value, b1=+B1.value, c1=+C1.value;
+        const a2=+A2.value, b2=+B2.value, c2=+C2.value;
+
+        // Try eliminating y first
+        let k1=b2, k2=-b1;
+        let A = a1*k1 + a2*k2;
+        let C = c1*k1 + c2*k2;
+        let html='';
+
+        if(Math.abs(A) < 1e-12){ // elimination of y failed (dependent or parallel in y); try eliminating x
+          k1=a2; k2=-a1;
+          const B = b1*k1 + b2*k2;
+          const Cx = c1*k1 + c2*k2;
+          if(Math.abs(B) < 1e-12){
+            // both eliminated → either infinite or none
+            if(Math.abs(Cx)<1e-12){
+              html='After elimination everything cancels → \\(0=0\\) → Infinite solutions (coincident).';
+            }else{
+              html='After elimination constants remain → contradiction → No solution (parallel).';
+            }
+          }else{
+            const y = Cx/B;
+            const x = (c1 - b1*y)/a1 || (c2 - b2*y)/a2;
+            html = [
+              `Multiply Eqn1 by \\(${approx(k1)}\\) and Eqn2 by \\(${approx(k2)}\\) to eliminate \\(x\\):`,
+              `\\(${approx(a1*k1)}x + ${approx(b1*k1)}y = ${approx(c1*k1)}\\)`,
+              `\\(${approx(a2*k2)}x + ${approx(b2*k2)}y = ${approx(c2*k2)}\\)`,
+              'Add the equations:',
+              `\\( ${(approx(b1*k1 + b2*k2)).toString()}y = ${approx(Cx)} \\Rightarrow y=${approx(y)}\\).`,
+              `Back-sub to find \\(x\\): \\(x=${approx(x)}\\).`,
+              `Solution: \\((${approx(x)}, ${approx(y)})\\).`
+            ].join('<br>');
+          }
+        }else{
+          const x = C/A;
+          // back-sub for y using a1x + b1y = c1 (prefer equation with nonzero coefficient)
+          const y = Math.abs(b1)>1e-12 ? (c1 - a1*x)/b1 : (c2 - a2*x)/b2;
+
+          html = [
+            `Multiply Eqn1 by \\(${approx(k1)}\\) and Eqn2 by \\(${approx(k2)}\\) to eliminate \\(y\\):`,
+            `\\(${approx(a1*k1)}x + ${approx(b1*k1)}y = ${approx(c1*k1)}\\)`,
+            `\\(${approx(a2*k2)}x + ${approx(b2*k2)}y = ${approx(c2*k2)}\\)`,
+            'Add the equations:',
+            `\\( ${(approx(A)).toString()}x = ${approx(C)} \\Rightarrow x=${approx(x)}\\).`,
+            `Back-sub to find \\(y\\): \\(y=${approx(y)}\\).`,
+            `Solution: \\((${approx(x)}, ${approx(y)})\\).`
+          ].join('<br>');
+        }
+
+        out.innerHTML = html;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      document.getElementById('eSolve').addEventListener('click', steps);
+      document.getElementById('eReset').addEventListener('click', ()=>{ A1.value=1;B1.value=1;C1.value=8; A2.value=2;B2.value=-1;C2.value=2; out.textContent=''; });
+      steps();
+    })();
+
+    /* ===== D. Applications Builder ===== */
+    (function(){
+      const type=document.getElementById('appType');
+      const tickets=document.getElementById('appTickets'), mix=document.getElementById('appMixture'), motion=document.getElementById('appMotion');
+      const out=document.getElementById('appOut');
+
+      function refresh(){
+        tickets.style.display = type.value==='tickets'?'grid':'none';
+        mix.style.display     = type.value==='mixture'?'grid':'none';
+        motion.style.display  = type.value==='motion'?'grid':'none';
+      }
+
+      function build(){
+        let text='';
+        if(type.value==='tickets'){
+          const N=+document.getElementById('t_total').value, R=+document.getElementById('t_rev').value;
+          const pa=+document.getElementById('t_pa').value, ps=+document.getElementById('t_ps').value;
+          // a + s = N ; pa a + ps s = R
+          const s = (R - pa*N)/(ps - pa);
+          const a = N - s;
+          text = `Let \\(a\\)=# adult, \\(s\\)=# student.<br>
+                  System: \\(\\begin{cases}a+s=${N}\\\\ ${pa}a+${ps}s=${R}\\end{cases}\\).<br>
+                  Solution: \\(a=${approx(a)},\\ s=${approx(s)}\\).`;
+        }else if(type.value==='mixture'){
+          const V=+document.getElementById('m_V').value, T=+document.getElementById('m_T').value/100;
+          const A=+document.getElementById('m_A').value/100, B=+document.getElementById('m_B').value/100;
+          // x+y = V ; Ax + By = T V
+          const x = (T*V - B*V)/(A - B);
+          const y = V - x;
+          text = `Let \\(x\\)=L of ${Math.round(A*100)}%, \\(y\\)=L of ${Math.round(B*100)}%.<br>
+                  System: \\(\\begin{cases}x+y=${V}\\\\ ${A}x+${B}y=${T}\\cdot${V}\\end{cases}\\).<br>
+                  Solution: \\(x=${approx(x)},\\ y=${approx(y)}\\).`;
+        }else{
+          const T=+document.getElementById('mo_T').value, D=+document.getElementById('mo_D').value;
+          const v1=+document.getElementById('mo_v1').value, v2=+document.getElementById('mo_v2').value;
+          // t1 + t2 = T ; v1 t1 + v2 t2 = D
+          const t1 = (D - v2*T)/(v1 - v2);
+          const t2 = T - t1;
+          text = `Let \\(t_1\\), \\(t_2\\)=hours at ${v1} and ${v2} km/h.<br>
+                  System: \\(\\begin{cases}t_1+t_2=${T}\\\\ ${v1}t_1+${v2}t_2=${D}\\end{cases}\\).<br>
+                  Solution: \\(t_1=${approx(t1)}\\text{ h},\\ t_2=${approx(t2)}\\text{ h}\\).`;
+        }
+        out.innerHTML = text;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      document.getElementById('appBuild').addEventListener('click', build);
+      document.getElementById('appReset').addEventListener('click', ()=>{
+        document.getElementById('t_total').value=120; document.getElementById('t_rev').value=860; document.getElementById('t_pa').value=8; document.getElementById('t_ps').value=5;
+        document.getElementById('m_V').value=20; document.getElementById('m_T').value=30; document.getElementById('m_A').value=20; document.getElementById('m_B').value=50;
+        document.getElementById('mo_T').value=5; document.getElementById('mo_D').value=320; document.getElementById('mo_v1').value=60; document.getElementById('mo_v2').value=80;
+        out.textContent='';
+      });
+      type.addEventListener('change', refresh);
+      refresh(); build();
+    })();
+
+    // Typeset after load
+    window.addEventListener('load', ()=>{ if(window.typesetMath) window.typesetMath(); });
+  </script>
+</body>
+</html>
