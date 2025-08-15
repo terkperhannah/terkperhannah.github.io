@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 10C • Unit 3 Review – Measurement</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .content-wrapper { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    .content-box {
+      border: 2px solid #e0e0e0; border-radius: 12px; padding: 28px; margin-bottom: 30px;
+      background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,.07);
+    }
+    .content-box h2 { color:#2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; margin-bottom: 18px; }
+    .sub { color:#566573; margin-top:-6px; }
+
+    .hero {
+      background: linear-gradient(135deg,#eef7ff 0,#f7fffb 60%,#fffaf2 100%);
+      border-color:#cfe8ff;
+    }
+    .badge {
+      display:inline-block; padding:6px 10px; border-radius:999px; background:#ecf5ff; color:#1d6fa5;
+      font-size:12px; margin:6px 6px 0 0; border:1px solid #d6eaff;
+    }
+
+    .two-col { display:grid; gap:20px; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); align-items:start; }
+
+    .checklist label { display:flex; align-items:flex-start; gap:10px; line-height:1.4; margin:10px 0; }
+    .checklist input { transform: translateY(3px); }
+
+    .video-grid { display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); margin-top:10px; }
+    .video-card{
+      background:#f8f9fa; border:1px solid #e0e0e0; border-radius:10px; padding:14px;
+      transition: transform .2s ease, box-shadow .2s ease; text-decoration:none; color:#34495e; display:block;
+    }
+    .video-card:hover{ transform: translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,.08); border-color:#3498db; }
+    .video-card h4{ color:#3498db; margin:6px 0 8px; }
+    .video-card p{ margin:0; font-size:.95rem; color:#5a6b7b; }
+    .video-card small{ display:block; margin-top:8px; color:#7a8b99; }
+
+    .units-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+    .unit-card {
+      padding:18px; border-radius:10px; background:#f8f9fa; border:1px solid #e0e0e0;
+      transition:.2s; text-decoration:none; color:#34495e; display:block;
+    }
+    .unit-card:hover{ transform:translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,.08); border-color:#2ecc71; }
+    .unit-card h3{ color:#2ecc71; margin:0 0 8px; }
+
+    .pdf-frame{ width:100%; height:540px; border:1px solid #e0e0e0; border-radius:10px; }
+    .btn { display:inline-block; padding:10px 14px; border-radius:8px; background:#3498db; color:#fff; text-decoration:none; border:0; cursor:pointer; }
+    .btn:hover{ background:#2f81bd; }
+    .btn-ghost { background:#fff; color:#3498db; border:1px solid #3498db; }
+    .btn-ghost:hover { background:#ecf5ff; }
+    .muted { color:#7f8c8d; font-size:.95rem; }
+
+    .practice-card textarea{
+      width:100%; min-height:140px; border-radius:8px; padding:12px; border:1px solid #dfe6ee; resize:vertical;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    .mini-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+    .tool-card { background:#f8f9fa; border:1px solid #e0e0e0; border-radius:10px; padding:16px; }
+    .tool-card h4 { margin:0 0 8px; color:#3498db; }
+    .tool-card label { display:block; font-size:.9rem; margin:6px 0 2px; color:#566573; }
+
+    .ref-table { width:100%; border-collapse: collapse; }
+    .ref-table th, .ref-table td { border:1px solid #e6e6e6; padding:8px 10px; text-align:left; }
+    .ref-table th { background:#f2f6ff; color:#2c3e50; }
+    code.katex { white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r => r.text())
+        .then(html => document.getElementById('navbar-placeholder').innerHTML = html)
+        .catch(err => console.error('Navbar failed to load:', err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Unit 3 Review: Measurement</h2>
+        <p class="sub">SI & Imperial units • Conversions • Surface area & volume of prisms, cylinders, pyramids, cones, spheres</p>
+        <div>
+          <span class="badge">SI & Imperial</span>
+          <span class="badge">Unit Conversions</span>
+          <span class="badge">Surface Area</span>
+          <span class="badge">Volume</span>
+          <span class="badge">Nets & Lateral Area</span>
+        </div>
+      </section>
+
+      <!-- Outcomes & Checklist -->
+      <section class="content-box">
+        <h2>What You Should Be Able To Do</h2>
+        <div class="two-col">
+          <ul>
+            <li>Identify and use appropriate SI and Imperial units for length, area, and volume.</li>
+            <li>Convert within SI, within Imperial, and between SI ↔ Imperial using given conversion factors.</li>
+            <li>Choose correct surface-area and volume formulas for prisms, cylinders, pyramids, cones, and spheres.</li>
+            <li>Solve multi-step problems including composite solids and real-world contexts.</li>
+            <li>Communicate with correct units, labels, and reasonable precision.</li>
+          </ul>
+
+          <div class="checklist" id="u3-checklist">
+            <label><input type="checkbox" data-k="units"> I can select appropriate units (SI/Imperial) for a context.</label>
+            <label><input type="checkbox" data-k="conv"> I can convert within/between systems accurately.</label>
+            <label><input type="checkbox" data-k="sa"> I can compute surface area for prisms, cylinders, pyramids, cones, spheres.</label>
+            <label><input type="checkbox" data-k="vol"> I can compute volumes and handle composite solids.</label>
+            <label><input type="checkbox" data-k="comm"> I can justify steps and state final answers with correct units.</label>
+            <button class="btn btn-ghost" id="saveChecklist">Save Progress</button>
+            <small class="muted" id="saveNote" style="display:block;margin-top:6px;">Progress autosaves to this device.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video Library -->
+      <section class="content-box">
+        <h2>Video Library</h2>
+        <p class="muted">Swap in your exact favourites later—these are focused YouTube searches.</p>
+        <div class="video-grid">
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=SI+and+Imperial+units+overview+math">
+            <h4>SI vs. Imperial Units (Overview)</h4>
+            <p>Common units, when to use each, and pitfalls.</p>
+            <small>youtube.com – “SI and Imperial units overview math”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=unit+conversion+ladder+method+dimensional+analysis+middle+high+school">
+            <h4>Conversions & Dimensional Analysis</h4>
+            <p>Converting within/between systems using the factor-label method.</p>
+            <small>youtube.com – “unit conversion ladder method dimensional analysis”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=surface+area+and+volume+of+prisms+and+cylinders">
+            <h4>Prisms & Cylinders – SA & Volume</h4>
+            <p>Nets, lateral area, total surface area, composite shapes.</p>
+            <small>youtube.com – “surface area and volume prisms cylinders”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=surface+area+and+volume+of+cones+pyramids+spheres">
+            <h4>Pyramids, Cones & Spheres – SA & Volume</h4>
+            <p>Slant height vs. height, curved surface area, caps.</p>
+            <small>youtube.com – “surface area and volume cones pyramids spheres”</small>
+          </a>
+        </div>
+      </section>
+
+      <!-- Tools: Converter + Formula Quick-Ref -->
+      <section class="content-box">
+        <h2>Tools</h2>
+        <div class="mini-grid">
+          <!-- Converter -->
+          <div class="tool-card">
+            <h4>Quick Unit Converter</h4>
+            <label for="convType">Type</label>
+            <select id="convType">
+              <option value="length">Length</option>
+              <option value="mass">Mass</option>
+              <option value="volume">Volume</option>
+            </select>
+
+            <label for="fromUnit">From</label>
+            <select id="fromUnit"></select>
+
+            <label for="toUnit">To</label>
+            <select id="toUnit"></select>
+
+            <label for="fromVal">Value</label>
+            <input type="number" id="fromVal" placeholder="Enter a number" />
+
+            <div style="margin-top:10px;">
+              <button class="btn" id="doConvert">Convert</button>
+              <button class="btn btn-ghost" id="swapUnits" title="Swap units">Swap</button>
+            </div>
+            <p id="convResult" class="muted" style="margin-top:8px;"></p>
+            <small class="muted">Notes: 1 in = 2.54 cm • 1 ft = 0.3048 m • 1 yd = 0.9144 m • 1 mi = 1.60934 km • 1 kg = 2.20462 lb • 1 L = 1000 mL • 1 US gal = 3.78541 L • 1 cm³ = 1 mL.</small>
+          </div>
+
+          <!-- Formula ref -->
+          <div class="tool-card">
+            <h4>Formula Quick-Reference</h4>
+            <table class="ref-table">
+              <thead>
+                <tr><th>Solid</th><th>Surface Area</th><th>Volume</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Right Prism</td><td><code class="katex">SA = 2B + Ph</code></td><td><code class="katex">V = Bh</code></td></tr>
+                <tr><td>Cylinder</td><td><code class="katex">SA = 2\pi r^2 + 2\pi rh</code></td><td><code class="katex">V = \pi r^2 h</code></td></tr>
+                <tr><td>Pyramid</td><td><code class="katex">SA = B + \tfrac12 P \ell</code> (ℓ = slant)</td><td><code class="katex">V = \tfrac13 Bh</code></td></tr>
+                <tr><td>Cone</td><td><code class="katex">SA = \pi r^2 + \pi r \ell</code> (ℓ = slant)</td><td><code class="katex">V = \tfrac13 \pi r^2 h</code></td></tr>
+                <tr><td>Sphere</td><td><code class="katex">SA = 4\pi r^2</code></td><td><code class="katex">V = \tfrac43 \pi r^3</code></td></tr>
+              </tbody>
+            </table>
+            <p class="muted" style="margin-top:8px;">Tip: For composite solids, split into parts, compute each SA/volume, then add/subtract as needed (subtract overlapped faces for SA!).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quizzes -->
+      <section class="content-box">
+        <h2>Unit 3 Quizzes</h2>
+        <div class="units-grid">
+          <a href="m10c_u3_quiz1.html" class="unit-card">
+            <h3>Quiz 1: Units & Conversions</h3>
+            <p>SI vs. Imperial, within/between systems, dimensional analysis.</p>
+          </a>
+          <a href="m10c_u3_quiz2.html" class="unit-card">
+            <h3>Quiz 2: Surface Area & Volume</h3>
+            <p>Prisms, cylinders, pyramids, cones, spheres, composite solids.</p>
+          </a>
+        </div>
+        <p class="muted" style="margin-top:10px;">Point these to your two Unit 3 quiz pages.</p>
+      </section>
+
+      <!-- PDF Review -->
+      <section class="content-box">
+        <h2>Downloadable Review</h2>
+        <p>Get the full set of Unit 3 practice questions as a printable PDF.</p>
+        <p>
+          <a class="btn" href="assets/m10c_unit3_review.pdf" download>Download PDF</a>
+          <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
+        </p>
+        <iframe class="pdf-frame" src="assets/m10c_unit3_review.pdf#view=FitH"></iframe>
+        <p class="muted" style="margin-top:6px;">Place your file at <code>/assets/m10c_unit3_review.pdf</code> or update the path above.</p>
+      </section>
+
+      <!-- Scratchpad -->
+      <section class="content-box practice-card">
+        <h2>Quick Practice Scratchpad</h2>
+        <p class="muted">Ideas: Convert 5.2 ft to cm; Find SA of a cylinder (r=4 cm, h=12 cm); Volume of a cone (r=3 m, h=10 m).</p>
+        <textarea id="scratch"></textarea>
+        <div style="margin-top:10px;">
+          <button class="btn" id="saveScratch">Save Notes</button>
+          <button class="btn btn-ghost" id="clearScratch">Clear</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <script>
+    /* Checklist persistence */
+    (function(){
+      const KEY = 'm10c_u3_checklist';
+      const box = document.getElementById('u3-checklist');
+      const saveBtn = document.getElementById('saveChecklist');
+      const saveNote = document.getElementById('saveNote');
+      const inputs = [...box.querySelectorAll('input[type="checkbox"][data-k]')];
+
+      function load(){
+        try{
+          const data = JSON.parse(localStorage.getItem(KEY) || '{}');
+          inputs.forEach(cb => cb.checked = !!data[cb.dataset.k]);
+        }catch(e){}
+      }
+      function save(){
+        const data = {};
+        inputs.forEach(cb => data[cb.dataset.k] = cb.checked);
+        localStorage.setItem(KEY, JSON.stringify(data));
+        saveNote.textContent = 'Saved ✔';
+        setTimeout(()=> saveNote.textContent = 'Progress autosaves to this device.', 1200);
+      }
+      inputs.forEach(cb => cb.addEventListener('change', save));
+      saveBtn.addEventListener('click', save);
+      load();
+    })();
+
+    /* Scratchpad persistence */
+    (function(){
+      const SKEY='m10c_u3_scratch';
+      const ta = document.getElementById('scratch');
+      const saveBtn = document.getElementById('saveScratch');
+      const clearBtn = document.getElementById('clearScratch');
+      try{ ta.value = localStorage.getItem(SKEY) || ''; }catch(e){}
+      saveBtn.addEventListener('click', ()=> localStorage.setItem(SKEY, ta.value));
+      clearBtn.addEventListener('click', ()=> { ta.value=''; localStorage.setItem(SKEY, ''); });
+    })();
+
+    /* Quick Unit Converter */
+    (function(){
+      const defs = {
+        length: { // base: meter
+          m: 1, cm: 0.01, mm: 0.001, km: 1000,
+          in: 0.0254, ft: 0.3048, yd: 0.9144, mi: 1609.34
+        },
+        mass: { // base: kilogram
+          kg: 1, g: 0.001, mg: 1e-6,
+          lb: 0.45359237, oz: 0.0283495231
+        },
+        volume: { // base: liter
+          L: 1, mL: 0.001, "cm³": 0.001, // 1 cm³ = 1 mL
+          "US gal": 3.78541, "US qt": 0.946353, "US pt": 0.473176
+        }
+      };
+
+      const typeSel = document.getElementById('convType');
+      const fromSel = document.getElementById('fromUnit');
+      const toSel = document.getElementById('toUnit');
+      const valIn = document.getElementById('fromVal');
+      const out = document.getElementById('convResult');
+
+      function fillUnits(){
+        const type = typeSel.value;
+        const units = Object.keys(defs[type]);
+        fromSel.innerHTML = units.map(u=>`<option>${u}</option>`).join('');
+        toSel.innerHTML = units.map(u=>`<option>${u}</option>`).join('');
+        // sensible defaults
+        if(type==='length'){ fromSel.value='ft'; toSel.value='cm'; }
+        if(type==='mass'){ fromSel.value='lb'; toSel.value='kg'; }
+        if(type==='volume'){ fromSel.value='L'; toSel.value='mL'; }
+      }
+
+      function convert(){
+        const type = typeSel.value;
+        const v = parseFloat(valIn.value);
+        if(isNaN(v)){ out.textContent = 'Enter a value to convert.'; return; }
+        const base = defs[type];
+        const from = fromSel.value, to = toSel.value;
+        // convert to base, then to target
+        let vInBase;
+        if(type==='length'){ vInBase = v * base[from]; }          // meters
+        else if(type==='mass'){ vInBase = v * base[from]; }        // kilograms
+        else { vInBase = v * base[from]; }                         // liters
+        const result = vInBase / base[to];
+        out.textContent = `${v} ${from} ≈ ${result.toLocaleString(undefined,{maximumSignificantDigits:6})} ${to}`;
+      }
+
+      document.getElementById('doConvert').addEventListener('click', convert);
+      document.getElementById('swapUnits').addEventListener('click', ()=>{
+        const a = fromSel.value; fromSel.value = toSel.value; toSel.value = a; convert();
+      });
+      typeSel.addEventListener('change', fillUnits);
+
+      fillUnits();
+    })();
+  </script>
+</body>
+</html>
