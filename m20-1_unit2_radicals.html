@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 20-1 • Unit 2: Operations on Radicals</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']], processEscapes:true },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] },
+      chtml: { mtextInheritFont:true, matchFontHeight:false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    .content-wrapper{max-width:1200px;margin:0 auto;padding:20px;}
+    .content-box{border:2px solid #e0e0e0;border-radius:12px;padding:28px;margin-bottom:30px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+    .content-box h2{color:#2c3e50;border-bottom:3px solid #3498db;padding-bottom:10px;margin-bottom:18px;}
+    .sub{color:#566573;margin-top:-6px;}
+    .hero{background:linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%);border-color:#cfe8ff;}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#ecf5ff;color:#1d6fa5;font-size:12px;margin:6px 6px 0 0;border:1px solid #d6eaff;}
+
+    .two-col{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start;}
+    .checklist label{display:flex;align-items:flex-start;gap:10px;line-height:1.4;margin:10px 0;}
+    .checklist input{transform:translateY(3px);}
+
+    .video-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:10px;}
+    .video-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:14px;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .video-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#3498db;}
+    .video-card h4{color:#3498db;margin:6px 0 8px;}
+    .video-card p{margin:0;font-size:.95rem;color:#5a6b7b;}
+    .video-card small{display:block;margin-top:8px;color:#7a8b99;}
+
+    .units-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+    .unit-card{padding:18px;border-radius:10px;background:#f8f9fa;border:1px solid #e0e0e0;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .unit-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#2ecc71;}
+    .unit-card h3{color:#2ecc71;margin:0 0 8px;}
+
+    .pdf-frame{width:100%;height:540px;border:1px solid #e0e0e0;border-radius:10px;}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:#3498db;color:#fff;text-decoration:none;border:0;cursor:pointer;}
+    .btn:hover{background:#2f81bd;}
+    .btn-ghost{background:#fff;color:#3498db;border:1px solid #3498db;}
+    .btn-ghost:hover{background:#ecf5ff;}
+    .muted{color:#7f8c8d;font-size:.95rem;}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+
+    .mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+    .tool-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:16px;}
+    .tool-card h4{margin:0 0 10px;color:#3498db;}
+    .tool-card label{display:block;font-size:.9rem;margin:6px 0 2px;color:#566573;}
+    .tool-card input,.tool-card select{width:100%;padding:8px 10px;border:1px solid #dfe6ee;border-radius:8px;}
+    .tool-card .row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+    .tool-card .row-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+    .table-mini{width:100%;border-collapse:collapse;margin-top:8px;}
+    .table-mini th,.table-mini td{border:1px solid #e6e6e6;padding:6px 8px;text-align:right;}
+    .table-mini th{background:#f2f6ff;color:#2c3e50;text-align:left;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r=>r.text())
+        .then(html => {
+          const el=document.getElementById('navbar-placeholder');
+          el.innerHTML=html;
+          if (window.typesetMath) window.typesetMath(el);
+        })
+        .catch(err=>console.error('Navbar failed to load:',err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Unit 2: Operations on Radicals (Math 20-1)</h2>
+        <p class="sub">Entire/mixed radicals; add/subtract like radicals; multiply/divide radicals; simplification and rationalizing denominators.</p>
+        <div>
+          <span class="badge">Entire ⇄ Mixed</span>
+          <span class="badge">Simplify \( \sqrt[n]{a} \)</span>
+          <span class="badge">Combine like radicals</span>
+          <span class="badge">Multiply/Divide \( \sqrt[n]{a}\,\sqrt[n]{b} \)</span>
+          <span class="badge">Rationalize denominators</span>
+        </div>
+      </section>
+
+      <!-- Outcomes -->
+      <section class="content-box">
+        <h2>What You Should Be Able To Do</h2>
+        <div class="two-col">
+          <ul>
+            <li>Convert between entire and mixed radicals for integer indices \(n\ge2\).</li>
+            <li>Simplify radicals by extracting perfect \(n\)th powers.</li>
+            <li>Add/subtract radicals by first simplifying and then combining like radicals (same index and radicand).</li>
+            <li>Multiply/divide radicals with the same index and simplify; rationalize monomial radical denominators.</li>
+            <li>Communicate restrictions (e.g., even index with non-negative radicand in real numbers).</li>
+          </ul>
+
+          <div class="checklist" id="m201-u2-checklist">
+            <label><input type="checkbox" data-k="entire"> I can switch between entire and mixed radicals.</label>
+            <label><input type="checkbox" data-k="simplify"> I can simplify and justify using prime powers.</label>
+            <label><input type="checkbox" data-k="combine"> I can combine like radicals.</label>
+            <label><input type="checkbox" data-k="multdiv"> I can multiply/divide radicals and rationalize.</label>
+            <button class="btn btn-ghost" id="saveChecklist">Save Progress</button>
+            <small class="muted" id="saveNote" style="display:block;margin-top:6px;">Progress autosaves to this device.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Videos -->
+      <section class="content-box">
+        <h2>Video Library</h2>
+        <div class="video-grid">
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=entire+and+mixed+radicals">
+            <h4>Entire & Mixed Radicals</h4>
+            <p>Move factors in/out of the radical for index \(n\).</p>
+            <small>youtube.com – “entire and mixed radicals”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=simplifying+radicals+prime+factorization">
+            <h4>Simplifying Radicals</h4>
+            <p>Prime powers, extracting perfect \(n\)th powers.</p>
+            <small>youtube.com – “simplifying radicals prime factorization”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=adding+and+subtracting+radicals">
+            <h4>Adding/Subtracting Radicals</h4>
+            <p>Like radicals only after simplifying.</p>
+            <small>youtube.com – “adding and subtracting radicals”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=multiplying+dividing+radicals+rationalizing+denominators">
+            <h4>Multiply/Divide & Rationalize</h4>
+            <p>Same index rule, monomial rationalization.</p>
+            <small>youtube.com – “multiplying dividing radicals rationalizing denominators”</small>
+          </a>
+        </div>
+      </section>
+
+      <!-- Interactive Tools -->
+      <section class="content-box">
+        <h2>Interactive Tools</h2>
+        <div class="mini-grid">
+
+          <!-- Entire ↔ Mixed Converter -->
+          <div class="tool-card">
+            <h4>Entire ⇄ Mixed Radical Converter</h4>
+            <div class="row-2">
+              <div>
+                <label>Index \(n\) (≥2)</label>
+                <input id="emIndex" type="number" min="2" step="1" value="2">
+              </div>
+              <div>
+                <label>Mode</label>
+                <select id="emMode">
+                  <option value="toMixed">Entire → Mixed</option>
+                  <option value="toEntire">Mixed → Entire</option>
+                </select>
+              </div>
+            </div>
+            <div class="row" style="margin-top:6px;">
+              <div><label>Outside coeff \(k\) (mixed)</label><input id="emK" type="number" step="1" value="1"></div>
+              <div><label>Radicand \(r\) (integer)</label><input id="emR" type="number" step="1" value="72"></div>
+              <div><label>&nbsp;</label><button class="btn" id="emGo">Convert</button></div>
+            </div>
+            <p class="muted mono" id="emOut" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- Radical Simplifier -->
+          <div class="tool-card">
+            <h4>Radical Simplifier</h4>
+            <div class="row-2">
+              <div><label>Index \(n\) (≥2)</label><input id="rsN" type="number" min="2" step="1" value="2"></div>
+              <div><label>Outside coeff \(k\)</label><input id="rsK" type="number" step="1" value="1"></div>
+            </div>
+            <div class="row-2" style="margin-top:6px;">
+              <div><label>Radicand \(r\) (integer)</label><input id="rsR" type="number" step="1" value="200"></div>
+              <div style="align-self:end;"><button class="btn" id="rsGo">Simplify</button></div>
+            </div>
+            <p class="muted mono" id="rsOut" style="margin-top:8px;"></p>
+            <table class="table-mini" id="rsTable">
+              <thead><tr><th>Prime</th><th>Exponent</th><th>Groups of \(n\)</th><th>Remainder</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <!-- Add/Subtract Like Radicals -->
+          <div class="tool-card">
+            <h4>Add/Subtract Like Radicals</h4>
+            <p class="muted">Same index and same simplified radicand are required to combine.</p>
+            <div class="row-2">
+              <div><label>Index \(n\)</label><input id="arN" type="number" min="2" step="1" value="2"></div>
+              <div style="align-self:end;"><button class="btn btn-ghost" id="arAdd">+ Add Term</button></div>
+            </div>
+            <div id="arTerms" style="margin-top:6px;"></div>
+            <div style="margin-top:8px;">
+              <button class="btn" id="arGo">Combine</button>
+              <button class="btn btn-ghost" id="arClear">Clear</button>
+            </div>
+            <p class="muted mono" id="arOut" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- Multiply / Divide (Rationalize) -->
+          <div class="tool-card">
+            <h4>Multiply/Divide Radicals (Monomial)</h4>
+            <div class="row-2">
+              <div>
+                <label>Operation</label>
+                <select id="mdOp">
+                  <option value="mult">Multiply</option>
+                  <option value="div">Divide (rationalize)</option>
+                </select>
+              </div>
+              <div><label>Index \(n\)</label><input id="mdN" type="number" min="2" step="1" value="2"></div>
+            </div>
+
+            <label style="margin-top:6px;">Left term \(k_1\sqrt[n]{r_1}\)</label>
+            <div class="row">
+              <input id="mdK1" type="number" step="1" value="3">
+              <input id="mdR1" type="number" step="1" value="8">
+              <input disabled value="k₁ , r₁">
+            </div>
+
+            <label style="margin-top:6px;">Right term \(k_2\sqrt[n]{r_2}\)</label>
+            <div class="row">
+              <input id="mdK2" type="number" step="1" value="2">
+              <input id="mdR2" type="number" step="1" value="18">
+              <input disabled value="k₂ , r₂">
+            </div>
+
+            <div style="margin-top:10px;">
+              <button class="btn" id="mdGo">Compute</button>
+              <button class="btn btn-ghost" id="mdReset">Reset</button>
+            </div>
+            <p class="muted mono" id="mdOut" style="margin-top:8px;"></p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Quizzes -->
+      <section class="content-box">
+        <h2>Unit 2 Quizzes</h2>
+        <div class="units-grid">
+          <a href="m201_u2_quiz1.html" class="unit-card">
+            <h3>Quiz 1: Simplify & Combine</h3>
+            <p>Entire↔mixed, simplifying, and like radicals.</p>
+          </a>
+          <a href="m201_u2_quiz2.html" class="unit-card">
+            <h3>Quiz 2: Multiply/Divide & Rationalize</h3>
+            <p>Products/quotients and monomial rationalization.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Review PDF -->
+      <section class="content-box">
+        <h2>Downloadable Review</h2>
+        <p>
+          <a class="btn" href="assets/m201_u2_radicals_review.pdf" download>Download PDF</a>
+          <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
+        </p>
+        <iframe class="pdf-frame" src="assets/m201_u2_radicals_review.pdf#view=FitH"></iframe>
+      </section>
+
+      <!-- Scratchpad -->
+      <section class="content-box">
+        <h2>Quick Practice Scratchpad</h2>
+        <p class="muted">Try: \(\sqrt{200}\), \(3\sqrt{8}+2\sqrt{18}-\sqrt{50}\), \(\sqrt[3]{24}\cdot 2\sqrt[3]{6}\), \(\dfrac{5}{\sqrt[3]{2}}\).</p>
+        <textarea id="scratch" style="width:100%;min-height:140px;border-radius:8px;padding:12px;border:1px solid #dfe6ee;resize:vertical;"></textarea>
+        <div style="margin-top:10px;">
+          <button class="btn" id="saveScratch">Save Notes</button>
+          <button class="btn btn-ghost" id="clearScratch">Clear</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <!-- Math helper -->
+  <script>
+    window.typesetMath = function(root){
+      if (window.MathJax && MathJax.typesetPromise){
+        MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
+      }
+    };
+  </script>
+
+  <!-- Page logic -->
+  <script>
+    /* ===== Checklist ===== */
+    (function(){
+      const KEY='m201_u2_check';
+      const box=document.getElementById('m201-u2-checklist');
+      const inputs=[...box.querySelectorAll('input[type="checkbox"][data-k]')];
+      const saveBtn=document.getElementById('saveChecklist'), saveNote=document.getElementById('saveNote');
+      function load(){ try{const d=JSON.parse(localStorage.getItem(KEY)||'{}'); inputs.forEach(cb=>cb.checked=!!d[cb.dataset.k]);}catch(e){} }
+      function save(){ const d={}; inputs.forEach(cb=>d[cb.dataset.k]=cb.checked); localStorage.setItem(KEY,JSON.stringify(d)); saveNote.textContent='Saved ✔'; setTimeout(()=>saveNote.textContent='Progress autosaves to this device.',1200); }
+      inputs.forEach(cb=>cb.addEventListener('change',save));
+      saveBtn.addEventListener('click',save);
+      load();
+    })();
+
+    /* ===== Scratchpad ===== */
+    (function(){
+      const SKEY='m201_u2_scratch';
+      const ta=document.getElementById('scratch');
+      const s=document.getElementById('saveScratch'), c=document.getElementById('clearScratch');
+      try{ ta.value=localStorage.getItem(SKEY)||'';}catch(e){}
+      s.addEventListener('click',()=>localStorage.setItem(SKEY,ta.value));
+      c.addEventListener('click',()=>{ ta.value=''; localStorage.setItem(SKEY,''); });
+    })();
+
+    /* ===== Helpers ===== */
+    function pf(n){
+      n=Math.floor(Math.abs(n));
+      const f={}; let d=2;
+      while(n>1 && d*d<=n){
+        while(n%d===0){ f[d]=(f[d]||0)+1; n/=d; }
+        d+= (d===2?1:2);
+      }
+      if(n>1) f[n]=(f[n]||0)+1;
+      return f;
+    }
+    function simplifyRadical(n, k, r){
+      if(!(n>=2) || !Number.isFinite(k) || !Number.isInteger(r)) return {err:'Use integer radicand and n≥2.'};
+      if(r<0 && n%2===0) return {err:'Even index requires non-negative radicand (real numbers).'};
+      const neg = r<0 ? -1:1;
+      r = Math.abs(r);
+      const primeMap = pf(r);
+      let outside=1, inside=1;
+      for(const p of Object.keys(primeMap).map(Number)){
+        const e=primeMap[p];
+        const groups=Math.floor(e/n);
+        const rem=e % n;
+        if(groups>0) outside *= Math.pow(p, groups);
+        if(rem>0) inside *= Math.pow(p, rem);
+      }
+      outside = (k*neg)*outside;
+      if(inside===1) return {outside, inside:0, steps:primeMap};
+      return {outside, inside, steps:primeMap};
+    }
+    function entireToMixed(n, r){
+      const s = simplifyRadical(n, 1, r);
+      if(s.err) return s;
+      return {k:s.outside, r:s.inside};
+    }
+    function mixedToEntire(n, k, r){
+      if(!(n>=2) || !Number.isFinite(k) || !Number.isInteger(r) || r<0) return {err:'Use k real, r integer ≥0, n≥2.'};
+      const rad = Math.pow(Math.abs(k), n) * r;
+      const sign = k<0 && (n%2===1) ? -1 : 1;
+      return {entire: sign<0 ? -1*Math.pow(-k,n)*r : rad, sign};
+    }
+
+    /* ===== Entire ⇄ Mixed ===== */
+    (function(){
+      const nEl = document.getElementById('emIndex');
+      const modeEl = document.getElementById('emMode');
+      const kEl = document.getElementById('emK');
+      const rEl = document.getElementById('emR');
+      const out = document.getElementById('emOut');
+      function run(){
+        const n=+nEl.value, k=+kEl.value, r=parseInt(rEl.value);
+        if(modeEl.value==='toMixed'){
+          const res = entireToMixed(n, r);
+          if(res.err){ out.textContent=res.err; return; }
+          out.innerHTML = `\\(\\sqrt[${n}]{${r}} = ${res.k}${res.r?`\\sqrt[${n}]{${res.r}}`:''}\\)`;
+        }else{
+          const res = mixedToEntire(n, k, r);
+          if(res.err){ out.textContent=res.err; return; }
+          const full = (k===0)? 0 : `${k}\\sqrt[${n}]{${r}}`;
+          out.innerHTML = `\\(${full} = \\sqrt[${n}]{${Math.pow(Math.abs(k),n)*r}}\\)`;
+        }
+        if(window.typesetMath) window.typesetMath(out);
+      }
+      document.getElementById('emGo').addEventListener('click', run);
+      run();
+    })();
+
+    /* ===== Radical Simplifier ===== */
+    (function(){
+      const nEl=document.getElementById('rsN'), kEl=document.getElementById('rsK'), rEl=document.getElementById('rsR');
+      const out=document.getElementById('rsOut'), tbody=document.getElementById('rsTable').querySelector('tbody');
+      function run(){
+        const n=+nEl.value, k=+kEl.value, r=parseInt(rEl.value);
+        const res=simplifyRadical(n,k,r);
+        if(res.err){ out.textContent=res.err; tbody.innerHTML=''; return; }
+        tbody.innerHTML='';
+        Object.entries(res.steps).forEach(([p,e])=>{
+          const groups=Math.floor(e/n), rem=e%n;
+          const tr=document.createElement('tr');
+          tr.innerHTML=`<td>${p}</td><td>${e}</td><td>${groups}</td><td>${rem}</td>`;
+          tbody.appendChild(tr);
+        });
+        out.innerHTML = res.inside===0
+          ? `\\(${k}\\sqrt[${n}]{${r}} = ${res.outside}\\)`
+          : `\\(${k}\\sqrt[${n}]{${r}} = ${res.outside}\\sqrt[${n}]{${res.inside}}\\)`;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+      document.getElementById('rsGo').addEventListener('click', run);
+      run();
+    })();
+
+    /* ===== Add/Subtract Like Radicals ===== */
+    (function(){
+      const nEl=document.getElementById('arN'), wrap=document.getElementById('arTerms'), btnAdd=document.getElementById('arAdd');
+      const out=document.getElementById('arOut');
+      function addRow(k=1, r=8){
+        const row=document.createElement('div'); row.className='row';
+        row.innerHTML = `<input type="number" step="1" value="${k}" placeholder="coeff k">
+                         <input type="number" step="1" value="${r}" placeholder="radicand r">
+                         <button class="btn btn-ghost" type="button">Remove</button>`;
+        row.lastElementChild.addEventListener('click', ()=>row.remove());
+        wrap.appendChild(row);
+      }
+      btnAdd.addEventListener('click', ()=>addRow());
+      addRow(3,8); addRow(2,18); addRow(-1,50);
+
+      document.getElementById('arGo').addEventListener('click', ()=>{
+        const n=+nEl.value; const rows=[...wrap.querySelectorAll('.row')];
+        const simplified=[]; // {k, r, show}
+        rows.forEach(row=>{
+          const k=+row.children[0].value, r=parseInt(row.children[1].value);
+          const s=simplifyRadical(n,k,r);
+          if(!s.err){
+            const key = s.inside===0 ? '1' : String(s.inside);
+            simplified.push({key, k:s.outside, r:s.inside});
+          }
+        });
+        // combine like keys
+        const sums={};
+        simplified.forEach(t=>{ sums[t.key]=(sums[t.key]||0)+t.k; });
+        // build result string
+        const parts=[];
+        Object.keys(sums).sort((a,b)=>+a-+b).forEach(key=>{
+          const coeff=sums[key];
+          if(Math.abs(coeff)<1e-12) return;
+          if(key==='1' || key==='0') parts.push(`${coeff}`);
+          else parts.push(`${coeff}\\sqrt[${n}]{${key}}`);
+        });
+        out.innerHTML = parts.length? `\\(${parts.join(' + ').replace(/\+\s-/g,' - ')}\\)` : 'All terms cancelled.';
+        if(window.typesetMath) window.typesetMath(out);
+      });
+      document.getElementById('arClear').addEventListener('click', ()=>{ wrap.innerHTML=''; out.textContent=''; addRow(); });
+    })();
+
+    /* ===== Multiply / Divide (Rationalize) ===== */
+    (function(){
+      const op=document.getElementById('mdOp'), nEl=document.getElementById('mdN');
+      const k1=document.getElementById('mdK1'), r1=document.getElementById('mdR1');
+      const k2=document.getElementById('mdK2'), r2=document.getElementById('mdR2');
+      const out=document.getElementById('mdOut');
+      function run(){
+        const n=+nEl.value, a=+k1.value, b=parseInt(r1.value), c=+k2.value, d=parseInt(r2.value);
+        if(op.value==='mult'){
+          const left=simplifyRadical(n,a,b), right=simplifyRadical(n,c,d);
+          if(left.err||right.err){ out.textContent=left.err||right.err; return; }
+          const k = left.outside * right.outside;
+          const r = (left.inside||1) * (right.inside||1);
+          const simp = simplifyRadical(n, k, r);
+          out.innerHTML = `\\((${a}\\sqrt[${n}]{${b}})\\cdot(${c}\\sqrt[${n}]{${d}}) = ${simp.inside===0? simp.outside : `${simp.outside}\\sqrt[${n}]{${simp.inside}}`}\\)`;
+        }else{ // divide + rationalize monomial radical denominator
+          const num=simplifyRadical(n,a,b), den=simplifyRadical(n,c,d);
+          if(num.err||den.err){ out.textContent=num.err||den.err; return; }
+          // expression: (num.outside * n√(num.inside)) / (den.outside * n√(den.inside))
+          // combine coefficients, and rationalize the radical in denominator
+          let coeff = num.outside / den.outside;
+          let topInside = (num.inside||1);
+          let botInside = (den.inside||1);
+
+          if(botInside===1){
+            // nothing to rationalize
+          }else{
+            // multiply by n√(botInside^{n-1})/(same)
+            topInside *= Math.pow(botInside, n-1);
+            botInside = Math.pow(botInside, n);
+          }
+          // now denominator radical is perfect nth power -> becomes integer
+          const denS=simplifyRadical(n, 1, botInside);
+          const newCoeff = coeff / (denS.inside===0 ? denS.outside : 1);
+          const topS = simplifyRadical(n, newCoeff, topInside);
+
+          const leftStr = `\\frac{${a}\\sqrt[${n}]{${b}}}{${c}\\sqrt[${n}]{${d}}}`;
+          const rightStr = topS.inside===0 ? `${topS.outside}` : `${topS.outside}\\sqrt[${n}]{${topS.inside}}`;
+          out.innerHTML = `\\(${leftStr} = ${rightStr}\\)`;
+        }
+        if(window.typesetMath) window.typesetMath(out);
+      }
+      document.getElementById('mdGo').addEventListener('click', run);
+      document.getElementById('mdReset').addEventListener('click', ()=>{ op.value='mult'; nEl.value=2; k1.value=3;r1.value=8;k2.value=2;r2.value=18; out.textContent=''; });
+      run();
+    })();
+  </script>
+</body>
+</html>
