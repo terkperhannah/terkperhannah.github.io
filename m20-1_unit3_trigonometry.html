@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 20-1 • Unit 3: Trigonometry</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']], processEscapes:true },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] },
+      chtml: { mtextInheritFont:true, matchFontHeight:false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    .content-wrapper{max-width:1200px;margin:0 auto;padding:20px;}
+    .content-box{border:2px solid #e0e0e0;border-radius:12px;padding:28px;margin-bottom:30px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+    .content-box h2{color:#2c3e50;border-bottom:3px solid #3498db;padding-bottom:10px;margin-bottom:18px;}
+    .sub{color:#566573;margin-top:-6px;}
+    .hero{background:linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%);border-color:#cfe8ff;}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#ecf5ff;color:#1d6fa5;font-size:12px;margin:6px 6px 0 0;border:1px solid #d6eaff;}
+
+    .two-col{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start;}
+    .checklist label{display:flex;align-items:flex-start;gap:10px;line-height:1.4;margin:10px 0;}
+    .checklist input{transform:translateY(3px);}
+
+    .video-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:10px;}
+    .video-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:14px;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .video-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#3498db;}
+    .video-card h4{color:#3498db;margin:6px 0 8px;}
+    .video-card p{margin:0;font-size:.95rem;color:#5a6b7b;}
+    .video-card small{display:block;margin-top:8px;color:#7a8b99;}
+
+    .units-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+    .unit-card{padding:18px;border-radius:10px;background:#f8f9fa;border:1px solid #e0e0e0;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .unit-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#2ecc71;}
+    .unit-card h3{color:#2ecc71;margin:0 0 8px;}
+
+    .pdf-frame{width:100%;height:540px;border:1px solid #e0e0e0;border-radius:10px;}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:#3498db;color:#fff;text-decoration:none;border:0;cursor:pointer;}
+    .btn:hover{background:#2f81bd;}
+    .btn-ghost{background:#fff;color:#3498db;border:1px solid #3498db;}
+    .btn-ghost:hover{background:#ecf5ff;}
+    .muted{color:#7f8c8d;font-size:.95rem;}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+
+    .mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+    .tool-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:16px;}
+    .tool-card h4{margin:0 0 10px;color:#3498db;}
+    .tool-card label{display:block;font-size:.9rem;margin:6px 0 2px;color:#566573;}
+    .tool-card input,.tool-card select{width:100%;padding:8px 10px;border:1px solid #dfe6ee;border-radius:8px;}
+    .svg-plot{width:100%;height:340px;display:block;border:1px solid #e0e0e0;border-radius:10px;background:#fff;}
+    .table-mini{width:100%;border-collapse:collapse;margin-top:8px;}
+    .table-mini th,.table-mini td{border:1px solid #e6e6e6;padding:6px 8px;text-align:right;}
+    .table-mini th{background:#f2f6ff;color:#2c3e50;text-align:left;}
+    .ok{color:#2ecc71;font-weight:600;}
+    .bad{color:#e74c3c;font-weight:600;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r=>r.text())
+        .then(html => {
+          const el=document.getElementById('navbar-placeholder');
+          el.innerHTML=html;
+          if (window.typesetMath) window.typesetMath(el);
+        })
+        .catch(err=>console.error('Navbar failed to load:',err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Unit 3: Trigonometry (Math 20-1)</h2>
+        <p class="sub">Angles & reference angles, CAST, special triangles & exact values, Sine and Cosine Laws, and the SSA ambiguous case.</p>
+        <div>
+          <span class="badge">Reference Angle</span>
+          <span class="badge">CAST</span>
+          <span class="badge">Special Triangles</span>
+          <span class="badge">Sine Law</span>
+          <span class="badge">Cosine Law</span>
+          <span class="badge">SSA Ambiguity</span>
+        </div>
+      </section>
+
+      <!-- Outcomes -->
+      <section class="content-box">
+        <h2>What You Should Be Able To Do</h2>
+        <div class="two-col">
+          <ul>
+            <li>Convert angles, find coterminal angles, determine the reference angle and quadrant (CAST).</li>
+            <li>Use special triangles to find exact values of \(\sin,\cos,\tan\) for key angles.</li>
+            <li>Apply the Sine Law and understand the SSA ambiguous case (0, 1, or 2 solutions).</li>
+            <li>Apply the Cosine Law in SAS and SSS situations; solve entire triangles.</li>
+            <li>Communicate results with appropriate rounding, units, and reasoning.</li>
+          </ul>
+
+          <div class="checklist" id="m201-u3-checklist">
+            <label><input type="checkbox" data-k="angles"> I can find reference angles and use CAST.</label>
+            <label><input type="checkbox" data-k="exact"> I know exact values from special triangles.</label>
+            <label><input type="checkbox" data-k="sine"> I can use the Sine Law and analyze SSA ambiguity.</label>
+            <label><input type="checkbox" data-k="cosine"> I can use the Cosine Law to solve triangles.</label>
+            <button class="btn btn-ghost" id="saveChecklist">Save Progress</button>
+            <small class="muted" id="saveNote" style="display:block;margin-top:6px;">Progress autosaves to this device.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Videos -->
+      <section class="content-box">
+        <h2>Video Library</h2>
+        <div class="video-grid">
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=reference+angle+and+CAST+rule">
+            <h4>Reference Angles & CAST</h4>
+            <p>Reference angle, quadrant signs, coterminals.</p>
+            <small>youtube.com – “reference angle and CAST rule”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=special+triangles+exact+values+30+45+60">
+            <h4>Special Triangles & Exact Values</h4>
+            <p>30-60-90 and 45-45-90 exact ratios.</p>
+            <small>youtube.com – “special triangles exact values 30 45 60”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=sine+law+SSA+ambiguous+case">
+            <h4>Sine Law & SSA Ambiguous Case</h4>
+            <p>0, 1, or 2 triangles — when and why.</p>
+            <small>youtube.com – “sine law SSA ambiguous case”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=cosine+law+SSS+SAS+problems">
+            <h4>Cosine Law (SSS/SAS)</h4>
+            <p>Find sides or angles when Sine Law won’t do.</p>
+            <small>youtube.com – “cosine law SSS SAS problems”</small>
+          </a>
+        </div>
+      </section>
+
+      <!-- Interactive Tools -->
+      <section class="content-box">
+        <h2>Interactive Tools</h2>
+        <div class="mini-grid">
+
+          <!-- Angle / CAST / Reference angle -->
+          <div class="tool-card">
+            <h4>Angle, Reference Angle & CAST</h4>
+            <label>Angle \(\theta\) (degrees; any integer/decimal)</label>
+            <input id="angTheta" type="number" step="any" value="-220">
+            <div style="margin-top:10px;">
+              <button class="btn" id="angGo">Analyze</button>
+              <button class="btn btn-ghost" id="angReset">Reset</button>
+            </div>
+            <p class="muted mono" id="angOut" style="margin-top:8px;"></p>
+            <svg id="angSVG" class="svg-plot" viewBox="0 0 600 340" preserveAspectRatio="none"></svg>
+          </div>
+
+          <!-- Special Triangles -->
+          <div class="tool-card">
+            <h4>Special Triangles – Exact Values</h4>
+            <label>Choose angle</label>
+            <select id="spAngle">
+              <option>30°</option>
+              <option selected>45°</option>
+              <option>60°</option>
+            </select>
+            <div style="margin-top:10px;">
+              <button class="btn" id="spGo">Show Values</button>
+            </div>
+            <p class="muted mono" id="spOut" style="margin-top:8px;"></p>
+            <table class="table-mini">
+              <thead><tr><th>Ratio</th><th>Exact</th><th>Decimal</th></tr></thead>
+              <tbody id="spTable"></tbody>
+            </table>
+          </div>
+
+          <!-- Sine Law (incl. SSA) -->
+          <div class="tool-card">
+            <h4>Sine Law (AAS/ASA/SSA)</h4>
+            <p class="muted">Use triangle \(ABC\) with sides \(a,b,c\) opposite \(\angle A,\angle B,\angle C\).</p>
+            <div class="mini-grid">
+              <div><label>\(A\) (°)</label><input id="slA" type="number" step="any" placeholder="e.g. 35"></div>
+              <div><label>\(a\)</label><input id="sla" type="number" step="any" placeholder="e.g. 12"></div>
+              <div><label>\(B\) (°)</label><input id="slB" type="number" step="any"></div>
+              <div><label>\(b\)</label><input id="slb" type="number" step="any"></div>
+              <div><label>\(C\) (°)</label><input id="slC" type="number" step="any"></div>
+              <div><label>\(c\)</label><input id="slc" type="number" step="any"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="slSolve">Solve with Sine Law</button>
+              <button class="btn btn-ghost" id="slClear">Clear</button>
+            </div>
+            <p class="muted mono" id="slOut" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- Cosine Law (SSS/SAS) -->
+          <div class="tool-card">
+            <h4>Cosine Law (SSS / SAS)</h4>
+            <p class="muted">Enter any valid SSS or SAS set for triangle \(ABC\).</p>
+            <div class="mini-grid">
+              <div><label>Side \(a\)</label><input id="cl_a" type="number" step="any" value="7"></div>
+              <div><label>Side \(b\)</label><input id="cl_b" type="number" step="any" value="9"></div>
+              <div><label>Side \(c\)</label><input id="cl_c" type="number" step="any" value="5"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="clSolve">Solve with Cosine Law</button>
+              <button class="btn btn-ghost" id="clReset">Reset</button>
+            </div>
+            <p class="muted mono" id="clOut" style="margin-top:8px;"></p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Quizzes -->
+      <section class="content-box">
+        <h2>Unit 3 Quizzes</h2>
+        <div class="units-grid">
+          <a href="m201_u3_quiz1.html" class="unit-card">
+            <h3>Quiz 1: Angles, CAST & Special Triangles</h3>
+            <p>Reference angles, quadrant signs, exact values.</p>
+          </a>
+          <a href="m201_u3_quiz2.html" class="unit-card">
+            <h3>Quiz 2: Sine & Cosine Laws (SSA/SSS/SAS)</h3>
+            <p>Triangle solving incl. ambiguous case.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Review PDF -->
+      <section class="content-box">
+        <h2>Downloadable Review</h2>
+        <p>
+          <a class="btn" href="assets/m201_u3_trig_review.pdf" download>Download PDF</a>
+          <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
+        </p>
+        <iframe class="pdf-frame" src="assets/m201_u3_trig_review.pdf#view=FitH"></iframe>
+      </section>
+
+      <!-- Scratchpad -->
+      <section class="content-box">
+        <h2>Quick Practice Scratchpad</h2>
+        <p class="muted">Try: reference angle for \(-220^\circ\); exact \(\sin 30^\circ,\cos 45^\circ,\tan 60^\circ\); solve \(a=12, A=35^\circ, b=10\) (SSA); solve \(a=7,b=9,c=5\) (SSS).</p>
+        <textarea id="scratch" style="width:100%;min-height:140px;border-radius:8px;padding:12px;border:1px solid #dfe6ee;resize:vertical;"></textarea>
+        <div style="margin-top:10px;">
+          <button class="btn" id="saveScratch">Save Notes</button>
+          <button class="btn btn-ghost" id="clearScratch">Clear</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <!-- Math helper -->
+  <script>
+    window.typesetMath = function(root){
+      if (window.MathJax && MathJax.typesetPromise){
+        MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
+      }
+    };
+  </script>
+
+  <!-- Page logic -->
+  <script>
+    /* ===== Checklist ===== */
+    (function(){
+      const KEY='m201_u3_check';
+      const box=document.getElementById('m201-u3-checklist');
+      const inputs=[...box.querySelectorAll('input[type="checkbox"][data-k]')];
+      const saveBtn=document.getElementById('saveChecklist'), saveNote=document.getElementById('saveNote');
+      function load(){ try{const d=JSON.parse(localStorage.getItem(KEY)||'{}'); inputs.forEach(cb=>cb.checked=!!d[cb.dataset.k]);}catch(e){} }
+      function save(){ const d={}; inputs.forEach(cb=>d[cb.dataset.k]=cb.checked); localStorage.setItem(KEY,JSON.stringify(d)); saveNote.textContent='Saved ✔'; setTimeout(()=>saveNote.textContent='Progress autosaves to this device.',1200); }
+      inputs.forEach(cb=>cb.addEventListener('change',save));
+      saveBtn.addEventListener('click',save);
+      load();
+    })();
+
+    /* ===== Scratchpad ===== */
+    (function(){
+      const SKEY='m201_u3_scratch';
+      const ta=document.getElementById('scratch');
+      const s=document.getElementById('saveScratch'), c=document.getElementById('clearScratch');
+      try{ ta.value=localStorage.getItem(SKEY)||'';}catch(e){}
+      s.addEventListener('click',()=>localStorage.setItem(SKEY,ta.value));
+      c.addEventListener('click',()=>{ ta.value=''; localStorage.setItem(SKEY,''); });
+    })();
+
+    /* ===== Angle / CAST / Reference angle ===== */
+    (function(){
+      const svg=document.getElementById('angSVG');
+      const out=document.getElementById('angOut');
+      const inp=document.getElementById('angTheta');
+      function norm360(t){ t%=360; if(t<0) t+=360; return t; }
+      function quadrant(theta){
+        if(theta%90===0) return 'axis';
+        if(theta>0 && theta<90) return 'QI';
+        if(theta>90 && theta<180) return 'QII';
+        if(theta>180 && theta<270) return 'QIII';
+        return 'QIV';
+      }
+      function refAngle(theta){
+        if(theta%90===0) return 0;
+        if(theta<90) return theta;
+        if(theta<180) return 180-theta;
+        if(theta<270) return theta-180;
+        return 360-theta;
+      }
+      function cast(q){ return {QI:'All', QII:'Sine', QIII:'Tangent', QIV:'Cosine'}[q] || 'Axis'; }
+
+      function draw(thetaDeg){
+        const W=600,H=340,cx=W/2,cy=H/2,R=Math.min(W,H)/2-24;
+        svg.innerHTML='';
+        const ns='http://www.w3.org/2000/svg';
+        const g=document.createElementNS(ns,'g'); svg.appendChild(g);
+
+        // axes
+        const ax=document.createElementNS(ns,'line'); ax.setAttribute('x1',24);ax.setAttribute('y1',cy);ax.setAttribute('x2',W-24);ax.setAttribute('y2',cy);ax.setAttribute('stroke','#99a3ad');ax.setAttribute('stroke-width','2');g.appendChild(ax);
+        const ay=document.createElementNS(ns,'line'); ay.setAttribute('x1',cx);ay.setAttribute('y1',24);ay.setAttribute('x2',cx);ay.setAttribute('y2',H-24);ay.setAttribute('stroke','#99a3ad');ay.setAttribute('stroke-width','2');g.appendChild(ay);
+
+        // circle
+        const circ=document.createElementNS(ns,'circle'); circ.setAttribute('cx',cx);circ.setAttribute('cy',cy);circ.setAttribute('r',R);circ.setAttribute('fill','#f8fbff');circ.setAttribute('stroke','#cfe3ff'); g.appendChild(circ);
+
+        // terminal ray
+        const rad = thetaDeg*Math.PI/180;
+        const x = cx + R*Math.cos(-rad); // SVG y-down
+        const y = cy + R*Math.sin(-rad);
+        const ray=document.createElementNS(ns,'line'); ray.setAttribute('x1',cx);ray.setAttribute('y1',cy);ray.setAttribute('x2',x);ray.setAttribute('y2',y);ray.setAttribute('stroke','#3d8dff');ray.setAttribute('stroke-width','3'); g.appendChild(ray);
+
+        // arrow head
+        const ah=document.createElementNS(ns,'circle'); ah.setAttribute('cx',x);ah.setAttribute('cy',y);ah.setAttribute('r',4);ah.setAttribute('fill','#3d8dff'); g.appendChild(ah);
+      }
+
+      function run(){
+        let t=parseFloat(inp.value||0);
+        const cot=norm360(t);
+        const q=quadrant(cot);
+        const ref=refAngle(cot);
+        const rad=(t*Math.PI/180);
+        out.innerHTML = `θ = ${t.toFixed(2)}° • coterminal in [0,360): <b>${cot.toFixed(2)}°</b> • quadrant: <b>${q}</b> • reference: <b>${ref.toFixed(2)}°</b> • CAST: <b>${cast(q)}</b> • radians: <b>${(rad/Math.PI).toFixed(4)}\\pi</b>`;
+        if(window.typesetMath) window.typesetMath(out);
+        draw(cot);
+      }
+      document.getElementById('angGo').addEventListener('click', run);
+      document.getElementById('angReset').addEventListener('click', ()=>{ inp.value='-220'; svg.innerHTML=''; out.textContent=''; });
+      run();
+    })();
+
+    /* ===== Special Triangles ===== */
+    (function(){
+      const sel=document.getElementById('spAngle');
+      const out=document.getElementById('spOut');
+      const tbody=document.getElementById('spTable');
+      function exact(angle){
+        if(angle===30) return {sin:'1/2', cos:'\\sqrt{3}/2', tan:'\\sqrt{3}/3'};
+        if(angle===45) return {sin:'\\sqrt{2}/2', cos:'\\sqrt{2}/2', tan:'1'};
+        return {sin:'\\sqrt{3}/2', cos:'1/2', tan:'\\sqrt{3}'};
+      }
+      function dec(angle){
+        const r=angle*Math.PI/180;
+        return {sin:Math.sin(r), cos:Math.cos(r), tan:Math.tan(r)};
+      }
+      function run(){
+        const ang=parseInt(sel.value);
+        const e=exact(ang), d=dec(ang);
+        out.innerHTML = `For ${ang}°: \\(\\sin=${e.sin},\\ \\cos=${e.cos},\\ \\tan=${e.tan}\\)`;
+        if(window.typesetMath) window.typesetMath(out);
+        tbody.innerHTML='';
+        [['sin',e.sin,d.sin],['cos',e.cos,d.cos],['tan',e.tan,d.tan]].forEach(row=>{
+          const tr=document.createElement('tr');
+          tr.innerHTML=`<td>${row[0]}</td><td>${row[1]}</td><td>${(+row[2]).toFixed(6)}</td>`;
+          tbody.appendChild(tr);
+        });
+        if(window.typesetMath) window.typesetMath(tbody);
+      }
+      document.getElementById('spGo').addEventListener('click', run);
+      run();
+    })();
+
+    /* ===== Sine Law (AAS/ASA/SSA with ambiguity) ===== */
+    (function(){
+      const A=document.getElementById('slA'), a=document.getElementById('sla');
+      const B=document.getElementById('slB'), b=document.getElementById('slb');
+      const C=document.getElementById('slC'), c=document.getElementById('slc');
+      const out=document.getElementById('slOut');
+
+      function toRad(d){ return d*Math.PI/180; }
+      function toDeg(r){ return r*180/Math.PI; }
+      function sanitize(x){ return isFinite(x)? x : null; }
+
+      function solveSSA(gA, ga, gb){
+        // Given A (deg), a, b -> find B (possible 0/1/2), then C & sides
+        const Adeg=gA, A=t oRad(gA), aL=ga, bL=gb;
+        const s = bL*Math.sin(A)/aL; // sin B candidate
+        if(s>1+1e-12) return {count:0, msg:'No triangle: sin B > 1'};
+        if(s<-1e-12) return {count:0, msg:'No triangle: sin B < -1'};
+        const sClamped=Math.max(-1,Math.min(1,s));
+        const B1=Math.asin(sClamped); // principal in (−π/2, π/2)
+        let Bdeg1=toDeg(B1); if(Bdeg1<0) Bdeg1=180+Bdeg1; // ensure positive angle
+        let Bdeg2=180-Bdeg1;
+
+        // Ambiguity test (geometry): h = b sin A
+        const h=bL*Math.sin(A);
+        let cases=[];
+        if(Adeg<180 && Adeg>0){
+          if(Adeg<90){
+            if(aL<h-1e-10){ return {count:0, msg:'No triangle (a < h).'}; }
+            if(Math.abs(aL-h)<=1e-10){ cases=['one']; Bdeg2=null; }
+            else if(aL>h && aL<bL){ cases=['two']; }
+            else if(aL>=bL){ cases=['one']; Bdeg2=null; }
+          }else{ // A obtuse
+            if(aL<=bL+1e-10){ return {count:0, msg:'No triangle (obtuse A requires a > b).'}; }
+            cases=['one']; Bdeg2=null;
+          }
+        }else{
+          return {count:0, msg:'Angle A must be between 0° and 180°.'};
+        }
+
+        function build(Bdeg){
+          const Cdeg=180 - Adeg - Bdeg;
+          const ratio = aL/Math.sin(A);
+          const c = ratio*Math.sin(toRad(Cdeg));
+          return {A:Adeg, B:Bdeg, C:Cdeg, a:aL, b:bL, c};
+        }
+
+        if(cases[0]==='two'){
+          const t1=build(Bdeg1), t2=build(Bdeg2);
+          return {count:2, t1, t2};
+        }else{
+          const Buse = (Bdeg2==null)? Bdeg1 : Bdeg1; // one-solution scenarios return principal
+          return {count:1, t:build(Buse)};
+        }
+      }
+
+      function solveSineLaw(){
+        out.textContent='';
+        const inA=sanitize(parseFloat(A.value)), ina=sanitize(parseFloat(a.value));
+        const inB=sanitize(parseFloat(B.value)), inb=sanitize(parseFloat(b.value));
+        const inC=sanitize(parseFloat(C.value)), inc=sanitize(parseFloat(c.value));
+
+        // Count givens
+        const angs=[inA,inB,inC].filter(v=>v>0).length;
+        const sides=[ina,inb,inc].filter(v=>v>0).length;
+
+        // SSA detection: one angle (A) and two sides a, b OR a, c etc.
+        if(inA && ina && inb && !inC && !inc && !inB){
+          const res=solveSSA(inA, ina, inb);
+          if(res.count===0){ out.innerHTML=res.msg; return; }
+          if(res.count===2){
+            const t1=res.t1, t2=res.t2;
+            out.innerHTML = `Two triangles (SSA ambiguity):<br>
+              1) \\(A=${t1.A.toFixed(2)}^\\circ,\\ B=${t1.B.toFixed(2)}^\\circ,\\ C=${t1.C.toFixed(2)}^\\circ,\\ c=${t1.c.toFixed(2)}\\)<br>
+              2) \\(A=${t2.A.toFixed(2)}^\\circ,\\ B=${t2.B.toFixed(2)}^\\circ,\\ C=${t2.C.toFixed(2)}^\\circ,\\ c=${t2.c.toFixed(2)}\\)`;
+            if(window.typesetMath) window.typesetMath(out);
+            return;
+          }
+          const t=res.t;
+          out.innerHTML = `One triangle: \\(A=${t.A.toFixed(2)}^\\circ,\\ B=${t.B.toFixed(2)}^\\circ,\\ C=${t.C.toFixed(2)}^\\circ,\\ c=${t.c.toFixed(2)}\\)`;
+          if(window.typesetMath) window.typesetMath(out);
+          return;
+        }
+
+        // General Sine Law solve when you have an angle-side pair
+        function tryPair(Adeg, aLen, Bdeg, bLen, Cdeg, cLen){
+          if(Adeg && aLen){
+            const k = aLen/Math.sin(toRad(Adeg));
+            if(Bdeg && !bLen) bLen = k*Math.sin(toRad(Bdeg));
+            if(Cdeg && !cLen) cLen = k*Math.sin(toRad(Cdeg));
+            if(!Bdeg && bLen){ const s=bLen/k; if(s<=1 && s>=-1) Bdeg=toDeg(Math.asin(s)); }
+            if(!Cdeg && cLen){ const s=cLen/k; if(s<=1 && s>=-1) Cdeg=toDeg(Math.asin(s)); }
+            if(!Bdeg && !Cdeg){ if(Adeg<180){ const rest=180-Adeg; if(rest>0){ Bdeg=rest/2; Cdeg=rest/2; } } }
+            return {A:Adeg,B:Bdeg,C:Cdeg,a:aLen,b:bLen,c:cLen};
+          }
+          return null;
+        }
+
+        let tri = tryPair(inA,ina,inB,inb,inC,inc)
+               || tryPair(inB,inb,inC,inc,inA,ina)
+               || tryPair(inC,inc,inA,ina,inB,inb);
+
+        if(tri){
+          // if one angle missing, fill by 180°
+          const Ak=!!tri.A, Bk=!!tri.B, Ck=!!tri.C;
+          const knownCount=[Ak,Bk,Ck].filter(Boolean).length;
+          if(knownCount===2) tri.C = tri.C || (180-tri.A-tri.B);
+          else if(knownCount===2) tri.B = tri.B || (180-tri.A-tri.C);
+          else if(knownCount===2) tri.A = tri.A || (180-tri.B-tri.C);
+
+          out.innerHTML = `\\(A=${(tri.A||NaN).toFixed(2)}^\\circ,\\ B=${(tri.B||NaN).toFixed(2)}^\\circ,\\ C=${(tri.C||NaN).toFixed(2)}^\\circ;\\ a=${(tri.a||NaN).toFixed(2)},\\ b=${(tri.b||NaN).toFixed(2)},\\ c=${(tri.c||NaN).toFixed(2)}\\)`;
+          if(window.typesetMath) window.typesetMath(out);
+        }else{
+          out.textContent='Provide an angle–opposite side pair (A & a, or B & b, or C & c), or SSA with A, a, and another side.';
+        }
+      }
+
+      document.getElementById('slSolve').addEventListener('click', solveSineLaw);
+      document.getElementById('slClear').addEventListener('click', ()=>{ [A,a,B,b,C,c].forEach(el=>el.value=''); out.textContent=''; });
+    })();
+
+    /* ===== Cosine Law (SSS / SAS) ===== */
+    (function(){
+      const a=document.getElementById('cl_a'), b=document.getElementById('cl_b'), c=document.getElementById('cl_c');
+      const out=document.getElementById('clOut');
+      function toDeg(r){ return r*180/Math.PI; }
+
+      function run(){
+        const A=+a.value, B=+b.value, C=+c.value;
+        if(!(A>0 && B>0 && C>0)){ out.textContent='Enter three positive sides (SSS).'; return; }
+        // Check triangle inequality
+        if(A+B<=C || A+C<=B || B+C<=A){ out.textContent='Sides do not satisfy triangle inequality.'; return; }
+        // Cosine law for angles
+        const alpha=Math.acos((B*B+C*C-A*A)/(2*B*C));
+        const beta =Math.acos((A*A+C*C-B*B)/(2*A*C));
+        const gamma=Math.acos((A*A+B*B-C*C)/(2*A*B));
+        out.innerHTML = `Angles: \\(\\alpha=${toDeg(alpha).toFixed(2)}^\\circ,\\ \\beta=${toDeg(beta).toFixed(2)}^\\circ,\\ \\gamma=${toDeg(gamma).toFixed(2)}^\\circ\\)`;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      document.getElementById('clSolve').addEventListener('click', run);
+      document.getElementById('clReset').addEventListener('click', ()=>{ a.value=7;b.value=9;c.value=5; out.textContent=''; });
+      run();
+    })();
+  </script>
+</body>
+</html>
