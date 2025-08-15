@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Practice Test / Final Review</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']], processEscapes:true },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] },
+      chtml: { mtextInheritFont:true, matchFontHeight:false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    /* Layout matches your site */
+    .content-wrapper{max-width:1200px;margin:0 auto;padding:20px;}
+    .content-box{border:2px solid #e0e0e0;border-radius:12px;padding:28px;margin-bottom:30px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+    .content-box h2{color:#2c3e50;border-bottom:3px solid #3498db;padding-bottom:10px;margin-bottom:18px;}
+    .sub{color:#566573;margin-top:-6px;}
+    .hero{background:linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%);border-color:#cfe8ff;}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#ecf5ff;color:#1d6fa5;font-size:12px;margin:6px 6px 0 0;border:1px solid #d6eaff;}
+
+    .pill-switch{display:flex;gap:10px;flex-wrap:wrap}
+    .pill{padding:8px 14px;border-radius:999px;border:1px solid #e0e0e0;background:#f8f9fa;cursor:pointer;font-weight:600;color:#34495e;}
+    .pill.active{background:#3498db;color:#fff;border-color:#3498db}
+
+    .units-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+    .unit-card{padding:18px;border-radius:10px;background:#f8f9fa;border:1px solid #e0e0e0;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .unit-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#2ecc71;}
+    .unit-card h3{color:#2ecc71;margin:0 0 8px;}
+    .muted{color:#7f8c8d;font-size:.95rem;}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:#3498db;color:#fff;text-decoration:none;border:0;cursor:pointer;}
+    .btn:hover{background:#2f81bd;}
+    .btn-ghost{background:#fff;color:#3498db;border:1px solid #3498db;}
+    .btn-ghost:hover{background:#ecf5ff;}
+    .pdf-frame{width:100%;height:560px;border:1px solid #e0e0e0;border-radius:10px;}
+
+    .two-col{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));align-items:start;}
+    .mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;}
+    .tool-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:16px;}
+    .tool-card h4{margin:0 0 10px;color:#3498db;}
+    .tool-card label{display:block;font-size:.9rem;margin:6px 0 2px;color:#566573;}
+    .tool-card input,.tool-card select,.tool-card textarea{width:100%;padding:8px 10px;border:1px solid #dfe6ee;border-radius:8px;}
+    .tool-card textarea{min-height:88px;resize:vertical;}
+    .qa{border:1px dashed #d9e6ff;border-radius:8px;padding:12px;margin:10px 0;background:#fbfdff}
+    .qa .q{font-weight:600;margin-bottom:6px;}
+    .qa .a{display:none;margin-top:8px;color:#2c3e50;background:#fff;border:1px solid #eaeff7;border-radius:8px;padding:10px;}
+    .qa .reveal{margin-top:8px}
+    .strong{font-weight:700}
+    .ok{color:#2ecc71;font-weight:700}
+    .bad{color:#e74c3c;font-weight:700}
+    .progress{height:8px;background:#eef3f8;border-radius:999px;overflow:hidden}
+    .progress>div{height:100%;background:#2ecc71;width:0%}
+
+    .accord{border:1px solid #e0e0e0;border-radius:10px;overflow:hidden}
+    .accord summary{cursor:pointer;padding:10px 14px;background:#f6fbff;color:#1d6fa5;border-bottom:1px solid #e0e0e0;list-style:none}
+    .accord summary::-webkit-details-marker{display:none}
+    .accord .panel{padding:14px;background:#fff}
+
+    .svg-plot{width:100%;height:120px;border:1px solid #e0e0e0;border-radius:8px;background:#fff}
+
+    .checklist label{display:flex;gap:10px;align-items:flex-start;margin:8px 0}
+    .checklist input{transform:translateY(3px)}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r=>r.text())
+        .then(html => {
+          const el=document.getElementById('navbar-placeholder');
+          el.innerHTML=html;
+          if (window.typesetMath) window.typesetMath(el);
+        })
+        .catch(err=>console.error('Navbar failed to load:',err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Practice Test / Final Review Hub</h2>
+        <p class="sub">Targeted mixed practice, summative practice tests, quick formula sheet, and a lightweight grader — all in one place.</p>
+        <div>
+          <span class="badge">Cumulative Practice</span>
+          <span class="badge">Timed Mode</span>
+          <span class="badge">MathJax</span>
+          <span class="badge">PDF Review</span>
+          <span class="badge">Saves to Device</span>
+        </div>
+      </section>
+
+      <!-- COURSE SWITCHER -->
+      <section class="content-box">
+        <h2>Choose Course</h2>
+        <div class="pill-switch" id="courseSwitch">
+          <button class="pill active" data-course="m10c">Math 10C</button>
+          <button class="pill" data-course="m201">Math 20-1</button>
+        </div>
+        <p class="muted">Your selection persists on this device.</p>
+      </section>
+
+      <!-- PRACTICE TESTS + REVIEW PDF -->
+      <section class="content-box" id="testsWrap">
+        <h2>Practice Tests & Review Packages</h2>
+
+        <!-- Math 10C -->
+        <div class="course-block" data-course="m10c">
+          <div class="units-grid">
+            <a class="unit-card" href="m10c_practiceA.html"><h3>Math 10C • Practice Test A</h3><p>Mixed topics: Number, Exponents, Measurement, Trig, Polynomials, Factoring.</p></a>
+            <a class="unit-card" href="m10c_practiceB.html"><h3>Math 10C • Practice Test B</h3><p>Fresh variant with different numbers and contexts.</p></a>
+            <a class="unit-card" href="m10c_practiceC.html"><h3>Math 10C • Practice Test C</h3><p>Application-heavy problems and calculator use.</p></a>
+          </div>
+          <div style="margin-top:16px">
+            <a class="btn" href="assets/m10c_final_review.pdf" download>Download 10C Review PDF</a>
+            <button class="btn btn-ghost" onclick="window.print()">Print Page</button>
+          </div>
+          <iframe class="pdf-frame" src="assets/m10c_final_review.pdf#view=FitH"></iframe>
+        </div>
+
+        <!-- Math 20-1 -->
+        <div class="course-block" data-course="m201" style="display:none">
+          <div class="units-grid">
+            <a class="unit-card" href="m201_practiceA.html"><h3>Math 20-1 • Practice Test A</h3><p>Sequences/Series, Radicals, Trig, Factoring, Quadratics, Rationals, Abs/Reciprocal, Systems/Ineq.</p></a>
+            <a class="unit-card" href="m201_practiceB.html"><h3>Math 20-1 • Practice Test B</h3><p>Alternate set to reduce memorization and boost mastery.</p></a>
+            <a class="unit-card" href="m201_practiceC.html"><h3>Math 20-1 • Practice Test C</h3><p>Application questions, modelling and interpretation.</p></a>
+          </div>
+          <div style="margin-top:16px">
+            <a class="btn" href="assets/m201_final_review.pdf" download>Download 20-1 Review PDF</a>
+            <button class="btn btn-ghost" onclick="window.print()">Print Page</button>
+          </div>
+          <iframe class="pdf-frame" src="assets/m201_final_review.pdf#view=FitH"></iframe>
+        </div>
+      </section>
+
+      <!-- MIXED QUESTION GENERATOR -->
+      <section class="content-box">
+        <h2>Mixed Question Generator</h2>
+        <div class="two-col">
+          <div class="tool-card">
+            <h4>Create a Set</h4>
+            <div class="mini-grid">
+              <div>
+                <label>Course</label>
+                <select id="mixCourse">
+                  <option value="m10c">Math 10C</option>
+                  <option value="m201">Math 20-1</option>
+                </select>
+              </div>
+              <div>
+                <label># of Questions</label>
+                <select id="mixCount">
+                  <option>6</option><option selected>10</option><option>15</option>
+                </select>
+              </div>
+              <div>
+                <label>Difficulty</label>
+                <select id="mixDiff">
+                  <option value="all" selected>Mixed</option>
+                  <option value="core">Core</option>
+                  <option value="stretch">Stretch</option>
+                </select>
+              </div>
+            </div>
+            <div class="mini-grid" style="margin-top:8px">
+              <label><input type="checkbox" id="mixWithAnswers" checked/> Include solutions (hidden by default)</label>
+              <label><input type="checkbox" id="mixShuffle" checked/> Shuffle topics</label>
+            </div>
+            <div style="margin-top:10px">
+              <button class="btn" id="mixGenerate">Generate Set</button>
+              <button class="btn btn-ghost" id="mixClear">Clear</button>
+            </div>
+            <div class="progress" style="margin-top:10px"><div id="mixBar"></div></div>
+            <p id="mixNote" class="muted" style="margin-top:6px">Pro tip: print this page for a clean handout.</p>
+          </div>
+
+          <div>
+            <div id="mixOutput"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FORMULA SHEET -->
+      <section class="content-box">
+        <h2>Formula Sheet & Quick Facts</h2>
+        <div class="two-col">
+          <div>
+            <details class="accord" open>
+              <summary><strong>Inline Formula Sheet</strong></summary>
+              <div class="panel">
+                <div class="mini-grid">
+                  <div>
+                    <h4 class="muted">Algebra & Powers</h4>
+                    <ul>
+                      <li>\(a^m a^n = a^{m+n}\), \(\dfrac{a^m}{a^n}=a^{m-n}\), \((a^m)^n=a^{mn}\).</li>
+                      <li>\(a^{-n}=\dfrac{1}{a^n}\), \(a^{1/n}=\sqrt[n]{a}\).</li>
+                      <li>Quadratic formula: \(x=\dfrac{-b\pm\sqrt{b^2-4ac}}{2a}\); \(\Delta=b^2-4ac\).</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="muted">Trig (Right Triangle)</h4>
+                    <ul>
+                      <li>\(\sin\theta=\dfrac{\text{opp}}{\text{hyp}}\), \(\cos\theta=\dfrac{\text{adj}}{\text{hyp}}\), \(\tan\theta=\dfrac{\text{opp}}{\text{adj}}\).</li>
+                      <li>Law of Sines: \(\dfrac{a}{\sin A}=\dfrac{b}{\sin B}=\dfrac{c}{\sin C}\), Law of Cosines: \(c^2=a^2+b^2-2ab\cos C\).</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="muted">Sequences & Series</h4>
+                    <ul>
+                      <li>Arithmetic: \(u_n=u_1+(n-1)d\), \(S_n=\dfrac{n}{2}(2u_1+(n-1)d)\).</li>
+                      <li>Geometric: \(u_n=u_1 r^{n-1}\), \(S_n=u_1\dfrac{1-r^n}{1-r}\) (if \(r\neq1\)).</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="muted">Measurement</h4>
+                    <ul>
+                      <li>Cylinder: \(V=\pi r^2 h\). Cone: \(V=\dfrac{1}{3}\pi r^2 h\). Sphere: \(V=\dfrac{4}{3}\pi r^3\).</li>
+                      <li>SA Sphere: \(4\pi r^2\), Right prism: \(SA=2A_b+P_b h\).</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </div>
+          <div>
+            <div class="tool-card">
+              <h4>Download Formula Sheet</h4>
+              <div class="mini-grid">
+                <a class="btn" href="assets/formula_sheet.pdf" download>Download PDF</a>
+                <button class="btn btn-ghost" onclick="document.getElementById('fsFrame').scrollIntoView({behavior:'smooth'})">Scroll to Preview</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <iframe id="fsFrame" class="pdf-frame" src="assets/formula_sheet.pdf#view=FitH"></iframe>
+      </section>
+
+      <!-- TIMER + GRADE ESTIMATOR -->
+      <section class="content-box">
+        <h2>Timer & Quick Grade Estimator</h2>
+        <div class="two-col">
+          <div class="tool-card">
+            <h4>Timer</h4>
+            <div class="mini-grid">
+              <div><label>Target (minutes)</label><input id="tmTarget" type="number" min="1" step="1" value="60"></div>
+            </div>
+            <div style="margin-top:8px">
+              <button class="btn" id="tmStart">Start</button>
+              <button class="btn btn-ghost" id="tmStop">Stop</button>
+              <button class="btn btn-ghost" id="tmReset">Reset</button>
+            </div>
+            <svg id="tmBar" class="svg-plot" viewBox="0 0 640 120" preserveAspectRatio="none"></svg>
+            <p id="tmReadout" class="muted" style="margin-top:6px">00:00 elapsed</p>
+          </div>
+
+          <div class="tool-card">
+            <h4>Grade Estimator</h4>
+            <div class="mini-grid">
+              <div><label>Total Marks</label><input id="geTotal" type="number" min="1" step="1" value="40"></div>
+              <div><label>Correct</label><input id="geCorrect" type="number" min="0" step="1" value="34"></div>
+            </div>
+            <div style="margin-top:8px">
+              <button class="btn" id="geCalc">Calculate</button>
+              <button class="btn btn-ghost" id="geReset">Reset</button>
+            </div>
+            <p id="geOut" class="muted" style="margin-top:6px"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CHECKLIST + SCRATCHPAD -->
+      <section class="content-box">
+        <h2>Personal Checklist & Notes</h2>
+        <div class="two-col">
+          <div class="tool-card">
+            <h4>Exam-Day Checklist</h4>
+            <div id="chkList" class="checklist">
+              <label><input type="checkbox" data-k="calc"> Calculator charged & mode checked</label>
+              <label><input type="checkbox" data-k="id"> School ID & pencils/eraser</label>
+              <label><input type="checkbox" data-k="sleep"> 8 hours sleep + water/snack</label>
+              <label><input type="checkbox" data-k="skim"> Skim formula sheet</label>
+              <label><input type="checkbox" data-k="plan"> Time plan: 1st pass → flag → second pass</label>
+            </div>
+            <button class="btn btn-ghost" id="chkSave">Save</button>
+            <span id="chkNote" class="muted" style="margin-left:8px"></span>
+          </div>
+
+          <div class="tool-card">
+            <h4>Scratchpad</h4>
+            <textarea id="scratch" placeholder="Quick reminders, errors to avoid, last-minute formulas…"></textarea>
+            <div style="margin-top:8px">
+              <button class="btn" id="saveScratch">Save Notes</button>
+              <button class="btn btn-ghost" id="clearScratch">Clear</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUICK LINKS -->
+      <section class="content-box">
+        <h2>Quick Links</h2>
+        <div class="units-grid">
+          <a class="unit-card" href="m10c_unit1.html"><h3>Math 10C Units</h3><p>Jump back to any 10C unit review page.</p></a>
+          <a class="unit-card" href="m20-1_unit1.html"><h3>Math 20-1 Units</h3><p>Jump back to any 20-1 unit review page.</p></a>
+          <a class="unit-card" href="https://www.desmos.com/" target="_blank"><h3>Desmos Graphing Calculator</h3><p>Graph & check quickly.</p></a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <!-- Math helper -->
+  <script>
+    window.typesetMath = function(root){
+      if (window.MathJax && MathJax.typesetPromise){
+        MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
+      }
+    };
+  </script>
+
+  <!-- Page Logic -->
+  <script>
+    /* ===== Persisted Course Selection ===== */
+    (function(){
+      const KEY='final_review_course';
+      const pills=[...document.querySelectorAll('#courseSwitch .pill')];
+      const blocks=[...document.querySelectorAll('.course-block')];
+      function setCourse(c){
+        pills.forEach(p=>p.classList.toggle('active', p.dataset.course===c));
+        blocks.forEach(b=>b.style.display = (b.dataset.course===c)?'block':'none');
+        localStorage.setItem(KEY,c);
+        // also set generator dropdown
+        const sel=document.getElementById('mixCourse'); if(sel) sel.value=c;
+      }
+      const saved=localStorage.getItem(KEY) || 'm10c';
+      setCourse(saved);
+      pills.forEach(p=>p.addEventListener('click', ()=>setCourse(p.dataset.course)));
+    })();
+
+    /* ===== Mixed Question Banks (concise but representative) ===== */
+    const BANK = {
+      m10c: [
+        {unit:'Number', diff:'core',
+         q:'Prime factorize \\(360\\). Then write \\(\\sqrt{360}\\) in simplest radical form.',
+         a:'\\(360=2^3\\cdot 3^2\\cdot5\\). \\(\\sqrt{360}=\\sqrt{(2^2)(3^2)\\cdot(2\\cdot5)}=2\\cdot3\\sqrt{10}=6\\sqrt{10}\\).'},
+        {unit:'Exponents', diff:'core',
+         q:'Simplify and write with positive exponents: \\(\\dfrac{3x^{-2}y^3}{9x^{-1}y}\\).',
+         a:'=\\(\\dfrac{3}{9}x^{-2-(-1)}y^{3-1}=\\dfrac{1}{3}x^{-1}y^{2}=\\dfrac{y^2}{3x}\\).'},
+        {unit:'Measurement', diff:'core',
+         q:'A cylinder has radius \\(4\\,\\text{cm}\\) and height \\(10\\,\\text{cm}\\). Find volume.',
+         a:'\\(V=\\pi r^2h=\\pi(4^2)(10)=160\\pi\\,\\text{cm}^3\\).'},
+        {unit:'Trig', diff:'core',
+         q:'Right triangle with angle \\(\\theta=38^\\circ\\) and hypotenuse 12. Find opposite side (nearest tenth).',
+         a:'\\(\\sin\\theta=\\dfrac{\\text{opp}}{12}\\Rightarrow\\text{opp}=12\\sin38^\\circ\\approx7.4\\).'},
+        {unit:'Polynomials', diff:'core',
+         q:'Expand: \\((2x-5)(x+3)\\).',
+         a:'\\(2x^2+6x-5x-15=2x^2+x-15\\).'},
+        {unit:'Factoring', diff:'core',
+         q:'Factor completely: \\(6x^2-7x-3\\).',
+         a:'\\((3x+?)(2x+?)\\Rightarrow (3x+2)(2x-3)\\text{ gives }6x^2-5x-6; (3x-?)(2x+?)\\Rightarrow (3x+1)(2x-3)=6x^2-9x+2x-3=6x^2-7x-3\\).'}
+      ],
+      m201: [
+        {unit:'Sequences', diff:'core',
+         q:'Arithmetic sequence with \\(u_1=7\\), \\(d=4\\). Find \\(u_{18}\\) and \\(S_{18}\\).',
+         a:'\\(u_{18}=7+17\\cdot4=75\\). \\(S_{18}=\\tfrac{18}{2}(2\\cdot7+17\\cdot4)=9(14+68)=9\\cdot82=738\\).'},
+        {unit:'Series (Geo)', diff:'core',
+         q:'Geometric sequence \\(u_1=5\\), \\(r=\\tfrac{3}{2}\\). Find \\(u_6\\).',
+         a:'\\(u_6=5\\left(\\tfrac{3}{2}\\right)^5=5\\cdot\\tfrac{243}{32}=\\tfrac{1215}{32}\\approx37.97\\).'},
+        {unit:'Radicals', diff:'core',
+         q:'Simplify: \\(\\dfrac{\\sqrt{72}}{\\sqrt{2}}-\\sqrt{8}\\).',
+         a:'=\\(\\sqrt{36}-\\sqrt{8}=6-2\\sqrt{2}\\).'},
+        {unit:'Trig (Laws)', diff:'stretch',
+         q:'In \\(\\triangle ABC\\), \\(a=12\\), \\(b=9\\), \\(C=38^\\circ\\). Find \\(c\\) to 1 d.p.',
+         a:'\\(c^2=a^2+b^2-2ab\\cos C=144+81-216\\cos38^\\circ\\approx225-170.2=54.8\\Rightarrow c\\approx7.4\\).'},
+        {unit:'Factoring', diff:'core',
+         q:'Factor: \\(2x^3-8x\\).',
+         a:'\\(2x(x^2-4)=2x(x-2)(x+2)\\).'},
+        {unit:'Quadratics', diff:'core',
+         q:'Solve: \\(x^2-5x-24=0\\).',
+         a:'\\(x=\\frac{5\\pm\\sqrt{25+96}}{2}=\\frac{5\\pm\\sqrt{121}}{2}=\\{12,-2\\}\\).'},
+        {unit:'Rational', diff:'stretch',
+         q:'Solve \\(\\dfrac{x+3}{x-2}=2\\). State restrictions.',
+         a:'Restriction: \\(x\\neq2\\). Solve: \\(x+3=2x-4\\Rightarrow x=7\\) (valid).'},
+        {unit:'Abs/Recip', diff:'core',
+         q:'Solve \\(|3x-5|=7\\).',
+         a:'\\(3x-5=7\\Rightarrow x=4\\) or \\(3x-5=-7\\Rightarrow x=-\\tfrac{2}{3}\\).'},
+        {unit:'Systems/Ineq', diff:'stretch',
+         q:'Find intersection(s) of \\(y=x^2-1\\) and \\(y=3x-5\\).',
+         a:'\\(x^2-1=3x-5\\Rightarrow x^2-3x+4=0\\Rightarrow \\Delta=9-16<0\\Rightarrow\\) no real intersections.'}
+      ]
+    };
+
+    /* ===== Mixed Generator ===== */
+    (function(){
+      const out=document.getElementById('mixOutput');
+      const course=document.getElementById('mixCourse');
+      const count=document.getElementById('mixCount');
+      const diff=document.getElementById('mixDiff');
+      const withAns=document.getElementById('mixWithAnswers');
+      const shuffle=document.getElementById('mixShuffle');
+      const bar=document.getElementById('mixBar');
+      const note=document.getElementById('mixNote');
+
+      function pick(arr, n){
+        const A=[...arr];
+        if(shuffle.checked){ for(let i=A.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [A[i],A[j]]=[A[j],A[i]]; } }
+        return A.slice(0, n);
+      }
+
+      function generate(){
+        const pool = BANK[course.value].filter(q => diff.value==='all' ? true : q.diff===diff.value);
+        const n = Math.min(Number(count.value), pool.length);
+        const set = pick(pool, n);
+        out.innerHTML = '';
+        set.forEach((qa, i)=>{
+          const box=document.createElement('div'); box.className='qa';
+          const q=document.createElement('div'); q.className='q'; q.innerHTML = `<span class="strong">Q${i+1} (${qa.unit})</span>: ${qa.q}`;
+          const a=document.createElement('div'); a.className='a'; a.innerHTML = qa.a;
+          const btn=document.createElement('button'); btn.className='btn btn-ghost reveal'; btn.textContent='Show Solution';
+          btn.addEventListener('click', ()=>{ a.style.display = (a.style.display==='block'?'none':'block'); btn.textContent = a.style.display==='block'?'Hide Solution':'Show Solution'; if(window.typesetMath) window.typesetMath(a); });
+          box.appendChild(q);
+          if(withAns.checked){ box.appendChild(btn); box.appendChild(a); }
+          out.appendChild(box);
+        });
+        if(window.typesetMath) window.typesetMath(out);
+        // fun progress bar (fills to 100% when generated)
+        bar.style.width = '100%'; setTimeout(()=>bar.style.width='0%', 1200);
+        note.textContent = `Generated ${n} question(s).`;
+      }
+
+      document.getElementById('mixGenerate').addEventListener('click', generate);
+      document.getElementById('mixClear').addEventListener('click', ()=>{ out.innerHTML=''; note.textContent=''; });
+    })();
+
+    /* ===== Timer ===== */
+    (function(){
+      const svg=document.getElementById('tmBar');
+      const txt=document.getElementById('tmReadout');
+      const target=document.getElementById('tmTarget');
+      let start=null, timer=null, elapsed=0; // ms
+
+      function draw(){
+        const W=640,H=120, ns='http://www.w3.org/2000/svg';
+        svg.innerHTML='';
+        const bg=document.createElementNS(ns,'rect'); bg.setAttribute('x',0); bg.setAttribute('y',H/2-10); bg.setAttribute('width',W); bg.setAttribute('height',20); bg.setAttribute('rx',10); bg.setAttribute('fill','#eef3f8'); svg.appendChild(bg);
+        const ratio = Math.min(elapsed/(Number(target.value)*60000), 1);
+        const fg=document.createElementNS(ns,'rect'); fg.setAttribute('x',0); fg.setAttribute('y',H/2-10); fg.setAttribute('width',W*ratio); fg.setAttribute('height',20); fg.setAttribute('rx',10); fg.setAttribute('fill', ratio<0.7?'#2ecc71': ratio<1?'#f1c40f':'#e74c3c'); svg.appendChild(fg);
+      }
+      function tick(){
+        elapsed = Date.now() - start;
+        const s = Math.floor(elapsed/1000), mm=String(Math.floor(s/60)).padStart(2,'0'), ss=String(s%60).padStart(2,'0');
+        txt.textContent = `${mm}:${ss} elapsed`;
+        draw();
+      }
+      document.getElementById('tmStart').addEventListener('click', ()=>{ if(!timer){ start=Date.now()-elapsed; timer=setInterval(tick, 250);} });
+      document.getElementById('tmStop').addEventListener('click', ()=>{ clearInterval(timer); timer=null; tick(); });
+      document.getElementById('tmReset').addEventListener('click', ()=>{ clearInterval(timer); timer=null; elapsed=0; draw(); txt.textContent='00:00 elapsed'; });
+      draw();
+    })();
+
+    /* ===== Grade Estimator ===== */
+    (function(){
+      const total=document.getElementById('geTotal'), correct=document.getElementById('geCorrect'), out=document.getElementById('geOut');
+      function calc(){
+        const t=+total.value, c=+correct.value;
+        if(!(t>0) || c<0){ out.textContent='Enter valid totals.'; return; }
+        const p = Math.max(0, Math.min(100, (c/t)*100));
+        out.innerHTML = `Score: <span class="strong">${c}/${t}</span> → <span class="${p>=80?'ok':'bad'}">${p.toFixed(1)}%</span>`;
+      }
+      document.getElementById('geCalc').addEventListener('click', calc);
+      document.getElementById('geReset').addEventListener('click', ()=>{ total.value=40; correct.value=34; out.textContent=''; });
+      calc();
+    })();
+
+    /* ===== Checklist & Scratchpad (persist) ===== */
+    (function(){
+      const KEY='final_review_check';
+      const wrap=document.getElementById('chkList');
+      const inputs=[...wrap.querySelectorAll('input[type="checkbox"][data-k]')];
+      const save=document.getElementById('chkSave'), note=document.getElementById('chkNote');
+      function load(){ try{const d=JSON.parse(localStorage.getItem(KEY)||'{}'); inputs.forEach(cb=>cb.checked=!!d[cb.dataset.k]);}catch(e){} }
+      function persist(){ const d={}; inputs.forEach(cb=>d[cb.dataset.k]=cb.checked); localStorage.setItem(KEY,JSON.stringify(d)); note.textContent='Saved ✔'; setTimeout(()=>note.textContent='',1200); }
+      inputs.forEach(cb=>cb.addEventListener('change',persist)); save.addEventListener('click',persist); load();
+    })();
+
+    (function(){
+      const KEY='final_review_scratch';
+      const ta=document.getElementById('scratch');
+      const s=document.getElementById('saveScratch'), c=document.getElementById('clearScratch');
+      try{ ta.value=localStorage.getItem(KEY)||'';}catch(e){}
+      s.addEventListener('click',()=>localStorage.setItem(KEY,ta.value));
+      c.addEventListener('click',()=>{ ta.value=''; localStorage.setItem(KEY,''); });
+    })();
+
+    /* ===== Typeset helper (navbar & generated content) ===== */
+    window.addEventListener('load', ()=>{ if(window.typesetMath) window.typesetMath(); });
+  </script>
+</body>
+</html>
