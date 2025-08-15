@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 10C • Unit 4 Review – Trigonometry</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']], processEscapes:true },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] },
+      chtml: { mtextInheritFont:true, matchFontHeight:false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    .content-wrapper{max-width:1200px;margin:0 auto;padding:20px;}
+    .content-box{border:2px solid #e0e0e0;border-radius:12px;padding:28px;margin-bottom:30px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+    .content-box h2{color:#2c3e50;border-bottom:3px solid #3498db;padding-bottom:10px;margin-bottom:18px;}
+    .sub{color:#566573;margin-top:-6px;}
+    .hero{background:linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%);border-color:#cfe8ff;}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#ecf5ff;color:#1d6fa5;font-size:12px;margin:6px 6px 0 0;border:1px solid #d6eaff;}
+
+    .two-col{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start;}
+    .checklist label{display:flex;align-items:flex-start;gap:10px;line-height:1.4;margin:10px 0;}
+    .checklist input{transform:translateY(3px);}
+
+    .video-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:10px;}
+    .video-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:14px;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .video-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#3498db;}
+    .video-card h4{color:#3498db;margin:6px 0 8px;}
+    .video-card p{margin:0;font-size:.95rem;color:#5a6b7b;}
+    .video-card small{display:block;margin-top:8px;color:#7a8b99;}
+
+    .units-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+    .unit-card{padding:18px;border-radius:10px;background:#f8f9fa;border:1px solid #e0e0e0;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .unit-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#2ecc71;}
+    .unit-card h3{color:#2ecc71;margin:0 0 8px;}
+
+    .pdf-frame{width:100%;height:540px;border:1px solid #e0e0e0;border-radius:10px;}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:#3498db;color:#fff;text-decoration:none;border:0;cursor:pointer;}
+    .btn:hover{background:#2f81bd;}
+    .btn-ghost{background:#fff;color:#3498db;border:1px solid #3498db;}
+    .btn-ghost:hover{background:#ecf5ff;}
+    .muted{color:#7f8c8d;font-size:.95rem;}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+
+    .mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+    .tool-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:16px;}
+    .tool-card h4{margin:0 0 10px;color:#3498db;}
+    .tool-card label{display:block;font-size:.9rem;margin:6px 0 2px;color:#566573;}
+    .tool-card input,.tool-card select{width:100%;padding:8px 10px;border:1px solid #dfe6ee;border-radius:8px;}
+
+    .graph-wrap{background:#fff;border:1px solid #e0e0e0;border-radius:10px;overflow:hidden;}
+    .svg-plot{width:100%;height:320px;display:block;}
+    .legend{display:flex;gap:12px;align-items:center;margin-top:8px;font-size:14px;color:#5a6b7b;}
+    .swatch{width:16px;height:16px;border-radius:3px;display:inline-block;border:1px solid #ccc;}
+    .swatch.base{background:#c9ced6;}
+    .swatch.trans{background:#6ab0ff;border-color:#4b92da;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r=>r.text())
+        .then(html => {
+          const el=document.getElementById('navbar-placeholder');
+          el.innerHTML=html;
+          if (window.typesetMath) window.typesetMath(el);
+        })
+        .catch(err=>console.error('Navbar failed to load:',err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Unit 4 Review: Trigonometry</h2>
+        <p class="sub">Trig ratios, calculator use, right-triangle side/angle problems, problem solving with trig.</p>
+        <div>
+          <span class="badge">SOH&nbsp;CAH&nbsp;TOA</span>
+          <span class="badge">\(\sin\theta=\frac{\text{opp}}{\text{hyp}}\)</span>
+          <span class="badge">\(\cos\theta=\frac{\text{adj}}{\text{hyp}}\)</span>
+          <span class="badge">\(\tan\theta=\frac{\text{opp}}{\text{adj}}\)</span>
+          <span class="badge">\(\theta=\sin^{-1},\cos^{-1},\tan^{-1}\)</span>
+        </div>
+      </section>
+
+      <!-- Outcomes -->
+      <section class="content-box">
+        <h2>What You Should Be Able To Do</h2>
+        <div class="two-col">
+          <ul>
+            <li>Identify opposite, adjacent, and hypotenuse relative to a marked angle in a right triangle.</li>
+            <li>Use \(\sin,\cos,\tan\) and inverse trig to find missing sides and angles.</li>
+            <li>Choose correct calculator mode (degrees) and round answers reasonably.</li>
+            <li>Apply trig to contexts: angle of elevation/depression, ramps, ladders, sightlines.</li>
+          </ul>
+
+          <div class="checklist" id="m10c-u4-checklist">
+            <label><input type="checkbox" data-k="id"> I can label opp/adj/hyp correctly.</label>
+            <label><input type="checkbox" data-k="solve"> I can solve a right triangle from 2 givens.</label>
+            <label><input type="checkbox" data-k="calc"> I can use DEG mode and round with units.</label>
+            <label><input type="checkbox" data-k="apps"> I can solve angle of elevation/depression problems.</label>
+            <button class="btn btn-ghost" id="saveChecklist">Save Progress</button>
+            <small class="muted" id="saveNote" style="display:block;margin-top:6px;">Progress autosaves to this device.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Videos -->
+      <section class="content-box">
+        <h2>Video Library</h2>
+        <div class="video-grid">
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=SOH+CAH+TOA+introduction">
+            <h4>SOH-CAH-TOA Basics</h4>
+            <p>Opposite/adjacent/hypotenuse and the three ratios.</p>
+            <small>youtube.com – “SOH CAH TOA introduction”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=right+triangle+solving+with+sin+cos+tan">
+            <h4>Solving Right Triangles</h4>
+            <p>Find missing sides/angles using \(\sin,\cos,\tan\) and inverses.</p>
+            <small>youtube.com – “right triangle solving with sin cos tan”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=angle+of+elevation+and+depression+problems">
+            <h4>Angle of Elevation/Depression</h4>
+            <p>Translate word problems into triangles and solve.</p>
+            <small>youtube.com – “angle of elevation and depression problems”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=trig+calculator+mode+degrees+vs+radians">
+            <h4>Calculator DEG vs RAD</h4>
+            <p>Set DEG mode and check reasonableness.</p>
+            <small>youtube.com – “trig calculator mode degrees vs radians”</small>
+          </a>
+        </div>
+      </section>
+
+      <!-- Tools -->
+      <section class="content-box">
+        <h2>Interactive Tools</h2>
+        <div class="mini-grid">
+
+          <!-- Right Triangle Solver -->
+          <div class="tool-card">
+            <h4>Right-Triangle Solver</h4>
+            <p class="muted">Let \(\theta\) be the marked acute angle. Side \(a\) is opposite \(\theta\); \(b\) is adjacent; \(c\) is hypotenuse.</p>
+
+            <div class="mini-grid">
+              <div><label>Opposite \(a\)</label><input id="rtA" type="number" step="any" placeholder="(optional)"></div>
+              <div><label>Adjacent \(b\)</label><input id="rtB" type="number" step="any" placeholder="(optional)"></div>
+              <div><label>Hypotenuse \(c\)</label><input id="rtC" type="number" step="any" placeholder="(optional)"></div>
+              <div><label>Angle \(\theta\) (deg)</label><input id="rtTheta" type="number" step="any" placeholder="(optional)"></div>
+              <div><label>Round to (decimals)</label><input id="rtDec" type="number" min="0" max="6" step="1" value="2"></div>
+            </div>
+
+            <div style="margin-top:10px;">
+              <button class="btn" id="rtSolve">Solve</button>
+              <button class="btn btn-ghost" id="rtClear">Clear</button>
+            </div>
+
+            <p class="muted mono" id="rtOut" style="margin-top:8px;"></p>
+
+            <div class="graph-wrap" style="margin-top:8px;">
+              <svg id="rtPlot" class="svg-plot" viewBox="0 0 600 340" preserveAspectRatio="none"></svg>
+            </div>
+          </div>
+
+          <!-- SOH-CAH-TOA Trainer -->
+          <div class="tool-card">
+            <h4>SOH-CAH-TOA Trainer</h4>
+            <div class="mini-grid">
+              <div><label>Angle \(\theta\) (deg)</label><input id="trigTheta" type="range" min="5" max="85" value="30"></div>
+              <div><label>Hypotenuse \(c\)</label><input id="trigHyp" type="range" min="5" max="20" value="10"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn btn-ghost" id="unitCircleMode">Set \(c=1\) (show pure ratios)</button>
+            </div>
+            <p class="muted mono" id="trigOut" style="margin-top:8px;"></p>
+            <div class="graph-wrap" style="margin-top:8px;">
+              <svg id="trigPlot" class="svg-plot" viewBox="0 0 600 340" preserveAspectRatio="none"></svg>
+            </div>
+          </div>
+
+          <!-- Elevation/Depression Mini-Generator -->
+          <div class="tool-card">
+            <h4>Angle of Elevation/Depression</h4>
+            <div class="mini-grid">
+              <div>
+                <label>Scenario</label>
+                <select id="adMode">
+                  <option value="findAngle">Given height & distance, find angle</option>
+                  <option value="findDistance">Given height & angle, find distance</option>
+                </select>
+              </div>
+              <div><label>Height \(h\)</label><input id="adH" type="number" step="any" value="12"></div>
+              <div id="adDWrap"><label>Horizontal distance \(d\)</label><input id="adD" type="number" step="any" value="30"></div>
+              <div id="adThetaWrap" style="display:none;"><label>Angle \(\theta\) (deg)</label><input id="adTheta" type="number" step="any" value="22"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="adNew">New Example</button>
+              <button class="btn btn-ghost" id="adSolve">Solve</button>
+            </div>
+            <p class="muted mono" id="adOut" style="margin-top:8px;"></p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Quizzes -->
+      <section class="content-box">
+        <h2>Unit 4 Quizzes</h2>
+        <div class="units-grid">
+          <a href="m10c_u4_quiz1.html" class="unit-card">
+            <h3>Quiz 1: SOH-CAH-TOA & Calculator Use</h3>
+            <p>Identify opp/adj/hyp, evaluate ratios, DEG mode.</p>
+          </a>
+          <a href="m10c_u4_quiz2.html" class="unit-card">
+            <h3>Quiz 2: Right-Triangle Problem Solving</h3>
+            <p>Sides/angles, elevation/depression, multi-step.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Review PDF -->
+      <section class="content-box">
+        <h2>Downloadable Review</h2>
+        <p>
+          <a class="btn" href="assets/m10c_u4_review.pdf" download>Download PDF</a>
+          <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
+        </p>
+        <iframe class="pdf-frame" src="assets/m10c_u4_review.pdf#view=FitH"></iframe>
+      </section>
+
+      <!-- Scratchpad -->
+      <section class="content-box">
+        <h2>Quick Practice Scratchpad</h2>
+        <p class="muted">Try: A ladder of length 6.5 m rests against a wall making a \(68^\circ\) angle with the ground. How high does it reach?</p>
+        <textarea id="scratch" style="width:100%;min-height:140px;border-radius:8px;padding:12px;border:1px solid #dfe6ee;resize:vertical;"></textarea>
+        <div style="margin-top:10px;">
+          <button class="btn" id="saveScratch">Save Notes</button>
+          <button class="btn btn-ghost" id="clearScratch">Clear</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <!-- Math helper -->
+  <script>
+    window.typesetMath = function(root){
+      if (window.MathJax && MathJax.typesetPromise){
+        MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
+      }
+    };
+  </script>
+
+  <!-- Page logic -->
+  <script>
+    /* ===== Checklist ===== */
+    (function(){
+      const KEY='m10c_u4_check';
+      const box=document.getElementById('m10c-u4-checklist');
+      const inputs=[...box.querySelectorAll('input[type="checkbox"][data-k]')];
+      const saveBtn=document.getElementById('saveChecklist'), saveNote=document.getElementById('saveNote');
+      function load(){ try{const d=JSON.parse(localStorage.getItem(KEY)||'{}'); inputs.forEach(cb=>cb.checked=!!d[cb.dataset.k]);}catch(e){} }
+      function save(){ const d={}; inputs.forEach(cb=>d[cb.dataset.k]=cb.checked); localStorage.setItem(KEY,JSON.stringify(d)); saveNote.textContent='Saved ✔'; setTimeout(()=>saveNote.textContent='Progress autosaves to this device.',1200); }
+      inputs.forEach(cb=>cb.addEventListener('change',save));
+      saveBtn.addEventListener('click',save);
+      load();
+    })();
+
+    /* ===== Scratchpad ===== */
+    (function(){
+      const SKEY='m10c_u4_scratch';
+      const ta=document.getElementById('scratch');
+      const s=document.getElementById('saveScratch'), c=document.getElementById('clearScratch');
+      try{ ta.value=localStorage.getItem(SKEY)||'';}catch(e){}
+      s.addEventListener('click',()=>localStorage.setItem(SKEY,ta.value));
+      c.addEventListener('click',()=>{ ta.value=''; localStorage.setItem(SKEY,''); });
+    })();
+
+    /* ===== Simple SVG helpers ===== */
+    function drawRightTriangle(svg, a, b) {
+      // draw a right triangle with legs a (vertical) and b (horizontal), scaled to fit
+      const W=600,H=340,m=24;
+      svg.innerHTML='';
+      const g=document.createElementNS('http://www.w3.org/2000/svg','g'); svg.appendChild(g);
+      const maxLeg=Math.max(a,b,1);
+      const scale = Math.min((W-2*m)/b || 0, (H-2*m)/a || 0);
+      const bx=m, by=H-m; // bottom-left corner
+      const x1=bx, y1=by;
+      const x2=bx + (b*scale), y2=by;
+      const x3=bx, y3=by - (a*scale);
+
+      const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d',`M ${x1} ${y1} L ${x2} ${y2} L ${x3} ${y3} Z`);
+      path.setAttribute('fill','#eaf3ff'); path.setAttribute('stroke','#3d8dff'); path.setAttribute('stroke-width','2');
+      g.appendChild(path);
+
+      // right angle box
+      const rab=document.createElementNS('http://www.w3.org/2000/svg','path');
+      const s=14;
+      rab.setAttribute('d',`M ${x1} ${y1} l ${s} 0 l 0 ${-s} l ${-s} 0 Z`);
+      rab.setAttribute('fill','#ffffff'); rab.setAttribute('stroke','#3d8dff');
+      g.appendChild(rab);
+
+      // label sides
+      function label(txt,x,y){ const t=document.createElementNS('http://www.w3.org/2000/svg','text'); t.setAttribute('x',x); t.setAttribute('y',y); t.setAttribute('fill','#2c3e50'); t.setAttribute('font-size','12'); t.textContent=txt; g.appendChild(t); }
+      label(`b = ${b.toFixed(2)}`, (x1+x2)/2, y2+16);
+      label(`a = ${a.toFixed(2)}`, x3-6, (y1+y3)/2);
+      const c=Math.sqrt(a*a+b*b);
+      label(`c = ${c.toFixed(2)}`, (x2+x3)/2 - 20, (y2+y3)/2 - 6);
+    }
+
+    /* ===== Right-Triangle Solver ===== */
+    (function(){
+      const A=document.getElementById('rtA'), B=document.getElementById('rtB'), C=document.getElementById('rtC'), T=document.getElementById('rtTheta'), D=document.getElementById('rtDec');
+      const out=document.getElementById('rtOut'), svg=document.getElementById('rtPlot');
+      function n(v){ return v===''?NaN:parseFloat(v); }
+      function deg(x){ return x*180/Math.PI; }
+      function rad(x){ return x*Math.PI/180; }
+      function round(x,dec){ const f=Math.pow(10,dec); return Math.round(x*f)/f; }
+
+      function solve(){
+        let a=n(A.value), b=n(B.value), c=n(C.value), th=n(T.value); // th in degrees
+        let given = [isFinite(a),isFinite(b),isFinite(c),isFinite(th)].filter(Boolean).length;
+        if(given < 2 || (!isFinite(a)&&!isFinite(b)&&!isFinite(c))){
+          out.textContent='Provide at least two values (one must be a side).'; svg.innerHTML=''; return;
+        }
+        // compute based on combinations
+        try{
+          if(isFinite(a)&&isFinite(b)){ c=Math.sqrt(a*a+b*b); th=deg(Math.atan2(a,b)); }
+          else if(isFinite(a)&&isFinite(c)){ if(c<=a) throw 'c>a required'; b=Math.sqrt(c*c-a*a); th=deg(Math.asin(a/c)); }
+          else if(isFinite(b)&&isFinite(c)){ if(c<=b) throw 'c>b required'; a=Math.sqrt(c*c-b*b); th=deg(Math.acos(b/c)); }
+          else if(isFinite(th)&&isFinite(a)){ const r=rad(th); b=a/Math.tan(r); c=a/Math.sin(r); }
+          else if(isFinite(th)&&isFinite(b)){ const r=rad(th); a=b*Math.tan(r); c=b/Math.cos(r); }
+          else if(isFinite(th)&&isFinite(c)){ const r=rad(th); a=c*Math.sin(r); b=c*Math.cos(r); }
+          else { out.textContent='Unsupported combination.'; svg.innerHTML=''; return; }
+        }catch(e){ out.textContent='Check that the hypotenuse is the largest side.'; svg.innerHTML=''; return; }
+
+        const dec=Math.min(Math.max(parseInt(D.value||2),0),6);
+        const Aang=th, Bang=90-th, Cang=90;
+        out.innerHTML = `a (opp) = <b>${round(a,dec)}</b>, b (adj) = <b>${round(b,dec)}</b>, c (hyp) = <b>${round(c,dec)}</b> &nbsp; | &nbsp; θ = <b>${round(Aang,dec)}</b>°, φ = <b>${round(Bang,dec)}</b>°`;
+        drawRightTriangle(svg, a, b);
+      }
+      document.getElementById('rtSolve').addEventListener('click', solve);
+      document.getElementById('rtClear').addEventListener('click', ()=>{ A.value='';B.value='';C.value='';T.value=''; out.textContent=''; svg.innerHTML=''; });
+    })();
+
+    /* ===== SOH-CAH-TOA Trainer ===== */
+    (function(){
+      const TH=document.getElementById('trigTheta'), H=document.getElementById('trigHyp'), BTN=document.getElementById('unitCircleMode'), OUT=document.getElementById('trigOut'), SVG=document.getElementById('trigPlot');
+      function update(){
+        const th=parseFloat(TH.value), c=parseFloat(H.value);
+        const r=th*Math.PI/180;
+        const a=c*Math.sin(r), b=c*Math.cos(r);
+        OUT.innerHTML = `Given c=${c.toFixed(2)} and θ=${th}°, &nbsp; SOH: \\(\\sin\\theta=\\frac{a}{c}=\\frac{${a.toFixed(2)}}{${c.toFixed(2)}}\\approx${(a/c).toFixed(3)}\\), &nbsp; CAH: \\(\\cos\\theta\\approx${(b/c).toFixed(3)}\\), &nbsp; TOA: \\(\\tan\\theta=\\frac{a}{b}\\approx${(a/b).toFixed(3)}\\)`;
+        if(window.typesetMath) window.typesetMath(OUT);
+        drawRightTriangle(SVG, a, b);
+      }
+      TH.addEventListener('input', update);
+      H.addEventListener('input', update);
+      BTN.addEventListener('click', ()=>{ H.value=1; update(); });
+      update();
+    })();
+
+    /* ===== Angle of Elevation/Depression ===== */
+    (function(){
+      const mode=document.getElementById('adMode'), H=document.getElementById('adH'), D=document.getElementById('adD'), Theta=document.getElementById('adTheta');
+      const DWrap=document.getElementById('adDWrap'), TWrap=document.getElementById('adThetaWrap'), OUT=document.getElementById('adOut');
+      function refreshMode(){
+        if(mode.value==='findAngle'){ DWrap.style.display='block'; TWrap.style.display='none'; }
+        else { DWrap.style.display='none'; TWrap.style.display='block'; }
+        OUT.textContent='';
+      }
+      function rand(min,max){ return Math.floor(min+Math.random()*(max-min+1)); }
+      function newEx(){
+        if(mode.value==='findAngle'){ H.value=rand(5,25); D.value=rand(10,60); }
+        else { H.value=rand(5,25); Theta.value=rand(10,40); }
+        OUT.textContent='';
+      }
+      function solve(){
+        const h=parseFloat(H.value||0);
+        if(mode.value==='findAngle'){
+          const d=parseFloat(D.value||0);
+          if(!(h>0 && d>0)){ OUT.textContent='Enter h and d.'; return; }
+          const th=Math.atan2(h,d)*180/Math.PI;
+          OUT.innerHTML=`Angle of elevation \\(\\theta=\\arctan(\\tfrac{h}{d})\\approx\\) <b>${th.toFixed(1)}°</b>`;
+          if(window.typesetMath) window.typesetMath(OUT);
+        }else{
+          const th=parseFloat(Theta.value||0)*Math.PI/180;
+          if(!(h>0) || !(th>0)){ OUT.textContent='Enter h and θ.'; return; }
+          const d=h/Math.tan(th);
+          OUT.innerHTML=`Horizontal distance \\(d=\\tfrac{h}{\\tan\\theta}\\approx\\) <b>${d.toFixed(2)}</b>`;
+          if(window.typesetMath) window.typesetMath(OUT);
+        }
+      }
+      mode.addEventListener('change', refreshMode);
+      document.getElementById('adNew').addEventListener('click', newEx);
+      document.getElementById('adSolve').addEventListener('click', solve);
+      refreshMode(); newEx();
+    })();
+  </script>
+</body>
+</html>
