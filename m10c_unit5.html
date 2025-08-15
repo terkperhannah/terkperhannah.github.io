@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 10C • Unit 5 Review – Polynomial Operations</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']], processEscapes:true },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] },
+      chtml: { mtextInheritFont:true, matchFontHeight:false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    .content-wrapper{max-width:1200px;margin:0 auto;padding:20px;}
+    .content-box{border:2px solid #e0e0e0;border-radius:12px;padding:28px;margin-bottom:30px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+    .content-box h2{color:#2c3e50;border-bottom:3px solid #3498db;padding-bottom:10px;margin-bottom:18px;}
+    .sub{color:#566573;margin-top:-6px;}
+    .hero{background:linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%);border-color:#cfe8ff;}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#ecf5ff;color:#1d6fa5;font-size:12px;margin:6px 6px 0 0;border:1px solid #d6eaff;}
+
+    .two-col{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start;}
+    .checklist label{display:flex;align-items:flex-start;gap:10px;line-height:1.4;margin:10px 0;}
+    .checklist input{transform:translateY(3px);}
+
+    .video-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:10px;}
+    .video-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:14px;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .video-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#3498db;}
+    .video-card h4{color:#3498db;margin:6px 0 8px;}
+    .video-card p{margin:0;font-size:.95rem;color:#5a6b7b;}
+    .video-card small{display:block;margin-top:8px;color:#7a8b99;}
+
+    .units-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+    .unit-card{padding:18px;border-radius:10px;background:#f8f9fa;border:1px solid #e0e0e0;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .unit-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#2ecc71;}
+    .unit-card h3{color:#2ecc71;margin:0 0 8px;}
+
+    .pdf-frame{width:100%;height:540px;border:1px solid #e0e0e0;border-radius:10px;}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:#3498db;color:#fff;text-decoration:none;border:0;cursor:pointer;}
+    .btn:hover{background:#2f81bd;}
+    .btn-ghost{background:#fff;color:#3498db;border:1px solid #3498db;}
+    .btn-ghost:hover{background:#ecf5ff;}
+    .muted{color:#7f8c8d;font-size:.95rem;}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+
+    .mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+    .tool-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:16px;}
+    .tool-card h4{margin:0 0 10px;color:#3498db;}
+    .tool-card label{display:block;font-size:.9rem;margin:6px 0 2px;color:#566573;}
+    .tool-card input,.tool-card select, .tool-card textarea{width:100%;padding:8px 10px;border:1px solid #dfe6ee;border-radius:8px;}
+    .tool-card textarea{min-height:72px;resize:vertical;}
+
+    .graph-wrap{background:#fff;border:1px solid #e0e0e0;border-radius:10px;overflow:hidden;}
+    .svg-plot{width:100%;height:320px;display:block;}
+    .table-mini{width:100%;border-collapse:collapse;margin-top:8px;}
+    .table-mini th,.table-mini td{border:1px solid #e6e6e6;padding:6px 8px;text-align:right;}
+    .table-mini th{background:#f2f6ff;color:#2c3e50;text-align:left;}
+
+    .grid2x2{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px;}
+    .cell{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:10px;text-align:center;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r=>r.text())
+        .then(html => {
+          const el=document.getElementById('navbar-placeholder');
+          el.innerHTML=html;
+          if (window.typesetMath) window.typesetMath(el);
+        })
+        .catch(err=>console.error('Navbar failed to load:',err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Unit 5 Review: Polynomial Operations</h2>
+        <p class="sub">Multiplying by monomials, binomials, and polynomial products; simplifying expressions.</p>
+        <div>
+          <span class="badge">Distributive Property</span>
+          <span class="badge">FOIL</span>
+          <span class="badge">Box/Area Model</span>
+          <span class="badge">Combine Like Terms</span>
+          <span class="badge">\((x^m)(x^n)=x^{m+n}\)</span>
+        </div>
+      </section>
+
+      <!-- Outcomes -->
+      <section class="content-box">
+        <h2>What You Should Be Able To Do</h2>
+        <div class="two-col">
+          <ul>
+            <li>Distribute a monomial across a polynomial and simplify.</li>
+            <li>Multiply binomials using FOIL and the box/area model.</li>
+            <li>Multiply any two single-variable polynomials and combine like terms.</li>
+            <li>Identify degree, leading term, and leading coefficient of a product.</li>
+          </ul>
+
+          <div class="checklist" id="m10c-u5-checklist">
+            <label><input type="checkbox" data-k="mono"> I can distribute a monomial \(k x^n\) over a polynomial.</label>
+            <label><input type="checkbox" data-k="foil"> I can multiply binomials and show each partial product.</label>
+            <label><input type="checkbox" data-k="poly"> I can multiply polynomials and fully simplify.</label>
+            <label><input type="checkbox" data-k="desc"> I can state degree and leading coefficient after multiplying.</label>
+            <button class="btn btn-ghost" id="saveChecklist">Save Progress</button>
+            <small class="muted" id="saveNote" style="display:block;margin-top:6px;">Progress autosaves to this device.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Videos -->
+      <section class="content-box">
+        <h2>Video Library</h2>
+        <div class="video-grid">
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=distributive+property+polynomials">
+            <h4>Distributive Property with Polynomials</h4>
+            <p>Multiply a monomial across a polynomial and simplify.</p>
+            <small>youtube.com – “distributive property polynomials”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=FOIL+binomials+box+method">
+            <h4>FOIL & Box Method</h4>
+            <p>Binomial × binomial with partial products.</p>
+            <small>youtube.com – “FOIL binomials box method”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=multiplying+polynomials+combining+like+terms">
+            <h4>Polynomial × Polynomial</h4>
+            <p>Systematic multiplication and combining like terms.</p>
+            <small>youtube.com – “multiplying polynomials combining like terms”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=degree+and+leading+coefficient+of+polynomials">
+            <h4>Degree & Leading Coefficient</h4>
+            <p>Identify degree/leading term after products.</p>
+            <small>youtube.com – “degree and leading coefficient polynomials”</small>
+          </a>
+        </div>
+      </section>
+
+      <!-- Interactive Tools -->
+      <section class="content-box">
+        <h2>Interactive Tools</h2>
+        <div class="mini-grid">
+
+          <!-- Monomial Distributer -->
+          <div class="tool-card">
+            <h4>Monomial Distributer</h4>
+            <label>Monomial \(k x^n\) (e.g., <span class="mono">3x^2</span>, <span class="mono">-5x</span>, <span class="mono">4</span>)</label>
+            <input id="mdMono" placeholder="e.g. 3x^2">
+            <label>Polynomial in \(x\) (e.g., <span class="mono">2x^3 - 5x + 4</span>)</label>
+            <input id="mdPoly" placeholder="e.g. 2x^3 - 5x + 4">
+            <div style="margin-top:10px;">
+              <button class="btn" id="mdGo">Distribute</button>
+              <button class="btn btn-ghost" id="mdClear">Clear</button>
+            </div>
+            <p class="muted mono" id="mdOut" style="margin-top:8px;"></p>
+            <table class="table-mini" id="mdTable">
+              <thead><tr><th>Term</th><th>Product</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <!-- Binomial x Binomial -->
+          <div class="tool-card">
+            <h4>Binomial × Binomial (FOIL / Box)</h4>
+            <div class="mini-grid">
+              <div><label>\((a x + b)\)</label><input id="bxA" type="number" step="any" value="1"></div>
+              <div><label>&nbsp;</label><input id="bxB" type="number" step="any" value="2"></div>
+              <div><label>\((c x + d)\)</label><input id="bxC" type="number" step="any" value="3"></div>
+              <div><label>&nbsp;</label><input id="bxD" type="number" step="any" value="-4"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="bxGo">Multiply</button>
+              <button class="btn btn-ghost" id="bxReset">Reset</button>
+            </div>
+            <p class="muted mono" id="bxOut" style="margin-top:8px;"></p>
+            <div class="grid2x2" id="boxGrid">
+              <div class="cell" id="cell1"></div>
+              <div class="cell" id="cell2"></div>
+              <div class="cell" id="cell3"></div>
+              <div class="cell" id="cell4"></div>
+            </div>
+          </div>
+
+          <!-- General Polynomial Multiplier -->
+          <div class="tool-card">
+            <h4>Polynomial × Polynomial (single variable \(x\))</h4>
+            <label>First polynomial</label>
+            <textarea id="pmP1" placeholder="e.g. 2x^3 - x^2 + 5x - 1"></textarea>
+            <label>Second polynomial</label>
+            <textarea id="pmP2" placeholder="e.g. -x^2 + 3x + 4"></textarea>
+            <div style="margin-top:10px;">
+              <button class="btn" id="pmGo">Multiply & Simplify</button>
+              <button class="btn btn-ghost" id="pmClear">Clear</button>
+            </div>
+            <p class="muted mono" id="pmOut" style="margin-top:8px;"></p>
+            <table class="table-mini" id="pmTable">
+              <thead><tr><th>\(x\) power</th><th>Coefficient (sum of partials)</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <!-- Combine Like Terms Practice -->
+          <div class="tool-card">
+            <h4>Combine Like Terms – Practice</h4>
+            <p class="muted">Simplify and enter your answer in standard form (e.g., <span class="mono">3x^2 - 5x + 2</span>).</p>
+            <p class="mono" id="cltQ"></p>
+            <input id="cltAns" placeholder="Your simplified expression">
+            <div style="margin-top:10px;">
+              <button class="btn" id="cltCheck">Check</button>
+              <button class="btn btn-ghost" id="cltNew">New</button>
+            </div>
+            <p class="muted mono" id="cltOut" style="margin-top:8px;"></p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Quizzes -->
+      <section class="content-box">
+        <h2>Unit 5 Quizzes</h2>
+        <div class="units-grid">
+          <a href="m10c_u5_quiz1.html" class="unit-card">
+            <h3>Quiz 1: Monomials & Binomials</h3>
+            <p>Distributive property, FOIL, combine like terms.</p>
+          </a>
+          <a href="m10c_u5_quiz2.html" class="unit-card">
+            <h3>Quiz 2: Polynomial Products</h3>
+            <p>General products, degree & leading coefficient.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Review PDF -->
+      <section class="content-box">
+        <h2>Downloadable Review</h2>
+        <p>
+          <a class="btn" href="assets/m10c_u5_review.pdf" download>Download PDF</a>
+          <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
+        </p>
+        <iframe class="pdf-frame" src="assets/m10c_u5_review.pdf#view=FitH"></iframe>
+      </section>
+
+      <!-- Scratchpad -->
+      <section class="content-box">
+        <h2>Quick Practice Scratchpad</h2>
+        <p class="muted">Try: \(3x(2x^2 - 5x + 4)\), \((x-7)(2x+5)\), and \((x^2-3x+1)(x^2+x-4)\).</p>
+        <textarea id="scratch" style="width:100%;min-height:140px;border-radius:8px;padding:12px;border:1px solid #dfe6ee;resize:vertical;"></textarea>
+        <div style="margin-top:10px;">
+          <button class="btn" id="saveScratch">Save Notes</button>
+          <button class="btn btn-ghost" id="clearScratch">Clear</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <!-- Math helper -->
+  <script>
+    window.typesetMath = function(root){
+      if (window.MathJax && MathJax.typesetPromise){
+        MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
+      }
+    };
+  </script>
+
+  <!-- Page logic -->
+  <script>
+    /* ===== Checklist ===== */
+    (function(){
+      const KEY='m10c_u5_check';
+      const box=document.getElementById('m10c-u5-checklist');
+      const inputs=[...box.querySelectorAll('input[type="checkbox"][data-k]')];
+      const saveBtn=document.getElementById('saveChecklist'), saveNote=document.getElementById('saveNote');
+      function load(){ try{const d=JSON.parse(localStorage.getItem(KEY)||'{}'); inputs.forEach(cb=>cb.checked=!!d[cb.dataset.k]);}catch(e){} }
+      function save(){ const d={}; inputs.forEach(cb=>d[cb.dataset.k]=cb.checked); localStorage.setItem(KEY,JSON.stringify(d)); saveNote.textContent='Saved ✔'; setTimeout(()=>saveNote.textContent='Progress autosaves to this device.',1200); }
+      inputs.forEach(cb=>cb.addEventListener('change',save));
+      saveBtn.addEventListener('click',save);
+      load();
+    })();
+
+    /* ===== Scratchpad ===== */
+    (function(){
+      const SKEY='m10c_u5_scratch';
+      const ta=document.getElementById('scratch');
+      const s=document.getElementById('saveScratch'), c=document.getElementById('clearScratch');
+      try{ ta.value=localStorage.getItem(SKEY)||'';}catch(e){}
+      s.addEventListener('click',()=>localStorage.setItem(SKEY,ta.value));
+      c.addEventListener('click',()=>{ ta.value=''; localStorage.setItem(SKEY,''); });
+    })();
+
+    /* ===== Polynomial utilities (single variable x, integer coeffs) ===== */
+    function cleanExpr(str){
+      return str.replace(/−/g,'-').replace(/\s+/g,'').replace(/\*\*/g,'^');
+    }
+    // parse "3x^2 - x + 4" -> {2:3, 1:-1, 0:4}
+    function parsePoly(str){
+      str = cleanExpr(str);
+      if(!str) return {};
+      // insert + before leading minus for splitting
+      if(str[0]==='-') str = '0' + str;
+      str = str.replace(/-/g,'+-');
+      const parts = str.split('+').filter(Boolean);
+      const map = {};
+      for(const p of parts){
+        // match coeff & power
+        // forms: kx^n, kx, x^n, x, k
+        let m;
+        if((m = p.match(/^([+-]?\d+)?x(?:\^([+-]?\d+))?$/))){
+          const c = (m[1]==='' || m[1]==='+' || m[1]==null) ? 1 : (m[1]==='-'? -1 : parseFloat(m[1]));
+          const e = m[2]!=null ? parseInt(m[2]) : 1;
+          map[e]=(map[e]||0)+c;
+        }else if((m = p.match(/^([+-]?\d+)(?:\*?x\^([+-]?\d+))$/))){
+          const c = parseFloat(m[1]); const e = parseInt(m[2]);
+          map[e]=(map[e]||0)+c;
+        }else if((m = p.match(/^([+-]?\d+)$/))){
+          const c = parseFloat(m[1]); map[0]=(map[0]||0)+c;
+        }else{
+          // unsupported term, ignore
+        }
+      }
+      return map;
+    }
+    function stringifyPoly(map){
+      const exps = Object.keys(map).map(e=>parseInt(e)).filter(e=>map[e]&&Math.abs(map[e])>1e-12).sort((a,b)=>b-a);
+      if(exps.length===0) return '0';
+      const parts=[];
+      for(const e of exps){
+        let c=map[e];
+        const sign = c<0 ? ' - ' : (parts.length? ' + ' : '');
+        c=Math.abs(c);
+        let term='';
+        if(e===0){ term = c.toString(); }
+        else if(e===1){ term = (c===1? '' : c)+'x'; }
+        else { term = (c===1? '' : c)+'x^'+e; }
+        parts.push((parts.length? sign.trim() : (map[e]<0?'-':'')) + term);
+      }
+      let s = parts.join(' ');
+      s = s.replace(/\s\+\s-/g,' - ');
+      return s;
+    }
+    function addPolys(a,b){
+      const out = {...a};
+      for(const e in b){ out[e]=(out[e]||0)+b[e]; }
+      return out;
+    }
+    function multiplyPolys(a,b){
+      const out={};
+      for(const ea in a){
+        for(const eb in b){
+          const e = parseInt(ea)+parseInt(eb);
+          const c = a[ea]*b[eb];
+          out[e]=(out[e]||0)+c;
+        }
+      }
+      return out;
+    }
+
+    /* ===== Monomial Distributer ===== */
+    (function(){
+      const mono=document.getElementById('mdMono'), poly=document.getElementById('mdPoly');
+      const go=document.getElementById('mdGo'), clr=document.getElementById('mdClear');
+      const out=document.getElementById('mdOut'), table=document.getElementById('mdTable').querySelector('tbody');
+
+      function parseMonomial(s){
+        s = cleanExpr(s);
+        let m;
+        if((m = s.match(/^([+-]?\d+)?x(?:\^([+-]?\d+))?$/))){
+          const c = (m[1]==='' || m[1]==='+' || m[1]==null) ? 1 : (m[1]==='-'? -1 : parseFloat(m[1]));
+          const e = m[2]!=null ? parseInt(m[2]) : 1;
+          return {[e]: c};
+        }else if((m = s.match(/^([+-]?\d+)$/))){
+          const c = parseFloat(m[1]); return {0: c};
+        }else{
+          return null;
+        }
+      }
+
+      function distribute(){
+        const m = parseMonomial(mono.value);
+        const p = parsePoly(poly.value);
+        table.innerHTML='';
+        if(!m){ out.textContent='Enter a valid monomial like 3x^2, -x, or 4.'; return; }
+        if(Object.keys(p).length===0){ out.textContent='Enter a polynomial to distribute over.'; return; }
+
+        let result={};
+        for(const e in p){
+          const termMap={};
+          const monoE=parseInt(Object.keys(m)[0]), monoC=Object.values(m)[0];
+          const prodE = monoE + parseInt(e);
+          const prodC = monoC * p[e];
+          result[prodE]=(result[prodE]||0)+prodC;
+
+          const tr=document.createElement('tr');
+          const left = stringifyPoly({[e]:p[e]});
+          const right = stringifyPoly({[prodE]:prodC});
+          tr.innerHTML = `<td>${left}</td><td>${right}</td>`;
+          table.appendChild(tr);
+        }
+        const resStr = stringifyPoly(result);
+        out.innerHTML = `Result: \\(${stringifyPoly(m)}\\cdot(${stringifyPoly(p)})=\\;${resStr}\\)`;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      go.addEventListener('click', distribute);
+      clr.addEventListener('click', ()=>{ mono.value=''; poly.value=''; out.textContent=''; table.innerHTML=''; });
+    })();
+
+    /* ===== Binomial x Binomial ===== */
+    (function(){
+      const A=document.getElementById('bxA'), B=document.getElementById('bxB'), C=document.getElementById('bxC'), D=document.getElementById('bxD');
+      const go=document.getElementById('bxGo'), reset=document.getElementById('bxReset'), out=document.getElementById('bxOut');
+      const c1=document.getElementById('cell1'), c2=document.getElementById('cell2'), c3=document.getElementById('cell3'), c4=document.getElementById('cell4');
+
+      function multiply(){
+        const a=parseFloat(A.value), b=parseFloat(B.value), c=parseFloat(C.value), d=parseFloat(D.value);
+        const F=a*c, O=a*d, I=b*c, L=b*d;
+        const map = {2:F, 1:(O+I), 0:L};
+        const prod = stringifyPoly(map);
+        c1.textContent = `${a}x · ${c}x = ${F}x^2`;
+        c2.textContent = `${a}x · ${d}  = ${O}x`;
+        c3.textContent = `${b}  · ${c}x = ${I}x`;
+        c4.textContent = `${b}  · ${d}  = ${L}`;
+        out.innerHTML = `FOIL: F=${F}x^2, O=${O}x, I=${I}x, L=${L}. &nbsp; Result: \\(${prod}\\)`;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+      go.addEventListener('click', multiply);
+      reset.addEventListener('click', ()=>{ A.value=1;B.value=2;C.value=3;D.value=-4; [c1,c2,c3,c4].forEach(c=>c.textContent=''); out.textContent=''; });
+      multiply();
+    })();
+
+    /* ===== General Polynomial Multiplier ===== */
+    (function(){
+      const p1=document.getElementById('pmP1'), p2=document.getElementById('pmP2');
+      const go=document.getElementById('pmGo'), clr=document.getElementById('pmClear');
+      const out=document.getElementById('pmOut'), tbody=document.getElementById('pmTable').querySelector('tbody');
+
+      function run(){
+        const A=parsePoly(p1.value), B=parsePoly(p2.value);
+        if(Object.keys(A).length===0 || Object.keys(B).length===0){ out.textContent='Enter both polynomials (variable x).'; return; }
+        const P = multiplyPolys(A,B);
+        const res = stringifyPoly(P);
+        // degree/leading coefficient
+        const exps = Object.keys(P).map(e=>parseInt(e)).filter(e=>Math.abs(P[e])>1e-12).sort((a,b)=>b-a);
+        const deg = exps[0]??0, lc = P[deg]??0;
+        out.innerHTML = `\\((${stringifyPoly(A)})\\cdot(${stringifyPoly(B)})=\\;${res}\\) &nbsp; • &nbsp; degree = <b>${deg}</b>, LC = <b>${lc}</b>`;
+        if(window.typesetMath) window.typesetMath(out);
+
+        tbody.innerHTML='';
+        exps.slice().reverse().forEach(e=>{
+          const tr=document.createElement('tr'); tr.innerHTML=`<td>x^${e}</td><td>${P[e]}</td>`; tbody.appendChild(tr);
+        });
+      }
+      go.addEventListener('click', run);
+      clr.addEventListener('click', ()=>{ p1.value=''; p2.value=''; out.textContent=''; tbody.innerHTML=''; });
+    })();
+
+    /* ===== Combine Like Terms Practice ===== */
+    (function(){
+      const Q=document.getElementById('cltQ'), A=document.getElementById('cltAns'), Check=document.getElementById('cltCheck'), New=document.getElementById('cltNew'), Out=document.getElementById('cltOut');
+      let currentMap={};
+      function rand(min,max){ return Math.floor(min+Math.random()*(max-min+1)); }
+      function gen(){
+        // random expression with 4–6 terms; exponents 0–3
+        const n=rand(4,6); const terms=[];
+        currentMap={};
+        for(let i=0;i<n;i++){
+          const e = [0,1,2,2,1,0,3][rand(0,6)];
+          let c = rand(-6,6);
+          if(c===0){ i--; continue; }
+          // add to map and keep unsimplified list
+          currentMap[e]=(currentMap[e]||0)+c;
+          const term = (e===0? `${c}` : (e===1? `${c===1? '':c}x` : `${c===1? '':c}x^${e}`));
+          terms.push(term);
+        }
+        const raw = terms.join(' + ').replace(/\+\s-/g,'- ');
+        Q.textContent = raw;
+        A.value=''; Out.textContent='';
+      }
+      function check(){
+        const userMap = parsePoly(A.value);
+        const simp = stringifyPoly(currentMap);
+        // compare maps
+        const exps = Array.from(new Set([...Object.keys(userMap),...Object.keys(currentMap)])).map(e=>parseInt(e));
+        let ok=true;
+        for(const e of exps){ if(Math.round((userMap[e]||0)*1000)!==Math.round((currentMap[e]||0)*1000)) { ok=false; break; } }
+        Out.innerHTML = ok? '✅ Correct!' : `❌ Keep working. Simplified: <b>${simp}</b>`;
+      }
+      Check.addEventListener('click', check);
+      New.addEventListener('click', gen);
+      gen();
+    })();
+  </script>
+</body>
+</html>
