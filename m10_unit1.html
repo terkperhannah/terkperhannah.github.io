@@ -1,76 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Math 10C • Unit 1 Review – Number</title>
+  <title>Math 10C • Unit 1: Number (Review)</title>
   <link rel="stylesheet" href="style.css"/>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']], processEscapes:true },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] },
+      chtml: { mtextInheritFont:true, matchFontHeight:false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
   <style>
-    /* Page-specific polish (keeps your overall theme intact) */
-    .content-wrapper { max-width: 1200px; margin: 0 auto; padding: 20px; }
-    .content-box {
-      border: 2px solid #e0e0e0; border-radius: 12px; padding: 28px; margin-bottom: 30px;
-      background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,.07);
-    }
-    .content-box h2 { color:#2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; margin-bottom: 18px; }
-    .sub { color:#566573; margin-top:-6px; }
+    .content-wrapper{max-width:1200px;margin:0 auto;padding:20px;}
+    .content-box{border:2px solid #e0e0e0;border-radius:12px;padding:28px;margin-bottom:30px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+    .content-box h2{color:#2c3e50;border-bottom:3px solid #3498db;padding-bottom:10px;margin-bottom:18px;}
+    .sub{color:#566573;margin-top:-6px;}
+    .hero{background:linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%);border-color:#cfe8ff;}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#ecf5ff;color:#1d6fa5;font-size:12px;margin:6px 6px 0 0;border:1px solid #d6eaff;}
 
-    .hero {
-      background: linear-gradient(135deg,#eef7ff 0,#f7fffb 100%);
-      border-color:#cfe8ff;
-    }
-    .badge {
-      display:inline-block; padding:6px 10px; border-radius:999px; background:#ecf5ff; color:#1d6fa5;
-      font-size:12px; margin:6px 6px 0 0; border:1px solid #d6eaff;
-    }
+    .two-col{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start;}
+    .video-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:10px;}
+    .video-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:14px;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .video-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#3498db;}
+    .video-card h4{color:#3498db;margin:6px 0 8px;}
+    .video-card p{margin:0;font-size:.95rem;color:#5a6b7b;}
 
-    .two-col {
-      display:grid; gap:20px; grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-      align-items:start;
-    }
+    .units-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+    .unit-card{padding:18px;border-radius:10px;background:#f8f9fa;border:1px solid #e0e0e0;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .unit-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#2ecc71;}
+    .unit-card h3{color:#2ecc71;margin:0 0 8px;}
 
-    .checklist label { display:flex; align-items:flex-start; gap:10px; line-height:1.4; margin:10px 0; }
-    .checklist input { transform: translateY(3px); }
+    .pdf-frame{width:100%;height:540px;border:1px solid #e0e0e0;border-radius:10px;}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:#3498db;color:#fff;text-decoration:none;border:0;cursor:pointer;}
+    .btn:hover{background:#2f81bd;}
+    .btn-ghost{background:#fff;color:#3498db;border:1px solid #3498db;}
+    .btn-ghost:hover{background:#ecf5ff;}
+    .muted{color:#7f8c8d;font-size:.95rem;}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
 
-    .video-grid {
-      display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-      margin-top:10px;
-    }
-    .video-card{
-      background:#f8f9fa; border:1px solid #e0e0e0; border-radius:10px; padding:14px;
-      transition: transform .2s ease, box-shadow .2s ease; text-decoration:none; color:#34495e;
-      display:block;
-    }
-    .video-card:hover{ transform: translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,.08); border-color:#3498db; }
-    .video-card h4{ color:#3498db; margin:6px 0 8px; }
-    .video-card p{ margin:0; font-size:.95rem; color:#5a6b7b; }
-    .video-card small{ display:block; margin-top:8px; color:#7a8b99; }
+    .tool-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:16px;}
+    .tool-card h4{margin:0 0 10px;color:#3498db;}
+    .tool-card label{display:block;font-size:.9rem;margin:6px 0 2px;color:#566573;}
+    .mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
+    .tool-card input,.tool-card textarea{width:100%;padding:8px 10px;border:1px solid #dfe6ee;border-radius:8px;}
+    .tool-card textarea{min-height:88px;resize:vertical;}
 
-    .units-grid {
-      display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:16px;
-    }
-    .unit-card {
-      padding:18px; border-radius:10px; background:#f8f9fa; border:1px solid #e0e0e0;
-      transition:.2s; text-decoration:none; color:#34495e; display:block;
-    }
-    .unit-card:hover{ transform:translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,.08); border-color:#2ecc71; }
-    .unit-card h3{ color:#2ecc71; margin:0 0 8px; }
+    .svg-plot{width:100%;height:320px;display:block;border:1px solid #e0e0e0;border-radius:10px;background:#fff;}
 
-    .pdf-frame{ width:100%; height:540px; border:1px solid #e0e0e0; border-radius:10px; }
-    .btn {
-      display:inline-block; padding:10px 14px; border-radius:8px; background:#3498db; color:#fff;
-      text-decoration:none; border:0; cursor:pointer;
-    }
-    .btn:hover{ background:#2f81bd; }
-    .btn-ghost { background:#fff; color:#3498db; border:1px solid #3498db; }
-    .btn-ghost:hover { background:#ecf5ff; }
-
-    .practice-card textarea{
-      width:100%; min-height:140px; border-radius:8px; padding:12px; border:1px solid #dfe6ee; resize:vertical;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    }
-    .tips li{ margin:6px 0; }
-    .muted { color:#7f8c8d; font-size:.95rem; }
+    .practice-card textarea{width:100%;min-height:140px;border-radius:8px;padding:12px;border:1px solid #dfe6ee;resize:vertical;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+    .pill{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid #e0e0e0;background:#f8f9fa;margin-right:6px;}
+    .checklist label{display:flex;gap:10px;align-items:flex-start;margin:8px 0}
+    .checklist input{transform:translateY(3px)}
   </style>
 </head>
 <body>
@@ -82,9 +68,13 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       fetch('navbar.html')
-        .then(r => r.text())
-        .then(html => document.getElementById('navbar-placeholder').innerHTML = html)
-        .catch(err => console.error('Navbar failed to load:', err));
+        .then(r=>r.text())
+        .then(html => {
+          const el=document.getElementById('navbar-placeholder');
+          el.innerHTML=html;
+          if (window.typesetMath) window.typesetMath(el);
+        })
+        .catch(err=>console.error('Navbar failed to load:',err));
     });
   </script>
 
@@ -93,112 +83,165 @@
 
       <!-- HERO -->
       <section class="content-box hero">
-        <h2>Unit 1 Review: Number</h2>
-        <p class="sub">Prime factors • Rational vs. irrational numbers • Number systems • Radicals & mixed radicals</p>
+        <h2>Unit 1: Number (Review) — Math 10C</h2>
+        <p class="sub">Prime factors • Rational vs. irrational • Number systems • Radicals & mixed radicals</p>
         <div>
           <span class="badge">Prime Factorization</span>
-          <span class="badge">Rational vs. Irrational</span>
-          <span class="badge">Integers & Rationals</span>
-          <span class="badge">Radicals</span>
-          <span class="badge">Mixed Radicals</span>
+          <span class="badge">Rationality Tests</span>
+          <span class="badge">Real Number System</span>
+          <span class="badge">Radical Simplification</span>
+          <span class="badge">Entire ↔ Mixed</span>
         </div>
       </section>
 
-      <!-- Outcomes & Checklist -->
+      <!-- Outcomes + Checklist -->
       <section class="content-box">
         <h2>What You Should Be Able To Do</h2>
         <div class="two-col">
-          <ul class="tips">
-            <li>Express numbers as a product of prime factors (including with exponents).</li>
-            <li>Classify numbers within the real number system (natural, whole, integers, rational, irrational).</li>
-            <li>Convert between entire and mixed radicals and simplify radicals.</li>
-            <li>Add, subtract, multiply, and divide radicals when possible.</li>
-            <li>Explain why a number is rational or irrational using definitions and counterexamples.</li>
+          <ul>
+            <li>Prime-factorize integers and use prime factors to find GCF/LCM.</li>
+            <li>Classify numbers in the real number system and justify rational vs. irrational.</li>
+            <li>Simplify radicals and convert between entire and mixed radical forms.</li>
+            <li>Explain why certain radicals/decimals are rational or irrational.</li>
           </ul>
 
           <div class="checklist" id="u1-checklist">
-            <label><input type="checkbox" data-k="pf"> I can find the prime factorization of any integer.</label>
-            <label><input type="checkbox" data-k="ns"> I can place numbers correctly in the number system diagram.</label>
-            <label><input type="checkbox" data-k="ri"> I can decide if a number is rational or irrational and justify it.</label>
-            <label><input type="checkbox" data-k="rs"> I can simplify radicals and convert between entire/mixed forms.</label>
-            <label><input type="checkbox" data-k="ops"> I can perform operations on radicals (like terms & conjugates).</label>
+            <label><input type="checkbox" data-k="pf"> I can prime-factorize any integer.</label>
+            <label><input type="checkbox" data-k="sys"> I can place numbers in the correct set (ℕ, W, ℤ, ℚ, ℝ\\ℚ).</label>
+            <label><input type="checkbox" data-k="rat"> I can justify rational vs. irrational.</label>
+            <label><input type="checkbox" data-k="rad"> I can simplify radicals and convert entire ↔ mixed.</label>
             <button class="btn btn-ghost" id="saveChecklist">Save Progress</button>
             <small class="muted" id="saveNote" style="display:block;margin-top:6px;">Progress autosaves to this device.</small>
           </div>
         </div>
       </section>
 
-      <!-- VIDEO LIBRARY -->
+      <!-- Video Library -->
       <section class="content-box">
         <h2>Video Library</h2>
         <div class="video-grid">
-          <a class="video-card" target="_blank"
-             href="https://www.youtube.com/results?search_query=prime+factorization+khan+academy">
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=prime+factorization">
             <h4>Prime Factorization</h4>
-            <p>Khan Academy, Math Antics, and others.</p>
-            <small>youtube.com – search: “prime factorization khan academy”</small>
+            <p>Tree method and exponent form.</p>
           </a>
-
-          <a class="video-card" target="_blank"
-             href="https://www.youtube.com/results?search_query=rational+vs+irrational+numbers+eddie+woo">
-            <h4>Rational vs. Irrational Numbers</h4>
-            <p>Eddie Woo & Khan Academy explanations with examples.</p>
-            <small>youtube.com – search: “rational vs irrational numbers eddie woo”</small>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=real+number+system+rational+irrational">
+            <h4>Real Number System & Rationality</h4>
+            <p>Sets within ℝ; rational vs. irrational.</p>
           </a>
-
-          <a class="video-card" target="_blank"
-             href="https://www.youtube.com/results?search_query=real+number+system+diagram+math+antics">
-            <h4>Real Number System</h4>
-            <p>Natural → Whole → Integers → Rational → Irrational.</p>
-            <small>youtube.com – search: “real number system diagram math antics”</small>
-          </a>
-
-          <a class="video-card" target="_blank"
-             href="https://www.youtube.com/results?search_query=simplifying+radicals+and+mixed+radicals+khan+academy">
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=simplifying+radicals+mixed+radicals">
             <h4>Radicals & Mixed Radicals</h4>
-            <p>Simplifying, converting, and operations with radicals.</p>
-            <small>youtube.com – search: “simplifying radicals and mixed radicals khan academy”</small>
+            <p>Perfect squares, entire ↔ mixed.</p>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=repeating+decimals+to+fractions">
+            <h4>Repeating Decimals → Fractions</h4>
+            <p>From \(0.\overline{3}\) or \(1.2\overline{34}\) to \( \frac{p}{q}\).</p>
           </a>
         </div>
       </section>
 
-      <!-- QUIZZES (link to your own HTML quizzes) -->
+      <!-- INTERACTIVE LAB -->
+      <section class="content-box">
+        <h2>Interactive Lab</h2>
+        <div class="two-col">
+
+          <!-- A. Prime Factorization + Tree + GCF/LCM -->
+          <div class="tool-card">
+            <h4>Prime Factorization + Factor Tree + GCF/LCM</h4>
+            <div class="mini-grid">
+              <div><label>Number \(n\)</label><input id="pf_n" type="number" step="1" value="360"></div>
+              <div><label>Optional \(m\) (for GCF/LCM)</label><input id="pf_m" type="number" step="1" value="210"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="pf_go">Factorize</button>
+              <button class="btn btn-ghost" id="pf_reset">Reset</button>
+            </div>
+            <svg id="pf_svg" class="svg-plot" viewBox="0 0 640 320" preserveAspectRatio="none"></svg>
+            <p class="muted mono" id="pf_out" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- B. Number-System & Rationality Analyzer -->
+          <div class="tool-card">
+            <h4>Number-System & Rationality Analyzer</h4>
+            <label>Enter values separated by commas. Examples: <span class="mono">-7, 0, 3/4, 0.125, 0.1(6), sqrt(18), √49, pi</span></label>
+            <textarea id="ns_text">-7, 0, 3/4, 0.1(6), sqrt(18), √49, pi</textarea>
+            <div style="margin-top:10px;">
+              <button class="btn" id="ns_go">Analyze</button>
+              <button class="btn btn-ghost" id="ns_clear">Clear</button>
+            </div>
+            <p class="muted mono" id="ns_out" style="margin-top:8px;"></p>
+          </div>
+
+        </div>
+
+        <div class="two-col" style="margin-top:20px;">
+
+          <!-- C. Radical Simplifier: entire ↔ mixed -->
+          <div class="tool-card">
+            <h4>Radical Simplifier (Square Roots)</h4>
+            <label>Input examples: <span class="mono">sqrt(72)</span>, <span class="mono">√50</span>, <span class="mono">5√12</span>, <span class="mono">√(18)</span></label>
+            <div class="mini-grid">
+              <div><label>Expression</label><input id="rad_in" value="sqrt(72)"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="rad_simplify">Simplify</button>
+              <button class="btn btn-ghost" id="rad_reset">Reset</button>
+            </div>
+            <p class="muted mono" id="rad_out" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- D. Random Practice Generator -->
+          <div class="tool-card">
+            <h4>Random Practice</h4>
+            <p class="muted">Generate a quick set of practice problems (answers shown below each set).</p>
+            <div class="mini-grid">
+              <div><label># of Questions</label><input id="rp_n" type="number" value="6" min="3" max="12"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="rp_go">Generate Set</button>
+              <button class="btn btn-ghost" id="rp_clear">Clear</button>
+            </div>
+            <div id="rp_out" class="mono muted" style="margin-top:8px;"></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Quizzes -->
       <section class="content-box">
         <h2>Unit 1 Quizzes</h2>
         <div class="units-grid">
-          <a href="m10c_unit1.html" class="unit-card">
+          <a href="m10c_u1_quiz1.html" class="unit-card">
             <h3>Quiz 1: Prime Factors & Number System</h3>
-            <p>Prime factorization, number classifications, rational vs. irrational.</p>
+            <p>Prime factorization • classifications • rational vs. irrational</p>
           </a>
           <a href="m10c_u1_quiz2.html" class="unit-card">
             <h3>Quiz 2: Radicals & Mixed Radicals</h3>
-            <p>Simplifying radicals, converting entire ↔ mixed, basic operations.</p>
+            <p>Simplify radicals • entire ↔ mixed • basic operations</p>
           </a>
         </div>
       </section>
 
-      <!-- DOWNLOAD / PDF REVIEW -->
+      <!-- Review PDF -->
       <section class="content-box">
         <h2>Downloadable Review</h2>
-        <p>Grab the full set of Unit 1 practice questions as a printable PDF.</p>
         <p>
           <a class="btn" href="assets/m10c_unit1_review.pdf" download>Download PDF</a>
           <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
         </p>
         <iframe class="pdf-frame" src="assets/m10c_unit1_review.pdf#view=FitH"></iframe>
-        
       </section>
 
-      <!-- QUICK PRACTICE (saves locally) -->
+      <!-- Scratchpad -->
       <section class="content-box practice-card">
         <h2>Quick Practice Scratchpad</h2>
-        <p class="muted">Work a few examples here (it autosaves). Try: “Write 360 as a product of primes,” “Is √18 rational? Why?”</p>
+        <p class="muted">Try: factor \(840\); classify \(0\), \(-\dfrac{5}{2}\), \(\sqrt{45}\); simplify \(\sqrt{180}\) and convert to entire radical.</p>
         <textarea id="scratch"></textarea>
         <div style="margin-top:10px;">
           <button class="btn" id="saveScratch">Save Notes</button>
           <button class="btn btn-ghost" id="clearScratch">Clear</button>
         </div>
       </section>
+
     </div>
   </main>
 
@@ -206,42 +249,341 @@
     <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
   </footer>
 
+  <!-- Math helper -->
   <script>
-    /* Checklist + Scratchpad persistence */
-    (function(){
-      const KEY = 'm10c_u1_checklist';
-      const box = document.getElementById('u1-checklist');
-      const saveBtn = document.getElementById('saveChecklist');
-      const saveNote = document.getElementById('saveNote');
-      const inputs = [...box.querySelectorAll('input[type="checkbox"][data-k]')];
+    window.typesetMath = function(root){
+      if (window.MathJax && MathJax.typesetPromise){
+        MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
+      }
+    };
+  </script>
 
-      function load(){
+  <!-- Page logic -->
+  <script>
+    /* ===== Checklist ===== */
+    (function(){
+      const KEY='m10c_u1_check';
+      const box=document.getElementById('u1-checklist');
+      const inputs=[...box.querySelectorAll('input[type="checkbox"][data-k]')];
+      const btn=document.getElementById('saveChecklist'), note=document.getElementById('saveNote');
+      function load(){ try{const d=JSON.parse(localStorage.getItem(KEY)||'{}'); inputs.forEach(cb=>cb.checked=!!d[cb.dataset.k]);}catch(e){} }
+      function save(){ const d={}; inputs.forEach(cb=>d[cb.dataset.k]=cb.checked); localStorage.setItem(KEY,JSON.stringify(d)); note.textContent='Saved ✔'; setTimeout(()=>note.textContent='Progress autosaves to this device.',1200); }
+      inputs.forEach(cb=>cb.addEventListener('change',save)); btn.addEventListener('click',save); load();
+    })();
+
+    /* ===== Scratchpad ===== */
+    (function(){
+      const KEY='m10c_u1_scratch', ta=document.getElementById('scratch');
+      const s=document.getElementById('saveScratch'), c=document.getElementById('clearScratch');
+      try{ ta.value=localStorage.getItem(KEY)||'';}catch(e){}
+      s.addEventListener('click',()=>localStorage.setItem(KEY,ta.value));
+      c.addEventListener('click',()=>{ ta.value=''; localStorage.setItem(KEY,''); });
+    })();
+
+    /* ===== Utilities ===== */
+    function approx(n,d=6){ return Number.isFinite(n)? Number(n.toFixed(d)) : NaN; }
+    function gcd(a,b){ a=Math.abs(a); b=Math.abs(b); while(b){ [a,b]=[b,a%b]; } return a||0; }
+    function lcm(a,b){ if(a===0||b===0) return 0; return Math.abs(a/gcd(a,b)*b); }
+    function primeFactors(n){
+      const res=[]; const map={};
+      if(n===0) return {list:[0], map:{0:1}};
+      let x=Math.abs(n), sign = n<0?-1:1;
+      for(let p=2;p*p<=x;p+=(p===2?1:2)){ // trial division, skip evens after 2
+        while(x%p===0){ map[p]=(map[p]||0)+1; res.push(p); x/=p; }
+      }
+      if(x>1){ map[x]=(map[x]||0)+1; res.push(x); }
+      if(sign<0){ map['-1']=1; res.unshift(-1); }
+      return {list:res, map};
+    }
+    function mapToExp(map){
+      const keys=Object.keys(map).filter(k=>k!=='-1').map(k=>+k).sort((a,b)=>a-b);
+      const parts = (map['-1']?['-1']:[]).concat(keys.map(k=> map[k]===1? `${k}`:`${k}^{${map[k]}}`));
+      return parts.join('\\cdot ');
+    }
+
+    /* ===== A. Prime Factorization + Tree + GCF/LCM ===== */
+    (function(){
+      const nEl=document.getElementById('pf_n'), mEl=document.getElementById('pf_m');
+      const svg=document.getElementById('pf_svg'), out=document.getElementById('pf_out');
+
+      function drawTree(n){
+        svg.innerHTML='';
+        const ns='http://www.w3.org/2000/svg', W=svg.viewBox.baseVal.width||640, H=svg.viewBox.baseVal.height||320;
+        function node(x,y,text){ const g=document.createElementNS(ns,'g');
+          const r=16;
+          const c=document.createElementNS(ns,'circle'); c.setAttribute('cx',x); c.setAttribute('cy',y); c.setAttribute('r',r); c.setAttribute('fill','#ecf5ff'); c.setAttribute('stroke','#3498db'); svg.appendChild(c);
+          const t=document.createElementNS(ns,'text'); t.setAttribute('x',x); t.setAttribute('y',y+4); t.setAttribute('text-anchor','middle'); t.setAttribute('font-size','12'); t.textContent=text; svg.appendChild(t);
+          return {x,y};
+        }
+        function link(a,b){ const l=document.createElementNS(ns,'line'); l.setAttribute('x1',a.x); l.setAttribute('y1',a.y+16); l.setAttribute('x2',b.x); l.setAttribute('y2',b.y-16); l.setAttribute('stroke','#9bb3c9'); svg.appendChild(l); }
+
+        if(n===0||n===1||n===-1){ node(W/2,30,String(n)); return; }
+        const list=primeFactors(n).list.filter(v=>v!==-1);
+        // simple balanced tree: split factors roughly in half downward
+        const root=node(W/2,30,String(n));
+        const levelGap=60, colGap=60;
+        // recursive build from list by pairing
+        let level=[{val:String(n), pos:root, children:list.map(x=>String(x))}];
+        // for visuals, just place all primes on bottom row
+        const y = 30 + levelGap*3;
+        const startX = W/2 - ((list.length-1)*colGap)/2;
+        list.forEach((p,i)=>{
+          const child=node(startX+i*colGap, y, String(p));
+          link(root, child);
+        });
+      }
+
+      function run(){
+        const n = parseInt(nEl.value,10);
+        if(!Number.isFinite(n)){ out.textContent='Enter an integer n.'; svg.innerHTML=''; return; }
+        const pf = primeFactors(n);
+        let html = `Prime factorization of ${n}: \\(${mapToExp(pf.map) || n}\\).`;
+        drawTree(n);
+
+        const mVal = parseInt(mEl.value,10);
+        if(Number.isFinite(mVal)){
+          const pf2 = primeFactors(mVal);
+          const keys = new Set([...Object.keys(pf.map), ...Object.keys(pf2.map)].filter(k=>k!=='-1'));
+          let g=1, L=1;
+          keys.forEach(k=>{
+            const a=pf.map[k]||0, b=pf2.map[k]||0, p=+k;
+            if(a&&b){ g *= p**Math.min(a,b); }
+            if(a||b){ L *= p**Math.max(a,b); }
+          });
+          if(n===0 || mVal===0){ L=0; g = Math.abs(n)===0?Math.abs(mVal):gcd(n,mVal); }
+          html += `<br>GCF\\(( ${n}, ${mVal} )\\) = \\(${g}\\) • LCM\\(( ${n}, ${mVal} )\\) = \\(${L}\\).`;
+        }
+        out.innerHTML = html;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      document.getElementById('pf_go').addEventListener('click', run);
+      document.getElementById('pf_reset').addEventListener('click', ()=>{ nEl.value=360; mEl.value=210; svg.innerHTML=''; out.textContent=''; });
+      run();
+    })();
+
+    /* ===== B. Number-System & Rationality Analyzer ===== */
+    (function(){
+      const ta=document.getElementById('ns_text'), out=document.getElementById('ns_out');
+
+      function parseTerm(s){
+        s=s.trim();
+        if(!s) return null;
+
+        // recognize pi, e
+        if(/^pi$/i.test(s)) return {type:'const', value:Math.PI, label:'\\(\\pi\\)', rational:false, reason:'Irrational constant.'};
+        if(/^e$/i.test(s)) return {type:'const', value:Math.E, label:'\\(e\\)', rational:false, reason:'Irrational constant.'};
+
+        // sqrt() or √
+        let m = s.match(/^sqrt\(([-+]?\d+)\)$/i) || s.match(/^√\s*([-+]?\d+)$/i);
+        if(m){
+          const n = parseInt(m[1],10);
+          if(!Number.isFinite(n)) return {label:s, rational:false, reason:'Invalid radicand'};
+          if(n<0) return {label:`\\(\\sqrt{${n}}\\)`, rational:false, reason:'Not real for negative radicand in Unit 1'};
+          const r = Math.floor(Math.sqrt(n));
+          if(r*r===n) return {label:`\\(\\sqrt{${n}}\\)`, rational:true, reason:`\\(\\sqrt{${n}}=${r}\\)`};
+          return {label:`\\(\\sqrt{${n}}\\)`, rational:false, reason:'Non-perfect square root'};
+        }
+
+        // fraction a/b
+        m = s.match(/^([-+]?\d+)\s*\/\s*([-+]?\d+)$/);
+        if(m){
+          const a=parseInt(m[1],10), b=parseInt(m[2],10);
+          if(b===0) return {label:`\\(\\frac{${a}}{0}\\)`, rational:false, reason:'Undefined (division by 0)'};
+          const g=gcd(a,b), p=a/g, q=b/g;
+          return {label:`\\(\\frac{${a}}{${b}}\\)`, rational:true, reason:`Reduced: \\(\\frac{${p}}{${q}}\\)`};
+        }
+
+        // repeating decimal: 0.12(34), 3.(142), 0.(3)
+        m = s.match(/^([-+]?\d*)\.?(\d*)\((\d+)\)$/);
+        if(m){
+          const sign = (m[1]||'').startsWith('-')?-1:1;
+          const A = (m[1]||'0').replace('+','').replace('-',''); // integer part
+          const B = m[2]||''; // non-repeating
+          const C = m[3];     // repeating
+          const a = BigInt(A||'0');
+          const b = BigInt(B||'0');
+          const c = BigInt(C);
+          const k = BigInt(B.length);
+          const r = BigInt(C.length);
+          // value = a + (B as /10^k) + (C as / (10^k * (10^r-1)))
+          const pow10k = BigInt(10)**k;
+          const pow10r = BigInt(10)**r;
+          // numerator/denominator for fractional part:
+          // frac = B/10^k + C/(10^k*(10^r-1)) = (B*(10^r-1) + C) / (10^k*(10^r-1))
+          const num = b*(pow10r-1n) + c;
+          const den = pow10k*(pow10r-1n);
+          // total = a + num/den = (a*den + num)/den
+          let N = a*den + num;
+          if(sign<0) N = -N;
+          let D = den;
+          // reduce
+          function bgcd(x,y){ x=x<0n?-x:x; y=y<0n?-y:y; while(y){ const t=x%y; x=y; y=t; } return x; }
+          const G = bgcd(N,D);
+          N/=G; D/=G;
+          const label = s.replace(/\(/,'\\overline{').replace(/\)/,'}');
+          return {label:`\\(${label}\\)`, rational:true, reason:`\\(\\frac{${N.toString()}}{${D.toString()}}\\)`};
+        }
+
+        // plain decimal or integer
+        if(!isNaN(Number(s))){
+          const v = Number(s);
+          const label = Number.isInteger(v) ? `\\(${s}\\)` : `\\(${s}\\)`;
+          // terminating decimal ⇒ rational (as fraction with power of 10)
+          if(String(s).includes('.')){
+            const dec = s.split('.')[1].length;
+            const p = Math.round(v * 10**dec);
+            const q = 10**dec;
+            const g0 = gcd(p,q);
+            return {label, rational:true, reason:`Terminating decimal = \\(\\frac{${p/g0}}{${q/g0}}\\)`};
+          }
+          return {label, rational:true, reason:'Integer'};
+        }
+
+        // fallback
+        return {label:s, rational:false, reason:'Unrecognized pattern'};
+      }
+
+      function classify(v){
+        // returns set memberships
+        // NATURAL ℕ: 1,2,3,...; WHOLE W: 0,1,2,...; INTEGERS ℤ: ...,−2,−1,0,1,2,...
+        // RATIONAL ℚ: p/q, q≠0 ; IRRATIONAL ℝ\ℚ: everything else in reals
+        const cls=[];
+        if(/^\\(.+\\)$/.test(v.label) || true){ /* noop to keep formatting */ }
+        // crude numeric detection for set membership
+        // If rational with explicit fraction or integer/decimal, we can parse a numeric example:
+        let numeric = null;
         try{
-          const data = JSON.parse(localStorage.getItem(KEY) || '{}');
-          inputs.forEach(cb => cb.checked = !!data[cb.dataset.k]);
+          if(v.label.includes('\\sqrt')){ numeric = null; }
         }catch(e){}
+        return v;
       }
-      function save(){
-        const data = {};
-        inputs.forEach(cb => data[cb.dataset.k] = cb.checked);
-        localStorage.setItem(KEY, JSON.stringify(data));
-        saveNote.textContent = 'Saved ✔';
-        setTimeout(()=> saveNote.textContent = 'Progress autosaves to this device.', 1200);
+
+      function run(){
+        const items = ta.value.split(',').map(s=>s.trim()).filter(Boolean);
+        if(!items.length){ out.textContent='Enter some values first.'; return; }
+        let rows = [];
+        for(const s of items){
+          const v = parseTerm(s);
+          if(!v){ continue; }
+          // set membership text
+          let sets = [];
+          // decide sets using the reason/nature of value:
+          if(/Undefined/.test(v.reason)){ sets.push('—'); }
+          else if(v.rational){
+            // try to see if integer
+            const intMatch = v.label.match(/^\\\((-?\d+)\)\\?$/);
+            if(intMatch){
+              const n = parseInt(intMatch[1],10);
+              if(n>=1) sets.push('ℕ, W, ℤ, ℚ');
+              else if(n===0) sets.push('W, ℤ, ℚ');
+              else sets.push('ℤ, ℚ');
+            }else{
+              // rational non-integer
+              sets.push('ℚ');
+            }
+          }else{
+            sets.push('irrational (ℝ\\ℚ)');
+          }
+          rows.push(`${v.label} → ${v.rational?'<b>rational</b> ✅':'<b>irrational</b> ❌'} • ${sets.join(', ')} • ${v.reason}`);
+        }
+        out.innerHTML = rows.join('<br>');
+        if(window.typesetMath) window.typesetMath(out);
       }
-      inputs.forEach(cb => cb.addEventListener('change', save));
-      saveBtn.addEventListener('click', save);
-      load();
+
+      document.getElementById('ns_go').addEventListener('click', run);
+      document.getElementById('ns_clear').addEventListener('click', ()=>{ ta.value=''; out.textContent=''; });
+      run();
     })();
 
+    /* ===== C. Radical Simplifier (square roots) ===== */
     (function(){
-      const SKEY='m10c_u1_scratch';
-      const ta = document.getElementById('scratch');
-      const saveBtn = document.getElementById('saveScratch');
-      const clearBtn = document.getElementById('clearScratch');
-      try{ ta.value = localStorage.getItem(SKEY) || ''; }catch(e){}
-      saveBtn.addEventListener('click', ()=> localStorage.setItem(SKEY, ta.value));
-      clearBtn.addEventListener('click', ()=> { ta.value=''; localStorage.setItem(SKEY, ''); });
+      const inp=document.getElementById('rad_in'), out=document.getElementById('rad_out');
+
+      function simpSqrt(n){
+        // returns {a,b} so sqrt(n) = a*sqrt(b), n>=0 integer
+        if(n<0) return {a:NaN,b:NaN};
+        let a=1, b=n;
+        for(let p=2; p*p<=b; p++){
+          while(b%(p*p)===0){ b/=p*p; a*=p; }
+        }
+        return {a,b};
+      }
+      function parseExpr(s){
+        s=s.trim();
+        // forms: sqrt(72), √72, 5√12, a*sqrt(b) (a,b integers)
+        // handle a*sqrt(b)
+        let m = s.match(/^([-+]?\d+)\s*\*\s*(?:sqrt\((\d+)\)|√\s*(\d+))$/i);
+        if(m){
+          const a=parseInt(m[1],10);
+          const b=parseInt(m[2]||m[3],10);
+          return {coef:a, rad:b};
+        }
+        // handle 5√12
+        m = s.match(/^([-+]?\d+)\s*(?:√\s*(\d+))$/i);
+        if(m){
+          return {coef:parseInt(m[1],10), rad:parseInt(m[2],10)};
+        }
+        // handle sqrt(72) or √72
+        m = s.match/^(?:sqrt\((\d+)\)|√\s*(\d+))$/i;
+        if(m){
+          return {coef:1, rad:parseInt(m[1]||m[2],10)};
+        }
+        return null;
+      }
+
+      function run(){
+        const P = parseExpr(inp.value);
+        if(!P){ out.textContent='Enter a square-root expression like sqrt(72), √50, or 5√12.'; return; }
+        const {coef,rad} = P;
+        if(!Number.isFinite(coef) || !Number.isFinite(rad) || rad<0){ out.textContent='Please use integer coefficients and non-negative radicands.'; return; }
+
+        // simplify coef*sqrt(rad)
+        const s = simpSqrt(rad);
+        const mixedCoef = coef * s.a;
+        const mixedRad = s.b;
+
+        // entire radical form: (mixedCoef)√(mixedRad) -> √(mixedCoef^2 * mixedRad)
+        const entire = mixedCoef*mixedCoef * mixedRad;
+
+        // pretty strings
+        const inStr = P.coef===1 ? `\\(\\sqrt{${rad}}\\)` : `\\(${coef}\\sqrt{${rad}}\\)`;
+        const simpStr = mixedRad===1 ? `\\(${mixedCoef}\\)` : (mixedCoef===1 ? `\\(\\sqrt{${mixedRad}}\\)` : `\\(${mixedCoef}\\sqrt{${mixedRad}}\\)`);
+        const entireStr = `\\(\\sqrt{${entire}}\\)`;
+
+        out.innerHTML = `${inStr} simplifies to <b>${simpStr}</b> • Entire-radical form: <b>${entireStr}</b>`;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+
+      document.getElementById('rad_simplify').addEventListener('click', run);
+      document.getElementById('rad_reset').addEventListener('click', ()=>{ inp.value='sqrt(72)'; out.textContent=''; });
+      run();
     })();
+
+    /* ===== D. Random Practice Generator ===== */
+    (function(){
+      const nEl=document.getElementById('rp_n'), out=document.getElementById('rp_out');
+      function randInt(a,b){ return Math.floor(Math.random()*(b-a+1))+a; }
+      function onePF(){ const n=randInt(100,999); return {q:`Prime-factorize ${n}.`, a: (()=>{ const m={}; let x=n; for(let p=2;p*p<=x;p+=(p===2?1:2)){ while(x%p===0){ m[p]=(m[p]||0)+1; x/=p; } } if(x>1)m[x]=(m[x]||0)+1; return Object.entries(m).map(([p,e])=> e==1?`${p}`:`${p}^{${e}}`).join('\\cdot '); })()}; }
+      function oneRR(){ const a=[ 'sqrt(50)','sqrt(72)','5√12','√98','3√27' ][randInt(0,4)]; return {q:`Simplify ${a}.`, a:'(see Radical Simplifier)'}; }
+      function oneClass(){ const ex=[ '-5', '0', '3/7', '0.125', '0.(3)', 'sqrt(20)', '√49', 'pi' ][randInt(0,7)]; return {q:`Classify ${ex} (set(s); rational/irrational).`, a:'(see Analyzer)'}; }
+      function build(){
+        const N=Math.max(3,Math.min(12, parseInt(nEl.value,10)||6));
+        const items=[];
+        for(let i=0;i<N;i++){
+          const t=randInt(0,2);
+          items.push(t===0?onePF():t===1?oneRR():oneClass());
+        }
+        out.innerHTML = items.map((it,idx)=>`<div><b>${idx+1}.</b> ${it.q}<br><span class="muted">Ans:</span> ${it.a}</div>`).join('<hr style="border:none;border-top:1px dashed #e0e0e0;margin:8px 0">');
+        if(window.typesetMath) window.typesetMath(out);
+      }
+      document.getElementById('rp_go').addEventListener('click', build);
+      document.getElementById('rp_clear').addEventListener('click', ()=>{ out.innerHTML=''; });
+      build();
+    })();
+
+    // Typeset after load
+    window.addEventListener('load', ()=>{ if(window.typesetMath) window.typesetMath(); });
   </script>
 </body>
 </html>
