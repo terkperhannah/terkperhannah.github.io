@@ -21,40 +21,38 @@
   </script>
   <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
   <script>
+    /* Queue-safe typeset helper available before any dynamic inserts */
     (function(){
       const pending = [];
       window.typesetMath = function(root){
         if (window.MathJax && MathJax.typesetPromise) {
           MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
-        } else { pending.push(root||null); }
-      };
-      document.addEventListener('DOMContentLoaded', ()=>{
-        const flush = ()=> {
-          if (!(window.MathJax && MathJax.typesetPromise)) return;
-          const batch = pending.splice(0);
-          if (batch.length) Promise.all(batch.map(r=>MathJax.typesetPromise(r?[r]:undefined))).catch(console.error);
-        };
-        if (window.MathJax && MathJax.startup && MathJax.startup.promise) MathJax.startup.promise.then(flush);
-        else {
-          const s=document.getElementById('MathJax-script');
-          if (s) s.addEventListener('load', flush);
+        } else {
+          pending.push(root || null);
         }
+      };
+      function flush(){
+        if (!(window.MathJax && MathJax.typesetPromise)) return;
+        const batch = pending.splice(0);
+        if (!batch.length) return;
+        Promise.all(batch.map(r => MathJax.typesetPromise(r ? [r] : undefined))).catch(console.error);
+      }
+      document.addEventListener('DOMContentLoaded', ()=>{
+        if (window.MathJax?.startup?.promise) MathJax.startup.promise.then(flush);
+        else document.getElementById('MathJax-script')?.addEventListener('load', flush);
       });
     })();
   </script>
 
   <style>
-    /* Page container */
     .content-wrapper{max-width:1100px;margin:0 auto;padding:20px;}
     .content-box{border:2px solid #e0e0e0;border-radius:12px;padding:24px;margin-bottom:24px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.07);}
     .content-box h2{color:#2c3e50;border-bottom:3px solid #3498db;padding-bottom:10px;margin-bottom:16px}
 
-    /* Hero */
     .hero{background:linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%);border-color:#cfe8ff}
     .badges{display:flex;flex-wrap:wrap;gap:8px}
     .badge{padding:6px 10px;border-radius:999px;background:#ecf5ff;border:1px solid #d6eaff;color:#1d6fa5;font-size:12px}
 
-    /* Question card */
     .question{border:1px solid #e7eaef;border-radius:12px;padding:16px;margin:18px 0;background:#f9fbfd}
     .q-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
     .q-title{font-weight:700;color:#2c3e50}
@@ -70,19 +68,18 @@
     .wb-toolbar label{font-size:.85rem;color:#5b6b7b}
     .wb-toolbar .btn{padding:8px 10px;border-radius:8px;border:1px solid #cbd6e2;background:#fff;cursor:pointer}
     .wb-toolbar .btn:hover{background:#ecf5ff;border-color:#3498db}
-    .wb-canvas{width:100%;height:260px;display:block;border-radius:0 0 10px 10px;background:#fff}
+    .wb-stack{position:relative;width:100%;height:260px;border-radius:0 0 10px 10px;overflow:hidden}
+    .wb-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:crosshair}
+    .wb-grid{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.9}
     .toolbar-sep{flex:1}
 
-    /* Footer summary */
     .progress{height:16px;background:#ecf0f1;border-radius:10px;overflow:hidden}
     .bar{height:100%;width:0;background:linear-gradient(90deg,#3498db,#2ecc71)}
     .stats{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 
-    /* Small utils */
     .btn-primary{background:#3498db;color:#fff;border:0;border-radius:8px;padding:8px 12px;cursor:pointer}
     .btn-primary:hover{background:#2f81bd}
     .muted{color:#7f8c8d}
-    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
   </style>
 </head>
 <body>
@@ -98,7 +95,7 @@
         .then(html => {
           const el=document.getElementById('navbar-placeholder');
           el.innerHTML=html;
-          if (window.typesetMath) window.typesetMath(el);
+          window.typesetMath?.(el);
         })
         .catch(err => console.error("Navbar failed to load:", err));
     });
@@ -106,11 +103,9 @@
 
   <main>
     <div class="content-wrapper">
-
-      <!-- HERO -->
       <section class="content-box hero">
         <h2>Unit 1 • Lessons 1–4 (Numbers)</h2>
-        <p class="muted">Prime factors • Applications of prime factors (GCF/LCM) • Rational vs. irrational • Number systems</p>
+        <p class="muted">Prime factors • Applications (GCF/LCM) • Rational vs. irrational • Number systems</p>
         <div class="badges">
           <span class="badge">Prime Factorization</span>
           <span class="badge">GCF &amp; LCM</span>
@@ -120,14 +115,12 @@
         </div>
       </section>
 
-      <!-- DIRECTIONS -->
       <section class="content-box">
         <h2>Practice Set</h2>
         <p>Each question allows <b>2 attempts</b>. Use the built-in <b>whiteboard</b> to work out your thinking, then click <i>Reveal Solution</i> if needed.</p>
         <p class="muted">Symbols: ℕ (natural), W (whole), ℤ (integers), ℚ (rational), ℝ∖ℚ (irrational).</p>
       </section>
 
-      <!-- QUESTIONS -->
       <section id="questions" class="content-box">
         <!-- Q1 -->
         <div class="question" id="q1">
@@ -157,14 +150,16 @@
               <span class="toolbar-sep"></span>
               <button class="btn" onclick="downloadWB(1)">Download PNG</button>
             </div>
-            <canvas class="wb-canvas" id="wb1"></canvas>
+            <div class="wb-stack">
+              <canvas class="wb-grid" id="grid1"></canvas>
+              <canvas class="wb-canvas" id="wb1"></canvas>
+            </div>
           </div>
         </div>
 
         <!-- Q2 -->
         <div class="question" id="q2">
-          <div class="q-head">
-            <div class="q-title">2) GCF</div>
+          <div class="q-head"><div class="q-title">2) GCF</div>
             <span class="muted">Find \(\mathrm{GCF}(84,\,210)\).</span>
           </div>
           <div class="options">
@@ -189,14 +184,16 @@
               <span class="toolbar-sep"></span>
               <button class="btn" onclick="downloadWB(2)">Download PNG</button>
             </div>
-            <canvas class="wb-canvas" id="wb2"></canvas>
+            <div class="wb-stack">
+              <canvas class="wb-grid" id="grid2"></canvas>
+              <canvas class="wb-canvas" id="wb2"></canvas>
+            </div>
           </div>
         </div>
 
         <!-- Q3 -->
         <div class="question" id="q3">
-          <div class="q-head">
-            <div class="q-title">3) LCM</div>
+          <div class="q-head"><div class="q-title">3) LCM</div>
             <span class="muted">Find \(\mathrm{LCM}(18,\,24)\).</span>
           </div>
           <div class="options">
@@ -221,14 +218,16 @@
               <span class="toolbar-sep"></span>
               <button class="btn" onclick="downloadWB(3)">Download PNG</button>
             </div>
-            <canvas class="wb-canvas" id="wb3"></canvas>
+            <div class="wb-stack">
+              <canvas class="wb-grid" id="grid3"></canvas>
+              <canvas class="wb-canvas" id="wb3"></canvas>
+            </div>
           </div>
         </div>
 
         <!-- Q4 -->
         <div class="question" id="q4">
-          <div class="q-head">
-            <div class="q-title">4) Rational vs. Irrational</div>
+          <div class="q-head"><div class="q-title">4) Rational vs. Irrational</div>
             <span class="muted">Which number is <b>irrational</b>?</span>
           </div>
           <div class="options">
@@ -253,14 +252,16 @@
               <span class="toolbar-sep"></span>
               <button class="btn" onclick="downloadWB(4)">Download PNG</button>
             </div>
-            <canvas class="wb-canvas" id="wb4"></canvas>
+            <div class="wb-stack">
+              <canvas class="wb-grid" id="grid4"></canvas>
+              <canvas class="wb-canvas" id="wb4"></canvas>
+            </div>
           </div>
         </div>
 
         <!-- Q5 -->
         <div class="question" id="q5">
-          <div class="q-head">
-            <div class="q-title">5) Number Systems</div>
+          <div class="q-head"><div class="q-title">5) Number Systems</div>
             <span class="muted">Smallest set containing \(-3.5\) is…</span>
           </div>
           <div class="options">
@@ -285,14 +286,16 @@
               <span class="toolbar-sep"></span>
               <button class="btn" onclick="downloadWB(5)">Download PNG</button>
             </div>
-            <canvas class="wb-canvas" id="wb5"></canvas>
+            <div class="wb-stack">
+              <canvas class="wb-grid" id="grid5"></canvas>
+              <canvas class="wb-canvas" id="wb5"></canvas>
+            </div>
           </div>
         </div>
 
         <!-- Q6 -->
         <div class="question" id="q6">
-          <div class="q-head">
-            <div class="q-title">6) Repeating Decimals</div>
+          <div class="q-head"><div class="q-title">6) Repeating Decimals</div>
             <span class="muted">Convert \(0.\overline{27}\) to a fraction in lowest terms.</span>
           </div>
           <div class="options">
@@ -317,14 +320,16 @@
               <span class="toolbar-sep"></span>
               <button class="btn" onclick="downloadWB(6)">Download PNG</button>
             </div>
-            <canvas class="wb-canvas" id="wb6"></canvas>
+            <div class="wb-stack">
+              <canvas class="wb-grid" id="grid6"></canvas>
+              <canvas class="wb-canvas" id="wb6"></canvas>
+            </div>
           </div>
         </div>
 
         <!-- Q7 -->
         <div class="question" id="q7">
-          <div class="q-head">
-            <div class="q-title">7) Radicals</div>
+          <div class="q-head"><div class="q-title">7) Radicals</div>
             <span class="muted">Simplify \(\sqrt{180}\).</span>
           </div>
           <div class="options">
@@ -349,15 +354,17 @@
               <span class="toolbar-sep"></span>
               <button class="btn" onclick="downloadWB(7)">Download PNG</button>
             </div>
-            <canvas class="wb-canvas" id="wb7"></canvas>
+            <div class="wb-stack">
+              <canvas class="wb-grid" id="grid7"></canvas>
+              <canvas class="wb-canvas" id="wb7"></canvas>
+            </div>
           </div>
         </div>
 
         <!-- Q8 -->
         <div class="question" id="q8">
-          <div class="q-head">
-            <div class="q-title">8) Application (LCM)</div>
-            <span class="muted">Pencils come in boxes of 12; erasers in boxes of 18. Choose the smallest combination that makes equal numbers of each.</span>
+          <div class="q-head"><div class="q-title">8) Application (LCM)</div>
+            <span class="muted">Pencils in 12s; erasers in 18s. Choose the smallest combo that makes equal numbers of each.</span>
           </div>
           <div class="options">
             <button class="option" onclick="checkAnswer(8,'a')">A) 2 pencil boxes &amp; 3 eraser boxes</button>
@@ -368,7 +375,7 @@
           <div class="feedback" id="f8"></div>
           <button class="btn-primary" onclick="toggleSoln(8)">Reveal Solution</button>
           <div class="soln" id="s8">
-            \(\mathrm{LCM}(12,18)=36\). \(3\times 12=36\) and \(2\times 18=36\Rightarrow\) choice B.
+            \(\mathrm{LCM}(12,18)=36\). \(3\times12=36\) and \(2\times18=36\Rightarrow\) choice B.
           </div>
           <div class="wb-wrap">
             <div class="wb-toolbar">
@@ -381,13 +388,14 @@
               <span class="toolbar-sep"></span>
               <button class="btn" onclick="downloadWB(8)">Download PNG</button>
             </div>
-            <canvas class="wb-canvas" id="wb8"></canvas>
+            <div class="wb-stack">
+              <canvas class="wb-grid" id="grid8"></canvas>
+              <canvas class="wb-canvas" id="wb8"></canvas>
+            </div>
           </div>
         </div>
-
       </section>
 
-      <!-- SUMMARY -->
       <section class="content-box">
         <h2>Progress</h2>
         <div class="stats">
@@ -396,7 +404,6 @@
           <button class="btn-primary" onclick="resetQuiz()">Reset Quiz</button>
         </div>
       </section>
-
     </div>
   </main>
 
@@ -416,23 +423,18 @@
       el.style.backgroundColor = ok===true ? '#d4edda' : ok===false ? '#f8d7da' : '#fff3cd';
       el.style.border = '1px solid ' + (ok===true ? '#b7e0c2' : ok===false ? '#f5c2c7' : '#ffe69c');
     }
-
     function disableOptions(id){
       const q = document.getElementById('q'+id);
       q.querySelectorAll('.option').forEach(b=> b.disabled = true);
     }
-
     function updateScore(){
       const total=Object.keys(correct).length;
       const got = Object.values(done).filter(Boolean).length;
       document.getElementById('score').textContent = got;
       document.getElementById('bar').style.width = (100*got/total)+'%';
     }
-
     function checkAnswer(id, choice){
-      if (done[id]) return;
-      if (attempts[id] >= 2) return;
-
+      if (done[id] || attempts[id]>=2) return;
       if (choice === correct[id]){
         setFeedback(id,'Correct! ✔', true);
         done[id] = true;
@@ -441,21 +443,16 @@
         attempts[id]++;
         const left = 2 - attempts[id];
         if (left>0) setFeedback(id, `Incorrect. Attempts remaining: ${left}`, false);
-        else {
-          setFeedback(id, `Out of attempts. Correct answer: ${correct[id].toUpperCase()}`, null);
-          disableOptions(id);
-        }
+        else { setFeedback(id, `Out of attempts. Correct: ${correct[id].toUpperCase()}`); disableOptions(id); }
       }
       updateScore();
-      if (window.typesetMath) window.typesetMath(document.getElementById('q'+id));
+      window.typesetMath?.(document.getElementById('q'+id));
     }
-
     function toggleSoln(id){
       const s = document.getElementById('s'+id);
       s.style.display = (s.style.display==='block' ? 'none' : 'block');
-      if (s.style.display==='block' && window.typesetMath) window.typesetMath(s);
+      if (s.style.display==='block') window.typesetMath?.(s);
     }
-
     function resetQuiz(){
       Object.keys(correct).forEach(k=>{ attempts[k]=0; done[k]=false; });
       for (let i=1;i<=8;i++){
@@ -466,113 +463,122 @@
       updateScore();
     }
 
-    /* ---------- Whiteboard Engine ---------- */
-    const WBs = {}; // per question
+    /* ---------- Whiteboard Engine (pointer events + grid layer) ---------- */
+    const WBs = {}; // state per question
+
     function initWB(i){
-      const canvas = document.getElementById('wb'+i);
-      const ctx = canvas.getContext('2d');
-      // HiDPI setup
-      function sizeCanvas(){
+      const drawCanvas = document.getElementById('wb'+i);
+      const gridCanvas = document.getElementById('grid'+i);
+      const dctx = drawCanvas.getContext('2d');
+      const gctx = gridCanvas.getContext('2d');
+
+      function size(){
         const dpr = window.devicePixelRatio || 1;
-        const rect = canvas.getBoundingClientRect();
-        canvas.width = rect.width * dpr;
-        canvas.height = 260 * dpr;
-        ctx.setTransform(dpr,0,0,dpr,0,0);
-        drawGrid(i,true); // redraw base grid if on
+        const rect = drawCanvas.getBoundingClientRect();
+        [drawCanvas, gridCanvas].forEach(c=>{
+          c.width = rect.width * dpr;
+          c.height = rect.height * dpr;
+          const ctx = (c===drawCanvas ? dctx : gctx);
+          ctx.setTransform(dpr,0,0,dpr,0,0);
+          ctx.clearRect(0,0,rect.width,rect.height);
+        });
+        // repaint background (white) so eraser works visually
+        dctx.fillStyle = '#ffffff'; dctx.fillRect(0,0,rect.width,rect.height);
+        if (WBs[i]?.gridOn) drawGrid();
       }
-      sizeCanvas(); window.addEventListener('resize', sizeCanvas);
+
+      function drawGrid(){
+        const rect = gridCanvas.getBoundingClientRect();
+        gctx.clearRect(0,0,rect.width,rect.height);
+        const step = 20;
+        gctx.strokeStyle = '#e9eef3';
+        gctx.lineWidth = 1;
+        for(let x=0;x<=rect.width;x+=step){ gctx.beginPath(); gctx.moveTo(x,0); gctx.lineTo(x,rect.height); gctx.stroke(); }
+        for(let y=0;y<=rect.height;y+=step){ gctx.beginPath(); gctx.moveTo(0,y); gctx.lineTo(rect.width,y); gctx.stroke(); }
+      }
+
+      size();
+      window.addEventListener('resize', size);
 
       WBs[i] = {
-        ctx, drawing:false, erasing:false, color: document.getElementById('c'+i).value,
+        color: document.getElementById('c'+i).value,
         width: parseInt(document.getElementById('w'+i).value,10),
-        history: [], grid:false
+        erasing:false,
+        gridOn:false,
+        history:[]
       };
 
-      const start = (x,y)=>{ WBs[i].drawing=true; ctx.beginPath(); ctx.moveTo(x,y); saveState(i); };
-      const move = (x,y)=>{
-        if(!WBs[i].drawing) return;
-        ctx.lineTo(x,y);
-        ctx.strokeStyle = WBs[i].erasing ? '#ffffff' : WBs[i].color;
-        ctx.lineWidth = WBs[i].width;
-        ctx.lineCap = 'round';
-        ctx.stroke();
-      };
-      const stop = ()=>{ WBs[i].drawing=false; };
+      function save(){
+        WBs[i].history.push(dctx.getImageData(0,0,drawCanvas.width,drawCanvas.height));
+        if (WBs[i].history.length>50) WBs[i].history.shift();
+      }
+      save();
 
-      // Mouse
-      canvas.addEventListener('mousedown',e=>start(e.offsetX,e.offsetY));
-      canvas.addEventListener('mousemove',e=>move(e.offsetX,e.offsetY));
-      canvas.addEventListener('mouseup',stop);
-      canvas.addEventListener('mouseleave',stop);
+      let drawing=false;
+      function pos(e){
+        const r = drawCanvas.getBoundingClientRect();
+        return { x: e.clientX - r.left, y: e.clientY - r.top };
+      }
+      drawCanvas.addEventListener('pointerdown', e=>{
+        drawCanvas.setPointerCapture(e.pointerId);
+        drawing=true; dctx.beginPath();
+        const p = pos(e); dctx.moveTo(p.x,p.y); save();
+      });
+      drawCanvas.addEventListener('pointermove', e=>{
+        if(!drawing) return;
+        const p = pos(e);
+        dctx.lineTo(p.x,p.y);
+        dctx.strokeStyle = WBs[i].erasing ? '#ffffff' : WBs[i].color;
+        dctx.lineWidth = WBs[i].width;
+        dctx.lineCap = 'round'; dctx.lineJoin = 'round';
+        dctx.stroke();
+      });
+      drawCanvas.addEventListener('pointerup', ()=>{ drawing=false; });
+      drawCanvas.addEventListener('pointercancel', ()=>{ drawing=false; });
 
-      // Touch
-      canvas.addEventListener('touchstart',e=>{
-        e.preventDefault();
-        const r=canvas.getBoundingClientRect();
-        const t=e.touches[0]; start(t.clientX-r.left,t.clientY-r.top);
-      },{passive:false});
-      canvas.addEventListener('touchmove',e=>{
-        e.preventDefault();
-        const r=canvas.getBoundingClientRect();
-        const t=e.touches[0]; move(t.clientX-r.left,t.clientY-r.top);
-      },{passive:false});
-      canvas.addEventListener('touchend',stop);
-
-      // Controls
+      // controls
       document.getElementById('c'+i).addEventListener('input',e=>WBs[i].color=e.target.value);
       document.getElementById('w'+i).addEventListener('input',e=>WBs[i].width=parseInt(e.target.value,10));
 
-      // Initial background (white)
-      ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,canvas.width,canvas.height);
-      saveState(i);
-    }
+      // expose actions
+      WBs[i].clear = ()=>{
+        const rect = drawCanvas.getBoundingClientRect();
+        dctx.clearRect(0,0,rect.width,rect.height);
+        dctx.fillStyle='#ffffff'; dctx.fillRect(0,0,rect.width,rect.height);
+        save();
+      };
+      WBs[i].undo = ()=>{
+        if (WBs[i].history.length>1){
+          WBs[i].history.pop();
+          dctx.putImageData(WBs[i].history[WBs[i].history.length-1],0,0);
+        }
+      };
+      WBs[i].toggleGrid = ()=>{
+        WBs[i].gridOn = !WBs[i].gridOn;
+        if (WBs[i].gridOn) drawGrid(); else gctx.clearRect(0,0,gridCanvas.width,gridCanvas.height);
+      };
+      WBs[i].download = ()=>{
+        // merge grid & drawing to one image for download
+        const tmp = document.createElement('canvas');
+        const r = drawCanvas.getBoundingClientRect();
+        tmp.width = drawCanvas.width; tmp.height = drawCanvas.height;
+        const tctx = tmp.getContext('2d');
+        tctx.drawImage(gridCanvas,0,0);
+        tctx.drawImage(drawCanvas,0,0);
+        const link=document.createElement('a');
+        link.download = `u1q${i}_work.png`;
+        link.href = tmp.toDataURL('image/png');
+        link.click();
+      };
 
-    function saveState(i){
-      const c=document.getElementById('wb'+i), ctx=WBs[i].ctx;
-      WBs[i].history.push(ctx.getImageData(0,0,c.width,c.height));
-      if (WBs[i].history.length>50) WBs[i].history.shift();
-    }
-
-    function undo(i){
-      const c=document.getElementById('wb'+i), ctx=WBs[i].ctx;
-      if (WBs[i].history.length>1){
-        WBs[i].history.pop();
-        ctx.putImageData(WBs[i].history[WBs[i].history.length-1],0,0);
-      }
-    }
-
-    function clearWB(i){
-      const c=document.getElementById('wb'+i), ctx=WBs[i].ctx;
-      ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,c.width,c.height);
-      if (WBs[i].grid) drawGrid(i,true);
-      saveState(i);
+      // initial grid off; user can toggle
     }
 
     function toggleEraser(i){ WBs[i].erasing = !WBs[i].erasing; }
-
-    function drawGrid(i,forceRedraw=false){
-      const c=document.getElementById('wb'+i), ctx=WBs[i].ctx;
-      if (!forceRedraw && !WBs[i].grid) return;
-      const step=20; ctx.save();
-      ctx.strokeStyle='#eef2f6'; ctx.lineWidth=1;
-      for(let x=0;x<c.width;x+=step) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,c.height); ctx.stroke(); }
-      for(let y=0;y<c.height;y+=step){ ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(c.width,y); ctx.stroke(); }
-      ctx.restore();
-    }
-
-    function toggleGrid(i){
-      WBs[i].grid = !WBs[i].grid;
-      if (WBs[i].grid) { drawGrid(i,true); saveState(i); }
-      else { clearWB(i); } // clear removes grid
-    }
-
-    function downloadWB(i){
-      const c=document.getElementById('wb'+i);
-      const link=document.createElement('a');
-      link.download = `u1q${i}_work.png`;
-      link.href = c.toDataURL('image/png');
-      link.click();
-    }
+    function undo(i){ WBs[i].undo(); }
+    function clearWB(i){ WBs[i].clear(); }
+    function toggleGrid(i){ WBs[i].toggleGrid(); }
+    function downloadWB(i){ WBs[i].download(); }
 
     window.toggleEraser=toggleEraser;
     window.undo=undo;
@@ -580,12 +586,14 @@
     window.toggleGrid=toggleGrid;
     window.downloadWB=downloadWB;
 
-    // Init all whiteboards and initial MathJax typeset
     document.addEventListener('DOMContentLoaded', ()=>{
       for(let i=1;i<=8;i++) initWB(i);
-      if (window.typesetMath) window.typesetMath(document.getElementById('questions'));
+      window.typesetMath?.(document.getElementById('questions'));
       updateScore();
     });
+
+    // Final safety typeset
+    window.addEventListener('load', ()=> window.typesetMath?.());
   </script>
 </body>
 </html>
