@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 30-1 • Exponential & Logarithmic Functions</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']], processEscapes:true },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] },
+      chtml: { mtextInheritFont:true, matchFontHeight:false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    .content-wrapper{max-width:1200px;margin:0 auto;padding:20px;}
+    .content-box{border:2px solid #e0e0e0;border-radius:12px;padding:28px;margin-bottom:30px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+    .content-box h2{color:#2c3e50;border-bottom:3px solid #3498db;padding-bottom:10px;margin-bottom:18px;}
+    .sub{color:#566573;margin-top:-6px;}
+    .hero{background:linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%);border-color:#cfe8ff;}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#ecf5ff;color:#1d6fa5;font-size:12px;margin:6px 6px 0 0;border:1px solid #d6eaff;}
+
+    .two-col{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start;}
+    .checklist label{display:flex;align-items:flex-start;gap:10px;line-height:1.4;margin:10px 0;}
+    .checklist input{transform:translateY(3px);}
+
+    .video-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:10px;}
+    .video-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:14px;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .video-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#3498db;}
+    .video-card h4{color:#3498db;margin:6px 0 8px;}
+    .video-card p{margin:0;font-size:.95rem;color:#5a6b7b;}
+    .video-card small{display:block;margin-top:8px;color:#7a8b99;}
+
+    .units-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+    .unit-card{padding:18px;border-radius:10px;background:#f8f9fa;border:1px solid #e0e0e0;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .unit-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#2ecc71;}
+    .unit-card h3{color:#2ecc71;margin:0 0 8px;}
+
+    .pdf-frame{width:100%;height:540px;border:1px solid #e0e0e0;border-radius:10px;}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:#3498db;color:#fff;text-decoration:none;border:0;cursor:pointer;}
+    .btn:hover{background:#2f81bd;}
+    .btn-ghost{background:#fff;color:#3498db;border:1px solid #3498db;}
+    .btn-ghost:hover{background:#ecf5ff;}
+    .muted{color:#7f8c8d;font-size:.95rem;}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+
+    .mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+    .tool-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:16px;}
+    .tool-card h4{margin:0 0 10px;color:#3498db;}
+    .tool-card label{display:block;font-size:.9rem;margin:6px 0 2px;color:#566573;}
+    .tool-card input,.tool-card select{width:100%;padding:8px 10px;border:1px solid #dfe6ee;border-radius:8px;}
+
+    .graph-wrap{background:#fff;border:1px solid #e0e0e0;border-radius:10px;overflow:hidden;}
+    .svg-plot{width:100%;height:380px;display:block;}
+    .legend{display:flex;gap:12px;align-items:center;margin-top:8px;font-size:14px;color:#5a6b7b;}
+    .swatch{width:16px;height:16px;border-radius:3px;display:inline-block;border:1px solid #ccc;}
+    .swatch.base{background:#c9ced6;}
+    .swatch.trans{background:#6ab0ff;border-color:#4b92da;}
+    .swatch.asym{background:#ffd1a6;border-color:#f0a868;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r=>r.text())
+        .then(html => {
+          const el=document.getElementById('navbar-placeholder');
+          el.innerHTML=html;
+          if (window.typesetMath) window.typesetMath(el);
+        })
+        .catch(err=>console.error('Navbar failed to load:',err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Exponential & Logarithmic Functions (Math 30-1)</h2>
+        <p class="sub">Dive into exponential growth and decay, logarithms, laws of logs, and graphing techniques.</p>
+        <div>
+          <span class="badge">Exponential \(y=a\,b^{\,m(x-h)}+k\)</span>
+          <span class="badge">Logarithmic \(y=a\,\log_b(m(x-h))+k\)</span>
+          <span class="badge">Growth/Decay \(A=A_0(1+p)^n,\ A=A_0e^{kn}\)</span>
+          <span class="badge">Laws: \(\log_b(MN)=\log_b M+\log_b N\)</span>
+        </div>
+      </section>
+
+      <!-- Outcomes -->
+      <section class="content-box">
+        <h2>What You Should Be Able To Do</h2>
+        <div class="two-col">
+          <ul>
+            <li>Model contexts with \(A=A_0(1+p)^n\) and \(A=A_0e^{kn}\); interpret growth factor, doubling/half-life.</li>
+            <li>Evaluate and simplify logs using change of base and laws of logarithms.</li>
+            <li>Solve exponential/log equations using algebra and logarithms.</li>
+            <li>Graph \(y=a\,b^{\,m(x-h)}+k\) and \(y=a\,\log_b(m(x-h))+k\) and identify asymptotes and key points.</li>
+          </ul>
+
+          <div class="checklist" id="m301-exp-checklist">
+            <label><input type="checkbox" data-k="model"> I can build growth/decay models from context.</label>
+            <label><input type="checkbox" data-k="laws"> I can use change of base and log laws correctly.</label>
+            <label><input type="checkbox" data-k="solve"> I can solve exponential/log equations for an unknown.</label>
+            <label><input type="checkbox" data-k="graph"> I can graph and describe transformations and asymptotes.</label>
+            <button class="btn btn-ghost" id="saveChecklist">Save Progress</button>
+            <small class="muted" id="saveNote" style="display:block;margin-top:6px;">Progress autosaves to this device.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Videos -->
+      <section class="content-box">
+        <h2>Video Library</h2>
+        <div class="video-grid">
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=exponential+growth+and+decay+discrete+continuous">
+            <h4>Growth & Decay (Discrete vs Continuous)</h4>
+            <p>From \(A=A_0(1+p)^n\) to \(A=A_0e^{kn}\), doubling & half-life.</p>
+            <small>youtube.com – “exponential growth and decay discrete continuous”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=laws+of+logarithms+change+of+base">
+            <h4>Laws of Logarithms & Change of Base</h4>
+            <p>Product, quotient, power rules; \(\log_b x=\frac{\ln x}{\ln b}\).</p>
+            <small>youtube.com – “laws of logarithms change of base”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=solving+exponential+equations+with+logs">
+            <h4>Solving Exponential Equations with Logs</h4>
+            <p>Common base, natural logs, isolating the exponent.</p>
+            <small>youtube.com – “solving exponential equations with logs”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=graphing+logarithmic+functions+transformations">
+            <h4>Graphing Logarithms & Transformations</h4>
+            <p>Vertical asymptotes, reflections, stretches, shifts.</p>
+            <small>youtube.com – “graphing logarithmic functions transformations”</small>
+          </a>
+        </div>
+      </section>
+
+      <!-- Tools -->
+      <section class="content-box">
+        <h2>Interactive Tools</h2>
+        <div class="mini-grid">
+
+          <!-- Graph Explorer -->
+          <div class="tool-card">
+            <h4>Graph Explorer</h4>
+            <label>Type</label>
+            <select id="fxType">
+              <option value="exp">Exponential \(y=a\,b^{\,m(x-h)}+k\)</option>
+              <option value="log">Logarithmic \(y=a\,\log_b(m(x-h))+k\)</option>
+            </select>
+
+            <div class="mini-grid" style="margin-top:6px;">
+              <div><label>a</label><input id="paramA" type="number" step="any" value="1"></div>
+              <div><label>base \(b\) ( \(b>0, b\neq1\) )</label><input id="paramB" type="number" step="any" value="2"></div>
+              <div><label>m (horizontal scale)</label><input id="paramM" type="number" step="any" value="1"></div>
+              <div><label>h (right +)</label><input id="paramH" type="number" step="any" value="0"></div>
+              <div><label>k (up +)</label><input id="paramK" type="number" step="any" value="0"></div>
+            </div>
+
+            <div style="margin-top:10px;">
+              <button class="btn" id="plotBtn">Plot</button>
+              <button class="btn btn-ghost" id="resetBtn">Reset</button>
+            </div>
+
+            <p class="muted mono" id="formulaText" style="margin-top:8px;"></p>
+
+            <div class="graph-wrap" style="margin-top:8px;">
+              <svg id="plot" class="svg-plot" viewBox="0 0 720 420" preserveAspectRatio="none"></svg>
+            </div>
+            <div class="legend">
+              <span class="swatch base"></span> Parent
+              <span class="swatch trans"></span> Transformed
+              <span class="swatch asym"></span> Asymptote
+            </div>
+          </div>
+
+          <!-- Growth/Decay -->
+          <div class="tool-card">
+            <h4>Growth/Decay Modeler</h4>
+            <label>Mode</label>
+            <select id="gdMode">
+              <option value="discrete">Discrete \(A=A_0(1+p)^n\)</option>
+              <option value="continuous">Continuous \(A=A_0 e^{kn}\)</option>
+            </select>
+
+            <label>Initial \(A_0\)</label>
+            <input id="gdA0" type="number" step="any" value="100">
+
+            <div id="discreteWrap">
+              <label>Percent per step \(p\) (e.g., 5 for +5, −12 for −12)</label>
+              <input id="gdP" type="number" step="any" value="5">
+            </div>
+            <div id="contWrap" style="display:none;">
+              <label>Continuous rate \(k\)</label>
+              <input id="gdK" type="number" step="any" value="0.2">
+            </div>
+
+            <label>Steps \(n\)</label>
+            <input id="gdN" type="number" step="1" min="0" value="10">
+
+            <div style="margin-top:10px;">
+              <button class="btn" id="gdCalc">Compute</button>
+            </div>
+            <p class="muted mono" id="gdOut" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- Log & Exponential Solver -->
+          <div class="tool-card">
+            <h4>Log & Exponential Solver</h4>
+            <label>Change of base: compute \(\log_b(x)=\frac{\ln x}{\ln b}\)</label>
+            <div class="mini-grid">
+              <input id="cbX" type="number" step="any" placeholder="x">
+              <input id="cbB" type="number" step="any" placeholder="b">
+            </div>
+            <div style="margin-top:6px;"><button class="btn btn-ghost" id="cbBtn">Evaluate</button></div>
+            <p class="muted mono" id="cbOut" style="margin:8px 0;"></p>
+
+            <hr style="border:none;border-top:1px solid #e5e9f2;margin:10px 0;">
+
+            <label>Solve \(b^{c x+d}=y\) for \(x\)</label>
+            <div class="mini-grid">
+              <input id="seB" type="number" step="any" placeholder="b">
+              <input id="seC" type="number" step="any" placeholder="c">
+              <input id="seD" type="number" step="any" placeholder="d">
+              <input id="seY" type="number" step="any" placeholder="y">
+            </div>
+            <div style="margin-top:6px;"><button class="btn btn-ghost" id="seBtn">Solve</button></div>
+            <p class="muted mono" id="seOut" style="margin:8px 0;"></p>
+
+            <label>Solve for \(t\) in \(A=A_0(1+p)^t\)</label>
+            <div class="mini-grid">
+              <input id="dtA0" type="number" step="any" placeholder="A0">
+              <input id="dtA"  type="number" step="any" placeholder="A">
+              <input id="dtP"  type="number" step="any" placeholder="p %">
+            </div>
+            <div style="margin-top:6px;"><button class="btn btn-ghost" id="dtBtn">Solve</button></div>
+            <p class="muted mono" id="dtOut" style="margin:8px 0;"></p>
+
+            <label>Solve for \(t\) or \(k\) in \(A=A_0 e^{k t}\)</label>
+            <div class="mini-grid">
+              <input id="ctA0" type="number" step="any" placeholder="A0">
+              <input id="ctA"  type="number" step="any" placeholder="A">
+              <input id="ctK"  type="number" step="any" placeholder="k (leave blank to solve)">
+              <input id="ctT"  type="number" step="any" placeholder="t (leave blank to solve)">
+            </div>
+            <div style="margin-top:6px;"><button class="btn btn-ghost" id="ctBtn">Solve</button></div>
+            <p class="muted mono" id="ctOut" style="margin:8px 0;"></p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Quizzes -->
+      <section class="content-box">
+        <h2>Quizzes</h2>
+        <div class="units-grid">
+          <a href="m301_u2_quiz1.html" class="unit-card">
+            <h3>Quiz 1: Growth/Decay & Exponential Equations</h3>
+            <p>Discrete vs continuous models; solving with logs.</p>
+          </a>
+          <a href="m301_u2_quiz2.html" class="unit-card">
+            <h3>Quiz 2: Logs, Laws & Graphs</h3>
+            <p>Change of base, log laws, graphing with transformations.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Review PDF -->
+      <section class="content-box">
+        <h2>Downloadable Review</h2>
+        <p>
+          <a class="btn" href="assets/m301_u2_review.pdf" download>Download PDF</a>
+          <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
+        </p>
+        <iframe class="pdf-frame" src="assets/m301_u2_review.pdf#view=FitH"></iframe>
+      </section>
+
+      <!-- Scratchpad -->
+      <section class="content-box">
+        <h2>Quick Practice Scratchpad</h2>
+        <p class="muted">Try: Find \(t\) if \(A_0=500\), \(A=800\), \(p=6\%\). Evaluate \(\log_{3}(81)\). Graph \(y=2\cdot 3^{-(x-1)}-4\).</p>
+        <textarea id="scratch" style="width:100%;min-height:140px;border-radius:8px;padding:12px;border:1px solid #dfe6ee;resize:vertical;"></textarea>
+        <div style="margin-top:10px;">
+          <button class="btn" id="saveScratch">Save Notes</button>
+          <button class="btn btn-ghost" id="clearScratch">Clear</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <!-- Math typeset helper -->
+  <script>
+    window.typesetMath = function(root){
+      if (window.MathJax && MathJax.typesetPromise){
+        MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
+      }
+    };
+  </script>
+
+  <!-- Page logic -->
+  <script>
+    /* ===== Checklist ===== */
+    (function(){
+      const KEY='m301_exp_check';
+      const box=document.getElementById('m301-exp-checklist');
+      const inputs=[...box.querySelectorAll('input[type="checkbox"][data-k]')];
+      const saveBtn=document.getElementById('saveChecklist');
+      const saveNote=document.getElementById('saveNote');
+      function load(){ try{const d=JSON.parse(localStorage.getItem(KEY)||'{}'); inputs.forEach(cb=>cb.checked=!!d[cb.dataset.k]);}catch(e){} }
+      function save(){ const d={}; inputs.forEach(cb=>d[cb.dataset.k]=cb.checked); localStorage.setItem(KEY,JSON.stringify(d)); saveNote.textContent='Saved ✔'; setTimeout(()=>saveNote.textContent='Progress autosaves to this device.',1200); }
+      inputs.forEach(cb=>cb.addEventListener('change',save));
+      saveBtn.addEventListener('click',save);
+      load();
+    })();
+
+    /* ===== Scratchpad ===== */
+    (function(){
+      const SKEY='m301_exp_scratch';
+      const ta=document.getElementById('scratch');
+      const s=document.getElementById('saveScratch'), c=document.getElementById('clearScratch');
+      try{ ta.value=localStorage.getItem(SKEY)||'';}catch(e){}
+      s.addEventListener('click',()=>localStorage.setItem(SKEY,ta.value));
+      c.addEventListener('click',()=>{ ta.value=''; localStorage.setItem(SKEY,''); });
+    })();
+
+    /* ===== SVG plotting helpers ===== */
+    function plotFunctions(svg, funcs, xMin, xMax, asym){
+      const W=720,H=420,m=32;
+      svg.innerHTML='';
+      const g=document.createElementNS('http://www.w3.org/2000/svg','g'); svg.appendChild(g);
+      const xToPx=x=>m+(x-xMin)*(W-2*m)/(xMax-xMin);
+      // scan to get y-range
+      let yMin=Infinity,yMax=-Infinity; const xs=[];
+      for(let i=0;i<=400;i++){
+        const x=xMin+(xMax-xMin)*i/400; xs.push(x);
+        funcs.forEach(fn=>{ const y=fn(x); if(isFinite(y)){ yMin=Math.min(yMin,y); yMax=Math.max(yMax,y); }});
+      }
+      if(!isFinite(yMin)||!isFinite(yMax)){ yMin=-5;yMax=5; }
+      if(yMax-yMin<1e-6){ yMin-=1; yMax+=1; }
+      const pad=0.15*(yMax-yMin); yMin-=pad; yMax+=pad;
+      const yToPx=y=>H-m-(y-yMin)*(H-2*m)/(yMax-yMin);
+
+      // grid
+      const grid=document.createElementNS('http://www.w3.org/2000/svg','g'); grid.setAttribute('stroke','#e8edf3'); grid.setAttribute('stroke-width','1');
+      for(let t=Math.ceil(xMin);t<=Math.floor(xMax);t++){ const x=xToPx(t); const ln=document.createElementNS('http://www.w3.org/2000/svg','line'); ln.setAttribute('x1',x);ln.setAttribute('y1',m);ln.setAttribute('x2',x);ln.setAttribute('y2',H-m); grid.appendChild(ln); }
+      for(let t=Math.ceil(yMin);t<=Math.floor(yMax);t++){ const y=yToPx(t); const ln=document.createElementNS('http://www.w3.org/2000/svg','line'); ln.setAttribute('x1',m);ln.setAttribute('y1',y);ln.setAttribute('x2',W-m);ln.setAttribute('y2',y); grid.appendChild(ln); }
+      g.appendChild(grid);
+
+      // axes
+      const axes=document.createElementNS('http://www.w3.org/2000/svg','g'); axes.setAttribute('stroke','#99a3ad'); axes.setAttribute('stroke-width','2');
+      if(xMin<0&&xMax>0){ const x=xToPx(0); const ln=document.createElementNS('http://www.w3.org/2000/svg','line'); ln.setAttribute('x1',x);ln.setAttribute('y1',m);ln.setAttribute('x2',x);ln.setAttribute('y2',H-m); axes.appendChild(ln); }
+      if(yMin<0&&yMax>0){ const y=yToPx(0); const ln=document.createElementNS('http://www.w3.org/2000/svg','line'); ln.setAttribute('x1',m);ln.setAttribute('y1',y);ln.setAttribute('x2',W-m);ln.setAttribute('y2',y); axes.appendChild(ln); }
+      g.appendChild(axes);
+
+      // asymptote
+      if(asym){
+        const asymG=document.createElementNS('http://www.w3.org/2000/svg','g'); asymG.setAttribute('stroke','#f0a868'); asymG.setAttribute('stroke-width','2'); asymG.setAttribute('stroke-dasharray','8 6');
+        if(asym.type==='h'){ const y=yToPx(asym.value); const ln=document.createElementNS('http://www.w3.org/2000/svg','line'); ln.setAttribute('x1',m);ln.setAttribute('y1',y);ln.setAttribute('x2',W-m);ln.setAttribute('y2',y); asymG.appendChild(ln); }
+        if(asym.type==='v'){ const x=xToPx(asym.value); const ln=document.createElementNS('http://www.w3.org/2000/svg','line'); ln.setAttribute('x1',x);ln.setAttribute('y1',m);ln.setAttribute('x2',x);ln.setAttribute('y2',H-m); asymG.appendChild(ln); }
+        g.appendChild(asymG);
+      }
+
+      function pathFor(fn){
+        let d='',started=false;
+        xs.forEach(x=>{
+          const y=fn(x);
+          if(isFinite(y)){ const X=xToPx(x),Y=yToPx(y); d+=(started?' L ':'M ')+X.toFixed(2)+' '+Y.toFixed(2); started=true; }
+          else{ started=false; }
+        });
+        return d;
+      }
+
+      const basePath=document.createElementNS('http://www.w3.org/2000/svg','path');
+      basePath.setAttribute('d', pathFor(funcs[0])); basePath.setAttribute('fill','none'); basePath.setAttribute('stroke','#c9ced6'); basePath.setAttribute('stroke-width','2'); basePath.setAttribute('stroke-dasharray','6 6');
+      g.appendChild(basePath);
+
+      const transPath=document.createElementNS('http://www.w3.org/2000/svg','path');
+      transPath.setAttribute('d', pathFor(funcs[1])); transPath.setAttribute('fill','none'); transPath.setAttribute('stroke','#3d8dff'); transPath.setAttribute('stroke-width','3');
+      g.appendChild(transPath);
+    }
+
+    /* ===== Graph Explorer wiring ===== */
+    (function(){
+      const typeSel = document.getElementById('fxType');
+      const A = document.getElementById('paramA'), B = document.getElementById('paramB'), M = document.getElementById('paramM'), H = document.getElementById('paramH'), K = document.getElementById('paramK');
+      const plotBtn=document.getElementById('plotBtn'), resetBtn=document.getElementById('resetBtn');
+      const svg=document.getElementById('plot'); const formula=document.getElementById('formulaText');
+
+      function baseExp(x){ return Math.pow(2,x); }
+      function baseLog(x){ return x>0 ? Math.log(x) : NaN; }
+
+      function update(){
+        const a=parseFloat(A.value), b=parseFloat(B.value), m=parseFloat(M.value), h=parseFloat(H.value), k=parseFloat(K.value);
+        const type=typeSel.value;
+        if(!(b>0) || b===1 || m===0){ formula.textContent='Choose valid parameters: b>0, b≠1; m≠0.'; svg.innerHTML=''; return; }
+
+        if(type==='exp'){
+          const f = x => Math.pow(b, x);                           // parent b^x
+          const g = x => a * Math.pow(b, m*(x-h)) + k;             // transformed
+          const xMin=-6+h, xMax=6+h;
+          plotFunctions(svg, [f,g], xMin, xMax, {type:'h', value:k});
+          formula.innerHTML = `Parent: \\(b^x\\), Transform: \\(y=${a}\\,${b}^{\\,${m}(x-${h})}+${k}\\), asymptote \\(y=${k}\\)`;
+        }else{
+          const f = x => x>0 ? Math.log(x)/Math.log(10) : NaN;     // parent log10 x
+          const g = x => (m*(x-h)>0 ? a * (Math.log(m*(x-h))/Math.log(b)) + k : NaN);
+          const side = m>0 ? 1 : -1;
+          const xStart = h + side*0.1, xEnd = h + side*10;
+          plotFunctions(svg, [f,g], Math.min(xStart,xEnd), Math.max(xStart,xEnd), {type:'v', value:h});
+          formula.innerHTML = `Parent: \\(\\log_{10}x\\), Transform: \\(y=${a}\\,\\log_{${b}}(${m}(x-${h}))+${k}\\), asymptote \\(x=${h}\\)`;
+        }
+        if(window.typesetMath) window.typesetMath(formula);
+      }
+
+      plotBtn.addEventListener('click', update);
+      [typeSel,A,B,M,H,K].forEach(el=>el.addEventListener('input', update));
+      resetBtn.addEventListener('click', ()=>{ A.value=1; B.value=2; M.value=1; H.value=0; K.value=0; typeSel.value='exp'; update(); });
+      update();
+    })();
+
+    /* ===== Growth/Decay ===== */
+    (function(){
+      const mode=document.getElementById('gdMode');
+      const A0=document.getElementById('gdA0'); const P=document.getElementById('gdP'); const K=document.getElementById('gdK'); const N=document.getElementById('gdN');
+      const out=document.getElementById('gdOut'); const btn=document.getElementById('gdCalc');
+      const discWrap=document.getElementById('discreteWrap'), contWrap=document.getElementById('contWrap');
+
+      mode.addEventListener('change', ()=>{
+        if(mode.value==='discrete'){ discWrap.style.display='block'; contWrap.style.display='none'; }
+        else { discWrap.style.display='none'; contWrap.style.display='block'; }
+      });
+
+      function compute(){
+        const a0=parseFloat(A0.value), n=parseFloat(N.value||0);
+        if(mode.value==='discrete'){
+          const p=parseFloat(P.value)/100;
+          const r=1+p, A=a0*Math.pow(r,n);
+          const dbl = (r>1)? Math.log(2)/Math.log(r) : null;
+          const half = (r<1)? Math.log(0.5)/Math.log(r) : null;
+          out.innerHTML = `r=1+p=${r.toFixed(6)} &nbsp; | &nbsp; A= ${A.toLocaleString(undefined,{maximumSignificantDigits:8})}` +
+                          (dbl?` &nbsp; | &nbsp; doubling ≈ ${dbl.toFixed(2)} steps`:``) +
+                          (half?` &nbsp; | &nbsp; half-life ≈ ${half.toFixed(2)} steps`:``);
+        }else{
+          const k=parseFloat(K.value); const A=a0*Math.exp(k*n);
+          const dbl = (k>0)? Math.log(2)/k : null;
+          const half = (k<0)? Math.log(0.5)/k : null;
+          out.innerHTML = `A= ${A.toLocaleString(undefined,{maximumSignificantDigits:8})}` +
+                          (dbl?` &nbsp; | &nbsp; doubling ≈ ${dbl.toFixed(2)} units`:``) +
+                          (half?` &nbsp; | &nbsp; half-life ≈ ${half.toFixed(2)} units`:``);
+        }
+      }
+      btn.addEventListener('click', compute);
+      compute();
+    })();
+
+    /* ===== Log & Exponential Solver ===== */
+    (function(){
+      const cbX=document.getElementById('cbX'), cbB=document.getElementById('cbB'), cbBtn=document.getElementById('cbBtn'), cbOut=document.getElementById('cbOut');
+      cbBtn.addEventListener('click', ()=>{
+        const x=parseFloat(cbX.value), b=parseFloat(cbB.value);
+        if(!(x>0) || !(b>0) || b===1){ cbOut.textContent='Use x>0, b>0, b≠1.'; return; }
+        cbOut.textContent = `log_${b}(${x}) = ${(Math.log(x)/Math.log(b)).toLocaleString(undefined,{maximumSignificantDigits:10})}`;
+      });
+
+      const seB=document.getElementById('seB'), seC=document.getElementById('seC'), seD=document.getElementById('seD'), seY=document.getElementById('seY'), seBtn=document.getElementById('seBtn'), seOut=document.getElementById('seOut');
+      seBtn.addEventListener('click', ()=>{
+        const b=parseFloat(seB.value), c=parseFloat(seC.value), d=parseFloat(seD.value), y=parseFloat(seY.value);
+        if(!(b>0) || b===1 || !isFinite(c) || !isFinite(d) || !(y>0)){ seOut.textContent='Require b>0, b≠1, y>0.'; return; }
+        const x = (Math.log(y)/Math.log(b) - d)/c;
+        seOut.textContent = `x = ${x.toLocaleString(undefined,{maximumSignificantDigits:10})}`;
+      });
+
+      const dtA0=document.getElementById('dtA0'), dtA=document.getElementById('dtA'), dtP=document.getElementById('dtP'), dtBtn=document.getElementById('dtBtn'), dtOut=document.getElementById('dtOut');
+      dtBtn.addEventListener('click', ()=>{
+        const A0=parseFloat(dtA0.value), A=parseFloat(dtA.value), p=parseFloat(dtP.value)/100;
+        if(!(A0>0) || !(A>0) || !isFinite(p) || p===-1){ dtOut.textContent='Enter A0>0, A>0, p≠-100%.'; return; }
+        const r=1+p; const t=Math.log(A/A0)/Math.log(r);
+        dtOut.textContent = `t = ${t.toLocaleString(undefined,{maximumSignificantDigits:10})}`;
+      });
+
+      const ctA0=document.getElementById('ctA0'), ctA=document.getElementById('ctA'), ctK=document.getElementById('ctK'), ctT=document.getElementById('ctT');
+      const ctBtn=document.getElementById('ctBtn'), ctOut=document.getElementById('ctOut');
+      ctBtn.addEventListener('click', ()=>{
+        const A0=parseFloat(ctA0.value), A=parseFloat(ctA.value);
+        const kStr=ctK.value.trim(), tStr=ctT.value.trim();
+        if(!(A0>0) || !(A>0)){ ctOut.textContent='Enter A0>0 and A>0.'; return; }
+        if(kStr && tStr){ const k=parseFloat(kStr), t=parseFloat(tStr); const chk=A0*Math.exp(k*t); ctOut.textContent=`A0 e^{kt} = ${chk.toLocaleString(undefined,{maximumSignificantDigits:10})}`; return; }
+        if(kStr){ const k=parseFloat(kStr); const t=Math.log(A/A0)/k; ctOut.textContent=`t = ${t.toLocaleString(undefined,{maximumSignificantDigits:10})}`; return; }
+        if(tStr){ const t=parseFloat(tStr); const k=Math.log(A/A0)/t; ctOut.textContent=`k = ${k.toLocaleString(undefined,{maximumSignificantDigits:10})}`; return; }
+        ctOut.textContent='Provide either k or t to solve for the other.';
+      });
+    })();
+  </script>
+</body>
+</html>
