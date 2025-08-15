@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 10C • Unit 1 Review – Number</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* Page-specific polish (keeps your overall theme intact) */
+    .content-wrapper { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    .content-box {
+      border: 2px solid #e0e0e0; border-radius: 12px; padding: 28px; margin-bottom: 30px;
+      background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,.07);
+    }
+    .content-box h2 { color:#2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; margin-bottom: 18px; }
+    .sub { color:#566573; margin-top:-6px; }
+
+    .hero {
+      background: linear-gradient(135deg,#eef7ff 0,#f7fffb 100%);
+      border-color:#cfe8ff;
+    }
+    .badge {
+      display:inline-block; padding:6px 10px; border-radius:999px; background:#ecf5ff; color:#1d6fa5;
+      font-size:12px; margin:6px 6px 0 0; border:1px solid #d6eaff;
+    }
+
+    .two-col {
+      display:grid; gap:20px; grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      align-items:start;
+    }
+
+    .checklist label { display:flex; align-items:flex-start; gap:10px; line-height:1.4; margin:10px 0; }
+    .checklist input { transform: translateY(3px); }
+
+    .video-grid {
+      display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      margin-top:10px;
+    }
+    .video-card{
+      background:#f8f9fa; border:1px solid #e0e0e0; border-radius:10px; padding:14px;
+      transition: transform .2s ease, box-shadow .2s ease; text-decoration:none; color:#34495e;
+      display:block;
+    }
+    .video-card:hover{ transform: translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,.08); border-color:#3498db; }
+    .video-card h4{ color:#3498db; margin:6px 0 8px; }
+    .video-card p{ margin:0; font-size:.95rem; color:#5a6b7b; }
+    .video-card small{ display:block; margin-top:8px; color:#7a8b99; }
+
+    .units-grid {
+      display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:16px;
+    }
+    .unit-card {
+      padding:18px; border-radius:10px; background:#f8f9fa; border:1px solid #e0e0e0;
+      transition:.2s; text-decoration:none; color:#34495e; display:block;
+    }
+    .unit-card:hover{ transform:translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,.08); border-color:#2ecc71; }
+    .unit-card h3{ color:#2ecc71; margin:0 0 8px; }
+
+    .pdf-frame{ width:100%; height:540px; border:1px solid #e0e0e0; border-radius:10px; }
+    .btn {
+      display:inline-block; padding:10px 14px; border-radius:8px; background:#3498db; color:#fff;
+      text-decoration:none; border:0; cursor:pointer;
+    }
+    .btn:hover{ background:#2f81bd; }
+    .btn-ghost { background:#fff; color:#3498db; border:1px solid #3498db; }
+    .btn-ghost:hover { background:#ecf5ff; }
+
+    .practice-card textarea{
+      width:100%; min-height:140px; border-radius:8px; padding:12px; border:1px solid #dfe6ee; resize:vertical;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    .tips li{ margin:6px 0; }
+    .muted { color:#7f8c8d; font-size:.95rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r => r.text())
+        .then(html => document.getElementById('navbar-placeholder').innerHTML = html)
+        .catch(err => console.error('Navbar failed to load:', err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Unit 1 Review: Number</h2>
+        <p class="sub">Prime factors • Rational vs. irrational numbers • Number systems • Radicals & mixed radicals</p>
+        <div>
+          <span class="badge">Prime Factorization</span>
+          <span class="badge">Rational vs. Irrational</span>
+          <span class="badge">Integers & Rationals</span>
+          <span class="badge">Radicals</span>
+          <span class="badge">Mixed Radicals</span>
+        </div>
+      </section>
+
+      <!-- Outcomes & Checklist -->
+      <section class="content-box">
+        <h2>What You Should Be Able To Do</h2>
+        <div class="two-col">
+          <ul class="tips">
+            <li>Express numbers as a product of prime factors (including with exponents).</li>
+            <li>Classify numbers within the real number system (natural, whole, integers, rational, irrational).</li>
+            <li>Convert between entire and mixed radicals and simplify radicals.</li>
+            <li>Add, subtract, multiply, and divide radicals when possible.</li>
+            <li>Explain why a number is rational or irrational using definitions and counterexamples.</li>
+          </ul>
+
+          <div class="checklist" id="u1-checklist">
+            <label><input type="checkbox" data-k="pf"> I can find the prime factorization of any integer.</label>
+            <label><input type="checkbox" data-k="ns"> I can place numbers correctly in the number system diagram.</label>
+            <label><input type="checkbox" data-k="ri"> I can decide if a number is rational or irrational and justify it.</label>
+            <label><input type="checkbox" data-k="rs"> I can simplify radicals and convert between entire/mixed forms.</label>
+            <label><input type="checkbox" data-k="ops"> I can perform operations on radicals (like terms & conjugates).</label>
+            <button class="btn btn-ghost" id="saveChecklist">Save Progress</button>
+            <small class="muted" id="saveNote" style="display:block;margin-top:6px;">Progress autosaves to this device.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIDEO LIBRARY -->
+      <section class="content-box">
+        <h2>Video Library</h2>
+        <p class="muted">These links open focused YouTube searches from trusted channels. Swap in your exact favourites later by editing the URLs.</p>
+        <div class="video-grid">
+          <a class="video-card" target="_blank"
+             href="https://www.youtube.com/results?search_query=prime+factorization+khan+academy">
+            <h4>Prime Factorization</h4>
+            <p>Khan Academy, Math Antics, and others.</p>
+            <small>youtube.com – search: “prime factorization khan academy”</small>
+          </a>
+
+          <a class="video-card" target="_blank"
+             href="https://www.youtube.com/results?search_query=rational+vs+irrational+numbers+eddie+woo">
+            <h4>Rational vs. Irrational Numbers</h4>
+            <p>Eddie Woo & Khan Academy explanations with examples.</p>
+            <small>youtube.com – search: “rational vs irrational numbers eddie woo”</small>
+          </a>
+
+          <a class="video-card" target="_blank"
+             href="https://www.youtube.com/results?search_query=real+number+system+diagram+math+antics">
+            <h4>Real Number System</h4>
+            <p>Natural → Whole → Integers → Rational → Irrational.</p>
+            <small>youtube.com – search: “real number system diagram math antics”</small>
+          </a>
+
+          <a class="video-card" target="_blank"
+             href="https://www.youtube.com/results?search_query=simplifying+radicals+and+mixed+radicals+khan+academy">
+            <h4>Radicals & Mixed Radicals</h4>
+            <p>Simplifying, converting, and operations with radicals.</p>
+            <small>youtube.com – search: “simplifying radicals and mixed radicals khan academy”</small>
+          </a>
+        </div>
+      </section>
+
+      <!-- QUIZZES (link to your own HTML quizzes) -->
+      <section class="content-box">
+        <h2>Unit 1 Quizzes</h2>
+        <div class="units-grid">
+          <a href="m10c_unit1.html" class="unit-card">
+            <h3>Quiz 1: Prime Factors & Number System</h3>
+            <p>Prime factorization, number classifications, rational vs. irrational.</p>
+          </a>
+          <a href="m10c_u1_quiz2.html" class="unit-card">
+            <h3>Quiz 2: Radicals & Mixed Radicals</h3>
+            <p>Simplifying radicals, converting entire ↔ mixed, basic operations.</p>
+          </a>
+        </div>
+        <p class="muted" style="margin-top:10px;">
+          Point these cards to your two HTML quiz files (keep the names above or rename the links).
+        </p>
+      </section>
+
+      <!-- DOWNLOAD / PDF REVIEW -->
+      <section class="content-box">
+        <h2>Downloadable Review</h2>
+        <p>Grab the full set of Unit 1 practice questions as a printable PDF.</p>
+        <p>
+          <a class="btn" href="assets/m10c_unit1_review.pdf" download>Download PDF</a>
+          <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
+        </p>
+        <iframe class="pdf-frame" src="assets/m10c_unit1_review.pdf#view=FitH"></iframe>
+        <p class="muted" style="margin-top:6px;">
+          Tip: Place your file at <code>/assets/m10c_unit1_review.pdf</code>. If the preview doesn’t show, the file path needs updating.
+        </p>
+      </section>
+
+      <!-- QUICK PRACTICE (saves locally) -->
+      <section class="content-box practice-card">
+        <h2>Quick Practice Scratchpad</h2>
+        <p class="muted">Work a few examples here (it autosaves). Try: “Write 360 as a product of primes,” “Is √18 rational? Why?”</p>
+        <textarea id="scratch"></textarea>
+        <div style="margin-top:10px;">
+          <button class="btn" id="saveScratch">Save Notes</button>
+          <button class="btn btn-ghost" id="clearScratch">Clear</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <script>
+    /* Checklist + Scratchpad persistence */
+    (function(){
+      const KEY = 'm10c_u1_checklist';
+      const box = document.getElementById('u1-checklist');
+      const saveBtn = document.getElementById('saveChecklist');
+      const saveNote = document.getElementById('saveNote');
+      const inputs = [...box.querySelectorAll('input[type="checkbox"][data-k]')];
+
+      function load(){
+        try{
+          const data = JSON.parse(localStorage.getItem(KEY) || '{}');
+          inputs.forEach(cb => cb.checked = !!data[cb.dataset.k]);
+        }catch(e){}
+      }
+      function save(){
+        const data = {};
+        inputs.forEach(cb => data[cb.dataset.k] = cb.checked);
+        localStorage.setItem(KEY, JSON.stringify(data));
+        saveNote.textContent = 'Saved ✔';
+        setTimeout(()=> saveNote.textContent = 'Progress autosaves to this device.', 1200);
+      }
+      inputs.forEach(cb => cb.addEventListener('change', save));
+      saveBtn.addEventListener('click', save);
+      load();
+    })();
+
+    (function(){
+      const SKEY='m10c_u1_scratch';
+      const ta = document.getElementById('scratch');
+      const saveBtn = document.getElementById('saveScratch');
+      const clearBtn = document.getElementById('clearScratch');
+      try{ ta.value = localStorage.getItem(SKEY) || ''; }catch(e){}
+      saveBtn.addEventListener('click', ()=> localStorage.setItem(SKEY, ta.value));
+      clearBtn.addEventListener('click', ()=> { ta.value=''; localStorage.setItem(SKEY, ''); });
+    })();
+  </script>
+</body>
+</html>
