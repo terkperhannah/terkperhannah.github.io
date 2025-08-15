@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 20-1 • Unit 5: Quadratic Functions & Equations</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']], processEscapes:true },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] },
+      chtml: { mtextInheritFont:true, matchFontHeight:false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    .content-wrapper{max-width:1200px;margin:0 auto;padding:20px;}
+    .content-box{border:2px solid #e0e0e0;border-radius:12px;padding:28px;margin-bottom:30px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.07);}
+    .content-box h2{color:#2c3e50;border-bottom:3px solid #3498db;padding-bottom:10px;margin-bottom:18px;}
+    .sub{color:#566573;margin-top:-6px;}
+    .hero{background:linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%);border-color:#cfe8ff;}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#ecf5ff;color:#1d6fa5;font-size:12px;margin:6px 6px 0 0;border:1px solid #d6eaff;}
+
+    .two-col{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start;}
+    .checklist label{display:flex;align-items:flex-start;gap:10px;line-height:1.4;margin:10px 0;}
+    .checklist input{transform:translateY(3px);}
+
+    .video-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:10px;}
+    .video-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:14px;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .video-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#3498db;}
+    .video-card h4{color:#3498db;margin:6px 0 8px;}
+    .video-card p{margin:0;font-size:.95rem;color:#5a6b7b;}
+    .video-card small{display:block;margin-top:8px;color:#7a8b99;}
+
+    .units-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+    .unit-card{padding:18px;border-radius:10px;background:#f8f9fa;border:1px solid #e0e0e0;transition:.2s;text-decoration:none;color:#34495e;display:block;}
+    .unit-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.08);border-color:#2ecc71;}
+    .unit-card h3{color:#2ecc71;margin:0 0 8px;}
+
+    .pdf-frame{width:100%;height:540px;border:1px solid #e0e0e0;border-radius:10px;}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:#3498db;color:#fff;text-decoration:none;border:0;cursor:pointer;}
+    .btn:hover{background:#2f81bd;}
+    .btn-ghost{background:#fff;color:#3498db;border:1px solid #3498db;}
+    .btn-ghost:hover{background:#ecf5ff;}
+    .muted{color:#7f8c8d;font-size:.95rem;}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+
+    .mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+    .tool-card{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:16px;}
+    .tool-card h4{margin:0 0 10px;color:#3498db;}
+    .tool-card label{display:block;font-size:.9rem;margin:6px 0 2px;color:#566573;}
+    .tool-card input,.tool-card select,.tool-card textarea{width:100%;padding:8px 10px;border:1px solid #dfe6ee;border-radius:8px;}
+    .tool-card textarea{min-height:72px;resize:vertical;}
+
+    .svg-plot{width:100%;height:380px;display:block;border:1px solid #e0e0e0;border-radius:10px;background:#fff;}
+    .table-mini{width:100%;border-collapse:collapse;margin-top:8px;}
+    .table-mini th,.table-mini td{border:1px solid #e6e6e6;padding:6px 8px;text-align:right;}
+    .table-mini th{background:#f2f6ff;color:#2c3e50;text-align:left;}
+    .ok{color:#2ecc71;font-weight:600;}
+    .bad{color:#e74c3c;font-weight:600;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r=>r.text())
+        .then(html => {
+          const el=document.getElementById('navbar-placeholder');
+          el.innerHTML=html;
+          if (window.typesetMath) window.typesetMath(el);
+        })
+        .catch(err=>console.error('Navbar failed to load:',err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Unit 5: Quadratic Functions & Equations (Math 20-1)</h2>
+        <p class="sub">Zeros/roots/intercepts; vertex form; completing the square; quadratic formula & discriminant; applications.</p>
+        <div>
+          <span class="badge">Standard \(ax^2+bx+c\)</span>
+          <span class="badge">Vertex \(a(x-h)^2+k\)</span>
+          <span class="badge">Axis \(x=-\\frac{b}{2a}\)</span>
+          <span class="badge">Discriminant \(\\Delta=b^2-4ac\)</span>
+          <span class="badge">Applications & Modelling</span>
+        </div>
+      </section>
+
+      <!-- Outcomes -->
+      <section class="content-box">
+        <h2>What You Should Be Able To Do</h2>
+        <div class="two-col">
+          <ul>
+            <li>Identify and interpret zeros/roots/x-intercepts and the y-intercept.</li>
+            <li>Write vertex form \(a(x-h)^2+k\) by completing the square; state vertex & axis.</li>
+            <li>Use the quadratic formula and discriminant to classify and find roots.</li>
+            <li>Graph parabolas and solve contextual problems (max/min, intercepts, given \(y\)).</li>
+          </ul>
+
+          <div class="checklist" id="m201-u5-checklist">
+            <label><input type="checkbox" data-k="zeros"> I can find zeros/roots and intercepts.</label>
+            <label><input type="checkbox" data-k="vertex"> I can convert to vertex form & find the vertex/axis.</label>
+            <label><input type="checkbox" data-k="qs"> I can complete the square.</label>
+            <label><input type="checkbox" data-k="quad"> I can use the quadratic formula & discriminant.</label>
+            <label><input type="checkbox" data-k="apps"> I can solve max/min and intercept applications.</label>
+            <button class="btn btn-ghost" id="saveChecklist">Save Progress</button>
+            <small class="muted" id="saveNote" style="display:block;margin-top:6px;">Progress autosaves to this device.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Videos -->
+      <section class="content-box">
+        <h2>Video Library</h2>
+        <div class="video-grid">
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=quadratic+zeros+intercepts+examples">
+            <h4>Zeros & Intercepts</h4>
+            <p>Identify x- and y-intercepts and what they mean.</p>
+            <small>youtube.com – “quadratic zeros intercepts examples”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=completing+the+square+vertex+form">
+            <h4>Completing the Square</h4>
+            <p>Convert \(ax^2+bx+c\) to \(a(x-h)^2+k\).</p>
+            <small>youtube.com – “completing the square vertex form”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=quadratic+formula+and+discriminant">
+            <h4>Quadratic Formula & Discriminant</h4>
+            <p>Classify roots with \(\\Delta\); compute exact/decimal roots.</p>
+            <small>youtube.com – “quadratic formula and discriminant”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=quadratic+applications+max+min+word+problems">
+            <h4>Applications & Modelling</h4>
+            <p>Max/min, projectile motion, revenue/area models.</p>
+            <small>youtube.com – “quadratic applications max min word problems”</small>
+          </a>
+        </div>
+      </section>
+
+      <!-- Interactive Tools -->
+      <section class="content-box">
+        <h2>Interactive Tools</h2>
+        <div class="mini-grid">
+
+          <!-- Form Converter & Completing the Square -->
+          <div class="tool-card">
+            <h4>Form Converter & Completing the Square</h4>
+            <label>Standard form coefficients \(ax^2+bx+c\) (a ≠ 0)</label>
+            <div class="mini-grid">
+              <input id="csA" type="number" step="any" value="1" placeholder="a">
+              <input id="csB" type="number" step="any" value="6" placeholder="b">
+              <input id="csC" type="number" step="any" value="8" placeholder="c">
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="csGo">Convert to Vertex Form</button>
+              <button class="btn btn-ghost" id="csReset">Reset</button>
+            </div>
+            <p class="muted mono" id="csOut" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- Quadratic Formula & Discriminant -->
+          <div class="tool-card">
+            <h4>Quadratic Formula & Discriminant</h4>
+            <div class="mini-grid">
+              <div><label>\(a\)</label><input id="qfA" type="number" step="any" value="1"></div>
+              <div><label>\(b\)</label><input id="qfB" type="number" step="any" value="-3"></div>
+              <div><label>\(c\)</label><input id="qfC" type="number" step="any" value="-10"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="qfGo">Solve & Classify</button>
+              <button class="btn btn-ghost" id="qfReset">Reset</button>
+            </div>
+            <p class="muted mono" id="qfOut" style="margin-top:8px;"></p>
+            <table class="table-mini">
+              <thead><tr><th>Quantity</th><th>Value</th></tr></thead>
+              <tbody id="qfTable"></tbody>
+            </table>
+          </div>
+
+          <!-- Graph the Parabola -->
+          <div class="tool-card">
+            <h4>Graph the Parabola</h4>
+            <p class="muted">Enter \(y=ax^2+bx+c\). Window defaults to \([-10,10]\) for both axes.</p>
+            <div class="mini-grid">
+              <input id="grA" type="number" step="any" value="1" placeholder="a">
+              <input id="grB" type="number" step="any" value="0" placeholder="b">
+              <input id="grC" type="number" step="any" value="0" placeholder="c">
+            </div>
+            <div class="mini-grid" style="margin-top:6px;">
+              <div><label>x-min</label><input id="grXmin" type="number" step="any" value="-10"></div>
+              <div><label>x-max</label><input id="grXmax" type="number" step="any" value="10"></div>
+              <div><label>y-min</label><input id="grYmin" type="number" step="any" value="-10"></div>
+              <div><label>y-max</label><input id="grYmax" type="number" step="any" value="10"></div>
+            </div>
+            <div style="margin-top:10px;">
+              <button class="btn" id="grDraw">Draw</button>
+              <button class="btn btn-ghost" id="grReset">Reset</button>
+            </div>
+            <svg id="grSVG" class="svg-plot" viewBox="0 0 640 380" preserveAspectRatio="none"></svg>
+            <p class="muted mono" id="grInfo" style="margin-top:8px;"></p>
+          </div>
+
+          <!-- Applications Calculator -->
+          <div class="tool-card">
+            <h4>Applications Calculator</h4>
+            <p class="muted">Model \(y=ax^2+bx+c\). For projectiles in metres/seconds, \(a\) is typically negative.</p>
+            <div class="mini-grid">
+              <div><label>\(a\)</label><input id="apA" type="number" step="any" value="-4.9"></div>
+              <div><label>\(b\)</label><input id="apB" type="number" step="any" value="20"></div>
+              <div><label>\(c\)</label><input id="apC" type="number" step="any" value="1.5"></div>
+            </div>
+            <div class="mini-grid" style="margin-top:6px;">
+              <div><label>Target height \(y_0\)</label><input id="apY0" type="number" step="any" value="0"></div>
+              <div><label>Solve for x at \(y_0\)</label><button class="btn" id="apSolveY0">Solve</button></div>
+            </div>
+            <p class="muted mono" id="apOut" style="margin-top:8px;"></p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Quizzes -->
+      <section class="content-box">
+        <h2>Unit 5 Quizzes</h2>
+        <div class="units-grid">
+          <a href="m201_u5_quiz1.html" class="unit-card">
+            <h3>Quiz 1: Vertex Form & Completing the Square</h3>
+            <p>Convert forms, vertex/axis, graph features.</p>
+          </a>
+          <a href="m201_u5_quiz2.html" class="unit-card">
+            <h3>Quiz 2: Quadratic Formula, Δ & Applications</h3>
+            <p>Classify/solve & apply to word problems.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Review PDF -->
+      <section class="content-box">
+        <h2>Downloadable Review</h2>
+        <p>
+          <a class="btn" href="assets/m201_u5_quadratics_review.pdf" download>Download PDF</a>
+          <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
+        </p>
+        <iframe class="pdf-frame" src="assets/m201_u5_quadratics_review.pdf#view=FitH"></iframe>
+      </section>
+
+      <!-- Scratchpad -->
+      <section class="content-box">
+        <h2>Quick Practice Scratchpad</h2>
+        <p class="muted">Try: convert \(y=2x^2-8x+1\) to vertex form; classify roots for \(y=x^2+4x+8\); solve \(y=-5t^2+30t+2\) for ground hits.</p>
+        <textarea id="scratch" style="width:100%;min-height:140px;border-radius:8px;padding:12px;border:1px solid #dfe6ee;resize:vertical;"></textarea>
+        <div style="margin-top:10px;">
+          <button class="btn" id="saveScratch">Save Notes</button>
+          <button class="btn btn-ghost" id="clearScratch">Clear</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <!-- Math helper -->
+  <script>
+    window.typesetMath = function(root){
+      if (window.MathJax && MathJax.typesetPromise){
+        MathJax.typesetPromise(root ? [root] : undefined).catch(console.error);
+      }
+    };
+  </script>
+
+  <!-- Page logic -->
+  <script>
+    /* ===== Checklist ===== */
+    (function(){
+      const KEY='m201_u5_check';
+      const box=document.getElementById('m201-u5-checklist');
+      const inputs=[...box.querySelectorAll('input[type="checkbox"][data-k]')];
+      const saveBtn=document.getElementById('saveChecklist'), saveNote=document.getElementById('saveNote');
+      function load(){ try{const d=JSON.parse(localStorage.getItem(KEY)||'{}'); inputs.forEach(cb=>cb.checked=!!d[cb.dataset.k]);}catch(e){} }
+      function save(){ const d={}; inputs.forEach(cb=>d[cb.dataset.k]=cb.checked); localStorage.setItem(KEY,JSON.stringify(d)); saveNote.textContent='Saved ✔'; setTimeout(()=>saveNote.textContent='Progress autosaves to this device.',1200); }
+      inputs.forEach(cb=>cb.addEventListener('change',save));
+      saveBtn.addEventListener('click',save);
+      load();
+    })();
+
+    /* ===== Scratchpad ===== */
+    (function(){
+      const SKEY='m201_u5_scratch';
+      const ta=document.getElementById('scratch');
+      const s=document.getElementById('saveScratch'), c=document.getElementById('clearScratch');
+      try{ ta.value=localStorage.getItem(SKEY)||'';}catch(e){}
+      s.addEventListener('click',()=>localStorage.setItem(SKEY,ta.value));
+      c.addEventListener('click',()=>{ ta.value=''; localStorage.setItem(SKEY,''); });
+    })();
+
+    /* ===== Utils ===== */
+    function approx(n,d=6){ return Number.isFinite(n)? Number(n.toFixed(d)) : NaN; }
+    function validA(a){ return Number.isFinite(a) && Math.abs(a) > 1e-12; }
+
+    /* ===== Completing the Square / Vertex Form ===== */
+    (function(){
+      const A=document.getElementById('csA'), B=document.getElementById('csB'), C=document.getElementById('csC');
+      const out=document.getElementById('csOut');
+      function run(){
+        const a=+A.value, b=+B.value, c=+C.value;
+        if(!validA(a)){ out.textContent='a must be nonzero.'; return; }
+        const h = -b/(2*a);
+        const k = a*h*h + b*h + c; // f(h)
+        // Derivation line:
+        // y = a[x^2 + (b/a)x] + c
+        //   = a[(x + b/(2a))^2 - (b/(2a))^2] + c
+        //   = a(x - h)^2 + k
+        const vform = `y=${a===1?'':a===-1?'-':''}${a===1||a===-1?'':'{'+a+'}'}(x${h<0?'+':'-'}${Math.abs(approx(h,4))})^2 ${k<0?'-':'+'} ${Math.abs(approx(k,4))}`;
+        const axis = `x=${approx(h,4)}`;
+        const yint = c;
+        out.innerHTML = `
+          Vertex: \\((${approx(h,4)},\\,${approx(k,4)})\\) • Axis: \\(${axis}\\) • y-intercept: \\((0,${approx(yint,4)})\\)<br>
+          Vertex form: <b>\\(${vform}\\)</b><br>
+          Steps: \\(y=ax^2+bx+c=a\\big(x^2+\\tfrac{b}{a}x\\big)+c=a\\Big(x+\\tfrac{b}{2a}\\Big)^2+\\Big(c-\\tfrac{b^2}{4a}\\Big)\\).
+        `;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+      document.getElementById('csGo').addEventListener('click', run);
+      document.getElementById('csReset').addEventListener('click', ()=>{ A.value=1;B.value=6;C.value=8; out.textContent=''; });
+      run();
+    })();
+
+    /* ===== Quadratic Formula & Discriminant ===== */
+    (function(){
+      const A=document.getElementById('qfA'), B=document.getElementById('qfB'), C=document.getElementById('qfC');
+      const out=document.getElementById('qfOut'), tbody=document.getElementById('qfTable');
+      function run(){
+        const a=+A.value, b=+B.value, c=+C.value;
+        if(!validA(a)){ out.textContent='a must be nonzero.'; tbody.innerHTML=''; return; }
+        const D=b*b-4*a*c;
+        let cls = D>0? 'two distinct real roots' : D===0? 'one real repeated root' : 'no real roots';
+        let r1=null,r2=null;
+        if(D>=0){
+          r1=(-b+Math.sqrt(D))/(2*a);
+          r2=(-b-Math.sqrt(D))/(2*a);
+        }
+        out.innerHTML = `\\(\\Delta=b^2-4ac=${approx(D,6)}\\): <b>${cls}</b> ${D>=0?`• roots \\(x=\\frac{-b\\pm\\sqrt{\\Delta}}{2a}\\Rightarrow\\) \\(${approx(r1)}\\), \\(${approx(r2)}\\)`:''}`;
+        tbody.innerHTML = `
+          <tr><td>Axis of symmetry</td><td>${approx(-b/(2*a),6)}</td></tr>
+          <tr><td>Vertex y</td><td>${approx(a*Math.pow(-b/(2*a),2)+b*(-b/(2*a))+c,6)}</td></tr>
+          <tr><td>y-intercept</td><td>${approx(c,6)}</td></tr>
+          <tr><td>Opens</td><td>${a>0?'Up (min)':'Down (max)'}</td></tr>
+        `;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+      document.getElementById('qfGo').addEventListener('click', run);
+      document.getElementById('qfReset').addEventListener('click', ()=>{ A.value=1;B.value=-3;C.value=-10; tbody.innerHTML=''; out.textContent=''; });
+      run();
+    })();
+
+    /* ===== Graphing ===== */
+    (function(){
+      const svg=document.getElementById('grSVG'), info=document.getElementById('grInfo');
+      const A=document.getElementById('grA'), B=document.getElementById('grB'), C=document.getElementById('grC');
+      const Xmin=document.getElementById('grXmin'), Xmax=document.getElementById('grXmax'), Ymin=document.getElementById('grYmin'), Ymax=document.getElementById('grYmax');
+
+      function draw(){
+        const a=+A.value, b=+B.value, c=+C.value;
+        const xmin=+Xmin.value, xmax=+Xmax.value, ymin=+Ymin.value, ymax=+Ymax.value;
+        if(!validA(a)){ svg.innerHTML=''; info.textContent='a must be nonzero.'; return; }
+        if(!(xmax>xmin && ymax>ymin)){ svg.innerHTML=''; info.textContent='Check window values.'; return; }
+
+        const W=640,H=380, ns='http://www.w3.org/2000/svg';
+        svg.innerHTML='';
+        function X(x){ return (x - xmin)/(xmax - xmin) * W; }
+        function Y(y){ return H - (y - ymin)/(ymax - ymin) * H; }
+
+        // Grid
+        const g=document.createElementNS(ns,'g'); svg.appendChild(g);
+        for(let x=Math.ceil(xmin); x<=Math.floor(xmax); x++){
+          const line=document.createElementNS(ns,'line');
+          line.setAttribute('x1',X(x)); line.setAttribute('x2',X(x));
+          line.setAttribute('y1',0); line.setAttribute('y2',H);
+          line.setAttribute('stroke', x===0?'#9bb3c9':'#eef2f6');
+          line.setAttribute('stroke-width', x===0?2:1);
+          g.appendChild(line);
+        }
+        for(let y=Math.ceil(ymin); y<=Math.floor(ymax); y++){
+          const line=document.createElementNS(ns,'line');
+          line.setAttribute('y1',Y(y)); line.setAttribute('y2',Y(y));
+          line.setAttribute('x1',0); line.setAttribute('x2',W);
+          line.setAttribute('stroke', y===0?'#9bb3c9':'#eef2f6');
+          line.setAttribute('stroke-width', y===0?2:1);
+          g.appendChild(line);
+        }
+
+        // Parabola path
+        const path=document.createElementNS(ns,'path');
+        let d='';
+        const steps=400, dx=(xmax-xmin)/steps;
+        for(let i=0;i<=steps;i++){
+          const x=xmin+i*dx;
+          const y=a*x*x+b*x+c;
+          d += (i===0? 'M':' L') + X(x) + ' ' + Y(y);
+        }
+        path.setAttribute('d', d);
+        path.setAttribute('fill','none'); path.setAttribute('stroke','#3d8dff'); path.setAttribute('stroke-width','2');
+        svg.appendChild(path);
+
+        // Vertex, intercepts
+        const h=-b/(2*a), k=a*h*h+b*h+c;
+        function dot(x,y,color){
+          const circ=document.createElementNS(ns,'circle');
+          circ.setAttribute('cx',X(x)); circ.setAttribute('cy',Y(y)); circ.setAttribute('r',4); circ.setAttribute('fill',color);
+          svg.appendChild(circ);
+        }
+        dot(h,k,'#e67e22'); // vertex
+        dot(0,c,'#2ecc71'); // y-int
+        const D=b*b-4*a*c;
+        if(D>=0){
+          const r1=(-b+Math.sqrt(D))/(2*a), r2=(-b-Math.sqrt(D))/(2*a);
+          dot(r1,0,'#e74c3c'); dot(r2,0,'#e74c3c');
+        }
+
+        info.innerHTML = `Vertex \\((${approx(h,4)},\\,${approx(k,4)})\\) • Axis \\(x=${approx(h,4)}\\) • y-int \\((0,${approx(c,4)})\\) ${D<0?'• no real x-intercepts':''}`;
+        if(window.typesetMath) window.typesetMath(info);
+      }
+
+      document.getElementById('grDraw').addEventListener('click', draw);
+      document.getElementById('grReset').addEventListener('click', ()=>{ A.value=1;B.value=0;C.value=0; Xmin.value=-10;Xmax.value=10;Ymin.value=-10;Ymax.value=10; svg.innerHTML=''; info.textContent=''; });
+      draw();
+    })();
+
+    /* ===== Applications Calculator ===== */
+    (function(){
+      const A=document.getElementById('apA'), B=document.getElementById('apB'), C=document.getElementById('apC'), Y0=document.getElementById('apY0');
+      const out=document.getElementById('apOut');
+      function run(){
+        const a=+A.value, b=+B.value, c=+C.value, y0=+Y0.value;
+        if(!validA(a)){ out.textContent='a must be nonzero.'; return; }
+        const h=-b/(2*a), k=a*h*h + b*h + c; // vertex
+        const opens = a>0 ? 'opens up (minimum)' : 'opens down (maximum)';
+        // Solve ax^2+bx+c = y0 ⇒ ax^2+bx+(c-y0)=0
+        const D = b*b - 4*a*(c - y0);
+        let rootsMsg = '';
+        if(D<0){
+          rootsMsg = `At height \\(y_0=${approx(y0)}\\): no real solutions.`;
+        }else if(D===0){
+          const t=-b/(2*a);
+          rootsMsg = `At height \\(y_0\\): one time \\(x=${approx(t)}\\).`;
+        }else{
+          const t1=(-b+Math.sqrt(D))/(2*a), t2=(-b-Math.sqrt(D))/(2*a);
+          rootsMsg = `At height \\(y_0\\): \\(x=${approx(t1)}\\) and \\(x=${approx(t2)}\\).`;
+        }
+        out.innerHTML = `
+          Vertex: \\((${approx(h)},\\,${approx(k)})\\) • Parabola ${opens}.<br>
+          Maximum/Minimum value: \\(y=${approx(k)}\\) at \\(x=${approx(h)}\\).<br>
+          ${rootsMsg}
+        `;
+        if(window.typesetMath) window.typesetMath(out);
+      }
+      document.getElementById('apSolveY0').addEventListener('click', run);
+      run();
+    })();
+  </script>
+</body>
+</html>
