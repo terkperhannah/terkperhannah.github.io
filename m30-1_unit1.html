@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math 30-1 • Functions & Transformations</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- MathJax: render \( … \), \[ … \] -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(','\\)'], ['$', '$']],
+        displayMath: [['\\[','\\]'], ['$$','$$']],
+        processEscapes: true
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] },
+      chtml: { mtextInheritFont: true, matchFontHeight: false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    .content-wrapper { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    .content-box {
+      border: 2px solid #e0e0e0; border-radius: 12px; padding: 28px; margin-bottom: 30px;
+      background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,.07);
+    }
+    .content-box h2 { color:#2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; margin-bottom: 18px; }
+    .sub { color:#566573; margin-top:-6px; }
+    .hero { background: linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%); border-color:#cfe8ff; }
+    .badge { display:inline-block; padding:6px 10px; border-radius:999px; background:#ecf5ff; color:#1d6fa5; font-size:12px; margin:6px 6px 0 0; border:1px solid #d6eaff; }
+
+    .two-col { display:grid; gap:20px; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); align-items:start; }
+    .checklist label { display:flex; align-items:flex-start; gap:10px; line-height:1.4; margin:10px 0; }
+    .checklist input { transform: translateY(3px); }
+
+    .video-grid { display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); margin-top:10px; }
+    .video-card{ background:#f8f9fa; border:1px solid #e0e0e0; border-radius:10px; padding:14px; transition: transform .2s ease, box-shadow .2s ease; text-decoration:none; color:#34495e; display:block; }
+    .video-card:hover{ transform: translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,.08); border-color:#3498db; }
+    .video-card h4{ color:#3498db; margin:6px 0 8px; }
+    .video-card p{ margin:0; font-size:.95rem; color:#5a6b7b; }
+    .video-card small{ display:block; margin-top:8px; color:#7a8b99; }
+
+    .units-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+    .unit-card { padding:18px; border-radius:10px; background:#f8f9fa; border:1px solid #e0e0e0; transition:.2s; text-decoration:none; color:#34495e; display:block; }
+    .unit-card:hover{ transform:translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,.08); border-color:#2ecc71; }
+    .unit-card h3{ color:#2ecc71; margin:0 0 8px; }
+
+    .pdf-frame{ width:100%; height:540px; border:1px solid #e0e0e0; border-radius:10px; }
+    .btn { display:inline-block; padding:10px 14px; border-radius:8px; background:#3498db; color:#fff; text-decoration:none; border:0; cursor:pointer; }
+    .btn:hover{ background:#2f81bd; }
+    .btn-ghost { background:#fff; color:#3498db; border:1px solid #3498db; }
+    .btn-ghost:hover { background:#ecf5ff; }
+    .muted { color:#7f8c8d; font-size:.95rem; }
+
+    .mini-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap:16px; }
+    .tool-card { background:#f8f9fa; border:1px solid #e0e0e0; border-radius:10px; padding:16px; }
+    .tool-card h4 { margin:0 0 10px; color:#3498db; }
+    .tool-card label { display:block; font-size:.9rem; margin:6px 0 2px; color:#566573; }
+    .tool-card input, .tool-card select { width:100%; padding:8px 10px; border:1px solid #dfe6ee; border-radius:8px; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+    .graph-wrap { background:#fff; border:1px solid #e0e0e0; border-radius:10px; overflow:hidden; }
+    .svg-plot { width:100%; height:380px; display:block; }
+    .legend { display:flex; gap:12px; align-items:center; margin-top:8px; font-size:14px; color:#5a6b7b; }
+    .swatch { width:16px; height:16px; border-radius:3px; display:inline-block; border:1px solid #ccc; }
+    .swatch.base { background:#c9ced6; }
+    .swatch.trans { background:#6ab0ff; border-color:#4b92da; }
+    .table-mini { width:100%; border-collapse:collapse; margin-top:8px; }
+    .table-mini th, .table-mini td { border:1px solid #e6e6e6; padding:6px 8px; text-align:right; }
+    .table-mini th { background:#f2f6ff; color:#2c3e50; text-align:left; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(r => r.text())
+        .then(html => {
+          const el = document.getElementById('navbar-placeholder');
+          el.innerHTML = html;
+          if (window.typesetMath) window.typesetMath(el);
+        })
+        .catch(err => console.error('Navbar failed to load:', err));
+    });
+  </script>
+
+  <main>
+    <div class="content-wrapper">
+
+      <!-- HERO -->
+      <section class="content-box hero">
+        <h2>Functions & Transformations (Math 30-1)</h2>
+        <p class="sub">Explore operations, compositions, and inverses of functions, plus graph transformations including stretches, reflections, and combinations.</p>
+        <div>
+          <span class="badge">Operations: \( (f\pm g)(x),\ (fg)(x),\ \frac{f}{g}(x) \)</span>
+          <span class="badge">Composition: \( (f\circ g)(x)=f(g(x)) \)</span>
+          <span class="badge">Inverse: \( f^{-1}(x) \)</span>
+          <span class="badge">Transform: \( g(x)=a\,f(b(x-h))+k \)</span>
+        </div>
+      </section>
+
+      <!-- Outcomes & Checklist -->
+      <section class="content-box">
+        <h2>What You Should Be Able To Do</h2>
+        <div class="two-col">
+          <ul>
+            <li>Perform operations on functions and state domains appropriately.</li>
+            <li>Build and evaluate compositions \( (f\circ g)(x) \) and determine domains.</li>
+            <li>Verify whether a function has an inverse (horizontal line test) and interpret \( f^{-1} \).</li>
+            <li>Describe and graph transformations \( g(x)=a\,f(b(x-h))+k \) including stretches, reflections, and translations.</li>
+            <li>Communicate restrictions, intercepts, asymptotes, and key points clearly.</li>
+          </ul>
+
+          <div class="checklist" id="m301-u1-checklist">
+            <label><input type="checkbox" data-k="ops"> I can add/multiply/divide functions and find the resulting domain.</label>
+            <label><input type="checkbox" data-k="comp"> I can form \( (f\circ g)(x) \) and evaluate it for given \(x\).</label>
+            <label><input type="checkbox" data-k="inv"> I can decide if \(f\) has an inverse and justify it.</label>
+            <label><input type="checkbox" data-k="trans"> I can map parameters \(a,b,h,k\) to vertical/horizontal stretches, reflections, and shifts.</label>
+            <button class="btn btn-ghost" id="saveChecklist">Save Progress</button>
+            <small class="muted" id="saveNote" style="display:block;margin-top:6px;">Progress autosaves to this device.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video Library -->
+      <section class="content-box">
+        <h2>Video Library</h2>
+        <div class="video-grid">
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=operations+on+functions+algebra">
+            <h4>Operations on Functions</h4>
+            <p>Add, subtract, multiply, divide; domain restrictions.</p>
+            <small>youtube.com – “operations on functions algebra”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=function+composition+examples">
+            <h4>Function Composition</h4>
+            <p>Evaluate \( (f\circ g)(x) \), domains, input/output chains.</p>
+            <small>youtube.com – “function composition examples”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=finding+inverse+functions+horizontal+line+test">
+            <h4>Inverse Functions & HLT</h4>
+            <p>One-to-one, restricting domain, checking inverses.</p>
+            <small>youtube.com – “finding inverse functions horizontal line test”</small>
+          </a>
+          <a class="video-card" target="_blank" href="https://www.youtube.com/results?search_query=function+transformations+a(b(x-h))+k">
+            <h4>Transformations \(a\,f(b(x-h))+k\)</h4>
+            <p>Reflections, stretches/compressions, shifts, order of operations.</p>
+            <small>youtube.com – “function transformations a(b(x-h))+k”</small>
+          </a>
+        </div>
+      </section>
+
+      <!-- Interactive Tools -->
+      <section class="content-box">
+        <h2>Interactive Tools</h2>
+        <div class="mini-grid">
+
+          <!-- Transformation Explorer -->
+          <div class="tool-card">
+            <h4>Transformation Explorer</h4>
+            <label>Parent function \(f(x)\)</label>
+            <select id="parent">
+              <option value="linear">Linear \(x\)</option>
+              <option value="quadratic">Quadratic \(x^2\)</option>
+              <option value="abs">Absolute \(|x|\)</option>
+              <option value="cubic">Cubic \(x^3\)</option>
+              <option value="sqrt">Square Root \(\sqrt{x}\)</option>
+              <option value="reciprocal">Reciprocal \(\frac{1}{x}\)</option>
+              <option value="exp">Exponential \(e^x\)</option>
+              <option value="ln">Logarithm \(\ln x\)</option>
+            </select>
+
+            <div class="mini-grid" style="margin-top:6px;">
+              <div><label>a (vertical)</label><input id="A" type="number" value="1" step="any"></div>
+              <div><label>b (horizontal)</label><input id="B" type="number" value="1" step="any"></div>
+              <div><label>h (right +)</label><input id="H" type="number" value="0" step="any"></div>
+              <div><label>k (up +)</label><input id="K" type="number" value="0" step="any"></div>
+            </div>
+
+            <div style="margin-top:10px;">
+              <button class="btn" id="plotBtn">Plot</button>
+              <button class="btn btn-ghost" id="resetBtn">Reset</button>
+            </div>
+
+            <p class="muted mono" id="ruleText" style="margin-top:8px;"></p>
+
+            <div class="graph-wrap" style="margin-top:8px;">
+              <svg id="plot" class="svg-plot" viewBox="0 0 720 420" preserveAspectRatio="none"></svg>
+            </div>
+            <div class="legend"><span class="swatch base"></span> Parent \(f(x)\) <span class="swatch trans"></span> \(g(x)=a\,f(b(x-h))+k\)</div>
+          </div>
+
+          <!-- Composition & Inverse Tester -->
+          <div class="tool-card">
+            <h4>Composition & Inverse Tester</h4>
+            <div class="mini-grid">
+              <div>
+                <label>Outer \(f\)</label>
+                <select id="fParent">
+                  <option value="linear">Linear \(x\)</option>
+                  <option value="quadratic">Quadratic \(x^2\)</option>
+                  <option value="abs">Absolute \(|x|\)</option>
+                  <option value="cubic">Cubic \(x^3\)</option>
+                  <option value="sqrt">Square Root \(\sqrt{x}\)</option>
+                  <option value="reciprocal">Reciprocal \(\frac{1}{x}\)</option>
+                  <option value="exp">Exponential \(e^x\)</option>
+                  <option value="ln">Logarithm \(\ln x\)</option>
+                </select>
+                <label class="muted" style="margin-top:6px;">\(f(x)=a_f\,F(b_f(x-h_f))+k_f\)</label>
+                <div class="mini-grid">
+                  <input id="fA" placeholder="a_f" type="number" value="1" step="any">
+                  <input id="fB" placeholder="b_f" type="number" value="1" step="any">
+                  <input id="fH" placeholder="h_f" type="number" value="0" step="any">
+                  <input id="fK" placeholder="k_f" type="number" value="0" step="any">
+                </div>
+              </div>
+
+              <div>
+                <label>Inner \(g\)</label>
+                <select id="gParent">
+                  <option value="linear">Linear \(x\)</option>
+                  <option value="quadratic">Quadratic \(x^2\)</option>
+                  <option value="abs">Absolute \(|x|\)</option>
+                  <option value="cubic">Cubic \(x^3\)</option>
+                  <option value="sqrt">Square Root \(\sqrt{x}\)</option>
+                  <option value="reciprocal">Reciprocal \(\frac{1}{x}\)</option>
+                  <option value="exp">Exponential \(e^x\)</option>
+                  <option value="ln">Logarithm \(\ln x\)</option>
+                </select>
+                <label class="muted" style="margin-top:6px;">\(g(x)=a_g\,G(b_g(x-h_g))+k_g\)</label>
+                <div class="mini-grid">
+                  <input id="gA" placeholder="a_g" type="number" value="1" step="any">
+                  <input id="gB" placeholder="b_g" type="number" value="1" step="any">
+                  <input id="gH" placeholder="h_g" type="number" value="0" step="any">
+                  <input id="gK" placeholder="k_g" type="number" value="0" step="any">
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:10px;">
+              <button class="btn" id="composeBtn">Compose & Graph</button>
+            </div>
+
+            <div class="graph-wrap" style="margin-top:8px;">
+              <svg id="compPlot" class="svg-plot" viewBox="0 0 720 420" preserveAspectRatio="none"></svg>
+            </div>
+            <div class="legend"><span class="swatch base"></span> \(g(x)\) <span class="swatch trans"></span> \(f(g(x))\)</div>
+
+            <p class="muted mono" id="compText" style="margin-top:8px;"></p>
+
+            <table class="table-mini" id="compTable">
+              <thead><tr><th>x</th><th>g(x)</th><th>(f∘g)(x)</th></tr></thead>
+              <tbody></tbody>
+            </table>
+
+            <p class="muted" id="invNote" style="margin-top:8px;"></p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Quizzes -->
+      <section class="content-box">
+        <h2>Quizzes</h2>
+        <div class="units-grid">
+          <a href="m301_u1_quiz1.html" class="unit-card">
+            <h3>Quiz 1: Operations & Composition</h3>
+            <p>Domains, evaluating \( (f\pm g)(x)\), \( (f\circ g)(x) \).</p>
+          </a>
+          <a href="m301_u1_quiz2.html" class="unit-card">
+            <h3>Quiz 2: Inverses & Transformations</h3>
+            <p>Horizontal line test, building \(f^{-1}\) (where possible), mapping \(a,b,h,k\).</p>
+          </a>
+        </div>
+        <p class="muted" style="margin-top:10px;">Update these to your actual quiz pages.</p>
+      </section>
+
+      <!-- PDF Review -->
+      <section class="content-box">
+        <h2>Downloadable Review</h2>
+        <p>Full set of practice questions for this unit.</p>
+        <p>
+          <a class="btn" href="assets/m301_u1_review.pdf" download>Download PDF</a>
+          <button class="btn btn-ghost" onclick="window.print()">Print this Page</button>
+        </p>
+        <iframe class="pdf-frame" src="assets/m301_u1_review.pdf#view=FitH"></iframe>
+        <p class="muted" style="margin-top:6px;">Place your file at <code>/assets/m301_u1_review.pdf</code> or adjust the path.</p>
+      </section>
+
+      <!-- Scratchpad -->
+      <section class="content-box">
+        <h2>Quick Practice Scratchpad</h2>
+        <p class="muted">Try: Describe the transformation from \(f(x)=|x|\) to \(g(x)=-2\,|3(x-1)|+4\). Build a function \(f\) so that \(f^{-1}(x)=2x-5\) on a suitable domain.</p>
+        <textarea id="scratch" style="width:100%; min-height:140px; border-radius:8px; padding:12px; border:1px solid #dfe6ee; resize:vertical;"></textarea>
+        <div style="margin-top:10px;">
+          <button class="btn" id="saveScratch">Save Notes</button>
+          <button class="btn btn-ghost" id="clearScratch">Clear</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+
+  <!-- Math helper -->
+  <script>
+    window.typesetMath = function(root){
+      if (window.MathJax && MathJax.typesetPromise) {
+        MathJax.typesetPromise(root ? [root] : undefined).catch(err => console.error(err));
+      }
+    };
+  </script>
+
+  <!-- Page logic -->
+  <script>
+    /* ===== Checklist ===== */
+    (function(){
+      const KEY='m301_u1_checklist';
+      const box=document.getElementById('m301-u1-checklist');
+      const inputs=[...box.querySelectorAll('input[type="checkbox"][data-k]')];
+      const saveBtn=document.getElementById('saveChecklist');
+      const saveNote=document.getElementById('saveNote');
+
+      function load(){ try{ const d=JSON.parse(localStorage.getItem(KEY)||'{}'); inputs.forEach(cb=>cb.checked=!!d[cb.dataset.k]); }catch(e){} }
+      function save(){ const d={}; inputs.forEach(cb=>d[cb.dataset.k]=cb.checked); localStorage.setItem(KEY,JSON.stringify(d)); saveNote.textContent='Saved ✔'; setTimeout(()=>saveNote.textContent='Progress autosaves to this device.',1200); }
+      inputs.forEach(cb=>cb.addEventListener('change',save));
+      saveBtn.addEventListener('click',save);
+      load();
+    })();
+
+    /* ===== Scratchpad ===== */
+    (function(){
+      const SKEY='m301_u1_scratch';
+      const ta=document.getElementById('scratch');
+      const s=document.getElementById('saveScratch'), c=document.getElementById('clearScratch');
+      try{ ta.value=localStorage.getItem(SKEY)||'';}catch(e){}
+      s.addEventListener('click',()=>localStorage.setItem(SKEY,ta.value));
+      c.addEventListener('click',()=>{ ta.value=''; localStorage.setItem(SKEY,''); });
+    })();
+
+    /* ===== Math utils ===== */
+    const BaseFns = {
+      linear: x => x,
+      quadratic: x => x*x,
+      abs: x => Math.abs(x),
+      cubic: x => x*x*x,
+      sqrt: x => (x>=0 ? Math.sqrt(x) : NaN),
+      reciprocal: x => (x!==0 ? 1/x : NaN),
+      exp: x => Math.exp(x),
+      ln: x => (x>0 ? Math.log(x) : NaN)
+    };
+    function transformFn(baseName,a,b,h,k){
+      const F = BaseFns[baseName];
+      return x => a * F( b * (x - h) ) + k;
+    }
+    function sampleDomain(base){
+      // set default domain by base
+      if (base==='sqrt' || base==='ln') return [ -1, 10 ]; // will NaN out invalids anyway
+      if (base==='reciprocal') return [ -10, 10 ];
+      if (base==='exp') return [ -4, 4 ];
+      return [ -6, 6 ];
+    }
+
+    /* ===== Simple SVG plotting ===== */
+    function plotFunctions(svg, funcs, xMin, xMax){
+      const W=720, H=420, m=32;
+      svg.innerHTML='';
+      const g=document.createElementNS('http://www.w3.org/2000/svg','g');
+      svg.appendChild(g);
+
+      // axes scale
+      const xToPx = x => m + (x - xMin) * (W-2*m)/(xMax-xMin);
+      // dynamic y-range: scan functions
+      let yMin=Infinity, yMax=-Infinity;
+      const xs=[];
+      for(let i=0;i<=400;i++){
+        const x=xMin + (xMax-xMin)*i/400; xs.push(x);
+        funcs.forEach(fn=>{
+          const y=fn(x);
+          if (isFinite(y)){ yMin=Math.min(yMin,y); yMax=Math.max(yMax,y); }
+        });
+      }
+      if(!isFinite(yMin) || !isFinite(yMax)){ yMin=-5; yMax=5; }
+      if (yMax-yMin<1e-6){ yMin-=1; yMax+=1; }
+      // pad
+      const pad = 0.15*(yMax-yMin); yMin-=pad; yMax+=pad;
+      const yToPx = y => H-m - (y - yMin) * (H-2*m)/(yMax-yMin);
+
+      // grid + axes
+      const ax=document.createElementNS('http://www.w3.org/2000/svg','g');
+      ax.setAttribute('stroke','#e8edf3'); ax.setAttribute('stroke-width','1');
+      // vertical grid
+      for(let t=Math.ceil(xMin); t<=Math.floor(xMax); t++){
+        const x=xToPx(t);
+        const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+        line.setAttribute('x1',x); line.setAttribute('y1',m);
+        line.setAttribute('x2',x); line.setAttribute('y2',H-m);
+        ax.appendChild(line);
+      }
+      // horizontal grid
+      for(let t=Math.ceil(yMin); t<=Math.floor(yMax); t++){
+        const y=yToPx(t);
+        const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+        line.setAttribute('x1',m); line.setAttribute('y1',y);
+        line.setAttribute('x2',W-m); line.setAttribute('y2',y);
+        ax.appendChild(line);
+      }
+      g.appendChild(ax);
+
+      // axes bold
+      const axes=document.createElementNS('http://www.w3.org/2000/svg','g');
+      axes.setAttribute('stroke','#99a3ad'); axes.setAttribute('stroke-width','2');
+      // y-axis (x=0)
+      if(xMin<0 && xMax>0){
+        const x=xToPx(0);
+        const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+        line.setAttribute('x1',x); line.setAttribute('y1',m);
+        line.setAttribute('x2',x); line.setAttribute('y2',H-m);
+        axes.appendChild(line);
+      }
+      // x-axis (y=0)
+      if(yMin<0 && yMax>0){
+        const y=yToPx(0);
+        const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+        line.setAttribute('x1',m); line.setAttribute('y1',y);
+        line.setAttribute('x2',W-m); line.setAttribute('y2',y);
+        axes.appendChild(line);
+      }
+      g.appendChild(axes);
+
+      // path builder
+      function pathFor(fn){
+        let d='';
+        let started=false;
+        xs.forEach((x,i)=>{
+          const y=fn(x);
+          if (isFinite(y)){
+            const X=xToPx(x), Y=yToPx(y);
+            d += (started?' L ':'M ') + X.toFixed(2) + ' ' + Y.toFixed(2);
+            started=true;
+          }else{
+            started=false;
+          }
+        });
+        return d;
+      }
+
+      // draw
+      const basePath=document.createElementNS('http://www.w3.org/2000/svg','path');
+      basePath.setAttribute('d', pathFor(funcs[0]));
+      basePath.setAttribute('fill','none'); basePath.setAttribute('stroke','#c9ced6'); basePath.setAttribute('stroke-width','2'); basePath.setAttribute('stroke-dasharray','6 6');
+      g.appendChild(basePath);
+
+      const transPath=document.createElementNS('http://www.w3.org/2000/svg','path');
+      transPath.setAttribute('d', pathFor(funcs[1]));
+      transPath.setAttribute('fill','none'); transPath.setAttribute('stroke','#3d8dff'); transPath.setAttribute('stroke-width','3');
+      g.appendChild(transPath);
+    }
+
+    /* ===== Transformation Explorer wiring ===== */
+    (function(){
+      const parent=document.getElementById('parent');
+      const A=document.getElementById('A'), B=document.getElementById('B'), H=document.getElementById('H'), K=document.getElementById('K');
+      const ruleText=document.getElementById('ruleText');
+      const svg=document.getElementById('plot');
+      const plotBtn=document.getElementById('plotBtn');
+      const resetBtn=document.getElementById('resetBtn');
+
+      function update(){
+        const base=parent.value, a=parseFloat(A.value), b=parseFloat(B.value), h=parseFloat(H.value), k=parseFloat(K.value);
+        const f = BaseFns[base];
+        const g = transformFn(base,a,b,h,k);
+        const [xMin,xMax]=sampleDomain(base);
+        plotFunctions(svg, [f,g], xMin, xMax);
+        ruleText.innerHTML = `Parent: \\(f(x)\\),&nbsp; Transform: \\(g(x)= ${a}\\,f(${b}(x-${h})) + ${k}\\)`;
+        if (window.typesetMath) window.typesetMath(ruleText);
+      }
+      plotBtn.addEventListener('click', update);
+      [parent,A,B,H,K].forEach(el=>el.addEventListener('input', update));
+      resetBtn.addEventListener('click', ()=>{ A.value=1; B.value=1; H.value=0; K.value=0; update(); });
+      update();
+    })();
+
+    /* ===== Composition & Inverse Tester ===== */
+    (function(){
+      const ids = s => document.getElementById(s);
+      const fParent=ids('fParent'), gParent=ids('gParent');
+      const fA=ids('fA'), fB=ids('fB'), fH=ids('fH'), fK=ids('fK');
+      const gA=ids('gA'), gB=ids('gB'), gH=ids('gH'), gK=ids('gK');
+      const svg=ids('compPlot'), btn=ids('composeBtn'), txt=ids('compText'), table=ids('compTable').querySelector('tbody'), note=ids('invNote');
+
+      function compose(){
+        const f = transformFn(fParent.value, parseFloat(fA.value), parseFloat(fB.value), parseFloat(fH.value), parseFloat(fK.value));
+        const g = transformFn(gParent.value, parseFloat(gA.value), parseFloat(gB.value), parseFloat(gH.value), parseFloat(gK.value));
+        // x-range: combine conservative ranges
+        const [gMin,gMax] = sampleDomain(gParent.value);
+        plotFunctions(svg, [g, x=>f(g(x))], gMin, gMax);
+
+        // sample table
+        table.innerHTML='';
+        const xs = [];
+        for(let i=0;i<=10;i++){ xs.push(gMin + (gMax-gMin)*i/10); }
+        xs.forEach(x=>{
+          const gx = g(x); const fg = f(gx);
+          if (isFinite(gx) && isFinite(fg)){
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td>${x.toFixed(2)}</td><td>${gx.toFixed(4)}</td><td>${fg.toFixed(4)}</td>`;
+            table.appendChild(tr);
+          }
+        });
+
+        // monotonicity / HLT (simple sample-based check)
+        let inc=true, dec=true, lastY=null;
+        const ys=[];
+        for(let i=0;i<=200;i++){
+          const x = gMin + (gMax-gMin)*i/200;
+          const y = f(g(x));
+          ys.push(y);
+          if (isFinite(y)){
+            if (lastY!==null){
+              if (y>lastY+1e-9) dec=false;
+              if (y<lastY-1e-9) inc=false;
+            }
+            lastY=y;
+          }
+        }
+        const oneToOne = (inc || dec) && ys.every(v=>isFinite(v));
+        txt.innerHTML = `Composed rule: \\((f\\circ g)(x)=f(g(x))\\). &nbsp; Sampled behavior on the interval: ` +
+                        (inc ? 'increasing' : (dec ? 'decreasing' : 'not monotonic'));
+        note.innerHTML = oneToOne
+          ? '✓ On this interval, the sample suggests one-to-one (passes the horizontal line test) so an inverse likely exists with a suitable domain.'
+          : '⚠ Samples indicate the function is not one-to-one on this interval (fails HLT). Restrict the domain or adjust parameters.';
+        if (window.typesetMath){ window.typesetMath(txt); }
+      }
+
+      btn.addEventListener('click', compose);
+      [fParent,gParent,fA,fB,fH,fK,gA,gB,gH,gK].forEach(el=>el.addEventListener('input', compose));
+      compose();
+    })();
+  </script>
+</body>
+</html>
