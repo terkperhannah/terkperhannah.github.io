@@ -68,6 +68,24 @@
     .ref-table th { background:#f2f6ff; color:#2c3e50; }
     code.katex { white-space: nowrap; }
   </style>
+  <!-- MathJax v3: render \( ... \), \[ ... \], $...$, $$...$$ -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['\\(','\\)'], ['$', '$']],
+      displayMath: [['\\[','\\]'], ['$$','$$']],
+      processEscapes: true
+    },
+    options: {
+      // We'll typeset everything (we'll handle <code.katex> separately below)
+      skipHtmlTags: ['script','noscript','style','textarea']
+    }
+  };
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
 </head>
 <body>
   <header>
@@ -345,5 +363,14 @@
       fillUnits();
     })();
   </script>
+  <script>
+  function typesetMath(root) {
+    if (window.MathJax && MathJax.typesetPromise) {
+      MathJax.typesetPromise(root ? [root] : undefined).catch(err => console.error(err));
+    }
+  }
+  document.addEventListener('DOMContentLoaded', () => typesetMath());
+</script>
+
 </body>
 </html>
