@@ -17,7 +17,6 @@
       text-align: center;
       color: #0984e3;
     }
-
     .question-box {
       background: #ffffff;
       border-left: 5px solid #00cec9;
@@ -49,176 +48,145 @@
       background: #5a4fcf;
     }
   </style>
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="intro-section">
-        <h1>Ms. Terkper's Digital Classroom</h1>
-    </header>
-    <div id="navbar-placeholder"></div>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    fetch('navbar.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-      })
-      .catch(err => console.error("Navbar failed to load:", err));
-  });
-</script>
-
-    <main>
-<script async src="https://cse.google.com/cse.js?cx=55023492bbb93437c">
-</script>
-
-<header>
-  <h2>Grade 9 Diagnostic Practice Test</h2>
-  <h3>These are based on questions you should have mastered in grade 8.</h3>
-</header>
-  
-<section class="help-section">
-  <p><strong>Need to check your solutions?</strong> Click below to ask ChatGPT on Poe:</p>
-  <a href="https://poe.com/ChatGPT" target="_blank" class="poe-button">Ask ChatGPT on Poe</a>
-</section>
-
-
-
-  <div id="questions-container"></div>
-
+    <h1>Ms. Terkper's Digital Classroom</h1>
+  </header>
+  <div id="navbar-placeholder"></div>
   <script>
-    const container = document.getElementById('questions-container');
-    const questions = [
-  // Q1 - Simple addition of fractions
-  () => `\\( \\frac{1}{${randInt(2, 6)}} + \\frac{2}{${randInt(2, 6)}} + \\frac{3}{${randInt(2, 6)}} \\)`,
-
-  // Q2 - Multiplication of two fractions
-  () => `\\( \\frac{${randInt(1, 9)}}{${randInt(2, 9)}} \\times \\frac{${randInt(10, 20)}}{${randInt(10, 20)}} \\)`,
-
-  // Q3 - Division of fractions with a negative
-  () => `\\( \\frac{${randInt(3, 9)}}{${randInt(4, 10)}} \\div \\left(-\\frac{${randInt(4, 10)}}{${randInt(4, 10)}}\\right) \\)`,
-
-  // Q4 - Multi-step fraction multiplication
-  () => `\\( \\frac{${randInt(1, 3)}}{${randInt(2, 5)}} \\times \\frac{${randInt(3, 6)}}{${randInt(4, 8)}} \\times \\frac{${randInt(2, 6)}}{${randInt(5, 10)}} \\)`,
-
-  // Q5 - Division with grouped addition in the denominator
-  () => `\\( \\frac{${randInt(1, 3)}}{${randInt(1, 3)}} \\div \\left(\\frac{1}{2} + \\frac{1}{3}\\right) \\)`,
-
-  // Q6 - Integer addition with negatives
-  () => `\\( ${randInt(3, 8)} + (${randInt(-5, -1)}) + (${randInt(-6, -2)}) \\)`,
-
-  // Q7 - Integer subtraction with negatives
-  () => `\\( -${randInt(1, 4)} - (-${randInt(1, 4)}) - ${randInt(1, 4)} \\)`,
-
-  // Q8 - Multiplication of negative integers
-  () => `\\( -${randInt(1, 3)} \\times -${randInt(2, 4)} \\times -${randInt(2, 4)} \\)`,
-
-    // Q9 - Mixed number division (updated to show mixed numbers)
-  () => {
-    const whole = randInt(1, 2);
-    const num = randInt(1, 3);
-    const den = randInt(2, 4);
-    return `\\( ${whole}\\frac{${num}}{${den}} \\div \\left(-\\frac{${randInt(2, 4)}}{${randInt(2, 4)}}\\right) \\)`;
-  },
-
-  // Q10 - Decimal addition
-  () => `\\( ${randFloat(1, 3).toFixed(2)} + ${randFloat(0.2, 1.5).toFixed(2)} \\)`,
-
-  // Q11 - Decimal multiplication
-  () => `\\( ${randFloat(1, 2).toFixed(3)} \\times 0.01 \\)`,
-
-  // Q12 - Multiply 2 decimals
-  () => `\\( ${randFloat(1, 9).toFixed(1)} \\times ${randFloat(1, 3).toFixed(1)} \\)`
-];
-
-
-    for (let i = 1; i <= 12; i++) {
-      addQuestion(i);
-    }
-
-    function addQuestion(i) {
-      const questionId = `q${i}`;
-      const question = questions[i - 1]();
-      const div = document.createElement('div');
-      div.className = 'question-box';
-      div.innerHTML = `
-        <p><strong>Question ${i}:</strong> <span class="math">${question}</span></p>
-        <canvas class="whiteboard" id="whiteboard${i}"></canvas>
-        <div class="controls">
-          <button onclick="clearWhiteboard(${i})">Clear</button>
-          <button onclick="generateNewQuestion(${i - 1}, ${i})">New Problem</button>
-        </div>
-      `;
-      container.appendChild(div);
-      initWhiteboard(i);
-    }
-
-    function generateNewQuestion(qIndex, i) {
-      const newQuestion = questions[qIndex]();
-      const qBox = document.querySelectorAll('.question-box')[i - 1];
-      qBox.querySelector('.math').innerHTML = newQuestion;
-      MathJax.typesetPromise();
-      clearWhiteboard(i);
-    }
-
-    function randInt(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    function randFloat(min, max) {
-      return Math.random() * (max - min) + min;
-    }
-
-    function initWhiteboard(i) {
-      const canvas = document.getElementById(`whiteboard${i}`);
-      const ctx = canvas.getContext('2d');
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-      ctx.fillStyle = 'white';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      let isDrawing = false;
-
-      canvas.addEventListener('mousedown', e => {
-        isDrawing = true;
-        ctx.beginPath();
-        ctx.moveTo(e.offsetX, e.offsetY);
-      });
-
-      canvas.addEventListener('mousemove', e => {
-        if (isDrawing) {
-          ctx.lineTo(e.offsetX, e.offsetY);
-          ctx.strokeStyle = 'black';
-          ctx.lineWidth = 2;
-          ctx.stroke();
-        }
-      });
-
-      canvas.addEventListener('mouseup', () => isDrawing = false);
-      canvas.addEventListener('mouseout', () => isDrawing = false);
-    }
-
-    function clearWhiteboard(i) {
-      const canvas = document.getElementById(`whiteboard${i}`);
-      const ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = 'white';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
-
-    function askChatGPT() {
-      const q = document.getElementById('studentQuestion').value;
-      const output = document.getElementById('chatgptResponse');
-      if (q.trim() === '') {
-        output.textContent = 'Please type a question first.';
-      } else {
-        output.textContent = `You asked: "${q}"\nChatGPT says: Great question! Try solving step-by-step and checking if your math adds up.`;
-      }
-    }
-
-    MathJax.typesetPromise();
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(err => console.error("Navbar failed to load:", err));
+    });
   </script>
-</body>
+
+  <main>
+    <header>
+      <h2>Grade 9 Diagnostic Practice Test</h2>
+      <h3>These are based on questions you should have mastered in grade 8.</h3>
+    </header>
+
+    <section class="help-section">
+      <p><strong>Need to check your solutions?</strong> Click below to ask ChatGPT on Poe:</p>
+      <a href="https://poe.com/ChatGPT" target="_blank" class="poe-button">Ask ChatGPT on Poe</a>
+    </section>
+
+    <div id="questions-container"></div>
+
+    <script>
+      const container = document.getElementById('questions-container');
+
+      function randInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      function randFloat(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      const questions = [
+        // Q1 to Q12 (same as before, unchanged for brevity)
+        () => `\\( \\frac{1}{${randInt(2, 6)}} + \\frac{2}{${randInt(2, 6)}} + \\frac{3}{${randInt(2, 6)}} \\)`,
+        () => `\\( \\frac{${randInt(1, 9)}}{${randInt(2, 9)}} \\times \\frac{${randInt(10, 20)}}{${randInt(10, 20)}} \\)`,
+        () => `\\( \\frac{${randInt(3, 9)}}{${randInt(4, 10)}} \\div \\left(-\\frac{${randInt(4, 10)}}{${randInt(4, 10)}}\\right) \\)`,
+        () => `\\( \\frac{${randInt(1, 3)}}{${randInt(2, 5)}} \\times \\frac{${randInt(3, 6)}}{${randInt(4, 8)}} \\times \\frac{${randInt(2, 6)}}{${randInt(5, 10)}} \\)`,
+        () => `\\( \\frac{${randInt(1, 3)}}{${randInt(1, 3)}} \\div \\left(\\frac{1}{2} + \\frac{1}{3}\\right) \\)`,
+        () => `\\( ${randInt(3, 8)} + (${randInt(-5, -1)}) + (${randInt(-6, -2)}) \\)`,
+        () => `\\( -${randInt(1, 4)} - (-${randInt(1, 4)}) - ${randInt(1, 4)} \\)`,
+        () => `\\( -${randInt(1, 3)} \\times -${randInt(2, 4)} \\times -${randInt(2, 4)} \\)`,
+        () => {
+          const whole = randInt(1, 2);
+          const num = randInt(1, 3);
+          const den = randInt(2, 4);
+          return `\\( ${whole}\\frac{${num}}{${den}} \\div \\left(-\\frac{${randInt(2, 4)}}{${randInt(2, 4)}}\\right) \\)`;
+        },
+        () => `\\( ${randFloat(1, 3).toFixed(2)} + ${randFloat(0.2, 1.5).toFixed(2)} \\)`,
+        () => `\\( ${randFloat(1, 2).toFixed(3)} \\times 0.01 \\)`,
+        () => `\\( ${randFloat(1, 9).toFixed(1)} \\times ${randFloat(1, 3).toFixed(1)} \\)`
+      ];
+
+      for (let i = 1; i <= 12; i++) {
+        const question = questions[i - 1]();
+        const div = document.createElement('div');
+        div.className = 'question-box';
+        div.innerHTML = `
+          <p><strong>Question ${i}:</strong> <span class="math">${question}</span></p>
+          <canvas class="whiteboard" id="whiteboard${i}"></canvas>
+          <div class="controls">
+            <button onclick="clearWhiteboard(${i})">Clear</button>
+            <button onclick="generateNewQuestion(${i - 1}, ${i})">New Problem</button>
+            <button onclick="toggleSolution(${i})">Show Solution</button>
+          </div>
+          <div id="solution-${i}" style="display:none;"><strong>Solution:</strong> <span class="math">(Work it out!)</span></div>
+        `;
+        container.appendChild(div);
+        initWhiteboard(i);
+      }
+
+      function generateNewQuestion(index, i) {
+        const newQ = questions[index]();
+        const box = document.querySelectorAll('.question-box')[i - 1];
+        box.querySelector('.math').innerHTML = newQ;
+        document.getElementById(`solution-${i}`).style.display = 'none';
+        MathJax.typesetPromise();
+        clearWhiteboard(i);
+      }
+
+      function toggleSolution(i) {
+        const el = document.getElementById(`solution-${i}`);
+        el.style.display = el.style.display === 'none' ? 'block' : 'none';
+        MathJax.typesetPromise([el]);
+      }
+
+      function initWhiteboard(i) {
+        const canvas = document.getElementById(`whiteboard${i}`);
+        const ctx = canvas.getContext('2d');
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        let isDrawing = false;
+
+        canvas.addEventListener('mousedown', e => {
+          isDrawing = true;
+          ctx.beginPath();
+          ctx.moveTo(e.offsetX, e.offsetY);
+        });
+
+        canvas.addEventListener('mousemove', e => {
+          if (isDrawing) {
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+          }
+        });
+
+        canvas.addEventListener('mouseup', () => isDrawing = false);
+        canvas.addEventListener('mouseout', () => isDrawing = false);
+      }
+
+      function clearWhiteboard(i) {
+        const canvas = document.getElementById(`whiteboard${i}`);
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+
+      MathJax.typesetPromise();
+    </script>
+  </main>
+
   <footer>
-        <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
-    </footer>
+    <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+  </footer>
+</body>
 </html>
