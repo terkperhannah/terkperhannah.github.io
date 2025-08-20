@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Math 8 - Diagnostic Practice</title>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -48,21 +48,21 @@
       background: #5a4fcf;
     }
   </style>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="intro-section">
     <h1>Ms. Terkper's Digital Classroom</h1>
   </header>
   <div id="navbar-placeholder"></div>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       fetch('navbar.html')
         .then(res => res.text())
         .then(data => {
           document.getElementById('navbar-placeholder').innerHTML = data;
-        })
-        .catch(err => console.error("Navbar failed to load:", err));
+        });
     });
   </script>
 
@@ -87,88 +87,117 @@
 
       const questions = [
         () => {
-          const a = randInt(1000, 9999);
-          const b = randInt(1000, 9999);
-          return {
-            question: `\\( ${a} + ${b} \\)`,
-            solution: `\\( ${a + b} \\)`
-          };
+          const a = randInt(1000, 9999), b = randInt(1000, 9999);
+          return { q: `\\( ${a} + ${b} \\)`, a: `\\( ${a + b} \\)` };
         },
         () => {
-          const a = randInt(6000, 9999);
-          const b = randInt(1000, a - 1);
-          return {
-            question: `\\( ${a} - ${b} \\)`,
-            solution: `\\( ${a - b} \\)`
-          };
+          const a = randInt(6000, 9999), b = randInt(1000, a - 1);
+          return { q: `\\( ${a} - ${b} \\)`, a: `\\( ${a - b} \\)` };
         },
         () => {
-          const a = randInt(11, 99);
-          const b = randInt(11, 99);
-          return {
-            question: `\\( ${a} \\times ${b} \\)`,
-            solution: `\\( ${a * b} \\)`
-          };
+          const a = randInt(11, 99), b = randInt(11, 99);
+          return { q: `\\( ${a} \\times ${b} \\)`, a: `\\( ${a * b} \\)` };
         },
         () => {
           const b = randInt(3, 9);
           const a = b * randInt(200, 500);
+          return { q: `\\( ${a} \\div ${b} \\)`, a: `\\( ${a / b} \\)` };
+        },
+        () => {
+          const a = randInt(500, 1000), b = randInt(10, 99);
+          return { q: `\\( ${a} \\div ${b} \\)`, a: `\\( ${(a / b).toFixed(2)} \\)` };
+        },
+        () => {
+          const a = randFloat(1, 5).toFixed(2), b = randFloat(0.5, 1).toFixed(1);
+          return { q: `\\( ${a} \\times ${b} \\)`, a: `\\( ${(a * b).toFixed(2)} \\)` };
+        },
+        () => {
+          const A1 = randInt(1, 2), b1 = randInt(1, 5), c1 = randInt(2, 6);
+          const A2 = randInt(2, 3), b2 = randInt(1, 9), c2 = randInt(3, 9);
+          const val1 = A1 + b1 / c1;
+          const val2 = A2 + b2 / c2;
           return {
-            question: `\\( ${a} \\div ${b} \\)`,
-            solution: `\\( ${a / b} \\)`
+            q: `\\( ${A1}\\frac{${b1}}{${c1}} + ${A2}\\frac{${b2}}{${c2}} \\)`,
+            a: `\\( ${(val1 + val2).toFixed(2)} \\)`
           };
         },
         () => {
-          const a = randInt(500, 1000);
-          const b = randInt(10, 99);
+          const a = randInt(1, 2), b = randInt(1, 3), c = randInt(2, 4);
+          const x = randInt(1, 1), y = randInt(1, 3), z = randInt(3, 8);
+          const val1 = a + b / c;
+          const val2 = x + y / z;
           return {
-            question: `\\( ${a} \\div ${b} \\)`,
-            solution: `\\( ${(a / b).toFixed(2)} \\)`
+            q: `\\( ${a}\\frac{${b}}{${c}} - ${x}\\frac{${y}}{${z}} \\)`,
+            a: `\\( ${(val1 - val2).toFixed(2)} \\)`
+          };
+        },
+        () => {
+          const A1 = randInt(3, 5), b1 = randInt(1, 4), c1 = randInt(2, 6);
+          const A2 = randInt(1, 2), b2 = randInt(1, 9), c2 = randInt(3, 10);
+          const val1 = A1 + b1 / c1;
+          const val2 = A2 + b2 / c2;
+          return {
+            q: `\\( ${A1}\\frac{${b1}}{${c1}} - ${A2}\\frac{${b2}}{${c2}} \\)`,
+            a: `\\( ${(val1 - val2).toFixed(2)} \\)`
+          };
+        },
+        () => {
+          const A1 = randInt(1, 3), b1 = randInt(1, 5), c1 = randInt(2, 6);
+          const A2 = randInt(1, 2), b2 = randInt(1, 4), c2 = randInt(2, 6);
+          const val1 = A1 + b1 / c1;
+          const val2 = A2 + b2 / c2;
+          return {
+            q: `\\( ${A1}\\frac{${b1}}{${c1}} \\times ${A2}\\frac{${b2}}{${c2}} \\)`,
+            a: `\\( ${(val1 * val2).toFixed(2)} \\)`
+          };
+        },
+        () => {
+          const a = randFloat(1, 9).toFixed(2);
+          return { q: `\\( ${a} \\div 0.1 \\)`, a: `\\( ${(a / 0.1).toFixed(1)} \\)` };
+        },
+        () => {
+          const a = randInt(-9, -5), b = randInt(1, 5);
+          const c = randInt(2, 4), d = randInt(5, 9);
+          const result = (a + b) - (c + 1 * d);
+          return {
+            q: `\\( (${a} + ${b}) - (${c} + 1 \\times ${d}) \\)`,
+            a: `\\( ${result} \\)`
           };
         }
-        // Add more as needed
       ];
 
-      for (let i = 0; i < questions.length; i++) {
-        addQuestion(i + 1, questions[i], i);
-      }
-
-      function addQuestion(i, questionFunc, index) {
-        const qData = questionFunc();
+      for (let i = 1; i <= 12; i++) {
+        const q = questions[i - 1]();
         const div = document.createElement('div');
         div.className = 'question-box';
         div.innerHTML = `
-          <p><strong>Question ${i}:</strong> <span id="math-question-${i}">${qData.question}</span></p>
+          <p><strong>Question ${i}:</strong> <span class="math">${q.q}</span></p>
           <canvas class="whiteboard" id="whiteboard${i}"></canvas>
           <div class="controls">
             <button onclick="clearWhiteboard(${i})">Clear</button>
-            <button onclick="generateNewQuestion(${index}, ${i})">New Problem</button>
+            <button onclick="generateNewQuestion(${i - 1}, ${i})">New Problem</button>
             <button onclick="toggleSolution(${i})">Show Solution</button>
           </div>
-          <div id="solution-${i}" class="solution" style="display: none;"><strong>Solution:</strong> <span>${qData.solution}</span></div>
+          <div id="solution-${i}" style="display: none;"><strong>Solution:</strong> <span class="math">${q.a}</span></div>
         `;
         container.appendChild(div);
         initWhiteboard(i);
-        MathJax.typesetPromise([div]);
       }
 
       function generateNewQuestion(qIndex, i) {
-        const qData = questions[qIndex]();
-        const questionElement = document.getElementById(`math-question-${i}`);
-        const solutionElement = document.getElementById(`solution-${i}`);
-
-        questionElement.innerHTML = qData.question;
-        solutionElement.innerHTML = `<strong>Solution:</strong> <span>${qData.solution}</span>`;
-        solutionElement.style.display = 'none';
-
-        MathJax.typesetPromise([questionElement, solutionElement]).then(() => {
-          clearWhiteboard(i);
-        }).catch((err) => console.error('MathJax error:', err));
+        const newQ = questions[qIndex]();
+        const box = document.querySelectorAll('.question-box')[i - 1];
+        box.querySelector('.math').innerHTML = newQ.q;
+        box.querySelector(`#solution-${i} .math`).innerHTML = newQ.a;
+        document.getElementById(`solution-${i}`).style.display = 'none';
+        MathJax.typesetPromise();
+        clearWhiteboard(i);
       }
 
       function toggleSolution(i) {
         const el = document.getElementById(`solution-${i}`);
         el.style.display = el.style.display === 'none' ? 'block' : 'none';
+        MathJax.typesetPromise([el]);
       }
 
       function initWhiteboard(i) {
