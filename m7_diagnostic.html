@@ -60,6 +60,21 @@
   <header class="intro-section">
     <h1>Ms. Terkper's Digital Classroom</h1>
   </header>
+  <div id="navbar-placeholder"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      })
+      .catch(err => console.error("Navbar failed to load:", err));
+  });
+</script>
+
+    <main>
+<script async src="https://cse.google.com/cse.js?cx=55023492bbb93437c">
+</script>
 
   <main>
     <header>
