@@ -47,24 +47,19 @@
     .controls button:hover {
       background: #5a4fcf;
     }
+    .solution {
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: #f8f9fa;
+      border-radius: 5px;
+      border-left: 4px solid #6c5ce7;
+    }
   </style>
-  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="intro-section">
     <h1>Ms. Terkper's Digital Classroom</h1>
   </header>
-  <div id="navbar-placeholder"></div>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      fetch('navbar.html')
-        .then(res => res.text())
-        .then(data => {
-          document.getElementById('navbar-placeholder').innerHTML = data;
-        })
-        .catch(err => console.error("Navbar failed to load:", err));
-    });
-  </script>
 
   <main>
     <header>
@@ -76,6 +71,7 @@
 
     <script>
       const container = document.getElementById('questions-container');
+      let questionsData = []; // Store the current questions data
 
       function randInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -85,7 +81,7 @@
         return (Math.random() * (max - min) + min).toFixed(decimals);
       }
 
-      const questions = [
+      const questionGenerators = [
         () => {
           const a = randInt(1000, 5000);
           const b = randInt(1000, 5000);
@@ -151,12 +147,11 @@
         },
         () => {
           const whole = randInt(800, 999);
-          const result = whole * 7;
-          const digits = result.toString();
-          const partial = digits.slice(0, -2);
+          const number = whole + 0.4;
+          const product = number * 7;
           return {
-            question: `\\( ${whole}.4 \\times 7 = ${partial}\\_\\_8 \\)` ,
-            solution: `\\( ${(whole * 7).toFixed(1)} \\)`
+            question: `\\( ${number.toFixed(1)} \\times 7 = ${String(whole*7).slice(0, -1)}___.8 \\)` ,
+            solution: `\\( ${product.toFixed(1)} \\)`
           };
         },
         () => {
@@ -206,12 +201,24 @@
         }
       ];
 
-      for (let i = 0; i < questions.length; i++) {
-        addQuestion(i + 1, questions[i], i);
+      // Initialize the questions
+      function initQuestions() {
+        questionsData = questionGenerators.map(generator => generator());
+        renderQuestions();
       }
 
-      function addQuestion(i, questionFunc, index) {
-        const qData = questionFunc();
+      // Render all questions
+      function renderQuestions() {
+        container.innerHTML = '';
+        
+        for (let i = 0; i < questionsData.length; i++) {
+          addQuestion(i + 1, questionsData[i], i);
+        }
+        
+        MathJax.typesetPromise();
+      }
+
+      function addQuestion(i, qData, index) {
         const div = document.createElement('div');
         div.className = 'question-box';
         div.innerHTML = `
@@ -219,43 +226,52 @@
           <canvas class="whiteboard" id="whiteboard${i}"></canvas>
           <div class="controls">
             <button onclick="clearWhiteboard(${i})">Clear</button>
-            <button onclick="generateNewQuestion(${index}, ${i})">New Problem</button>
+            <button onclick="generateNewQuestion(${index})">New Problem</button>
             <button onclick="toggleSolution(${i})">Show Solution</button>
           </div>
           <div id="solution-${i}" class="solution" style="display: none;"><strong>Solution:</strong> <span>${qData.solution}</span></div>
         `;
         container.appendChild(div);
         initWhiteboard(i);
-        MathJax.typesetPromise([div]);
       }
 
-      function generateNewQuestion(qIndex, i) {
-        const qData = questions[qIndex]();
-        const questionElement = document.getElementById(`math-question-${i}`);
-        const solutionElement = document.getElementById(`solution-${i}`);
-
-        questionElement.innerHTML = qData.question;
-        solutionElement.innerHTML = `<strong>Solution:</strong> <span>${qData.solution}</span>`;
+      function generateNewQuestion(qIndex) {
+        // Generate a new question
+        questionsData[qIndex] = questionGenerators[qIndex]();
+        
+        // Update the question display
+        const questionElement = document.getElementById(`math-question-${qIndex + 1}`);
+        const solutionElement = document.getElementById(`solution-${qIndex + 1}`);
+        
+        questionElement.innerHTML = questionsData[qIndex].question;
+        solutionElement.innerHTML = `<strong>Solution:</strong> <span>${questionsData[qIndex].solution}</span>`;
         solutionElement.style.display = 'none';
-
-        MathJax.typesetPromise([questionElement, solutionElement]).then(() => {
-          clearWhiteboard(i);
-        }).catch((err) => console.error('MathJax error:', err));
+        
+        // Clear the whiteboard
+        clearWhiteboard(qIndex + 1);
+        
+        // Re-render MathJax
+        MathJax.typesetPromise([questionElement, solutionElement]);
       }
 
       function toggleSolution(i) {
         const el = document.getElementById(`solution-${i}`);
         el.style.display = el.style.display === 'none' ? 'block' : 'none';
+        MathJax.typesetPromise([el]);
       }
 
       function initWhiteboard(i) {
         const canvas = document.getElementById(`whiteboard${i}`);
         const ctx = canvas.getContext('2d');
+        
+        // Set the canvas size based on its container
         canvas.width = canvas.offsetWidth;
         canvas.height = canvas.offsetHeight;
+        
+        // Fill with white background
         ctx.fillStyle = 'white';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+        
         let isDrawing = false;
 
         canvas.addEventListener('mousedown', e => {
@@ -285,7 +301,13 @@
         ctx.fillRect(0, 0, canvas.width, canvas.height);
       }
 
-      MathJax.typesetPromise();
+      // Initialize the page
+      initQuestions();
+      
+      // Make functions available globally for onclick handlers
+      window.generateNewQuestion = generateNewQuestion;
+      window.toggleSolution = toggleSolution;
+      window.clearWhiteboard = clearWhiteboard;
     </script>
   </main>
 
