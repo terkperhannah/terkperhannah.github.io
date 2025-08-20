@@ -72,70 +72,300 @@
       <h3>These are based on questions you should have mastered in grade 8.</h3>
     </header>
 
-    <section class="help-section">
-      <p><strong>Need to check your solutions?</strong> Click below to ask ChatGPT on Poe:</p>
-      <a href="https://poe.com/ChatGPT" target="_blank" class="poe-button">Ask ChatGPT on Poe</a>
-    </section>
-
     <div id="questions-container"></div>
 
     <script>
       const container = document.getElementById('questions-container');
+      let questionsData = [];
 
       function randInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
       }
 
-      function randFloat(min, max) {
-        return Math.random() * (max - min) + min;
+      function randFloat(min, max, decimals = 2) {
+        return parseFloat((Math.random() * (max - min) + min).toFixed(decimals));
       }
 
-      const questions = [
-        // Q1 to Q12 (same as before, unchanged for brevity)
-        () => `\\( \\frac{1}{${randInt(2, 6)}} + \\frac{2}{${randInt(2, 6)}} + \\frac{3}{${randInt(2, 6)}} \\)`,
-        () => `\\( \\frac{${randInt(1, 9)}}{${randInt(2, 9)}} \\times \\frac{${randInt(10, 20)}}{${randInt(10, 20)}} \\)`,
-        () => `\\( \\frac{${randInt(3, 9)}}{${randInt(4, 10)}} \\div \\left(-\\frac{${randInt(4, 10)}}{${randInt(4, 10)}}\\right) \\)`,
-        () => `\\( \\frac{${randInt(1, 3)}}{${randInt(2, 5)}} \\times \\frac{${randInt(3, 6)}}{${randInt(4, 8)}} \\times \\frac{${randInt(2, 6)}}{${randInt(5, 10)}} \\)`,
-        () => `\\( \\frac{${randInt(1, 3)}}{${randInt(1, 3)}} \\div \\left(\\frac{1}{2} + \\frac{1}{3}\\right) \\)`,
-        () => `\\( ${randInt(3, 8)} + (${randInt(-5, -1)}) + (${randInt(-6, -2)}) \\)`,
-        () => `\\( -${randInt(1, 4)} - (-${randInt(1, 4)}) - ${randInt(1, 4)} \\)`,
-        () => `\\( -${randInt(1, 3)} \\times -${randInt(2, 4)} \\times -${randInt(2, 4)} \\)`,
+      function gcd(a, b) {
+        return b === 0 ? a : gcd(b, a % b);
+      }
+
+      function simplifyFraction(numerator, denominator) {
+        const commonDivisor = gcd(numerator, denominator);
+        return {
+          numerator: numerator / commonDivisor,
+          denominator: denominator / commonDivisor
+        };
+      }
+
+      const questionGenerators = [
+        // Question 1: Fraction addition
+        () => {
+          const den1 = randInt(2, 6);
+          const den2 = randInt(2, 6);
+          const den3 = randInt(2, 6);
+          const num1 = 1;
+          const num2 = 2;
+          const num3 = 3;
+          
+          // Find common denominator
+          const commonDen = den1 * den2 * den3;
+          const sum = (num1 * den2 * den3) + (num2 * den1 * den3) + (num3 * den1 * den2);
+          
+          // Simplify the result
+          const simplified = simplifyFraction(sum, commonDen);
+          
+          return {
+            question: `\\( \\frac{${num1}}{${den1}} + \\frac{${num2}}{${den2}} + \\frac{${num3}}{${den3}} \\)`,
+            solution: simplified.denominator === 1 ? 
+              `\\( ${simplified.numerator} \\)` : 
+              `\\( \\frac{${simplified.numerator}}{${simplified.denominator}} \\)`
+          };
+        },
+        
+        // Question 2: Fraction multiplication
+        () => {
+          const num1 = randInt(1, 9);
+          const den1 = randInt(2, 9);
+          const num2 = randInt(10, 20);
+          const den2 = randInt(10, 20);
+          
+          const productNum = num1 * num2;
+          const productDen = den1 * den2;
+          
+          const simplified = simplifyFraction(productNum, productDen);
+          
+          return {
+            question: `\\( \\frac{${num1}}{${den1}} \\times \\frac{${num2}}{${den2}} \\)`,
+            solution: simplified.denominator === 1 ? 
+              `\\( ${simplified.numerator} \\)` : 
+              `\\( \\frac{${simplified.numerator}}{${simplified.denominator}} \\)`
+          };
+        },
+        
+        // Question 3: Fraction division with negative
+        () => {
+          const num1 = randInt(3, 9);
+          const den1 = randInt(4, 10);
+          const num2 = randInt(4, 10);
+          const den2 = randInt(4, 10);
+          
+          // Division is multiplication by reciprocal
+          const resultNum = num1 * den2;
+          const resultDen = den1 * num2;
+          
+          const simplified = simplifyFraction(resultNum, resultDen);
+          
+          return {
+            question: `\\( \\frac{${num1}}{${den1}} \\div \\left(-\\frac{${num2}}{${den2}}\\right) \\)`,
+            solution: `\\( -\\frac{${simplified.numerator}}{${simplified.denominator}} \\)`
+          };
+        },
+        
+        // Question 4: Multiplication of three fractions
+        () => {
+          const num1 = randInt(1, 3);
+          const den1 = randInt(2, 5);
+          const num2 = randInt(3, 6);
+          const den2 = randInt(4, 8);
+          const num3 = randInt(2, 6);
+          const den3 = randInt(5, 10);
+          
+          const productNum = num1 * num2 * num3;
+          const productDen = den1 * den2 * den3;
+          
+          const simplified = simplifyFraction(productNum, productDen);
+          
+          return {
+            question: `\\( \\frac{${num1}}{${den1}} \\times \\frac{${num2}}{${den2}} \\times \\frac{${num3}}{${den3}} \\)`,
+            solution: simplified.denominator === 1 ? 
+              `\\( ${simplified.numerator} \\)` : 
+              `\\( \\frac{${simplified.numerator}}{${simplified.denominator}} \\)`
+          };
+        },
+        
+        // Question 5: Division by sum of fractions
+        () => {
+          const num = randInt(1, 3);
+          const den = randInt(1, 3);
+          
+          // Calculate 1/2 + 1/3 = 5/6
+          const sumNum = 5;
+          const sumDen = 6;
+          
+          // Division: (num/den) ÷ (5/6) = (num/den) × (6/5)
+          const resultNum = num * 6;
+          const resultDen = den * 5;
+          
+          const simplified = simplifyFraction(resultNum, resultDen);
+          
+          return {
+            question: `\\( \\frac{${num}}{${den}} \\div \\left(\\frac{1}{2} + \\frac{1}{3}\\right) \\)`,
+            solution: simplified.denominator === 1 ? 
+              `\\( ${simplified.numerator} \\)` : 
+              `\\( \\frac{${simplified.numerator}}{${simplified.denominator}} \\)`
+          };
+        },
+        
+        // Question 6: Addition of integers with negatives
+        () => {
+          const a = randInt(3, 8);
+          const b = randInt(-5, -1);
+          const c = randInt(-6, -2);
+          
+          const sum = a + b + c;
+          
+          return {
+            question: `\\( ${a} + (${b}) + (${c}) \\)`,
+            solution: `\\( ${sum} \\)`
+          };
+        },
+        
+        // Question 7: Subtraction with negatives
+        () => {
+          const a = randInt(1, 4);
+          const b = randInt(1, 4);
+          const c = randInt(1, 4);
+          
+          // -a - (-b) - c = -a + b - c
+          const result = -a + b - c;
+          
+          return {
+            question: `\\( -${a} - (-${b}) - ${c} \\)`,
+            solution: `\\( ${result} \\)`
+          };
+        },
+        
+        // Question 8: Multiplication of three negatives
+        () => {
+          const a = randInt(1, 3);
+          const b = randInt(2, 4);
+          const c = randInt(2, 4);
+          
+          // Negative × negative × negative = negative
+          const result = -1 * a * b * c;
+          
+          return {
+            question: `\\( -${a} \\times -${b} \\times -${c} \\)`,
+            solution: `\\( ${result} \\)`
+          };
+        },
+        
+        // Question 9: Mixed number division with negative fraction
         () => {
           const whole = randInt(1, 2);
           const num = randInt(1, 3);
           const den = randInt(2, 4);
-          return `\\( ${whole}\\frac{${num}}{${den}} \\div \\left(-\\frac{${randInt(2, 4)}}{${randInt(2, 4)}}\\right) \\)`;
+          const fracNum = randInt(2, 4);
+          const fracDen = randInt(2, 4);
+          
+          // Convert mixed number to improper fraction
+          const improperNum = whole * den + num;
+          
+          // Division: (improperNum/den) ÷ (-fracNum/fracDen) = (improperNum/den) × (-fracDen/fracNum)
+          const resultNum = improperNum * fracDen;
+          const resultDen = den * fracNum;
+          
+          const simplified = simplifyFraction(resultNum, resultDen);
+          
+          return {
+            question: `\\( ${whole}\\frac{${num}}{${den}} \\div \\left(-\\frac{${fracNum}}{${fracDen}}\\right) \\)`,
+            solution: simplified.denominator === 1 ? 
+              `\\( -${simplified.numerator} \\)` : 
+              `\\( -\\frac{${simplified.numerator}}{${simplified.denominator}} \\)`
+          };
         },
-        () => `\\( ${randFloat(1, 3).toFixed(2)} + ${randFloat(0.2, 1.5).toFixed(2)} \\)`,
-        () => `\\( ${randFloat(1, 2).toFixed(3)} \\times 0.01 \\)`,
-        () => `\\( ${randFloat(1, 9).toFixed(1)} \\times ${randFloat(1, 3).toFixed(1)} \\)`
+        
+        // Question 10: Decimal addition
+        () => {
+          const a = randFloat(1, 3);
+          const b = randFloat(0.2, 1.5);
+          
+          const sum = (a + b).toFixed(2);
+          
+          return {
+            question: `\\( ${a.toFixed(2)} + ${b.toFixed(2)} \\)`,
+            solution: `\\( ${sum} \\)`
+          };
+        },
+        
+        // Question 11: Decimal multiplication by 0.01
+        () => {
+          const a = randFloat(1, 2, 3);
+          
+          const product = (a * 0.01).toFixed(5);
+          
+          return {
+            question: `\\( ${a.toFixed(3)} \\times 0.01 \\)`,
+            solution: `\\( ${product} \\)`
+          };
+        },
+        
+        // Question 12: Decimal multiplication
+        () => {
+          const a = randFloat(1, 9, 1);
+          const b = randFloat(1, 3, 1);
+          
+          const product = (a * b).toFixed(2);
+          
+          return {
+            question: `\\( ${a.toFixed(1)} \\times ${b.toFixed(1)} \\)`,
+            solution: `\\( ${product} \\)`
+          };
+        }
       ];
 
-      for (let i = 1; i <= 12; i++) {
-        const question = questions[i - 1]();
+      // Initialize the questions
+      function initQuestions() {
+        questionsData = questionGenerators.map(generator => generator());
+        renderQuestions();
+      }
+
+      // Render all questions
+      function renderQuestions() {
+        container.innerHTML = '';
+        
+        for (let i = 0; i < questionsData.length; i++) {
+          addQuestion(i + 1, questionsData[i], i);
+        }
+        
+        MathJax.typesetPromise();
+      }
+
+      function addQuestion(i, qData, index) {
         const div = document.createElement('div');
         div.className = 'question-box';
         div.innerHTML = `
-          <p><strong>Question ${i}:</strong> <span class="math">${question}</span></p>
+          <p><strong>Question ${i}:</strong> <span id="math-question-${i}">${qData.question}</span></p>
           <canvas class="whiteboard" id="whiteboard${i}"></canvas>
           <div class="controls">
             <button onclick="clearWhiteboard(${i})">Clear</button>
-            <button onclick="generateNewQuestion(${i - 1}, ${i})">New Problem</button>
+            <button onclick="generateNewQuestion(${index})">New Problem</button>
             <button onclick="toggleSolution(${i})">Show Solution</button>
           </div>
-          <div id="solution-${i}" style="display:none;"><strong>Solution:</strong> <span class="math">(Work it out!)</span></div>
+          <div id="solution-${i}" class="solution" style="display: none;"><strong>Solution:</strong> <span>${qData.solution}</span></div>
         `;
         container.appendChild(div);
         initWhiteboard(i);
       }
 
-      function generateNewQuestion(index, i) {
-        const newQ = questions[index]();
-        const box = document.querySelectorAll('.question-box')[i - 1];
-        box.querySelector('.math').innerHTML = newQ;
-        document.getElementById(`solution-${i}`).style.display = 'none';
-        MathJax.typesetPromise();
-        clearWhiteboard(i);
+      function generateNewQuestion(qIndex) {
+        // Generate a new question
+        questionsData[qIndex] = questionGenerators[qIndex]();
+        
+        // Update the question display
+        const questionElement = document.getElementById(`math-question-${qIndex + 1}`);
+        const solutionElement = document.getElementById(`solution-${qIndex + 1}`);
+        
+        questionElement.innerHTML = questionsData[qIndex].question;
+        solutionElement.innerHTML = `<strong>Solution:</strong> <span>${questionsData[qIndex].solution}</span>`;
+        solutionElement.style.display = 'none';
+        
+        // Clear the whiteboard
+        clearWhiteboard(qIndex + 1);
+        
+        // Re-render MathJax
+        MathJax.typesetPromise([questionElement, solutionElement]);
       }
 
       function toggleSolution(i) {
@@ -147,11 +377,15 @@
       function initWhiteboard(i) {
         const canvas = document.getElementById(`whiteboard${i}`);
         const ctx = canvas.getContext('2d');
+        
+        // Set the canvas size based on its container
         canvas.width = canvas.offsetWidth;
         canvas.height = canvas.offsetHeight;
+        
+        // Fill with white background
         ctx.fillStyle = 'white';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+        
         let isDrawing = false;
 
         canvas.addEventListener('mousedown', e => {
@@ -181,7 +415,13 @@
         ctx.fillRect(0, 0, canvas.width, canvas.height);
       }
 
-      MathJax.typesetPromise();
+      // Initialize the page
+      initQuestions();
+      
+      // Make functions available globally for onclick handlers
+      window.generateNewQuestion = generateNewQuestion;
+      window.toggleSolution = toggleSolution;
+      window.clearWhiteboard = clearWhiteboard;
     </script>
   </main>
 
