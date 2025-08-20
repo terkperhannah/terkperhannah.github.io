@@ -125,8 +125,83 @@
             question: `\\( ${dividend} \\div ${divisor} \\)`,
             solution: `\\( ${(dividend / divisor).toFixed(2)} \\)`
           };
+        },
+        () => {
+          const nums = [randInt(1, 9), parseFloat(randDecimal(0, 2, 1)), parseFloat(randDecimal(1, 2, 2))];
+          const sum = nums.reduce((a, b) => a + b, 0);
+          return {
+            question: `\\( ${nums.join(' + ')} \\)`,
+            solution: `\\( ${sum.toFixed(2)} \\)`
+          };
+        },
+        () => {
+          const a = randInt(50000, 80000);
+          const b = randInt(50000, 80000);
+          return {
+            question: `\\( ${Math.max(a, b)} - ${Math.min(a, b)} \\)` ,
+            solution: `\\( ${Math.abs(a - b)} \\)`
+          };
+        },
+        () => {
+          const val = parseFloat(randDecimal(20, 50, 1));
+          return {
+            question: `\\( ${val} \\times 2 \\)` ,
+            solution: `\\( ${(val * 2).toFixed(1)} \\)`
+          };
+        },
+        () => {
+          const whole = randInt(800, 999);
+          const result = whole * 7;
+          return {
+            question: `\\( ${whole}.4 \\times 7 = ${String(result).slice(0, -1)}___.8 \\)` ,
+            solution: `\\( ${(whole * 7).toFixed(1)} \\)`
+          };
+        },
+        () => {
+          const val = parseFloat(randDecimal(20, 30, 1));
+          return {
+            question: `\\( ${val} \\div 2 \\)` ,
+            solution: `\\( ${(val / 2).toFixed(2)} \\)`
+          };
+        },
+        () => {
+          const val = parseFloat(randDecimal(2, 5, 2));
+          return {
+            question: `\\( ${val} \\div 3 \\)` ,
+            solution: `\\( ${(val / 3).toFixed(3)} \\)`
+          };
+        },
+        () => {
+          const a = parseFloat(randDecimal(5, 10, 1));
+          const b = parseFloat(randDecimal(2, 5, 2));
+          return {
+            question: `\\( ${a} - ${b} \\)` ,
+            solution: `\\( ${(a - b).toFixed(2)} \\)`
+          };
+        },
+        () => {
+          const a = randInt(5, 9);
+          const b = parseFloat(randDecimal(3, 5, 2));
+          return {
+            question: `\\( ${a} - ${b} \\)` ,
+            solution: `\\( ${(a - b).toFixed(2)} \\)`
+          };
+        },
+        () => {
+          const val = parseFloat(randDecimal(70, 80, 2));
+          return {
+            question: `\\( ${val} \\div 9 \\)` ,
+            solution: `\\( ${(val / 9).toFixed(2)} \\)`
+          };
+        },
+        () => {
+          const a = randInt(50, 100);
+          const b = randInt(50, 100);
+          return {
+            question: `\\( ${a} \\times ${b} \\)` ,
+            solution: `\\( ${a * b} \\)`
+          };
         }
-        // Add more question types as needed
       ];
 
       for (let i = 0; i < questions.length; i++) {
@@ -210,7 +285,6 @@
 
       MathJax.typesetPromise();
     </script>
-
   </main>
 
   <footer>
