@@ -152,8 +152,10 @@
         () => {
           const whole = randInt(800, 999);
           const result = whole * 7;
+          const digits = result.toString();
+          const partial = digits.slice(0, -2);
           return {
-            question: `\\( ${whole}.4 \\times 7 = ${String(result).slice(0, -1)}___.8 \\)` ,
+            question: `\\( ${whole}.4 \\times 7 = ${partial}\\_\\_8 \\)` ,
             solution: `\\( ${(whole * 7).toFixed(1)} \\)`
           };
         },
