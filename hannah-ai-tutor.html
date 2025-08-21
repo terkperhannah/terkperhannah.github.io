@@ -717,7 +717,22 @@
             
             try {
                 // Send to Hannah AI
-                const apiUrl = window.location.hostname === 'localhost' ? 'http://localhost:5000/api/hannah-chat' : '/api/hannah-chat';
+                let apiUrl;
+                if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                    // Local development
+                    apiUrl = 'http://localhost:5000/api/hannah-chat';
+                } else if (window.location.hostname.includes('replit')) {
+                    // Replit environment
+                    apiUrl = 'https://' + window.location.hostname + '/api/hannah-chat';
+                } else {
+                    // GitHub Pages or other hosting - show helpful message
+                    hideTypingIndicator();
+                    addMessage('ai', "Hi! I'm currently running in development mode on Replit. To chat with me, please visit: https://workspace.terkper2000.replit.dev/hannah-ai-tutor.html");
+                    return;
+                }
+                
+                console.log('Attempting to connect to:', apiUrl);
+                
                 const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: {
@@ -729,18 +744,21 @@
                     })
                 });
                 
+                console.log('Response status:', response.status);
+                
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error(`Network response was not ok: ${response.status}`);
                 }
                 
                 const data = await response.json();
+                console.log('Response data:', data);
                 hideTypingIndicator();
                 addMessage('ai', data.response);
                 
             } catch (error) {
                 hideTypingIndicator();
+                console.error('Detailed error:', error);
                 addMessage('ai', "I'm sorry, I'm having trouble connecting right now. Please try again in a moment!");
-                console.error('Error:', error);
             }
         }
 
