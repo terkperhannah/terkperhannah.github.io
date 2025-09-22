@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACCESS IMMERSIVE TECHNOLOGY IN EDUCATION SHOWCASE - Hannah Terkper</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1976d2;
+            --primary-teal: #00796b;
+            --text-dark: #2c3e50;
+            --success-green: #2ecc71;
+            --error-red: #e74c3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1732287931034-c4cc1b06de6a?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 60px 50px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            z-index: 2;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .logo-section {
+            margin-bottom: 40px;
+        }
+
+        .logo-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-teal));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        h1 {
+            color: var(--text-dark);
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            color: var(--text-dark);
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        input[type="password"], input[type="text"] {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e1e1e1;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        input[type="password"]:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+            background: white;
+        }
+
+        .show-password-text {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .show-password-text button {
+            background: none;
+            border: none;
+            color: var(--primary-blue);
+            text-decoration: underline;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+        }
+
+        .show-password-text button:hover {
+            color: var(--primary-teal);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-teal));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(25, 118, 210, 0.3);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .error-message {
+            background: rgba(231, 76, 60, 0.1);
+            color: var(--error-red);
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid rgba(231, 76, 60, 0.2);
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .back-link {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e1e1;
+        }
+
+        .back-link a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-link a:hover {
+            color: var(--primary-teal);
+        }
+
+        @media (max-width: 600px) {
+            .login-container {
+                padding: 40px 30px;
+                margin: 20px;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            .logo-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo-section">
+            <div class="logo-icon">HT</div>
+            <h1>Leadership Showcase</h1>
+            <p class="subtitle">Edu 879: IMMERSIVE TECHNOLOGY IN EDUCATION</p>
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="password">Access Code</label>
+                <input type="password" id="password" name="password" placeholder="Enter access code" required>
+                <div class="show-password-text">
+                    <button type="button" onclick="togglePasswordVisibility()">See what you've typed</button>
+                </div>
+            </div>
+            
+            <button type="submit" class="login-btn">Access Immersive Technology in Education Portfolio</button>
+            
+            <div id="errorMessage" class="error-message">
+                Incorrect access code. Please try again.
+            </div>
+        </form>
+
+        <div class="back-link">
+            <a href="index.html">← Return to Digital Classroom</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Set your password here
+            const correctPassword = 'immersivetechnology'; // Change this to your desired password
+            
+            if (password === correctPassword) {
+                // Set access permission in session storage
+                sessionStorage.setItem('leadership_accessed', 'true');
+                // Redirect to the actual leadership showcase
+                window.location.href = 'immersivetechnology.html';
+            } else {
+                // Show error message
+                errorMessage.style.display = 'block';
+                document.getElementById('password').value = '';
+                document.getElementById('password').focus();
+                
+                // Hide error after 3 seconds
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 3000);
+            }
+        });
+
+        // Toggle password visibility
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById('password');
+            const toggleText = document.querySelector('.show-password-text button');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleText.textContent = 'Hide what you\'ve typed';
+            } else {
+                passwordField.type = 'password';
+                toggleText.textContent = 'See what you\'ve typed';
+            }
+        }
+
+        // Focus on password field when page loads
+        window.addEventListener('load', function() {
+            document.getElementById('password').focus();
+        });
+    </script>
+</body>
+</html>
