@@ -1,438 +1,654 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="EDU 879 Comprehensive Assignment: Mastering VR, AR & Gamification in STEM Education">
-  <title>EDU 879: Mastering VR, AR & Gamification in STEM</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EDU 879 – Mastering VR, AR & Gamification in STEM | Ms. Terkper's Digital Classroom</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Interactive capstone report demonstrating research-backed integration of VR, AR, and gamification for STEM education. EDU 879 assignment by Hannah Terkper."/>
+  <meta name="keywords" content="VR education, AR in STEM, gamification, immersive learning, educational technology, Hannah Terkper">
+  <meta name="author" content="Hannah Terkper">
   
   <style>
-    :root {
-      --primary-teal: #26a69a;
-      --primary-blue: #1976d2;
-      --accent-purple: #7b1fa2;
-      --text-dark: #2e3440;
-      --text-medium: #5e6b73;
-      --text-light: #8892b0;
-      --bg-light: #f8fafc;
-      --bg-card: #ffffff;
-      --border-light: #e0e7ff;
-      --spacing-xs: 0.5rem;
-      --spacing-sm: 0.75rem;
-      --spacing-md: 1rem;
-      --spacing-lg: 1.5rem;
-      --spacing-xl: 2rem;
-      --spacing-xxl: 3rem;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      line-height: 1.6;
-      color: var(--text-dark);
-      background: var(--bg-light);
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 var(--spacing-lg);
-    }
-
-    /* Header Styles */
-    .header {
-      background: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-blue) 100%);
-      color: white;
-      padding: var(--spacing-xl) 0;
-      text-align: center;
+    /* Assignment-specific styles building on main website theme */
+    .assignment-header {
+      background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
+      padding: var(--spacing-xl) var(--spacing-sm);
+      box-shadow: 0 8px 32px var(--shadow-medium);
       position: relative;
       overflow: hidden;
+      text-align: center;
     }
-
-    .header::before {
-      content: '';
+    
+    .assignment-header::before {
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(255, 255, 255, 0.1);
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)" /></svg>');
+      opacity: 0.3;
+    }
+    
+    .assignment-title {
+      position: relative;
+      z-index: 2;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: white;
+      margin: 0 0 var(--spacing-md) 0;
+      font-weight: 700;
+      letter-spacing: -1px;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    .assignment-subtitle {
+      position: relative;
+      z-index: 2;
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      color: rgba(255, 255, 255, 0.95);
+      margin: 0 0 var(--spacing-lg) 0;
+      font-weight: 400;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .course-info {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: var(--spacing-md);
+      margin: var(--spacing-lg) auto 0;
+      max-width: 600px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .course-info h3 {
+      color: white;
+      margin: 0 0 var(--spacing-sm) 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    
+    .course-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing-sm);
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.95rem;
+    }
+    
+    .page-nav {
+      background: rgba(255, 255, 255, 0.98);
+      padding: var(--spacing-md) 0;
+      border-bottom: 3px solid var(--primary-teal);
+      position: sticky;
+      top: 70px;
+      z-index: 900;
       backdrop-filter: blur(10px);
     }
-
-    .header-content {
+    
+    .nav-links-horizontal {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav-links-horizontal a {
+      color: var(--primary-blue);
+      text-decoration: none;
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+    
+    .nav-links-horizontal a:hover,
+    .nav-links-horizontal a.active {
+      background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 121, 107, 0.3);
+    }
+    
+    .hero-section {
+      background: linear-gradient(135deg, var(--bg-card), white);
+      margin: var(--spacing-xl) auto;
+      max-width: 1200px;
+      border-radius: 16px;
+      padding: var(--spacing-xl);
+      box-shadow: 0 8px 32px var(--shadow-light);
+      border: 1px solid var(--border-light);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(45deg, var(--accent-teal), var(--accent-blue));
+      border-radius: 50%;
+      transform: translate(50%, -50%);
+      opacity: 0.1;
+    }
+    
+    .hero-content {
       position: relative;
       z-index: 2;
     }
-
-    .course-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: var(--spacing-sm);
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    .course-subtitle {
-      font-size: 1.2rem;
-      opacity: 0.95;
-      margin-bottom: var(--spacing-lg);
-      font-weight: 300;
-    }
-
-    .course-details {
-      display: flex;
-      justify-content: center;
-      gap: var(--spacing-lg);
-      flex-wrap: wrap;
-      font-size: 0.95rem;
-      background: rgba(255, 255, 255, 0.15);
-      padding: var(--spacing-md);
-      border-radius: 12px;
-      backdrop-filter: blur(5px);
-    }
-
-    /* Video Presentation Section */
-    .video-presentation {
-      background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
-      padding: var(--spacing-xl) var(--spacing-lg);
-      margin-bottom: var(--spacing-lg);
-    }
-
-    .video-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
-      padding: var(--spacing-xl);
-      text-align: center;
-    }
-
-    .video-placeholder {
-      background: #f8f9fa;
-      border: 2px dashed #dee2e6;
-      border-radius: 12px;
-      padding: var(--spacing-xl);
-      margin: var(--spacing-lg) 0;
-    }
-
-    .video-icon {
-      background: var(--primary-teal);
-      color: white;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto var(--spacing-md) auto;
-      font-size: 1.5rem;
-    }
-
-    /* Section Styles */
-    .content-section {
-      margin-bottom: var(--spacing-xxl);
-    }
-
-    .section-card {
-      background: var(--bg-card);
-      border-radius: 16px;
-      padding: var(--spacing-xl);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      border: 1px solid var(--border-light);
-    }
-
-    .section-title {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: var(--spacing-lg);
+    
+    .hero-title {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
       color: var(--primary-blue);
+      margin: 0 0 var(--spacing-md) 0;
+      font-weight: 700;
+    }
+    
+    .hero-description {
+      font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+      color: var(--text-medium);
+      line-height: 1.7;
+      margin-bottom: var(--spacing-lg);
+    }
+    
+    .cta-buttons {
       display: flex;
-      align-items: center;
       gap: var(--spacing-md);
+      flex-wrap: wrap;
     }
-
-    .section-icon {
+    
+    .btn {
+      padding: var(--spacing-sm) var(--spacing-lg);
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    
+    .btn-primary {
       background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
       color: white;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
+      box-shadow: 0 4px 16px rgba(0, 121, 107, 0.3);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 121, 107, 0.4);
+    }
+    
+    .btn-secondary {
+      background: white;
+      color: var(--primary-blue);
+      border-color: var(--primary-blue);
+    }
+    
+    .btn-secondary:hover {
+      background: var(--primary-blue);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    .content-section {
+      max-width: 1200px;
+      margin: var(--spacing-xl) auto;
+      padding: 0 var(--spacing-md);
+    }
+    
+    .section-card {
+      background: white;
+      border-radius: 12px;
+      padding: var(--spacing-xl);
+      margin-bottom: var(--spacing-xl);
+      box-shadow: 0 6px 24px var(--shadow-light);
+      border: 1px solid var(--border-light);
+      position: relative;
+    }
+    
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--primary-blue);
+      margin: 0 0 var(--spacing-lg) 0;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+    
+    .section-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: white;
       font-weight: bold;
-      font-size: 1.2rem;
+      flex-shrink: 0;
     }
-
-    /* Feature Cards */
-    .feature-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-light);
-      border-radius: 12px;
-      padding: var(--spacing-lg);
-      transition: all 0.3s ease;
-      height: 100%;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    .feature-title {
-      color: var(--primary-blue);
-      margin-bottom: var(--spacing-md);
-      font-size: 1.3rem;
-      font-weight: 600;
-    }
-
+    
     .two-column {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--spacing-lg);
-    }
-
-    .three-column {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: var(--spacing-lg);
+      margin-top: var(--spacing-lg);
     }
-
-    /* Callout Box */
-    .callout-box {
-      background: linear-gradient(135deg, var(--bg-card), #f0f8ff);
-      border-left: 4px solid var(--primary-teal);
-      border-radius: 8px;
+    
+    .three-column {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-lg);
+    }
+    
+    .feature-card {
+      background: var(--bg-card);
+      border-radius: 10px;
       padding: var(--spacing-lg);
-      margin: var(--spacing-lg) 0;
+      border: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
-
-    /* Tags */
+    
+    .feature-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary-teal), var(--primary-blue));
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px var(--shadow-medium);
+    }
+    
+    .feature-title {
+      font-size: 1.2rem;
+      color: var(--primary-blue);
+      margin: 0 0 var(--spacing-sm) 0;
+      font-weight: 600;
+    }
+    
     .tag-list {
       display: flex;
       flex-wrap: wrap;
       gap: var(--spacing-xs);
-      list-style: none;
       margin-top: var(--spacing-md);
+      list-style: none;
+      padding: 0;
     }
-
+    
     .tag {
-      background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
+      background: linear-gradient(135deg, var(--accent-teal), var(--accent-blue));
       color: white;
-      padding: var(--spacing-xs) var(--spacing-sm);
+      padding: 4px 12px;
       border-radius: 20px;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 500;
     }
-
-    /* Interactive Elements */
-    .interactive-checklist {
-      background: var(--bg-light);
+    
+    .callout-box {
+      background: linear-gradient(135deg, var(--bg-card), white);
+      border-left: 5px solid var(--primary-teal);
+      border-radius: 0 8px 8px 0;
+      padding: var(--spacing-lg);
+      margin: var(--spacing-lg) 0;
+      box-shadow: 0 4px 16px var(--shadow-light);
+    }
+    
+    .checklist-container {
+      background: var(--bg-card);
       border-radius: 12px;
       padding: var(--spacing-lg);
       margin: var(--spacing-lg) 0;
     }
-
+    
     .checklist-item {
       display: flex;
       align-items: flex-start;
       gap: var(--spacing-sm);
-      margin-bottom: var(--spacing-md);
       padding: var(--spacing-sm);
       border-radius: 8px;
-      transition: background-color 0.2s ease;
-    }
-
-    .checklist-item:hover {
-      background: rgba(38, 166, 154, 0.1);
-    }
-
-    .checklist-item input[type="checkbox"] {
-      margin-top: 4px;
-      transform: scale(1.2);
-      accent-color: var(--primary-teal);
-    }
-
-    /* Navigation */
-    .nav-menu {
-      background: var(--bg-card);
-      border-radius: 12px;
-      padding: var(--spacing-md);
-      margin-bottom: var(--spacing-lg);
-      border: 1px solid var(--border-light);
-      position: sticky;
-      top: var(--spacing-md);
-      z-index: 100;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--spacing-sm);
-      list-style: none;
-      justify-content: center;
-    }
-
-    .nav-links a {
-      color: var(--primary-blue);
-      text-decoration: none;
-      padding: var(--spacing-sm) var(--spacing-md);
-      border-radius: 20px;
+      margin-bottom: var(--spacing-xs);
       transition: all 0.3s ease;
-      font-weight: 500;
+      cursor: pointer;
     }
-
-    .nav-links a:hover {
+    
+    .checklist-item:hover {
+      background: rgba(25, 118, 210, 0.05);
+    }
+    
+    .checklist-item.completed {
+      background: rgba(0, 121, 107, 0.1);
+      border-left: 4px solid var(--primary-teal);
+    }
+    
+    .checkbox {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--primary-blue);
+      border-radius: 4px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .checkbox.checked {
       background: var(--primary-teal);
+      border-color: var(--primary-teal);
       color: white;
     }
-
-    /* Tables */
-    table {
+    
+    .progress-bar {
       width: 100%;
-      border-collapse: collapse;
+      height: 8px;
+      background: var(--border-light);
+      border-radius: 4px;
+      overflow: hidden;
       margin: var(--spacing-md) 0;
     }
-
-    th, td {
-      padding: var(--spacing-sm);
-      text-align: left;
-      border-bottom: 1px solid var(--border-light);
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(to right, var(--primary-teal), var(--primary-blue));
+      transition: width 0.5s ease;
+      border-radius: 4px;
     }
-
-    th {
-      background: var(--primary-teal);
+    
+    .academic-footer {
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-teal));
       color: white;
-      font-weight: 600;
+      text-align: center;
+      padding: var(--spacing-xl);
+      margin-top: var(--spacing-xl);
+    }
+    
+    .reference-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .reference-list li {
+      padding: var(--spacing-sm) 0;
+      border-bottom: 1px solid var(--border-light);
+      line-height: 1.6;
+    }
+    
+    .reference-list li:last-child {
+      border-bottom: none;
+    }
+    
+    /* Quick Navigation Button */
+    .quick-nav-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      box-shadow: 0 4px 16px rgba(0, 121, 107, 0.3);
+      cursor: pointer;
+      z-index: 999;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    
+    .quick-nav-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 121, 107, 0.4);
+    }
+    
+    .quick-nav-menu {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px var(--shadow-medium);
+      padding: var(--spacing-sm);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      max-height: 400px;
+      overflow-y: auto;
+      min-width: 200px;
+    }
+    
+    .quick-nav-menu.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .quick-nav-menu a {
+      display: block;
+      padding: var(--spacing-xs) var(--spacing-sm);
+      color: var(--primary-blue);
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      margin-bottom: 2px;
+    }
+    
+    .quick-nav-menu a:hover {
+      background: var(--bg-card);
+      transform: translateX(4px);
+    }
+    
+    /* Print Styles */
+    @media print {
+      .main-navbar,
+      .page-nav,
+      .quick-nav-btn,
+      .quick-nav-menu {
+        display: none !important;
+      }
+      
+      .assignment-header {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+      }
+      
+      .assignment-title,
+      .assignment-subtitle {
+        color: black !important;
+      }
+      
+      .section-card {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+        page-break-inside: avoid;
+      }
     }
 
-    /* Responsive Design */
     @media (max-width: 768px) {
-      .course-title {
-        font-size: 2rem;
+      .assignment-header {
+        padding: var(--spacing-lg) var(--spacing-sm);
       }
-
+      
+      .page-nav {
+        top: 0;
+      }
+      
+      .nav-links-horizontal {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
       .two-column,
       .three-column {
         grid-template-columns: 1fr;
       }
-
-      .course-details {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .container {
-        padding: 0 var(--spacing-md);
-      }
-
-      .nav-links {
-        justify-content: flex-start;
-      }
-    }
-
-    /* Print Styles */
-    @media print {
-      .nav-menu {
-        display: none;
+      
+      .quick-nav-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
       }
       
-      .section-card {
-        break-inside: avoid;
-        page-break-inside: avoid;
+      .quick-nav-menu {
+        bottom: 80px;
+        right: 20px;
+        min-width: 180px;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Header -->
-  <header class="header">
-    <div class="container">
-      <div class="header-content">
-        <h1 class="course-title">Mastering VR, AR & Gamification in STEM</h1>
-        <p class="course-subtitle">Evidence-Based Implementation Strategies for Enhanced Learning Outcomes</p>
-        <div class="course-details">
-          <div><strong>Course:</strong> EDU 879 - Educational Technology</div>
-          <div><strong>Student:</strong> Hannah Terkper</div>
-          <div><strong>Assignment:</strong> Module 6 Summative Assessment</div>
-        </div>
+  <!-- Main Navigation Bar -->
+  <nav class="main-navbar">
+    <!-- Mobile hamburger button -->
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+    
+    <!-- Navigation menu -->
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a>
+        <ul class="dropdown">
+          <li><a href="iste-standards.html">ISTE Standards</a></li>
+          <li><a href="ai-guidelines.html">AI Guidelines</a></li>
+          <li><a href="oer-resources.html">OER Resources</a></li>
+        </ul>
+      </li>
+      <li><a href="math.html">Math</a>
+        <ul class="dropdown">
+          <li><a href="math7.html">Math 7</a></li>
+          <li><a href="math8.html">Math 8</a></li>
+          <li><a href="math9.html">Math 9</a></li>
+          <li><a href="math10.html">Math 10</a></li>
+          <li><a href="math20-1.html">Math 11</a></li>
+          <li><a href="math30-1.html">Math 12</a></li>
+        </ul>
+      </li>
+      <li><a href="science.html">Science</a>
+        <ul class="dropdown">
+          <li><a href="science7.html">Science 7</a></li>
+          <li><a href="science8.html">Science 8</a></li>
+          <li><a href="science9.html">Science 9</a></li>
+          <li><a href="science10.html">Science 10</a></li>
+          <li><a href="science11.html">Science 11</a></li>
+          <li><a href="science12.html">Science 12</a></li>
+        </ul>
+      </li>
+      <li><a href="cs-general.html">Computer Science</a>
+        <ul class="dropdown">
+          <li><a href="cs-robotics.html">Robotics</a></li>
+          <li><a href="VGD.html">Video Game Design</a></li>
+        </ul>
+      </li>
+      <li><a href="med-general.html">Graduate Courses</a>
+        <ul class="dropdown">
+         <li><a href="edu714.html">EDU 714</a></li>
+          <li><a href="edu736.html">EDU 736</a></li>
+          <li><a href="edu879-immersive-tech.html">EDU 879</a></li>
+        </ul>
+      </li>
+      <li><a href="learning-toolkit-hub.html">Learning Toolkit Hub</a>
+        <ul class="dropdown">
+          <li><a href="emerging-tech-tools.html">Emerging Technology Tools</a></li>
+          <li><a href="learning-toolkit-hub.html#fundamentals">Learning Fundamentals</a></li>
+          <li><a href="hannah-ai-tutor.html">Hannah AI Tutor</a></li>
+          <li><a href="learning-toolkit-hub.html#downloads">Free Downloads</a></li>
+          <li><a href="learning-toolkit-hub.html#videos">Video Series</a></li>
+        </ul>
+      </li>
+    </ul>
+    
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu-overlay"></div>
+  </nav>
+
+  <!-- Assignment Header -->
+  <header class="assignment-header">
+    <h1 class="assignment-title">Mastering VR, AR & Gamification in STEM</h1>
+    <p class="assignment-subtitle">Interactive Capstone Report for EDU 879 — Designed for High School STEM Program Implementation</p>
+    
+    <div class="course-info">
+      <h3>Course Information</h3>
+      <div class="course-details">
+        <div><strong>Course:</strong> EDU 879 - Educational Technology</div>
+        <div><strong>Student:</strong> Hannah Terkper</div>
+        <div><strong>Assignment:</strong> Module 6 Summative Assessment</div>
       </div>
     </div>
   </header>
 
-  <div class="container">
-    <!-- MULTIMEDIA PRESENTATION -->
-    <section class="video-presentation">
-      <div class="video-card">
-        <h2 style="color: var(--primary-blue); margin-bottom: var(--spacing-sm);">
-          📹 Multimedia Presentation (10-12 minutes)
-        </h2>
-        <p style="color: var(--text-medium); font-size: 1.1rem; margin-bottom: var(--spacing-lg);">
-          Comprehensive narrated walkthrough of VR, AR & Gamification implementation strategies for STEM education
-        </p>
-        
-        <!-- Video Embed Placeholder -->
-        <div class="video-placeholder">
-          <div class="video-icon">🎬</div>
-          <h3 style="color: var(--primary-blue); margin-bottom: var(--spacing-sm);">YouTube Video Will Be Embedded Here</h3>
-          <p style="color: var(--text-medium); margin: 0; font-style: italic;">
-            Space reserved for 10-12 minute screen-recorded presentation with narration<br>
-            Video will demonstrate platform navigation, case studies, and implementation strategies
-          </p>
-        </div>
-        
-        <!-- Presentation Overview -->
-        <div style="background: var(--bg-light); border-radius: 8px; padding: var(--spacing-md);">
-          <h4 style="color: var(--primary-teal); margin-top: 0;">Presentation Outline</h4>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-sm);">
-            <div style="padding: var(--spacing-xs); border-left: 3px solid var(--primary-teal);">
-              <strong>Introduction (2 min)</strong><br>
-              <small style="color: var(--text-medium);">Problem context & research foundation</small>
-            </div>
-            <div style="padding: var(--spacing-xs); border-left: 3px solid var(--primary-blue);">
-              <strong>Case Studies (3 min)</strong><br>
-              <small style="color: var(--text-medium);">STEM-specific implementation examples</small>
-            </div>
-            <div style="padding: var(--spacing-xs); border-left: 3px solid #4caf50;">
-              <strong>Integration Plan (3 min)</strong><br>
-              <small style="color: var(--text-medium);">Classroom-ready logistics & equity</small>
-            </div>
-            <div style="padding: var(--spacing-xs); border-left: 3px solid #ff5722;">
-              <strong>Assessment & Future (2 min)</strong><br>
-              <small style="color: var(--text-medium);">Evidence framework & scalability</small>
-            </div>
-            <div style="padding: var(--spacing-xs); border-left: 3px solid #9c27b0;">
-              <strong>Q&A Preview (2 min)</strong><br>
-              <small style="color: var(--text-medium);">Addressing common implementation challenges</small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+  <!-- Page Navigation -->
+  <nav class="page-nav">
+    <ul class="nav-links-horizontal">
+      <li><a href="#introduction" class="nav-link">Introduction</a></li>
+      <li><a href="#foundations" class="nav-link">Foundations</a></li>
+      <li><a href="#case-studies" class="nav-link">Case Studies</a></li>
+      <li><a href="#integration" class="nav-link">Integration Plan</a></li>
+      <li><a href="#assessment" class="nav-link">Assessment</a></li>
+      <li><a href="#gamification" class="nav-link">Gamification</a></li>
+      <li><a href="#future-ethics" class="nav-link">Future & Ethics</a></li>
+      <li><a href="#rubric" class="nav-link">Rubric Alignment</a></li>
+      <li><a href="#references" class="nav-link">References</a></li>
+      <li><a href="#appendices" class="nav-link">Appendices</a></li>
+    </ul>
+  </nav>
 
-    <!-- Navigation Menu -->
-    <nav class="nav-menu">
-      <ul class="nav-links">
-        <li><a href="#intro">Introduction</a></li>
-        <li><a href="#foundations">Foundations</a></li>
-        <li><a href="#case-studies">Case Studies</a></li>
-        <li><a href="#integration">Integration</a></li>
-        <li><a href="#assessment">Assessment</a></li>
-        <li><a href="#gamification">Gamification</a></li>
-        <li><a href="#accessibility">Accessibility</a></li>
-        <li><a href="#future-ethics">Future & Ethics</a></li>
-        <li><a href="#why-now">Why Now</a></li>
-        <li><a href="#references">References</a></li>
-      </ul>
-    </nav>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h2 class="hero-title">Why Immersive Learning for STEM Education?</h2>
+      <p class="hero-description">
+        Many students struggle to connect abstract STEM theory with real-world application. This comprehensive report 
+        demonstrates a research-grounded plan to integrate Virtual Reality (VR), Augmented Reality (AR), and gamification 
+        to strengthen conceptual understanding, enhance problem-solving skills, and increase engagement in high school STEM settings.
+      </p>
+      <div class="cta-buttons">
+        <a href="#integration" class="btn btn-primary">View Implementation Plan</a>
+        <a href="#rubric" class="btn btn-secondary">Rubric Self-Assessment</a>
+      </div>
+    </div>
+  </section>
 
     <!-- INTRODUCTION -->
     <section id="intro" class="content-section">
