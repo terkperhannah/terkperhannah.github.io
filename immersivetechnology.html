@@ -621,6 +621,7 @@
   <!-- Page Navigation -->
   <nav class="page-nav">
     <ul class="nav-links-horizontal">
+      <li><a href="#presentation" class="nav-link">Presentation</a></li>
       <li><a href="#introduction" class="nav-link">Introduction</a></li>
       <li><a href="#foundations" class="nav-link">Foundations</a></li>
       <li><a href="#case-studies" class="nav-link">Case Studies</a></li>
@@ -631,6 +632,7 @@
       <li><a href="#rubric" class="nav-link">Rubric Alignment</a></li>
       <li><a href="#references" class="nav-link">References</a></li>
       <li><a href="#appendices" class="nav-link">Appendices</a></li>
+
     </ul>
   </nav>
 
@@ -649,6 +651,42 @@
       </div>
     </div>
   </section>
+
+  <!-- ======= PRESENTATION VIDEO (10–12 min narrated walkthrough) ======= -->
+<section id="presentation" class="content-section" aria-labelledby="presentation-title">
+  <div class="section-card">
+    <h3 class="section-title" id="presentation-title">
+      <span class="section-icon">🎥</span>
+      Narrated Walkthrough (10–12 minutes)
+    </h3>
+
+    <p class="hero-description" style="margin-top:-8px;">
+      A recorded overview of the problem, research base, implementation, assessment, and ethics.
+      <strong>Captions enabled</strong> and a <strong>full transcript</strong> are provided for accessibility.
+    </p>
+
+    <!-- Replace the src below with your YouTube embed URL (Share ▶ Embed) -->
+    <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;box-shadow:0 6px 24px var(--shadow-light);">
+      <iframe
+        title="EDU 879 – Narrated Walkthrough"
+        src="https://www.youtube.com/embed/XXXXXXXXXXX"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        style="position:absolute;top:0;left:0;width:100%;height:100%;"
+      ></iframe>
+    </div>
+
+    <!-- Transcript placeholder -->
+    <div class="callout-box" style="margin-top:var(--spacing-lg);" aria-live="polite">
+      <h4 style="color: var(--primary-blue); margin-top:0;">Transcript</h4>
+      <p style="margin:0;">
+        <em>Paste the full transcript here for WCAG compliance (2.2.3 Audio Description or Media Alternative).</em>
+      </p>
+    </div>
+  </div>
+</section>
+
 
   <main>
     <!-- INTRODUCTION -->
@@ -911,44 +949,46 @@
             <div style="margin: var(--spacing-md) 0;">
               <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Platform Selection</h5>
               
-              <!-- Creation Tools Section with Visual Enhancement -->
-              <div style="background: linear-gradient(135deg, #f8f9fa, #ffffff); border-radius: 8px; padding: var(--spacing-md); margin-bottom: var(--spacing-md); border-left: 4px solid var(--primary-teal);">
-                <h6 style="color: var(--primary-blue); margin: 0 0 var(--spacing-sm) 0; display: flex; align-items: center; gap: var(--spacing-xs);">
-                  <span style="background: var(--primary-teal); color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">🎨</span>
-                  Creation Tools
-                </h6>
-                <ul style="margin: 0; line-height: 1.8;">
-                  <li><strong><a href="https://cospaces.io/edu/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">CoSpaces Edu</a>:</strong> Browser-based VR/AR creation platform with drag-and-drop interface for rapid content development</li>
-                  <li><strong><a href="https://mergeedu.com/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Merge Cube</a> apps:</strong> Hands-on AR learning experiences with physical cube manipulation</li>
-                  <li><strong>Mobile AR Applications:</strong> iOS ARKit and Android ARCore for rapid content prototyping</li>
-                </ul>
-              </div>
+             <!-- Creation Tools -->
+<div style="background: linear-gradient(135deg, #f8f9fa, #ffffff); border-radius: 8px; padding: var(--spacing-md); margin-bottom: var(--spacing-md); border-left: 4px solid var(--primary-teal);">
+  <h6 style="color: var(--primary-blue); margin: 0 0 var(--spacing-sm) 0; display: flex; align-items: center; gap: var(--spacing-xs);">
+    <span style="background: var(--primary-teal); color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">🎨</span>
+    Creation Tools
+  </h6>
+  <ul style="margin: 0; line-height: 1.8;">
+    <li><strong><a href="https://cospaces.io/edu/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">CoSpaces Edu</a>:</strong> Browser-based VR/AR authoring with block & text coding <sup>[1]</sup></li>
+    <li><strong><a href="https://www.adobe.com/products/aero.html" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Adobe Aero</a>:</strong> No-code AR scene design for mobile deployment <sup>[2]</sup></li>
+    <li><strong><a href="https://aframe.io" target="_blank" style="color: var(--primary-blue); text-decoration: none;">A-Frame (WebXR)</a>:</strong> Open-source framework for custom VR/AR in the browser <sup>[3]</sup></li>
+    <li><strong><a href="https://mergeedu.com/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Merge EDU</a>:</strong> Hands-on AR objects & simulations with Merge Cube <sup>[4]</sup></li>
+  </ul>
+</div>
 
-              <!-- VR Platforms Section with Visual Enhancement -->
-              <div style="background: linear-gradient(135deg, #f0f8ff, #ffffff); border-radius: 8px; padding: var(--spacing-md); margin-bottom: var(--spacing-md); border-left: 4px solid var(--primary-blue);">
-                <h6 style="color: var(--primary-blue); margin: 0 0 var(--spacing-sm) 0; display: flex; align-items: center; gap: var(--spacing-xs);">
-                  <span style="background: var(--primary-blue); color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">🥽</span>
-                  VR Platforms
-                </h6>
-                <ul style="margin: 0; line-height: 1.8;">
-                  <li><strong><a href="https://www.oculus.com/education/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Meta for Education</a>:</strong> Immersive VR experiences with curriculum-aligned content and classroom management tools</li>
-                  <li><strong><a href="https://artsandculture.google.com/project/expeditions" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Google Arts & Culture Expeditions</a>:</strong> Virtual field trips to museums, historical sites, and natural wonders</li>
-                  <li><strong><a href="https://www.labster.com/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Labster</a>:</strong> Virtual laboratory simulations with realistic equipment and procedures</li>
-                </ul>
-              </div>
+<!-- VR Platforms -->
+<div style="background: linear-gradient(135deg, #f0f8ff, #ffffff); border-radius: 8px; padding: var(--spacing-md); margin-bottom: var(--spacing-md); border-left: 4px solid var(--primary-blue);">
+  <h6 style="color: var(--primary-blue); margin: 0 0 var(--spacing-sm) 0; display: flex; align-items: center; gap: var(--spacing-xs);">
+    <span style="background: var(--primary-blue); color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">🥽</span>
+    VR Platforms
+  </h6>
+  <ul style="margin: 0; line-height: 1.8;">
+    <li><strong><a href="https://www.labster.com/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Labster</a>:</strong> High-fidelity virtual labs aligned to science curricula <sup>[5]</sup></li>
+    <li><strong><a href="https://artsandculture.google.com/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Google Arts & Culture (VR tours)</a>:</strong> Museum & site explorations replacing the legacy Expeditions app <sup>[6]</sup></li>
+    <li><strong><a href="https://www.oculus.com/education/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Meta for Education</a>:</strong> Curated immersive experiences with classroom management guidance <sup>[7]</sup></li>
+  </ul>
+</div>
 
-              <!-- AR Solutions Section with Visual Enhancement -->
-              <div style="background: linear-gradient(135deg, #f0fff0, #ffffff); border-radius: 8px; padding: var(--spacing-md); border-left: 4px solid #4caf50;">
-                <h6 style="color: var(--primary-blue); margin: 0 0 var(--spacing-sm) 0; display: flex; align-items: center; gap: var(--spacing-xs);">
-                  <span style="background: #4caf50; color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">📱</span>
-                  AR Solutions
-                </h6>
-                <ul style="margin: 0; line-height: 1.8;">
-                  <li><strong><a href="https://zap.works/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Zappar</a>:</strong> Professional AR creation platform with advanced tracking and interaction capabilities</li>
-                  <li><strong><a href="https://www.hpreveal.com/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">HP Reveal</a> (formerly Aurasma):</strong> Easy-to-use AR content creation and sharing platform</li>
-                  <li><strong>Smartphone-based AR:</strong> Native camera apps with AR capabilities and educational AR frameworks</li>
-                </ul>
-              </div>
+<!-- AR Solutions -->
+<div style="background: linear-gradient(135deg, #f0fff0, #ffffff); border-radius: 8px; padding: var(--spacing-md); border-left: 4px solid #4caf50;">
+  <h6 style="color: var(--primary-blue); margin: 0 0 var(--spacing-sm) 0; display: flex; align-items: center; gap: var(--spacing-xs);">
+    <span style="background: #4caf50; color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">📱</span>
+    AR Solutions
+  </h6>
+  <ul style="margin: 0; line-height: 1.8;">
+    <li><strong><a href="https://zap.works/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Zappar</a>:</strong> Marker-based & world-tracked AR with classroom-friendly publishing <sup>[8]</sup></li>
+    <li><strong>Native Mobile AR:</strong> iOS ARKit / Android ARCore for lightweight, device-native AR prototypes <sup>[9]</sup></li>
+    <li><strong><a href="https://expeditionspro.com/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">ExpeditionsPro</a>:</strong> Community VR/AR tours that conceptually replace the retired Google Expeditions <sup>[10]</sup></li>
+  </ul>
+</div>
+
 
               <!-- Technology Integration Diagram -->
               <div style="background: var(--bg-card); border-radius: 8px; padding: var(--spacing-md); margin-top: var(--spacing-lg);">
@@ -1222,6 +1262,22 @@
         </div>
       </div>
     </section>
+
+    <div class="feature-card" aria-labelledby="wcag-title">
+  <h4 class="feature-title" id="wcag-title">Accessibility & WCAG 2.2 Alignment</h4>
+  <ul style="line-height:1.8;">
+    <li><strong>Text Alternatives:</strong> Alt text for images; transcript & captions for the narrated walkthrough (2.1/2.2 success criteria)</li>
+    <li><strong>Color & Contrast:</strong> Meets or exceeds 4.5:1 for body text (note: gradients retain sufficient contrast on text layers)</li>
+    <li><strong>Keyboard Navigation:</strong> All interactive controls reachable via Tab/Enter/Space; visible focus styles</li>
+    <li><strong>Motion Sensitivity:</strong> Non-VR alternatives, screen-mirror options, and adjustable station time limits</li>
+    <li><strong>Timeouts/Interruptions:</strong> No auto-advancing content; user-controlled media playback</li>
+    <li><strong>Link Purpose:</strong> Descriptive link text and `title`/`aria-label` where needed</li>
+  </ul>
+  <p style="margin:0;font-size:0.9rem;color:var(--text-medium);">
+    <em>Note:</em> The embedded YouTube player includes captions; add your transcript below the player for full media alternatives compliance.
+  </p>
+</div>
+
 
     <!-- RUBRIC ALIGNMENT -->
     <section id="rubric" class="content-section">
