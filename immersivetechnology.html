@@ -1,687 +1,508 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>EDU 879 – Mastering VR, AR & Gamification in STEM | Ms. Terkper's Digital Classroom</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EDU 879 Comprehensive Assignment: Mastering VR, AR & Gamification in STEM Education">
+  <title>EDU 879: Mastering VR, AR & Gamification in STEM</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-  <meta name="description" content="Interactive capstone report demonstrating research-backed integration of VR, AR, and gamification for STEM education. EDU 879 assignment by Hannah Terkper."/>
-  <meta name="keywords" content="VR education, AR in STEM, gamification, immersive learning, educational technology, Hannah Terkper">
-  <meta name="author" content="Hannah Terkper">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   
   <style>
-    /* Assignment-specific styles building on main website theme */
-    .assignment-header {
-      background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
-      padding: var(--spacing-xl) var(--spacing-sm);
-      box-shadow: 0 8px 32px var(--shadow-medium);
+    :root {
+      --primary-teal: #26a69a;
+      --primary-blue: #1976d2;
+      --accent-purple: #7b1fa2;
+      --text-dark: #2e3440;
+      --text-medium: #5e6b73;
+      --text-light: #8892b0;
+      --bg-light: #f8fafc;
+      --bg-card: #ffffff;
+      --border-light: #e0e7ff;
+      --spacing-xs: 0.5rem;
+      --spacing-sm: 0.75rem;
+      --spacing-md: 1rem;
+      --spacing-lg: 1.5rem;
+      --spacing-xl: 2rem;
+      --spacing-xxl: 3rem;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background: var(--bg-light);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-lg);
+    }
+
+    /* Header Styles */
+    .header {
+      background: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-blue) 100%);
+      color: white;
+      padding: var(--spacing-xl) 0;
+      text-align: center;
       position: relative;
       overflow: hidden;
-      text-align: center;
     }
-    
-    .assignment-header::before {
-      content: "";
+
+    .header::before {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)" /></svg>');
-      opacity: 0.3;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
     }
-    
-    .assignment-title {
+
+    .header-content {
       position: relative;
       z-index: 2;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      color: white;
-      margin: 0 0 var(--spacing-md) 0;
+    }
+
+    .course-title {
+      font-size: 2.5rem;
       font-weight: 700;
-      letter-spacing: -1px;
-      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      margin-bottom: var(--spacing-sm);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
-    
-    .assignment-subtitle {
-      position: relative;
-      z-index: 2;
-      font-size: clamp(1.1rem, 3vw, 1.4rem);
-      color: rgba(255, 255, 255, 0.95);
-      margin: 0 0 var(--spacing-lg) 0;
-      font-weight: 400;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    .course-info {
-      position: relative;
-      z-index: 2;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: var(--spacing-md);
-      margin: var(--spacing-lg) auto 0;
-      max-width: 600px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    
-    .course-info h3 {
-      color: white;
-      margin: 0 0 var(--spacing-sm) 0;
+
+    .course-subtitle {
       font-size: 1.2rem;
-      font-weight: 600;
+      opacity: 0.95;
+      margin-bottom: var(--spacing-lg);
+      font-weight: 300;
     }
-    
+
     .course-details {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: var(--spacing-sm);
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 0.95rem;
-    }
-    
-    .page-nav {
-      background: rgba(255, 255, 255, 0.98);
-      padding: var(--spacing-md) 0;
-      border-bottom: 3px solid var(--primary-teal);
-      position: sticky;
-      top: 70px;
-      z-index: 900;
-      backdrop-filter: blur(10px);
-    }
-    
-    .nav-links-horizontal {
       display: flex;
       justify-content: center;
+      gap: var(--spacing-lg);
       flex-wrap: wrap;
-      gap: var(--spacing-sm);
-      list-style: none;
-      margin: 0;
-      padding: 0;
+      font-size: 0.95rem;
+      background: rgba(255, 255, 255, 0.15);
+      padding: var(--spacing-md);
+      border-radius: 12px;
+      backdrop-filter: blur(5px);
     }
-    
-    .nav-links-horizontal a {
-      color: var(--primary-blue);
-      text-decoration: none;
-      padding: var(--spacing-xs) var(--spacing-sm);
-      border-radius: 6px;
-      font-weight: 500;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
-    }
-    
-    .nav-links-horizontal a:hover,
-    .nav-links-horizontal a.active {
+
+    /* Video Presentation Section */
+    .video-presentation {
       background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 121, 107, 0.3);
-    }
-    
-    .hero-section {
-      background: linear-gradient(135deg, var(--bg-card), white);
-      margin: var(--spacing-xl) auto;
-      max-width: 1200px;
-      border-radius: 16px;
-      padding: var(--spacing-xl);
-      box-shadow: 0 8px 32px var(--shadow-light);
-      border: 1px solid var(--border-light);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .hero-section::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 200px;
-      height: 200px;
-      background: linear-gradient(45deg, var(--accent-teal), var(--accent-blue));
-      border-radius: 50%;
-      transform: translate(50%, -50%);
-      opacity: 0.1;
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
-    
-    .hero-title {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      color: var(--primary-blue);
-      margin: 0 0 var(--spacing-md) 0;
-      font-weight: 700;
-    }
-    
-    .hero-description {
-      font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-      color: var(--text-medium);
-      line-height: 1.7;
+      padding: var(--spacing-xl) var(--spacing-lg);
       margin-bottom: var(--spacing-lg);
     }
-    
-    .cta-buttons {
-      display: flex;
-      gap: var(--spacing-md);
-      flex-wrap: wrap;
+
+    .video-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: var(--spacing-xl);
+      text-align: center;
     }
-    
-    .btn {
-      padding: var(--spacing-sm) var(--spacing-lg);
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-    
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
-      color: white;
-      box-shadow: 0 4px 16px rgba(0, 121, 107, 0.3);
-    }
-    
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(0, 121, 107, 0.4);
-    }
-    
-    .btn-secondary {
-      background: white;
-      color: var(--primary-blue);
-      border-color: var(--primary-blue);
-    }
-    
-    .btn-secondary:hover {
-      background: var(--primary-blue);
-      color: white;
-      transform: translateY(-2px);
-    }
-    
-    .content-section {
-      max-width: 1200px;
-      margin: var(--spacing-xl) auto;
-      padding: 0 var(--spacing-md);
-    }
-    
-    .section-card {
-      background: white;
+
+    .video-placeholder {
+      background: #f8f9fa;
+      border: 2px dashed #dee2e6;
       border-radius: 12px;
       padding: var(--spacing-xl);
-      margin-bottom: var(--spacing-xl);
-      box-shadow: 0 6px 24px var(--shadow-light);
-      border: 1px solid var(--border-light);
-      position: relative;
+      margin: var(--spacing-lg) 0;
     }
-    
-    .section-title {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      color: var(--primary-blue);
-      margin: 0 0 var(--spacing-lg) 0;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-sm);
-    }
-    
-    .section-icon {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
-      border-radius: 10px;
+
+    .video-icon {
+      background: var(--primary-teal);
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      font-weight: bold;
-      flex-shrink: 0;
+      margin: 0 auto var(--spacing-md) auto;
+      font-size: 1.5rem;
     }
-    
+
+    /* Section Styles */
+    .content-section {
+      margin-bottom: var(--spacing-xxl);
+    }
+
+    .section-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: var(--spacing-xl);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid var(--border-light);
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: var(--spacing-lg);
+      color: var(--primary-blue);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+
+    .section-icon {
+      background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
+      color: white;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: var(--spacing-lg);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .feature-title {
+      color: var(--primary-blue);
+      margin-bottom: var(--spacing-md);
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
     .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-lg);
+    }
+
+    .three-column {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: var(--spacing-lg);
-      margin-top: var(--spacing-lg);
     }
-    
-    .three-column {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: var(--spacing-md);
-      margin-top: var(--spacing-lg);
-    }
-    
-    .feature-card {
-      background: var(--bg-card);
-      border-radius: 10px;
+
+    /* Callout Box */
+    .callout-box {
+      background: linear-gradient(135deg, var(--bg-card), #f0f8ff);
+      border-left: 4px solid var(--primary-teal);
+      border-radius: 8px;
       padding: var(--spacing-lg);
-      border: 1px solid var(--border-light);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
+      margin: var(--spacing-lg) 0;
     }
-    
-    .feature-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(to right, var(--primary-teal), var(--primary-blue));
-    }
-    
-    .feature-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px var(--shadow-medium);
-    }
-    
-    .feature-title {
-      font-size: 1.2rem;
-      color: var(--primary-blue);
-      margin: 0 0 var(--spacing-sm) 0;
-      font-weight: 600;
-    }
-    
+
+    /* Tags */
     .tag-list {
       display: flex;
       flex-wrap: wrap;
       gap: var(--spacing-xs);
-      margin-top: var(--spacing-md);
       list-style: none;
-      padding: 0;
+      margin-top: var(--spacing-md);
     }
-    
+
     .tag {
-      background: linear-gradient(135deg, var(--accent-teal), var(--accent-blue));
+      background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
       color: white;
-      padding: 4px 12px;
+      padding: var(--spacing-xs) var(--spacing-sm);
       border-radius: 20px;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 500;
     }
-    
-    .callout-box {
-      background: linear-gradient(135deg, var(--bg-card), white);
-      border-left: 5px solid var(--primary-teal);
-      border-radius: 0 8px 8px 0;
-      padding: var(--spacing-lg);
-      margin: var(--spacing-lg) 0;
-      box-shadow: 0 4px 16px var(--shadow-light);
-    }
-    
-    .checklist-container {
-      background: var(--bg-card);
+
+    /* Interactive Elements */
+    .interactive-checklist {
+      background: var(--bg-light);
       border-radius: 12px;
       padding: var(--spacing-lg);
       margin: var(--spacing-lg) 0;
     }
-    
+
     .checklist-item {
       display: flex;
       align-items: flex-start;
       gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-md);
       padding: var(--spacing-sm);
       border-radius: 8px;
-      margin-bottom: var(--spacing-xs);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    
-    .checklist-item:hover {
-      background: rgba(25, 118, 210, 0.05);
-    }
-    
-    .checklist-item.completed {
-      background: rgba(0, 121, 107, 0.1);
-      border-left: 4px solid var(--primary-teal);
-    }
-    
-    .checkbox {
-      width: 20px;
-      height: 20px;
-      border: 2px solid var(--primary-blue);
-      border-radius: 4px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-    
-    .checkbox.checked {
-      background: var(--primary-teal);
-      border-color: var(--primary-teal);
-      color: white;
-    }
-    
-    .progress-bar {
-      width: 100%;
-      height: 8px;
-      background: var(--border-light);
-      border-radius: 4px;
-      overflow: hidden;
-      margin: var(--spacing-md) 0;
-    }
-    
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(to right, var(--primary-teal), var(--primary-blue));
-      transition: width 0.5s ease;
-      border-radius: 4px;
-    }
-    
-    .academic-footer {
-      background: linear-gradient(135deg, var(--primary-blue), var(--primary-teal));
-      color: white;
-      text-align: center;
-      padding: var(--spacing-xl);
-      margin-top: var(--spacing-xl);
-    }
-    
-    .reference-list {
-      list-style: none;
-      padding: 0;
-    }
-    
-    .reference-list li {
-      padding: var(--spacing-sm) 0;
-      border-bottom: 1px solid var(--border-light);
-      line-height: 1.6;
-    }
-    
-    .reference-list li:last-child {
-      border-bottom: none;
-    }
-    
-    /* Quick Navigation Button */
-    .quick-nav-btn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 56px;
-      height: 56px;
-      box-shadow: 0 4px 16px rgba(0, 121, 107, 0.3);
-      cursor: pointer;
-      z-index: 999;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
-    
-    .quick-nav-btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0, 121, 107, 0.4);
-    }
-    
-    .quick-nav-menu {
-      position: fixed;
-      bottom: 100px;
-      right: 30px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 8px 32px var(--shadow-medium);
-      padding: var(--spacing-sm);
-      z-index: 998;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(20px);
-      transition: all 0.3s ease;
-      max-height: 400px;
-      overflow-y: auto;
-      min-width: 200px;
-    }
-    
-    .quick-nav-menu.active {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-    
-    .quick-nav-menu a {
-      display: block;
-      padding: var(--spacing-xs) var(--spacing-sm);
-      color: var(--primary-blue);
-      text-decoration: none;
-      border-radius: 6px;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-      margin-bottom: 2px;
-    }
-    
-    .quick-nav-menu a:hover {
-      background: var(--bg-card);
-      transform: translateX(4px);
-    }
-    
-    /* Print Styles */
-    @media print {
-      .main-navbar,
-      .page-nav,
-      .quick-nav-btn,
-      .quick-nav-menu {
-        display: none !important;
-      }
-      
-      .assignment-header {
-        background: white !important;
-        color: black !important;
-        box-shadow: none !important;
-      }
-      
-      .assignment-title,
-      .assignment-subtitle {
-        color: black !important;
-      }
-      
-      .section-card {
-        box-shadow: none !important;
-        border: 1px solid #ccc !important;
-        page-break-inside: avoid;
-      }
+      transition: background-color 0.2s ease;
     }
 
+    .checklist-item:hover {
+      background: rgba(38, 166, 154, 0.1);
+    }
+
+    .checklist-item input[type="checkbox"] {
+      margin-top: 4px;
+      transform: scale(1.2);
+      accent-color: var(--primary-teal);
+    }
+
+    /* Navigation */
+    .nav-menu {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: var(--spacing-md);
+      margin-bottom: var(--spacing-lg);
+      border: 1px solid var(--border-light);
+      position: sticky;
+      top: var(--spacing-md);
+      z-index: 100;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+      list-style: none;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      color: var(--primary-blue);
+      text-decoration: none;
+      padding: var(--spacing-sm) var(--spacing-md);
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      background: var(--primary-teal);
+      color: white;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--spacing-md) 0;
+    }
+
+    th, td {
+      padding: var(--spacing-sm);
+      text-align: left;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    th {
+      background: var(--primary-teal);
+      color: white;
+      font-weight: 600;
+    }
+
+    /* Responsive Design */
     @media (max-width: 768px) {
-      .assignment-header {
-        padding: var(--spacing-lg) var(--spacing-sm);
+      .course-title {
+        font-size: 2rem;
       }
-      
-      .page-nav {
-        top: 0;
-      }
-      
-      .nav-links-horizontal {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .cta-buttons {
-        flex-direction: column;
-      }
-      
+
       .two-column,
       .three-column {
         grid-template-columns: 1fr;
       }
-      
-      .quick-nav-btn {
-        bottom: 20px;
-        right: 20px;
-        width: 48px;
-        height: 48px;
+
+      .course-details {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .container {
+        padding: 0 var(--spacing-md);
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      .nav-menu {
+        display: none;
       }
       
-      .quick-nav-menu {
-        bottom: 80px;
-        right: 20px;
-        min-width: 180px;
+      .section-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Main Navigation Bar -->
-  <nav class="main-navbar">
-    <!-- Mobile hamburger button -->
-    <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-    </button>
-    
-    <!-- Navigation menu -->
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a>
-        <ul class="dropdown">
-          <li><a href="iste-standards.html">ISTE Standards</a></li>
-          <li><a href="ai-guidelines.html">AI Guidelines</a></li>
-          <li><a href="oer-resources.html">OER Resources</a></li>
-        </ul>
-      </li>
-      <li><a href="math.html">Math</a>
-        <ul class="dropdown">
-          <li><a href="math7.html">Math 7</a></li>
-          <li><a href="math8.html">Math 8</a></li>
-          <li><a href="math9.html">Math 9</a></li>
-          <li><a href="math10.html">Math 10</a></li>
-          <li><a href="math20-1.html">Math 11</a></li>
-          <li><a href="math30-1.html">Math 12</a></li>
-        </ul>
-      </li>
-      <li><a href="science.html">Science</a>
-        <ul class="dropdown">
-          <li><a href="science7.html">Science 7</a></li>
-          <li><a href="science8.html">Science 8</a></li>
-          <li><a href="science9.html">Science 9</a></li>
-          <li><a href="science10.html">Science 10</a></li>
-          <li><a href="science11.html">Science 11</a></li>
-          <li><a href="science12.html">Science 12</a></li>
-        </ul>
-      </li>
-      <li><a href="cs-general.html">Computer Science</a>
-        <ul class="dropdown">
-          <li><a href="cs-robotics.html">Robotics</a></li>
-          <li><a href="VGD.html">Video Game Design</a></li>
-        </ul>
-      </li>
-      <li><a href="med-general.html">Graduate Courses</a>
-        <ul class="dropdown">
-         <li><a href="edu714.html">EDU 714</a></li>
-          <li><a href="edu736.html">EDU 736</a></li>
-          <li><a href="edu879-immersive-tech.html">EDU 879</a></li>
-        </ul>
-      </li>
-      <li><a href="learning-toolkit-hub.html">Learning Toolkit Hub</a>
-        <ul class="dropdown">
-          <li><a href="emerging-tech-tools.html">Emerging Technology Tools</a></li>
-          <li><a href="learning-toolkit-hub.html#fundamentals">Learning Fundamentals</a></li>
-          <li><a href="hannah-ai-tutor.html">Hannah AI Tutor</a></li>
-          <li><a href="learning-toolkit-hub.html#downloads">Free Downloads</a></li>
-          <li><a href="learning-toolkit-hub.html#videos">Video Series</a></li>
-        </ul>
-      </li>
-    </ul>
-    
-    <!-- Mobile menu overlay -->
-    <div class="mobile-menu-overlay"></div>
-  </nav>
-
-  <!-- Assignment Header -->
-  <header class="assignment-header">
-    <h1 class="assignment-title">Mastering VR, AR & Gamification in STEM</h1>
-    <p class="assignment-subtitle">Interactive Capstone Report for EDU 879 — Designed for High School STEM Program Implementation</p>
-    
-    <div class="course-info">
-      <h3>Course Information</h3>
-      <div class="course-details">
-        <div><strong>Course:</strong> EDU 879 - Educational Technology</div>
-        <div><strong>Student:</strong> Hannah Terkper</div>
-        <div><strong>Assignment:</strong> Module 6 Summative Assessment</div>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <h1 class="course-title">Mastering VR, AR & Gamification in STEM</h1>
+        <p class="course-subtitle">Evidence-Based Implementation Strategies for Enhanced Learning Outcomes</p>
+        <div class="course-details">
+          <div><strong>Course:</strong> EDU 879 - Educational Technology</div>
+          <div><strong>Student:</strong> Hannah Terkper</div>
+          <div><strong>Assignment:</strong> Module 6 Summative Assessment</div>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- Page Navigation -->
-  <nav class="page-nav">
-    <ul class="nav-links-horizontal">
-      <li><a href="#introduction" class="nav-link">Introduction</a></li>
-      <li><a href="#foundations" class="nav-link">Foundations</a></li>
-      <li><a href="#case-studies" class="nav-link">Case Studies</a></li>
-      <li><a href="#integration" class="nav-link">Integration Plan</a></li>
-      <li><a href="#assessment" class="nav-link">Assessment</a></li>
-      <li><a href="#gamification" class="nav-link">Gamification</a></li>
-      <li><a href="#future-ethics" class="nav-link">Future & Ethics</a></li>
-      <li><a href="#rubric" class="nav-link">Rubric Alignment</a></li>
-      <li><a href="#references" class="nav-link">References</a></li>
-      <li><a href="#appendices" class="nav-link">Appendices</a></li>
-    </ul>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="hero-content">
-      <h2 class="hero-title">Why Immersive Learning for STEM Education?</h2>
-      <p class="hero-description">
-        Many students struggle to connect abstract STEM theory with real-world application. This comprehensive report 
-        demonstrates a research-grounded plan to integrate Virtual Reality (VR), Augmented Reality (AR), and gamification 
-        to strengthen conceptual understanding, enhance problem-solving skills, and increase engagement in high school STEM settings.
-      </p>
-      <div class="cta-buttons">
-        <a href="#integration" class="btn btn-primary">View Implementation Plan</a>
-        <a href="#rubric" class="btn btn-secondary">Rubric Self-Assessment</a>
+  <div class="container">
+    <!-- MULTIMEDIA PRESENTATION -->
+    <section class="video-presentation">
+      <div class="video-card">
+        <h2 style="color: var(--primary-blue); margin-bottom: var(--spacing-sm);">
+          📹 Multimedia Presentation (10-12 minutes)
+        </h2>
+        <p style="color: var(--text-medium); font-size: 1.1rem; margin-bottom: var(--spacing-lg);">
+          Comprehensive narrated walkthrough of VR, AR & Gamification implementation strategies for STEM education
+        </p>
+        
+        <!-- Video Embed Placeholder -->
+        <div class="video-placeholder">
+          <div class="video-icon">🎬</div>
+          <h3 style="color: var(--primary-blue); margin-bottom: var(--spacing-sm);">YouTube Video Will Be Embedded Here</h3>
+          <p style="color: var(--text-medium); margin: 0; font-style: italic;">
+            Space reserved for 10-12 minute screen-recorded presentation with narration<br>
+            Video will demonstrate platform navigation, case studies, and implementation strategies
+          </p>
+        </div>
+        
+        <!-- Presentation Overview -->
+        <div style="background: var(--bg-light); border-radius: 8px; padding: var(--spacing-md);">
+          <h4 style="color: var(--primary-teal); margin-top: 0;">Presentation Outline</h4>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-sm);">
+            <div style="padding: var(--spacing-xs); border-left: 3px solid var(--primary-teal);">
+              <strong>Introduction (2 min)</strong><br>
+              <small style="color: var(--text-medium);">Problem context & research foundation</small>
+            </div>
+            <div style="padding: var(--spacing-xs); border-left: 3px solid var(--primary-blue);">
+              <strong>Case Studies (3 min)</strong><br>
+              <small style="color: var(--text-medium);">STEM-specific implementation examples</small>
+            </div>
+            <div style="padding: var(--spacing-xs); border-left: 3px solid #4caf50;">
+              <strong>Integration Plan (3 min)</strong><br>
+              <small style="color: var(--text-medium);">Classroom-ready logistics & equity</small>
+            </div>
+            <div style="padding: var(--spacing-xs); border-left: 3px solid #ff5722;">
+              <strong>Assessment & Future (2 min)</strong><br>
+              <small style="color: var(--text-medium);">Evidence framework & scalability</small>
+            </div>
+            <div style="padding: var(--spacing-xs); border-left: 3px solid #9c27b0;">
+              <strong>Q&A Preview (2 min)</strong><br>
+              <small style="color: var(--text-medium);">Addressing common implementation challenges</small>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <main>
+    <!-- Navigation Menu -->
+    <nav class="nav-menu">
+      <ul class="nav-links">
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#foundations">Foundations</a></li>
+        <li><a href="#case-studies">Case Studies</a></li>
+        <li><a href="#integration">Integration</a></li>
+        <li><a href="#assessment">Assessment</a></li>
+        <li><a href="#gamification">Gamification</a></li>
+        <li><a href="#accessibility">Accessibility</a></li>
+        <li><a href="#future-ethics">Future & Ethics</a></li>
+        <li><a href="#why-now">Why Now</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </nav>
+
     <!-- INTRODUCTION -->
-    <section id="introduction" class="content-section">
+    <section id="intro" class="content-section">
       <div class="section-card">
         <h3 class="section-title">
           <span class="section-icon">1</span>
-          Introduction & Context
+          Introduction & Challenge Context
         </h3>
         
         <div class="callout-box">
-          <h4 style="color: var(--primary-blue); margin-top: 0;">Educational Context</h4>
-          <p><strong>Setting:</strong> Urban STEM high school in Edmonton, Alberta</p>
-          <p><strong>Challenge:</strong> Bridging the gap between abstract STEM concepts and hands-on understanding through immersive, interactive experiences</p>
-          <p><strong>Approach:</strong> Evidence-based integration of VR, AR, and gamification technologies</p>
+          <h4 style="color: var(--primary-blue); margin-top: 0;">The STEM Engagement Crisis</h4>
+          <p>Alberta students consistently demonstrate declining engagement in STEM subjects, with traditional instructional methods failing to connect abstract concepts to real-world applications. Virtual Reality (VR), Augmented Reality (AR), and gamification technologies offer transformative potential to bridge this gap through immersive, interactive learning experiences that align with evidence-based pedagogical practices.</p>
         </div>
-        
+
         <div class="two-column">
-          <div>
-            <h4 style="color: var(--primary-teal);">Building on Previous Work</h4>
+          <div class="feature-card">
+            <h4 class="feature-title">Current Educational Challenges</h4>
             <ul style="line-height: 1.8;">
-              <li><strong>Assignment 2 Foundation:</strong> Clear problem framing and balanced treatment of VR/AR benefits and limitations</li>
-              <li><strong>Research Integration:</strong> Comprehensive literature review supporting implementation strategies</li>
-              <li><strong>Pedagogical Alignment:</strong> Connection to established learning theories and STEM education best practices</li>
+              <li><strong>Abstract Concept Visualization:</strong> Students struggle with spatial reasoning in chemistry, physics, and advanced mathematics</li>
+              <li><strong>Limited Laboratory Access:</strong> Resource constraints restrict hands-on experimentation opportunities</li>
+              <li><strong>Engagement Deficits:</strong> Traditional lecture formats fail to maintain attention in digital-native learners</li>
+              <li><strong>Equity Gaps:</strong> Unequal access to advanced STEM resources across schools and communities</li>
+              <li><strong>Assessment Limitations:</strong> Current evaluation methods don't capture process understanding or collaborative problem-solving</li>
             </ul>
           </div>
-          <div>
-            <h4 style="color: var(--primary-teal);">TA Feedback Integration</h4>
+          
+          <div class="feature-card">
+            <h4 class="feature-title">Immersive Technology Solutions</h4>
             <ul style="line-height: 1.8;">
-              <li><strong>STEM-Specific Cases:</strong> Detailed subject-area applications with real classroom scenarios</li>
-              <li><strong>Assessment Strategies:</strong> Clear evaluation methods and success criteria</li>
-              <li><strong>Equity & Access:</strong> Device rotation logistics and inclusive design considerations</li>
+              <li><strong>VR Laboratories:</strong> Risk-free, unlimited practice in virtual environments with expensive or dangerous equipment</li>
+              <li><strong>AR Visualization:</strong> 3D molecular structures, mathematical functions, and physical phenomena overlaid in real space</li>
+              <li><strong>Gamified Learning:</strong> Points, badges, and progression systems that maintain motivation while preserving academic rigor</li>
+              <li><strong>Collaborative Platforms:</strong> Shared virtual spaces for group problem-solving and peer instruction</li>
+              <li><strong>Adaptive Assessment:</strong> Real-time data collection on student interactions and decision-making processes</li>
             </ul>
+          </div>
+        </div>
+
+        <div class="interactive-checklist">
+          <h4 style="color: var(--primary-teal); margin-bottom: var(--spacing-md);">Interactive Rubric Self-Assessment</h4>
+          <p style="margin-bottom: var(--spacing-md); color: var(--text-medium);">Check off elements as you review this assignment to track comprehensive coverage:</p>
+          
+          <div class="checklist-item">
+            <input type="checkbox" id="depth-research">
+            <label for="depth-research"><strong>Depth of Research (20%):</strong> Literature synthesis, historical context, pedagogical foundations</label>
+          </div>
+          
+          <div class="checklist-item">
+            <input type="checkbox" id="application-vr">
+            <label for="application-vr"><strong>VR/AR Application (20%):</strong> Subject-specific case studies, implementation strategies</label>
+          </div>
+          
+          <div class="checklist-item">
+            <input type="checkbox" id="innovation">
+            <label for="innovation"><strong>Innovation & Feasibility (15%):</strong> Creative solutions, practical implementation plans</label>
+          </div>
+          
+          <div class="checklist-item">
+            <input type="checkbox" id="ethics">
+            <label for="ethics"><strong>Ethical Considerations (20%):</strong> Privacy, accessibility, equity frameworks</label>
+          </div>
+          
+          <div class="checklist-item">
+            <input type="checkbox" id="advocacy">
+            <label for="advocacy"><strong>Persuasive Advocacy (15%):</strong> Evidence-based argumentation, risk mitigation</label>
+          </div>
+          
+          <div class="checklist-item">
+            <input type="checkbox" id="presentation">
+            <label for="presentation"><strong>Presentation Quality (10%):</strong> Visual design, organization, multimedia integration</label>
           </div>
         </div>
       </div>
@@ -773,7 +594,7 @@
               <strong>Research-Validated Outcomes:</strong>
               <ul style="margin: var(--spacing-xs) 0;">
                 <li>Enhanced motivation and engagement in biology learning</li>
-                <li>Improved understanding of genetics and ecology concepts</li>
+                <li>Improved understanding of genetics and ecology concepts (Varol Selçuk & Özer Keskin, 2024)</li>
                 <li>Development of problem-solving strategies</li>
                 <li>Student-centered and interactive learning experiences</li>
                 <li>Effective knowledge retention and application</li>
@@ -810,35 +631,13 @@
           </div>
 
           <div class="feature-card">
-            <h4 class="feature-title">AR Geometry & Data Collection</h4>
-            <p>Students project mathematical objects (prisms, pyramids, cross-sections) onto classroom environments and use AR markers for real-world data collection, connecting formulas with physical measurements. This approach leverages the motivational qualities of gamified experiences to enhance mathematical understanding.</p>
-            
-            <div style="margin: var(--spacing-md) 0;">
-              <strong>Mathematical Applications:</strong>
-              <ul style="margin: var(--spacing-xs) 0;">
-                <li>3D geometry visualization with real-world context</li>
-                <li>Live data analysis and statistical modeling</li>
-                <li>Rate of change calculations using physical measurements</li>
-                <li>Collaborative problem-solving activities</li>
-                <li>Connection between abstract mathematics and practical applications</li>
-              </ul>
-            </div>
-            
-            <ul class="tag-list">
-              <li class="tag">Math Modeling</li>
-              <li class="tag">Data Literacy</li>
-              <li class="tag">Real-World Application</li>
-            </ul>
-          </div>
-
-          <div class="feature-card">
             <h4 class="feature-title">Higher Education Gamification Platforms</h4>
             <p>Comprehensive gamified learning management systems designed specifically for university-level STEM courses. Research indicates that student pre-perception significantly impacts the effectiveness of gamification interventions in higher education settings (Henry et al., 2024).</p>
             
             <div style="margin: var(--spacing-md) 0;">
               <strong>Implementation Considerations:</strong>
               <ul style="margin: var(--spacing-xs) 0;">
-                <li>Assessment of student pre-perceptions before implementation</li>
+                <li>Assessment of student pre-perceptions before implementation (Henry et al., 2024)</li>
                 <li>Customizable game mechanics based on learner preferences</li>
                 <li>Integration with existing university systems</li>
                 <li>Continuous feedback and progress tracking</li>
@@ -872,6 +671,28 @@
               <li class="tag">Physics Visualization</li>
               <li class="tag">Hypothesis Testing</li>
               <li class="tag">Safe Exploration</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <h4 class="feature-title">AR Geometry & Data Collection</h4>
+            <p>Students project mathematical objects (prisms, pyramids, cross-sections) onto classroom environments and use AR markers for real-world data collection, connecting formulas with physical measurements. This approach leverages the motivational qualities of gamified experiences to enhance mathematical understanding.</p>
+            
+            <div style="margin: var(--spacing-md) 0;">
+              <strong>Mathematical Applications:</strong>
+              <ul style="margin: var(--spacing-xs) 0;">
+                <li>3D geometry visualization with real-world context</li>
+                <li>Live data analysis and statistical modeling</li>
+                <li>Rate of change calculations using physical measurements</li>
+                <li>Collaborative problem-solving activities</li>
+                <li>Connection between abstract mathematics and practical applications</li>
+              </ul>
+            </div>
+            
+            <ul class="tag-list">
+              <li class="tag">Math Modeling</li>
+              <li class="tag">Data Literacy</li>
+              <li class="tag">Real-World Application</li>
             </ul>
           </div>
         </div>
@@ -909,44 +730,36 @@
             <h4 class="feature-title">Tools & Logistics Framework</h4>
             
             <div style="margin: var(--spacing-md) 0;">
-              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Platform Selection</h5>
+              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Platform Selection (Updated 2024)</h5>
               
-              <!-- Creation Tools Section with Visual Enhancement -->
+              <!-- Creation Tools Section -->
               <div style="background: linear-gradient(135deg, #f8f9fa, #ffffff); border-radius: 8px; padding: var(--spacing-md); margin-bottom: var(--spacing-md); border-left: 4px solid var(--primary-teal);">
-                <h6 style="color: var(--primary-blue); margin: 0 0 var(--spacing-sm) 0; display: flex; align-items: center; gap: var(--spacing-xs);">
-                  <span style="background: var(--primary-teal); color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">🎨</span>
-                  Creation Tools
-                </h6>
+                <h6 style="color: var(--primary-blue); margin: 0 0 var(--spacing-sm) 0;">Creation Tools</h6>
                 <ul style="margin: 0; line-height: 1.8;">
-                  <li><strong><a href="https://cospaces.io/edu/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">CoSpaces Edu</a>:</strong> Browser-based VR/AR creation platform with drag-and-drop interface for rapid content development</li>
-                  <li><strong><a href="https://mergeedu.com/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Merge Cube</a> apps:</strong> Hands-on AR learning experiences with physical cube manipulation</li>
-                  <li><strong>Mobile AR Applications:</strong> iOS ARKit and Android ARCore for rapid content prototyping</li>
+                  <li><strong><a href="https://cospaces.io/edu/" target="_blank" style="color: var(--primary-blue);">CoSpaces Edu</a>:</strong> Browser-based VR/AR creation platform with drag-and-drop interface</li>
+                  <li><strong><a href="https://mergeedu.com/" target="_blank" style="color: var(--primary-blue);">Merge Cube</a>:</strong> Hands-on AR learning experiences with physical cube manipulation</li>
+                  <li><strong><a href="https://aero.adobe.com/" target="_blank" style="color: var(--primary-blue);">Adobe Aero</a>:</strong> Professional AR authoring tool for interactive 3D content</li>
+                  <li><strong><a href="https://aframe.io/" target="_blank" style="color: var(--primary-blue);">A-Frame</a>:</strong> Web-based VR framework for custom educational experiences</li>
                 </ul>
               </div>
 
-              <!-- VR Platforms Section with Visual Enhancement -->
+              <!-- VR Platforms Section -->
               <div style="background: linear-gradient(135deg, #f0f8ff, #ffffff); border-radius: 8px; padding: var(--spacing-md); margin-bottom: var(--spacing-md); border-left: 4px solid var(--primary-blue);">
-                <h6 style="color: var(--primary-blue); margin: 0 0 var(--spacing-sm) 0; display: flex; align-items: center; gap: var(--spacing-xs);">
-                  <span style="background: var(--primary-blue); color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">🥽</span>
-                  VR Platforms
-                </h6>
+                <h6 style="color: var(--primary-blue); margin: 0 0 var(--spacing-sm) 0;">VR Platforms</h6>
                 <ul style="margin: 0; line-height: 1.8;">
-                  <li><strong><a href="https://www.oculus.com/education/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Meta for Education</a>:</strong> Immersive VR experiences with curriculum-aligned content and classroom management tools</li>
-                  <li><strong><a href="https://artsandculture.google.com/project/expeditions" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Google Arts & Culture Expeditions</a>:</strong> Virtual field trips to museums, historical sites, and natural wonders</li>
-                  <li><strong><a href="https://www.labster.com/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Labster</a>:</strong> Virtual laboratory simulations with realistic equipment and procedures</li>
+                  <li><strong><a href="https://www.meta.com/education/" target="_blank" style="color: var(--primary-blue);">Meta for Education</a>:</strong> Immersive VR experiences with curriculum-aligned content</li>
+                  <li><strong><a href="https://artsandculture.google.com/project/expeditions" target="_blank" style="color: var(--primary-blue);">Google Arts & Culture VR</a>:</strong> Virtual field trips replacing classic Expeditions</li>
+                  <li><strong><a href="https://www.labster.com/" target="_blank" style="color: var(--primary-blue);">Labster</a>:</strong> Virtual laboratory simulations with realistic procedures</li>
                 </ul>
               </div>
 
-              <!-- AR Solutions Section with Visual Enhancement -->
+              <!-- AR Solutions Section -->
               <div style="background: linear-gradient(135deg, #f0fff0, #ffffff); border-radius: 8px; padding: var(--spacing-md); border-left: 4px solid #4caf50;">
-                <h6 style="color: var(--primary-blue); margin: 0 0 var(--spacing-sm) 0; display: flex; align-items: center; gap: var(--spacing-xs);">
-                  <span style="background: #4caf50; color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">📱</span>
-                  AR Solutions
-                </h6>
+                <h6 style="color: var(--primary-blue); margin: 0 0 var(--spacing-sm) 0;">AR Solutions</h6>
                 <ul style="margin: 0; line-height: 1.8;">
-                  <li><strong><a href="https://zap.works/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Zappar</a>:</strong> Professional AR creation platform with advanced tracking and interaction capabilities</li>
-                  <li><strong><a href="https://www.hpreveal.com/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">HP Reveal</a> (formerly Aurasma):</strong> Easy-to-use AR content creation and sharing platform</li>
-                  <li><strong>Smartphone-based AR:</strong> Native camera apps with AR capabilities and educational AR frameworks</li>
+                  <li><strong><a href="https://zap.works/" target="_blank" style="color: var(--primary-blue);">Zappar</a>:</strong> Professional AR creation platform with advanced tracking</li>
+                  <li><strong>Smartphone AR:</strong> Native iOS ARKit and Android ARCore applications</li>
+                  <li><strong><a href="https://www.snapchat.com/lens-studio" target="_blank" style="color: var(--primary-blue);">Snap Lens Studio</a>:</strong> AR filter creation for educational content</li>
                 </ul>
               </div>
 
@@ -957,13 +770,13 @@
                   <div style="text-align: center; flex: 1; min-width: 120px;">
                     <div style="background: var(--primary-teal); color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-xs) auto; font-weight: bold;">1</div>
                     <div style="font-size: 0.8rem; font-weight: bold; color: var(--primary-teal);">Content Creation</div>
-                    <div style="font-size: 0.7rem; color: var(--text-medium);">CoSpaces, Merge Cube</div>
+                    <div style="font-size: 0.7rem; color: var(--text-medium);">CoSpaces, Adobe Aero</div>
                   </div>
                   <div style="color: var(--primary-blue); font-size: 1.2rem;">→</div>
                   <div style="text-align: center; flex: 1; min-width: 120px;">
                     <div style="background: var(--primary-blue); color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-xs) auto; font-weight: bold;">2</div>
                     <div style="font-size: 0.8rem; font-weight: bold; color: var(--primary-blue);">Immersive Learning</div>
-                    <div style="font-size: 0.7rem; color: var(--text-medium);">Meta, Labster, Expeditions</div>
+                    <div style="font-size: 0.7rem; color: var(--text-medium);">Meta, Labster, Google VR</div>
                   </div>
                   <div style="color: var(--primary-blue); font-size: 1.2rem;">→</div>
                   <div style="text-align: center; flex: 1; min-width: 120px;">
@@ -976,6 +789,102 @@
             </div>
             
             <div style="margin: var(--spacing-md) 0;">
+              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Detailed Budget & Procurement</h5>
+              
+              <!-- Comprehensive Budget Table -->
+              <div style="background: var(--bg-light); border-radius: 8px; padding: var(--spacing-md); margin: var(--spacing-md) 0;">
+                <h6 style="color: var(--primary-blue); margin-top: 0;">Total Cost of Ownership (3-Year Projection)</h6>
+                
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: var(--spacing-md);">
+                  <thead style="background: var(--primary-teal); color: white;">
+                    <tr>
+                      <th style="padding: var(--spacing-sm); text-align: left;">Item Category</th>
+                      <th style="padding: var(--spacing-sm); text-align: right;">Initial Cost</th>
+                      <th style="padding: var(--spacing-sm); text-align: right;">Annual Recurring</th>
+                      <th style="padding: var(--spacing-sm); text-align: right;">3-Year Total</th>
+                    </tr>
+                  </thead>
+                  <tbody style="background: white;">
+                    <tr style="border-bottom: 1px solid var(--border-light);">
+                      <td style="padding: var(--spacing-sm);">VR Headsets (6 units)</td>
+                      <td style="padding: var(--spacing-sm); text-align: right;">$2,400</td>
+                      <td style="padding: var(--spacing-sm); text-align: right;">$240</td>
+                      <td style="padding: var(--spacing-sm); text-align: right;">$3,120</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border-light);">
+                      <td style="padding: var(--spacing-sm);">Software Licenses (Labster, CoSpaces Pro)</td>
+                      <td style="padding: var(--spacing-sm); text-align: right;">$500</td>
+                      <td style="padding: var(--spacing-sm); text-align: right;">$1,200</td>
+                      <td style="padding: var(--spacing-sm); text-align: right;">$4,100</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border-light);">
+                      <td style="padding: var(--spacing-sm);">Hygiene & Maintenance Supplies</td>
+                      <td style="padding: var(--spacing-sm); text-align: right;">$150</td>
+                      <td style="padding: var(--spacing-sm); text-align: right;">$300</td>
+                      <td style="padding: var(--spacing-sm); text-align: right;">$1,050</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border-light);">
+                      <td style="padding: var(--spacing-sm);">Device Cases & Storage</td>
+                      <td style="padding: var(--spacing-sm); text-align: right;">$300</td>
+                      <td style="padding: var(--spacing-sm); text-align: right;">$50</td>
+                      <td style="padding: var(--spacing-sm); text-align: right;">$450</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border-light);">
+                      <td style="padding: var(--spacing-sm);">Professional Development</td>
+                      <td style="padding: var(--spacing-sm); text-align: right;">$800</td>
+                      <td style="padding: var(--spacing-sm); text-align: right;">$400</td>
+                      <td style="padding: var(--spacing-sm); text-align: right;">$2,000</td>
+                    </tr>
+                    <tr style="background: var(--bg-light); font-weight: bold;">
+                      <td style="padding: var(--spacing-sm);">TOTAL</td>
+                      <td style="padding: var(--spacing-sm); text-align: right;">$4,150</td>
+                      <td style="padding: var(--spacing-sm); text-align: right;">$2,190</td>
+                      <td style="padding: var(--spacing-sm); text-align: right;">$10,720</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <div style="background: rgba(25, 118, 210, 0.1); padding: var(--spacing-sm); border-radius: 6px;">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--text-medium);">
+                    <strong>Procurement Strategy:</strong> Staggered purchasing over 18 months, educational discounts, shared district licenses, grant funding applications
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin: var(--spacing-md) 0;">
+              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Device Management SOP</h5>
+              
+              <div style="background: var(--bg-light); padding: var(--spacing-md); border-radius: 8px;">
+                <div style="margin-bottom: var(--spacing-md);">
+                  <h6 style="color: var(--primary-blue); margin: 0 0 var(--spacing-xs) 0;">Daily Operations Protocol</h6>
+                  <ol style="margin: 0; line-height: 1.6;">
+                    <li><strong>Pre-Class Setup (5 min):</strong> Device power check, lens cleaning with microfiber cloths, student login credential preparation</li>
+                    <li><strong>Student Handoff:</strong> Individual device assignment tracking, safety briefing checklist, comfort adjustment verification</li>
+                    <li><strong>Session Monitoring:</strong> 15-minute rotation timer, technical troubleshooting support, motion sickness awareness checks</li>
+                    <li><strong>Post-Session Hygiene:</strong> UV-C sanitization of face cushions, lens cleaning, device storage in ventilated cases</li>
+                  </ol>
+                </div>
+
+                <div style="margin-bottom: var(--spacing-md);">
+                  <h6 style="color: var(--primary-blue); margin: 0 0 var(--spacing-xs) 0;">Weekly Maintenance</h6>
+                  <ul style="margin: 0; line-height: 1.6;">
+                    <li>Software updates and content synchronization</li>
+                    <li>Battery calibration and charging system check</li>
+                    <li>Replacement head strap inspection and rotation</li>
+                    <li>Usage analytics review and device performance assessment</li>
+                  </ul>
+                </div>
+
+                <div style="background: rgba(255, 152, 0, 0.1); padding: var(--spacing-sm); border-radius: 6px;">
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--text-medium);">
+                    <strong>Health & Safety:</strong> 20-minute maximum session lengths, mandatory breaks between users, alternative activities for motion-sensitive students, emergency stop protocols
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin: var(--spacing-md) 0;">
               <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Equity & Access Strategy</h5>
               <ul>
                 <li><strong>Device Rotation:</strong> 15-20 minute small-group stations with structured peer roles</li>
@@ -983,11 +892,6 @@
                 <li><strong>Alternative Access:</strong> Non-VR video fly-throughs, screen mirroring for motion-sensitive students</li>
                 <li><strong>Accommodation:</strong> Multiple representation modes for diverse learning needs</li>
               </ul>
-            </div>
-            
-            <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px;">
-              <h5 style="color: var(--primary-blue); margin: 0 0 var(--spacing-xs) 0;">Budget Considerations</h5>
-              <p style="margin: 0; font-size: 0.9rem;">Staggered purchasing, multi-use app prioritization, school-managed accounts, shared booking calendar system</p>
             </div>
           </div>
           
@@ -1034,7 +938,7 @@
         
         <div class="callout-box">
           <h4 style="color: var(--primary-blue); margin-top: 0;">Comprehensive Assessment Strategy</h4>
-          <p>Multi-modal assessment approach addressing TA feedback for explicit evaluation strategies while maintaining focus on meaningful learning outcomes.</p>
+          <p>Multi-modal assessment approach addressing explicit evaluation strategies while maintaining focus on meaningful learning outcomes. Includes sample artifacts for immediate implementation.</p>
         </div>
         
         <div class="three-column">
@@ -1046,6 +950,15 @@
               <li><strong>Scientific Reasoning:</strong> Claim-Evidence-Reasoning (CER) frameworks</li>
               <li><strong>Concept Mapping:</strong> Before/after knowledge visualization</li>
             </ul>
+            
+            <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px; margin-top: var(--spacing-md);">
+              <h6 style="color: var(--primary-teal); margin: 0 0 var(--spacing-xs) 0;">Sample CER Framework</h6>
+              <p style="margin: 0; font-size: 0.85rem; font-style: italic;">
+                <strong>Claim:</strong> "VR molecular modeling improved my understanding of chemical bonding"<br>
+                <strong>Evidence:</strong> "I correctly predicted 8/10 molecular geometries in the post-assessment compared to 3/10 before"<br>
+                <strong>Reasoning:</strong> "Manipulating 3D models helped me visualize electron pair repulsion that was invisible in textbook diagrams"
+              </p>
+            </div>
           </div>
           
           <div class="feature-card">
@@ -1056,6 +969,18 @@
               <li><strong>Collaboration:</strong> Peer feedback forms and group reflection artifacts</li>
               <li><strong>Digital Literacy:</strong> Technology integration and adaptation skills</li>
             </ul>
+            
+            <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px; margin-top: var(--spacing-md);">
+              <h6 style="color: var(--primary-teal); margin: 0 0 var(--spacing-xs) 0;">Assessment Rubric Sample</h6>
+              <p style="margin: 0; font-size: 0.85rem;">
+                <a href="#" style="color: var(--primary-blue); text-decoration: none; border: 1px solid var(--primary-blue); padding: 4px 8px; border-radius: 4px; display: inline-block;">
+                  📄 Download VR Lab Skills Rubric (PDF)
+                </a>
+              </p>
+              <p style="margin: var(--spacing-xs) 0 0 0; font-size: 0.8rem; color: var(--text-medium);">
+                4-point scale covering technical skills, collaboration, and scientific reasoning
+              </p>
+            </div>
           </div>
           
           <div class="feature-card">
@@ -1066,6 +991,31 @@
               <li><strong>Portfolio Creation:</strong> Compiled evidence of learning journey</li>
               <li><strong>Presentation Component:</strong> Student-led demonstration of understanding</li>
             </ul>
+            
+            <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px; margin-top: var(--spacing-md);">
+              <h6 style="color: var(--primary-teal); margin: 0 0 var(--spacing-xs) 0;">Sample Data Collection Table</h6>
+              <table style="width: 100%; font-size: 0.8rem; border-collapse: collapse;">
+                <thead>
+                  <tr style="background: var(--primary-teal); color: white;">
+                    <th style="padding: 4px; text-align: left;">VR Trial</th>
+                    <th style="padding: 4px; text-align: center;">Measurement</th>
+                    <th style="padding: 4px; text-align: center;">Confidence</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="background: white;">
+                    <td style="padding: 4px; border: 1px solid #ddd;">Trial 1</td>
+                    <td style="padding: 4px; border: 1px solid #ddd; text-align: center;">15.3 mL</td>
+                    <td style="padding: 4px; border: 1px solid #ddd; text-align: center;">High</td>
+                  </tr>
+                  <tr style="background: #f9f9f9;">
+                    <td style="padding: 4px; border: 1px solid #ddd;">Trial 2</td>
+                    <td style="padding: 4px; border: 1px solid #ddd; text-align: center;">15.1 mL</td>
+                    <td style="padding: 4px; border: 1px solid #ddd; text-align: center;">High</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -1082,7 +1032,7 @@
         <div style="background: var(--bg-card); padding: var(--spacing-md); border-radius: 8px; margin-bottom: var(--spacing-lg); border-left: 4px solid var(--primary-teal);">
           <p style="margin: 0; font-style: italic; color: var(--text-medium);">
             <strong>Important Distinction:</strong> This implementation focuses on gamification elements (points, badges, leaderboards) 
-            rather than full game-based learning, maintaining academic rigor while enhancing engagement.
+            rather than full game-based learning, maintaining academic rigor while enhancing engagement based on systematic review evidence (Varol Selçuk & Özer Keskin, 2024).
           </p>
         </div>
         
@@ -1136,14 +1086,129 @@
                 <li><strong>Multiple Pathways:</strong> Choice boards prevent one-size-fits-all competitive pressure</li>
                 <li><strong>Collaborative Scoring:</strong> Team-based achievements alongside individual recognition</li>
                 <li><strong>Privacy Protection:</strong> Anonymous team aliases for leaderboards to reduce social pressure</li>
+                <li><strong>Pre-Perception Assessment:</strong> Survey student attitudes toward gamification before implementation (Henry et al., 2024)</li>
               </ul>
             </div>
             
             <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px;">
               <h5 style="color: var(--primary-blue); margin: 0 0 var(--spacing-xs) 0;">Assessment Integration</h5>
               <p style="margin: 0; font-size: 0.9rem;">
-                Gamification elements supplement, not replace, traditional assessment methods, ensuring academic standards are maintained.
+                Gamification elements supplement, not replace, traditional assessment methods, ensuring academic standards are maintained while addressing potential negative effects identified in research (Varol Selçuk & Özer Keskin, 2024).
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACCESSIBILITY -->
+    <section id="accessibility" class="content-section">
+      <div class="section-card">
+        <h3 class="section-title">
+          <span class="section-icon">♿</span>
+          WCAG 2.2 Accessibility Compliance
+        </h3>
+        
+        <div class="callout-box">
+          <h4 style="color: var(--primary-blue); margin-top: 0;">Universal Design for Learning Integration</h4>
+          <p>Comprehensive accessibility framework ensuring VR/AR implementations meet WCAG 2.2 Level AA standards while providing multiple means of representation, engagement, and expression for diverse learners.</p>
+        </div>
+        
+        <div class="three-column">
+          <div class="feature-card">
+            <h4 class="feature-title">Visual & Auditory Accessibility</h4>
+            <ul style="line-height: 1.8;">
+              <li><strong>Captions & Transcripts:</strong> All VR narration and audio cues provided with real-time captions and post-session transcripts</li>
+              <li><strong>High Contrast Options:</strong> Adjustable color schemes with minimum 4.5:1 contrast ratios for text elements</li>
+              <li><strong>Text Scaling:</strong> Resizable interface text up to 200% without loss of functionality</li>
+              <li><strong>Audio Descriptions:</strong> Verbal descriptions of visual VR/AR content for visually impaired users</li>
+              <li><strong>Screen Reader Compatibility:</strong> Alternative text-based interfaces for all interactive elements</li>
+            </ul>
+            
+            <ul class="tag-list">
+              <li class="tag">WCAG 2.2 AA</li>
+              <li class="tag">Screen Readers</li>
+              <li class="tag">Captions</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <h4 class="feature-title">Motor & Interaction Accessibility</h4>
+            <ul style="line-height: 1.8;">
+              <li><strong>Alternative Input Methods:</strong> Voice commands, eye tracking, and switch-adapted controllers</li>
+              <li><strong>Adjustable Time Limits:</strong> Customizable session lengths and pause functionality</li>
+              <li><strong>Reduced Motion Options:</strong> Motion-sensitive alternatives and comfort settings</li>
+              <li><strong>Keyboard Navigation:</strong> Full keyboard accessibility for all menu and interaction systems</li>
+              <li><strong>Simplified Interfaces:</strong> Streamlined control schemes for users with fine motor difficulties</li>
+            </ul>
+            
+            <ul class="tag-list">
+              <li class="tag">Voice Control</li>
+              <li class="tag">Motion Settings</li>
+              <li class="tag">Switch Access</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <h4 class="feature-title">Cognitive & Learning Accessibility</h4>
+            <ul style="line-height: 1.8;">
+              <li><strong>Clear Instructions:</strong> Step-by-step guidance with visual and auditory prompts</li>
+              <li><strong>Progress Indicators:</strong> Visual feedback on task completion and learning objectives</li>
+              <li><strong>Error Prevention:</strong> Confirmation dialogs and undo functionality for critical actions</li>
+              <li><strong>Consistent Navigation:</strong> Predictable interface patterns across all VR/AR experiences</li>
+              <li><strong>Cognitive Load Management:</strong> Adjustable complexity levels and information chunking</li>
+            </ul>
+            
+            <ul class="tag-list">
+              <li class="tag">Clear Instructions</li>
+              <li class="tag">Progress Tracking</li>
+              <li class="tag">Error Prevention</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="background: var(--bg-light); border-radius: 8px; padding: var(--spacing-lg); margin-top: var(--spacing-lg);">
+          <h4 style="color: var(--primary-teal); margin-top: 0;">WCAG 2.2 Compliance Checklist</h4>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-md);">
+            <div>
+              <h5 style="color: var(--primary-blue); margin-bottom: var(--spacing-sm);">Perceivable</h5>
+              <ul style="margin: 0; font-size: 0.9rem; line-height: 1.6;">
+                <li>✅ Alternative text for VR visual elements</li>
+                <li>✅ Captions for all audio content</li>
+                <li>✅ High contrast mode available</li>
+                <li>✅ Resizable text without loss of function</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h5 style="color: var(--primary-blue); margin-bottom: var(--spacing-sm);">Operable</h5>
+              <ul style="margin: 0; font-size: 0.9rem; line-height: 1.6;">
+                <li>✅ Keyboard accessible controls</li>
+                <li>✅ Adjustable time limits</li>
+                <li>✅ Seizure-safe content</li>
+                <li>✅ Motion sickness prevention</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h5 style="color: var(--primary-blue); margin-bottom: var(--spacing-sm);">Understandable</h5>
+              <ul style="margin: 0; font-size: 0.9rem; line-height: 1.6;">
+                <li>✅ Clear, simple language</li>
+                <li>✅ Predictable functionality</li>
+                <li>✅ Input error identification</li>
+                <li>✅ Help and documentation</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h5 style="color: var(--primary-blue); margin-bottom: var(--spacing-sm);">Robust</h5>
+              <ul style="margin: 0; font-size: 0.9rem; line-height: 1.6;">
+                <li>✅ Compatible with assistive technologies</li>
+                <li>✅ Valid, semantic code structure</li>
+                <li>✅ Future-proof accessibility features</li>
+                <li>✅ Cross-platform compatibility</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -1167,8 +1232,9 @@
               <ul>
                 <li><strong>Hardware Accessibility:</strong> Rapidly decreasing costs making classroom implementation more feasible</li>
                 <li><strong>Mobile AR Advancement:</strong> Smartphone-based solutions reducing infrastructure requirements</li>
-                <li><strong>AI Integration:</strong> Adaptive scaffolding and personalized learning path optimization</li>
+                <li><strong>AI Integration:</strong> Adaptive scaffolding and personalized learning path optimization (Cipresso et al., 2018)</li>
                 <li><strong>5G Connectivity:</strong> Enhanced streaming capabilities for complex VR/AR content</li>
+                <li><strong>Haptic Feedback Evolution:</strong> Advanced tactile systems for science and engineering applications</li>
               </ul>
             </div>
             
@@ -1178,83 +1244,92 @@
                 <li><strong>Democratization:</strong> Increased access to high-quality STEM experiences regardless of school resources</li>
                 <li><strong>Teacher Training Evolution:</strong> Professional development shifting toward immersive technology pedagogy</li>
                 <li><strong>Assessment Innovation:</strong> Real-time performance analytics and competency-based evaluation</li>
+                <li><strong>Global Collaboration:</strong> Virtual classrooms connecting students across geographic boundaries</li>
               </ul>
             </div>
           </div>
           
           <div class="feature-card">
-            <h4 class="feature-title">Ethical Framework & Responsibilities</h4>
+            <h4 class="feature-title">Ethical Framework & Privacy Protection</h4>
             
             <div style="margin: var(--spacing-md) 0;">
-              <h5 style="color: var(--primary-teal);">Student Privacy & Data Protection</h5>
+              <h5 style="color: var(--primary-teal);">Data Privacy & Security</h5>
               <ul>
-                <li><strong>Data Minimization:</strong> Collect only essential learning analytics data</li>
-                <li><strong>Consent Protocols:</strong> Clear parental and student consent for data collection</li>
-                <li><strong>Secure Storage:</strong> School-managed accounts with encrypted data transmission</li>
-                <li><strong>Transparency:</strong> Open communication about data use and student rights</li>
+                <li><strong>Data Minimization:</strong> Collect only essential learning analytics, delete personally identifiable information promptly</li>
+                <li><strong>Informed Consent:</strong> Age-appropriate explanations of data collection with clear opt-out procedures</li>
+                <li><strong>Encryption Standards:</strong> End-to-end encryption for all student interaction data and assessment results</li>
+                <li><strong>Session Limits:</strong> Automatic data purging after predetermined timeframes to protect student privacy</li>
+                <li><strong>Parental Control:</strong> Dashboard access for parents to monitor and control their child's VR/AR data</li>
               </ul>
             </div>
             
             <div style="margin: var(--spacing-md) 0;">
-              <h5 style="color: var(--primary-teal);">Digital Well-being</h5>
+              <h5 style="color: var(--primary-teal);">Equity & Inclusion</h5>
               <ul>
-                <li><strong>Session Limits:</strong> Maximum VR exposure times to prevent motion sickness and eye strain</li>
-                <li><strong>Break Protocols:</strong> Regular intervals for physical movement and vision rest</li>
-                <li><strong>Alternative Options:</strong> Non-immersive alternatives for students with health considerations</li>
-                <li><strong>Mental Health:</strong> Monitoring for technology-related anxiety or social isolation</li>
+                <li><strong>Universal Design:</strong> Multiple accessibility pathways ensuring all students can participate meaningfully</li>
+                <li><strong>Cultural Sensitivity:</strong> Content review processes to avoid bias and ensure diverse representation</li>
+                <li><strong>Economic Accessibility:</strong> Alternative implementation models for under-resourced schools</li>
+                <li><strong>Digital Divide Mitigation:</strong> Offline capabilities and low-bandwidth alternatives</li>
               </ul>
             </div>
             
             <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px;">
-              <h5 style="color: var(--primary-blue); margin: 0 0 var(--spacing-xs) 0;">Inclusive Design Principles</h5>
+              <h5 style="color: var(--primary-blue); margin: 0 0 var(--spacing-xs) 0;">Ethical Review Protocol</h5>
               <p style="margin: 0; font-size: 0.9rem;">
-                Multiple representation modes, culturally responsive content, and accessibility features ensuring equitable access for all learners.
+                Regular ethics board review of implementation practices, student feedback integration, and continuous monitoring of unintended consequences on learning equity.
               </p>
             </div>
           </div>
         </div>
-        
-        <div class="callout-box" style="margin-top: var(--spacing-lg);">
-          <p style="margin: 0; font-style: italic;">
-            These considerations directly address Module 6 expectations for future trends, technology advocacy, and ethical reflection, 
-            building on the theoretical foundation established in Assignment 2.
-          </p>
-        </div>
       </div>
     </section>
 
-    <!-- RUBRIC ALIGNMENT -->
-    <section id="rubric" class="content-section">
+    <!-- WHY NOW SECTION -->
+    <section id="why-now" class="content-section">
       <div class="section-card">
         <h3 class="section-title">
-          <span class="section-icon">8</span>
-          Rubric Alignment & Self-Assessment
+          <span class="section-icon">⚡</span>
+          Why Now? Strategic Imperative for Alberta
         </h3>
         
-        <p style="margin-bottom: var(--spacing-lg); color: var(--text-medium); font-style: italic;">
-          Interactive checklist mapped to Module 6 assessment categories for self-evaluation and submission readiness verification.
-        </p>
+        <div class="callout-box">
+          <h4 style="color: var(--primary-blue); margin-top: 0;">The Convergence Moment</h4>
+          <p>Multiple factors align to make 2024-2025 the optimal implementation window for VR/AR in Alberta STEM education, with policy support, technology readiness, and economic opportunities creating an unprecedented opportunity for educational transformation.</p>
+        </div>
         
-        <div class="checklist-container">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-md);">
-            <h4 style="color: var(--primary-blue); margin: 0;">Progress Tracking</h4>
-            <div style="font-size: 0.9rem; color: var(--text-medium);">
-              <span id="completion-count">0</span> of <span id="total-items">0</span> completed
+        <div class="two-column">
+          <div class="feature-card">
+            <h4 class="feature-title">Alberta Policy & Economic Alignment</h4>
+            <ul style="line-height: 1.8;">
+              <li><strong>Technology & Innovation Strategy:</strong> Alberta's commitment to diversifying the economy through technology sector growth</li>
+              <li><strong>Indigenous Education Framework:</strong> VR cultural experiences supporting Truth and Reconciliation initiatives</li>
+              <li><strong>Inclusive Education Policy:</strong> Universal Design for Learning mandates aligning with VR/AR accessibility features</li>
+              <li><strong>Rural Education Equity:</strong> Remote access to advanced STEM resources through virtual laboratories</li>
+              <li><strong>Post-Secondary Preparation:</strong> University-level technology exposure preparing students for competitive programs</li>
+            </ul>
+            
+            <div style="background: rgba(25, 118, 210, 0.1); padding: var(--spacing-sm); border-radius: 6px; margin-top: var(--spacing-md);">
+              <p style="margin: 0; font-size: 0.9rem; color: var(--text-medium);">
+                <strong>Strategic Timing:</strong> Federal funding opportunities through Canada's Digital Technology Supercluster and provincial innovation grants create optimal financial conditions.
+              </p>
             </div>
           </div>
           
-          <div class="progress-bar">
-            <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
-          </div>
-          
-          <div id="rubric-checklist">
-            <!-- Checklist items will be populated by JavaScript -->
-          </div>
-          
-          <div style="display: flex; gap: var(--spacing-md); margin-top: var(--spacing-lg); flex-wrap: wrap;">
-            <button class="btn btn-primary" id="export-progress">Export Progress Report</button>
-            <button class="btn btn-secondary" id="reset-checklist">Reset Checklist</button>
-            <button class="btn btn-secondary" id="mark-all-complete">Mark All Complete</button>
+          <div class="feature-card">
+            <h4 class="feature-title">Competitive Advantage & Future Readiness</h4>
+            <ul style="line-height: 1.8;">
+              <li><strong>STEM Skills Gap:</strong> Industry demand for spatial reasoning and 3D modeling skills directly addressed by VR/AR training</li>
+              <li><strong>Post-Pandemic Recovery:</strong> Student re-engagement strategies requiring innovative, motivating approaches</li>
+              <li><strong>Teacher Retention:</strong> Professional development in cutting-edge technology increasing job satisfaction</li>
+              <li><strong>International Competitiveness:</strong> Positioning Alberta students alongside global leaders in educational technology</li>
+              <li><strong>Future Workforce Preparation:</strong> Early exposure to immersive technologies essential for tomorrow's careers</li>
+            </ul>
+            
+            <div style="background: rgba(76, 175, 80, 0.1); padding: var(--spacing-sm); border-radius: 6px; margin-top: var(--spacing-md);">
+              <p style="margin: 0; font-size: 0.9rem; color: var(--text-medium);">
+                <strong>Implementation Window:</strong> Technology costs at historical low, educational research matured, and administrative support aligned - delays risk competitive disadvantage.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -1264,13 +1339,13 @@
     <section id="references" class="content-section">
       <div class="section-card">
         <h3 class="section-title">
-          <span class="section-icon">9</span>
-          References & Academic Sources
+          <span class="section-icon">📚</span>
+          References & Research Foundation
         </h3>
         
-        <div style="background: var(--bg-card); padding: var(--spacing-md); border-radius: 8px; margin-bottom: var(--spacing-lg);">
-          <p style="margin: 0; color: var(--text-medium);">
-            <strong>Comprehensive Bibliography:</strong> This reference list integrates course readings with supplementary scholarly sources, 
+        <div class="callout-box">
+          <p style="margin: 0; font-style: italic; color: var(--text-medium);">
+            This assignment integrates comprehensive literature from multiple databases and systematic reviews, 
             demonstrating deep engagement with current research in immersive educational technologies.
           </p>
         </div>
@@ -1283,10 +1358,10 @@
               Cipresso, P., Giglioli, I. A. C., Raya, M. A., & Riva, G. (2018). The past, present, and future of virtual and augmented reality research: A network and cluster analysis of the literature. <em>Frontiers in Psychology</em>, 9, 2086. https://doi.org/10.3389/fpsyg.2018.02086
             </p>
             <p style="margin-bottom: 1rem;">
-              Sherman, W. R., & Craig, A. B. (2018). <em>Understanding virtual reality: Interface, application, and design</em> (2nd ed.). Morgan Kaufmann.
+              Henry, J., Li, F., & Arnab, S. (2024). On the pre-perception of gamification and game-based learning in higher education students: A systematic mapping study. <em>Simulation & Gaming</em>, 55(6). https://doi.org/10.1177/10468781241271082
             </p>
             <p style="margin-bottom: 1rem;">
-              Henry, J., Li, F., & Arnab, S. (2024). On the pre-perception of gamification and game-based learning in higher education students: A systematic mapping study. <em>Simulation & Gaming</em>, 55(6). https://doi.org/10.1177/10468781241271082
+              Sherman, W. R., & Craig, A. B. (2018). <em>Understanding virtual reality: Interface, application, and design</em> (2nd ed.). Morgan Kaufmann.
             </p>
             <p style="margin-bottom: 1rem;">
               Taçgın, Z. (2020). What is VR? In <em>Virtual and augmented reality: An educational handbook</em> (pp. 16-45). Cambridge Scholars Publishing.
@@ -1315,158 +1390,110 @@
         <div class="two-column">
           <div>
             <h4 style="color: var(--primary-teal); margin-bottom: var(--spacing-md);">Course Reading Integration</h4>
-            <ul class="reference-list">
-              <li><strong>Module 1-2 Foundations:</strong> Historical development of VR/AR technologies, theoretical frameworks from Constructivist and Experiential Learning perspectives</li>
-              <li><strong>Module 3-4 Implementation:</strong> Classroom integration research, pedagogical design principles, and teacher professional development studies</li>
-              <li><strong>Module 5 Assessment:</strong> Digital literacy frameworks, competency-based evaluation, and authentic assessment methodologies</li>
-              <li><strong>Module 6 Ethics & Future:</strong> Privacy frameworks, digital citizenship education, and emerging technology trend analysis</li>
+            <p>This assignment synthesizes course materials with contemporary research, demonstrating comprehensive understanding of theoretical foundations while proposing evidence-based practical implementations.</p>
+            
+            <ul style="line-height: 1.8;">
+              <li><strong>Historical Context:</strong> Technology evolution from Sutherland (1965) to current applications</li>
+              <li><strong>Pedagogical Theory:</strong> Integration of cognitive load theory with immersive learning</li>
+              <li><strong>Assessment Framework:</strong> Evidence-based evaluation aligned with learning objectives</li>
+              <li><strong>Ethical Considerations:</strong> Contemporary privacy and equity frameworks</li>
             </ul>
           </div>
           
           <div>
-            <h4 style="color: var(--primary-teal); margin-bottom: var(--spacing-md);">Supplementary Research</h4>
-            <ul class="reference-list">
-              <li><strong>Peer-Reviewed Journals:</strong> Computers & Education, Educational Technology Research and Development, Journal of Educational Computing Research</li>
-              <li><strong>Industry Reports:</strong> Immersive Learning Research Network (iLRN), XR Association education impact studies</li>
-              <li><strong>Government Publications:</strong> Alberta Education technology integration guidelines, Canadian Digital Learning Policy frameworks</li>
-              <li><strong>Platform Documentation:</strong> Labster pedagogical research, CoSpaces educational case studies, Google Expeditions impact assessments</li>
+            <h4 style="color: var(--primary-teal); margin-bottom: var(--spacing-md);">Research Methodology</h4>
+            <p>Literature foundation based on systematic reviews and scientometric analysis of 21,667 VR records and 9,944 AR records from Web of Science Core Collection, providing robust empirical support.</p>
+            
+            <ul style="line-height: 1.8;">
+              <li><strong>Database Coverage:</strong> Web of Science, SCOPUS, IEEE Xplore, ACM Digital Library</li>
+              <li><strong>Review Methodology:</strong> Systematic mapping studies and meta-analyses</li>
+              <li><strong>Temporal Scope:</strong> Historical evolution through 2024 implementations</li>
+              <li><strong>Quality Assurance:</strong> Peer-reviewed journal prioritization and citation analysis</li>
             </ul>
           </div>
         </div>
-        
-        <div style="background: linear-gradient(135deg, var(--bg-card), white); border-radius: 8px; padding: var(--spacing-md); margin-top: var(--spacing-lg); border-left: 4px solid var(--primary-blue);">
-          <div style="display: flex; align-items: start; gap: var(--spacing-sm);">
-            <span style="background: var(--primary-blue); color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; flex-shrink: 0;">i</span>
-            <div>
-              <p style="margin: 0; font-size: 0.9rem; color: var(--text-medium);">
-                <strong>Academic Standards Compliance:</strong> All citations follow APA 7th edition guidelines with DOI/URL verification. 
-                Source diversity includes peer-reviewed research, government publications, and industry analyses to demonstrate comprehensive literature engagement.
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- APPENDICES -->
-    <section id="appendices" class="content-section">
-      <div class="section-card">
-        <h3 class="section-title">
-          <span class="section-icon">A</span>
-          Appendices & Supporting Materials
-        </h3>
-        
-        <div class="three-column">
-          <div class="feature-card">
-            <h4 class="feature-title">Appendix A: Implementation Timeline</h4>
-            <div style="margin: var(--spacing-md) 0;">
-              <div style="border-left: 3px solid var(--primary-teal); padding-left: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
-                <strong>Phase 1 (Months 1-2):</strong> Teacher training, equipment procurement, pilot testing
-              </div>
-              <div style="border-left: 3px solid var(--primary-blue); padding-left: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
-                <strong>Phase 2 (Months 3-4):</strong> Curriculum integration, content development, assessment design
-              </div>
-              <div style="border-left: 3px solid var(--accent-teal); padding-left: var(--spacing-sm);">
-                <strong>Phase 3 (Months 5-6):</strong> Full implementation, data collection, evaluation and refinement
-              </div>
-            </div>
-          </div>
-          
-          <div class="feature-card">
-            <h4 class="feature-title">Appendix B: Budget Considerations</h4>
-            <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px; margin: var(--spacing-md) 0;">
-              <div style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-xs);">
-                <span>VR Headsets (6 units):</span>
-                <strong>$3,000</strong>
-              </div>
-              <div style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-xs);">
-                <span>Software Licenses:</span>
-                <strong>$1,200</strong>
-              </div>
-              <div style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-xs);">
-                <span>Teacher Training:</span>
-                <strong>$2,000</strong>
-              </div>
-              <div style="display: flex; justify-content: space-between; font-weight: bold; border-top: 1px solid var(--border-light); padding-top: var(--spacing-xs);">
-                <span>Total Year 1:</span>
-                <strong>$6,200</strong>
-              </div>
-            </div>
-          </div>
-          
-          <div class="feature-card">
-            <h4 class="feature-title">Appendix C: Assessment Rubrics</h4>
-            <div style="margin: var(--spacing-md) 0;">
-              <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px; margin-bottom: var(--spacing-xs);">
-                <strong>Conceptual Understanding:</strong> 4-point scale
-              </div>
-              <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px; margin-bottom: var(--spacing-xs);">
-                <strong>Technical Skills:</strong> Proficiency indicators
-              </div>
-              <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px;">
-                <strong>Collaboration:</strong> Peer assessment criteria
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+  </div>
 
-  <!-- Academic Footer -->
-  <footer class="academic-footer">
-    <div style="max-width: 800px; margin: 0 auto;">
-      <h3 style="margin: 0 0 var(--spacing-md) 0; font-size: 1.5rem;">Submission Statement</h3>
-      <p style="margin: 0 0 var(--spacing-sm) 0; font-size: 1.1rem; line-height: 1.6;">
-        This capstone report represents original research and analysis for EDU 879 Module 6 Summative Assessment. 
-        The implementation plan demonstrates practical application of course concepts while maintaining rigorous academic standards 
-        and evidence-based educational practices.
-      </p>
-      <div style="margin: var(--spacing-lg) 0 0 0; padding: var(--spacing-md) 0; border-top: 1px solid rgba(255, 255, 255, 0.2);">
-        <p style="margin: 0; font-size: 0.95rem;">
-          <strong>© <span id="current-year"></span> Hannah Terkper</strong> — EDU 879 Educational Technology Capstone<br>
+  <!-- Footer -->
+  <footer style="background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue)); color: white; padding: var(--spacing-xl) 0; margin-top: var(--spacing-xxl);">
+    <div class="container">
+      <div style="text-align: center;">
+        <h3 style="margin-bottom: var(--spacing-md);">Ready for Implementation</h3>
+        <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: var(--spacing-lg);">
+          This comprehensive framework provides evidence-based strategies for transforming STEM education through immersive technologies, 
+          with detailed implementation guides, budget projections, and assessment rubrics ready for immediate classroom application.
         </p>
+        <div style="margin: var(--spacing-lg) 0 0 0; padding: var(--spacing-md) 0; border-top: 1px solid rgba(255, 255, 255, 0.2);">
+          <p style="margin: 0; font-size: 0.95rem;">
+            <strong>© <span id="current-year"></span> Hannah Terkper</strong> — EDU 879 Educational Technology Capstone<br>
+          </p>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- Quick Navigation -->
-  <button class="quick-nav-btn" id="quick-nav-btn" title="Quick Navigation">☰</button>
-  <div class="quick-nav-menu" id="quick-nav-menu">
-    <a href="#introduction">Introduction</a>
-    <a href="#foundations">Foundations</a>
-    <a href="#case-studies">Case Studies</a>
-    <a href="#integration">Integration Plan</a>
-    <a href="#assessment">Assessment</a>
-    <a href="#gamification">Gamification</a>
-    <a href="#future-ethics">Future & Ethics</a>
-    <a href="#rubric">Rubric Alignment</a>
-    <a href="#references">References</a>
-    <a href="#appendices">Appendices</a>
-    <hr style="margin: var(--spacing-xs) 0; border: none; border-top: 1px solid var(--border-light);">
-    <a href="#" onclick="window.print(); return false;">Print/PDF Version</a>
-    <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Back to Top</a>
-  </div>
-
-  <!-- JavaScript for Interactive Features -->
   <script>
     // Set current year
     document.getElementById('current-year').textContent = new Date().getFullYear();
     
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        
-        if (targetElement) {
-          // Update active nav link
-          document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-          this.classList.add('active');
+    // Interactive checklist functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const checkboxes = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+      let completedCount = 0;
+      
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+          if (this.checked) {
+            completedCount++;
+            this.parentElement.style.backgroundColor = 'rgba(76, 175, 80, 0.1)';
+          } else {
+            completedCount--;
+            this.parentElement.style.backgroundColor = 'transparent';
+          }
           
-          // Smooth scroll
-          targetElement.scrollIntoView({
+          // Update progress feedback
+          const total = checkboxes.length;
+          const percentage = Math.round((completedCount / total) * 100);
+          
+          if (completedCount === total) {
+            showCompletionMessage();
+          }
+        });
+      });
+      
+      function showCompletionMessage() {
+        const message = document.createElement('div');
+        message.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
+          color: white;
+          padding: 1rem 1.5rem;
+          border-radius: 8px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+          z-index: 1000;
+          animation: slideIn 0.3s ease-out;
+        `;
+        message.innerHTML = '🎉 All rubric elements reviewed! Ready for submission.';
+        document.body.appendChild(message);
+        
+        setTimeout(() => {
+          message.remove();
+        }, 4000);
+      }
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
             behavior: 'smooth',
             block: 'start'
           });
@@ -1474,251 +1501,21 @@
       });
     });
     
-    // Intersection Observer for active navigation
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${entry.target.id}`) {
-              link.classList.add('active');
-            }
-          });
+    // Add animation styles
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideIn {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
         }
-      });
-    }, { threshold: 0.3 });
-    
-    sections.forEach(section => observer.observe(section));
-    
-    // Rubric checklist data
-    const rubricItems = [
-      {
-        category: "Depth of Research & Critical Analysis (20%)",
-        items: [
-          "Comprehensive literature review with high-quality, diverse sources",
-          "Critical analysis of VR, AR, and gamification research",
-          "Evidence-based support for all major claims",
-          "Integration of course readings with additional scholarly sources"
-        ]
-      },
-      {
-        category: "Application of VR, AR, and Gamification (20%)",
-        items: [
-          "Clear integration of immersive technologies into educational framework",
-          "Strong pedagogical alignment with learning objectives",
-          "Detailed real-world applicability and implementation strategies",
-          "Subject-specific STEM applications with concrete examples"
-        ]
-      },
-      {
-        category: "Innovation & Feasibility (15%)",
-        items: [
-          "Creative approaches demonstrating original thinking",
-          "Practical implementation considerations and resource planning",
-          "Strong potential for real-world impact and scalability",
-          "Innovative solutions to common educational technology challenges"
-        ]
-      },
-      {
-        category: "Ethical Considerations & Future Readiness (20%)",
-        items: [
-          "Thoughtful evaluation of data privacy and student well-being",
-          "Comprehensive accessibility and equity considerations",
-          "Analysis of emerging trends and technology evolution",
-          "Reflection on digital citizenship and responsible implementation"
-        ]
-      },
-      {
-        category: "Persuasive Advocacy & Argumentation (15%)",
-        items: [
-          "Strong, well-structured argument for immersive technology adoption",
-          "Research-backed evidence supporting implementation recommendations",
-          "Clear articulation of benefits and risk mitigation strategies",
-          "Compelling case for educational transformation through technology"
-        ]
-      },
-      {
-        category: "Clarity, Organization, & Professionalism (10%)",
-        items: [
-          "Professional formatting and visual presentation",
-          "Clear structure with logical flow between sections",
-          "Error-free grammar and APA citation formatting",
-          "Engaging and accessible writing for academic audience"
-        ]
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
       }
-    ];
-    
-    // Generate checklist
-    function generateChecklist() {
-      const container = document.getElementById('rubric-checklist');
-      let itemCount = 0;
-      
-      rubricItems.forEach((category, categoryIndex) => {
-        const categoryDiv = document.createElement('div');
-        categoryDiv.style.marginBottom = 'var(--spacing-lg)';
-        
-        const categoryTitle = document.createElement('h5');
-        categoryTitle.textContent = category.category;
-        categoryTitle.style.color = 'var(--primary-blue)';
-        categoryTitle.style.marginBottom = 'var(--spacing-sm)';
-        categoryDiv.appendChild(categoryTitle);
-        
-        category.items.forEach((item, itemIndex) => {
-          const itemDiv = document.createElement('div');
-          itemDiv.className = 'checklist-item';
-          itemDiv.dataset.category = categoryIndex;
-          itemDiv.dataset.item = itemIndex;
-          
-          const checkbox = document.createElement('div');
-          checkbox.className = 'checkbox';
-          checkbox.innerHTML = '✓';
-          
-          const label = document.createElement('span');
-          label.textContent = item;
-          label.style.flex = '1';
-          
-          itemDiv.appendChild(checkbox);
-          itemDiv.appendChild(label);
-          categoryDiv.appendChild(itemDiv);
-          
-          itemCount++;
-          
-          // Add click handler
-          itemDiv.addEventListener('click', () => toggleChecklistItem(itemDiv));
-        });
-        
-        container.appendChild(categoryDiv);
-      });
-      
-      document.getElementById('total-items').textContent = itemCount;
-      updateProgress();
-    }
-    
-    // Toggle checklist item
-    function toggleChecklistItem(item) {
-      const checkbox = item.querySelector('.checkbox');
-      const isCompleted = item.classList.contains('completed');
-      
-      if (isCompleted) {
-        item.classList.remove('completed');
-        checkbox.classList.remove('checked');
-      } else {
-        item.classList.add('completed');
-        checkbox.classList.add('checked');
-      }
-      
-      updateProgress();
-    }
-    
-    // Update progress
-    function updateProgress() {
-      const completed = document.querySelectorAll('.checklist-item.completed').length;
-      const total = document.querySelectorAll('.checklist-item').length;
-      const percentage = total > 0 ? (completed / total) * 100 : 0;
-      
-      document.getElementById('completion-count').textContent = completed;
-      document.getElementById('progress-fill').style.width = percentage + '%';
-    }
-    
-    // Export progress
-    document.getElementById('export-progress').addEventListener('click', () => {
-      const data = {
-        timestamp: new Date().toISOString(),
-        student: "Hannah Terkper",
-        course: "EDU 879",
-        assignment: "Module 6 Summative Assessment",
-        completion: {
-          completed: document.querySelectorAll('.checklist-item.completed').length,
-          total: document.querySelectorAll('.checklist-item').length,
-          percentage: ((document.querySelectorAll('.checklist-item.completed').length / document.querySelectorAll('.checklist-item').length) * 100).toFixed(1) + '%'
-        },
-        categories: {}
-      };
-      
-      rubricItems.forEach((category, categoryIndex) => {
-        const categoryItems = document.querySelectorAll(`[data-category="${categoryIndex}"]`);
-        const completedItems = document.querySelectorAll(`[data-category="${categoryIndex}"].completed`);
-        data.categories[category.category] = {
-          completed: completedItems.length,
-          total: categoryItems.length,
-          percentage: ((completedItems.length / categoryItems.length) * 100).toFixed(1) + '%'
-        };
-      });
-      
-      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `EDU879_Rubric_Progress_${new Date().toISOString().split('T')[0]}.json`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    });
-    
-    // Reset checklist
-    document.getElementById('reset-checklist').addEventListener('click', () => {
-      if (confirm('Are you sure you want to reset all checklist items?')) {
-        document.querySelectorAll('.checklist-item').forEach(item => {
-          item.classList.remove('completed');
-          item.querySelector('.checkbox').classList.remove('checked');
-        });
-        updateProgress();
-      }
-    });
-    
-    // Mark all complete
-    document.getElementById('mark-all-complete').addEventListener('click', () => {
-      document.querySelectorAll('.checklist-item').forEach(item => {
-        item.classList.add('completed');
-        item.querySelector('.checkbox').classList.add('checked');
-      });
-      updateProgress();
-    });
-    
-    // Initialize checklist
-    generateChecklist();
-    
-    // Quick Navigation functionality
-    const quickNavBtn = document.getElementById('quick-nav-btn');
-    const quickNavMenu = document.getElementById('quick-nav-menu');
-    
-    quickNavBtn.addEventListener('click', () => {
-      quickNavMenu.classList.toggle('active');
-    });
-    
-    // Close quick nav when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!quickNavBtn.contains(e.target) && !quickNavMenu.contains(e.target)) {
-        quickNavMenu.classList.remove('active');
-      }
-    });
-    
-    // Close quick nav when clicking on a link
-    quickNavMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        quickNavMenu.classList.remove('active');
-      });
-    });
-    
-    // Load navbar functionality if mobile-nav.js exists
-    const script = document.createElement('script');
-    script.src = 'mobile-nav.js';
-    script.onerror = () => {
-      // Fallback mobile nav functionality
-      const mobileToggle = document.querySelector('.mobile-menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      
-      if (mobileToggle && navLinks) {
-        mobileToggle.addEventListener('click', () => {
-          navLinks.classList.toggle('active');
-        });
-      }
-    };
-    document.head.appendChild(script);
+    `;
+    document.head.appendChild(style);
   </script>
 </body>
 </html>
