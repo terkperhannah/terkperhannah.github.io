@@ -536,6 +536,60 @@
   </style>
   <style>
   .content-section em.cite { font-style: normal; opacity: .85; }
+    /* Card styling */
+.section-card.narrated-card{
+  background:#fff;
+  border:1px solid var(--border-light, rgba(0,0,0,.08));
+  border-radius:12px;
+  padding: var(--spacing-lg, 24px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+}
+
+/* Controls layout */
+.tts-controls{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.6rem .8rem;
+  align-items:center;
+  margin: .75rem 0 1rem;
+}
+.tts-inline{
+  display:flex;
+  align-items:center;
+  gap:.4rem;
+  margin-left:.5rem;
+}
+
+/* Buttons */
+.tts-controls button{
+  padding:.5rem .8rem;
+  border:1px solid rgba(0,0,0,.12);
+  border-radius:8px;
+  background:#f7f8fa;
+  font-weight:600;
+  cursor:pointer;
+}
+.tts-controls button:hover:enabled{ background:#eef2ff; }
+.tts-controls button:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+/* Range label */
+#tts-rate-val{ min-width:3.2ch; display:inline-block; text-align:right; }
+
+/* Status + transcript */
+.tts-status{ margin:.25rem 0 .5rem; font-size:.95rem; opacity:.8; }
+.tts-transcript{
+  margin-top:.5rem;
+  background:#fafafa;
+  border:1px solid rgba(0,0,0,.05);
+  border-radius:10px;
+  padding:.5rem .75rem;
+}
+.tts-transcript > summary{ cursor:pointer; }
+.tts-transcript p{ margin:.5rem 0 0; line-height:1.75; }
+
 </style>
 
 </head>
@@ -690,43 +744,51 @@
 
 
 
-  <!-- ===== Narrated Walkthrough (Web Speech API) ===== -->
+<!-- ===== Narrated Walkthrough (on white card) ===== -->
 <section id="walkthrough" class="content-section" aria-labelledby="walkthrough-title">
-  <h3 id="walkthrough-title">Narrated Walkthrough</h3>
+  <div class="section-card narrated-card">
+    <h3 id="walkthrough-title" class="section-title">
+      <span class="section-icon">🎧</span>
+      Narrated Walkthrough
+    </h3>
 
-  <!-- Transcript (what will be read) -->
-  <div id="narration-text" style="display:none;">
-    This walkthrough explains the problem, research base, implementation, assessment, and ethics for immersive STEM learning. Captions and a full transcript are provided for accessibility. The solution integrates Virtual Reality, Augmented Reality, and gamification to improve conceptual understanding and engagement while maintaining academic rigor.
+    <!-- Live status for screen readers -->
+    <div id="tts-status" aria-live="polite" class="tts-status">Ready to narrate. Choose a voice and press Play.</div>
+
+    <!-- Controls -->
+    <div class="tts-controls" role="group" aria-label="Narration controls">
+      <button id="tts-play" type="button">🔊 Play</button>
+      <button id="tts-pause" type="button" disabled>⏸️ Pause</button>
+      <button id="tts-resume" type="button" disabled>▶️ Resume</button>
+      <button id="tts-stop" type="button" disabled>⏹️ Stop</button>
+
+      <label class="tts-inline">
+        Voice:
+        <select id="tts-voice" aria-label="Voice"></select>
+      </label>
+
+      <label class="tts-inline">
+        Speed:
+        <input id="tts-rate" type="range" min="0.75" max="1.5" step="0.05" value="1" aria-label="Speech rate">
+        <span id="tts-rate-val" aria-hidden="true">1.00×</span>
+      </label>
+    </div>
+
+    <!-- Transcript (visible) -->
+    <details class="tts-transcript">
+      <summary><strong>Transcript</strong></summary>
+      <p id="narration-transcript">
+        This walkthrough explains the problem, research base, implementation, assessment, and ethics for immersive STEM learning. Captions and a full transcript are provided for accessibility. The solution integrates VR, AR, and gamification to improve conceptual understanding and engagement while maintaining academic rigor.
+      </p>
+    </details>
+
+    <!-- Hidden source text (what gets read) -->
+    <div id="narration-text" style="display:none;">
+      This walkthrough explains the problem, research base, implementation, assessment, and ethics for immersive STEM learning. Captions and a full transcript are provided for accessibility. The solution integrates VR, AR, and gamification to improve conceptual understanding and engagement while maintaining academic rigor.
+    </div>
   </div>
-
-  <!-- Controls -->
-  <div class="tts-controls" role="group" aria-label="Narration controls" style="display:flex; gap:.5rem; align-items:center; flex-wrap:wrap;">
-    <button id="tts-play" type="button">🔊 Play</button>
-    <button id="tts-pause" type="button" disabled>⏸️ Pause</button>
-    <button id="tts-resume" type="button" disabled>▶️ Resume</button>
-    <button id="tts-stop" type="button" disabled>⏹️ Stop</button>
-
-    <label style="margin-left:1rem;">
-      Voice:
-      <select id="tts-voice" aria-label="Voice"></select>
-    </label>
-
-    <label>
-      Speed:
-      <input id="tts-rate" type="range" min="0.75" max="1.5" step="0.05" value="1" aria-label="Speech rate">
-      <span id="tts-rate-val" aria-hidden="true">1.00×</span>
-    </label>
-  </div>
-
-  <!-- Live status for screen readers -->
-  <div id="tts-status" aria-live="polite" style="margin-top:.5rem; font-size:.9rem; opacity:.8;"></div>
-
-  <!-- Visible transcript for accessibility -->
-  <details style="margin-top:.75rem;">
-    <summary><strong>Transcript</strong></summary>
-    <p id="narration-transcript" style="line-height:1.7;"></p>
-  </details>
 </section>
+
 
 <script>
 (function () {
