@@ -690,41 +690,21 @@
 
 
 
-  <!-- ======= PRESENTATION VIDEO (10–12 min narrated walkthrough) ======= -->
-<section id="presentation" class="content-section" aria-labelledby="presentation-title">
-  <div class="section-card">
-    <h3 class="section-title" id="presentation-title">
-      <span class="section-icon">🎬</span>
-      Narrated Walkthrough 
-    </h3>
+  <div id="walkthrough">
+  <h3>Narrated Walkthrough</h3>
+  <p>A recorded overview of the problem, research base, implementation, assessment, and ethics.</p>
+  <button onclick="playNarration()">🔊 Play Narration</button>
+</div>
 
-    <p class="hero-description" style="margin-top:-8px;">
-      A recorded overview of the problem, research base, implementation, assessment, and ethics.
-      <strong>Captions enabled</strong> and a <strong>full transcript</strong> are provided for accessibility.
-    </p>
+<script>
+  function playNarration() {
+    const narration = `This walkthrough explains the problem, research base, implementation, assessment, and ethics for immersive STEM learning. Captions and transcripts are provided for accessibility.`;
+    const utterance = new SpeechSynthesisUtterance(narration);
+    utterance.lang = "en-US";
+    speechSynthesis.speak(utterance);
+  }
+</script>
 
-    <!-- Replace the src below with your YouTube embed URL (Share ▶ Embed) -->
-    <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;box-shadow:0 6px 24px var(--shadow-light);">
-      <iframe
-        title="EDU 879 – Narrated Walkthrough"
-        src="https://www.youtube.com/embed/XXXXXXXXXXX"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        style="position:absolute;top:0;left:0;width:100%;height:100%;"
-      ></iframe>
-    </div>
-
-    <!-- Transcript placeholder -->
-    <div class="callout-box" style="margin-top:var(--spacing-lg);" aria-live="polite">
-      <h4 style="color: var(--primary-blue); margin-top:0;">Complete Transcript</h4>
-      <p style="margin:0;">
-        <em>Full narration transcript will be added here for WCAG 2.2 compliance (Success Criterion 1.2.8 Media Alternative). 
-        This ensures accessibility for deaf/hard-of-hearing users and provides searchable content for all learners.</em>
-      </p>
-    </div>
-  </div>
-</section>
 
 
   <main>
