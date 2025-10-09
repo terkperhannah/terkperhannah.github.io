@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Math 10C • Unit 3 (Lessons 4–6): Polynomial Operations — Quiz 2</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- MathJax (queue-safe) -->
+  <script>
+    window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea']},startup:{typeset:false}};
+  </script>
+  <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
+  <script>
+    (function(){const q=[];window.typesetMath=r=>{if(window.MathJax?.typesetPromise){MathJax.typesetPromise(r?[r]:undefined);}else q.push(r||null)};function f(){if(!(window.MathJax?.typesetPromise))return;const b=q.splice(0);if(!b.length)return;Promise.all(b.map(r=>MathJax.typesetPromise(r?[r]:undefined))).catch(console.error);}document.addEventListener("DOMContentLoaded",()=>{if(window.MathJax?.startup?.promise)MathJax.startup.promise.then(f);else document.getElementById("MathJax-script")?.addEventListener("load",f);});})();
+  </script>
+
+  <style>
+    .content-wrapper{max-width:1100px;margin:0 auto;padding:20px}
+    .content-box{border:2px solid #e0e0e0;border-radius:12px;padding:24px;margin-bottom:24px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.07)}
+    .hero{background:linear-gradient(135deg,#eef7ff 0,#f7fffb 55%,#fffaf2 100%)}
+    .badge{padding:6px 10px;border-radius:999px;background:#ecf5ff;border:1px solid #d6eaff;color:#1d6fa5;font-size:12px;margin:2px}
+    .question{border:1px solid #e7eaef;border-radius:12px;padding:16px;margin:18px 0;background:#f9fbfd}
+    .q-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .q-title{font-weight:700;color:#2c3e50}
+    .options{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-top:10px}
+    .option{padding:10px;border:1px solid #dfe6ee;border-radius:8px;background:#fff;cursor:pointer}
+    .option:hover{border-color:#3498db;box-shadow:0 3px 12px rgba(52,152,219,.15)}
+    .feedback{margin-top:8px;padding:8px;border-radius:6px;font-weight:600}
+    .soln{margin-top:10px;display:none;background:#fff;border:1px dashed #dfe6ee;border-radius:8px;padding:12px}
+    .wb-wrap{margin-top:10px;border:1px solid #e0e0e0;border-radius:10px;background:#fff}
+    .wb-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px;background:#f5f7fa;border-bottom:1px solid #e0e0e0;border-radius:10px 10px 0 0}
+    .wb-toolbar label{font-size:.85rem;color:#5b6b7b}
+    .wb-toolbar .btn{padding:8px 10px;border-radius:8px;border:1px solid #cbd6e2;background:#fff;cursor:pointer}
+    .wb-toolbar .btn:hover{background:#ecf5ff;border-color:#3498db}
+    .wb-stack{position:relative;width:100%;height:260px;border-radius:0 0 10px 10px;overflow:hidden}
+    .wb-canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair;z-index:1}
+    .wb-grid{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.9;z-index:2}
+    .progress{height:16px;background:#ecf0f1;border-radius:10px;overflow:hidden}
+    .bar{height:100%;width:0;background:linear-gradient(90deg,#3498db,#2ecc71)}
+    .stats{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .btn-primary{background:#3498db;color:#fff;border:0;border-radius:8px;padding:8px 12px;cursor:pointer}
+  </style>
+</head>
+<body>
+<header><h1>Ms. Terkper’s Digital Classroom</h1></header>
+<div id="navbar-placeholder"></div>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{fetch('navbar.html').then(r=>r.text()).then(h=>{const e=document.getElementById('navbar-placeholder');e.innerHTML=h;window.typesetMath?.(e);});});
+</script>
+
+<main>
+<div class="content-wrapper">
+<section class="content-box hero">
+  <h2>Unit 3 • Lessons 4–6 — Polynomial Operations (Quiz 2)</h2>
+  <p class="muted">Adding & Subtracting Polynomials • Trinomial × Binomial • Simplifying Expressions</p>
+  <div>
+    <span class="badge">Add/Subtract Polynomials</span>
+    <span class="badge">Trinomial × Binomial</span>
+    <span class="badge">Combine Like Terms</span>
+    <span class="badge">Special Products</span>
+  </div>
+</section>
+
+<section class="content-box">
+  <h2>Practice Set</h2>
+  <p>Show your work on each whiteboard before checking answers. You get <b>2 attempts</b> per question.</p>
+</section>
+
+<section id="questions" class="content-box">
+
+<!-- Q1 -->
+<div class="question" id="q1">
+  <div class="q-head"><div class="q-title">1) Add Polynomials</div><span class="muted">Simplify \((3x^2+5x-7)+(4x^2-2x+3)\).</span></div>
+  <div class="options">
+    <button class="option" onclick="checkAnswer(1,'a')">A) \(7x^2+3x-4\)</button>
+    <button class="option" onclick="checkAnswer(1,'b')">B) \(x^2+7x-4\)</button>
+    <button class="option" onclick="checkAnswer(1,'c')">C) \(7x^2-7x+10\)</button>
+    <button class="option" onclick="checkAnswer(1,'d')">D) \(7x^2+3x+4\)</button>
+  </div>
+  <div class="feedback" id="f1"></div>
+  <button class="btn-primary" onclick="toggleSoln(1)">Reveal Solution</button>
+  <div class="soln" id="s1">Combine like terms: \((3+4)x^2+(5-2)x+(-7+3)=7x^2+3x-4.\)</div>
+  <div class="wb-wrap"><div class="wb-toolbar">
+    <label>Pen:<input type="color" id="c1" value="#000000"></label>
+    <label>Width:<input type="range" id="w1" min="1" max="12" value="2"></label>
+    <button class="btn" onclick="toggleEraser(1)">Eraser</button>
+    <button class="btn" onclick="undo(1)">Undo</button>
+    <button class="btn" onclick="clearWB(1)">Clear</button>
+    <button class="btn" onclick="toggleGrid(1)">Grid</button>
+    <span class="toolbar-sep"></span>
+    <button class="btn" onclick="downloadWB(1)">Download PNG</button>
+  </div><div class="wb-stack"><canvas class="wb-grid" id="grid1"></canvas><canvas class="wb-canvas" id="wb1"></canvas></div></div>
+</div>
+
+<!-- Q2 -->
+<div class="question" id="q2">
+  <div class="q-head"><div class="q-title">2) Subtract Polynomials</div><span class="muted">Simplify \((5x^2-3x+8)-(2x^2+4x-6)\).</span></div>
+  <div class="options">
+    <button class="option" onclick="checkAnswer(2,'a')">A) \(3x^2-7x+14\)</button>
+    <button class="option" onclick="checkAnswer(2,'b')">B) \(7x^2+x+2\)</button>
+    <button class="option" onclick="checkAnswer(2,'c')">C) \(3x^2+x+2\)</button>
+    <button class="option" onclick="checkAnswer(2,'d')">D) \(x^2-7x-14\)</button>
+  </div>
+  <div class="feedback" id="f2"></div>
+  <button class="btn-primary" onclick="toggleSoln(2)">Reveal Solution</button>
+  <div class="soln" id="s2">Subtract coefficients: \((5-2)x^2+(-3-4)x+(8-(-6))=3x^2-7x+14.\)</div>
+  <div class="wb-wrap"><div class="wb-toolbar"><label>Pen:<input type="color" id="c2" value="#000000"></label>
+    <label>Width:<input type="range" id="w2" min="1" max="12" value="2"></label>
+    <button class="btn" onclick="toggleEraser(2)">Eraser</button><button class="btn" onclick="undo(2)">Undo</button>
+    <button class="btn" onclick="clearWB(2)">Clear</button><button class="btn" onclick="toggleGrid(2)">Grid</button>
+    <span class="toolbar-sep"></span><button class="btn" onclick="downloadWB(2)">Download PNG</button>
+  </div><div class="wb-stack"><canvas class="wb-grid" id="grid2"></canvas><canvas class="wb-canvas" id="wb2"></canvas></div></div>
+</div>
+
+<!-- Q3 -->
+<div class="question" id="q3">
+  <div class="q-head"><div class="q-title">3) Trinomial × Binomial</div><span class="muted">Simplify \((x^2+2x+3)(x+1)\).</span></div>
+  <div class="options">
+    <button class="option" onclick="checkAnswer(3,'a')">A) \(x^3+3x^2+5x+3\)</button>
+    <button class="option" onclick="checkAnswer(3,'b')">B) \(x^3+2x^2+5x+3\)</button>
+    <button class="option" onclick="checkAnswer(3,'c')">C) \(x^3+3x^2+2x+3\)</button>
+    <button class="option" onclick="checkAnswer(3,'d')">D) \(x^3+2x^2+x+3\)</button>
+  </div>
+  <div class="feedback" id="f3"></div>
+  <button class="btn-primary" onclick="toggleSoln(3)">Reveal Solution</button>
+  <div class="soln" id="s3">Multiply each term by \((x+1)\): \(x^3+x^2+2x^2+2x+3x+3=x^3+3x^2+5x+3.\)</div>
+  <div class="wb-wrap"><div class="wb-toolbar"><label>Pen:<input type="color" id="c3" value="#000000"></label>
+    <label>Width:<input type="range" id="w3" min="1" max="12" value="2"></label>
+    <button class="btn" onclick="toggleEraser(3)">Eraser</button><button class="btn" onclick="undo(3)">Undo</button>
+    <button class="btn" onclick="clearWB(3)">Clear</button><button class="btn" onclick="toggleGrid(3)">Grid</button>
+    <span class="toolbar-sep"></span><button class="btn" onclick="downloadWB(3)">Download PNG</button>
+  </div><div class="wb-stack"><canvas class="wb-grid" id="grid3"></canvas><canvas class="wb-canvas" id="wb3"></canvas></div></div>
+</div>
+
+<!-- Q4 -->
+<div class="question" id="q4">
+  <div class="q-head"><div class="q-title">4) Special Product — Perfect Square Trinomial</div><span class="muted">Simplify \((2x-5)^2\).</span></div>
+  <div class="options">
+    <button class="option" onclick="checkAnswer(4,'a')">A) \(4x^2-20x+25\)</button>
+    <button class="option" onclick="checkAnswer(4,'b')">B) \(4x^2-10x+25\)</button>
+    <button class="option" onclick="checkAnswer(4,'c')">C) \(4x^2+25\)</button>
+    <button class="option" onclick="checkAnswer(4,'d')">D) \(4x^2-20x-25\)</button>
+  </div>
+  <div class="feedback" id="f4"></div>
+  <button class="btn-primary" onclick="toggleSoln(4)">Reveal Solution</button>
+  <div class="soln" id="s4">Use \((a-b)^2=a^2-2ab+b^2\): \(4x^2-20x+25.\)</div>
+  <div class="wb-wrap"><div class="wb-toolbar"><label>Pen:<input type="color" id="c4" value="#000000"></label>
+    <label>Width:<input type="range" id="w4" min="1" max="12" value="2"></label>
+    <button class="btn" onclick="toggleEraser(4)">Eraser</button><button class="btn" onclick="undo(4)">Undo</button>
+    <button class="btn" onclick="clearWB(4)">Clear</button><button class="btn" onclick="toggleGrid(4)">Grid</button>
+    <span class="toolbar-sep"></span><button class="btn" onclick="downloadWB(4)">Download PNG</button>
+  </div><div class="wb-stack"><canvas class="wb-grid" id="grid4"></canvas><canvas class="wb-canvas" id="wb4"></canvas></div></div>
+</div>
+
+<!-- Q5 -->
+<div class="question" id="q5">
+  <div class="q-head"><div class="q-title">5) Difference of Squares Review</div><span class="muted">Simplify \((x+6)(x-6)\).</span></div>
+  <div class="options">
+    <button class="option" onclick="checkAnswer(5,'a')">A) \(x^2-36\)</button>
+    <button class="option" onclick="checkAnswer(5,'b')">B) \(x^2+36\)</button>
+    <button class="option" onclick="checkAnswer(5,'c')">C) \(x^2-12x+36\)</button>
+    <button class="option" onclick="checkAnswer(5,'d')">D) \(x^2+12x+36\)</button>
+  </div>
+  <div class="feedback" id="f5"></div>
+  <button class="btn-primary" onclick="toggleSoln(5)">Reveal Solution</button>
+  <div class="soln" id="s5">\((a+b)(a-b)=a^2-b^2\Rightarrow x^2-36.\)</div>
+  <div class="wb-wrap"><div class="wb-toolbar"><label>Pen:<input type="color" id="c5" value="#000000"></label>
+    <label>Width:<input type="range" id="w5" min="1" max="12" value="2"></label>
+    <button class="btn" onclick="toggleEraser(5)">Eraser</button><button class="btn" onclick="undo(5)">Undo</button>
+    <button class="btn" onclick="clearWB(5)">Clear</button><button class="btn" onclick="toggleGrid(5)">Grid</button>
+    <span class="toolbar-sep"></span><button class="btn" onclick="downloadWB(5)">Download PNG</button>
+  </div><div class="wb-stack"><canvas class="wb-grid" id="grid5"></canvas><canvas class="wb-canvas" id="wb5"></canvas></div></div>
+</div>
+
+<!-- Q6 -->
+<div class="question" id="q6">
+  <div class="q-head"><div class="q-title">6) Simplify Mixed Expression</div><span class="muted">Simplify \((x^2+4x+4)-(x^2-2x-8)\).</span></div>
+  <div class="options">
+    <button class="option" onclick="checkAnswer(6,'a')">A) \(6x+12\)</button>
+    <button class="option" onclick="checkAnswer(6,'b')">B) \(x^2+6x+12\)</button>
+    <button class="option" onclick="checkAnswer(6,'c')">C) \(2x^2+2x-4\)</button>
+    <button class="option" onclick="checkAnswer(6,'d')">D) \(6x-12\)</button>
+  </div>
+  <div class="feedback" id="f6"></div>
+  <button class="btn-primary" onclick="toggleSoln(6)">Reveal Solution</button>
+  <div class="soln" id="s6">Subtract all terms: \(x^2+4x+4-x^2+2x+8=6x+12.\)</div>
+  <div class="wb-wrap"><div class="wb-toolbar"><label>Pen:<input type="color" id="c6" value="#000000"></label>
+    <label>Width:<input type="range" id="w6" min="1" max="12" value="2"></label>
+    <button class="btn" onclick="toggleEraser(6)">Eraser</button><button class="btn" onclick="undo(6)">Undo</button>
+    <button class="btn" onclick="clearWB(6)">Clear</button><button class="btn" onclick="toggleGrid(6)">Grid</button>
+    <span class="toolbar-sep"></span><button class="btn" onclick="downloadWB(6)">Download PNG</button>
+  </div><div class="wb-stack"><canvas class="wb-grid" id="grid6"></canvas><canvas class="wb-canvas" id="wb6"></canvas></div></div>
+</div>
+</section>
+
+<section class="content-box">
+  <h2>Progress</h2>
+  <div class="stats">
+    <div>Score: <b id="score">0</b>/6</div>
+    <div class="progress" style="flex:1;min-width:180px"><div id="bar" class="bar"></div></div>
+    <button class="btn-primary" onclick="resetQuiz()">Reset Quiz</button>
+  </div>
+</section>
+
+</div>
+</main>
+<footer><p>Email: terkperhannah@gmail.com</p></footer>
+
+<script>
+const correct={1:'a',2:'a',3:'a',4:'a',5:'a',6:'a'};
+const attempts={},done={};Object.keys(correct).forEach(k=>{attempts[k]=0;done[k]=false});
+function setFeedback(i,m,o=null){const e=document.getElementById('f'+i);e.textContent=m;e.style.backgroundColor=o===true?'#d4edda':o===false?'#f8d7da':'#fff3cd';}
+function updateScore(){const t=Object.keys(correct).length,g=Object.values(done).filter(Boolean).length;document.getElementById('score').textContent=g;document.getElementById('bar').style.width=(100*g/t)+'%';}
+function disableOptions(i){document.getElementById('q'+i).querySelectorAll('.option').forEach(b=>b.disabled=true);}
+function checkAnswer(i,c){if(done[i]||attempts[i]>=2)return;if(c===correct[i]){setFeedback(i,'Correct! ✔',true);done[i]=true;disableOptions(i);}else{attempts[i]++;const l=2-attempts[i];if(l>0)setFeedback(i,`Incorrect. Attempts remaining: ${l}`,false);else{setFeedback(i,`Out of attempts. Correct: ${correct[i].toUpperCase()}`);disableOptions(i);}}updateScore();window.typesetMath?.(document.getElementById('q'+i));}
+function toggleSoln(i){const s=document.getElementById('s'+i);s.style.display=s.style.display==='block'?'none':'block';if(s.style.display==='block')window.typesetMath?.(s);}
+function resetQuiz(){Object.keys(correct).forEach(k=>{attempts[k]=0;done[k]=false});document.querySelectorAll('.feedback').forEach(f=>f.textContent='');document.querySelectorAll('.option').forEach(b=>b.disabled=false);updateScore();}
+
+/* ---------- Whiteboard ---------- */
+const WBs={};
+function initWB(i){const d=document.getElementById('wb'+i),g=document.getElementById('grid'+i),dx=d.getContext('2d'),gx=g.getContext('2d');
+function sz(){const r=d.getBoundingClientRect(),p=window.devicePixelRatio||1;[d,g].forEach(c=>{c.width=r.width*p;c.height=r.height*p});dx.setTransform(p,0,0,p,0,0);gx.setTransform(p,0,0,p,0,0);dx.fillStyle='#fff';dx.fillRect(0,0,r.width,r.height);if(WBs[i]?.gridOn)draw();else gx.clearRect(0,0,r.width,r.height);}
+function draw(){const r=g.getBoundingClientRect();gx.clearRect(0,0,r.width,r.height);gx.strokeStyle='#e9eef3';for(let x=0.5;x<r.width;x+=20){gx.beginPath();gx.moveTo(x,0);gx.lineTo(x,r.height);gx.stroke();}for(let y=0.5;y<r.height;y+=20){gx.beginPath();gx.moveTo(0,y);gx.lineTo(r.width,y);gx.stroke();}}
+sz();window.addEventListener('resize',sz);WBs[i]={color:document.getElementById('c'+i).value,width:parseInt(document.getElementById('w'+i).value,10),erasing:false,gridOn:false,history:[]};function sv(){const r=d.getBoundingClientRect();WBs[i].history.push(dx.getImageData(0,0,r.width,r.height));if(WBs[i].history.length>50)WBs[i].history.shift();}
+let dr=false;function p(e){const r=d.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}};d.addEventListener('pointerdown',e=>{d.setPointerCapture(e.pointerId);dr=true;dx.beginPath();const P=p(e);dx.moveTo(P.x,P.y);sv();});d.addEventListener('pointermove',e=>{if(!dr)return;const P=p(e);dx.lineTo(P.x,P.y);dx.strokeStyle=WBs[i].erasing?'#fff':WBs[i].color;dx.lineWidth=WBs[i].width;dx.lineCap='round';dx.lineJoin='round';dx.stroke();});d.addEventListener('pointerup',()=>dr=false);
+document.getElementById('c'+i).addEventListener('input',e=>WBs[i].color=e.target.value);
+document.getElementById('w'+i).addEventListener('input',e=>WBs[i].width=parseInt(e.target.value,10));
+WBs[i].clear=()=>{const r=d.getBoundingClientRect();dx.clearRect(0,0,r.width,r.height);dx.fillStyle='#fff';dx.fillRect(0,0,r.width,r.height);sv();};
+WBs[i].undo=()=>{if(WBs[i].history.length>1){WBs[i].history.pop();dx.putImageData(WBs[i].history.at(-1),0,0);}};
+WBs[i].toggleGrid=()=>{WBs[i].gridOn=!WBs[i].gridOn;WBs[i].gridOn?draw():gx.clearRect(0,0,g.width,g.height);};
+WBs[i].download=()=>{const tmp=document.createElement('canvas'),r=d.getBoundingClientRect();tmp.width=r.width;tmp.height=r.height;const tx=tmp.getContext('2d');tx.drawImage(g,0,0,r.width,r.height);tx.drawImage(d,0,0,r.width,r.height);const L=document.createElement('a');L.download=`u3_l4-6_poly_q${i}_work.png`;L.href=tmp.toDataURL('image/png');L.click();};}
+function toggleEraser(i){WBs[i].erasing=!WBs[i].erasing}function undo(i){WBs[i].undo()}function clearWB(i){WBs[i].clear()}function toggleGrid(i){WBs[i].toggleGrid()}function downloadWB(i){WBs[i].download()}
+document.addEventListener('DOMContentLoaded',()=>{for(let i=1;i<=6;i++)initWB(i);updateScore();window.typesetMath?.(document.getElementById('questions'));});
+</script>
+</body>
+</html>
