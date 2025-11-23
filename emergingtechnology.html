@@ -1,0 +1,2292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EDU 879 – Mastering VR, AR & Gamification in STEM | Ms. Terkper's Digital Classroom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Interactive capstone report demonstrating research-backed integration of VR, AR, and gamification for STEM education. EDU 879 assignment by Hannah Terkper."/>
+  <meta name="keywords" content="VR education, AR in STEM, gamification, immersive learning, educational technology, Hannah Terkper">
+  <meta name="author" content="Hannah Terkper">
+
+  <style>
+    /* Assignment-specific styles building on main website theme */
+    .assignment-header {
+      background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
+      padding: var(--spacing-xl) var(--spacing-sm);
+      box-shadow: 0 8px 32px var(--shadow-medium);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .assignment-header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)" /></svg>');
+      opacity: 0.3;
+    }
+
+    .assignment-title {
+      position: relative;
+      z-index: 2;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: white;
+      margin: 0 0 var(--spacing-md) 0;
+      font-weight: 700;
+      letter-spacing: -1px;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .assignment-subtitle {
+      position: relative;
+      z-index: 2;
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      color: rgba(255, 255, 255, 0.95);
+      margin: 0 0 var(--spacing-lg) 0;
+      font-weight: 400;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .course-info {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: var(--spacing-md);
+      margin: var(--spacing-lg) auto 0;
+      max-width: 600px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .course-info h3 {
+      color: white;
+      margin: 0 0 var(--spacing-sm) 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .course-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing-sm);
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.95rem;
+    }
+
+    .page-nav {
+      background: rgba(255, 255, 255, 0.98);
+      padding: var(--spacing-md) 0;
+      border-bottom: 3px solid var(--primary-teal);
+      position: sticky;
+      top: 70px;
+      z-index: 900;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-links-horizontal {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links-horizontal a {
+      color: var(--primary-blue);
+      text-decoration: none;
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .nav-links-horizontal a:hover,
+    .nav-links-horizontal a.active {
+      background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 121, 107, 0.3);
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, var(--bg-card), white);
+      margin: var(--spacing-xl) auto;
+      max-width: 1200px;
+      border-radius: 16px;
+      padding: var(--spacing-xl);
+      box-shadow: 0 8px 32px var(--shadow-light);
+      border: 1px solid var(--border-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(45deg, var(--accent-teal), var(--accent-blue));
+      border-radius: 50%;
+      transform: translate(50%, -50%);
+      opacity: 0.1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: var(--primary-blue);
+      margin: 0 0 var(--spacing-md) 0;
+      font-weight: 700;
+    }
+
+    .hero-description {
+      font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+      color: var(--text-medium);
+      line-height: 1.7;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: var(--spacing-md);
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: var(--spacing-sm) var(--spacing-lg);
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
+      color: white;
+      box-shadow: 0 4px 16px rgba(0, 121, 107, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 121, 107, 0.4);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--primary-blue);
+      border-color: var(--primary-blue);
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary-blue);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .content-section {
+      max-width: 1200px;
+      margin: var(--spacing-xl) auto;
+      padding: 0 var(--spacing-md);
+    }
+
+    .section-card {
+      background: white;
+      border-radius: 12px;
+      padding: var(--spacing-xl);
+      margin-bottom: var(--spacing-xl);
+      box-shadow: 0 6px 24px var(--shadow-light);
+      border: 1px solid var(--border-light);
+      position: relative;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--primary-blue);
+      margin: 0 0 var(--spacing-lg) 0;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .section-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-lg);
+      margin-top: var(--spacing-lg);
+    }
+
+    .three-column {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-lg);
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border-radius: 10px;
+      padding: var(--spacing-lg);
+      border: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary-teal), var(--primary-blue));
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px var(--shadow-medium);
+    }
+
+    .feature-title {
+      font-size: 1.2rem;
+      color: var(--primary-blue);
+      margin: 0 0 var(--spacing-sm) 0;
+      font-weight: 600;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-xs);
+      margin-top: var(--spacing-md);
+      list-style: none;
+      padding: 0;
+    }
+
+    .tag {
+      background: linear-gradient(135deg, var(--accent-teal), var(--accent-blue));
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .callout-box {
+      background: linear-gradient(135deg, var(--bg-card), white);
+      border-left: 5px solid var(--primary-teal);
+      border-radius: 0 8px 8px 0;
+      padding: var(--spacing-lg);
+      margin: var(--spacing-lg) 0;
+      box-shadow: 0 4px 16px var(--shadow-light);
+    }
+
+    .checklist-container {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: var(--spacing-lg);
+      margin: var(--spacing-lg) 0;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-sm);
+      padding: var(--spacing-sm);
+      border-radius: 8px;
+      margin-bottom: var(--spacing-xs);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .checklist-item:hover {
+      background: rgba(25, 118, 210, 0.05);
+    }
+
+    .checklist-item.completed {
+      background: rgba(0, 121, 107, 0.1);
+      border-left: 4px solid var(--primary-teal);
+    }
+
+    .checkbox {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--primary-blue);
+      border-radius: 4px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .checkbox.checked {
+      background: var(--primary-teal);
+      border-color: var(--primary-teal);
+      color: white;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--border-light);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: var(--spacing-md) 0;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(to right, var(--primary-teal), var(--primary-blue));
+      transition: width 0.5s ease;
+      border-radius: 4px;
+    }
+
+    .academic-footer {
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-teal));
+      color: white;
+      text-align: center;
+      padding: var(--spacing-xl);
+      margin-top: var(--spacing-xl);
+    }
+
+    .reference-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .reference-list li {
+      padding: var(--spacing-sm) 0;
+      border-bottom: 1px solid var(--border-light);
+      line-height: 1.6;
+    }
+
+    .reference-list li:last-child {
+      border-bottom: none;
+    }
+
+    /* Quick Navigation Button */
+    .quick-nav-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      box-shadow: 0 4px 16px rgba(0, 121, 107, 0.3);
+      cursor: pointer;
+      z-index: 999;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .quick-nav-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 121, 107, 0.4);
+    }
+
+    .quick-nav-menu {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px var(--shadow-medium);
+      padding: var(--spacing-sm);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      max-height: 400px;
+      overflow-y: auto;
+      min-width: 200px;
+    }
+
+    .quick-nav-menu.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .quick-nav-menu a {
+      display: block;
+      padding: var(--spacing-xs) var(--spacing-sm);
+      color: var(--primary-blue);
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      margin-bottom: 2px;
+    }
+
+    .quick-nav-menu a:hover {
+      background: var(--bg-card);
+      transform: translateX(4px);
+    }
+
+    /* Print Styles */
+    @media print {
+      .main-navbar,
+      .page-nav,
+      .quick-nav-btn,
+      .quick-nav-menu {
+        display: none !important;
+      }
+
+      .assignment-header {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+      }
+
+      .assignment-title,
+      .assignment-subtitle {
+        color: black !important;
+      }
+
+      .section-card {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+        page-break-inside: avoid;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .assignment-header {
+        padding: var(--spacing-lg) var(--spacing-sm);
+      }
+
+      .page-nav {
+        top: 0;
+      }
+
+      .nav-links-horizontal {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+
+      .two-column,
+      .three-column {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-nav-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+      }
+
+      .quick-nav-menu {
+        bottom: 80px;
+        right: 20px;
+        min-width: 180px;
+      }
+    }
+  </style>
+  <style>
+  .content-section em.cite { font-style: normal; opacity: .85; }
+    /* Card styling */
+.section-card.narrated-card{
+  background:#fff;
+  border:1px solid var(--border-light, rgba(0,0,0,.08));
+  border-radius:12px;
+  padding: var(--spacing-lg, 24px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+}
+
+/* Controls layout */
+.tts-controls{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.6rem .8rem;
+  align-items:center;
+  margin: .75rem 0 1rem;
+}
+.tts-inline{
+  display:flex;
+  align-items:center;
+  gap:.4rem;
+  margin-left:.5rem;
+}
+
+/* Buttons */
+.tts-controls button{
+  padding:.5rem .8rem;
+  border:1px solid rgba(0,0,0,.12);
+  border-radius:8px;
+  background:#f7f8fa;
+  font-weight:600;
+  cursor:pointer;
+}
+.tts-controls button:hover:enabled{ background:#eef2ff; }
+.tts-controls button:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+/* Range label */
+#tts-rate-val{ min-width:3.2ch; display:inline-block; text-align:right; }
+
+/* Status + transcript */
+.tts-status{ margin:.25rem 0 .5rem; font-size:.95rem; opacity:.8; }
+.tts-transcript{
+  margin-top:.5rem;
+  background:#fafafa;
+  border:1px solid rgba(0,0,0,.05);
+  border-radius:10px;
+  padding:.5rem .75rem;
+}
+.tts-transcript > summary{ cursor:pointer; }
+.tts-transcript p{ margin:.5rem 0 0; line-height:1.75; }
+
+</style>
+
+</head>
+
+<body>
+  <!-- Main Navigation Bar -->
+  <nav class="main-navbar">
+    <!-- Mobile hamburger button -->
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+
+    <!-- Navigation menu -->
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a>
+        <ul class="dropdown">
+          <li><a href="iste-standards.html">ISTE Standards</a></li>
+          <li><a href="ai-guidelines.html">AI Guidelines</a></li>
+          <li><a href="oer-resources.html">OER Resources</a></li>
+        </ul>
+      </li>
+      <li><a href="math.html">Math</a>
+        <ul class="dropdown">
+          <li><a href="math7.html">Math 7</a></li>
+          <li><a href="math8.html">Math 8</a></li>
+          <li><a href="math9.html">Math 9</a></li>
+          <li><a href="math10.html">Math 10</a></li>
+          <li><a href="math20-1.html">Math 11</a></li>
+          <li><a href="math30-1.html">Math 12</a></li>
+        </ul>
+      </li>
+      <li><a href="science.html">Science</a>
+        <ul class="dropdown">
+          <li><a href="science7.html">Science 7</a></li>
+          <li><a href="science8.html">Science 8</a></li>
+          <li><a href="science9.html">Science 9</a></li>
+          <li><a href="science10.html">Science 10</a></li>
+          <li><a href="science11.html">Science 11</a></li>
+          <li><a href="science12.html">Science 12</a></li>
+        </ul>
+      </li>
+      <li><a href="cs-general.html">Computer Science</a>
+        <ul class="dropdown">
+          <li><a href="cs-robotics.html">Robotics</a></li>
+          <li><a href="VGD.html">Video Game Design</a></li>
+        </ul>
+      </li>
+      <li><a href="med-general.html">Graduate Courses</a>
+        <ul class="dropdown">
+         <li><a href="edu714.html">EDU 714</a></li>
+          <li><a href="edu736.html">EDU 736</a></li>
+          <li><a href="edu879.html">EDU 879</a></li>
+        </ul>
+      </li>
+      <li><a href="learning-toolkit-hub.html">Learning Toolkit Hub</a>
+        <ul class="dropdown">
+          <li><a href="emerging-tech-tools.html">Emerging Technology Tools</a></li>
+          <li><a href="learning-toolkit-hub.html#fundamentals">Learning Fundamentals</a></li>
+          <li><a href="hannah-ai-tutor.html">Hannah AI Tutor</a></li>
+          <li><a href="learning-toolkit-hub.html#downloads">Free Downloads</a></li>
+          <li><a href="learning-toolkit-hub.html#videos">Video Series</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu-overlay"></div>
+  </nav>
+
+  <!-- Assignment Header -->
+  <header class="assignment-header">
+    <h1 class="assignment-title">Mastering VR, AR & Gamification in STEM</h1>
+    <p class="assignment-subtitle">Interactive Capstone Report for EDU 879 — Designed for High School STEM Program Implementation</p>
+
+    <div class="course-info">
+      <h3>Course Information</h3>
+      <div class="course-details">
+        <div><strong>Course:</strong> EDU 879 - Immersive Technology In Education</div>
+        <div><strong>Student:</strong> Hannah Terkper</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Navigation -->
+  <nav class="page-nav">
+    <ul class="nav-links-horizontal">
+      <li><a href="#executive-summary" class="nav-link">Executive Summary</a></li>
+      <li><a href="#narrated-walkthrough" class="nav-link">Narrated Walkthrough</a></li>
+      <li><a href="#introduction" class="nav-link">Introduction</a></li>
+      <li><a href="#foundations" class="nav-link">Foundations</a></li>
+      <li><a href="#case-studies" class="nav-link">Case Studies</a></li>
+      <li><a href="#integration" class="nav-link">Integration Plan</a></li>
+      <li><a href="#evaluation-design" class="nav-link">Evaluation Design</a></li>
+      <li><a href="#assessment" class="nav-link">Assessment</a></li>
+      <li><a href="#gamification" class="nav-link">Gamification</a></li>
+      <li><a href="#future-ethics" class="nav-link">Future & Ethics</a></li>
+      <li><a href="#references" class="nav-link">References</a></li>
+      <li><a href="#appendices" class="nav-link">Appendices</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h2 class="hero-title">Why Immersive Learning for STEM Education?</h2>
+      <p class="hero-description">
+        Many students struggle to connect abstract STEM theory with real-world application. Leinhardt, Zaslavsky, and Stein (1990) found that high school students frequently experience misconceptions when trying to interpret algebraic functions graphically, especially when shifting from 2D to 3D representations. Likewise, studies in chemistry education (Wu et al., 2001; Stieff & Uttal, 2015) consistently highlight that students struggle with spatial visualization of molecules, leading to difficulties in understanding chemical bonding and reactions. </p>
+      <p class="hero-description">This is an in-depth report showing a study-guided design to incorporate Virtual Reality (VR), Augmented Reality (AR), and gamification to enhance conceptual understanding, develop problem-solving abilities, and boost participation in high school science, technology, engineering, and mathematics (STEM) environments.
+      </p>
+      <div class="cta-buttons">
+        <a href="#integration" class="btn btn-primary">View Implementation Plan</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= EXECUTIVE SUMMARY ======= -->
+<section id="executive-summary" class="content-section" aria-labelledby="executive-title">
+  <div class="section-card">
+    <h3 class="section-title" id="executive-title">
+      
+      Executive Summary
+    </h3>
+
+    <div class="callout-box">
+      <p style="margin: 0; font-size: 1.1rem; line-height: 1.8;">
+        <strong>Problem:</strong> Longitudinal studies show that students’ motivation in STEM often declines during secondary school, lowering persistence and reducing the likelihood of pursuing future STEM pathways (Steidtmann et al., 2023).
+      </p>
+    </div>
+
+    <p style="line-height: 1.8; margin: var(--spacing-md) 0;">
+      <strong>Solution:</strong> This capstone provides an overarching, evidence-informed framework for incorporating Virtual Reality (VR), Augmented Reality (AR), and gamification technologies within high school science, technology, engineering, and math (STEM) courses. Guided by Cognitive Load Theory, Embodied Cognition frameworks, and Self-Determination Theory (Asoodar et al., 2024; Lum et al., 2020), the effort to incorporate matches identified participation shortfalls with interactive, immersion-based learning activities underpinning academic rigor and augmenting deeper conceptual understanding.
+    </p>
+
+    <p style="line-height: 1.8; margin: var(--spacing-md) 0;">
+      <strong>Key Innovation:</strong> The system-in-proposal brings together risk-free virtual labs, real-world augmented visualization, and pedagogically appropriate gamification mechanisms (Al Farsi et al., 2021; Subhash & Cudney, 2018) within a 3-year Total Cost of Ownership of $10,720 including full device management processes, professional development pathways, and formal design of assessment utilizing quasi-experimental approach with documented instruments.
+    </p>
+
+    <p style="line-height: 1.8; margin: var(--spacing-md) 0;">
+      <strong>Expected Impact:</strong> Projected Impacts: Systematic integration is predicted to achieve medium-to-large effect sizes (Hedges' g = 0.5–0.8) at mastery levels of STEM concepts and substantially improve the measures of student engagement (Chang et al., 2022; Hartt et al., 2020), and make Alberta globally first in adoption of immersive education technology and maintain WCAG 2.2 AA accessibility levels with complete equity protections.
+    </p>
+
+    <div style="background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue)); color: white; padding: var(--spacing-md); border-radius: 8px; margin-top: var(--spacing-lg);">
+      <p style="margin: 0; font-weight: 600; text-align: center;">
+        <strong>Implementation Timeline:</strong> Pilot launch January 2026 | Full deployment September 2026 | Evaluation results May 2027
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== Narrated Walkthrough (on white card) ===== -->
+<section id="narrated-walkthrough" class="content-section" aria-labelledby="walkthrough-title">
+  <div class="section-card narrated-card">
+    <h3 id="walkthrough-title" class="section-title">
+      Narrated Walkthrough
+    </h3>
+
+    <!-- Live status for screen readers -->
+    <div id="tts-status" aria-live="polite" class="tts-status">Ready to narrate. Choose a voice and press Play.</div>
+
+    <!-- Controls -->
+    <div class="tts-controls" role="group" aria-label="Narration controls">
+      <button id="tts-play" type="button">🔊 Play</button>
+      <button id="tts-pause" type="button" disabled>⏸️ Pause</button>
+      <button id="tts-resume" type="button" disabled>▶️ Resume</button>
+      <button id="tts-stop" type="button" disabled>⏹️ Stop</button>
+
+      <label class="tts-inline">
+        Voice:
+        <select id="tts-voice" aria-label="Voice"></select>
+      </label>
+
+      <label class="tts-inline">
+        Speed:
+        <input id="tts-rate" type="range" min="0.75" max="1.5" step="0.05" value="1" aria-label="Speech rate">
+        <span id="tts-rate-val" aria-hidden="true">1.00×</span>
+      </label>
+    </div>
+
+   <!-- Transcript (visible) -->
+<details class="tts-transcript">
+  <summary><strong>Transcript</strong></summary>
+  <p id="narration-transcript">
+    This narrated walkthrough explains how I turn abstract STEM ideas into concrete, hands-on learning in an Edmonton high school context. I start with the problem: students often struggle to connect what they see on paper—like function graphs, vectors, and molecular structures to what they do in class and in the lab. Classic research shows persistent misconceptions in reading and constructing graphs and in moving beyond flat representations (Leinhardt et al., 1990). Chemistry education also documents how hard it is to visualize molecules and bonding in three dimensions (Wu et al., 2001; Stieff &amp; Uttal, 2015). On top of that, interest in science can decline across lower secondary years, which matters for persistence in STEM (Steidtmann et al., 2023).
+
+    My solution blends Virtual Reality, Augmented Reality, and targeted gamification into specific STEM units. Three learning frameworks guide the design. First, Cognitive Load Theory: I reduce mental overload by externalizing visual-spatial structure, so students can manipulate 3D forms instead of holding everything in working memory (Sweller et al., 2019). Second, Embodied Cognition: students learn through action grabbing, rotating, and testing virtual objects, which creates stronger associations than passive watching (Wilson, 2002). Third, Self-Determination Theory: game elements are used to support autonomy, competence, and mastery without watering down rigor (Deci &amp; Ryan, 2017).
+
+    In the classroom this looks like four strands. One: risk-free VR labs for chemistry, biology, and physics, so students can rehearse complex or hazardous procedures, repeat for mastery, and come to the physical lab better prepared. Two: AR molecular visualization, where learners rotate structures, explore polarity and intermolecular forces, and connect 2D notations to 3D reality. Three: AR geometry and data—placing solids into the room, taking real measurements, and linking formulas to collected data. Four: pedagogically aligned gamification: points and badges reward depth of reasoning, safe practice, collaboration, and reflection—not speed or simple completion. Reviews and meta-analyses report positive impacts on learning and motivation when design is aligned to outcomes (Subhash & Cudney, 2018; Chang et al., 2022; Hartt et al., 2020).
+
+    The logistics are built for equity and access. We run device rotation stations in 15–20 minute blocks with defined peer roles: Lead Investigator, Safety Monitor, Data Scribe, and Tech Specialist. Students who are motion-sensitive use mirrored displays or non-immersive fly throughs. The 3-year Total Cost of Ownership is $10,720 and includes headsets, licenses, device management, and teacher professional development. Platform choices prioritize multi-use apps and school-managed accounts to keep costs and privacy predictable.
+
+    Evaluation is rigorous. I use a quasi-experimental pre-post design with matched classes. Measures include concept inventories in physics, chemistry, and geometry; the Student Engagement Instrument; and a STEM self-efficacy scale. I analyze results with ANCOVA, controlling for baseline performance and report Hedges’ g with 95% confidence intervals. Targets are ≥ 0.5 for concept mastery, ≥ 10% gains on engagement, and equity gaps ≤ 0.2 effect size across subgroups. Behavioural logs—time-on-task, interaction patterns, and help seeking triangulate the results, and fidelity checks link dosage and quality to outcomes.
+
+    Ethics, privacy, and accessibility are non-negotiable. The plan follows FOIP/PIPA: data minimization, anonymized IDs, school-hosted processing, and opt-out without penalty. Accessibility aligns with WCAG 2.2 AA: full transcripts, multiple representation modes, and non-VR alternatives. The timeline is practical: Pilot in January 2026, full deployment in September 2026, and evaluation results by May 2027.
+
+    In short, this model converts abstract STEM into embodied, visual, and assessable experiences—grounded in theory, supported by evidence, and feasible for Alberta classrooms—so that mastery and motivation both move in the right direction.
+  </p>
+</details>
+
+<!-- Hidden source text (what gets read) -->
+<div id="narration-text" style="display:none;">
+  This narrated walkthrough explains how I turn abstract STEM ideas into concrete, hands-on learning in an Edmonton high-school context. I start with the problem: students often struggle to connect what they see on paper—like function graphs, vectors, and molecular structures—to what they do in class and in the lab. Classic research shows persistent misconceptions in reading and constructing graphs and in moving beyond flat representations (Leinhardt et al., 1990). Chemistry education also documents how hard it is to visualize molecules and bonding in three dimensions (Wu et al., 2001; Stieff &amp; Uttal, 2015). On top of that, interest in science can decline across lower secondary years, which matters for persistence in STEM (Steidtmann et al., 2023).
+
+  My solution blends Virtual Reality, Augmented Reality, and targeted gamification into specific STEM units. Three learning frameworks guide the design. First, Cognitive Load Theory: I reduce mental overload by externalizing visual-spatial structure, so students can manipulate 3D forms instead of holding everything in working memory (Sweller et al., 2019). Second, Embodied Cognition: students learn through action—grabbing, rotating, and testing virtual objects—which creates stronger associations than passive watching (Wilson, 2002). Third, Self-Determination Theory: game elements are used to support autonomy, competence, and mastery without watering down rigor (Deci &amp; Ryan, 2017).
+
+  In the classroom this looks like four strands. One: risk-free VR labs for chemistry, biology, and physics, so students can rehearse complex or hazardous procedures, repeat for mastery, and come to the physical lab better prepared. Two: AR molecular visualization, where learners rotate structures, explore polarity and intermolecular forces, and connect 2D notations to 3D reality. Three: AR geometry and data—placing solids into the room, taking real measurements, and linking formulas to collected data. Four: pedagogically aligned gamification: points and badges reward depth of reasoning, safe practice, collaboration, and reflection—not speed or simple completion. Reviews and meta-analyses report positive impacts on learning and motivation when design is aligned to outcomes (Subhash &amp; Cudney, 2018; Chang et al., 2022; Hartt et al., 2020).
+
+  The logistics are built for equity and access. We run device-rotation stations in 15–20 minute blocks with defined peer roles: Lead Investigator, Safety Monitor, Data Scribe, and Tech Specialist. Students who are motion-sensitive use mirrored displays or non-immersive fly-throughs. The 3-year Total Cost of Ownership is $10,720 and includes headsets, licenses, device management, and teacher professional development. Platform choices prioritize multi-use apps and school-managed accounts to keep costs and privacy predictable.
+
+  Evaluation is rigorous. I use a quasi-experimental pre-post design with matched classes. Measures include concept inventories in physics, chemistry, and geometry; the Student Engagement Instrument; and a STEM self-efficacy scale. I analyze results with ANCOVA controlling for baseline performance and report Hedges’ g with 95% confidence intervals. Targets are ≥ 0.5 for concept mastery, ≥ 10% gains on engagement, and equity gaps ≤ 0.2 effect size across subgroups. Behavioral logs—time-on-task, interaction patterns, and help-seeking—triangulate the results, and fidelity checks link dosage and quality to outcomes.
+
+  Ethics, privacy, and accessibility are non-negotiable. The plan follows FOIP/PIPA: data minimization, anonymized IDs, school-hosted processing, and opt-out without penalty. Accessibility aligns with WCAG 2.2 AA: full transcripts, multiple representation modes, and non-VR alternatives. The timeline is practical: Pilot in January 2026, full deployment in September 2026, and evaluation results by May 2027.
+
+  In short, this model converts abstract STEM into embodied, visual, and assessable experiences—grounded in theory, supported by evidence, and feasible for Alberta classrooms—so that mastery and motivation both move in the right direction.
+</div>
+
+  </div>
+</section>
+
+
+<script>
+(function () {
+  const supported = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+  const statusEl = document.getElementById('tts-status');
+  const playBtn = document.getElementById('tts-play');
+  const pauseBtn = document.getElementById('tts-pause');
+  const resumeBtn = document.getElementById('tts-resume');
+  const stopBtn = document.getElementById('tts-stop');
+  const voiceSel = document.getElementById('tts-voice');
+  const rateInput = document.getElementById('tts-rate');
+  const rateVal = document.getElementById('tts-rate-val');
+  const narrationEl = document.getElementById('narration-text');
+  const transcriptEl = document.getElementById('narration-transcript');
+
+  // Populate transcript text
+  const narrationText = (narrationEl?.textContent || '').trim();
+  transcriptEl.textContent = narrationText;
+
+  if (!supported) {
+    statusEl.textContent = 'Narration not supported in this browser. You can use the transcript above.';
+    // Disable controls
+    [playBtn, pauseBtn, resumeBtn, stopBtn, voiceSel, rateInput].forEach(el => el && (el.disabled = true));
+    return;
+  }
+
+  // State
+  let voices = [];
+  let queue = [];
+  let idx = 0;
+  let speaking = false;
+
+  function updateButtons(state) {
+    // state: idle | playing | paused
+    if (state === 'playing') {
+      playBtn.disabled = true;
+      pauseBtn.disabled = false;
+      resumeBtn.disabled = true;
+      stopBtn.disabled = false;
+    } else if (state === 'paused') {
+      playBtn.disabled = true;
+      pauseBtn.disabled = true;
+      resumeBtn.disabled = false;
+      stopBtn.disabled = false;
+    } else {
+      playBtn.disabled = false;
+      pauseBtn.disabled = true;
+      resumeBtn.disabled = true;
+      stopBtn.disabled = true;
+    }
+  }
+
+  function setStatus(msg) {
+    statusEl.textContent = msg;
+  }
+
+  function loadVoices() {
+    voices = window.speechSynthesis.getVoices();
+
+    // Try to prefer an English voice
+    const preferredIdx = voices.findIndex(v => /en(-|_)?(US|CA|GB)?/i.test(v.lang));
+    voiceSel.innerHTML = voices.map((v, i) => {
+      const label = `${v.name} (${v.lang})${v.default ? ' — default' : ''}`;
+      const selected = (i === preferredIdx) ? ' selected' : '';
+      return `<option value="${i}"${selected}>${label}</option>`;
+    }).join('') || '<option>No voices found</option>';
+  }
+
+  // Some browsers load voices asynchronously
+  loadVoices();
+  if (typeof window.speechSynthesis.onvoiceschanged !== 'undefined') {
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+  }
+
+  function chunkText(text) {
+    // Split by sentences; keep chunks short to avoid long-utterance issues
+    const sentences = text.replace(/\s+/g, ' ').match(/[^.!?]+[.!?]*/g) || [text];
+    const chunks = [];
+    let buf = '';
+    sentences.forEach(s => {
+      if ((buf + ' ' + s).trim().length > 220) {
+        if (buf) chunks.push(buf.trim());
+        buf = s;
+      } else {
+        buf += ' ' + s;
+      }
+    });
+    if (buf.trim()) chunks.push(buf.trim());
+    return chunks;
+  }
+
+  function buildQueue(text) {
+    const rate = parseFloat(rateInput.value) || 1;
+    const vIndex = parseInt(voiceSel.value, 10);
+    const voice = voices[vIndex] || null;
+
+    queue = chunkText(text).map(t => {
+      const u = new SpeechSynthesisUtterance(t);
+      if (voice) u.voice = voice;
+      u.rate = rate;      // 0.1–10; we keep UI 0.75–1.5 for clarity
+      u.pitch = 1;        // neutral
+      u.lang = voice?.lang || 'en-US';
+
+      u.onstart = () => setStatus('Reading...');
+      u.onend = handleUtteranceEnd;
+      u.onerror = (e) => {
+        console.error('TTS error', e);
+        setStatus('Narration error.');
+        stopNarration();
+      };
+      return u;
+    });
+    idx = 0;
+  }
+
+  function handleUtteranceEnd() {
+    idx++;
+    if (idx < queue.length) {
+      window.speechSynthesis.speak(queue[idx]);
+    } else {
+      speaking = false;
+      updateButtons('idle');
+      setStatus('Narration finished.');
+    }
+  }
+
+  function playNarration() {
+    if (!narrationText) {
+      setStatus('No narration text found.');
+      return;
+    }
+    // If currently speaking, restart fresh
+    window.speechSynthesis.cancel();
+    buildQueue(narrationText);
+    speaking = true;
+    updateButtons('playing');
+    setStatus('Reading...');
+    window.speechSynthesis.speak(queue[idx]);
+  }
+
+  function pauseNarration() {
+    if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+      window.speechSynthesis.pause();
+      updateButtons('paused');
+      setStatus('Paused.');
+    }
+  }
+
+  function resumeNarration() {
+    if (window.speechSynthesis.paused) {
+      window.speechSynthesis.resume();
+      updateButtons('playing');
+      setStatus('Reading...');
+    }
+  }
+
+  function stopNarration() {
+    window.speechSynthesis.cancel();
+    speaking = false;
+    updateButtons('idle');
+    setStatus('Stopped.');
+  }
+
+  // Wire up controls
+  playBtn.addEventListener('click', playNarration);
+  pauseBtn.addEventListener('click', pauseNarration);
+  resumeBtn.addEventListener('click', resumeNarration);
+  stopBtn.addEventListener('click', stopNarration);
+
+  // Rate display + live change (will apply next play)
+  rateInput.addEventListener('input', () => {
+    rateVal.textContent = parseFloat(rateInput.value).toFixed(2) + '×';
+  });
+
+  // If user changes voice while speaking, restart to apply new voice
+  voiceSel.addEventListener('change', () => {
+    if (window.speechSynthesis.speaking) {
+      stopNarration();
+      setStatus('Voice changed. Press Play to restart narration with the new voice.');
+    }
+  });
+
+  // Respect user preference to reduce motion/auto-play
+  // (We only speak after an explicit button click — WCAG friendly)
+  updateButtons('idle');
+  setStatus('Ready to narrate. Choose a voice and press Play.');
+})();
+</script>
+
+
+
+  <main>
+    <!-- INTRODUCTION -->
+    <section id="introduction" class="content-section">
+      <div class="section-card">
+        <h3 class="section-title">
+          <span class="section-icon">1</span>
+          Introduction & Context
+        </h3>
+
+        <div class="callout-box">
+          <h4 style="color: var(--primary-blue); margin-top: 0;">Educational Context</h4>
+          <p><strong>Setting:</strong> Urban STEM high school in Edmonton, Alberta</p>
+          <p><strong>Challenge:</strong> Bridging the gap between abstract STEM concepts and hands-on understanding through immersive, interactive experiences</p>
+          <p><strong>Approach:</strong> Evidence-based integration of VR, AR, and gamification technologies</p>
+        </div>
+
+        <div class="two-column">
+          <div>
+            <h4 style="color: var(--primary-teal);">Building on Previous Work</h4>
+            <ul style="line-height: 1.8;">
+              <li><strong>Assignment 2 Foundation:</strong> Clear problem framing and balanced treatment of VR/AR benefits and limitations</li>
+              <li><strong>Research Integration:</strong> Comprehensive literature review supporting implementation strategies</li>
+              <li><strong>Pedagogical Alignment:</strong> Connection to established learning theories and STEM education best practices</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="color: var(--primary-teal);">TA Feedback Integration</h4>
+            <ul style="line-height: 1.8;">
+              <li><strong>STEM-Specific Cases:</strong> Detailed subject-area applications with real classroom scenarios</li>
+              <li><strong>Assessment Strategies:</strong> Clear evaluation methods and success criteria</li>
+              <li><strong>Equity & Access:</strong> Device rotation logistics and inclusive design considerations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOUNDATIONS -->
+    <section id="foundations" class="content-section">
+      <div class="section-card">
+        <h3 class="section-title">
+          <span class="section-icon">2</span>
+          Foundations & Background Research
+        </h3>
+
+        <div class="three-column">
+          <div class="feature-card">
+            <h4 class="feature-title">Technology Definitions</h4>
+            <div style="margin: var(--spacing-md) 0;">
+              <p><strong>Virtual Reality (VR):</strong> Simulated, immersive worlds experienced on headsets offering immersive digital worlds for educational use. There are three most important characteristics of VR systems: immersion (the number of senses used and proximity of stimuli to reality), sense of being present in a place, and interaction with the place (Cipresso et al., 2018). Sherman and Craig (2018) explain VR as having five most essential features known as the "5 Is": intensive, interactive, immersive, illustrative, and intuitive (Taçgın, 2020).</p>
+
+              <p><strong>Augmented Reality (AR):</strong> Computer overlays and objects superimposed on real environments using phones, tablets, or head-mounted displays. Contrasting with VR's immersing one in a replacement reality, AR enhances the real world by augmenting it with computer-generated elements while remaining linked to the physical environment (Cipresso et al., 2018).</p>
+            </div>
+            <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px; margin-top: var(--spacing-md);">
+              <p style="margin: 0; font-style: italic; color: var(--text-medium);">
+                <strong>Key Benefits:</strong> Greater engagement, virtual practice settings, repeated learning experiences, and control of time and space for educational purposes (Taçgın, 2020)<br>
+                <strong>Key Challenges:</strong> Cost, difficulty of setup, potential simulation loopholes, and level of technology immersion on user experience (Cipresso et al., 2018).
+              </p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <h4 class="feature-title">Theory of Change & Learning Framework</h4>
+            <div style="margin: var(--spacing-md) 0;">
+              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Cognitive Load Theory Application</h5>
+              <p><strong>Intrinsic Load Management:</strong> VR/AR reduces cognitive load by visual-spatial representations of abstract STEM concepts, allowing learners to manipulate 3D molecular models rather than constructing them mentally from 2D blueprints (Sweller et al., 2019).
+</p>
+
+              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Embodied Cognition Principles</h5>
+              <p><strong>Sensorimotor Integration:</strong> Physical interaction with virtual items capitalizes on body-grounded learning mechanisms, wherein kinesthetic manipulation of molecular bonds, geometric transformations, and physics simulations creates more robust neural associations than passive watching (Wilson, 2002).</p>
+
+              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Self-Determination Theory</h5>
+              <p><strong>Autonomy, Competence, Mastery:</strong> Autonomy, Competence, Mastery: Gamification elements support intrinsic motivation through self-driven exploration (autonomy), ongoing skill development (competence), and significant accomplishment recognition (mastery), without external rewards that undermine profound learning (Deci & Ryan, 2017).</p>
+            </div>
+
+            <div style="background: linear-gradient(135deg, var(--bg-card), white); padding: var(--spacing-sm); border-radius: 6px; margin-top: var(--spacing-md); border: 2px solid var(--primary-teal);">
+              <h6 style="color: var(--primary-blue); margin: 0 0 var(--spacing-xs) 0; text-align: center;">Logic Model: Input → Process → Output → Outcome</h6>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: var(--spacing-xs); font-size: 0.85rem;">
+                <div style="text-align: center;">
+                  <div style="background: #e3f2fd; padding: 4px; border-radius: 4px; font-weight: bold;">INPUTS</div>
+                  <div style="font-size: 0.8rem; color: var(--text-medium);">VR/AR devices, software, PD, time</div>
+                </div>
+                <div style="text-align: center;">
+                  <div style="background: #e8f5e8; padding: 4px; border-radius: 4px; font-weight: bold;">PROCESS</div>
+                  <div style="font-size: 0.8rem; color: var(--text-medium);">Immersive labs, collaborative inquiry</div>
+                </div>
+                <div style="text-align: center;">
+                  <div style="background: #fff3e0; padding: 4px; border-radius: 4px; font-weight: bold;">OUTPUTS</div>
+                  <div style="font-size: 0.8rem; color: var(--text-medium);">Student artifacts, data logs</div>
+                </div>
+                <div style="text-align: center;">
+                  <div style="background: #fce4ec; padding: 4px; border-radius: 4px; font-weight: bold;">OUTCOMES</div>
+                  <div style="font-size: 0.8rem; color: var(--text-medium);">Concept mastery, engagement</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <h4 class="feature-title">Research Foundation</h4>
+            <ul style="line-height: 1.8;">
+              <li><strong>Historical Context:</strong> The VR theory was conceptualized in the 1960s by Ivan Sutherland, while the early business VR tools came into existence in the late 1980s. Since the past 20 years, there have been hundreds of researchers studying VR processes, effects, and applications, which have produced thousands of scientific reports (Cipresso et al., 2018).</li>
+
+              <li><strong>Evolution of Research Focus:</strong> Since computer science first overshadowed VR research, clinical areas have increasingly dominated as primary application domains. The research landscape has slowly shifted from primarily conference proceedings to journals, indicating maturity in the field (Cipresso et al., 2018).</li>
+
+              <li><strong>Technology Classifications:</strong> VR technologies range from non-immersive desktop applications to fully immersive head-mounted devices (HMDs) with haptic feedback, and partially immersive systems like Fish Tank VR provide middle ground experiences (Cipresso et al., 2018; Taçgın, 2020).</li>
+
+              <li><strong>Educational Applications:</strong> VR and AR enable learning through improved content understanding, memory retention, and learning motivation, particularly in abstract subjects that require spatial visualization and hands-on learning (Cipresso et al., 2018).</li>
+
+              <li><strong>Interdisciplinary Impact:</strong> Current applications in different fields including neuroscience, psychology, biology, and education, most robust in navigation studies and clinical treatments (Cipresso et al., 2018).</li>
+            </ul>
+            <div style="background: var(--bg-card); padding: var(--spacing-sm); border-radius: 6px; margin-top: var(--spacing-md);">
+              <p style="margin: 0; font-size: 0.9rem; color: var(--text-medium);">
+                <strong>Research Methodology Note:</strong> This foundation lies in comprehensive scientometric analysis of 21,667 VR papers and 9,944 AR papers in Web of Science Core Collection with solid empirical support for practice implementation (Cipresso et al., 2018).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section id="case-studies" class="content-section">
+      <div class="section-card">
+        <h3 class="section-title">
+          <span class="section-icon">3</span>
+          STEM-Specific Case Studies (Evidence-Informed)
+        </h3>
+
+        <div class="three-column">
+          <div class="feature-card">
+            <h4 class="feature-title">Virtual Labs (Chemistry/Biology/Physics)</h4>
+            <p>Students complete risk-free laboratory investigations including complex titrations, reaction rate studies, and equipment-intensive physics experiments in VR environments before transitioning to physical labs. Research demonstrates that VR lab simulations provide significant educational value while addressing safety and resource constraints (Cipresso et al., 2018).</p>
+
+            <div style="margin: var(--spacing-md) 0;">
+              <strong>Evidence-Based Benefits:</strong>
+              <ul style="margin: var(--spacing-xs) 0;">
+                <li>Unlimited consumable resources without cost barriers</li>
+                <li>Safe simulation of dangerous procedures</li>
+                <li>Repetitive practice supporting mastery learning</li>
+                <li>Enhanced student engagement through interactive experiences</li>
+                <li>Preparation for physical lab work reducing accidents</li>
+              </ul>
+            </div>
+
+            <ul class="tag-list">
+              <li class="tag">Safety</li>
+              <li class="tag">Cost-Effective</li>
+              <li class="tag">Mastery Learning</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <h4 class="feature-title">Gamified Biology Learning Systems</h4>
+            <p>Interactive biology education platforms incorporating game mechanics such as points, badges, levels, and leaderboards to enhance student motivation and learning outcomes. Systematic review evidence shows gamification has significant positive impacts on biology education, improving cognitive, social, and personal skills (Varol Selçuk & Özer Keskin, 2024).</p>
+
+            <div style="margin: var(--spacing-md) 0;">
+              <strong>Research-Validated Outcomes:</strong>
+              <ul style="margin: var(--spacing-xs) 0;">
+                <li>Enhanced motivation and engagement in biology learning</li>
+                <li>Improved understanding of genetics and ecology concepts</li>
+                <li>Development of problem-solving strategies</li>
+                <li>Student-centered and interactive learning experiences</li>
+                <li>Effective knowledge retention and application</li>
+              </ul>
+            </div>
+
+            <ul class="tag-list">
+              <li class="tag">Motivation</li>
+              <li class="tag">Problem-Solving</li>
+              <li class="tag">Evidence-Based</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <h4 class="feature-title">AR Molecular Visualization</h4>
+            <p>Learners manipulate 3D molecular structures in their physical space, rotating bonds, scaling molecules, and visualizing polarity, intermolecular forces, and reaction mechanisms in real-time. This approach addresses the challenge of making abstract scientific concepts more tangible and enjoyable for students (Varol Selçuk & Özer Keskin, 2024).</p>
+
+            <div style="margin: var(--spacing-md) 0;">
+              <strong>Pedagogical Advantages:</strong>
+              <ul style="margin: var(--spacing-xs) 0;">
+                <li>Enhanced spatial reasoning skills development</li>
+                <li>Improved conceptual understanding of molecular interactions</li>
+                <li>Bridge between 2D textbook representations and 3D reality</li>
+                <li>Interactive formative assessment opportunities</li>
+                <li>Reduced cognitive load through visual learning</li>
+              </ul>
+            </div>
+
+            <ul class="tag-list">
+              <li class="tag">Spatial Learning</li>
+              <li class="tag">Concept Visualization</li>
+              <li class="tag">Cognitive Support</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <h4 class="feature-title">AR Geometry & Data Collection</h4>
+            <p>Students project mathematical objects (prisms, pyramids, cross-sections) onto classroom environments and use AR markers for real-world data collection, connecting formulas with physical measurements. This approach leverages the motivational qualities of gamified experiences to enhance mathematical understanding.</p>
+
+            <div style="margin: var(--spacing-md) 0;">
+              <strong>Mathematical Applications:</strong>
+              <ul style="margin: var(--spacing-xs) 0;">
+                <li>3D geometry visualization with real-world context</li>
+                <li>Live data analysis and statistical modeling</li>
+                <li>Rate of change calculations using physical measurements</li>
+                <li>Collaborative problem-solving activities</li>
+                <li>Connection between abstract mathematics and practical applications</li>
+              </ul>
+            </div>
+
+            <ul class="tag-list">
+              <li class="tag">Math Modeling</li>
+              <li class="tag">Data Literacy</li>
+              <li class="tag">Real-World Application</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <h4 class="feature-title">Higher Education Gamification Platforms</h4>
+            <p>Comprehensive gamified learning management systems designed specifically for university-level STEM courses. Research indicates that student pre-perception significantly impacts the effectiveness of gamification interventions in higher education settings (Henry et al., 2024).</p>
+
+            <div style="margin: var(--spacing-md) 0;">
+              <strong>Implementation Considerations:</strong>
+              <ul style="margin: var(--spacing-xs) 0;">
+                <li>Assessment of student pre-perceptions before implementation</li>
+                <li>Customizable game mechanics based on learner preferences</li>
+                <li>Integration with existing university systems</li>
+                <li>Continuous feedback and progress tracking</li>
+                <li>Adaptation strategies for diverse student populations</li>
+              </ul>
+            </div>
+
+            <ul class="tag-list">
+              <li class="tag">Higher Education</li>
+              <li class="tag">Perception Research</li>
+              <li class="tag">Adaptive Systems</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <h4 class="feature-title">Physics Simulation Environments</h4>
+            <p>Immersive VR environments allowing students to manipulate physical laws, conduct impossible experiments, and visualize complex phenomena like electromagnetic fields, quantum mechanics, and relativity effects. These systems address the challenge of making abstract physics concepts accessible through interactive engagement.</p>
+
+            <div style="margin: var(--spacing-md) 0;">
+              <strong>Physics Education Benefits:</strong>
+              <ul style="margin: var(--spacing-xs) 0;">
+                <li>Visualization of invisible phenomena (magnetic fields, forces)</li>
+                <li>Time manipulation for observing long-term processes</li>
+                <li>Safe exploration of dangerous scenarios</li>
+                <li>Multiple perspective viewing of 3D systems</li>
+                <li>Hypothesis testing in controlled virtual environments</li>
+              </ul>
+            </div>
+
+            <ul class="tag-list">
+              <li class="tag">Physics Visualization</li>
+              <li class="tag">Hypothesis Testing</li>
+              <li class="tag">Safe Exploration</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout-box" style="margin-top: var(--spacing-lg);">
+          <h4 style="color: var(--primary-blue); margin-top: 0;">Research Foundation & Implementation Insights</h4>
+          <div style="margin: var(--spacing-md) 0;">
+            <p><strong>Systematic Review Evidence:</strong> Analysis of gamification in biology education reveals consistent positive impacts on student motivation, cognitive skills, and learning effectiveness, with particular strength in genetics and ecology concept understanding (Varol Selçuk & Özer Keskin, 2024).</p>
+
+            <p><strong>Perception Research Findings:</strong> Student pre-perception significantly influences gamification intervention success in higher education, highlighting the importance of assessing learner attitudes before implementation (Henry et al., 2024).</p>
+
+            <p><strong>Implementation Challenges:</strong> While gamification shows promise, research identifies potential issues including student misunderstanding of game mechanics, deviation from learning objectives, and attention distraction that must be addressed through careful design (Varol Selçuk & Özer Keskin, 2024).</p>
+          </div>
+
+          <div style="background: rgba(25, 118, 210, 0.1); padding: var(--spacing-sm); border-radius: 6px; margin-top: var(--spacing-md);">
+            <p style="margin: 0; font-size: 0.9rem; color: var(--text-medium);">
+              <strong>Methodological Note:</strong> These case studies draw from systematic reviews and mapping studies covering multiple databases 
+              (Web of Science, SCOPUS, IEEE Xplore, ACM) ensuring comprehensive evidence-based foundation for STEM implementation strategies.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTEGRATION PLAN -->
+    <section id="integration" class="content-section">
+      <div class="section-card">
+        <h3 class="section-title">
+          <span class="section-icon">4</span>
+          Classroom-Ready Integration Plan
+        </h3>
+
+        <div class="two-column">
+          <div class="feature-card">
+            <h4 class="feature-title">Tools & Logistics Framework</h4>
+
+            <div style="margin: var(--spacing-md) 0;">
+              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Platform Selection</h5>
+
+             <!-- Creation Tools -->
+<div style="background: linear-gradient(135deg, #f8f9fa, #ffffff); border-radius: 8px; padding: var(--spacing-md); margin-bottom: var(--spacing-md); border-left: 4px solid var(--primary-teal);">
+  <h6 style="color: var(--primary-blue); margin: 0 0 var(--spacing-sm) 0; display: flex; align-items: center; gap: var(--spacing-xs);">
+    <span style="background: var(--primary-teal); color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">🎨</span>
+    Creation Tools
+  </h6>
+  <ul style="margin: 0; line-height: 1.8;">
+    <li><strong><a href="https://cospaces.io/edu/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">CoSpaces Edu (Delightex)</a>:</strong> Browser-based VR/AR authoring with block & text coding <sup>[1]</sup></li>
+    <li><strong><a href="https://www.adobe.com/products/aero.html" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Adobe Aero</a>:</strong> No-code AR scene design for mobile deployment <sup>[2]</sup></li>
+    <li><strong><a href="https://aframe.io" target="_blank" style="color: var(--primary-blue); text-decoration: none;">A-Frame (WebXR)</a>:</strong> Open-source framework for custom VR/AR in the browser <sup>[3]</sup></li>
+    <li><strong><a href="https://mergeedu.com/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Merge EDU</a>:</strong> Hands-on AR objects & simulations with Merge Cube <sup>[4]</sup></li>
+  </ul>
+</div>
+
+<!-- VR Platforms -->
+<div style="background: linear-gradient(135deg, #f0f8ff, #ffffff); border-radius: 8px; padding: var(--spacing-md); margin-bottom: var(--spacing-md); border-left: 4px solid var(--primary-blue);">
+  <h6 style="color: var(--primary-blue); margin: 0 0 var(--spacing-sm) 0; display: flex; align-items: center; gap: var(--spacing-xs);">
+    <span style="background: var(--primary-blue); color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">🥽</span>
+    VR Platforms
+  </h6>
+  <ul style="margin: 0; line-height: 1.8;">
+    <li><strong><a href="https://www.labster.com/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Labster</a>:</strong> High-fidelity virtual labs aligned to science curricula <sup>[5]</sup></li>
+    <li><strong><a href="https://artsandculture.google.com/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Google Arts & Culture (VR tours)</a>:</strong> Museum & site explorations replacing the legacy Expeditions app <sup>[6]</sup></li>
+    <li><strong><a href="https://www.oculus.com/education/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Meta for Education</a>:</strong> Curated immersive experiences with classroom management guidance <sup>[7]</sup></li>
+  </ul>
+</div>
+
+<!-- AR Solutions -->
+<div style="background: linear-gradient(135deg, #f0fff0, #ffffff); border-radius: 8px; padding: var(--spacing-md); border-left: 4px solid #4caf50;">
+  <h6 style="color: var(--primary-blue); margin: 0 0 var(--spacing-sm) 0; display: flex; align-items: center; gap: var(--spacing-xs);">
+    <span style="background: #4caf50; color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">📱</span>
+    AR Solutions
+  </h6>
+  <ul style="margin: 0; line-height: 1.8;">
+    <li><strong><a href="https://zap.works/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">Zappar</a>:</strong> Marker-based & world-tracked AR with classroom-friendly publishing <sup>[8]</sup></li>
+    <li><strong>Native Mobile AR:</strong> iOS ARKit / Android ARCore for lightweight, device-native AR prototypes <sup>[9]</sup></li>
+    <li><strong><a href="https://expeditionspro.com/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">ExpeditionsPro</a>:</strong> Community VR/AR tours that conceptually replace the retired Google Expeditions <sup>[10]</sup></li>
+  </ul>
+</div>
+
+
+              <!-- Technology Integration Diagram -->
+              <div style="background: var(--bg-card); border-radius: 8px; padding: var(--spacing-md); margin-top: var(--spacing-lg);">
+                <h6 style="color: var(--primary-teal); margin: 0 0 var(--spacing-md) 0; text-align: center;">Technology Integration Workflow</h6>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--spacing-sm);">
+                  <div style="text-align: center; flex: 1; min-width: 120px;">
+                    <div style="background: var(--primary-teal); color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-xs) auto; font-weight: bold;">1</div>
+                    <div style="font-size: 0.8rem; font-weight: bold; color: var(--primary-teal);">Content Creation</div>
+                    <div style="font-size: 0.7rem; color: var(--text-medium);">CoSpaces, Merge Cube</div>
+                  </div>
+                  <div style="color: var(--primary-blue); font-size: 1.2rem;">→</div>
+                  <div style="text-align: center; flex: 1; min-width: 120px;">
+                    <div style="background: var(--primary-blue); color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-xs) auto; font-weight: bold;">2</div>
+                    <div style="font-size: 0.8rem; font-weight: bold; color: var(--primary-blue);">Immersive Learning</div>
+                    <div style="font-size: 0.7rem; color: var(--text-medium);">Meta, Labster, Expeditions</div>
+                  </div>
+                  <div style="color: var(--primary-blue); font-size: 1.2rem;">→</div>
+                  <div style="text-align: center; flex: 1; min-width: 120px;">
+                    <div style="background: #4caf50; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-xs) auto; font-weight: bold;">3</div>
+                    <div style="font-size: 0.8rem; font-weight: bold; color: #4caf50;">Real-World Application</div>
+                    <div style="font-size: 0.7rem; color: var(--text-medium);">Zappar, Mobile AR</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin: var(--spacing-md) 0;">
+              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Equity & Access Strategy</h5>
+              <ul>
+                <li><strong>Device Rotation:</strong> 15-20 minute small-group stations with structured peer roles</li>
+                <li><strong>Role Assignment:</strong> Lead Investigator, Safety Monitor, Data Scribe, Technology Specialist</li>
+                <li><strong>Alternative Access:</strong> Non-VR video fly-throughs, screen mirroring for motion-sensitive students</li>
+                <li><strong>Accommodation:</strong> Multiple representation modes for diverse learning needs</li>
+              </ul>
+            </div>
+
+            <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px;">
+              <h5 style="color: var(--primary-blue); margin: 0 0 var(--spacing-xs) 0;">Budget Considerations</h5>
+              <p style="margin: 0; font-size: 0.9rem;">Staggered purchasing, multi-use app prioritization, school-managed accounts, shared booking calendar system</p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <h4 class="feature-title">Sample Implementation Sequence</h4>
+
+            <div style="background: linear-gradient(135deg, var(--bg-card), white); border-radius: 8px; padding: var(--spacing-md); margin: var(--spacing-md) 0;">
+              <h5 style="color: var(--primary-blue); margin-top: 0;">One-Week Micro-Implementation</h5>
+
+              <div style="margin: var(--spacing-sm) 0;">
+                <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-xs);">
+                  <span style="background: var(--primary-teal); color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold;"></span>
+                  <strong>Day 1:</strong> Concept primer, success criteria establishment, baseline formative assessment
+                </div>
+
+                <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-xs);">
+                  <span style="background: var(--primary-teal); color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold;"></span>
+                  <strong>Days 2-3:</strong> VR/AR station rotations with guided inquiry, data collection, teacher facilitation
+                </div>
+
+                <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-xs);">
+                  <span style="background: var(--primary-teal); color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold;"></span>
+                  <strong>Day 4:</strong> Collaborative artifact creation (mini-reports, video walkthroughs, concept presentations)
+                </div>
+
+                <div style="display: flex; align-items: center; gap: var(--spacing-sm);">
+                  <span style="background: var(--primary-teal); color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold;"></span>
+                  <strong>Day 5:</strong> Summative assessment with reflection ("What did VR/AR clarify? What remains unclear?")
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPREHENSIVE EVALUATION DESIGN -->
+    <section id="evaluation-design" class="content-section">
+      <div class="section-card">
+        <h3 class="section-title">
+          Comprehensive Evaluation Design
+        </h3>
+
+        <div class="callout-box">
+          <h4 style="color: var(--primary-blue); margin-top: 0;">Research Design Overview</h4>
+          <p><strong>Methodology:</strong> Quasi-experimental pre-post design with matched comparison classes using validated instruments, behavioral analytics, and equity disaggregation analysis to measure implementation impact on STEM learning outcomes.</p>
+        </div>
+
+        <div class="three-column">
+          <div class="feature-card">
+            <h4 class="feature-title">Primary Research Questions</h4>
+            <ol style="line-height: 1.8;">
+              <li><strong>Efficacy:</strong> To what extent does VR/AR integration improve STEM concept mastery compared to traditional instruction? (Target effect size: Hedges' g ≥ 0.5)</li>
+              <li><strong>Engagement:</strong> How does immersive technology implementation affect student motivation, persistence, and self-efficacy in STEM subjects?</li>
+              <li><strong>Equity:</strong> Do observed benefits distribute equitably across demographic groups (ELL learners, Indigenous students, students with disabilities)?</li>
+            </ol>
+            <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px; margin-top: var(--spacing-md);">
+              <h6 style="color: var(--primary-teal); margin: 0 0 var(--spacing-xs) 0;">Statistical Power Analysis</h6>
+              <p style="margin: 0; font-size: 0.9rem;">
+                <strong>Sample size:</strong> n=120 (60 intervention, 60 comparison)<br>
+                <strong>Power:</strong> 80% to detect medium effect (d=0.5)<br>
+                <strong>Alpha level:</strong> 0.05 (Bonferroni corrected for multiple comparisons)
+              </p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <h4 class="feature-title">Data Collection Instruments</h4>
+
+            <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Validated Measures</h5>
+            <ul style="line-height: 1.6;">
+              <li><strong>Concept Inventories:</strong> Physics Concept Inventory (FCI), Chemistry Concept Inventory (CCI), Geometry Concept Assessment (α=0.85)</li>
+              <li><strong>Engagement Scale:</strong> Student Engagement Instrument (SEI) - Cognitive, Emotional, Behavioral subscales (Fredricks et al., 2016)</li>
+              <li><strong>Self-Efficacy:</strong> Science Motivation Questionnaire II (SMQ-II) adapted for STEM domains (Glynn et al., 2011)</li>
+            </ul>
+
+            <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Behavioral Analytics</h5>
+            <ul style="line-height: 1.6;">
+              <li><strong>VR Interaction Logs:</strong> Time-on-task, interaction patterns, help-seeking frequency</li>
+              <li><strong>Learning Management System:</strong> Assignment completion rates, revision counts, peer collaboration metrics</li>
+              <li><strong>Classroom Observation:</strong> Structured protocol using Classroom Assessment Scoring System (CLASS) adapted for technology integration</li>
+            </ul>
+
+            
+          </div>
+
+          <div class="feature-card">
+            <h4 class="feature-title">Analysis Plan & Success Metrics</h4>
+
+            <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Statistical Approach</h5>
+            <ul style="line-height: 1.6;">
+              <li><strong>Primary Analysis:</strong> ANCOVA controlling for baseline performance, prior STEM experience, socioeconomic status</li>
+              <li><strong>Effect Size Calculation:</strong> Hedges' g with 95% confidence intervals</li>
+              <li><strong>Equity Analysis:</strong> Subgroup analysis by English Language Learner status, Indigenous identity, special education placement</li>
+              <li><strong>Implementation Fidelity:</strong> Correlation between dosage/quality metrics and student outcomes</li>
+            </ul>
+
+            <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Success Benchmarks</h5>
+            <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px;">
+              <table style="width: 100%; font-size: 0.85rem; border-collapse: collapse;">
+                <thead style="background: var(--primary-teal); color: white;">
+                  <tr>
+                    <th style="padding: 4px; text-align: left;">Metric</th>
+                    <th style="padding: 4px; text-align: center;">Target</th>
+                    <th style="padding: 4px; text-align: center;">Threshold</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="background: white;">
+                    <td style="padding: 4px;">Concept Mastery (Hedges' g)</td>
+                    <td style="padding: 4px; text-align: center;">≥ 0.5</td>
+                    <td style="padding: 4px; text-align: center;">≥ 0.3</td>
+                  </tr>
+                  <tr style="background: #f9f9f9;">
+                    <td style="padding: 4px;">Engagement Scale</td>
+                    <td style="padding: 4px; text-align: center;">≥ 10% increase</td>
+                    <td style="padding: 4px; text-align: center;">≥ 5% increase</td>
+                  </tr>
+                  <tr style="background: white;">
+                    <td style="padding: 4px;">Equity (subgroup differences)</td>
+                    <td style="padding: 4px; text-align: center;">≤ 0.2 effect size gap</td>
+                    <td style="padding: 4px; text-align: center;">≤ 0.3 effect size gap</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Limitations & Mitigations</h5>
+            <ul style="line-height: 1.6; font-size: 0.9rem;">
+              <li><strong>Selection Bias:</strong> Matched comparison classes on baseline characteristics</li>
+              <li><strong>Hawthorne Effect:</strong> Attention controls in comparison condition</li>
+              <li><strong>Implementation Variability:</strong> Fidelity monitoring and coaching protocols</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, var(--bg-card), white); border-radius: 12px; padding: var(--spacing-lg); margin-top: var(--spacing-lg); border: 2px solid var(--accent-teal);">
+          <h4 style="color: var(--primary-blue); margin-top: 0; text-align: center;">Implementation Timeline & Milestones</h4>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-md);">
+            <div style="text-align: center;">
+              <div style="background: var(--primary-teal); color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-xs) auto; font-weight: bold;">1</div>
+              <h6 style="color: var(--primary-blue); margin: 0;">Baseline Data Collection</h6>
+              <p style="margin: var(--spacing-xs) 0 0 0; font-size: 0.85rem; color: var(--text-medium);">January 2025<br>Pre-assessments, demographic surveys</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="background: var(--primary-blue); color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-xs) auto; font-weight: bold;">2</div>
+              <h6 style="color: var(--primary-blue); margin: 0;">Pilot Implementation</h6>
+              <p style="margin: var(--spacing-xs) 0 0 0; font-size: 0.85rem; color: var(--text-medium);">February-April 2025<br>Single unit, fidelity monitoring</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="background: #4caf50; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-xs) auto; font-weight: bold;">3</div>
+              <h6 style="color: var(--primary-blue); margin: 0;">Full-Scale Study</h6>
+              <p style="margin: var(--spacing-xs) 0 0 0; font-size: 0.85rem; color: var(--text-medium);">September 2025-May 2026<br>Complete semester implementation</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="background: #ff5722; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-xs) auto; font-weight: bold;">4</div>
+              <h6 style="color: var(--primary-blue); margin: 0;">Analysis & Dissemination</h6>
+              <p style="margin: var(--spacing-xs) 0 0 0; font-size: 0.85rem; color: var(--text-medium);">June-August 2026<br>Results publication, policy brief</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ASSESSMENT -->
+    <section id="assessment" class="content-section">
+      <div class="section-card">
+        <h3 class="section-title">
+          <span class="section-icon">5</span>
+          Assessment & Evidence Framework
+        </h3>
+
+        <div class="callout-box">
+          <h4 style="color: var(--primary-blue); margin-top: 0;">Comprehensive Assessment Strategy</h4>
+          <p>Multi-modal assessment approach addressing TA feedback for explicit evaluation strategies while maintaining focus on meaningful learning outcomes.</p>
+        </div>
+
+        <div class="three-column">
+          <div class="feature-card">
+            <h4 class="feature-title">Conceptual Evidence</h4>
+            <ul style="line-height: 1.8;">
+              <li><strong>Visual Documentation:</strong> Labeled screenshots with explanatory annotations</li>
+              <li><strong>Data Analysis:</strong> Measurement tables and calculation workflows</li>
+              <li><strong>Scientific Reasoning:</strong> Claim-Evidence-Reasoning (CER) frameworks</li>
+              <li><strong>Concept Mapping:</strong> Before/after knowledge visualization</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <h4 class="feature-title">Skills Evidence</h4>
+            <ul style="line-height: 1.8;">
+              <li><strong>Technical Proficiency:</strong> Troubleshooting logs and problem-solving documentation</li>
+              <li><strong>Design Thinking:</strong> Iterative design processes and refinements</li>
+              <li><strong>Collaboration:</strong> Peer feedback forms and group reflection artifacts</li>
+              <li><strong>Digital Literacy:</strong> Technology integration and adaptation skills</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <h4 class="feature-title">Summative Assessment</h4>
+            <ul style="line-height: 1.8;">
+              <li><strong>Rubric Evaluation:</strong> Accuracy, reasoning quality, knowledge transfer assessment</li>
+              <li><strong>Traditional Assessment:</strong> Targeted quiz questions on key concepts</li>
+              <li><strong>Portfolio Creation:</strong> Compiled evidence of learning journey</li>
+              <li><strong>Presentation Component:</strong> Student-led demonstration of understanding</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAMIFICATION -->
+    <section id="gamification" class="content-section">
+      <div class="section-card">
+        <h3 class="section-title">
+          <span class="section-icon">6</span>
+          Gamification Design Framework
+        </h3>
+
+        <div style="background: var(--bg-card); padding: var(--spacing-md); border-radius: 8px; margin-bottom: var(--spacing-lg); border-left: 4px solid var(--primary-teal);">
+          <p style="margin: 0; font-style: italic; color: var(--text-medium);">
+            <strong>Important Distinction:</strong> This implementation focuses on gamification elements (points, badges, leaderboards) 
+            rather than full game-based learning, maintaining academic rigor while enhancing engagement.
+          </p>
+        </div>
+
+        <div class="two-column">
+          <div class="feature-card">
+            <h4 class="feature-title">Core Mechanics Implementation</h4>
+
+            <div style="margin: var(--spacing-md) 0;">
+              <h5 style="color: var(--primary-teal);">Experience Points & Progression</h5>
+              <ul>
+                <li><strong>Concept Mastery XP:</strong> Earned through successful completion of VR/AR learning objectives</li>
+                <li><strong>Collaboration Points:</strong> Awarded for effective peer teaching and group problem-solving</li>
+                <li><strong>Innovation Bonus:</strong> Extra points for creative applications of learned concepts</li>
+                <li><strong>Level Progression:</strong> Unlock advanced challenges and leadership opportunities</li>
+              </ul>
+            </div>
+
+            <div style="margin: var(--spacing-md) 0;">
+              <h5 style="color: var(--primary-teal);">Achievement Badges</h5>
+              <ul>
+                <li><strong>"Safety Pro":</strong> Demonstrates proper VR/AR equipment handling and lab safety</li>
+                <li><strong>"Modeling Maestro":</strong> Excellence in creating and manipulating 3D scientific models</li>
+                <li><strong>"Data Detective":</strong> Proficiency in collecting and analyzing AR-generated data</li>
+                <li><strong>"Collaboration Champion":</strong> Outstanding peer support and knowledge sharing</li>
+              </ul>
+            </div>
+
+            <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px;">
+              <h5 style="color: var(--primary-blue); margin: 0 0 var(--spacing-xs) 0;">Optional Quest System</h5>
+              <p style="margin: 0; font-size: 0.9rem;">
+                Self-directed extensions including parameter sweeps, alternative design challenges, and cross-curricular connections for student autonomy.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <h4 class="feature-title">Pedagogical Safeguards</h4>
+
+            <div style="margin: var(--spacing-md) 0;">
+              <h5 style="color: var(--primary-teal);">Learning-Focused Design</h5>
+              <ul>
+                <li><strong>Outcome Alignment:</strong> All badges map directly to curriculum learning objectives, not completion speed</li>
+                <li><strong>Mastery Emphasis:</strong> Points awarded for depth of understanding rather than surface-level task completion</li>
+                <li><strong>Reflection Integration:</strong> Rewards tied to metacognitive awareness and learning process documentation</li>
+              </ul>
+            </div>
+
+            <div style="margin: var(--spacing-md) 0;">
+              <h5 style="color: var(--primary-teal);">Equity Considerations</h5>
+              <ul>
+                <li><strong>Multiple Pathways:</strong> Choice boards prevent one-size-fits-all competitive pressure</li>
+                <li><strong>Collaborative Scoring:</strong> Team-based achievements alongside individual recognition</li>
+                <li><strong>Privacy Protection:</strong> Anonymous team aliases for leaderboards to reduce social pressure</li>
+              </ul>
+            </div>
+
+            <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px;">
+              <h5 style="color: var(--primary-blue); margin: 0 0 var(--spacing-xs) 0;">Assessment Integration</h5>
+              <p style="margin: 0; font-size: 0.9rem;">
+                Gamification elements supplement, not replace, traditional assessment methods, ensuring academic standards are maintained.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DATA GOVERNANCE & PRIVACY -->
+    <section id="data-governance" class="content-section">
+      <div class="section-card">
+        <h3 class="section-title">
+          Data Governance & Privacy Framework
+        </h3>
+
+        <div class="callout-box">
+          <h4 style="color: var(--primary-blue); margin-top: 0;">FOIP/PIPA Compliance & Student Privacy Protection</h4>
+          <p><strong>Regulatory Framework:</strong> Implementation adheres to Alberta's Freedom of Information and Protection of Privacy Act (FOIP) and Personal Information Protection Act (PIPA), ensuring comprehensive student data protection in educational technology environments.</p>
+        </div>
+
+        <div class="two-column">
+          <div class="feature-card">
+            <h4 class="feature-title">Data Collection & Minimization</h4>
+
+            <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Minimal Data Collection Principle</h5>
+            <ul style="line-height: 1.8;">
+              <li><strong>Learning Analytics Only:</strong> Time-on-task, interaction patterns, completion rates (no personal content)</li>
+              <li><strong>Anonymized Identifiers:</strong> Student data linked via non-reversible hash codes (no names, photos, or personal identifiers)</li>
+              <li><strong>Aggregate Reporting:</strong> All analysis conducted at class/cohort level with minimum 10-student threshold</li>
+              <li><strong>Local Processing:</strong> Data analysis performed on secure district servers, not transmitted to third parties</li>
+            </ul>
+
+            <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Data Retention & Destruction</h5>
+            <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px;">
+              <table style="width: 100%; font-size: 0.85rem; border-collapse: collapse;">
+                <thead style="background: var(--primary-teal); color: white;">
+                  <tr>
+                    <th style="padding: 6px; text-align: left;">Data Type</th>
+                    <th style="padding: 6px; text-align: center;">Retention Period</th>
+                    <th style="padding: 6px; text-align: center;">Destruction Method</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="background: white;">
+                    <td style="padding: 6px;">VR Interaction Logs</td>
+                    <td style="padding: 6px; text-align: center;">1 Academic Year</td>
+                    <td style="padding: 6px; text-align: center;">Secure Deletion</td>
+                  </tr>
+                  <tr style="background: #f9f9f9;">
+                    <td style="padding: 6px;">Learning Assessment Data</td>
+                    <td style="padding: 6px; text-align: center;">3 Years</td>
+                    <td style="padding: 6px; text-align: center;">Overwrite + Disposal</td>
+                  </tr>
+                  <tr style="background: white;">
+                    <td style="padding: 6px;">Aggregated Research Data</td>
+                    <td style="padding: 6px; text-align: center;">5 Years</td>
+                    <td style="padding: 6px; text-align: center;">De-identification</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div style="background: #e3f2fd; padding: var(--spacing-sm); border-radius: 6px; margin-top: var(--spacing-md); border-left: 4px solid var(--primary-blue);">
+              <h6 style="color: var(--primary-blue); margin: 0 0 var(--spacing-xs) 0;">Data Subject Rights</h6>
+              <p style="margin: 0; font-size: 0.85rem;">Students and parents may request data access, correction, or deletion at any time. Opt-out mechanisms preserve educational functionality while removing research participation.</p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <h4 class="feature-title">Consent & Ethical Safeguards</h4>
+
+            <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Informed Consent Process</h5>
+            <ul style="line-height: 1.8;">
+              <li><strong>Parent/Guardian Consent:</strong> Clear, jargon-free information sheets describing data use, research participation, and withdrawal rights</li>
+              <li><strong>Student Assent:</strong> Age-appropriate explanation and ongoing consent verification for minors aged 12+</li>
+              <li><strong>Multilingual Materials:</strong> Consent forms available in all languages spoken by 5% or more of student population</li>
+              <li><strong>Opt-Out Protection:</strong> Educational benefits maintained regardless of research participation status</li>
+            </ul>
+
+            <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Vendor Privacy Assessment</h5>
+            <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px;">
+              <h6 style="color: var(--primary-blue); margin: 0 0 var(--spacing-xs) 0;">Third-Party Platform Evaluation</h6>
+              <ul style="margin: var(--spacing-xs) 0 0 0; font-size: 0.85rem; line-height: 1.6;">
+                <li>✅ <strong>Labster:</strong> FERPA compliant, SOC 2 Type II certified, EU GDPR aligned</li>
+                <li>✅ <strong>CoSpaces Edu:</strong> Educational privacy certification, data hosting in Canada/EU</li>
+                <li>⚠️ <strong>Meta Horizon:</strong> Enhanced privacy review required, educational-specific terms negotiated</li>
+                <li>✅ <strong>Adobe Aero:</strong> Creative Cloud for Education tier, enhanced data controls</li>
+              </ul>
+            </div>
+
+            <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Ethics Review Process</h5>
+            <div style="background: linear-gradient(135deg, var(--accent-teal), var(--primary-teal)); color: white; padding: var(--spacing-sm); border-radius: 6px;">
+              <p style="margin: 0; font-size: 0.85rem; text-align: center;">
+                <strong>📋 Research Ethics Board (REB) Approval</strong><br>
+                <small style="opacity: 0.9;">University of Calgary REB protocol submitted with comprehensive privacy impact assessment</small>
+              </p>
+            </div>
+
+            <div style="margin: var(--spacing-md) 0; padding: var(--spacing-sm); background: #fff3e0; border-radius: 6px; border-left: 4px solid #ff9800;">
+              <h6 style="color: #f57c00; margin: 0 0 var(--spacing-xs) 0;">Cybersecurity Measures</h6>
+              <ul style="margin: 0; font-size: 0.85rem; line-height: 1.6;">
+                <li>Encrypted data transmission (TLS 1.3 minimum)</li>
+                <li>Multi-factor authentication for educator accounts</li>
+                <li>Regular security audits and penetration testing</li>
+                <li>Incident response plan with 24-hour notification protocol</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+    <!-- FUTURE & ETHICS -->
+    <section id="future-ethics" class="content-section">
+      <div class="section-card">
+        <h3 class="section-title">
+          <span class="section-icon">7</span>
+          Future Readiness & Ethical Considerations
+        </h3>
+
+        <div class="two-column">
+          <div class="feature-card">
+            <h4 class="feature-title">Emerging Trends & Technologies</h4>
+
+            <div style="margin: var(--spacing-md) 0;">
+              <h5 style="color: var(--primary-teal);">Technology Evolution</h5>
+              <ul>
+                <li><strong>Hardware Accessibility:</strong> Rapidly decreasing costs making classroom implementation more feasible</li>
+                <li><strong>Mobile AR Advancement:</strong> Smartphone-based solutions reducing infrastructure requirements</li>
+                <li><strong>AI Integration:</strong> Adaptive scaffolding and personalized learning path optimization</li>
+                <li><strong>5G Connectivity:</strong> Enhanced streaming capabilities for complex VR/AR content</li>
+              </ul>
+            </div>
+
+            <div style="margin: var(--spacing-md) 0;">
+              <h5 style="color: var(--primary-teal);">Educational Impact Predictions</h5>
+              <ul>
+                <li><strong>Democratization:</strong> Increased access to high-quality STEM experiences regardless of school resources</li>
+                <li><strong>Teacher Training Evolution:</strong> Professional development shifting toward immersive technology pedagogy</li>
+                <li><strong>Assessment Innovation:</strong> Real-time performance analytics and competency-based evaluation</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <h4 class="feature-title">Ethical Framework & Responsibilities</h4>
+
+            <div style="margin: var(--spacing-md) 0;">
+              <h5 style="color: var(--primary-teal);">Student Privacy & Data Protection</h5>
+              <ul>
+                <li><strong>Data Minimization:</strong> Collect only essential learning analytics data</li>
+                <li><strong>Consent Protocols:</strong> Clear parental and student consent for data collection</li>
+                <li><strong>Secure Storage:</strong> School-managed accounts with encrypted data transmission</li>
+                <li><strong>Transparency:</strong> Open communication about data use and student rights</li>
+              </ul>
+            </div>
+
+            <div style="margin: var(--spacing-md) 0;">
+              <h5 style="color: var(--primary-teal);">Digital Well-being</h5>
+              <ul>
+                <li><strong>Session Limits:</strong> Maximum VR exposure times to prevent motion sickness and eye strain</li>
+                <li><strong>Break Protocols:</strong> Regular intervals for physical movement and vision rest</li>
+                <li><strong>Alternative Options:</strong> Non-immersive alternatives for students with health considerations</li>
+                <li><strong>Mental Health:</strong> Monitoring for technology-related anxiety or social isolation</li>
+              </ul>
+            </div>
+
+            <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px;">
+              <h5 style="color: var(--primary-blue); margin: 0 0 var(--spacing-xs) 0;">Inclusive Design Principles</h5>
+              <p style="margin: 0; font-size: 0.9rem;">
+                Multiple representation modes, culturally responsive content, and accessibility features ensuring equitable access for all learners.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout-box" style="margin-top: var(--spacing-lg);">
+          <p style="margin: 0; font-style: italic;">
+            These considerations directly address Module 6 expectations for future trends, technology advocacy, and ethical reflection, 
+            building on the theoretical foundation established in Assignment 2.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- REFERENCES -->
+    <section id="references" class="content-section">
+      <div class="section-card">
+        <h3 class="section-title">
+          <span class="section-icon">9</span>
+          References & Academic Sources
+        </h3>
+
+        <div style="background: var(--bg-card); padding: var(--spacing-md); border-radius: 8px; margin-bottom: var(--spacing-lg);">
+          <p style="margin: 0; color: var(--text-medium);">
+            <strong>Comprehensive Bibliography:</strong> This reference list integrates course readings with supplementary scholarly sources, 
+            demonstrating deep engagement with current research in immersive educational technologies.
+          </p>
+        </div>
+
+        <!-- APA References from Your Research Papers -->
+<div style="background: white; border-radius: 8px; padding: var(--spacing-lg); margin-bottom: var(--spacing-lg); border: 1px solid var(--border-light);">
+  <h4 style="color: var(--primary-blue); margin-top: 0;">Key Research Sources (APA 7th Edition)</h4>
+  <div style="font-family: 'Times New Roman', serif; line-height: 2; text-indent: -2rem; padding-left: 2rem;">
+    <p style="margin-bottom: 1rem;">
+      Al Farsi, G., Yusof, A. B. Mohd., Romli, A., Tawafak, R. M., Malik, S. I., Jabbar, J., & Rsuli, M. E. B. (2021). A review of virtual reality applications in an educational domain. <em>International Journal of Interactive Mobile Technologies (iJIM), 15</em>(22), 99–118. https://doi.org/10.3991/ijim.v15i22.25003
+    </p>
+    <p style="margin-bottom: 1rem;">
+      Asoodar, M., Janesarvatan, F., Yu, H., & de Jong, N. (2024). Theoretical foundations and implications of augmented reality, virtual reality, and mixed reality for immersive learning in health professions education. <em>Advances in Simulation, 9</em>(1), 1–15. https://doi.org/10.1186/s41077-024-00311-5
+    </p>
+    
+    <p style="margin-bottom: 1rem;">
+      Chang, H.-Y., Binali, T., Liang, J.-C., Chiou, G.-L., Cheng, K.-H., Wen-Yu Lee, S., & Tsai, C.-C. (2022). Ten years of augmented reality in education: A meta-analysis of (quasi-)experimental studies to investigate the impact. <em>Computers & Education, 191</em>, 104641. https://doi.org/10.1016/j.compedu.2022.104641
+    </p>
+    <p style="margin-bottom: 1rem;">
+      Cipresso, P., Giglioli, I. A. C., Raya, M. A., & Riva, G. (2018). The past, present, and future of virtual and augmented reality research: A network and cluster analysis of the literature. <em>Frontiers in Psychology</em>, 9, 2086. https://doi.org/10.3389/fpsyg.2018.02086
+    </p>
+    <p style="margin-bottom: 1rem;">
+  Deci, E. L., & Ryan, R. M. (2017). <em>Self-determination theory: Basic psychological needs in motivation, development, and wellness.</em> 
+  New York, NY: Guilford Press.
+</p>
+    <p style="margin-bottom: 1rem;">
+      Hartt, M., Hosseini, H., & Mostafapour, M. (2020). Game on: Exploring the effectiveness of game-based learning. <em>Planning Practice & Research, 35</em>(5), 589–604. https://doi.org/10.1080/02697459.2020.1778859
+    </p>
+    <p style="margin-bottom: 1rem;">
+      Henry, J., Li, F., & Arnab, S. (2024). On the pre-perception of gamification and game-based learning in higher education students: A systematic mapping study. <em>Simulation & Gaming, 55</em>(6), 985–1010. https://doi.org/10.1177/10468781241271082
+    </p>
+    
+    <p style="margin-bottom: 1rem;">
+      Leinhardt, G., Zaslavsky, O., & Stein, M. K. (1990). Functions, graphs, and graphing: Tasks, learning, and teaching. Review of Educational Research, 60(1), 1–64. https://doi.org/10.3102/00346543060001001
+    </p>
+    <p style="margin-bottom: 1rem;">
+      Lum, H. C., Elliott, L. J., Aqlan, F., & Zhao, R. (2020). Virtual reality: History, applications, and challenges for human factors research. <em>Proceedings of the Human Factors and Ergonomics Society Annual Meeting, 64</em>(1), 1263–1268. https://doi.org/10.1177/1071181320641300
+    </p>
+    <p style="margin-bottom: 1rem;">
+      Steidtmann, L., Hof, S., & Harms, U. (2023). Declining interest in science in lower secondary school classes: Quasi-experimental and longitudinal evidence on the role of teaching and teaching quality. Journal of Research in Science Teaching, 60(1), 164–195. https://doi.org/10.1002/tea.21794
+    <p style="margin-bottom: 1rem;">
+      Sherman, W. R., & Craig, A. B. (2018). <em>Understanding virtual reality: Interface, application, and design</em> (2nd ed.). Morgan Kaufmann.
+    </p>
+    <p style="margin-bottom: 1rem;">
+      Stieff, M., & Uttal, D. (2015). How much can spatial training improve STEM achievement? <em>Educational Psychology Review</em>, 27(4), 607–615. https://doi.org/10.1007/s10648-015-9304-8
+    </p>
+    <p style="margin-bottom: 1rem;">
+      Subhash, S., & Cudney, E. A. (2018). Gamified learning in higher education: A systematic review of the literature. <em>Computers in Human Behavior, 87</em>, 192–206. https://doi.org/10.1016/j.chb.2018.05.028
+    </p>
+    <p style="margin-bottom: 1rem;">
+  Sweller, J., van Merriënboer, J. J. G., & Paas, F. (2019). Cognitive architecture and instructional design: 20 years later. 
+  <em>Educational Psychology Review, 31</em>(2), 261–292. https://doi.org/10.1007/s10648-019-09465-5
+</p>
+    <p style="margin-bottom: 1rem;">
+      Taçgın, Z. (2020). What is VR? In <em>Virtual and augmented reality: An educational handbook</em> (pp. 16–45). Cambridge Scholars Publishing.
+    </p>
+    <p style="margin-bottom: 1rem;">
+      Varol Selçuk, Z., & Özer Keskin, M. (2024). Gamification in biology education: A systematic review analysis. <em>International Journal of Eurasia Social Sciences</em>, 15(55), 375–405. https://doi.org/10.35826/ijoess.4445
+    </p>
+    <p style="margin-bottom: 1rem;">
+  Wilson, M. (2002). Six views of embodied cognition. <em>Psychonomic Bulletin & Review, 9</em>(4), 625–636. https://doi.org/10.3758/BF03196322
+</p>
+
+    <p style="margin-bottom: 0;">
+      Wu, H. K., Krajcik, J. S., & Soloway, E. (2001). Promoting understanding of chemical representations: Students’ use of a visualization tool in the classroom. <em>Journal of Research in Science Teaching, 38</em>(7), 821–842. https://doi.org/10.1002/tea.1033
+    </p>
+  </div>
+
+
+    </section>
+
+    <!-- APPENDICES -->
+    <section id="appendices" class="content-section">
+      <div class="section-card">
+        <h3 class="section-title">
+          <span class="section-icon">A</span>
+          Appendices & Supporting Materials
+        </h3>
+
+        <div class="three-column">
+          <div class="feature-card">
+            <h4 class="feature-title">Appendix A: Implementation Timeline</h4>
+            <div style="margin: var(--spacing-md) 0;">
+              <div style="border-left: 3px solid var(--primary-teal); padding-left: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
+                <strong>Phase 1 (Months 1-2):</strong> Teacher training, equipment procurement, pilot testing
+              </div>
+              <div style="border-left: 3px solid var(--primary-blue); padding-left: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
+                <strong>Phase 2 (Months 3-4):</strong> Curriculum integration, content development, assessment design
+              </div>
+              <div style="border-left: 3px solid var(--accent-teal); padding-left: var(--spacing-sm);">
+                <strong>Phase 3 (Months 5-6):</strong> Full implementation, data collection, evaluation and refinement
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <h4 class="feature-title">Appendix B: Budget Considerations</h4>
+            <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px; margin: var(--spacing-md) 0;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-xs);">
+                <span>VR Headsets (6 units):</span>
+                <strong>$3,000</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-xs);">
+                <span>Software Licenses:</span>
+                <strong>$1,200</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-xs);">
+                <span>Teacher Training:</span>
+                <strong>$2,000</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-weight: bold; border-top: 1px solid var(--border-light); padding-top: var(--spacing-xs);">
+                <span>Total Year 1:</span>
+                <strong>$6,200</strong>
+              </div>
+            </div>
+          </div>
+
+          
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Academic Footer -->
+  <footer class="academic-footer">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <h3 style="margin: 0 0 var(--spacing-md) 0; font-size: 1.5rem;">Submission Statement</h3>
+      <p style="margin: 0 0 var(--spacing-sm) 0; font-size: 1.1rem; line-height: 1.6;">
+        This capstone report represents original research and analysis for EDU 879 Module 6 Summative Assessment. 
+        The implementation plan demonstrates practical application of course concepts while maintaining rigorous academic standards 
+        and evidence-based educational practices.
+      </p>
+      <div style="margin: var(--spacing-lg) 0 0 0; padding: var(--spacing-md) 0; border-top: 1px solid rgba(255, 255, 255, 0.2);">
+        <p style="margin: 0; font-size: 0.95rem;">
+          <strong>© <span id="current-year"></span> Hannah Terkper</strong> — EDU 879 Immersive Technology In Education<br>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Quick Navigation -->
+  <button class="quick-nav-btn" id="quick-nav-btn" title="Quick Navigation">☰</button>
+  <div class="quick-nav-menu" id="quick-nav-menu">
+    <a href="#introduction">Introduction</a>
+    <a href="#foundations">Foundations</a>
+    <a href="#case-studies">Case Studies</a>
+    <a href="#integration">Integration Plan</a>
+    <a href="#assessment">Assessment</a>
+    <a href="#gamification">Gamification</a>
+    <a href="#future-ethics">Future & Ethics</a>
+    <a href="#rubric">Rubric Alignment</a>
+    <a href="#references">References</a>
+    <a href="#appendices">Appendices</a>
+    <hr style="margin: var(--spacing-xs) 0; border: none; border-top: 1px solid var(--border-light);">
+    <a href="#" onclick="window.print(); return false;">Print/PDF Version</a>
+    <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Back to Top</a>
+  </div>
+
+  <!-- JavaScript for Interactive Features -->
+  <script>
+    // Set current year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          // Update active nav link
+          document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+
+          // Smooth scroll
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Intersection Observer for active navigation
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${entry.target.id}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+
+    sections.forEach(section => observer.observe(section));
+
+    // Rubric checklist data
+    const rubricItems = [
+      {
+        category: "Depth of Research & Critical Analysis (20%)",
+        items: [
+          "Comprehensive literature review with high-quality, diverse sources",
+          "Critical analysis of VR, AR, and gamification research",
+          "Evidence-based support for all major claims",
+          "Integration of course readings with additional scholarly sources"
+        ]
+      },
+      {
+        category: "Application of VR, AR, and Gamification (20%)",
+        items: [
+          "Clear integration of immersive technologies into educational framework",
+          "Strong pedagogical alignment with learning objectives",
+          "Detailed real-world applicability and implementation strategies",
+          "Subject-specific STEM applications with concrete examples"
+        ]
+      },
+      {
+        category: "Innovation & Feasibility (15%)",
+        items: [
+          "Creative approaches demonstrating original thinking",
+          "Practical implementation considerations and resource planning",
+          "Strong potential for real-world impact and scalability",
+          "Innovative solutions to common educational technology challenges"
+        ]
+      },
+      {
+        category: "Ethical Considerations & Future Readiness (20%)",
+        items: [
+          "Thoughtful evaluation of data privacy and student well-being",
+          "Comprehensive accessibility and equity considerations",
+          "Analysis of emerging trends and technology evolution",
+          "Reflection on digital citizenship and responsible implementation"
+        ]
+      },
+      {
+        category: "Persuasive Advocacy & Argumentation (15%)",
+        items: [
+          "Strong, well-structured argument for immersive technology adoption",
+          "Research-backed evidence supporting implementation recommendations",
+          "Clear articulation of benefits and risk mitigation strategies",
+          "Compelling case for educational transformation through technology"
+        ]
+      },
+      {
+        category: "Clarity, Organization, & Professionalism (10%)",
+        items: [
+          "Professional formatting and visual presentation",
+          "Clear structure with logical flow between sections",
+          "Error-free grammar and APA citation formatting",
+          "Engaging and accessible writing for academic audience"
+        ]
+      }
+    ];
+
+    // Generate checklist
+    function generateChecklist() {
+      const container = document.getElementById('rubric-checklist');
+      let itemCount = 0;
+
+      rubricItems.forEach((category, categoryIndex) => {
+        const categoryDiv = document.createElement('div');
+        categoryDiv.style.marginBottom = 'var(--spacing-lg)';
+
+        const categoryTitle = document.createElement('h5');
+        categoryTitle.textContent = category.category;
+        categoryTitle.style.color = 'var(--primary-blue)';
+        categoryTitle.style.marginBottom = 'var(--spacing-sm)';
+        categoryDiv.appendChild(categoryTitle);
+
+        category.items.forEach((item, itemIndex) => {
+          const itemDiv = document.createElement('div');
+          itemDiv.className = 'checklist-item';
+          itemDiv.dataset.category = categoryIndex;
+          itemDiv.dataset.item = itemIndex;
+
+          const checkbox = document.createElement('div');
+          checkbox.className = 'checkbox';
+          checkbox.innerHTML = '✓';
+
+          const label = document.createElement('span');
+          label.textContent = item;
+          label.style.flex = '1';
+
+          itemDiv.appendChild(checkbox);
+          itemDiv.appendChild(label);
+          categoryDiv.appendChild(itemDiv);
+
+          itemCount++;
+
+          // Add click handler
+          itemDiv.addEventListener('click', () => toggleChecklistItem(itemDiv));
+        });
+
+        container.appendChild(categoryDiv);
+      });
+
+      document.getElementById('total-items').textContent = itemCount;
+      updateProgress();
+    }
+
+    // Toggle checklist item
+    function toggleChecklistItem(item) {
+      const checkbox = item.querySelector('.checkbox');
+      const isCompleted = item.classList.contains('completed');
+
+      if (isCompleted) {
+        item.classList.remove('completed');
+        checkbox.classList.remove('checked');
+      } else {
+        item.classList.add('completed');
+        checkbox.classList.add('checked');
+      }
+
+      updateProgress();
+    }
+
+    // Update progress
+    function updateProgress() {
+      const completed = document.querySelectorAll('.checklist-item.completed').length;
+      const total = document.querySelectorAll('.checklist-item').length;
+      const percentage = total > 0 ? (completed / total) * 100 : 0;
+
+      document.getElementById('completion-count').textContent = completed;
+      document.getElementById('progress-fill').style.width = percentage + '%';
+    }
+
+    // Export progress
+    document.getElementById('export-progress').addEventListener('click', () => {
+      const data = {
+        timestamp: new Date().toISOString(),
+        student: "Hannah Terkper",
+        course: "EDU 879",
+        assignment: "Module 6 Summative Assessment",
+        completion: {
+          completed: document.querySelectorAll('.checklist-item.completed').length,
+          total: document.querySelectorAll('.checklist-item').length,
+          percentage: ((document.querySelectorAll('.checklist-item.completed').length / document.querySelectorAll('.checklist-item').length) * 100).toFixed(1) + '%'
+        },
+        categories: {}
+      };
+
+      rubricItems.forEach((category, categoryIndex) => {
+        const categoryItems = document.querySelectorAll(`[data-category="${categoryIndex}"]`);
+        const completedItems = document.querySelectorAll(`[data-category="${categoryIndex}"].completed`);
+        data.categories[category.category] = {
+          completed: completedItems.length,
+          total: categoryItems.length,
+          percentage: ((completedItems.length / categoryItems.length) * 100).toFixed(1) + '%'
+        };
+      });
+
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `EDU879_Rubric_Progress_${new Date().toISOString().split('T')[0]}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+
+    // Reset checklist
+    document.getElementById('reset-checklist').addEventListener('click', () => {
+      if (confirm('Are you sure you want to reset all checklist items?')) {
+        document.querySelectorAll('.checklist-item').forEach(item => {
+          item.classList.remove('completed');
+          item.querySelector('.checkbox').classList.remove('checked');
+        });
+        updateProgress();
+      }
+    });
+
+    // Mark all complete
+    document.getElementById('mark-all-complete').addEventListener('click', () => {
+      document.querySelectorAll('.checklist-item').forEach(item => {
+        item.classList.add('completed');
+        item.querySelector('.checkbox').classList.add('checked');
+      });
+      updateProgress();
+    });
+
+    // Initialize checklist
+    generateChecklist();
+
+    // Quick Navigation functionality
+    const quickNavBtn = document.getElementById('quick-nav-btn');
+    const quickNavMenu = document.getElementById('quick-nav-menu');
+
+    quickNavBtn.addEventListener('click', () => {
+      quickNavMenu.classList.toggle('active');
+    });
+
+    // Close quick nav when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!quickNavBtn.contains(e.target) && !quickNavMenu.contains(e.target)) {
+        quickNavMenu.classList.remove('active');
+      }
+    });
+
+    // Close quick nav when clicking on a link
+    quickNavMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        quickNavMenu.classList.remove('active');
+      });
+    });
+
+    // Load navbar functionality if mobile-nav.js exists
+    const script = document.createElement('script');
+    script.src = 'mobile-nav.js';
+    script.onerror = () => {
+      // Fallback mobile nav functionality
+      const mobileToggle = document.querySelector('.mobile-menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+
+      if (mobileToggle && navLinks) {
+        mobileToggle.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+        });
+      }
+    };
+    document.head.appendChild(script);
+  </script>
+</body>
+</html>
