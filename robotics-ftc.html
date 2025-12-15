@@ -541,8 +541,8 @@
       <p style="font-size: 1.1rem; opacity: 0.9;">Your Complete Guide to Qualifying for Provincials</p>
       
       <div class="countdown-box">
-        <h3>PROVINCIALS QUALIFIER DEADLINE</h3>
-        <div class="date">January 31, 2026</div>
+        <h3>PROVINCIALS QUALIFIER - STONY PLAIN</h3>
+        <div class="date">Saturday, January 31, 2026 @ 8:00 AM</div>
         <div class="days-left" id="countdown">Loading...</div>
       </div>
     </div>
@@ -946,7 +946,7 @@
         <div class="resource-card">
           <h4>&#128101; FIRST Alberta Resources</h4>
           <p>Regional resources for Alberta FTC teams including local events and support.</p>
-          <a href="https://firstalberta.ca/" target="_blank">Alberta Resources</a>
+          <a href="https://firstalberta.org/" target="_blank">Alberta Resources</a>
         </div>
 
         <div class="resource-card">
@@ -1024,24 +1024,33 @@
   </footer>
 
   <script>
-    // Countdown timer
+    // Countdown timer with hours and minutes
     function updateCountdown() {
-      const provincials = new Date('2026-01-31T00:00:00');
+      const provincials = new Date('2026-01-31T08:00:00');
       const now = new Date();
       const diff = provincials - now;
-      
-      const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
       const countdownEl = document.getElementById('countdown');
       
-      if (days > 0) {
-        countdownEl.textContent = `${days} days remaining!`;
-      } else if (days === 0) {
-        countdownEl.textContent = "TODAY IS THE DAY!";
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        
+        if (days > 0) {
+          countdownEl.textContent = `${days}d ${hours}h ${minutes}m remaining!`;
+        } else if (hours > 0) {
+          countdownEl.textContent = `${hours}h ${minutes}m remaining!`;
+        } else {
+          countdownEl.textContent = `${minutes} minutes remaining!`;
+        }
+      } else if (diff > -86400000) {
+        countdownEl.textContent = "COMPETITION DAY - GO SOLAR STORM!";
       } else {
         countdownEl.textContent = "Competition Complete";
       }
     }
     updateCountdown();
+    setInterval(updateCountdown, 60000);
 
     // Checklist functionality
     function toggleCheck(element) {
