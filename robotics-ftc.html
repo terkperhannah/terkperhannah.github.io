@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar Storm FTC Guide | STEM Collegiate - Road to Provincials 2025</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-orange: #ff6b35;
+      --primary-yellow: #ffc107;
+      --primary-dark: #1a1a2e;
+      --secondary-blue: #16213e;
+      --accent-gold: #f39c12;
+      --text-light: #ffffff;
+      --text-dark: #2d3436;
+      --bg-light: #f8f9fa;
+      --success-green: #27ae60;
+      --warning-red: #e74c3c;
+      --info-blue: #3498db;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--primary-orange), #ff8c42, var(--primary-yellow));
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+      opacity: 0.5;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .team-logo {
+      font-size: 4rem;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .hero .subtitle {
+      font-size: 1.3rem;
+      opacity: 0.95;
+      margin-bottom: 20px;
+    }
+
+    .countdown-box {
+      background: rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 20px;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .countdown-box h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .countdown-box .date {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .countdown-box .days-left {
+      background: var(--warning-red);
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: 600;
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    nav {
+      background: var(--primary-dark);
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background: var(--primary-orange);
+      transform: translateY(-2px);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: var(--primary-dark);
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .section-title .icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary-orange), var(--primary-yellow));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 1px solid #eee;
+    }
+
+    .card h3 {
+      color: var(--primary-dark);
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .award-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 25px;
+    }
+
+    .award-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 2px solid #eee;
+      transition: all 0.3s ease;
+    }
+
+    .award-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      border-color: var(--primary-orange);
+    }
+
+    .award-header {
+      background: linear-gradient(135deg, var(--primary-orange), var(--primary-yellow));
+      color: white;
+      padding: 20px;
+    }
+
+    .award-header.inspire { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
+    .award-header.think { background: linear-gradient(135deg, #3498db, #2980b9); }
+    .award-header.connect { background: linear-gradient(135deg, #27ae60, #229954); }
+    .award-header.innovate { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+    .award-header.design { background: linear-gradient(135deg, #f39c12, #d68910); }
+    .award-header.control { background: linear-gradient(135deg, #1abc9c, #16a085); }
+
+    .award-header h3 {
+      margin: 0;
+      font-size: 1.3rem;
+      color: white;
+    }
+
+    .award-header .importance {
+      font-size: 0.85rem;
+      opacity: 0.9;
+      margin-top: 5px;
+    }
+
+    .award-body {
+      padding: 25px;
+    }
+
+    .checklist {
+      list-style: none;
+    }
+
+    .checklist li {
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .checklist li:last-child {
+      border-bottom: none;
+    }
+
+    .checkbox {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--primary-orange);
+      border-radius: 6px;
+      flex-shrink: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .checkbox.checked {
+      background: var(--success-green);
+      border-color: var(--success-green);
+      color: white;
+    }
+
+    .priority-high {
+      background: #ffe6e6;
+      color: var(--warning-red);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: auto;
+    }
+
+    .priority-medium {
+      background: #fff3cd;
+      color: #856404;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: auto;
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .resource-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border-left: 4px solid var(--primary-orange);
+      transition: all 0.3s ease;
+    }
+
+    .resource-card:hover {
+      transform: translateX(5px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
+    .resource-card h4 {
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .resource-card p {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .resource-card a {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary-orange), var(--primary-yellow));
+      color: white;
+      padding: 8px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .resource-card a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255,107,53,0.4);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--primary-orange), var(--primary-yellow));
+      border-radius: 3px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -25px;
+      top: 25px;
+      width: 14px;
+      height: 14px;
+      background: var(--primary-orange);
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .timeline-item.urgent::before {
+      background: var(--warning-red);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .timeline-date {
+      font-weight: 700;
+      color: var(--primary-orange);
+      margin-bottom: 5px;
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .tip-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .tip-card h4 {
+      color: var(--primary-dark);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tip-card ul {
+      padding-left: 20px;
+    }
+
+    .tip-card li {
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .callout {
+      background: linear-gradient(135deg, #fff3cd, #ffeeba);
+      border-left: 5px solid var(--accent-gold);
+      border-radius: 0 12px 12px 0;
+      padding: 25px;
+      margin: 30px 0;
+    }
+
+    .callout.urgent {
+      background: linear-gradient(135deg, #ffe6e6, #ffcccc);
+      border-left-color: var(--warning-red);
+    }
+
+    .callout.success {
+      background: linear-gradient(135deg, #d4edda, #c3e6cb);
+      border-left-color: var(--success-green);
+    }
+
+    .callout h4 {
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+    }
+
+    .progress-tracker {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 30px;
+      background: #e9ecef;
+      border-radius: 15px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary-orange), var(--primary-yellow));
+      border-radius: 15px;
+      transition: width 0.5s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      background: var(--primary-dark);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 50px;
+    }
+
+    footer p {
+      opacity: 0.8;
+    }
+
+    footer .team-motto {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--primary-orange);
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .award-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      nav ul {
+        gap: 5px;
+      }
+      
+      nav a {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+    }
+
+    .notebook-section {
+      background: linear-gradient(135deg, #e8f4f8, #d4e8ed);
+      border-radius: 16px;
+      padding: 30px;
+      margin: 30px 0;
+    }
+
+    .notebook-section h3 {
+      color: var(--secondary-blue);
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-content">
+      <div class="team-logo">&#9728;&#65039;</div>
+      <h1>SOLAR STORM</h1>
+      <p class="subtitle">STEM Collegiate | FTC Rookie Team | DECODE Season 2025-2026</p>
+      <p style="font-size: 1.1rem; opacity: 0.9;">Your Complete Guide to Qualifying for Provincials</p>
+      
+      <div class="countdown-box">
+        <h3>PROVINCIALS QUALIFIER DEADLINE</h3>
+        <div class="date">January 31, 2026</div>
+        <div class="days-left" id="countdown">Loading...</div>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#awards">Awards Guide</a></li>
+      <li><a href="#checklist">Master Checklist</a></li>
+      <li><a href="#notebook">Engineering Notebook</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#tips">Pro Tips</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+
+    <div class="callout urgent">
+      <h4>IMPORTANT: Christmas Break Action Plan</h4>
+      <p>With only ~7 weeks until provincials and a 2-week break starting soon, use this time wisely! Focus on completing your Engineering Portfolio, practicing your judging presentation, and refining your robot. Every team member should contribute during the break.</p>
+    </div>
+
+    <div class="progress-tracker">
+      <h3 style="display: flex; align-items: center; gap: 10px;">
+        <span style="font-size: 1.5rem;">&#128640;</span>
+        Team Progress Tracker
+      </h3>
+      <p>Track your completion status as you work through requirements</p>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill" style="width: 0%;">0%</div>
+      </div>
+      <p id="progress-text" style="text-align: center; color: #666;">Complete checklist items below to track progress</p>
+    </div>
+
+    <section id="awards">
+      <h2 class="section-title">
+        <span class="icon">&#127942;</span>
+        FTC Awards Guide - What Judges Look For
+      </h2>
+      
+      <div class="callout success">
+        <h4>Why Awards Matter for Provincials</h4>
+        <p><strong>50% of advancement points come from awards!</strong> Teams advance through a combination of field performance (winning matches) AND judged awards. As a rookie team, focusing on awards gives you a real path to provincials even if your robot is still developing.</p>
+      </div>
+
+      <div class="award-grid">
+
+        <div class="award-card">
+          <div class="award-header inspire">
+            <h3>&#11088; INSPIRE AWARD</h3>
+            <div class="importance">TOP AWARD - Best overall team | Advances to Provincials</div>
+          </div>
+          <div class="award-body">
+            <p style="margin-bottom: 15px; color: #666;">The most prestigious award - celebrates teams that embody FIRST values and excel in ALL areas.</p>
+            <ul class="checklist" data-award="inspire">
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Strong engineering portfolio documenting your journey</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Effective robot design that addresses game challenges</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Community outreach and STEM promotion activities</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Demonstrate Gracious Professionalism at all times</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Well-prepared judging presentation (all students speak)</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Consistent on-field robot performance</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="award-card">
+          <div class="award-header think">
+            <h3>&#129504; THINK AWARD</h3>
+            <div class="importance">Best engineering process documentation</div>
+          </div>
+          <div class="award-body">
+            <p style="margin-bottom: 15px; color: #666;">Recognizes the team with the best understanding and use of the engineering design process.</p>
+            <ul class="checklist" data-award="think">
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Portfolio shows clear engineering design process</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Document strategy, design, implement, test, review cycles</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Show iterations and what you learned from failures</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Explain how your control system addresses game challenges</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Include CAD drawings, sketches, and code screenshots</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="award-card">
+          <div class="award-header connect">
+            <h3>&#129309; CONNECT AWARD</h3>
+            <div class="importance">Community outreach & FIRST promotion</div>
+          </div>
+          <div class="award-body">
+            <p style="margin-bottom: 15px; color: #666;">Honors teams that connect with their community and promote FIRST/STEM.</p>
+            <ul class="checklist" data-award="connect">
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Document all outreach activities with photos/descriptions</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Connect with STEM professionals or local businesses</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Promote FIRST and robotics in your school/community</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Partner with organizations for mentorship or sponsorship</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Track numbers: people reached, hours volunteered, etc.</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="award-card">
+          <div class="award-header innovate">
+            <h3>&#128161; INNOVATE AWARD</h3>
+            <div class="importance">Sponsored by RTX | Most creative robot solution</div>
+          </div>
+          <div class="award-body">
+            <p style="margin-bottom: 15px; color: #666;">Celebrates the most innovative and creative robot design solution.</p>
+            <ul class="checklist" data-award="innovate">
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Document your innovative design solution in portfolio</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Explain how you arrived at your creative solution</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Design works consistently (at least 80% of attempts)</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Addresses a specific game challenge in a unique way</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Show the design process and alternatives considered</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="award-card">
+          <div class="award-header design">
+            <h3>&#127912; DESIGN AWARD</h3>
+            <div class="importance">Best industrial design - form, function, aesthetics</div>
+          </div>
+          <div class="award-body">
+            <p style="margin-bottom: 15px; color: #666;">Recognizes robots that demonstrate industrial design excellence.</p>
+            <ul class="checklist" data-award="design">
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Robot has a cohesive, professional appearance</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Clean wiring and organized components</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Balance of form, function, and aesthetics</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Design is efficient and effective for game strategy</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Can explain design choices and inspiration</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="award-card">
+          <div class="award-header control">
+            <h3>&#127918; CONTROL AWARD</h3>
+            <div class="importance">Best software & sensor integration</div>
+          </div>
+          <div class="award-body">
+            <p style="margin-bottom: 15px; color: #666;">Recognizes innovative use of sensors and software for robot control.</p>
+            <ul class="checklist" data-award="control">
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Document all sensors and their purposes</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Explain your autonomous programming strategy</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Control solution works consistently in matches</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Include code screenshots with explanations</span></li>
+              <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Show how sensors increase robot functionality</span></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="checklist">
+      <h2 class="section-title">
+        <span class="icon">&#9989;</span>
+        Master Competition Checklist
+      </h2>
+
+      <div class="card">
+        <h3>&#128196; Portfolio Requirements (CRITICAL)</h3>
+        <p style="color: #666; margin-bottom: 20px;">Your portfolio is reviewed for multiple awards. Maximum 15 pages + cover page.</p>
+        <ul class="checklist" data-award="portfolio">
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Cover page with team number and name</span><span class="priority-high">REQUIRED</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Team section: member bios with photos, roles, interests</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Engineering section: design process, CAD, sketches, iterations</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Software section: code screenshots with descriptions</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Outreach section: community activities with photos</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Game strategy section: explain your approach</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Summary page attached to cover for judges</span><span class="priority-high">REQUIRED</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Under 15 pages (cover not counted)</span><span class="priority-high">REQUIRED</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>File size under 15MB if digital</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>&#129302; Robot Inspection Checklist</h3>
+        <p style="color: #666; margin-bottom: 20px;">Your robot must pass inspection before competing.</p>
+        <ul class="checklist" data-award="robot">
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Robot meets size requirements (18" x 18" x 18" starting config)</span><span class="priority-high">REQUIRED</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Weight within limits (42 lbs max)</span><span class="priority-high">REQUIRED</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>All parts are competition-legal</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Wiring is neat, secured, and follows rules</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Team number clearly visible on two sides</span><span class="priority-high">REQUIRED</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Self-inspect using official checklist before event</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Student present during inspection</span><span class="priority-high">REQUIRED</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>&#127908; Judging Presentation Checklist</h3>
+        <p style="color: #666; margin-bottom: 20px;">You'll have 10 minutes to present to judges.</p>
+        <ul class="checklist" data-award="judging">
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Prepare 5-7 minute presentation (leave time for questions)</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>ALL students should speak (judges notice this)</span><span class="priority-medium">IMPORTANT</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Practice presentation multiple times as a team</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Bring robot for "show and tell" if possible</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Prepare answers to common judge questions</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Know your portfolio well - judges will ask about it</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Dress professionally (team shirts if you have them)</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>&#128230; Competition Day Packing List</h3>
+        <ul class="checklist" data-award="packing">
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Robot and robot cart</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Printed portfolio (bring extras)</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Spare parts and tools</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Laptop with code (charged!)</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Phone chargers for controllers</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Safety glasses for pit work</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Snacks and water</span></li>
+          <li><div class="checkbox" onclick="toggleCheck(this)"></div><span>Team banner/display for pit area</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="notebook">
+      <h2 class="section-title">
+        <span class="icon">&#128221;</span>
+        Engineering Notebook Guide
+      </h2>
+
+      <div class="notebook-section">
+        <h3>&#128218; Engineering Notebook Best Practices</h3>
+        <p style="margin: 15px 0; color: #555;">Your engineering notebook/portfolio is CRITICAL for judging. Document everything from Day 1!</p>
+
+        <div class="two-column">
+          <div>
+            <h4 style="color: var(--primary-orange); margin-bottom: 10px;">What to Include</h4>
+            <ul style="padding-left: 20px; line-height: 2;">
+              <li>Date and time for each entry</li>
+              <li>Who was present at each meeting</li>
+              <li>Goals for each session</li>
+              <li>Design sketches and CAD drawings</li>
+              <li>Code screenshots with explanations</li>
+              <li>Test results (successes AND failures)</li>
+              <li>What you learned and next steps</li>
+              <li>Photos of build progress</li>
+              <li>Outreach activities documentation</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="color: var(--primary-orange); margin-bottom: 10px;">Pro Tips</h4>
+            <ul style="padding-left: 20px; line-height: 2;">
+              <li><strong>Document failures!</strong> Judges love seeing growth</li>
+              <li>Use two-column format: Task | Reflections</li>
+              <li>Include enough detail to recreate your robot</li>
+              <li>Cite sources for any borrowed ideas</li>
+              <li>Add page flags for important sections</li>
+              <li>Create summary page highlighting key pages</li>
+              <li>Real-time documentation is easier than backfilling</li>
+              <li>Photos and diagrams speak louder than words</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline">
+      <h2 class="section-title">
+        <span class="icon">&#128197;</span>
+        Road to Provincials Timeline
+      </h2>
+
+      <div class="timeline">
+        <div class="timeline-item urgent">
+          <div class="timeline-date">NOW - December 20</div>
+          <h4>Pre-Break Sprint</h4>
+          <p>Complete robot core functions, start portfolio, assign Christmas break tasks to each team member.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">December 21 - January 5</div>
+          <h4>Christmas Break (Use This Time!)</h4>
+          <p>Work on portfolio sections individually, practice autonomous code, review game manual, watch strategy videos.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">January 6 - 15</div>
+          <h4>Final Push - Robot Completion</h4>
+          <p>Finalize robot, test all mechanisms, practice driver skills, complete autonomous routines.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">January 16 - 25</div>
+          <h4>Competition Prep</h4>
+          <p>Practice judging presentation, finalize portfolio, self-inspect robot, prepare pit display.</p>
+        </div>
+
+        <div class="timeline-item urgent">
+          <div class="timeline-date">January 31, 2025</div>
+          <h4>PROVINCIALS QUALIFIER</h4>
+          <p>Competition day! Arrive early, stay calm, demonstrate Gracious Professionalism!</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources">
+      <h2 class="section-title">
+        <span class="icon">&#128279;</span>
+        Essential Resources & Links
+      </h2>
+
+      <div class="resource-grid">
+        <div class="resource-card">
+          <h4>&#128218; Official Game Manual</h4>
+          <p>The complete rules for DECODE season. Read this multiple times - it's your bible!</p>
+          <a href="https://ftc-resources.firstinspires.org/ftc/game/manual" target="_blank">Open Manual</a>
+        </div>
+
+        <div class="resource-card">
+          <h4>&#127909; Coach Pratt's YouTube</h4>
+          <p>Excellent FTC tutorials, robot building tips, and strategy advice from experienced coach.</p>
+          <a href="https://www.youtube.com/@BroganMPratt" target="_blank">Watch Videos</a>
+        </div>
+
+        <div class="resource-card">
+          <h4>&#128640; FTC Game Resources</h4>
+          <p>Field specs, scoring elements, AprilTags, and other official materials.</p>
+          <a href="https://ftc-resources.firstinspires.org/ftc/game" target="_blank">View Resources</a>
+        </div>
+
+        <div class="resource-card">
+          <h4>&#128187; FTC Programming Docs</h4>
+          <p>Official documentation for FTC Blocks, Java, and the control system.</p>
+          <a href="https://ftc-docs.firstinspires.org" target="_blank">Learn Programming</a>
+        </div>
+
+        <div class="resource-card">
+          <h4>&#129520; Ctrl-Y Robotics Guide</h4>
+          <p>Excellent beginner-friendly guide to FTC judging and awards.</p>
+          <a href="https://ftc.ctrlyrobotics.org/a-beginners-guide-to-ftc/ftc-judging-and-awards" target="_blank">Read Guide</a>
+        </div>
+
+        <div class="resource-card">
+          <h4>&#128221; Engineering Notebook Tips</h4>
+          <p>Best practices for documentation from experienced teams.</p>
+          <a href="https://fixit3491.com/fix-it-tips-and-tricks/engineering-notebook-tips/" target="_blank">Get Tips</a>
+        </div>
+
+        <div class="resource-card">
+          <h4>&#127942; Awards Library</h4>
+          <p>Official FIRST descriptions of all FTC awards and requirements.</p>
+          <a href="https://www.firstinspires.org/resources/library/first-tech-challenge-awards" target="_blank">View Awards</a>
+        </div>
+
+        <div class="resource-card">
+          <h4>&#128101; FIRST BC Resources</h4>
+          <p>Regional resources for British Columbia FTC teams.</p>
+          <a href="https://firstroboticsbc.org/ftc/ftc-team-resources/" target="_blank">BC Resources</a>
+        </div>
+
+        <div class="resource-card">
+          <h4>&#127891; Rookie Team Guide</h4>
+          <p>Official FIRST documentation specifically for new teams.</p>
+          <a href="https://ftc-docs.firstinspires.org/en/latest/persona_pages/rookie_teams/rookie_teams.html" target="_blank">Rookie Guide</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="tips">
+      <h2 class="section-title">
+        <span class="icon">&#128161;</span>
+        Pro Tips for Rookie Teams
+      </h2>
+
+      <div class="tips-grid">
+        <div class="tip-card">
+          <h4>&#129504; Strategy Tips</h4>
+          <ul>
+            <li>Read the game manual at least 3 times - rules are complex</li>
+            <li>Watch match videos from other regions on YouTube</li>
+            <li>Start with a simple robot that does 1-2 things well</li>
+            <li>Practice autonomous - those points are guaranteed</li>
+            <li>Scout other teams at competition to find good alliance partners</li>
+          </ul>
+        </div>
+
+        <div class="tip-card">
+          <h4>&#127942; Awards Tips</h4>
+          <ul>
+            <li>Awards are 50% of advancement - don't ignore them!</li>
+            <li>Your portfolio matters more than you think</li>
+            <li>Every student should speak during judging presentation</li>
+            <li>Document your journey, including failures</li>
+            <li>Community outreach can set you apart as a rookie</li>
+          </ul>
+        </div>
+
+        <div class="tip-card">
+          <h4>&#129309; Team Culture Tips</h4>
+          <ul>
+            <li>Assign clear roles to each team member</li>
+            <li>Have a dedicated notebook person at every meeting</li>
+            <li>Celebrate small wins to build momentum</li>
+            <li>Ask veteran teams for help - they want to mentor!</li>
+            <li>Gracious Professionalism is noticed by everyone</li>
+          </ul>
+        </div>
+
+        <div class="tip-card">
+          <h4>&#128736; Competition Day Tips</h4>
+          <ul>
+            <li>Arrive at least 30 minutes early</li>
+            <li>Check in and get inspection done first thing</li>
+            <li>Have backup parts and batteries ready</li>
+            <li>Stay calm - problems happen to everyone</li>
+            <li>Cheer for other teams and make friends!</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout success">
+        <h4>Remember: You're Already Winners!</h4>
+        <p>As a first-year team, everything you accomplish is a learning experience. Judges love seeing rookie teams with enthusiasm and strong documentation. Your journey matters more than a perfect robot. Focus on learning, documenting your process, and having fun!</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="team-motto">Solar Storm - Powering the Future!</div>
+    <p>STEM Collegiate | FTC DECODE Season 2025-2026</p>
+    <p style="margin-top: 15px; font-size: 0.9rem;">Good luck on your road to provincials!</p>
+  </footer>
+
+  <script>
+    // Countdown timer
+    function updateCountdown() {
+      const provincials = new Date('2026-01-31T00:00:00');
+      const now = new Date();
+      const diff = provincials - now;
+      
+      const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+      const countdownEl = document.getElementById('countdown');
+      
+      if (days > 0) {
+        countdownEl.textContent = `${days} days remaining!`;
+      } else if (days === 0) {
+        countdownEl.textContent = "TODAY IS THE DAY!";
+      } else {
+        countdownEl.textContent = "Competition Complete";
+      }
+    }
+    updateCountdown();
+
+    // Checklist functionality
+    function toggleCheck(element) {
+      element.classList.toggle('checked');
+      if (element.classList.contains('checked')) {
+        element.innerHTML = '&#10003;';
+      } else {
+        element.innerHTML = '';
+      }
+      updateProgress();
+      saveProgress();
+    }
+
+    function updateProgress() {
+      const total = document.querySelectorAll('.checkbox').length;
+      const checked = document.querySelectorAll('.checkbox.checked').length;
+      const percent = Math.round((checked / total) * 100);
+      
+      document.getElementById('progress-fill').style.width = percent + '%';
+      document.getElementById('progress-fill').textContent = percent + '%';
+      
+      let message = '';
+      if (percent === 0) message = 'Get started by checking off completed items!';
+      else if (percent < 25) message = 'Good start! Keep going!';
+      else if (percent < 50) message = 'Making progress! Stay focused!';
+      else if (percent < 75) message = 'Over halfway there! Great work!';
+      else if (percent < 100) message = 'Almost ready for provincials!';
+      else message = 'AMAZING! You are competition ready!';
+      
+      document.getElementById('progress-text').textContent = message;
+    }
+
+    function saveProgress() {
+      const checkboxes = document.querySelectorAll('.checkbox');
+      const state = Array.from(checkboxes).map(cb => cb.classList.contains('checked'));
+      localStorage.setItem('solarStormProgress', JSON.stringify(state));
+    }
+
+    function loadProgress() {
+      const saved = localStorage.getItem('solarStormProgress');
+      if (saved) {
+        const state = JSON.parse(saved);
+        const checkboxes = document.querySelectorAll('.checkbox');
+        checkboxes.forEach((cb, i) => {
+          if (state[i]) {
+            cb.classList.add('checked');
+            cb.innerHTML = '&#10003;';
+          }
+        });
+        updateProgress();
+      }
+    }
+
+    // Load saved progress on page load
+    loadProgress();
+
+    // Smooth scrolling for navigation
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
