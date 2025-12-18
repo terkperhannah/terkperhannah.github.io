@@ -416,507 +416,476 @@
         });
     </script>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="hero-content">
-                <h1 class="hero-title">Leading Through Delegation</h1>
-                <p class="hero-subtitle">Building Equitable Capacity in a Growing Math Department</p>
-                <div class="leadership-badges">
-                    <span class="badge">Transformational Leadership</span>
-                    <span class="badge">Distributed Leadership</span>
-                    <span class="badge">Coaching Excellence</span>
-                    <span class="badge">Equity Champion</span>
+   <!-- Main Content -->
+    <main class="pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-24">
+
+        <!-- HOME SECTION -->
+        <section id="home" class="scroll-mt-24">
+            <!-- Hero -->
+            <div class="relative rounded-3xl overflow-hidden mb-16 text-white shadow-2xl bg-slate-900 mt-8">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-600/90 to-teal-800/90 z-10 backdrop-blur-[2px]"></div>
+                <div class="relative z-20 px-8 py-20 md:py-32 max-w-4xl">
+                    <span class="bg-white/20 text-white px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider mb-6 inline-block backdrop-blur-md">EDU 887 Final Project</span>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Assistive Technology Implementation Plan</h1>
+                    <p class="text-xl md:text-2xl text-blue-50 mb-8 font-light max-w-2xl leading-relaxed">
+                        Using the SETT Framework (Zabala, n.d.) to build equitable capacity and support diverse learners in secondary mathematics.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#sett" class="bg-white text-blue-700 hover:bg-blue-50 px-8 py-3 rounded-full font-semibold shadow-lg transition-transform hover:-translate-y-1 inline-flex items-center gap-2">
+                            Explore Plan <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#resources" class="border border-white/30 text-white hover:bg-white/10 px-8 py-3 rounded-full backdrop-blur-sm transition-colors">
+                            View Readings
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About / Context -->
+            <div class="grid md:grid-cols-12 gap-12 items-start">
+                <div class="md:col-span-5 relative">
+                    <div class="sticky top-28">
+                        <div class="relative">
+                            <div class="absolute -inset-4 bg-gradient-to-br from-blue-600 to-teal-600 rounded-[2rem] opacity-20 blur-xl"></div>
+                            <!-- User Image -->
+                            <img src="../attached_assets/new_1766072302593.png" alt="Hannah Terkper" class="relative rounded-2xl shadow-2xl w-full object-cover aspect-[3/4] bg-slate-200">
+                        </div>
+                        <div class="mt-8 glass-card p-6 rounded-xl bg-white shadow-lg">
+                            <h3 class="font-bold text-xl mb-2 text-blue-700">Hannah Terkper</h3>
+                            <p class="text-slate-600 mb-4">Mathematics Department Head & Educator</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-xs font-medium">Math 10C & 20-1</span>
+                                <span class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-xs font-medium">Robotics Coach</span>
+                                <span class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-xs font-medium">Yearbook Lead</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-7 space-y-10">
+                    <div>
+                        <h2 class="text-3xl font-bold text-slate-900 mb-6 relative inline-block">
+                            Context & Equity Challenge
+                            <span class="absolute bottom-1 left-0 w-full h-3 bg-teal-200/50 -z-10 transform -rotate-1"></span>
+                        </h2>
+                        <div class="prose prose-lg text-slate-600 leading-relaxed space-y-4">
+                            <p>
+                                I am an educator in Edmonton, Alberta, teaching in a secondary school (Grades 7–12) with a diverse student population. Our community includes multilingual learners (ELL), students with identified and unidentified learning needs, and students from historically marginalized communities (Kiritsis & Manolis, 2024).
+                            </p>
+                            <p>
+                                My teaching background includes math and computer science, and I regularly integrate technology into instruction. Over the past four years, my technology use has evolved from simple LMS posting to building interactive virtual classroom extensions that align with Universal Design for Learning principles (CAST, n.d.).
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100">
+                            <h3 class="flex items-center gap-3 text-lg font-bold mb-3 text-slate-900">
+                                <div class="p-2 bg-blue-100 rounded-lg text-blue-600"><i data-lucide="laptop" class="w-5 h-5"></i></div>
+                                The Digital Divide
+                            </h3>
+                            <p class="text-slate-600 text-sm">
+                                A key equity reality in my context is that students use family-purchased personal laptops. Device quality varies widely—from high-performance machines to entry-level devices that struggle with multitasking, a symptom of the "Digital Access Divide" (U.S. Department of Education, 2024).
+                            </p>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100">
+                            <h3 class="flex items-center gap-3 text-lg font-bold mb-3 text-slate-900">
+                                <div class="p-2 bg-teal-100 rounded-lg text-teal-600"><i data-lucide="heart-handshake" class="w-5 h-5"></i></div>
+                                Inclusive Design
+                            </h3>
+                            <p class="text-slate-600 text-sm">
+                                "Everyone has a computer" does not mean everyone has equal access (Miah, 2023). I aim to choose tools that reduce barriers for reading load, processing speed, and executive functioning without relying on high-end hardware.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-xl">
+                        <h3 class="font-bold text-lg text-blue-800 mb-2">My Goal</h3>
+                        <p class="text-blue-700 italic">
+                            "To use frameworks like SETT, UDL, TPACK, and SAMR to make technology choices that reduce barriers and support student confidence and independence—without relying on tools that only work for students with stronger devices or more resources."
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <div class="content-wrapper">
-            <section class="section animate-on-scroll">
-  <div class="section-header">
-    <h2 class="section-title">Leadership Challenge</h2>
-    <p>Transforming inequitable delegation patterns in a grade 7–12 Alberta charter school</p>
-  </div>
-  <div class="interactive-grid">
-    <div class="card">
-      <h3 class="card-title">Challenge Overview</h3>
-      <div class="card-content">
-        <p>As Head of Mathematics in a rapidly growing Alberta charter school, I encountered a persistent leadership dilemma: centralized assessment development was overburdening a few individuals, limiting innovation, and reproducing inequitable power structures. Burnout was particularly acute among newer staff and teachers of color, who were underrepresented in leadership roles despite their qualifications and potential. This created a need to redistribute leadership in a more inclusive, capacity-building way. As Imani et al. (2023, p. 46) note, “Our teammate never gets to rise to their full responsibility, power, and potential” when delegation is withheld.</p>
-        <p>Building on Module 3’s systems thinking and Module 2’s emphasis on relational trust, I identified that the root of this challenge was not only structural but also cultural. Leadership was informally gatekept, often unintentionally, through norms of risk-aversion, control, and default assumptions about readiness. This mindset limited collective problem-solving and reinforced inequities. As Wagner et al. (2006, p. 140) emphasize, “when leaders begin owning these problems and taking responsibility for student achievement, they model a different and more productive way of approaching problems.” This adaptive challenge required not just technical fixes, but a deeper shift toward shared accountability and collective ownership of student learning.</p>
-      </div>
-    </div>
-    <div class="card">
-      <h3 class="card-title">Stakeholder Landscape</h3>
-      <div class="card-content">
-        <p>The mathematics team comprised 8 teachers (4 early-career, 2 mid-career, 2 veterans). Roughly 25% identified as BIPOC, and 25% identified as women. Each teacher oversaw a grade level from 7 through 12. Informal power imbalances existed based on tenure, subject specialization, and past visibility in school-wide initiatives.</p>
-        <p>While the formal structure had grade-level leads, there were no clear protocols for decision-making or shared ownership. Feedback suggested a lack of psychological safety for early career and BIPOC teachers to fully participate in leadership activities. These equity issues were compounded by inconsistent communication, vague role expectations, and a history of reactive, rather than developmental support structures (Module 6).</p>
-      </div>
-    </div>
-    <div class="card">
-  <h3 class="card-title">Equity and Delegation Focus</h3>
-  <div class="card-content">
-    <ul>
-      <li><strong>New teachers</strong> were not invited into leadership opportunities, often due to unspoken norms and perceptions of inexperience.</li>
-      <li><strong>Veteran staff</strong> often retained decision-making authority, unintentionally limiting distributed leadership and reinforcing existing hierarchies.</li>
-      <li><strong>Historic centralization</strong> around assessment design reinforced top-down control and disempowered emerging leaders.</li>
-    </ul>
-    <p>
-      As noted by Grissom et al. (2021), “Effective principals orient their practice toward instructionally focused interactions with teachers, building a productive school climate, facilitating collaboration and professional learning communities, and strategic personnel and resource management processes” (p. 92). Addressing these dynamics demanded a mindset shift from gatekeeping to capacity-building, rooted in equity and shared accountability.
-    </p>
-  </div>
-</div>
-  </div>
-</section>
-
-
-            <!-- Leadership Frameworks -->
-            <section class="section animate-on-scroll">
-                <div class="section-header">
-                    <h2 class="section-title">Leadership Frameworks Applied</h2>
-                </div>
-
-                <div class="framework-showcase">
-    <div class="framework-tabs">
-      <button class="tab-button active" onclick="showTab('transformational')">Transformational Leadership</button>
-      <button class="tab-button" onclick="showTab('distributed')">Distributed Leadership</button>
-      <button class="tab-button" onclick="showTab('coaching')">Coaching Leadership</button>
-    </div>
-
-    <div id="transformational" class="tab-content active">
-  <h3>Transformational Leadership (Fullan, Rincon-Gallardo, & Hargreaves, 2015)</h3>
-  <p><strong>Definition:</strong> Mobilizing adaptive change by building trust, aligning vision, and fostering collective ownership (Crane, 2025).</p>
-  <p><strong>Application:</strong> I shifted from a top-down assessment approach to collaborative co-design. This aligned with transformational principles by inspiring teachers to reimagine their roles as co-creators of a shared assessment philosophy. This reframing addressed entrenched power dynamics (Module 3) and improved professional capital. As Fullan, Rincon-Gallardo, and Hargreaves (2015) explain, “The success of a new accountability framework relies on the creation of systems that invest in and build the professional capital of teachers and school leaders to make sound decisions in classrooms and schools based on their best collective and individual professional judgment” (p. 7).</p>
-  <p><strong>Connection to Action Plan:</strong> The co-created assessment workshops in Months 5–6 were grounded in this approach, promoting staff-led innovation and vision alignment through shared deliverables.</p>
-</div>
-
-
-    <div id="distributed" class="tab-content">
-  <h3>Distributed Leadership (Harris et al., 2022)</h3>
-  <p><strong>Definition:</strong> Leadership is not held by one individual but spread across formal and informal roles to foster shared ownership and sustainability. As Harris et al. (2022) explain, “Distributed leadership implies a model of shared, collective, and extended leadership practice where the emphasis is upon interdependent interactions rather than individual and independent actions” (p. 439).</p>
-  <p><strong>Application:</strong> Using RACI charts, I created clearly defined responsibilities at each grade level. This supported the strategic delegation of tasks and built leadership capacity by embedding feedback loops and protocols into team routines (Module 4).</p>
-  <p><strong>Connection to Action Plan:</strong> The RACI Chart Workshops in Months 1–2 and mid-course corrections based on peer feedback exemplify distributed leadership. This also reflects the equity-driven delegation models emphasized in Module 3 and the coaching-informed team norms in Module 6.</p>
-</div>
-
-    <div id="coaching" class="tab-content">
-      <h3>Coaching Leadership (Bungay Stanier, 2016; Module 2)</h3>
-      <p><strong>Definition:</strong> Supporting others in becoming problem-solvers by using inquiry-based conversations rather than giving directives (Bungay Stanier, 2016; Module 2).</p>
-      <p><strong>Application:</strong> I embedded biweekly coaching check-ins using "What’s on your mind?" and "What’s the real challenge here for you?" This aligned with Module 2’s emphasis on trust-building and psychological safety (Bryk & Schneider, 2002). Early-career teachers expressed increased confidence and voice in meetings as a result.</p>
-      <p><strong>Connection to Action Plan:</strong> Coaching check-ins were implemented starting in Month 1 and continued throughout. By Month 4, these check-ins fed into peer learning circles, reflecting a shift from individual coaching to community-based reflection (Module 5).</p>
-    </div>
-  </div>
-</section>
-
-            <!-- Metrics Dashboard -->
-<section class="section animate-on-scroll">
-  <div class="metrics-dashboard">
-    <h2>Success Metrics & Impact</h2>
-    <div class="metrics-grid">
-      <div class="metric-card">
-        <span class="metric-number">85%</span>
-        <span class="metric-label">Leadership Confidence Target</span>
-      </div>
-      <div class="metric-card">
-        <span class="metric-number">90%</span>
-        <span class="metric-label">Co-created Assessments Goal</span>
-      </div>
-      <div class="metric-card">
-        <span class="metric-number">65%</span>
-        <span class="metric-label">Increase in “Expertise Valued”</span>
-      </div>
-      <div class="metric-card">
-        <span class="metric-number">100%</span>
-        <span class="metric-label">Early-Career Leadership Roles</span>
-      </div>
-    </div>
-  </div>
-
-  <div style="margin-top: 20px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto;">
-  <div class="interactive-grid">
-  <div class="card">
-    <h3 class="card-title">Leadership Confidence</h3>
-    <div class="card-content">
-      <p><strong>Target:</strong> 85%</p>
-      <p>Measured via pre/post Leadership Confidence Index surveys in Months 1 and 6, including Likert items on self-efficacy, role clarity, and peer trust.</p>
-      <p><em>“The level of relational trust among school personnel and between school personnel and parents predicts the extent to which children’s achievement in reading and math improves or declines over time.”</em> (Bryk & Schneider, 2002, p. 782)</p>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3 class="card-title">Co-created Assessments</h3>
-    <div class="card-content">
-      <p><strong>Target:</strong> 90%</p>
-      <p>Measured by the proportion of shared unit plans submitted to the department folder, verified monthly by grade-level leads.</p>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3 class="card-title">Expertise Valued</h3>
-    <div class="card-content">
-      <p><strong>Target:</strong> 65%</p>
-      <p>Drawn from perception surveys and coded qualitative feedback on whose ideas are recognized during collaborative planning.</p>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3 class="card-title">Early-Career Leadership</h3>
-    <div class="card-content">
-      <p><strong>Target:</strong> 100%</p>
-      <p>Measured through participation logs from coaching, planning, and facilitation. Disaggregated by experience and identity.</p>
-      <p><em>“Our teammate never gets to rise to their full responsibility, power, and potential.”</em> (Imani et al., 2023, p. 46)</p>
-    </div>
-  </div>
-</div>
-
-<div style="margin-top: 30px; background: #f3f8ff; padding: 20px; border-radius: 10px; border-left: 4px solid var(--primary-blue);">
-  <p><strong>Continuous Improvement Process:</strong> All data will be reviewed in bi-monthly meetings using Plan–Do–Study–Act (PDSA) cycles to enable iterative refinement, reflection, and shared accountability aligned with distributed and coaching leadership models (Grunow, 2015).</p>
-</div>
-
-
-</section>
-
-                <!-- Timeline -->
-<section class="section animate-on-scroll">
-  <div class="section-header">
-    <h2 class="section-title">Six-Month Action Plan</h2>
-  </div>
-
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-content">
-        <h4>Months 1–2: Foundation & Role Activation</h4>
-        <p>Introduce the new leadership model during the department retreat using Liberatory Design principles. Use Distributed Leadership theory to guide RACI chart development. Begin biweekly coaching check-ins guided by the Coaching Habit (Bungay Stanier, 2016).</p>
-        <p><em>Metrics collected:</em> Pre-assessment of Leadership Confidence Index (Week 2); sign-up logs for roles and coaching rounds begin.</p>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-content">
-        <h4>Month 3: Mid-Course Feedback & Correction</h4>
-        <p>Conduct midpoint review using feedback from coaching and planning meetings. Analyze anonymous responses from staff on inclusion and leadership using coding protocols grounded in <strong>relational trust</strong> (Bryk & Schneider, 2002). Realign RACI expectations and adjust workshop topics based on input.</p>
-        <p><em>Metrics collected:</em> Midpoint climate survey, peer reflection logs, learning circle insights.</p>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-content">
-        <h4>Month 4: Capacity Building for Equity</h4>
-        <p>Facilitate an “<strong>Equitable Delegation</strong>” workshop (Module 5) and initiate peer-led professional learning circles. This phase reinforces <strong>Transformational Leadership</strong> by inspiring shared ownership and deepening collective vision alignment.</p>
-        <p><em>Metrics collected:</em> Qualitative feedback on perceived expertise and role clarity; coaching session observations logged.</p>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-content">
-        <h4>Months 5–6: Implementation & Evaluation</h4>
-        <p>Lead assessment workshops co-designed by early-career teachers. Finalize documentation of all co-created assessments. Use the <strong>PDSA cycle</strong> to review outcomes and iterate next steps for sustained leadership distribution.</p>
-        <p><em>Metrics collected:</em> Post-survey of Leadership Confidence Index, updated coaching logs, participation rates disaggregated by experience and identity.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-            <!-- Interactive Quote -->
-            <div class="interactive-quote animate-on-scroll">
-                <p class="quote-text">Module 2's trust research reshaped my view of delegation - I now see shared authority as building trust, not losing control. This challenged my 'hero leadership' mindset.</p>
-                <p class="quote-author">- Hannah Terkper, Reflective Leadership Growth</p>
+        <!-- SETT FRAMEWORK SECTION -->
+        <section id="sett" class="scroll-mt-24 pt-12 border-t border-slate-200">
+            <div class="text-center mb-12 max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-slate-900 mb-4">The SETT Framework Analysis</h2>
+                <p class="text-xl text-slate-600">
+                    A systematic approach to selecting Assistive Technology (AT) by analyzing the 
+                    <span class="font-bold text-blue-600"> Student</span>, 
+                    <span class="font-bold text-teal-600"> Environment</span>, 
+                    <span class="font-bold text-purple-600"> Tasks</span>, and 
+                    <span class="font-bold text-pink-600"> Tools</span>.
+                </p>
             </div>
 
-            <!-- Key Strategies -->
-            <section class="section animate-on-scroll">
-                <div class="section-header">
-                    <h2 class="section-title">Strategic Implementation</h2>
+            <!-- Custom Tabs -->
+            <div class="bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden">
+                <div class="flex border-b border-slate-200 overflow-x-auto">
+                    <button onclick="openTab('student')" class="tab-btn active flex-1 py-4 px-6 text-center font-bold text-slate-600 hover:bg-slate-50 transition-colors whitespace-nowrap" data-tab="student">S - Student</button>
+                    <button onclick="openTab('environment')" class="tab-btn flex-1 py-4 px-6 text-center font-bold text-slate-600 hover:bg-slate-50 transition-colors whitespace-nowrap" data-tab="environment">E - Environment</button>
+                    <button onclick="openTab('tasks')" class="tab-btn flex-1 py-4 px-6 text-center font-bold text-slate-600 hover:bg-slate-50 transition-colors whitespace-nowrap" data-tab="tasks">T - Tasks</button>
+                    <button onclick="openTab('tools')" class="tab-btn flex-1 py-4 px-6 text-center font-bold text-slate-600 hover:bg-slate-50 transition-colors whitespace-nowrap" data-tab="tools">T - Tools</button>
                 </div>
 
-                <div class="interactive-grid">
-                    <div class="card">
-                        <span class="card-icon"></span>
-                        <h3 class="card-title">RACI Chart Workshops</h3>
-                        <div class="card-content">
-                            <p>Collaborative role definition amplifying BIPOC teacher voices through structured protocols.</p>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <span class="card-icon"></span>
-                        <h3 class="card-title">Coaching for Growth</h3>
-                        <div class="card-content">
-                            <p>Personalized leadership pathways using "Coaching Habit" questions instead of directive feedback.</p>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <span class="card-icon"></span>
-                        <h3 class="card-title">Structured Meetings</h3>
-                        <div class="card-content">
-                            <p>Meeting Wise "Stacked Start" protocols ensuring equal participation across all stakeholders.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Sample Staff Email Section -->
-            <section class="section animate-on-scroll">
-                <div class="section-header">
-                    <h2 class="section-title">Leadership in Action</h2>
-                </div>
-
-                <div class="interactive-grid">
-                    <div class="card">
-                        <span class="card-icon"></span>
-                        <h3 class="card-title">Sample Staff Email: New Grade-Level Leadership Roles</h3>
-                        <div class="card-content">
-                            <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 15px 0; border-left: 4px solid var(--primary-blue);">
-                                <p><strong>Subject:</strong> Co-Designing Our Math Department Leadership Vision</p>
-                                <p><strong>Dear Team,</strong></p>
-                                <p>I hope you are all enjoying a peaceful summer. I'm writing to share with you that we're very excited to begin planning our August department retreat. We have a new model of grade-level leadership this year based on collective accountability, openness, and equity.</p>
-                                <p>We'll be using the RACI model (Responsible, Accountable, Consulted, Informed) to co-create roles and responsibilities within our team. It's not about adding more work, it's about developing a leadership framework that supports our strengths, values, and aspirations. I invite every voice into this process.</p>
-                                <p><strong>During our retreat, we'll:</strong></p>
-                                <ul>
-                                    <li>Think about what good team leadership is</li>
-                                    <li>Create clear leadership roles for each grade level</li>
-                                    <li>Try out new protocols for inclusive decision-making</li>
-                                    <li>Discuss embedding support and feedback loops</li>
+                <div class="p-8">
+                    <!-- Student Tab -->
+                    <div id="student" class="tab-content active">
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="border-t-4 border-blue-500 bg-white p-6 rounded-lg shadow-sm">
+                                <h3 class="flex items-center gap-2 text-2xl font-bold text-blue-700 mb-2">
+                                    <i data-lucide="user" class="w-6 h-6"></i> Learner Profile
+                                </h3>
+                                <p class="text-slate-500 mb-4 text-sm">Target Audience: Grade 10-12 Math Students</p>
+                                <div class="space-y-4 text-slate-700">
+                                    <p><strong>Demographics:</strong> Diverse classroom including ELLs, students with ADHD, and students with varied processing speeds (Madhumathi et al., 2024).</p>
+                                    <div class="bg-slate-50 p-4 rounded-lg">
+                                        <h4 class="font-bold mb-2 flex items-center gap-2"><i data-lucide="brain" class="w-4 h-4 text-blue-500"></i> Strengths</h4>
+                                        <ul class="list-disc pl-5 space-y-1 text-sm">
+                                            <li>Comfortable with basic technology.</li>
+                                            <li>Visual learners who benefit from examples.</li>
+                                            <li>Collaborative when given structure.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-t-4 border-blue-500 bg-white p-6 rounded-lg shadow-sm">
+                                <h3 class="text-2xl font-bold text-blue-700 mb-4">Needs & Challenges</h3>
+                                <ul class="space-y-4 text-slate-700">
+                                    <li class="flex gap-3">
+                                        <span class="w-2 h-2 rounded-full bg-red-400 mt-2 flex-shrink-0"></span>
+                                        <span><strong>Executive Functioning:</strong> Difficulty organizing digital files and tracking deadlines (Mosher et al., 2022).</span>
+                                    </li>
+                                    <li class="flex gap-3">
+                                        <span class="w-2 h-2 rounded-full bg-red-400 mt-2 flex-shrink-0"></span>
+                                        <span><strong>Processing Load:</strong> High cognitive load when switching between note-taking and listening.</span>
+                                    </li>
+                                    <li class="flex gap-3">
+                                        <span class="w-2 h-2 rounded-full bg-red-400 mt-2 flex-shrink-0"></span>
+                                        <span><strong>Variable Access:</strong> Stress related to laggy laptops affecting participation (U.S. Dept of Education, 2024).</span>
+                                    </li>
                                 </ul>
-                                <p>Your experiences and thoughts are central to co-creating this. Next week I'll post some guide questions so that you can begin thinking ahead.</p>
-                                <p>Looking forward to collaborating with you all,<br><strong>Hannah</strong></p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card">
-                        <span class="card-icon"></span>
-                        <h3 class="card-title">Reflection on Leadership Growth</h3>
-                        <div class="card-content">
-                            <div style="background: linear-gradient(135deg, #e8f5e8, #f0f8ff); padding: 20px; border-radius: 10px; margin: 15px 0;">
-                                <p>Over the course of this course, my leadership paradigm has been significantly shifted. Module 2's examination of relational trust (Bryk & Schneider, 2002) and consideration of equitable delegation dispelled the idea that great leaders must always "do it all." Now I can envision how equity and sustainability are founded on trust, shared vision, and distributed leadership.</p>
-                                
-                                <p>As I've moved from a task-focused mindset to a trust-focused one, I've started to see delegation not as a handoff, but as a form of professional trust, a way to recognize, empower, and grow others. I've also come to appreciate that leadership is not just strategic, it's deeply human.</p>
-                                
-                                <p><strong>In the years to come, I will continue using frameworks like RACI and coaching processes (Bungay Stanier, 2016) with a deeper focus on existing in constant reflection, humility, and shared purpose.</strong></p>
+                    <!-- Environment Tab -->
+                    <div id="environment" class="tab-content">
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="bg-teal-50/50 border border-teal-100 p-6 rounded-lg">
+                                <h3 class="flex items-center gap-2 text-teal-800 font-bold mb-3"><i data-lucide="globe" class="w-5 h-5"></i> Physical</h3>
+                                <p class="text-slate-700 text-sm">BYOD classroom. High variability in hardware quality. Limited power outlets. Reliable high-speed Wi-Fi available.</p>
+                            </div>
+                            <div class="bg-teal-50/50 border border-teal-100 p-6 rounded-lg">
+                                <h3 class="flex items-center gap-2 text-teal-800 font-bold mb-3"><i data-lucide="users" class="w-5 h-5"></i> Social</h3>
+                                <p class="text-slate-700 text-sm">Collaborative seating. Culture of peer support, but some stigma around "special" accommodations. Goal: Universal design.</p>
+                            </div>
+                            <div class="bg-teal-50/50 border border-teal-100 p-6 rounded-lg">
+                                <h3 class="flex items-center gap-2 text-teal-800 font-bold mb-3"><i data-lucide="monitor" class="w-5 h-5"></i> Instructional</h3>
+                                <p class="text-slate-700 text-sm">Blended learning model. Microsoft Teams & Google Sites. Emphasis on process over final answers. Fast-paced.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tasks Tab -->
+                    <div id="tasks" class="tab-content">
+                        <div class="border-l-8 border-purple-500 bg-white p-8 rounded-lg shadow-sm">
+                            <h3 class="text-2xl font-bold text-purple-800 flex items-center gap-3 mb-2">
+                                <i data-lucide="check-square" class="w-8 h-8"></i> Key Tasks for Success
+                            </h3>
+                            <p class="text-slate-500 mb-6">What do we need the students to be able to do?</p>
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <div>
+                                    <h4 class="font-bold text-lg mb-3 text-purple-700">Academic Tasks</h4>
+                                    <ul class="space-y-2 text-slate-700 text-sm">
+                                        <li>• Access and read complex mathematical text/problems.</li>
+                                        <li>• Organize digital notes and resources efficiently.</li>
+                                        <li>• Demonstrate understanding through written work.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-3 text-purple-700">Functional Tasks</h4>
+                                    <ul class="space-y-2 text-slate-700 text-sm">
+                                        <li>• Navigate the learning management system (LMS).</li>
+                                        <li>• Manage time during independent work blocks.</li>
+                                        <li>• Collaborate on shared digital whiteboards.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tools Tab -->
+                    <div id="tools" class="tab-content">
+                        <div class="bg-pink-50 p-6 rounded-xl border border-pink-100 mb-8">
+                            <h3 class="text-xl font-bold text-pink-800 mb-2 flex items-center gap-2">
+                                <i data-lucide="wrench" class="w-5 h-5"></i> Tool Selection Criteria
+                            </h3>
+                            <p class="text-slate-700">Tools must be <strong>platform-agnostic</strong> (web-based), <strong>low-bandwidth</strong> friendly, and integrate with existing ecosystems (Almufarreh & Arshad, 2023).</p>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="border-t-4 border-pink-400 bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                                <h3 class="text-lg font-bold mb-1">EquatIO</h3>
+                                <span class="text-xs bg-slate-100 px-2 py-1 rounded mb-4 inline-block">Math Input</span>
+                                <p class="text-sm text-slate-600 mb-4">Allows students to speak, draw, or type math equations. Essential for dysgraphia.</p>
+                                <p class="text-xs font-bold text-pink-600">Rationale: Reduces barrier of "typing math" (CAST, n.d.).</p>
+                            </div>
+                            <div class="border-t-4 border-pink-400 bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                                <h3 class="text-lg font-bold mb-1">Immersive Reader</h3>
+                                <span class="text-xs bg-slate-100 px-2 py-1 rounded mb-4 inline-block">Text-to-Speech</span>
+                                <p class="text-sm text-slate-600 mb-4">Reads text aloud, highlights lines. Helps ELL and reading challenges (Kaczorowski et al., 2023).</p>
+                                <p class="text-xs font-bold text-pink-600">Rationale: Universal tool, no extra install.</p>
+                            </div>
+                            <div class="border-t-4 border-pink-400 bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                                <h3 class="text-lg font-bold mb-1">Desmos Classroom</h3>
+                                <span class="text-xs bg-slate-100 px-2 py-1 rounded mb-4 inline-block">Interactive</span>
+                                <p class="text-sm text-slate-600 mb-4">Web-based graphing and activity builder. Real-time feedback.</p>
+                                <p class="text-xs font-bold text-pink-600">Rationale: Runs on any device.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Future Leadership Identity -->
-            <section class="section animate-on-scroll">
-                <div class="framework-showcase">
-                    <h2>Future Leadership Identity</h2>
-                    <p>Integrating coaching leadership with liberatory design to:</p>
-                    <ul style="text-align: left; max-width: 600px; margin: 20px auto;">
-                        <li><strong>Center student voice</strong> in curriculum decisions</li>
-                        <li><strong>Embed "equity pauses"</strong> in meetings to check power dynamics</li>
-                        <li><strong>Model vulnerability</strong> by sharing delegation missteps</li>
-                        <li><strong>Build sustainable systems</strong> for inclusive leadership development</li>
-                    </ul>
-                </div>
-            </section>
+        <!-- IMPLEMENTATION SECTION -->
+        <section id="implementation" class="scroll-mt-24 pt-12 border-t border-slate-200">
+            <header class="mb-12">
+                <span class="bg-teal-600 text-white px-3 py-1 rounded-full text-xs font-bold uppercase mb-4 inline-block">Action Plan</span>
+                <h2 class="text-4xl font-bold text-slate-900 mb-4">Implementation Strategy</h2>
+                <p class="text-lg text-slate-600">A phased approach to integrating Assistive Technology, ensuring sustainability.</p>
+            </header>
 
-            <!-- Portfolio Completion Showcase -->
-            <section class="cta-section animate-on-scroll">
-                <h2>Leadership Development Journey Complete</h2>
-                <p>This comprehensive showcase demonstrates the integration of transformational, distributed, and coaching leadership frameworks in building equitable capacity within educational organizations.</p>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin: 30px 0; text-align: left;">
-                    <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 15px; backdrop-filter: blur(10px);">
-                        <h4 style="margin: 0 0 10px 0; color: #fff;">Academic Integration</h4>
-                        <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">Theory-to-practice application with scholarly foundation and measurable outcomes</p>
-                    </div>
-                    <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 15px; backdrop-filter: blur(10px);">
-                        <h4 style="margin: 0 0 10px 0; color: #fff;">Equity-Centered Leadership</h4>
-                        <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">Intentional focus on BIPOC teacher empowerment and inclusive delegation practices</p>
-                    </div>
-                    <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 15px; backdrop-filter: blur(10px);">
-                        <h4 style="margin: 0 0 10px 0; color: #fff;">Sustainable Systems</h4>
-                        <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">RACI frameworks and coaching protocols for long-term organizational growth</p>
+            <div class="space-y-12">
+                <!-- Phase 1 -->
+                <div class="relative pl-8 border-l-2 border-slate-200">
+                    <div class="absolute -left-[11px] top-0 w-6 h-6 rounded-full bg-white border-4 border-teal-500"></div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-6">Phase 1: Preparation & Training</h3>
+                    <div class="grid gap-6">
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100">
+                            <h4 class="text-lg font-bold flex items-center gap-2 mb-3"><i data-lucide="users" class="w-5 h-5 text-teal-600"></i> Stakeholder Engagement</h4>
+                            <ul class="space-y-2 text-slate-600 text-sm">
+                                <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-1 text-teal-500"></i> <span><strong>Students:</strong> Survey for barriers (National Equity Project, 2024).</span></li>
+                                <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-1 text-teal-500"></i> <span><strong>Parents:</strong> Newsletter on equity vs equality (Ott, 2017).</span></li>
+                                <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-1 text-teal-500"></i> <span><strong>IT Support:</strong> Whitelisting tools.</span></li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100">
+                            <h4 class="text-lg font-bold flex items-center gap-2 mb-3"><i data-lucide="flag" class="w-5 h-5 text-teal-600"></i> Resource Creation</h4>
+                            <p class="text-slate-600 text-sm">Create short "How-to" videos for accessing tools. Post on LMS to support independence (CAST, 2024).</p>
+                        </div>
                     </div>
                 </div>
 
-                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; margin-top: 30px; border: 2px solid rgba(255,255,255,0.2);">
-                    <p style="margin: 0; font-style: italic; font-size: 1.1rem;">
-                        "Leadership is not about being in charge. Leadership is about taking care of those in your charge." 
-                        <span style="opacity: 0.8; font-size: 0.9rem;">— Applied through equitable delegation and distributed leadership practices</span>
+                <!-- Phase 2 -->
+                <div class="relative pl-8 border-l-2 border-slate-200">
+                    <div class="absolute -left-[11px] top-0 w-6 h-6 rounded-full bg-white border-4 border-blue-500"></div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-6">Phase 2: Step-by-Step Rollout</h3>
+                    <div class="space-y-4">
+                        <details class="group bg-white rounded-lg border border-slate-200 open:ring-2 open:ring-blue-100">
+                            <summary class="flex items-center justify-between p-4 cursor-pointer font-semibold text-slate-800">
+                                Month 1: Universal Introduction
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="p-4 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-100 group-open:border-t">
+                                Introduce <strong>Immersive Reader</strong> to the <em>entire class</em> as a proofreading tool, not just an accommodation. This reduces stigma.
+                            </div>
+                        </details>
+                        <details class="group bg-white rounded-lg border border-slate-200 open:ring-2 open:ring-blue-100">
+                            <summary class="flex items-center justify-between p-4 cursor-pointer font-semibold text-slate-800">
+                                Month 2: Targeted Math Tools
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="p-4 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-100 group-open:border-t">
+                                Introduce <strong>EquatIO</strong> during a low-stakes assessment. Allow students to choose paper or digital.
+                            </div>
+                        </details>
+                        <details class="group bg-white rounded-lg border border-slate-200 open:ring-2 open:ring-blue-100">
+                            <summary class="flex items-center justify-between p-4 cursor-pointer font-semibold text-slate-800">
+                                Month 3: Student Autonomy
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="p-4 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-100 group-open:border-t">
+                                Students create their own "Tech Toolkit" plan. They self-select tools that worked best.
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="relative pl-8 border-l-2 border-slate-200">
+                    <div class="absolute -left-[11px] top-0 w-6 h-6 rounded-full bg-white border-4 border-purple-500"></div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-6">Phase 3: Monitoring & Sustainability</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-purple-50 p-6 rounded-lg">
+                            <h4 class="text-lg font-bold text-purple-900 flex items-center gap-2 mb-2"><i data-lucide="bar-chart-3" class="w-5 h-5"></i> Metrics</h4>
+                            <ul class="list-disc pl-5 space-y-1 text-purple-800/80 text-sm">
+                                <li>Completion rates of homework.</li>
+                                <li>Quality of written explanations.</li>
+                                <li>Student self-efficacy scores.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-100 p-6 rounded-lg">
+                            <h4 class="text-lg font-bold text-slate-900 flex items-center gap-2 mb-2"><i data-lucide="refresh-cw" class="w-5 h-5"></i> Sustainability</h4>
+                            <p class="text-slate-700 text-sm">Appoint student "Tech Captains" to help peers troubleshoot (National Equity Project, 2024).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- REFLECTION SECTION -->
+        <section id="reflection" class="scroll-mt-24 pt-12 border-t border-slate-200">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-slate-900 mb-4">Critical Self-Reflection</h2>
+                <p class="text-xl text-slate-600 max-w-2xl mx-auto">Examining the journey of designing for equity.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-gradient-to-br from-blue-50 to-white border border-blue-100 p-8 rounded-xl shadow-sm">
+                    <h3 class="flex items-center gap-2 text-xl font-bold text-blue-700 mb-4"><i data-lucide="sparkles" class="w-5 h-5"></i> Professional Growth</h3>
+                    <p class="text-slate-700 leading-relaxed">
+                        Through this project, I've moved from viewing accommodations as "exceptions" to "essential design features." I learned that designing for the margins creates a better environment for everyone (Curb Cut Effect). This aligns with the belief that technology requires intentional training (Sesan, 2020).
                     </p>
                 </div>
-
-                <div style="margin-top: 30px;">
-                    <a href="index.html" style="
-                        display: inline-block;
-                        padding: 15px 40px;
-                        background: linear-gradient(135deg, var(--success-green), #27ae60);
-                        color: white;
-                        text-decoration: none;
-                        border-radius: 25px;
-                        font-weight: 600;
-                        transition: all 0.3s ease;
-                    " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 25px rgba(46, 204, 113, 0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-                        Return to Digital Classroom
-                    </a>
+                <div class="bg-gradient-to-br from-teal-50 to-white border border-teal-100 p-8 rounded-xl shadow-sm">
+                    <h3 class="flex items-center gap-2 text-xl font-bold text-teal-700 mb-4"><i data-lucide="target" class="w-5 h-5"></i> Addressing Challenges</h3>
+                    <p class="text-slate-700 leading-relaxed">
+                        The biggest obstacle was device variability. I addressed this by strictly filtering for browser-based, lightweight tools. This constraint forced creative solutions, moving from "equal" access to "equitable" classrooms (Smith, 2023).
+                    </p>
                 </div>
-            </section>
+            </div>
 
-             <!-- References Section -->
-            <section class="section animate-on-scroll">
-                <div class="framework-showcase">
-                    <div class="framework-tabs">
-                        <button class="tab-button" onclick="toggleReferences()" id="references-toggle">
-                            <span id="references-text">Show Academic References</span>
-                            <span id="references-arrow" style="margin-left: 8px; transition: transform 0.3s ease;">▼</span>
-                        </button>
-                    </div>
+            <div class="bg-slate-900 text-slate-100 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-12 opacity-10 transform scale-150">
+                    <i data-lucide="quote" class="w-48 h-48"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3 relative z-10"><i data-lucide="lightbulb" class="w-8 h-8 text-yellow-400"></i> Connection to Course Goals</h3>
+                <div class="space-y-6 relative z-10 text-lg font-light leading-relaxed opacity-90">
+                    <p>This implementation plan directly applies <strong>EDU 887</strong> principles by moving beyond "access" to "equity".</p>
+                    <p>The SETT framework provided the structure to stop chasing "shiny tools" and analyze student needs (Zabala, n.d.). This shift defines my future leadership (Kiritsis & Manolis, 2024).</p>
+                </div>
+            </div>
+        </section>
 
-                    <div id="references" class="tab-content" style="display: none;">
-                        <h2 style="text-align: center; margin-bottom: 30px;">References</h2>
-                        <div style="text-align: left; max-width: 900px; margin: 0 auto; line-height: 1.8;">
-                            <p style="margin-bottom: 20px; text-indent: -40px; padding-left: 40px;">
-  Bryk, A. S., & Schneider, B. (2002). <em>Trust in schools: A core resource for improvement</em>. Russell Sage Foundation.
-</p>
+        <!-- READING LIST SECTION -->
+        <section id="resources" class="scroll-mt-24 pt-12 border-t border-slate-200">
+            <header class="mb-12">
+                <span class="border border-slate-300 text-slate-600 px-3 py-1 rounded-full text-xs font-bold uppercase mb-4 inline-block">Bibliography</span>
+                <h2 class="text-4xl font-bold text-slate-900 mb-4">Reading List & Resources</h2>
+            </header>
 
-<p style="margin-bottom: 20px; text-indent: -40px; padding-left: 40px;">
-  Bungay Stanier, M. (2016). <em>The coaching habit: Say less, ask more & change the way you lead forever</em>. Box of Crayons Press.
-</p>
-
-<p style="margin-bottom: 20px; text-indent: -40px; padding-left: 40px;">
-  Crane, E. (2025). <em>Module 1</em> [Lecture slides]. EDU 736: Educational Leadership, Edgewood College.
-</p>
-
-<p style="margin-bottom: 20px; text-indent: -40px; padding-left: 40px;">
-  Fullan, M. (2002). The change leader. <em>Educational Leadership, 59</em>(8), 16–20.
-</p>
-
-<p style="margin-bottom: 20px; text-indent: -40px; padding-left: 40px;">
-  Grissom, J. A., Egalite, A. J., & Lindsay, C. A. (2023). <em>How principals affect students and schools: A systematic synthesis of two decades of research</em>. The Wallace Foundation. <br>
-  <a href="https://wallacefoundation.org/sites/default/files/2023-09/How-Principals-Affect-Students-and-Schools.pdf" target="_blank" style="color: var(--primary-blue); text-decoration: none;">https://wallacefoundation.org/sites/default/files/2023-09/How-Principals-Affect-Students-and-Schools.pdf</a>
-</p>
-
-<p style="margin-bottom: 20px; text-indent: -40px; padding-left: 40px;">
-  Grunow, A. (2015, July 21). <em>Improvement discipline in practice</em>. Carnegie Foundation for the Advancement of Teaching. <br>
-  <a href="https://www.carnegiefoundation.org/blog/improvement-discipline-in-practice/" target="_blank" style="color: var(--primary-blue); text-decoration: none;">https://www.carnegiefoundation.org/blog/improvement-discipline-in-practice/</a>
-</p>
-
-<p style="margin-bottom: 20px; text-indent: -40px; padding-left: 40px;">
-  Harris, A., Jones, M., & Ismail, N. (2022). Distributed leadership: Taking a retrospective and contemporary view of the evidence base. <em>School Leadership & Management, 42</em>(5), 438–456. <br>
-  <a href="https://doi.org/10.1080/13632434.2022.2109620" target="_blank" style="color: var(--primary-blue); text-decoration: none;">https://doi.org/10.1080/13632434.2022.2109620</a>
-</p>
-
-<p style="margin-bottom: 20px; text-indent: -40px; padding-left: 40px;">
-  Imani, J., Wong, M., & Ahuja, B. (2023). <em>Management in a changing world: How to manage for equity, sustainability, and results</em>. Wiley.
-</p>
-
-<p style="margin-bottom: 20px; text-indent: -40px; padding-left: 40px;">
-  Wagner, T., Kegan, R., Lahey, L. L., Lemons, R. W., Garnier, J., Helsing, D., Howell, A., & Thurber, A. (2006). <em>Change leadership: A practical guide to transforming our schools</em>. Jossey-Bass.
-</p>
-
+            <div class="space-y-8">
+                <!-- Module 1 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 pb-2 border-b border-slate-100">Module 1: Foundations</h3>
+                    <div class="space-y-4">
+                        <div class="flex gap-4 items-start">
+                            <i data-lucide="book" class="w-5 h-5 text-blue-500 flex-shrink-0 mt-1"></i>
+                            <div>
+                                <p class="text-slate-700 text-sm">Kiritsis, D., & Manolis, K. (2024). Social Justice in Education: How It Is Established through Educational Leadership & the Obstacles to Its Implementation. Euromentor, 15(1), 22-38.</p>
+                                <a href="https://edgewood.idm.oclc.org/login?url=https://search.ebscohost.com/login.aspx?direct=true&db=eue&AN=176401228&site=eds-live&scope=site" target="_blank" class="text-xs text-blue-600 mt-1 inline-flex items-center gap-1 hover:underline">View Resource <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <i data-lucide="book" class="w-5 h-5 text-blue-500 flex-shrink-0 mt-1"></i>
+                            <div>
+                                <p class="text-slate-700 text-sm">U.S. Department of Education, Office of Educational Technology. (2024). A call to action for closing the digital access, design, and use divides (National Educational Technology Plan).</p>
+                                <a href="https://files.eric.ed.gov/fulltext/ED641164.pdf" target="_blank" class="text-xs text-blue-600 mt-1 inline-flex items-center gap-1 hover:underline">View Resource <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <i data-lucide="video" class="w-5 h-5 text-red-500 flex-shrink-0 mt-1"></i>
+                            <div>
+                                <p class="text-slate-700 text-sm">Ott, L. (2017). Solving the achievement gap through equity, not equality [Video]. TED.</p>
+                                <a href="https://youtu.be/nOQbu_3M0_Q" target="_blank" class="text-xs text-blue-600 mt-1 inline-flex items-center gap-1 hover:underline">View Resource <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
-            
-        </div>
+
+                <!-- Module 2 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 pb-2 border-b border-slate-100">Module 2: Emerging Technologies</h3>
+                    <div class="space-y-4">
+                        <div class="flex gap-4 items-start">
+                            <i data-lucide="book" class="w-5 h-5 text-blue-500 flex-shrink-0 mt-1"></i>
+                            <div>
+                                <p class="text-slate-700 text-sm">Almufarreh, A., & Arshad, M. (2023). Promising Emerging Technologies for Teaching and Learning: Recent Developments and Future Challenges. Sustainability, 15(8).</p>
+                                <a href="https://doi-org.edgewood.idm.oclc.org/10.3390/su15086917" target="_blank" class="text-xs text-blue-600 mt-1 inline-flex items-center gap-1 hover:underline">View Resource <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <i data-lucide="globe" class="w-5 h-5 text-teal-500 flex-shrink-0 mt-1"></i>
+                            <div>
+                                <p class="text-slate-700 text-sm">TPACK.org. (n.d.). Technological pedagogical content knowledge framework.</p>
+                                <a href="https://tpack.org/" target="_blank" class="text-xs text-blue-600 mt-1 inline-flex items-center gap-1 hover:underline">View Resource <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 4 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 pb-2 border-b border-slate-100">Module 4: Assistive Technology</h3>
+                    <div class="space-y-4">
+                         <div class="flex gap-4 items-start">
+                            <i data-lucide="book" class="w-5 h-5 text-blue-500 flex-shrink-0 mt-1"></i>
+                            <div>
+                                <p class="text-slate-700 text-sm">Kaczorowski, T., et al. (2023). Designing an Inclusive Future. Teaching Exceptional Children, 55(5).</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                             <i data-lucide="website" class="w-5 h-5 text-teal-500 flex-shrink-0 mt-1"></i>
+                             <div>
+                                 <p class="text-slate-700 text-sm">CAST. (n.d.). Universal Design for Learning guidelines.</p>
+                                 <a href="https://udlguidelines.cast.org" target="_blank" class="text-xs text-blue-600 mt-1 inline-flex items-center gap-1 hover:underline">View Resource <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <footer style="
-        background: linear-gradient(to right, #1976d2, #00796b);
-        color: white;
-        padding: 40px 20px;
-        text-align: center;
-        font-family: 'Poppins', sans-serif;
-        margin-top: 40px;
-    ">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h3 style="margin: 0 0 20px 0; font-size: 1.4em; font-weight: 600;">Connect with Ms. Terkper</h3>
-            
-            <div style="display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 25px; flex-wrap: wrap;">
-                <a href="mailto:terkperhannah@gmail.com" style="color: white; text-decoration: none; font-weight: 500;">
-                    terkperhannah@gmail.com
-                </a>
-                <a href="https://instagram.com/hannah.attempts.teaching" target="_blank" style="color: white; text-decoration: none; font-weight: 500;">
-                    Instagram
-                </a>
-                <a href="https://tiktok.com/@hannah.attempts.teaching" target="_blank" style="color: white; text-decoration: none; font-weight: 500;">
-                    TikTok
-                </a>
-            </div>
-            
-            <p style="margin: 0; opacity: 0.9; font-size: 0.9em;">
-                Educational Leadership Portfolio | Graduate Studies Showcase
-            </p>
+    <footer class="bg-white border-t border-slate-200 py-12 mt-24">
+        <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
+            <p>&copy; 2025 Hannah Terkper. EDU 887 Emerging Technology & Educational Equity.</p>
+            <p class="mt-2 text-xs opacity-70">Designed for Final Project Option #1</p>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script>
-        // Tab functionality
-        function showTab(tabName) {
-            // Hide all tab contents
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => content.classList.remove('active'));
-            
-            // Remove active class from all buttons
-            const buttons = document.querySelectorAll('.tab-button');
-            buttons.forEach(button => button.classList.remove('active'));
-            
-            // Show selected tab and activate button
-            document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
-        }
+        // Initialize Lucide Icons
+        lucide.createIcons();
 
-        // Collapsible references functionality
-        function toggleReferences() {
-            const content = document.getElementById('references');
-            const button = document.getElementById('references-toggle');
-            const text = document.getElementById('references-text');
-            const arrow = document.getElementById('references-arrow');
-            
-            if (content.style.display === 'none' || content.style.display === '') {
-                // Show references
-                content.style.display = 'block';
-                content.classList.add('active');
-                button.classList.add('active');
-                text.textContent = 'Hide Academic References';
-                arrow.style.transform = 'rotate(180deg)';
-            } else {
-                // Hide references
-                content.style.display = 'none';
-                content.classList.remove('active');
-                button.classList.remove('active');
-                text.textContent = 'Show Academic References';
-                arrow.style.transform = 'rotate(0deg)';
+        // Tab Functionality
+        function openTab(tabName) {
+            // Hide all tabs
+            var i, tabcontent, tabbtn;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
             }
-        }
-
-        // Scroll animations
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.animate-on-scroll');
             
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible');
-                }
-            });
-        }
-
-        // Initialize animations
-        document.addEventListener('DOMContentLoaded', () => {
-            animateOnScroll();
-            window.addEventListener('scroll', animateOnScroll);
-        });
-
-        // Mobile navigation
-        function isMobileDevice() {
-            return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        }
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            if (isMobileDevice()) {
-                console.log('Mobile device detected - optimized experience loaded');
+            // Remove active class from buttons
+            tabbtn = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabbtn.length; i++) {
+                tabbtn[i].classList.remove("active");
             }
-        });
+
+            // Show current tab and activate button
+            document.getElementById(tabName).classList.add("active");
+            // Find button with matching data-tab and add active
+            const buttons = document.querySelectorAll(`[data-tab="${tabName}"]`);
+            buttons.forEach(btn => btn.classList.add("active"));
+        }
     </script>
-
-    <script src="universal-mobile-fix.js"></script>
 </body>
 </html>
