@@ -3,16 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>EDU 887 – Assistive Technology Implementation Plan Using SETT Framework | Hannah Terkper's Digital Portfolio</title>
+  <title>EDU 887 – Assistive Technology Implementation Plan Using SETT Framework | Hannah Terkper</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <meta name="description" content="Comprehensive implementation plan for assistive technology using the SETT Framework. EDU 887 final project by Hannah Terkper."/>
-  <meta name="keywords" content="assistive technology, SETT Framework, educational equity, accessibility, inclusive education, Hannah Terkper">
-  <meta name="author" content="Hannah Terkper">
+
+  <meta name="description" content="Assistive technology implementation plan using the SETT Framework. EDU 887 final project by Hannah Terkper." />
+  <meta name="keywords" content="assistive technology, SETT Framework, educational equity, accessibility, inclusive education, Hannah Terkper, EDU 887" />
+  <meta name="author" content="Hannah Terkper" />
 
   <style>
-    /* Core Variables */
     :root {
       --primary-teal: #00796b;
       --primary-blue: #1976d2;
@@ -33,49 +34,18 @@
       --spacing-xl: 48px;
     }
 
-    /* Reset & Base Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
       line-height: 1.6;
       color: var(--text-dark);
       background-color: white;
       scroll-behavior: smooth;
     }
 
-    /* Main Navigation */
-    .main-navbar {
-      background: white;
-      box-shadow: 0 2px 10px var(--shadow-light);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      padding: var(--spacing-sm) var(--spacing-xl);
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-      justify-content: center;
-      gap: var(--spacing-lg);
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-dark);
-      font-weight: 500;
-      padding: var(--spacing-xs) var(--spacing-sm);
-      transition: color 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--primary-blue);
-    }
+    /* Navbar placeholder (your shared navbar.html will load here) */
+    #navbar-placeholder { width: 100%; }
 
     /* Assignment Header */
     .assignment-header {
@@ -90,30 +60,27 @@
     .assignment-header::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)" /></svg>');
+      inset: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)" /></svg>');
       opacity: 0.3;
     }
 
     .assignment-title {
       position: relative;
       z-index: 2;
-      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-size: clamp(2rem, 5vw, 3.25rem);
       margin: 0 0 var(--spacing-md) 0;
       font-weight: 700;
-      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 4px 8px rgba(0,0,0,0.25);
     }
 
     .assignment-subtitle {
       position: relative;
       z-index: 2;
-      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      font-size: clamp(1.05rem, 3vw, 1.35rem);
       opacity: 0.95;
       margin: 0 0 var(--spacing-lg) 0;
-      max-width: 800px;
+      max-width: 900px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -126,33 +93,33 @@
       border-radius: 12px;
       padding: var(--spacing-md);
       margin: var(--spacing-lg) auto 0;
-      max-width: 600px;
+      max-width: 780px;
       border: 1px solid rgba(255, 255, 255, 0.2);
+      text-align: left;
     }
 
     .course-info h3 {
-      color: white;
-      margin: 0 0 var(--spacing-sm) 0;
-      font-size: 1.2rem;
+      margin-bottom: var(--spacing-xs);
+      font-size: 1.1rem;
+      font-weight: 600;
     }
 
     .course-details {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: var(--spacing-sm);
-      color: rgba(255, 255, 255, 0.9);
+      grid-template-columns: 1fr;
+      gap: 6px;
       font-size: 0.95rem;
     }
 
     /* Page Navigation */
     .page-nav {
-      background: rgba(255, 255, 255, 0.98);
-      padding: var(--spacing-md) 0;
-      border-bottom: 3px solid var(--primary-teal);
       position: sticky;
-      top: 70px;
+      top: 0;
       z-index: 900;
-      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+      padding: var(--spacing-sm) var(--spacing-md);
     }
 
     .nav-links-horizontal {
@@ -252,9 +219,7 @@
     .feature-card::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: 4px;
       background: linear-gradient(to right, var(--primary-teal), var(--primary-blue));
     }
@@ -264,89 +229,101 @@
       box-shadow: 0 8px 24px var(--shadow-medium);
     }
 
-    .feature-title {
+    .feature-card h4 {
+      color: var(--text-dark);
+      margin-bottom: var(--spacing-sm);
       font-size: 1.2rem;
-      color: var(--primary-blue);
-      margin: 0 0 var(--spacing-sm) 0;
       font-weight: 600;
     }
 
-    /* Callout Boxes */
-    .callout-box {
-      background: linear-gradient(135deg, var(--bg-card), white);
-      border-left: 5px solid var(--primary-teal);
-      border-radius: 0 8px 8px 0;
+    .feature-card p { color: var(--text-medium); margin: 0; }
+
+    /* Highlight box */
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(0,121,107,0.08), rgba(25,118,210,0.08));
+      border-radius: 12px;
       padding: var(--spacing-lg);
+      border-left: 4px solid var(--primary-teal);
       margin: var(--spacing-lg) 0;
+    }
+
+    .highlight-box h4 {
+      margin-bottom: var(--spacing-xs);
+      color: var(--text-dark);
+      font-size: 1.15rem;
+    }
+
+    /* SETT Framework Visual Styles */
+    .sett-framework {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-md);
+      margin: var(--spacing-lg) 0;
+    }
+
+    .sett-component {
+      background: white;
+      border-radius: 10px;
+      padding: var(--spacing-lg);
       box-shadow: 0 4px 16px var(--shadow-light);
+      border-top: 5px solid;
     }
 
-    /* Tag Lists */
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--spacing-xs);
-      margin-top: var(--spacing-md);
-      list-style: none;
-      padding: 0;
+    .sett-component.student { border-color: #4CAF50; }
+    .sett-component.environment { border-color: #2196F3; }
+    .sett-component.tasks { border-color: #FF9800; }
+    .sett-component.tools { border-color: #9C27B0; }
+
+    .sett-title {
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      margin-bottom: var(--spacing-sm);
+      font-weight: 600;
     }
 
-    .tag {
-      background: linear-gradient(135deg, var(--accent-teal), var(--accent-blue));
-      color: white;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 500;
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: var(--spacing-lg);
+      margin: var(--spacing-lg) 0;
     }
 
-    /* Table Styles */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: var(--spacing-md) 0;
-      font-size: 0.9rem;
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--primary-teal), var(--primary-blue));
     }
 
-    th {
-      background: var(--primary-teal);
-      color: white;
-      padding: var(--spacing-sm);
-      text-align: left;
-    }
-
-    td {
-      padding: var(--spacing-sm);
-      border-bottom: 1px solid var(--border-light);
-    }
-
-    tr:nth-child(even) {
-      background-color: var(--bg-light);
-    }
-
-    /* Hero Section */
-    .hero-section {
-      background: linear-gradient(135deg, var(--bg-card), white);
-      margin: var(--spacing-xl) auto;
-      max-width: 1200px;
-      border-radius: 16px;
-      padding: var(--spacing-xl);
-      box-shadow: 0 8px 32px var(--shadow-light);
-      border: 1px solid var(--border-light);
-    }
-
-    .hero-title {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      color: var(--primary-blue);
-      margin: 0 0 var(--spacing-md) 0;
-    }
-
-    .hero-description {
-      font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-      color: var(--text-medium);
-      line-height: 1.7;
+    .timeline-item {
+      position: relative;
       margin-bottom: var(--spacing-lg);
+      padding-left: var(--spacing-lg);
     }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -6px;
+      top: 0;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--primary-blue);
+      border: 3px solid white;
+      box-shadow: 0 0 0 3px var(--primary-blue);
+    }
+
+    .timeline-item h4 {
+      margin-bottom: 6px;
+      color: var(--text-dark);
+      font-size: 1.05rem;
+    }
+
+    .timeline-item p { color: var(--text-medium); }
 
     /* Footer */
     .academic-footer {
@@ -395,7 +372,7 @@
       transition: all 0.3s ease;
       max-height: 400px;
       overflow-y: auto;
-      min-width: 200px;
+      min-width: 220px;
     }
 
     .quick-nav-menu.active {
@@ -420,1018 +397,451 @@
       transform: translateX(4px);
     }
 
-    /* Responsive Design */
+    /* Accessibility */
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 10px;
+      background: white;
+      color: var(--primary-blue);
+      padding: 10px 14px;
+      border-radius: 8px;
+      box-shadow: 0 6px 20px var(--shadow-medium);
+      z-index: 2000;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .skip-link:focus { left: 12px; }
+
+    /* Content rhythm */
+    .section-card h4 { margin-top: var(--spacing-md); color: var(--text-dark); }
+    .section-card p { margin-top: var(--spacing-sm); color: var(--text-medium); }
+    .section-card ul, .section-card ol { margin-top: var(--spacing-sm); padding-left: 1.2rem; }
+    .section-card li { margin: 6px 0; }
+
+    /* Responsive */
     @media (max-width: 768px) {
-      .main-navbar {
-        padding: var(--spacing-sm);
-      }
-      
-      .nav-links {
-        flex-direction: column;
-        align-items: center;
-        gap: var(--spacing-sm);
-      }
-      
-      .page-nav {
-        top: 0;
-      }
-      
-      .nav-links-horizontal {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .section-card {
-        padding: var(--spacing-md);
-      }
-      
-      .quick-nav-btn {
-        bottom: 20px;
-        right: 20px;
-        width: 48px;
-        height: 48px;
-      }
-      
-      .quick-nav-menu {
-        bottom: 80px;
-        right: 20px;
-        min-width: 180px;
-      }
+      .page-nav { top: 0; }
+      .nav-links-horizontal { flex-direction: column; align-items: center; }
+      .section-card { padding: var(--spacing-md); }
+      .quick-nav-btn { bottom: 20px; right: 20px; width: 48px; height: 48px; }
+      .quick-nav-menu { bottom: 80px; right: 20px; min-width: 180px; }
     }
 
-    /* Print Styles */
+    /* Print */
     @media print {
-      .main-navbar,
+      #navbar-placeholder,
       .page-nav,
       .quick-nav-btn,
-      .quick-nav-menu {
-        display: none !important;
-      }
-      
-      .assignment-header {
-        background: white !important;
-        color: black !important;
-      }
-      
-      .assignment-title,
-      .assignment-subtitle {
-        color: black !important;
-      }
-      
-      .section-card {
-        box-shadow: none !important;
-        border: 1px solid #ccc !important;
-        page-break-inside: avoid;
-      }
-    }
-  </style>
-
-  <!-- SETT Framework Visual Styles -->
-  <style>
-    .sett-framework {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: var(--spacing-md);
-      margin: var(--spacing-lg) 0;
-    }
-
-    .sett-component {
-      background: white;
-      border-radius: 10px;
-      padding: var(--spacing-lg);
-      box-shadow: 0 4px 16px var(--shadow-light);
-      border-top: 5px solid;
-      position: relative;
-    }
-
-    .sett-component.student { border-color: #4CAF50; }
-    .sett-component.environment { border-color: #2196F3; }
-    .sett-component.tasks { border-color: #FF9800; }
-    .sett-component.tools { border-color: #9C27B0; }
-
-    .sett-title {
-      font-size: 1.3rem;
-      color: var(--text-dark);
-      margin-bottom: var(--spacing-sm);
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-sm);
-    }
-
-    .sett-title::before {
-      content: "";
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: currentColor;
-    }
-
-    /* Implementation Timeline */
-    .timeline {
-      position: relative;
-      padding-left: var(--spacing-lg);
-      margin: var(--spacing-lg) 0;
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      background: linear-gradient(to bottom, var(--primary-teal), var(--primary-blue));
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: var(--spacing-lg);
-      padding-left: var(--spacing-lg);
-    }
-
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -6px;
-      top: 0;
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      background: var(--primary-blue);
-      border: 3px solid white;
-      box-shadow: 0 0 0 3px var(--primary-blue);
-    }
-
-    /* Stakeholder Table */
-    .stakeholder-table {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 16px var(--shadow-light);
-      margin: var(--spacing-lg) 0;
-    }
-
-    .stakeholder-table th {
-      background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
+      .quick-nav-menu { display: none !important; }
+      .assignment-header { background: white !important; color: black !important; }
+      .assignment-title, .assignment-subtitle { color: black !important; text-shadow: none !important; }
+      .section-card { box-shadow: none !important; border: 1px solid #ccc !important; page-break-inside: avoid; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Main Navigation -->
-  <nav class="main-navbar">
-    <ul class="nav-links">
-      <li><a href="#context-introduction">Context</a></li>
-      <li><a href="#sett-framework">SETT Framework</a></li>
-      <li><a href="#implementation-plan">Implementation Plan</a></li>
-      <li><a href="#stakeholder-involvement">Stakeholders</a></li>
-      <li><a href="#evaluation-monitoring">Evaluation</a></li>
-      <li><a href="#reflection">Reflection</a></li>
-    </ul>
-  </nav>
+  <a class="skip-link" href="#context-introduction">Skip to main content</a>
+
+  <!-- Shared site navbar loads here -->
+  <div id="navbar-placeholder"></div>
+
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(html => { document.getElementById('navbar-placeholder').innerHTML = html; })
+      .catch(err => {
+        console.error('Navbar failed to load:', err);
+        document.getElementById('navbar-placeholder').innerHTML =
+          '<div style="padding:16px; background:#fff3cd; border:1px solid #ffeeba; border-radius:8px; margin:16px;">Navbar could not be loaded. Make sure <strong>navbar.html</strong> is in the same folder.</div>';
+      });
+  </script>
 
   <!-- Assignment Header -->
   <header class="assignment-header">
     <h1 class="assignment-title">Assistive Technology Implementation Plan</h1>
     <p class="assignment-subtitle">Using the SETT Framework to Promote Educational Equity</p>
-    
+
     <div class="course-info">
       <h3>EDU 887 – Final Project Option #1</h3>
       <div class="course-details">
-        <div><strong>Course:</strong> EDU 887 Emerging Technology & Educational Equity</div>
+        <div><strong>Course:</strong> EDU 887 Emerging Technology &amp; Educational Equity</div>
         <div><strong>Student:</strong> Hannah Terkper</div>
+        <div><strong>Role(s):</strong> Math Department Head (Grades 7–12), Math 10C &amp; Math 20-1 Teacher, FTC Robotics Coach, Yearbook Lead</div>
         <div><strong>Date:</strong> <span id="current-date"></span></div>
       </div>
     </div>
   </header>
 
   <!-- Page Navigation -->
+  <nav class="page-nav" aria-label="Page navigation">
+    <ul class="nav-links-horizontal">
+      <li><a href="#context-introduction" class="nav-link">Context &amp; Challenge</a></li>
+      <li><a href="#tool-continuum" class="nav-link">Low–High Tech Supports</a></li>
+      <li><a href="#sett-framework" class="nav-link">SETT Framework</a></li>
+      <li><a href="#implementation-plan" class="nav-link">Implementation Plan</a></li>
+      <li><a href="#monitoring-evaluation" class="nav-link">Monitoring &amp; Evaluation</a></li>
+      <li><a href="#reflection" class="nav-link">Reflection</a></li>
+      <li><a href="#references" class="nav-link">References</a></li>
+    </ul>
+  </nav>
+
   <main>
-    <!-- Context Introduction -->
+    <!-- 1) Context Introduction -->
     <section id="context-introduction" class="content-section">
-  <div class="section-card">
-    <h3 class="section-title"><span class="section-icon">1</span>Context Introduction &amp; Equity Challenge</h3>
+      <div class="section-card">
+        <h3 class="section-title">
+          <span class="section-icon">1</span>
+          Context Introduction &amp; Equity Challenge
+        </h3>
 
-    <h4>Educational Context</h4>
-    <p>
-      <strong>Setting:</strong> STEM-focused junior high and high school in Edmonton, Alberta.
-      The student population is diverse and includes multilingual learners, students with identified and unidentified learning needs,
-      and students from historically marginalized communities.
-    </p>
-    <p>
-      <strong>Technology Context:</strong> All students have access to a personal computer; however, devices are family-purchased.
-      This creates a wide range of device capability across the classroom. Some students have
-      <strong>high-performance laptops</strong> that can run multiple programs smoothly, while others use
-      <strong>entry-level devices</strong> with limited processing power, storage, and battery life.
-      As a result, students do not experience technology access in the same way even when “everyone has a laptop.”
-    </p>
+        <h4>Educational Context</h4>
+        <p>
+          <strong>Setting:</strong> STEM-focused junior high and high school (Grades 7–12) in Edmonton, Alberta.
+          The student population is diverse and includes multilingual learners, students with identified and unidentified learning needs,
+          and students from historically marginalized communities.
+        </p>
 
-    <h4>Equity Challenge</h4>
-    <p>
-      A key equity challenge in this context is ensuring meaningful access to learning in mathematics and robotics when students face
-      barriers related to abstract reasoning, visual-spatial processing, reading comprehension, sustained attention, and executive functioning.
-      These challenges are amplified when technology tasks assume consistent device performance, reliable software compatibility, or the ability
-      to multitask digitally without lag or crashes.
-    </p>
-    <p>
-      In addition, limited dedicated funding for specialized assistive technologies means many supports must be addressed through
-      intentional instructional design and strategic use of low-, mid-, and high-tech tools that are realistic for mixed-capability devices.
-    </p>
+        <p>
+          <strong>Technology Context:</strong> Students are expected to bring personal laptops that families purchase independently.
+          That creates a real access gap inside the same classroom. Some students have <strong>high-performance devices</strong> (faster processors, more memory,
+          better battery life) that can run multiple programs smoothly. Others have <strong>entry-level devices</strong> that struggle with lag, storage limits,
+          and software compatibility. On paper, “everyone has a computer,” but in practice, students do not experience technology access the same way.
+        </p>
 
-    <h4>Impact on Learning</h4>
-    <p>
-      These barriers can limit student participation, independence, and confidence, particularly in STEM learning where success is often tied
-      to speed, accuracy, and procedural fluency. Without intentional supports, students may disengage or internalize the belief that they are
-      “not good at math” or “not technical,” which impacts achievement and self-efficacy.
-    </p>
-  </div>
-</section>
+        <h4>Equity Challenge</h4>
+        <p>
+          In my math and robotics classes, a consistent equity challenge is ensuring students can participate meaningfully in learning tasks
+          when they face barriers like reading load, visual-spatial processing demands, sustained attention, executive functioning, and pace differences.
+          These barriers become more visible when tasks assume reliable device performance, quick switching between apps, or consistent access
+          to the same tools and settings.
+        </p>
 
+        <div class="highlight-box">
+          <h4>Why this matters</h4>
+          <p>
+            If the learning task depends on a “strong” laptop (or assumes students already know how to use accessibility features),
+            then the tool becomes another barrier instead of a support. This project focuses on choosing tools intentionally so students
+            can access the math/robotics thinking, not just the technology.
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <!-- SETT Framework Application -->
-    <section id="sett-framework" class="content-section">
+    <!-- 2) Low–High Tech Supports (your Discussion 2 content) -->
+    <section id="tool-continuum" class="content-section">
       <div class="section-card">
         <h3 class="section-title">
           <span class="section-icon">2</span>
-          SETT Framework Application
+          Low-Tech to High-Tech Supports in My Practice
         </h3>
 
-        <div class="callout-box">
-          <h4 style="color: var(--primary-blue); margin-top: 0;">The SETT Framework</h4>
-          <p>The SETT Framework organizes assistive technology considerations into four key areas: Student, Environment, Tasks, and Tools. This systematic approach ensures technology selections are purposeful, personalized, and pedagogically sound.</p>
-        </div>
+        <p>
+          In my current school context, we do not have many designated assistive technologies because there is no dedicated funding for those tools.
+          However, every student has a personal computer, and that in itself has expanded what supports I can offer. Even without specialized programs,
+          students can use built-in accessibility features like text-to-speech, speech-to-text, colour-contrast adjustments, font enlargement,
+          and on-screen annotation tools. These low- and mid-tech options may seem very simple; however, they genuinely help students who struggle
+          with decoding, visual processing, or English language proficiency. The NEAT video (2021) explains that low-, mid-, and high-tech tools can all
+          have a place if they directly address a learner’s barrier.
+        </p>
 
-        <div class="sett-framework">
-          <!-- Student Component -->
-          <div class="sett-component student">
-            <h4 class="sett-title">Student</h4>
-            <div style="margin: var(--spacing-md) 0;">
-              <h5 style="color: #4CAF50; margin-bottom: var(--spacing-xs);">Strengths</h5>
-              <ul style="margin-bottom: var(--spacing-md);">
-                <li>Strong verbal communication skills</li>
-                <li>Excellent conceptual understanding of science principles</li>
-                <li>High motivation and persistence</li>
-                <li>Effective problem-solving abilities</li>
-              </ul>
+        <p>
+          In my previous school, students did not have personal devices, and the budget was very limited. One of the few tools available to support
+          struggling readers was a “magic pen” that read printed text aloud when students ran the pen across the page. Although it was low-tech,
+          it was one of the most effective tools we had because it provided real-time decoding support without a steep learning curve.
+          Klimova and Zamborova (2023) highlight that the impact is greatest at the moment a tool provides access, and that is exactly what those pens did.
+        </p>
 
-              <h5 style="color: #4CAF50; margin-bottom: var(--spacing-xs);">Challenges & Needs</h5>
-              <ul style="margin-bottom: var(--spacing-md);">
-                <li>Fine motor control limitations affecting equipment manipulation</li>
-                <li>Visual processing difficulties with small text and detailed graphics</li>
-                <li>Need for alternative measurement and data collection methods</li>
-                <li>Requirement for multimodal content representation</li>
-              </ul>
-
-              <h5 style="color: #4CAF50; margin-bottom: var(--spacing-xs);">Preferences</h5>
-              <ul>
-                <li>Hands-on learning with appropriate supports</li>
-                <li>Clear, high-contrast visual displays</li>
-                <li>Voice-controlled or simplified interfaces</li>
-                <li>Collaborative learning opportunities</li>
-              </ul>
-            </div>
+        <div class="two-column">
+          <div class="feature-card">
+            <h4>Low-tech supports I still use</h4>
+            <p>
+              I rely on algebra tiles to help students visualize solving equations and understand operations more concretely.
+              I also 3D-print shapes and blocks for surface area, which supports students who need tactile, hands-on learning experiences.
+              These tools look “simple,” but they remove meaningful barriers by making abstract concepts more accessible.
+            </p>
           </div>
 
-          <!-- Environment Component -->
-          <div class="sett-component environment">
-            <h4 class="sett-title">Environment</h4>
-            <div style="margin: var(--spacing-md) 0;">
-              <h5 style="color: #2196F3; margin-bottom: var(--spacing-xs);">Physical Environment</h5>
-              <ul style="margin-bottom: var(--spacing-md);">
-                <li>Standard science lab with traditional equipment</li>
-                <li>Limited accessible workstations</li>
-                <li>Inadequate lighting for students with visual challenges</li>
-                <li>Crowded workspace limiting mobility</li>
-              </ul>
-
-              <h5 style="color: #2196F3; margin-bottom: var(--spacing-xs);">Social Environment</h5>
-              <ul style="margin-bottom: var(--spacing-md);">
-                <li>Supportive peer culture</li>
-                <li>Collaborative learning encouraged</li>
-                <li>Some awareness of accessibility needs</li>
-                <li>Opportunities for peer mentoring</li>
-              </ul>
-
-              <h5 style="color: #2196F3; margin-bottom: var(--spacing-xs);">Instructional Environment</h5>
-              <ul>
-                <li>Traditional lab instruction with limited adaptations</li>
-                <li>Minimal assistive technology integration</li>
-                <li>Teacher open to innovation but lacks training</li>
-                <li>Curriculum flexibility for accommodations</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Tasks Component -->
-          <div class="sett-component tasks">
-            <h4 class="sett-title">Tasks</h4>
-            <div style="margin: var(--spacing-md) 0;">
-              <h5 style="color: #FF9800; margin-bottom: var(--spacing-xs);">Academic Tasks</h5>
-              <ul style="margin-bottom: var(--spacing-md);">
-                <li>Precise measurement using graduated cylinders and pipettes</li>
-                <li>Microscope slide preparation and observation</li>
-                <li>Data collection and recording during experiments</li>
-                <li>Graph creation and interpretation</li>
-                <li>Lab report writing and documentation</li>
-              </ul>
-
-              <h5 style="color: #FF9800; margin-bottom: var(--spacing-xs);">Functional Tasks</h5>
-              <ul>
-                <li>Equipment setup and calibration</li>
-                <li>Safe handling of lab materials</li>
-                <li>Time management during multi-step procedures</li>
-                <li>Collaboration and communication with lab partners</li>
-                <li>Organization of data and observations</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Tools Component -->
-          <div class="sett-component tools">
-            <h4 class="sett-title">Tools</h4>
-            <div style="margin: var(--spacing-md) 0;">
-              <h5 style="color: #9C27B0; margin-bottom: var(--spacing-xs);">Recommended Assistive Technologies</h5>
-              <ul style="margin-bottom: var(--spacing-md);">
-                <li><strong>Digital Microscopes:</strong> High-contrast, zoomable displays with image capture</li>
-                <li><strong>Electronic Measurement Tools:</strong> Digital calipers, scales, and graduated cylinders with voice output</li>
-                <li><strong>Graphing Software:</strong> Accessible data visualization tools with screen reader compatibility</li>
-                <li><strong>Voice-to-Text Software:</strong> For lab report documentation</li>
-                <li><strong>Adapted Lab Equipment:</strong> Larger handles, stabilized bases, simplified controls</li>
-              </ul>
-
-              <h5 style="color: #9C27B0; margin-bottom: var(--spacing-xs);">Selection Rationale</h5>
-              <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px;">
-                <p style="margin: 0; font-size: 0.9rem;">
-                  Tools were selected based on: 1) Alignment with specific student needs, 2) Compatibility with existing lab environment, 3) Evidence of effectiveness in similar contexts, 4) Cost-effectiveness and sustainability, 5) Ease of use with minimal training
-                </p>
-              </div>
-            </div>
+          <div class="feature-card">
+            <h4>How I decide what to use</h4>
+            <p>
+              I start by naming the barrier first (reading load, attention, pace, visual processing, working memory, device limitations),
+              then choose the tool that reduces that barrier without adding new complexity. This is where SETT helps me slow down and match
+              tools to tasks instead of picking technology for convenience.
+            </p>
           </div>
         </div>
+
+        <p>
+          Andersen et al. (2022) emphasize that adaptive technologies are most useful when they personalize learning and remove obstacles rather than
+          adding layers of complexity. The SETT Framework supports that same idea: consider the <strong>Student</strong>, <strong>Environment</strong>,
+          and <strong>Tasks</strong> before choosing <strong>Tools</strong>. The PATINS Project (2020) reinforced that alignment piece for me:
+          the tool should fit the task, not the other way around.
+        </p>
+
+        <p>
+          Next, I want to explore adaptive digital tools that support pacing and feedback in a realistic way for mixed-capability devices, so the support
+          is consistent for students regardless of what laptop they show up with.
+        </p>
       </div>
     </section>
 
-    <!-- Implementation Plan -->
-    <section id="implementation-plan" class="content-section">
+    <!-- 3) SETT Framework -->
+    <section id="sett-framework" class="content-section">
       <div class="section-card">
         <h3 class="section-title">
           <span class="section-icon">3</span>
-          Implementation Plan
+          Applying the SETT Framework
         </h3>
 
-        <div class="callout-box">
-          <h4 style="color: var(--primary-blue); margin-top: 0;">Implementation Overview</h4>
-          <p>A phased, evidence-based approach to assistive technology integration focusing on preparation, gradual implementation, and continuous improvement to ensure sustainable success.</p>
-        </div>
+        <p>
+          The SETT Framework (Student, Environment, Tasks, Tools) helps me make decisions that are collaborative and barrier-focused, not tool-first.
+          In this project, I’m using SETT to guide choices for my math and robotics context, especially given the mixed device capabilities in the classroom.
+        </p>
 
-        <div class="two-column">
-          <div class="feature-card">
-            <h4 class="feature-title">Phase 1: Preparation (Weeks 1-4)</h4>
-            
-            <div style="margin: var(--spacing-md) 0;">
-              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Stakeholder Training</h5>
-              <ul>
-                <li>Professional development for science teachers on AT principles and tools</li>
-                <li>Student orientation sessions for target learners</li>
-                <li>Parent information meetings and consent process</li>
-                <li>IT support staff training on maintenance and troubleshooting</li>
-              </ul>
-            </div>
-
-            <div style="margin: var(--spacing-md) 0;">
-              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Environment Preparation</h5>
-              <ul>
-                <li>Create dedicated accessible workstation in science lab</li>
-                <li>Install necessary software and hardware</li>
-                <li>Develop visual supports and reference materials</li>
-                <li>Establish equipment checkout and maintenance protocols</li>
-              </ul>
-            </div>
-
-            <div style="background: linear-gradient(135deg, #f3e5f5, #e8f5e8); padding: var(--spacing-sm); border-radius: 6px;">
-              <h5 style="color: var(--primary-blue); margin: 0 0 var(--spacing-xs) 0;">Customization</h5>
-              <p style="margin: 0; font-size: 0.9rem;">Individualize tool settings based on student assessment results and preferences</p>
-            </div>
-          </div>
-
-          <div class="feature-card">
-            <h4 class="feature-title">Phase 2: Implementation Timeline</h4>
-            
-            <div class="timeline">
-              <div class="timeline-item">
-                <strong>Week 5-6:</strong> Introduce digital microscopes and adapted measurement tools during structured practice sessions
-              </div>
-              <div class="timeline-item">
-                <strong>Week 7-8:</strong> Integrate AT into regular lab activities with peer support system
-              </div>
-              <div class="timeline-item">
-                <strong>Week 9-10:</strong> Implement graphing software and data visualization tools
-              </div>
-              <div class="timeline-item">
-                <strong>Week 11-12:</strong> Full integration with voice-to-text for lab reports
-              </div>
-              <div class="timeline-item">
-                <strong>Ongoing:</strong> Weekly check-ins, adjustments, and support sessions
-              </div>
-            </div>
-
-            <div style="margin: var(--spacing-md) 0;">
-              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Progress Milestones</h5>
-              <ul>
-                <li>Week 4: Complete all stakeholder training</li>
-                <li>Week 6: Students independently use basic AT tools</li>
-                <li>Week 10: AT integrated into 75% of lab activities</li>
-                <li>Week 12: Formal mid-implementation review</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div style="background: var(--bg-card); border-radius: 10px; padding: var(--spacing-lg); margin-top: var(--spacing-lg);">
-          <h4 style="color: var(--primary-blue); margin-top: 0; text-align: center;">Practical Implementation Strategies</h4>
-          <div class="three-column" style="margin-top: var(--spacing-md);">
-            <div>
-              <h5 style="color: var(--primary-teal);">Small Group Stations</h5>
-              <p>Rotate AT tools through 15-minute stations with defined student roles (Operator, Recorder, Analyst)</p>
-            </div>
-            <div>
-              <h5 style="color: var(--primary-teal);">Peer Support System</h5>
-              <p>Train peer mentors to assist with AT setup and basic troubleshooting</p>
-            </div>
-            <div>
-              <h5 style="color: var(--primary-teal);">Differentiated Tasks</h5>
-              <p>Create tiered lab activities that accommodate varying levels of AT proficiency</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Monitoring & Evaluation -->
-    <section id="monitoring-evaluation" class="content-section">
-      <div class="section-card">
-        <h3 class="section-title">
-          <span class="section-icon">4</span>
-          Monitoring & Evaluation
-        </h3>
-
-        <div class="callout-box">
-          <h4 style="color: var(--primary-blue); margin-top: 0;">Evaluation Framework</h4>
-          <p>Multi-method assessment approach measuring both quantitative outcomes and qualitative experiences to ensure AT implementation effectively addresses equity challenges.</p>
-        </div>
-
-        <div class="two-column">
-          <div class="feature-card">
-            <h4 class="feature-title">Evaluation Methods</h4>
-            
-            <div style="margin: var(--spacing-md) 0;">
-              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Quantitative Measures</h5>
-              <ul style="margin-bottom: var(--spacing-md);">
-                <li><strong>Academic Performance:</strong> Lab report scores, quiz results, project grades</li>
-                <li><strong>Participation Metrics:</strong> Frequency of lab participation, contribution levels</li>
-                <li><strong>Skill Development:</strong> Pre/post assessments of measurement and observation skills</li>
-                <li><strong>Efficiency Measures:</strong> Time to complete lab tasks, error rates</li>
-              </ul>
-
-              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Qualitative Measures</h5>
-              <ul>
-                <li><strong>Student Interviews:</strong> Semi-structured discussions about AT experience</li>
-                <li><strong>Teacher Observations:</strong> Structured observation protocols</li>
-                <li><strong>Work Samples:</strong> Analysis of lab reports and data collections</li>
-                <li><strong>Focus Groups:</strong> Small group discussions with stakeholders</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="feature-card">
-            <h4 class="feature-title">Data Collection & Analysis</h4>
-            
-            <div style="margin: var(--spacing-md) 0;">
-              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Data Collection Schedule</h5>
-              <table>
-                <tr>
-                  <th>Time Point</th>
-                  <th>Data Collected</th>
-                  <th>Method</th>
-                </tr>
-                <tr>
-                  <td>Baseline (Week 1)</td>
-                  <td>Pre-assessment, demographic data</td>
-                  <td>Surveys, skill tests</td>
-                </tr>
-                <tr>
-                  <td>Mid-point (Week 6)</td>
-                  <td>Progress check, satisfaction</td>
-                  <td>Interviews, observations</td>
-                </tr>
-                <tr>
-                  <td>Final (Week 12)</td>
-                  <td>Outcomes, recommendations</td>
-                  <td>Post-assessment, focus groups</td>
-                </tr>
-              </table>
-            </div>
-
-            <div style="margin: var(--spacing-md) 0;">
-              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Success Indicators</h5>
-              <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px;">
-                <ul style="margin: 0;">
-                  <li>≥80% of target students show improved lab participation</li>
-                  <li>≥70% reduction in requests for alternative assignments</li>
-                  <li>Positive student feedback on AT usefulness (≥4/5 rating)</li>
-                  <li>Teacher reports increased confidence in AT integration</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div style="background: linear-gradient(135deg, var(--bg-card), white); border-radius: 10px; padding: var(--spacing-lg); margin-top: var(--spacing-lg); border: 2px solid var(--accent-teal);">
-          <h4 style="color: var(--primary-blue); margin-top: 0; text-align: center;">Continuous Improvement Cycle</h4>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-md); text-align: center;">
-            <div>
-              <div style="background: var(--primary-teal); color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-xs) auto; font-weight: bold;">1</div>
-              <strong>Collect Data</strong>
-              <p style="font-size: 0.85rem; margin-top: var(--spacing-xs);">Weekly progress monitoring</p>
-            </div>
-            <div>
-              <div style="background: var(--primary-blue); color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-xs) auto; font-weight: bold;">2</div>
-              <strong>Analyze Results</strong>
-              <p style="font-size: 0.85rem; margin-top: var(--spacing-xs);">Identify patterns and issues</p>
-            </div>
-            <div>
-              <div style="background: #4CAF50; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-xs) auto; font-weight: bold;">3</div>
-              <strong>Make Adjustments</strong>
-              <p style="font-size: 0.85rem; margin-top: var(--spacing-xs);">Refine implementation strategies</p>
-            </div>
-            <div>
-              <div style="background: #FF9800; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-xs) auto; font-weight: bold;">4</div>
-              <strong>Re-evaluate</strong>
-              <p style="font-size: 0.85rem; margin-top: var(--spacing-xs);">Assess impact of changes</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Stakeholder Involvement -->
-    <section id="stakeholder-involvement" class="content-section">
-      <div class="section-card">
-        <h3 class="section-title">
-          <span class="section-icon">5</span>
-          Stakeholder Involvement
-        </h3>
-
-        <div class="callout-box">
-          <h4 style="color: var(--primary-blue); margin-top: 0;">Collaborative Approach</h4>
-          <p>Meaningful engagement of all stakeholders ensures buy-in, appropriate implementation, and sustainable success. Each group plays a distinct but interconnected role in the AT implementation process.</p>
-        </div>
-
-        <div class="stakeholder-table">
-          <table>
-            <thead>
-              <tr>
-                <th>Stakeholder Group</th>
-                <th>Role & Responsibilities</th>
-                <th>Engagement Strategies</th>
-                <th>Communication Methods</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Students</strong></td>
-                <td>Primary users, provide feedback, participate in training</td>
-                <td>Regular check-ins, choice in tool selection, peer mentoring</td>
-                <td>Individual meetings, feedback forms, classroom discussions</td>
-              </tr>
-              <tr>
-                <td><strong>Teachers</strong></td>
-                <td>Implementation leads, provide instruction, monitor progress</td>
-                <td>Professional development, coaching sessions, planning meetings</td>
-                <td>Weekly team meetings, email updates, shared documentation</td>
-              </tr>
-              <tr>
-                <td><strong>Parents/Caregivers</strong></td>
-                <td>Support home practice, reinforce skills, provide insights</td>
-                <td>Information sessions, home activity suggestions, progress updates</td>
-                <td>Newsletters, parent-teacher conferences, digital portal</td>
-              </tr>
-              <tr>
-                <td><strong>Administrators</strong></td>
-                <td>Resource allocation, policy support, program evaluation</td>
-                <td>Planning committees, progress reviews, budget meetings</td>
-                <td>Formal reports, presentation updates, strategic planning sessions</td>
-              </tr>
-              <tr>
-                <td><strong>Specialists</strong><br>(OT, SLP, AT Specialists)</td>
-                <td>Assessment, training, technical support, adaptation design</td>
-                <td>Consultation sessions, co-teaching opportunities, staff training</td>
-                <td>Direct consultation, written recommendations, team meetings</td>
-              </tr>
-              <tr>
-                <td><strong>IT Support</strong></td>
-                <td>Technical maintenance, software updates, troubleshooting</td>
-                <td>Regular maintenance checks, emergency support, system updates</td>
-                <td>Help desk tickets, scheduled maintenance, training sessions</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="two-column" style="margin-top: var(--spacing-lg);">
-          <div class="feature-card">
-            <h4 class="feature-title">Collaboration Strategies</h4>
-            <ul style="line-height: 1.8; margin: var(--spacing-md) 0;">
-              <li><strong>Monthly Stakeholder Meetings:</strong> Cross-functional team reviews progress and addresses challenges</li>
-              <li><strong>Shared Decision-Making:</strong> Students and families participate in tool selection and goal setting</li>
-              <li><strong>Co-Teaching Model:</strong> Classroom teachers collaborate with specialists during implementation</li>
-              <li><strong>Peer Support Networks:</strong> Students trained to assist classmates with AT use</li>
-              <li><strong>Community Partnerships:</strong> Local organizations provide resources and expertise</li>
+        <div class="sett-framework">
+          <div class="sett-component student">
+            <div class="sett-title">Student</div>
+            <ul>
+              <li>Needs may include reading support, pacing support, attention supports, visual-spatial scaffolds.</li>
+              <li>Multilingual learners may need reduced language load without reducing thinking demand.</li>
+              <li>Students benefit when they can choose supports (ex: text-to-speech vs. enlarged text).</li>
             </ul>
           </div>
 
-          <div class="feature-card">
-            <h4 class="feature-title">Feedback Mechanisms</h4>
-            <div style="margin: var(--spacing-md) 0;">
-              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Structured Feedback Channels</h5>
-              <ul style="margin-bottom: var(--spacing-md);">
-                <li>Weekly student reflection journals</li>
-                <li>Bi-weekly teacher implementation logs</li>
-                <li>Monthly parent surveys</li>
-                <li>Quarterly stakeholder focus groups</li>
-              </ul>
-
-              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Responsive Adjustments</h5>
-              <div style="background: var(--bg-light); padding: var(--spacing-sm); border-radius: 6px;">
-                <p style="margin: 0; font-size: 0.9rem;">Feedback is reviewed within 48 hours, with adjustments implemented within one week when feasible. Major concerns trigger immediate review and response.</p>
-              </div>
-            </div>
+          <div class="sett-component environment">
+            <div class="sett-title">Environment</div>
+            <ul>
+              <li>Bring-your-own-device setting: wide range of performance and compatibility.</li>
+              <li>Not all students can run the same apps smoothly.</li>
+              <li>Classroom routines must include “how to access supports,” not assume students already know.</li>
+            </ul>
           </div>
+
+          <div class="sett-component tasks">
+            <div class="sett-title">Tasks</div>
+            <ul>
+              <li>Math tasks: multi-step problem solving, reading word problems, showing reasoning.</li>
+              <li>Robotics tasks: documenting builds, iterating designs, testing code, reflecting.</li>
+              <li>Assessment tasks: demonstrating learning without the tool becoming the gatekeeper.</li>
+            </ul>
+          </div>
+
+          <div class="sett-component tools">
+            <div class="sett-title">Tools</div>
+            <ul>
+              <li>Built-in accessibility tools (TTS, STT, contrast, zoom, dictation, captions).</li>
+              <li>Low-tech manipulatives (algebra tiles) and 3D-printed models for tactile access.</li>
+              <li>Web-based learning checks designed to run on lower-spec devices.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <h4>Design rule I’m using</h4>
+          <p>
+            If a support only works for students with powerful laptops, it is not an equitable support in my setting.
+            Tools have to be realistic for the classroom environment I actually have.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Sustainability -->
-    <section id="sustainability" class="content-section">
+    <!-- 4) Implementation Plan -->
+    <section id="implementation-plan" class="content-section">
       <div class="section-card">
         <h3 class="section-title">
-          <span class="section-icon">6</span>
-          Sustainability Plan
+          <span class="section-icon">4</span>
+          Implementation Plan
         </h3>
 
-        <div class="callout-box">
-          <h4 style="color: var(--primary-blue); margin-top: 0;">Long-Term Success Strategy</h4>
-          <p>Comprehensive sustainability planning addresses financial, technical, and human resource considerations to ensure assistive technology implementation continues beyond initial funding and support.</p>
-        </div>
+        <p>
+          This plan focuses on supports I can implement consistently in a Grades 7–12 setting, across math and robotics,
+          while accounting for differences in device performance.
+        </p>
 
-        <div class="three-column">
-          <div class="feature-card">
-            <h4 class="feature-title">Financial Sustainability</h4>
-            
-            <div style="margin: var(--spacing-md) 0;">
-              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Funding Strategy</h5>
-              <ul style="margin-bottom: var(--spacing-md);">
-                <li><strong>Initial Investment:</strong> School technology budget ($5,000)</li>
-                <li><strong>Grants:</strong> Apply for educational technology and accessibility grants</li>
-                <li><strong>Community Partnerships:</strong> Local business sponsorships</li>
-                <li><strong>Parent-Teacher Association:</strong> Annual fundraising allocation</li>
-              </ul>
-
-              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Cost Management</h5>
-              <ul>
-                <li>Prioritize multi-use tools with long lifespan</li>
-                <li>Implement phased purchasing over 3 years</li>
-                <li>Explore bulk purchasing with other schools</li>
-                <li>Consider open-source software alternatives</li>
-              </ul>
-            </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h4>Step 1: Identify barriers and baseline routines</h4>
+            <p>
+              I will name the common barriers (reading load, pacing, visual processing, attention/executive functioning, device limitations)
+              and explicitly teach students how to access built-in accessibility tools on their devices.
+            </p>
           </div>
 
-          <div class="feature-card">
-            <h4 class="feature-title">Technical Sustainability</h4>
-            
-            <div style="margin: var(--spacing-md) 0;">
-              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Maintenance Plan</h5>
-              <ul style="margin-bottom: var(--spacing-md);">
-                <li>Quarterly equipment inspections and calibration</li>
-                <li>Annual software updates and license renewals</li>
-                <li>Backup system for critical tools</li>
-                <li>Inventory management system with replacement schedule</li>
-              </ul>
-
-              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Technical Support</h5>
-              <ul>
-                <li>Trained student tech team for basic troubleshooting</li>
-                <li>Dedicated IT staff hours for AT support</li>
-                <li>Vendor support contracts for complex issues</li>
-                <li>Online knowledge base and troubleshooting guides</li>
-              </ul>
-            </div>
+          <div class="timeline-item">
+            <h4>Step 2: Provide low-tech and digital options for the same goal</h4>
+            <p>
+              For key concepts (ex: solving equations, surface area), students can choose between manipulatives/3D models,
+              guided examples, or digital practice with immediate feedback.
+            </p>
           </div>
 
-          <div class="feature-card">
-            <h4 class="feature-title">Capacity Building</h4>
-            
-            <div style="margin: var(--spacing-md) 0;">
-              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Professional Development</h5>
-              <ul style="margin-bottom: var(--spacing-md);">
-                <li>Annual AT training for all science teachers</li>
-                <li>New teacher orientation includes AT component</li>
-                <li>Peer coaching and mentoring program</li>
-                <li>Online learning modules for ongoing skill development</li>
-              </ul>
-
-              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Knowledge Transfer</h5>
-              <ul>
-                <li>Document implementation procedures and lessons learned</li>
-                <li>Create video tutorials and user guides</li>
-                <li>Establish AT committee for ongoing oversight</li>
-                <li>Develop succession plan for key leadership roles</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div style="background: var(--bg-card); border-radius: 10px; padding: var(--spacing-lg); margin-top: var(--spacing-lg);">
-          <h4 style="color: var(--primary-blue); margin-top: 0;">Anticipated Challenges & Solutions</h4>
-          <table style="margin-top: var(--spacing-md);">
-            <thead>
-              <tr>
-                <th>Potential Challenge</th>
-                <th>Likelihood</th>
-                <th>Impact</th>
-                <th>Mitigation Strategy</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Budget constraints limiting tool acquisition</td>
-                <td>High</td>
-                <td>Medium</td>
-                <td>Prioritize essential tools, seek alternative funding, implement phased approach</td>
-              </tr>
-              <tr>
-                <td>Staff turnover affecting implementation continuity</td>
-                <td>Medium</td>
-                <td>High</td>
-                <td>Comprehensive documentation, mentor system, institutionalize training</td>
-              </tr>
-              <tr>
-                <td>Technology obsolescence</td>
-                <td>Medium</td>
-                <td>Medium</td>
-                <td>Regular technology reviews, budget for updates, select flexible systems</td>
-              </tr>
-              <tr>
-                <td>Resistance to change from stakeholders</td>
-                <td>Low</td>
-                <td>High</td>
-                <td>Early and ongoing engagement, demonstrate benefits, provide support</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Self-Reflection -->
-    <section id="reflection" class="content-section">
-      <div class="section-card">
-        <h3 class="section-title">
-          <span class="section-icon">7</span>
-          Critical Self-Reflection
-        </h3>
-
-        <div class="callout-box">
-          <h4 style="color: var(--primary-blue); margin-top: 0;">Reflection Framework</h4>
-          <p>This reflection examines personal growth, implementation challenges, and connections to course learning, following the rubric's emphasis on metacognition and professional development.</p>
-        </div>
-
-        <div class="two-column">
-          <div class="feature-card">
-            <h4 class="feature-title">Personal Growth & Learning</h4>
-            
-            <div style="margin: var(--spacing-md) 0;">
-              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Professional Practice Insights</h5>
-              <p style="line-height: 1.8; margin-bottom: var(--spacing-md);">
-                Designing this implementation plan deepened my understanding of the systematic approach required for effective assistive technology integration. I learned that successful AT implementation is not just about selecting the right tools, but about creating a comprehensive ecosystem of support that includes stakeholder engagement, ongoing training, and continuous evaluation. The SETT Framework provided a valuable structure for ensuring all aspects of the student's learning context were considered.
-              </p>
-
-              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Equity & Accessibility Understanding</h5>
-              <p style="line-height: 1.8;">
-                This project transformed my understanding of educational equity from a theoretical concept to a practical framework for action. I now see accessibility not as an add-on or accommodation, but as a fundamental design principle that benefits all learners. The process of identifying specific barriers and matching them with appropriate technologies revealed how seemingly small adjustments can create significant opportunities for participation and success.
-              </p>
-            </div>
+          <div class="timeline-item">
+            <h4>Step 3: Make learning checks lightweight and accessible</h4>
+            <p>
+              Learning checks will be web-based and designed to run smoothly on entry-level devices, with clear navigation,
+              readable fonts, and optional supports (zoom, contrast-friendly layout, simplified page load).
+            </p>
           </div>
 
-          <div class="feature-card">
-            <h4 class="feature-title">Challenges & Problem-Solving</h4>
-            
-            <div style="margin: var(--spacing-md) 0;">
-              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Key Implementation Challenges</h5>
-              <ol style="line-height: 1.8; margin-bottom: var(--spacing-md); padding-left: var(--spacing-md);">
-                <li><strong>Balancing Individualization with Scalability:</strong> Creating solutions that meet specific student needs while remaining feasible for classroom implementation</li>
-                <li><strong>Addressing Resource Limitations:</strong> Developing a realistic plan within typical school budget constraints</li>
-                <li><strong>Ensuring Sustainable Integration:</strong> Moving beyond initial implementation to create lasting change</li>
-                <li><strong>Measuring Meaningful Outcomes:</strong> Developing evaluation methods that capture both quantitative and qualitative impacts</li>
-              </ol>
-
-              <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Problem-Solving Strategies</h5>
-              <ul style="line-height: 1.8;">
-                <li>Used iterative design process with multiple feedback loops</li>
-                <li>Consulted research on cost-effective AT solutions</li>
-                <li>Built sustainability considerations into initial planning</li>
-                <li>Developed mixed-methods evaluation approach</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="feature-card" style="margin-top: var(--spacing-lg);">
-          <h4 class="feature-title">Connection to Course Learning</h4>
-          
-          <div style="margin: var(--spacing-md) 0;">
-            <h5 style="color: var(--primary-teal); margin-bottom: var(--spacing-xs);">Alignment with EDU 887 Course Goals</h5>
-            <div class="two-column">
-              <div>
-                <h6 style="color: var(--primary-blue); margin-bottom: var(--spacing-xs);">Course Concepts Applied</h6>
-                <ul style="line-height: 1.8;">
-                  <li>Universal Design for Learning principles</li>
-                  <li>Emerging technology evaluation frameworks</li>
-                  <li>Digital equity and access considerations</li>
-                  <li>Evidence-based implementation strategies</li>
-                  <li>Stakeholder collaboration models</li>
-                </ul>
-              </div>
-              <div>
-                <h6 style="color: var(--primary-blue); margin-bottom: var(--spacing-xs);">Future Application</h6>
-                <ul style="line-height: 1.8;">
-                  <li>Apply SETT Framework to other educational contexts</li>
-                  <li>Advocate for systemic AT integration</li>
-                  <li>Train colleagues in AT implementation</li>
-                  <li>Contribute to school technology planning</li>
-                  <li>Continue professional learning in emerging AT</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div style="background: linear-gradient(135deg, var(--bg-card), white); padding: var(--spacing-md); border-radius: 8px; margin-top: var(--spacing-md); border-left: 4px solid var(--primary-teal);">
-            <h5 style="color: var(--primary-blue); margin-top: 0;">Key Takeaways for Professional Practice</h5>
-            <p style="line-height: 1.8; margin: 0;">
-              This project reinforced that effective technology integration requires equal attention to pedagogy, people, and processes. The most sophisticated tools will fail without proper training, support, and alignment with learning goals. Moving forward, I will approach educational technology decisions with a more critical eye, considering not just what tools to use, but how to implement them in ways that genuinely promote equity and improve learning outcomes for all students.
+          <div class="timeline-item">
+            <h4>Step 4: Build in reflection and student feedback</h4>
+            <p>
+              Students will reflect briefly on which support helped them (and why) so I can adjust tools and routines.
+              This keeps the focus on “what removes the barrier” instead of “what is the fanciest tool.”
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Rubric Alignment -->
-    <section id="rubric-alignment" class="content-section">
+    <!-- 5) Monitoring & Evaluation -->
+    <section id="monitoring-evaluation" class="content-section">
       <div class="section-card">
         <h3 class="section-title">
-          <span class="section-icon">8</span>
-          Rubric Alignment & Self-Assessment
+          <span class="section-icon">5</span>
+          Monitoring &amp; Evaluation
         </h3>
 
-        <div class="callout-box">
-          <h4 style="color: var(--primary-blue); margin-top: 0;">Ungrading Principles Application</h4>
-          <p>This section demonstrates how the project addresses the rubric's emphasis on qualitative feedback, self-assessment, process focus, and collaborative dialogue as outlined in the ungrading approach.</p>
+        <div class="three-column">
+          <div class="feature-card">
+            <h4>Student evidence</h4>
+            <p>Completion rates on practice/learning checks, quality of reasoning shown, and student self-assessment.</p>
+          </div>
+          <div class="feature-card">
+            <h4>Access indicators</h4>
+            <p>Whether students can use supports independently (TTS, zoom, contrast) and whether supports work across devices.</p>
+          </div>
+          <div class="feature-card">
+            <h4>Teacher reflection</h4>
+            <p>What barriers are showing up most often, what tools are effective, and what needs adjustment in routines.</p>
+          </div>
         </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Rubric Element</th>
-              <th>Project Alignment</th>
-              <th>Evidence of Meeting Criteria</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Introduction to Context</strong></td>
-              <td>Comprehensive description of educational setting and equity challenge</td>
-              <td>Detailed context section with specific learner descriptions and barrier analysis</td>
-            </tr>
-            <tr>
-              <td><strong>SETT Framework Application</strong></td>
-              <td>Thorough analysis of Student, Environment, Tasks, Tools</td>
-              <td>Four-component framework with detailed considerations and evidence-based tool selection</td>
-            </tr>
-            <tr>
-              <td><strong>Implementation Plan</strong></td>
-              <td>Practical, actionable steps with clear timeline</td>
-              <td>Phased approach with preparation, implementation, and evaluation components</td>
-            </tr>
-            <tr>
-              <td><strong>Equity & Accessibility</strong></td>
-              <td>Meaningful addressing of inclusion barriers</td>
-              <td>Specific strategies for diverse learners and universal design principles</td>
-            </tr>
-            <tr>
-              <td><strong>Stakeholder Involvement</strong></td>
-              <td>Detailed collaboration strategies</td>
-              <td>Comprehensive stakeholder table with roles, responsibilities, and engagement methods</td>
-            </tr>
-            <tr>
-              <td><strong>Critical Self-Reflection</strong></td>
-              <td>Thoughtful engagement with process and growth</td>
-              <td>Comprehensive reflection addressing personal learning, challenges, and course connections</td>
-            </tr>
-            <tr>
-              <td><strong>Professional Presentation</strong></td>
-              <td>Organized, accessible, visually appealing format</td>
-              <td>Website format with clear navigation, consistent design, and professional formatting</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="highlight-box">
+          <h4>What “success” looks like</h4>
+          <p>
+            More students demonstrate their thinking with fewer technology-related breakdowns, and students can describe which supports help them.
+            If only a few students can access the “best” version of the learning task, the plan needs revision.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6) Reflection -->
+    <section id="reflection" class="content-section">
+      <div class="section-card">
+        <h3 class="section-title">
+          <span class="section-icon">6</span>
+          Self-Reflection
+        </h3>
+
+        <p>
+          My growth has been moving from seeing technology as “organization” (posting notes and assignments) toward seeing it as “design”:
+          choosing tools and routines that remove barriers. In a bring-your-own-device environment, equity is not just whether students have a device,
+          but whether the learning experience is accessible on the device they actually have.
+        </p>
+
+        <p>
+          As a math department head and robotics coach, I also have a leadership responsibility to normalize accessibility supports
+          (not as “special” tools, but as standard options), and to advocate for realistic, inclusive practices that work across classrooms.
+        </p>
+      </div>
+    </section>
+
+    <!-- References -->
+    <section id="references" class="content-section">
+      <div class="section-card">
+        <h3 class="section-title">
+          <span class="section-icon">R</span>
+          References
+        </h3>
+
+        <ul>
+          <li>
+            Andersen, B. L., Jørnø, R. L., &amp; Nortvig, A.-M. (2022). Blending adaptive learning technology into nursing education: A scoping review.
+            <em>Contemporary Educational Technology, 14</em>(1), 333.
+          </li>
+          <li>
+            Klimova, B., &amp; Zamborova, K. (2023). Use of assistive and adaptive technology in learning English as a foreign language: A systematic review.
+            <em>Contemporary Educational Technology, 15</em>(4), 481.
+          </li>
+          <li>
+            NEAT. (2021). <em>Low, mid, and high-tech assistive technology</em> [Video]. YouTube.
+            https://www.youtube.com/watch?v=iyQlTEACATk
+          </li>
+          <li>
+            PATINS Project. (2020). <em>The SETT Framework</em> [Video]. YouTube.
+            https://youtu.be/nPw3fOZfgvg
+          </li>
+        </ul>
+
+        <p style="margin-top: var(--spacing-md); color: var(--text-light); font-size: 0.95rem;">
+          Note: If you want, I can expand this reference list to include Module 1–2 sources (and format everything consistently),
+          but I didn’t add anything here that you didn’t already name in your draft.
+        </p>
       </div>
     </section>
   </main>
 
-  <!-- Academic Footer -->
   <footer class="academic-footer">
-    <div style="max-width: 800px; margin: 0 auto;">
-      <h3 style="margin: 0 0 var(--spacing-md) 0; font-size: 1.5rem;">EDU 887 Final Project Submission</h3>
-      <p style="margin: 0 0 var(--spacing-sm) 0; font-size: 1.1rem; line-height: 1.6;">
-        This comprehensive assistive technology implementation plan demonstrates application of the SETT Framework to address real-world equity challenges in STEM education. The project reflects deep engagement with course concepts, critical thinking, and practical application to promote inclusive learning environments.
-      </p>
-      <div style="margin: var(--spacing-lg) 0 0 0; padding: 12px 0; border-top: 1px solid rgba(255, 255, 255, 0.2);">
-        <p style="margin: 0; font-size: 0.95rem;">
-          <strong>© <span id="current-year"></span> Hannah Terkper</strong> — EDU 887 Emerging Technology & Educational Equity<br>
-          Final Project Option #1: Assistive Technology Implementation Plan Using the SETT Framework
-        </p>
-      </div>
-    </div>
+    <p>© <span id="current-year"></span> Hannah Terkper | EDU 887 Emerging Technology &amp; Educational Equity</p>
   </footer>
 
   <!-- Quick Navigation -->
   <button class="quick-nav-btn" id="quick-nav-btn" title="Quick Navigation">≡</button>
-  <div class="quick-nav-menu" id="quick-nav-menu">
-    <a href="#context-introduction">Context & Challenge</a>
+  <div class="quick-nav-menu" id="quick-nav-menu" aria-label="Quick navigation menu">
+    <a href="#context-introduction">Context &amp; Challenge</a>
+    <a href="#tool-continuum">Low–High Tech Supports</a>
     <a href="#sett-framework">SETT Framework</a>
     <a href="#implementation-plan">Implementation Plan</a>
-    <a href="#monitoring-evaluation">Monitoring & Evaluation</a>
-    <a href="#stakeholder-involvement">Stakeholder Involvement</a>
-    <a href="#sustainability">Sustainability Plan</a>
-    <a href="#reflection">Self-Reflection</a>
-    <a href="#rubric-alignment">Rubric Alignment</a>
+    <a href="#monitoring-evaluation">Monitoring &amp; Evaluation</a>
+    <a href="#reflection">Reflection</a>
+    <a href="#references">References</a>
     <hr style="margin: var(--spacing-xs) 0; border: none; border-top: 1px solid var(--border-light);">
     <a href="#" onclick="window.print(); return false;">Print/PDF Version</a>
     <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Back to Top</a>
   </div>
 
   <script>
-    // Set current date and year
-    document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+    // Set current date + year
+    document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-CA', {
+      year: 'numeric', month: 'long', day: 'numeric'
     });
-    
     document.getElementById('current-year').textContent = new Date().getFullYear();
 
-    // Smooth scrolling for navigation links
+    // Smooth scrolling for page nav links
     document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', function(e) {
+      link.addEventListener('click', function (e) {
         e.preventDefault();
         const targetId = this.getAttribute('href').substring(1);
         const targetElement = document.getElementById(targetId);
-
         if (targetElement) {
-          // Update active nav link
           document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
           this.classList.add('active');
-
-          // Smooth scroll
-          targetElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
     });
 
-    // Intersection Observer for active navigation
+    // Active section highlighting
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href') === `#${entry.target.id}`) {
-              link.classList.add('active');
-            }
+            if (link.getAttribute('href') === `#${entry.target.id}`) link.classList.add('active');
           });
         }
       });
-    }, { threshold: 0.3 });
-
+    }, { threshold: 0.25 });
     sections.forEach(section => observer.observe(section));
 
-    // Quick Navigation functionality
+    // Quick nav toggle
     const quickNavBtn = document.getElementById('quick-nav-btn');
     const quickNavMenu = document.getElementById('quick-nav-menu');
 
@@ -1439,26 +849,14 @@
       quickNavMenu.classList.toggle('active');
     });
 
-    // Close quick nav when clicking outside
     document.addEventListener('click', (e) => {
       if (!quickNavBtn.contains(e.target) && !quickNavMenu.contains(e.target)) {
         quickNavMenu.classList.remove('active');
       }
     });
 
-    // Close quick nav when clicking on a link
     quickNavMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        quickNavMenu.classList.remove('active');
-      });
-    });
-
-    // Print functionality
-    document.querySelectorAll('a[onclick*="window.print"]').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.print();
-      });
+      link.addEventListener('click', () => quickNavMenu.classList.remove('active'));
     });
   </script>
 </body>
