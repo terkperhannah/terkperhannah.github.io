@@ -10,34 +10,38 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
+        :root {
+            /* Matching variables from leadership showcase for consistency */
+            --primary-blue: #1976d2;
+            --primary-teal: #00796b;
+            --accent-purple: #667eea;
+            --text-dark: #2c3e50;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc;
             color: #1e293b;
             scroll-behavior: smooth;
         }
+        
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', sans-serif;
         }
+
         .glass-card {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
-        .gradient-text {
-            background: linear-gradient(135deg, #0284c7, #0d9488);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero-gradient {
-            background: linear-gradient(135deg, #0284c7, #0f766e);
-        }
+
         /* Tab Styles */
         .tab-content {
             display: none;
@@ -48,8 +52,8 @@
         }
         .tab-btn.active {
             background-color: #eff6ff;
-            color: #0284c7;
-            border-bottom: 2px solid #0284c7;
+            color: #1976d2;
+            border-bottom: 2px solid #1976d2;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -59,34 +63,42 @@
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-teal-600 flex items-center justify-center text-white font-bold">HT</div>
-                    <span class="font-bold text-xl text-slate-800 hidden sm:block">Hannah Terkper</span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Home</a>
-                    <a href="#sett" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">SETT Framework</a>
-                    <a href="#implementation" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Plan</a>
-                    <a href="#reflection" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Reflection</a>
-                    <a href="#resources" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Resources</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <!-- NAVBAR PLACEHOLDER (Connects to your main website) -->
+    <div id="navbar-placeholder"></div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('navbar.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                })
+                .catch(err => {
+                    console.error("Navbar failed to load:", err);
+                    // Fallback navbar if file missing (for local preview)
+                    document.getElementById('navbar-placeholder').innerHTML = `
+                        <nav class="bg-white border-b border-gray-200 p-4">
+                            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                                <span class="font-bold text-xl text-slate-800">Hannah Terkper</span>
+                                <div class="hidden md:flex gap-6">
+                                    <a href="index.html" class="text-slate-600 hover:text-blue-600">Home</a>
+                                    <a href="#" class="text-blue-600 font-medium">EDU 887 Project</a>
+                                </div>
+                            </div>
+                        </nav>
+                    `;
+                });
+        });
+    </script>
 
     <!-- Main Content -->
-    <main class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-24">
+    <main class="pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-24">
 
         <!-- HOME SECTION -->
         <section id="home" class="scroll-mt-24">
             <!-- Hero -->
-            <div class="relative rounded-3xl overflow-hidden mb-16 text-white shadow-2xl bg-slate-900">
+            <div class="relative rounded-3xl overflow-hidden mb-16 text-white shadow-2xl bg-slate-900 mt-8">
                 <div class="absolute inset-0 bg-gradient-to-r from-blue-600/90 to-teal-800/90 z-10 backdrop-blur-[2px]"></div>
-                <!-- Note: Using placeholder background color if image fails -->
                 <div class="relative z-20 px-8 py-20 md:py-32 max-w-4xl">
                     <span class="bg-white/20 text-white px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider mb-6 inline-block backdrop-blur-md">EDU 887 Final Project</span>
                     <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Assistive Technology Implementation Plan</h1>
