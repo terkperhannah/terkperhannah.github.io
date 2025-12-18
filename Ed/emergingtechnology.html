@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emerging Technology & Equity | Hannah Terkper</title>
+    <meta name="description" content="Assistive Technology Implementation Plan Using the SETT Framework - Final Project for EDU 887">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            /* Matching variables from leadership showcase for consistency */
+            --primary-blue: #1976d2;
+            --primary-teal: #00796b;
+            --accent-purple: #667eea;
+            --text-dark: #2c3e50;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Tab Styles */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-btn.active {
+            background-color: #eff6ff;
+            color: #1976d2;
+            border-bottom: 2px solid #1976d2;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+        <div id="navbar-placeholder"></div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('navbar.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                })
+                .catch(err => console.error("Navbar failed to load:", err));
+        });
+    </script>
+
+    <!-- Main Content -->
+    <main class="pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-24">
+
+        <!-- HOME SECTION -->
+        <section id="home" class="scroll-mt-24">
+            <!-- Hero -->
+            <div class="relative rounded-3xl overflow-hidden mb-16 text-white shadow-2xl bg-slate-900 mt-8">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-600/90 to-teal-800/90 z-10 backdrop-blur-[2px]"></div>
+                <div class="relative z-20 px-8 py-20 md:py-32 max-w-4xl">
+                    <span class="bg-white/20 text-white px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider mb-6 inline-block backdrop-blur-md">EDU 887 Final Project</span>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Assistive Technology Implementation Plan</h1>
+                    <p class="text-xl md:text-2xl text-blue-50 mb-8 font-light max-w-2xl leading-relaxed">
+                        Using the SETT Framework (Zabala, n.d.) to build equitable capacity and support diverse learners in secondary mathematics.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#sett" class="bg-white text-blue-700 hover:bg-blue-50 px-8 py-3 rounded-full font-semibold shadow-lg transition-transform hover:-translate-y-1 inline-flex items-center gap-2">
+                            Explore Plan <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#resources" class="border border-white/30 text-white hover:bg-white/10 px-8 py-3 rounded-full backdrop-blur-sm transition-colors">
+                            View Readings
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About / Context -->
+            <div class="grid md:grid-cols-12 gap-12 items-start">
+                <div class="md:col-span-5 relative">
+                    <div class="sticky top-28">
+                        <div class="relative">
+                            <div class="absolute -inset-4 bg-gradient-to-br from-blue-600 to-teal-600 rounded-[2rem] opacity-20 blur-xl"></div>
+                            <!-- User Image -->
+                            <img src="SA_pics/new.png" alt="Hannah Terkper" class="relative rounded-2xl shadow-2xl w-full object-cover aspect-[3/4] bg-slate-200">
+                        </div>
+                        <div class="mt-8 glass-card p-6 rounded-xl bg-white shadow-lg">
+                            <h3 class="font-bold text-xl mb-2 text-blue-700">Hannah Terkper</h3>
+                            <p class="text-slate-600 mb-4">Mathematics Department Head & Educator</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-xs font-medium">Math 10C & 20-1</span>
+                                <span class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-xs font-medium">Robotics Coach</span>
+                                <span class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-xs font-medium">Yearbook Lead</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-7 space-y-10">
+                    <div>
+                        <h2 class="text-3xl font-bold text-slate-900 mb-6 relative inline-block">
+                            Context & Equity Challenge
+                            <span class="absolute bottom-1 left-0 w-full h-3 bg-teal-200/50 -z-10 transform -rotate-1"></span>
+                        </h2>
+                        <div class="prose prose-lg text-slate-600 leading-relaxed space-y-4">
+                            <p>
+                                I am an educator in Edmonton, Alberta, teaching in a secondary school (Grades 7–12) with a diverse student population. Our community includes multilingual learners (ELL), students with identified and unidentified learning needs, and students from historically marginalized communities (Kiritsis & Manolis, 2024).
+                            </p>
+                            <p>
+                                My teaching background includes math and computer science, and I regularly integrate technology into instruction. Over the past four years, my technology use has evolved from simple LMS posting to building interactive virtual classroom extensions that align with Universal Design for Learning principles (CAST, n.d.).
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100">
+                            <h3 class="flex items-center gap-3 text-lg font-bold mb-3 text-slate-900">
+                                <div class="p-2 bg-blue-100 rounded-lg text-blue-600"><i data-lucide="laptop" class="w-5 h-5"></i></div>
+                                The Digital Divide
+                            </h3>
+                            <p class="text-slate-600 text-sm">
+                                A key equity reality in my context is that students use family-purchased personal laptops. Device quality varies widely—from high-performance machines to entry-level devices that struggle with multitasking, a symptom of the "Digital Access Divide" (U.S. Department of Education, 2024).
+                            </p>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100">
+                            <h3 class="flex items-center gap-3 text-lg font-bold mb-3 text-slate-900">
+                                <div class="p-2 bg-teal-100 rounded-lg text-teal-600"><i data-lucide="heart-handshake" class="w-5 h-5"></i></div>
+                                Inclusive Design
+                            </h3>
+                            <p class="text-slate-600 text-sm">
+                                "Everyone has a computer" does not mean everyone has equal access (Miah, 2023). I aim to choose tools that reduce barriers for reading load, processing speed, and executive functioning without relying on high-end hardware.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-xl">
+                        <h3 class="font-bold text-lg text-blue-800 mb-2">My Goal</h3>
+                        <p class="text-blue-700 italic">
+                            "To use frameworks like SETT, UDL, TPACK, and SAMR to make technology choices that reduce barriers and support student confidence and independence—without relying on tools that only work for students with stronger devices or more resources."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SETT FRAMEWORK SECTION -->
+        <section id="sett" class="scroll-mt-24 pt-12 border-t border-slate-200">
+            <div class="text-center mb-12 max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-slate-900 mb-4">The SETT Framework Analysis</h2>
+                <p class="text-xl text-slate-600">
+                    A systematic approach to selecting Assistive Technology (AT) by analyzing the 
+                    <span class="font-bold text-blue-600"> Student</span>, 
+                    <span class="font-bold text-teal-600"> Environment</span>, 
+                    <span class="font-bold text-purple-600"> Tasks</span>, and 
+                    <span class="font-bold text-pink-600"> Tools</span>.
+                </p>
+            </div>
+
+            <!-- Custom Tabs -->
+            <div class="bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden">
+                <div class="flex border-b border-slate-200 overflow-x-auto">
+                    <button onclick="openTab('student')" class="tab-btn active flex-1 py-4 px-6 text-center font-bold text-slate-600 hover:bg-slate-50 transition-colors whitespace-nowrap" data-tab="student">S - Student</button>
+                    <button onclick="openTab('environment')" class="tab-btn flex-1 py-4 px-6 text-center font-bold text-slate-600 hover:bg-slate-50 transition-colors whitespace-nowrap" data-tab="environment">E - Environment</button>
+                    <button onclick="openTab('tasks')" class="tab-btn flex-1 py-4 px-6 text-center font-bold text-slate-600 hover:bg-slate-50 transition-colors whitespace-nowrap" data-tab="tasks">T - Tasks</button>
+                    <button onclick="openTab('tools')" class="tab-btn flex-1 py-4 px-6 text-center font-bold text-slate-600 hover:bg-slate-50 transition-colors whitespace-nowrap" data-tab="tools">T - Tools</button>
+                </div>
+
+                <div class="p-8">
+                    <!-- Student Tab -->
+                    <div id="student" class="tab-content active">
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="border-t-4 border-blue-500 bg-white p-6 rounded-lg shadow-sm">
+                                <h3 class="flex items-center gap-2 text-2xl font-bold text-blue-700 mb-2">
+                                    <i data-lucide="user" class="w-6 h-6"></i> Learner Profile
+                                </h3>
+                                <p class="text-slate-500 mb-4 text-sm">Target Audience: Grade 10-12 Math Students</p>
+                                <div class="space-y-4 text-slate-700">
+                                    <p><strong>Demographics:</strong> Diverse classroom including ELLs, students with ADHD, and students with varied processing speeds (Madhumathi et al., 2024).</p>
+                                    <div class="bg-slate-50 p-4 rounded-lg">
+                                        <h4 class="font-bold mb-2 flex items-center gap-2"><i data-lucide="brain" class="w-4 h-4 text-blue-500"></i> Strengths</h4>
+                                        <ul class="list-disc pl-5 space-y-1 text-sm">
+                                            <li>Comfortable with basic technology.</li>
+                                            <li>Visual learners who benefit from examples.</li>
+                                            <li>Collaborative when given structure.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-t-4 border-blue-500 bg-white p-6 rounded-lg shadow-sm">
+                                <h3 class="text-2xl font-bold text-blue-700 mb-4">Needs & Challenges</h3>
+                                <ul class="space-y-4 text-slate-700">
+                                    <li class="flex gap-3">
+                                        <span class="w-2 h-2 rounded-full bg-red-400 mt-2 flex-shrink-0"></span>
+                                        <span><strong>Executive Functioning:</strong> Difficulty organizing digital files and tracking deadlines (Mosher et al., 2022).</span>
+                                    </li>
+                                    <li class="flex gap-3">
+                                        <span class="w-2 h-2 rounded-full bg-red-400 mt-2 flex-shrink-0"></span>
+                                        <span><strong>Processing Load:</strong> High cognitive load when switching between note-taking and listening.</span>
+                                    </li>
+                                    <li class="flex gap-3">
+                                        <span class="w-2 h-2 rounded-full bg-red-400 mt-2 flex-shrink-0"></span>
+                                        <span><strong>Variable Access:</strong> Stress related to laggy laptops affecting participation (U.S. Dept of Education, 2024).</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Environment Tab -->
+                    <div id="environment" class="tab-content">
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="bg-teal-50/50 border border-teal-100 p-6 rounded-lg">
+                                <h3 class="flex items-center gap-2 text-teal-800 font-bold mb-3"><i data-lucide="globe" class="w-5 h-5"></i> Physical</h3>
+                                <p class="text-slate-700 text-sm">BYOD classroom. High variability in hardware quality. Limited power outlets. Reliable high-speed Wi-Fi available.</p>
+                            </div>
+                            <div class="bg-teal-50/50 border border-teal-100 p-6 rounded-lg">
+                                <h3 class="flex items-center gap-2 text-teal-800 font-bold mb-3"><i data-lucide="users" class="w-5 h-5"></i> Social</h3>
+                                <p class="text-slate-700 text-sm">Collaborative seating. Culture of peer support, but some stigma around "special" accommodations. Goal: Universal design.</p>
+                            </div>
+                            <div class="bg-teal-50/50 border border-teal-100 p-6 rounded-lg">
+                                <h3 class="flex items-center gap-2 text-teal-800 font-bold mb-3"><i data-lucide="monitor" class="w-5 h-5"></i> Instructional</h3>
+                                <p class="text-slate-700 text-sm">Blended learning model. Microsoft Teams & Google Sites. Emphasis on process over final answers. Fast-paced.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tasks Tab -->
+                    <div id="tasks" class="tab-content">
+                        <div class="border-l-8 border-purple-500 bg-white p-8 rounded-lg shadow-sm">
+                            <h3 class="text-2xl font-bold text-purple-800 flex items-center gap-3 mb-2">
+                                <i data-lucide="check-square" class="w-8 h-8"></i> Key Tasks for Success
+                            </h3>
+                            <p class="text-slate-500 mb-6">What do we need the students to be able to do?</p>
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <div>
+                                    <h4 class="font-bold text-lg mb-3 text-purple-700">Academic Tasks</h4>
+                                    <ul class="space-y-2 text-slate-700 text-sm">
+                                        <li>• Access and read complex mathematical text/problems.</li>
+                                        <li>• Organize digital notes and resources efficiently.</li>
+                                        <li>• Demonstrate understanding through written work.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-3 text-purple-700">Functional Tasks</h4>
+                                    <ul class="space-y-2 text-slate-700 text-sm">
+                                        <li>• Navigate the learning management system (LMS).</li>
+                                        <li>• Manage time during independent work blocks.</li>
+                                        <li>• Collaborate on shared digital whiteboards.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tools Tab -->
+                    <div id="tools" class="tab-content">
+                        <div class="bg-pink-50 p-6 rounded-xl border border-pink-100 mb-8">
+                            <h3 class="text-xl font-bold text-pink-800 mb-2 flex items-center gap-2">
+                                <i data-lucide="wrench" class="w-5 h-5"></i> Tool Selection Criteria
+                            </h3>
+                            <p class="text-slate-700">Tools must be <strong>platform-agnostic</strong> (web-based), <strong>low-bandwidth</strong> friendly, and integrate with existing ecosystems (Almufarreh & Arshad, 2023).</p>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="border-t-4 border-pink-400 bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                                <h3 class="text-lg font-bold mb-1">EquatIO</h3>
+                                <span class="text-xs bg-slate-100 px-2 py-1 rounded mb-4 inline-block">Math Input</span>
+                                <p class="text-sm text-slate-600 mb-4">Allows students to speak, draw, or type math equations. Essential for dysgraphia.</p>
+                                <p class="text-xs font-bold text-pink-600">Rationale: Reduces barrier of "typing math" (CAST, n.d.).</p>
+                            </div>
+                            <div class="border-t-4 border-pink-400 bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                                <h3 class="text-lg font-bold mb-1">Immersive Reader</h3>
+                                <span class="text-xs bg-slate-100 px-2 py-1 rounded mb-4 inline-block">Text-to-Speech</span>
+                                <p class="text-sm text-slate-600 mb-4">Reads text aloud, highlights lines. Helps ELL and reading challenges (Kaczorowski et al., 2023).</p>
+                                <p class="text-xs font-bold text-pink-600">Rationale: Universal tool, no extra install.</p>
+                            </div>
+                            <div class="border-t-4 border-pink-400 bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                                <h3 class="text-lg font-bold mb-1">Desmos Classroom</h3>
+                                <span class="text-xs bg-slate-100 px-2 py-1 rounded mb-4 inline-block">Interactive</span>
+                                <p class="text-sm text-slate-600 mb-4">Web-based graphing and activity builder. Real-time feedback.</p>
+                                <p class="text-xs font-bold text-pink-600">Rationale: Runs on any device.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- IMPLEMENTATION SECTION -->
+        <section id="implementation" class="scroll-mt-24 pt-12 border-t border-slate-200">
+            <header class="mb-12">
+                <span class="bg-teal-600 text-white px-3 py-1 rounded-full text-xs font-bold uppercase mb-4 inline-block">Action Plan</span>
+                <h2 class="text-4xl font-bold text-slate-900 mb-4">Implementation Strategy</h2>
+                <p class="text-lg text-slate-600">A phased approach to integrating Assistive Technology, ensuring sustainability.</p>
+            </header>
+
+            <div class="space-y-12">
+                <!-- Phase 1 -->
+                <div class="relative pl-8 border-l-2 border-slate-200">
+                    <div class="absolute -left-[11px] top-0 w-6 h-6 rounded-full bg-white border-4 border-teal-500"></div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-6">Phase 1: Preparation & Training</h3>
+                    <div class="grid gap-6">
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100">
+                            <h4 class="text-lg font-bold flex items-center gap-2 mb-3"><i data-lucide="users" class="w-5 h-5 text-teal-600"></i> Stakeholder Engagement</h4>
+                            <ul class="space-y-2 text-slate-600 text-sm">
+                                <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-1 text-teal-500"></i> <span><strong>Students:</strong> Survey for barriers (National Equity Project, 2024).</span></li>
+                                <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-1 text-teal-500"></i> <span><strong>Parents:</strong> Newsletter on equity vs equality (Ott, 2017).</span></li>
+                                <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 mt-1 text-teal-500"></i> <span><strong>IT Support:</strong> Whitelisting tools.</span></li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100">
+                            <h4 class="text-lg font-bold flex items-center gap-2 mb-3"><i data-lucide="flag" class="w-5 h-5 text-teal-600"></i> Resource Creation</h4>
+                            <p class="text-slate-600 text-sm">Create short "How-to" videos for accessing tools. Post on LMS to support independence (CAST, 2024).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="relative pl-8 border-l-2 border-slate-200">
+                    <div class="absolute -left-[11px] top-0 w-6 h-6 rounded-full bg-white border-4 border-blue-500"></div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-6">Phase 2: Step-by-Step Rollout</h3>
+                    <div class="space-y-4">
+                        <details class="group bg-white rounded-lg border border-slate-200 open:ring-2 open:ring-blue-100">
+                            <summary class="flex items-center justify-between p-4 cursor-pointer font-semibold text-slate-800">
+                                Month 1: Universal Introduction
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="p-4 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-100 group-open:border-t">
+                                Introduce <strong>Immersive Reader</strong> to the <em>entire class</em> as a proofreading tool, not just an accommodation. This reduces stigma.
+                            </div>
+                        </details>
+                        <details class="group bg-white rounded-lg border border-slate-200 open:ring-2 open:ring-blue-100">
+                            <summary class="flex items-center justify-between p-4 cursor-pointer font-semibold text-slate-800">
+                                Month 2: Targeted Math Tools
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="p-4 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-100 group-open:border-t">
+                                Introduce <strong>EquatIO</strong> during a low-stakes assessment. Allow students to choose paper or digital.
+                            </div>
+                        </details>
+                        <details class="group bg-white rounded-lg border border-slate-200 open:ring-2 open:ring-blue-100">
+                            <summary class="flex items-center justify-between p-4 cursor-pointer font-semibold text-slate-800">
+                                Month 3: Student Autonomy
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="p-4 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-100 group-open:border-t">
+                                Students create their own "Tech Toolkit" plan. They self-select tools that worked best.
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="relative pl-8 border-l-2 border-slate-200">
+                    <div class="absolute -left-[11px] top-0 w-6 h-6 rounded-full bg-white border-4 border-purple-500"></div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-6">Phase 3: Monitoring & Sustainability</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-purple-50 p-6 rounded-lg">
+                            <h4 class="text-lg font-bold text-purple-900 flex items-center gap-2 mb-2"><i data-lucide="bar-chart-3" class="w-5 h-5"></i> Metrics</h4>
+                            <ul class="list-disc pl-5 space-y-1 text-purple-800/80 text-sm">
+                                <li>Completion rates of homework.</li>
+                                <li>Quality of written explanations.</li>
+                                <li>Student self-efficacy scores.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-100 p-6 rounded-lg">
+                            <h4 class="text-lg font-bold text-slate-900 flex items-center gap-2 mb-2"><i data-lucide="refresh-cw" class="w-5 h-5"></i> Sustainability</h4>
+                            <p class="text-slate-700 text-sm">Appoint student "Tech Captains" to help peers troubleshoot (National Equity Project, 2024).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- REFLECTION SECTION -->
+        <section id="reflection" class="scroll-mt-24 pt-12 border-t border-slate-200">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-slate-900 mb-4">Critical Self-Reflection</h2>
+                <p class="text-xl text-slate-600 max-w-2xl mx-auto">Examining the journey of designing for equity.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-gradient-to-br from-blue-50 to-white border border-blue-100 p-8 rounded-xl shadow-sm">
+                    <h3 class="flex items-center gap-2 text-xl font-bold text-blue-700 mb-4"><i data-lucide="sparkles" class="w-5 h-5"></i> Professional Growth</h3>
+                    <p class="text-slate-700 leading-relaxed">
+                        Through this project, I've moved from viewing accommodations as "exceptions" to "essential design features." I learned that designing for the margins creates a better environment for everyone (Curb Cut Effect). This aligns with the belief that technology requires intentional training (Sesan, 2020).
+                    </p>
+                </div>
+                <div class="bg-gradient-to-br from-teal-50 to-white border border-teal-100 p-8 rounded-xl shadow-sm">
+                    <h3 class="flex items-center gap-2 text-xl font-bold text-teal-700 mb-4"><i data-lucide="target" class="w-5 h-5"></i> Addressing Challenges</h3>
+                    <p class="text-slate-700 leading-relaxed">
+                        The biggest obstacle was device variability. I addressed this by strictly filtering for browser-based, lightweight tools. This constraint forced creative solutions, moving from "equal" access to "equitable" classrooms (Smith, 2023).
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 text-slate-100 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-12 opacity-10 transform scale-150">
+                    <i data-lucide="quote" class="w-48 h-48"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3 relative z-10"><i data-lucide="lightbulb" class="w-8 h-8 text-yellow-400"></i> Connection to Course Goals</h3>
+                <div class="space-y-6 relative z-10 text-lg font-light leading-relaxed opacity-90">
+                    <p>This implementation plan directly applies <strong>EDU 887</strong> principles by moving beyond "access" to "equity".</p>
+                    <p>The SETT framework provided the structure to stop chasing "shiny tools" and analyze student needs (Zabala, n.d.). This shift defines my future leadership (Kiritsis & Manolis, 2024).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- READING LIST SECTION -->
+        <section id="resources" class="scroll-mt-24 pt-12 border-t border-slate-200">
+            <header class="mb-12">
+                <span class="border border-slate-300 text-slate-600 px-3 py-1 rounded-full text-xs font-bold uppercase mb-4 inline-block">Bibliography</span>
+                <h2 class="text-4xl font-bold text-slate-900 mb-4">Reading List & Resources</h2>
+            </header>
+
+            <div class="space-y-8">
+                <!-- Module 1 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 pb-2 border-b border-slate-100">Module 1: Foundations</h3>
+                    <div class="space-y-4">
+                        <div class="flex gap-4 items-start">
+                            <i data-lucide="book" class="w-5 h-5 text-blue-500 flex-shrink-0 mt-1"></i>
+                            <div>
+                                <p class="text-slate-700 text-sm">Kiritsis, D., & Manolis, K. (2024). Social Justice in Education: How It Is Established through Educational Leadership & the Obstacles to Its Implementation. Euromentor, 15(1), 22-38.</p>
+                                <a href="https://edgewood.idm.oclc.org/login?url=https://search.ebscohost.com/login.aspx?direct=true&db=eue&AN=176401228&site=eds-live&scope=site" target="_blank" class="text-xs text-blue-600 mt-1 inline-flex items-center gap-1 hover:underline">View Resource <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <i data-lucide="book" class="w-5 h-5 text-blue-500 flex-shrink-0 mt-1"></i>
+                            <div>
+                                <p class="text-slate-700 text-sm">U.S. Department of Education, Office of Educational Technology. (2024). A call to action for closing the digital access, design, and use divides (National Educational Technology Plan).</p>
+                                <a href="https://files.eric.ed.gov/fulltext/ED641164.pdf" target="_blank" class="text-xs text-blue-600 mt-1 inline-flex items-center gap-1 hover:underline">View Resource <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <i data-lucide="video" class="w-5 h-5 text-red-500 flex-shrink-0 mt-1"></i>
+                            <div>
+                                <p class="text-slate-700 text-sm">Ott, L. (2017). Solving the achievement gap through equity, not equality [Video]. TED.</p>
+                                <a href="https://youtu.be/nOQbu_3M0_Q" target="_blank" class="text-xs text-blue-600 mt-1 inline-flex items-center gap-1 hover:underline">View Resource <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 2 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 pb-2 border-b border-slate-100">Module 2: Emerging Technologies</h3>
+                    <div class="space-y-4">
+                        <div class="flex gap-4 items-start">
+                            <i data-lucide="book" class="w-5 h-5 text-blue-500 flex-shrink-0 mt-1"></i>
+                            <div>
+                                <p class="text-slate-700 text-sm">Almufarreh, A., & Arshad, M. (2023). Promising Emerging Technologies for Teaching and Learning: Recent Developments and Future Challenges. Sustainability, 15(8).</p>
+                                <a href="https://doi-org.edgewood.idm.oclc.org/10.3390/su15086917" target="_blank" class="text-xs text-blue-600 mt-1 inline-flex items-center gap-1 hover:underline">View Resource <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <i data-lucide="globe" class="w-5 h-5 text-teal-500 flex-shrink-0 mt-1"></i>
+                            <div>
+                                <p class="text-slate-700 text-sm">TPACK.org. (n.d.). Technological pedagogical content knowledge framework.</p>
+                                <a href="https://tpack.org/" target="_blank" class="text-xs text-blue-600 mt-1 inline-flex items-center gap-1 hover:underline">View Resource <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 4 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 pb-2 border-b border-slate-100">Module 4: Assistive Technology</h3>
+                    <div class="space-y-4">
+                         <div class="flex gap-4 items-start">
+                            <i data-lucide="book" class="w-5 h-5 text-blue-500 flex-shrink-0 mt-1"></i>
+                            <div>
+                                <p class="text-slate-700 text-sm">Kaczorowski, T., et al. (2023). Designing an Inclusive Future. Teaching Exceptional Children, 55(5).</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                             <i data-lucide="website" class="w-5 h-5 text-teal-500 flex-shrink-0 mt-1"></i>
+                             <div>
+                                 <p class="text-slate-700 text-sm">CAST. (n.d.). Universal Design for Learning guidelines.</p>
+                                 <a href="https://udlguidelines.cast.org" target="_blank" class="text-xs text-blue-600 mt-1 inline-flex items-center gap-1 hover:underline">View Resource <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-12 mt-24">
+        <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
+            <p>&copy; 2025 Hannah Terkper. EDU 887 Emerging Technology & Educational Equity.</p>
+            <p class="mt-2 text-xs opacity-70">Designed for Final Project Option #1</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Tab Functionality
+        function openTab(tabName) {
+            // Hide all tabs
+            var i, tabcontent, tabbtn;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            
+            // Remove active class from buttons
+            tabbtn = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabbtn.length; i++) {
+                tabbtn[i].classList.remove("active");
+            }
+
+            // Show current tab and activate button
+            document.getElementById(tabName).classList.add("active");
+            // Find button with matching data-tab and add active
+            const buttons = document.querySelectorAll(`[data-tab="${tabName}"]`);
+            buttons.forEach(btn => btn.classList.add("active"));
+        }
+    </script>
+</body>
+</html>
