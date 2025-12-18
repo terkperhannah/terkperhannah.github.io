@@ -63,8 +63,7 @@
 </head>
 <body>
 
-    <!-- NAVBAR PLACEHOLDER (Connects to your main website) -->
-    <div id="navbar-placeholder"></div>
+        <div id="navbar-placeholder"></div>
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -73,21 +72,7 @@
                 .then(data => {
                     document.getElementById('navbar-placeholder').innerHTML = data;
                 })
-                .catch(err => {
-                    console.error("Navbar failed to load:", err);
-                    // Fallback navbar if file missing (for local preview)
-                    document.getElementById('navbar-placeholder').innerHTML = `
-                        <nav class="bg-white border-b border-gray-200 p-4">
-                            <div class="max-w-7xl mx-auto flex justify-between items-center">
-                                <span class="font-bold text-xl text-slate-800">Hannah Terkper</span>
-                                <div class="hidden md:flex gap-6">
-                                    <a href="index.html" class="text-slate-600 hover:text-blue-600">Home</a>
-                                    <a href="#" class="text-blue-600 font-medium">EDU 887 Project</a>
-                                </div>
-                            </div>
-                        </nav>
-                    `;
-                });
+                .catch(err => console.error("Navbar failed to load:", err));
         });
     </script>
 
@@ -123,7 +108,7 @@
                         <div class="relative">
                             <div class="absolute -inset-4 bg-gradient-to-br from-blue-600 to-teal-600 rounded-[2rem] opacity-20 blur-xl"></div>
                             <!-- User Image -->
-                            <img src="../attached_assets/new_1766072302593.png" alt="Hannah Terkper" class="relative rounded-2xl shadow-2xl w-full object-cover aspect-[3/4] bg-slate-200">
+                            <img src="SA_pics/new.png" alt="Hannah Terkper" class="relative rounded-2xl shadow-2xl w-full object-cover aspect-[3/4] bg-slate-200">
                         </div>
                         <div class="mt-8 glass-card p-6 rounded-xl bg-white shadow-lg">
                             <h3 class="font-bold text-xl mb-2 text-blue-700">Hannah Terkper</h3>
