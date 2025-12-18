@@ -48,7 +48,7 @@
       scroll-behavior: smooth;
     }
 
-    /* Main Navigation */
+    /* Main Navigation - Custom for this page */
     .main-navbar {
       background: white;
       box-shadow: 0 2px 10px var(--shadow-light);
@@ -77,6 +77,43 @@
       color: var(--primary-blue);
     }
 
+    /* Website Navigation Bar (from your navbar.html) */
+    #navbar-placeholder {
+      background: #2c3e50;
+      padding: 15px 0;
+      position: relative;
+      z-index: 999;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+
+    .nav-link:hover {
+      color: #3498db;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
     /* Assignment Header */
     .assignment-header {
       background: linear-gradient(135deg, var(--primary-teal), var(--primary-blue));
@@ -85,6 +122,7 @@
       color: white;
       position: relative;
       overflow: hidden;
+      margin-top: 0;
     }
 
     .assignment-header::before {
@@ -457,6 +495,18 @@
         right: 20px;
         min-width: 180px;
       }
+
+      /* Navbar responsive */
+      .navbar {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .nav-menu {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
     }
 
     /* Print Styles */
@@ -482,6 +532,10 @@
         box-shadow: none !important;
         border: 1px solid #ccc !important;
         page-break-inside: avoid;
+      }
+
+      #navbar-placeholder {
+        display: none !important;
       }
     }
   </style>
@@ -578,7 +632,10 @@
 </head>
 
 <body>
-  <!-- Main Navigation -->
+  <!-- Website Navigation Bar -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Main Navigation for this page -->
   <nav class="main-navbar">
     <ul class="nav-links">
       <li><a href="#context-introduction">Context</a></li>
@@ -609,44 +666,43 @@
   <main>
     <!-- Context Introduction -->
     <section id="context-introduction" class="content-section">
-  <div class="section-card">
-    <h3 class="section-title"><span class="section-icon">1</span>Context Introduction &amp; Equity Challenge</h3>
+      <div class="section-card">
+        <h3 class="section-title"><span class="section-icon">1</span>Context Introduction &amp; Equity Challenge</h3>
 
-    <h4>Educational Context</h4>
-    <p>
-      <strong>Setting:</strong> STEM-focused junior high and high school in Edmonton, Alberta.
-      The student population is diverse and includes multilingual learners, students with identified and unidentified learning needs,
-      and students from historically marginalized communities.
-    </p>
-    <p>
-      <strong>Technology Context:</strong> All students have access to a personal computer; however, devices are family-purchased.
-      This creates a wide range of device capability across the classroom. Some students have
-      <strong>high-performance laptops</strong> that can run multiple programs smoothly, while others use
-      <strong>entry-level devices</strong> with limited processing power, storage, and battery life.
-      As a result, students do not experience technology access in the same way even when “everyone has a laptop.”
-    </p>
+        <h4>Educational Context</h4>
+        <p>
+          <strong>Setting:</strong> STEM-focused junior high and high school in Edmonton, Alberta.
+          The student population is diverse and includes multilingual learners, students with identified and unidentified learning needs,
+          and students from historically marginalized communities.
+        </p>
+        <p>
+          <strong>Technology Context:</strong> All students have access to a personal computer; however, devices are family-purchased.
+          This creates a wide range of device capability across the classroom. Some students have
+          <strong>high-performance laptops</strong> that can run multiple programs smoothly, while others use
+          <strong>entry-level devices</strong> with limited processing power, storage, and battery life.
+          As a result, students do not experience technology access in the same way even when "everyone has a laptop."
+        </p>
 
-    <h4>Equity Challenge</h4>
-    <p>
-      A key equity challenge in this context is ensuring meaningful access to learning in mathematics and robotics when students face
-      barriers related to abstract reasoning, visual-spatial processing, reading comprehension, sustained attention, and executive functioning.
-      These challenges are amplified when technology tasks assume consistent device performance, reliable software compatibility, or the ability
-      to multitask digitally without lag or crashes.
-    </p>
-    <p>
-      In addition, limited dedicated funding for specialized assistive technologies means many supports must be addressed through
-      intentional instructional design and strategic use of low-, mid-, and high-tech tools that are realistic for mixed-capability devices.
-    </p>
+        <h4>Equity Challenge</h4>
+        <p>
+          A key equity challenge in this context is ensuring meaningful access to learning in mathematics and robotics when students face
+          barriers related to abstract reasoning, visual-spatial processing, reading comprehension, sustained attention, and executive functioning.
+          These challenges are amplified when technology tasks assume consistent device performance, reliable software compatibility, or the ability
+          to multitask digitally without lag or crashes.
+        </p>
+        <p>
+          In addition, limited dedicated funding for specialized assistive technologies means many supports must be addressed through
+          intentional instructional design and strategic use of low-, mid-, and high-tech tools that are realistic for mixed-capability devices.
+        </p>
 
-    <h4>Impact on Learning</h4>
-    <p>
-      These barriers can limit student participation, independence, and confidence, particularly in STEM learning where success is often tied
-      to speed, accuracy, and procedural fluency. Without intentional supports, students may disengage or internalize the belief that they are
-      “not good at math” or “not technical,” which impacts achievement and self-efficacy.
-    </p>
-  </div>
-</section>
-
+        <h4>Impact on Learning</h4>
+        <p>
+          These barriers can limit student participation, independence, and confidence, particularly in STEM learning where success is often tied
+          to speed, accuracy, and procedural fluency. Without intentional supports, students may disengage or internalize the belief that they are
+          "not good at math" or "not technical," which impacts achievement and self-efficacy.
+        </p>
+      </div>
+    </section>
 
     <!-- SETT Framework Application -->
     <section id="sett-framework" class="content-section">
@@ -1382,14 +1438,24 @@
   </div>
 
   <script>
-    // Set current date and year
-    document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+    // Load the navbar
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(err => console.error("Navbar failed to load:", err));
+
+      // Set current date and year
+      document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+      
+      document.getElementById('current-year').textContent = new Date().getFullYear();
     });
-    
-    document.getElementById('current-year').textContent = new Date().getFullYear();
 
     // Smooth scrolling for navigation links
     document.querySelectorAll('.nav-link').forEach(link => {
