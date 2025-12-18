@@ -147,10 +147,10 @@
     /* Page Navigation */
     .page-nav {
       background: rgba(255, 255, 255, 0.98);
-      padding: var(--spacing-md) 0;
+      padding: 12px 0;
       border-bottom: 3px solid var(--primary-teal);
       position: sticky;
-      top: 70px;
+      top: 0;
       z-index: 900;
       backdrop-filter: blur(10px);
     }
@@ -459,6 +459,30 @@
       }
     }
 
+    
+    /* Accessibility */
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 10px;
+      background: white;
+      color: var(--primary-blue);
+      padding: 10px 14px;
+      border-radius: 8px;
+      box-shadow: 0 6px 20px var(--shadow-medium);
+      z-index: 2000;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .skip-link:focus { left: 12px; }
+
+    /* Content rhythm */
+    .section-card h4 { margin-top: var(--spacing-md); color: var(--text-dark); }
+    .section-card h5 { margin-top: var(--spacing-sm); }
+    .section-card p { margin-top: var(--spacing-sm); color: var(--text-medium); }
+    .section-card ul, .section-card ol { margin-top: var(--spacing-sm); padding-left: 1.2rem; }
+    .section-card li { margin: 6px 0; }
+
     /* Print Styles */
     @media print {
       .main-navbar,
@@ -576,21 +600,24 @@
     }
   </style>
 </head>
+<header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <div id="navbar-placeholder"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      })
+      .catch(err => console.error("Navbar failed to load:", err));
+  });
+</script>
 
 <body>
-  <!-- Main Navigation -->
-  <nav class="main-navbar">
-    <ul class="nav-links">
-      <li><a href="#context-introduction">Context</a></li>
-      <li><a href="#sett-framework">SETT Framework</a></li>
-      <li><a href="#implementation-plan">Implementation Plan</a></li>
-      <li><a href="#stakeholder-involvement">Stakeholders</a></li>
-      <li><a href="#evaluation-monitoring">Evaluation</a></li>
-      <li><a href="#reflection">Reflection</a></li>
-    </ul>
-  </nav>
-
-  <!-- Assignment Header -->
+  <a class="skip-link" href="#context-introduction">Skip to main content</a>
+<!-- Assignment Header -->
   <header class="assignment-header">
     <h1 class="assignment-title">Assistive Technology Implementation Plan</h1>
     <p class="assignment-subtitle">Using the SETT Framework to Promote Educational Equity</p>
@@ -620,7 +647,7 @@
 
   <main>
     <!-- Context Introduction -->
-    <section id="context" class="content-section">
+    <section id="context-introduction" class="content-section">
   <div class="section-card">
     <h3 class="section-title"><span class="section-icon">1</span>Context Introduction &amp; Equity Challenge</h3>
 
@@ -1368,7 +1395,7 @@
       <p style="margin: 0 0 var(--spacing-sm) 0; font-size: 1.1rem; line-height: 1.6;">
         This comprehensive assistive technology implementation plan demonstrates application of the SETT Framework to address real-world equity challenges in STEM education. The project reflects deep engagement with course concepts, critical thinking, and practical application to promote inclusive learning environments.
       </p>
-      <div style="margin: var(--spacing-lg) 0 0 0; padding: var(--spacing-md) 0; border-top: 1px solid rgba(255, 255, 255, 0.2);">
+      <div style="margin: var(--spacing-lg) 0 0 0; padding: 12px 0; border-top: 1px solid rgba(255, 255, 255, 0.2);">
         <p style="margin: 0; font-size: 0.95rem;">
           <strong>© <span id="current-year"></span> Hannah Terkper</strong> — EDU 887 Emerging Technology & Educational Equity<br>
           Final Project Option #1: Assistive Technology Implementation Plan Using the SETT Framework
@@ -1378,7 +1405,7 @@
   </footer>
 
   <!-- Quick Navigation -->
-  <button class="quick-nav-btn" id="quick-nav-btn" title="Quick Navigation">☰</button>
+  <button class="quick-nav-btn" id="quick-nav-btn" title="Quick Navigation">≡</button>
   <div class="quick-nav-menu" id="quick-nav-menu">
     <a href="#context-introduction">Context & Challenge</a>
     <a href="#sett-framework">SETT Framework</a>
