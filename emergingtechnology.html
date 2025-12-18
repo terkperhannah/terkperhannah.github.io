@@ -6,8 +6,19 @@
     <title>Emerging Technology & Equity | Hannah Terkper</title>
     <meta name="description" content="Assistive Technology Implementation Plan Using the SETT Framework - Final Project for EDU 887">
     
-    <!-- CRITICAL: Tailwind CSS for Layout -->
+    <!-- Link to Main Site Styles to fix formatting issues -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Disable preflight to prevent Tailwind from ruining existing site styles (navbar)
+        tailwind.config = {
+            corePlugins: {
+                preflight: false
+            }
+        }
+    </script>
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -81,11 +92,6 @@
 </head>
 <body>
 
-    <!-- Header from your template -->
-    <header class="bg-white/90 backdrop-blur-sm border-b border-gray-200 py-4 text-center shadow-sm">
-        <h1 class="text-2xl font-bold text-[#1976d2]">Ms. Terkper's Digital Classroom</h1>
-    </header>
-    
     <!-- NAVBAR PLACEHOLDER (Connects to your main website) -->
     <div id="navbar-placeholder"></div>
     
@@ -98,18 +104,7 @@
                 })
                 .catch(err => {
                     console.error("Navbar failed to load:", err);
-                    // Fallback navbar if file missing (for local preview)
-                    document.getElementById('navbar-placeholder').innerHTML = `
-                        <nav class="bg-white border-b border-gray-200 p-4">
-                            <div class="max-w-7xl mx-auto flex justify-between items-center">
-                                <span class="font-bold text-xl text-slate-800">Hannah Terkper</span>
-                                <div class="hidden md:flex gap-6">
-                                    <a href="index.html" class="text-slate-600 hover:text-blue-600">Home</a>
-                                    <a href="#" class="text-blue-600 font-medium">EDU 887 Project</a>
-                                </div>
-                            </div>
-                        </nav>
-                    `;
+                    // Fallback navbar removed to prevent confusion/duplication
                 });
         });
     </script>
