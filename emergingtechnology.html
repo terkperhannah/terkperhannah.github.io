@@ -11,6 +11,96 @@
   <meta name="keywords" content="assistive technology, SETT Framework, educational equity, accessibility, inclusive education, Hannah Terkper">
   <meta name="author" content="Hannah Terkper">
 
+  <script>
+    // Load the navbar
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(err => console.error("Navbar failed to load:", err));
+
+      // Set current date and year
+      document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+      
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          // Update active nav link
+          document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+
+          // Smooth scroll
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Intersection Observer for active navigation
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${entry.target.id}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+
+    sections.forEach(section => observer.observe(section));
+
+    // Quick Navigation functionality
+    const quickNavBtn = document.getElementById('quick-nav-btn');
+    const quickNavMenu = document.getElementById('quick-nav-menu');
+
+    quickNavBtn.addEventListener('click', () => {
+      quickNavMenu.classList.toggle('active');
+    });
+
+    // Close quick nav when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!quickNavBtn.contains(e.target) && !quickNavMenu.contains(e.target)) {
+        quickNavMenu.classList.remove('active');
+      }
+    });
+
+    // Close quick nav when clicking on a link
+    quickNavMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        quickNavMenu.classList.remove('active');
+      });
+    });
+
+    // Print functionality
+    document.querySelectorAll('a[onclick*="window.print"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.print();
+      });
+    });
+</script>
   <style>
     /* Core Variables */
     :root {
@@ -1437,95 +1527,6 @@
     <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Back to Top</a>
   </div>
 
-  <script>
-    // Load the navbar
-    document.addEventListener('DOMContentLoaded', () => {
-      fetch('navbar.html')
-        .then(res => res.text())
-        .then(data => {
-          document.getElementById('navbar-placeholder').innerHTML = data;
-        })
-        .catch(err => console.error("Navbar failed to load:", err));
-
-      // Set current date and year
-      document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      });
-      
-      document.getElementById('current-year').textContent = new Date().getFullYear();
-    });
-
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-
-        if (targetElement) {
-          // Update active nav link
-          document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-          this.classList.add('active');
-
-          // Smooth scroll
-          targetElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-
-    // Intersection Observer for active navigation
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${entry.target.id}`) {
-              link.classList.add('active');
-            }
-          });
-        }
-      });
-    }, { threshold: 0.3 });
-
-    sections.forEach(section => observer.observe(section));
-
-    // Quick Navigation functionality
-    const quickNavBtn = document.getElementById('quick-nav-btn');
-    const quickNavMenu = document.getElementById('quick-nav-menu');
-
-    quickNavBtn.addEventListener('click', () => {
-      quickNavMenu.classList.toggle('active');
-    });
-
-    // Close quick nav when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!quickNavBtn.contains(e.target) && !quickNavMenu.contains(e.target)) {
-        quickNavMenu.classList.remove('active');
-      }
-    });
-
-    // Close quick nav when clicking on a link
-    quickNavMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        quickNavMenu.classList.remove('active');
-      });
-    });
-
-    // Print functionality
-    document.querySelectorAll('a[onclick*="window.print"]').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.print();
-      });
-    });
-  </script>
+  
 </body>
 </html>
