@@ -600,23 +600,19 @@
     }
   </style>
 </head>
-<header>
-        <h1>Ms. Terkper's Digital Classroom</h1>
-    </header>
-    <div id="navbar-placeholder"></div>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    fetch('navbar.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-      })
-      .catch(err => console.error("Navbar failed to load:", err));
-  });
-</script>
 
 <body>
   <a class="skip-link" href="#context-introduction">Skip to main content</a>
+<nav class="main-navbar">
+    <ul class="nav-links">
+      <li><a href="#context-introduction">Context</a></li>
+      <li><a href="#sett-framework">SETT Framework</a></li>
+      <li><a href="#implementation-plan">Implementation Plan</a></li>
+      <li><a href="#stakeholder-involvement">Stakeholders</a></li>
+      <li><a href="#evaluation-monitoring">Evaluation</a></li>
+      <li><a href="#reflection">Reflection</a></li>
+    </ul>
+  </nav>
 <!-- Assignment Header -->
   <header class="assignment-header">
     <h1 class="assignment-title">Assistive Technology Implementation Plan</h1>
@@ -633,18 +629,6 @@
   </header>
 
   <!-- Page Navigation -->
-  <nav class="page-nav">
-    <ul class="nav-links-horizontal">
-      <li><a href="#context-introduction" class="nav-link">Context & Challenge</a></li>
-      <li><a href="#sett-framework" class="nav-link">SETT Framework</a></li>
-      <li><a href="#implementation-plan" class="nav-link">Implementation Plan</a></li>
-      <li><a href="#monitoring-evaluation" class="nav-link">Monitoring & Evaluation</a></li>
-      <li><a href="#stakeholder-involvement" class="nav-link">Stakeholder Involvement</a></li>
-      <li><a href="#sustainability" class="nav-link">Sustainability</a></li>
-      <li><a href="#reflection" class="nav-link">Self-Reflection</a></li>
-    </ul>
-  </nav>
-
   <main>
     <!-- Context Introduction -->
     <section id="context-introduction" class="content-section">
