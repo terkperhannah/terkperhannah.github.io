@@ -347,135 +347,175 @@
             </div>
         </section>
 
-        <!-- IMPLEMENTATION STRATEGY -->
+        <!-- IMPLEMENTATION STRATEGY (DROPDOWNS) -->
 <section id="implementation" class="scroll-mt-24 pt-12">
   <div class="glass-card p-8 rounded-3xl">
-    <header class="mb-12">
+    <header class="mb-10">
       <span class="bg-slate-800 text-white px-3 py-1 rounded-full text-xs font-bold uppercase mb-4 inline-block">
         Implementation Strategy
       </span>
-      <h2 class="text-4xl font-bold text-slate-900 mb-4">
-        Phased Implementation in Secondary Mathematics
-      </h2>
+      <h2 class="text-4xl font-bold text-slate-900 mb-3">Phased Implementation in Secondary Mathematics</h2>
       <p class="text-lg text-slate-600 max-w-4xl">
-        This implementation plan focuses on Mathematics 10C and Mathematics 20-1 and is designed for a
-        Microsoft-based, BYOD school where students use personally purchased devices of varying capability.
-        The strategy emphasizes equity, accessibility, assessment integrity, and consistency across classrooms.
+        This plan is designed for Math 10C and Math 20-1 in a Microsoft-based, BYOD school where students use personally
+        purchased devices with different levels of performance. The focus is equitable access, strong pedagogy, and consistent assessment.
       </p>
     </header>
 
-    <!-- PHASE 1 -->
-    <div class="mb-12">
-      <h3 class="text-2xl font-bold text-slate-900 mb-4">
-        Phase 1: Foundation & Access (Short-Term)
-      </h3>
+    <div class="space-y-4" id="implementation-accordion">
+      <!-- Phase 1 -->
+      <div class="accordion-item bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+        <button class="accordion-header w-full flex items-center justify-between gap-4 p-5 text-left">
+          <div>
+            <p class="text-xs font-bold uppercase text-slate-500">Phase 1</p>
+            <h3 class="text-xl font-bold text-slate-900">Foundation & Access</h3>
+            <p class="text-sm text-slate-600 mt-1">
+              Build consistent routines, low-barrier access, and accessibility supports for all learners.
+            </p>
+          </div>
+          <i data-lucide="chevron-down" class="chev w-5 h-5 text-slate-600 transition-transform"></i>
+        </button>
 
-      <p class="text-slate-700 leading-relaxed mb-4">
-        The first phase focuses on ensuring that all students can access core mathematics content regardless of
-        device quality, learning needs, or prior knowledge. In Math 10C and Math 20-1, this means prioritizing
-        clarity, consistency, and low-barrier entry points to learning.
-      </p>
+        <div class="accordion-panel hidden px-5 pb-5">
+          <div class="pt-2 grid lg:grid-cols-2 gap-6">
+            <div class="bg-slate-50 p-4 rounded-lg">
+              <h4 class="font-bold text-slate-800 mb-2">Classroom Actions (Math 10C & 20-1)</h4>
+              <ul class="list-disc pl-5 text-slate-700 text-sm space-y-2">
+                <li>Set up a predictable flow in Teams + class website: daily notes, worked examples, practice, learning checks.</li>
+                <li>Make materials accessible by default: readable fonts, spacing, high contrast, and compatibility with built-in tools (TTS, dictation, zoom).</li>
+                <li>Plan for BYOD differences: browser-first tools, low-bandwidth options, printable versions when needed.</li>
+                <li>Use math-specific low-tech supports alongside digital tools (algebra tiles for equations; 3D-printed shapes/blocks for surface area and geometry).</li>
+              </ul>
+            </div>
 
-      <ul class="list-disc pl-6 space-y-3 text-slate-700">
-        <li>
-          Establish a consistent digital structure using Microsoft Teams and a class website to house
-          daily notes, worked examples, practice questions, and learning checks.
-        </li>
-        <li>
-          Design all digital materials using accessibility best practices, including clear fonts,
-          high-contrast colour schemes, and compatibility with text-to-speech and screen readers.
-        </li>
-        <li>
-          Provide low-tech and tactile supports alongside digital tools, such as algebra tiles for solving equations
-          and 3D-printed models for surface area and geometric reasoning.
-        </li>
-        <li>
-          Ensure all assessments align with department-wide policies (approved calculator models, locked testing
-          environments, and consistent accommodations).
-        </li>
-      </ul>
+            <div class="bg-slate-50 p-4 rounded-lg">
+              <h4 class="font-bold text-slate-800 mb-2">Assessment & Equity Moves</h4>
+              <ul class="list-disc pl-5 text-slate-700 text-sm space-y-2">
+                <li>Reinforce department calculator policy so assessment conditions are consistent across classrooms.</li>
+                <li>Keep summative assessment tools consistent (Microsoft account tools only) and use locked/controlled conditions where required.</li>
+                <li>Use accommodations (ex: extra time) proactively by planning time/space to avoid “next day finishing” issues.</li>
+              </ul>
 
-      <div class="mt-4 bg-slate-50 p-4 rounded-lg text-sm text-slate-700">
-        <strong>Framework alignment:</strong>  
-        TPACK (content-driven tool selection), SETT (student needs before tools), and SAMR at the
-        Substitution/Augmentation level for accessibility.
+              <div class="mt-3 text-xs text-slate-600">
+                <strong>Framework alignment:</strong> TPACK (tool choices driven by math outcomes), SETT (needs first), SAMR (Substitution/Augmentation for access).
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- PHASE 2 -->
-    <div class="mb-12">
-      <h3 class="text-2xl font-bold text-slate-900 mb-4">
-        Phase 2: Instructional Integration & Feedback (Mid-Term)
-      </h3>
+      <!-- Phase 2 -->
+      <div class="accordion-item bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+        <button class="accordion-header w-full flex items-center justify-between gap-4 p-5 text-left">
+          <div>
+            <p class="text-xs font-bold uppercase text-slate-500">Phase 2</p>
+            <h3 class="text-xl font-bold text-slate-900">Integration & Feedback</h3>
+            <p class="text-sm text-slate-600 mt-1">
+              Use technology to strengthen reasoning, provide immediate feedback, and support independent pacing.
+            </p>
+          </div>
+          <i data-lucide="chevron-down" class="chev w-5 h-5 text-slate-600 transition-transform"></i>
+        </button>
 
-      <p class="text-slate-700 leading-relaxed mb-4">
-        Phase two moves beyond access and into meaningful integration. Technology is used to support
-        mathematical reasoning, immediate feedback, and independent pacing without replacing
-        teacher instruction.
-      </p>
+        <div class="accordion-panel hidden px-5 pb-5">
+          <div class="pt-2 grid lg:grid-cols-2 gap-6">
+            <div class="bg-slate-50 p-4 rounded-lg">
+              <h4 class="font-bold text-slate-800 mb-2">Math-Specific Integration</h4>
+              <ul class="list-disc pl-5 text-slate-700 text-sm space-y-2">
+                <li>Build interactive learning checks that give instant feedback for skills like solving linear equations, graphing relations, factoring, radicals, and function interpretation.</li>
+                <li>Include “worked example → try it → feedback → retry” sequences so students practice productively without waiting for marking.</li>
+                <li>Support multilingual learners with vocabulary supports and step-by-step scaffolds built directly into the learning check (not as an afterthought).</li>
+              </ul>
+            </div>
 
-      <ul class="list-disc pl-6 space-y-3 text-slate-700">
-        <li>
-          Implement interactive learning checks on the class website that allow students to practice skills
-          such as solving linear equations, factoring, and working with radicals while receiving immediate feedback.
-        </li>
-        <li>
-          Use adaptive pacing strategies so students who need more time can revisit examples,
-          while others extend their learning through challenge problems.
-        </li>
-        <li>
-          Embed visual and step-by-step scaffolds for multilingual learners and students with processing or
-          attention-based needs.
-        </li>
-        <li>
-          Maintain assessment integrity by keeping summative evaluations consistent across classes,
-          while using technology primarily for formative learning and skill development.
-        </li>
-      </ul>
+            <div class="bg-slate-50 p-4 rounded-lg">
+              <h4 class="font-bold text-slate-800 mb-2">Equity & Device-Variation Supports</h4>
+              <ul class="list-disc pl-5 text-slate-700 text-sm space-y-2">
+                <li>Design tasks that function on basic laptops (no required installs, minimal RAM, fewer tabs needed).</li>
+                <li>Offer alternative formats: paper version, reduced-graphics version, or single-question pages for students who lag or crash.</li>
+                <li>Use formative tech for practice and confidence-building, while keeping summative assessments consistent and secure.</li>
+              </ul>
 
-      <div class="mt-4 bg-slate-50 p-4 rounded-lg text-sm text-slate-700">
-        <strong>Framework alignment:</strong>  
-        SAMR (Modification), TPACK (pedagogical alignment), and SETT (matching tools to tasks).
+              <div class="mt-3 text-xs text-slate-600">
+                <strong>Framework alignment:</strong> SAMR (Modification), TPACK (pedagogy-content-tech match), SETT (task-tool fit).
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- PHASE 3 -->
-    <div>
-      <h3 class="text-2xl font-bold text-slate-900 mb-4">
-        Phase 3: Leadership, Sustainability & System Alignment (Long-Term)
-      </h3>
+      <!-- Phase 3 -->
+      <div class="accordion-item bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+        <button class="accordion-header w-full flex items-center justify-between gap-4 p-5 text-left">
+          <div>
+            <p class="text-xs font-bold uppercase text-slate-500">Phase 3</p>
+            <h3 class="text-xl font-bold text-slate-900">Sustainability & Leadership</h3>
+            <p class="text-sm text-slate-600 mt-1">
+              Make equity practices consistent across teachers, courses, and assessments.
+            </p>
+          </div>
+          <i data-lucide="chevron-down" class="chev w-5 h-5 text-slate-600 transition-transform"></i>
+        </button>
 
-      <p class="text-slate-700 leading-relaxed mb-4">
-        The final phase focuses on sustainability and leadership. As Mathematics Department Head,
-        my role expands from classroom implementation to department-wide consistency and equity.
-      </p>
+        <div class="accordion-panel hidden px-5 pb-5">
+          <div class="pt-2 grid lg:grid-cols-2 gap-6">
+            <div class="bg-slate-50 p-4 rounded-lg">
+              <h4 class="font-bold text-slate-800 mb-2">Department Systems (My Role)</h4>
+              <ul class="list-disc pl-5 text-slate-700 text-sm space-y-2">
+                <li>Maintain shared year plans so grade-level pacing stays aligned and students do not experience “teacher lottery.”</li>
+                <li>Continue common assessments (quizzes, tests, midterms, finals) with consistent conditions and calculator policy enforcement.</li>
+                <li>Create a department “tool standards” page: Microsoft-account tools only, accessibility expectations, and device requirements.</li>
+              </ul>
+            </div>
 
-      <ul class="list-disc pl-6 space-y-3 text-slate-700">
-        <li>
-          Develop shared departmental guidelines for technology use in mathematics, including
-          approved tools, accessibility expectations, and assessment conditions.
-        </li>
-        <li>
-          Support teachers in designing lessons that work across a range of student devices
-          without privileging higher-end hardware.
-        </li>
-        <li>
-          Use common assessments and shared pacing plans to ensure equitable learning experiences
-          across all Math 10C and Math 20-1 sections.
-        </li>
-        <li>
-          Advocate for continued professional learning focused on inclusive technology use,
-          adaptive supports, and ethical decision-making.
-        </li>
-      </ul>
+            <div class="bg-slate-50 p-4 rounded-lg">
+              <h4 class="font-bold text-slate-800 mb-2">Equity Leadership with CITES</h4>
+              <ul class="list-disc pl-5 text-slate-700 text-sm space-y-2">
+                <li>Gather student voice data about barriers (device performance, language supports, accessibility features).</li>
+                <li>Use that feedback to adjust tools and design so “access, design, and use” are addressed, not just access.</li>
+                <li>Support staff with quick PD: accessible math materials, consistent assessment accommodations, and tool selection routines.</li>
+              </ul>
 
-      <div class="mt-4 bg-slate-50 p-4 rounded-lg text-sm text-slate-700">
-        <strong>Framework alignment:</strong>  
-        CITES (system-level equity), leadership for consistency, and ethical technology use.
+              <div class="mt-3 text-xs text-slate-600">
+                <strong>Framework alignment:</strong> CITES (system-level equity), leadership for consistency, ethical tech use.
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+            <p class="text-blue-800 text-sm">
+              <strong>Bottom line:</strong> My long-term goal is for equity supports to be predictable and normal for students,
+              not dependent on which teacher they have or what kind of laptop they can afford.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  // Simple accordion logic (no dependencies)
+  document.querySelectorAll("#implementation-accordion .accordion-header").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".accordion-item");
+      const panel = item.querySelector(".accordion-panel");
+      const chev = item.querySelector(".chev");
+
+      const isOpen = !panel.classList.contains("hidden");
+
+      // close all
+      document.querySelectorAll("#implementation-accordion .accordion-panel").forEach((p) => p.classList.add("hidden"));
+      document.querySelectorAll("#implementation-accordion .chev").forEach((c) => c.classList.remove("rotate-180"));
+
+      // open selected if it was closed
+      if (!isOpen) {
+        panel.classList.remove("hidden");
+        chev.classList.add("rotate-180");
+      }
+    });
+  });
+</script>
+
 
 <!-- MODULE 5: LEADERSHIP & SYSTEMS CHANGE (CITES) -->
 <section id="leadership" class="scroll-mt-24 pt-12">
