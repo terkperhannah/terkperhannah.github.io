@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EDU 714: Course Design | Hannah Terkper</title>
+    <title>EDU 714: Course Design Evaluation | Hannah Terkper</title>
     <meta name="description" content="EDU 714 Final Project: Course Design Evaluation using ADDIE and UDL">
     
     <link rel="stylesheet" href="style.css">
@@ -14,15 +14,16 @@
             corePlugins: { preflight: false },
             theme: {
                 extend: {
+                    fontFamily: {
+                        heading: ['Outfit', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    },
                     colors: {
-                        brand: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            900: '#0c4a6e',
-                        }
+                        primary: '#4338ca', // Indigo
+                        secondary: '#f43f5e', // Rose
+                        accent: '#10b981', // Emerald
+                        dark: '#0f172a', // Slate 900
+                        light: '#f8fafc', // Slate 50
                     }
                 }
             }
@@ -33,108 +34,183 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
-            background-image: url('https://images.unsplash.com/photo-1732287931034-c4cc1b06de6a?q=80&w=2787&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: #1e293b;
+            background-color: #f1f5f9;
+            color: #334155;
             margin: 0;
             padding: 0;
-        }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
-        p, li, span, div, label { font-family: 'Inter', sans-serif; }
-
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            font-family: 'Inter', sans-serif;
         }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        h1, h2, h3, h4, h5, h6 { 
+            font-family: 'Outfit', sans-serif; 
+            letter-spacing: -0.02em;
         }
 
-        /* ADDIE Timeline Interactive */
-        .addie-step {
-            transition: all 0.3s ease;
+        /* Bento Box Styling */
+        .bento-card {
+            background-color: #ffffff;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e2e8f0;
         }
-        .addie-step.active {
-            background: linear-gradient(135deg, #0284c7, #0ea5e9);
-            color: white;
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px -6px rgba(2, 132, 199, 0.4);
-            border-color: transparent;
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
-        .addie-step.active .step-icon {
-            color: white;
+
+        /* Timeline Styling for ADDIE */
+        .timeline-container {
+            position: relative;
         }
-        .addie-step.active .step-num {
-            background: rgba(255,255,255,0.2);
-            color: white;
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #cbd5e1;
+            z-index: 0;
         }
-        .addie-content {
+        @media (min-width: 768px) {
+            .timeline-container::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+        .timeline-item {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-dot {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid #4338ca;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #4338ca;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        @media (min-width: 768px) {
+            .timeline-dot {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .timeline-content {
+                width: calc(50% - 50px);
+            }
+            .timeline-item:nth-child(odd) .timeline-content {
+                margin-left: auto;
+                text-align: left;
+            }
+            .timeline-item:nth-child(even) .timeline-content {
+                text-align: right;
+                padding-right: 2rem;
+            }
+            .timeline-item:nth-child(odd) .timeline-content {
+                padding-left: 2rem;
+            }
+        }
+        @media (max-width: 767px) {
+            .timeline-content {
+                margin-left: 70px;
+            }
+        }
+
+        /* Abstract shapes for Hero */
+        .shape-blob {
+            position: absolute;
+            background: linear-gradient(135deg, #4338ca, #6366f1);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            animation: morph 8s ease-in-out infinite both alternate;
+            opacity: 0.1;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        @keyframes morph {
+            0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+            34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+            67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+        }
+
+        /* UDL Interactive Cards */
+        .udl-card {
+            cursor: pointer;
+        }
+        .udl-card .udl-details {
             display: none;
-            animation: slideUp 0.4s ease forwards;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed #e2e8f0;
+            animation: fadeIn 0.4s ease;
         }
-        .addie-content.active {
+        .udl-card.expanded .udl-details {
             display: block;
         }
-
-        /* Accordion */
-        .accordion-header {
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out;
-        }
-        .accordion-icon {
-            transition: transform 0.3s ease;
-        }
-        .accordion-header.active .accordion-icon {
+        .udl-card.expanded .udl-icon {
             transform: rotate(180deg);
         }
+        .udl-icon {
+            transition: transform 0.3s ease;
+        }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .gradient-text {
-            background: linear-gradient(135deg, #0c4a6e, #0284c7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Circular Progress */
+        .circular-progress {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: conic-gradient(#4338ca var(--progress), #e2e8f0 0deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 1s ease-out;
         }
-        
-        .floating {
-            animation: float 6s ease-in-out infinite;
+        .circular-progress::before {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            border-radius: 50%;
         }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+        .progress-value {
+            position: relative;
+            font-size: 1.5rem;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            color: #0f172a;
         }
     </style>
 </head>
-<body class="antialiased pb-20">
+<body class="pb-20">
 
     <!-- NAVBAR PLACEHOLDER -->
-    <div id="navbar-placeholder"></div>
+    <div id="navbar-placeholder" class="bg-white shadow-sm relative z-50"></div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             fetch('navbar.html')
@@ -146,494 +222,388 @@
         });
     </script>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 space-y-24">
+    <!-- MAIN CONTENT -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 space-y-24">
         
         <!-- HERO SECTION -->
-        <section class="relative pt-12 reveal">
-            <div class="glass-panel rounded-3xl overflow-hidden relative">
-                <div class="absolute top-0 right-0 w-96 h-96 bg-brand-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
-                <div class="absolute bottom-0 left-0 w-96 h-96 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
-                
-                <div class="relative z-10 px-8 py-16 md:py-24 md:px-16 flex flex-col md:flex-row items-center gap-12">
-                    <div class="flex-1 space-y-6">
-                        <span class="bg-brand-100 text-brand-700 px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider shadow-sm inline-flex items-center gap-2">
-                            <i data-lucide="graduation-cap" class="w-4 h-4"></i> EDU 714 Final Project
-                        </span>
-                        <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 leading-tight">
-                            Course Design <br> <span class="gradient-text">Evaluation</span>
-                        </h1>
-                        <p class="text-xl text-slate-600 font-light leading-relaxed max-w-2xl">
-                            Evaluating and redesigning Math 15 using the ADDIE Model and Universal Design for Learning (UDL) principles to support diverse learners.
+        <section class="relative pt-12 pb-16 text-center">
+            <div class="shape-blob w-96 h-96 -top-10 -left-20"></div>
+            <div class="shape-blob w-80 h-80 top-20 -right-10" style="background: linear-gradient(135deg, #f43f5e, #fb923c); animation-delay: -4s;"></div>
+            
+            <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+                <span class="px-4 py-2 bg-white rounded-full text-primary font-bold text-sm tracking-wide shadow-sm border border-slate-100 mb-6 inline-block">
+                    EDU 714 Final Project
+                </span>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-dark leading-tight mb-6">
+                    Redesigning Education for <span class="text-primary">Diverse Learners</span>
+                </h1>
+                <p class="text-xl text-slate-600 font-body max-w-2xl mx-auto mb-10">
+                    A comprehensive course design evaluation of Math 15 using the ADDIE Model and Universal Design for Learning (UDL) frameworks.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#addie-model" class="bg-dark text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-800 transition-colors">
+                        Explore ADDIE Model
+                    </a>
+                    <a href="#udl-eval" class="bg-white text-dark px-8 py-4 rounded-xl font-bold hover:bg-slate-50 transition-colors border border-slate-200 shadow-sm">
+                        View UDL Analysis
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTEXT / BENTO GRID -->
+        <section id="context">
+            <div class="mb-10 text-center">
+                <h2 class="text-3xl font-bold text-dark mb-4">Course Context: Math 15</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Foundational mathematics tailored for English Language Learners (ELLs) aged 18–20 new to Canada.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Large Card -->
+                <div class="bento-card md:col-span-2 bg-primary text-white border-none relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 opacity-10">
+                        <i data-lucide="book-open" class="w-64 h-64"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="text-2xl font-bold mb-4">The Challenge</h3>
+                        <p class="text-white/90 leading-relaxed font-body text-lg">
+                            Math 15 was the first class I taught after graduating. It is a foundational course to improve numeracy skills. The challenge lies in creating an inclusive, self-paced environment that addresses significant language barriers while prioritizing learner variability.
                         </p>
-                        <div class="flex flex-wrap gap-4 pt-4">
-                            <a href="#addie-framework" class="bg-brand-600 text-white hover:bg-brand-700 px-8 py-3.5 rounded-full font-semibold shadow-lg shadow-brand-500/30 transition-all hover:-translate-y-1 inline-flex items-center gap-2">
-                                Explore Framework <i data-lucide="arrow-down" class="w-5 h-5"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="flex-1 hidden md:block">
-                        <img src="../attached_assets/new_1766072302593.png" alt="Hannah Terkper" class="rounded-2xl shadow-2xl floating border-4 border-white/50 w-full max-w-md mx-auto object-cover aspect-square bg-slate-200">
+                        <p class="text-white/90 leading-relaxed font-body text-lg mt-4">
+                            Using UDL principles, this project explores opportunities to enhance accessibility, engagement, and representation to bridge gaps in the current course design.
+                        </p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- INTRODUCTION -->
-        <section id="introduction" class="reveal scroll-mt-24">
-            <div class="glass-panel p-8 md:p-12 rounded-3xl">
-                <div class="flex items-center gap-4 mb-8">
-                    <div class="p-3 bg-brand-100 text-brand-600 rounded-xl"><i data-lucide="info" class="w-8 h-8"></i></div>
-                    <h2 class="text-3xl font-bold text-slate-900">Context: Math 15</h2>
-                </div>
-                <div class="prose prose-lg text-slate-700 max-w-none space-y-6">
-                    <p class="text-xl leading-relaxed">
-                        Welcome to my final project for EDU 714: Course Design. For this project, I evaluated Math 15, a foundational math course tailored to support students in improving their numeracy skills and developing the skills needed to be successful in high school math. 
-                    </p>
-                    <div class="bg-white/60 p-6 rounded-2xl border border-white flex flex-col md:flex-row gap-6 shadow-sm">
-                        <div class="flex-1">
-                            <h3 class="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2"><i data-lucide="users" class="w-5 h-5 text-brand-500"></i> The Learners</h3>
-                            <p class="text-sm">The branch of Math 15 I taught was designed for English Language Learners (ELLs) aged 18–20 new to Canada. Math 15 was the first class I taught after graduating from university, and it holds special significance in my teaching journey.</p>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2"><i data-lucide="target" class="w-5 h-5 text-brand-500"></i> The Goal</h3>
-                            <p class="text-sm">Using Universal Design for Learning (UDL) principles, I sought to create an inclusive and engaging course environment that prioritizes learner variability, allowing students to progress at their own pace.</p>
-                        </div>
-                    </div>
-                    <p>
-                        This analysis is informed by key readings, including Bastoni et al. (2023), who emphasize the importance of professional development in implementing UDL strategies, and Gentile & Budzilowicz (2022), who highlight the value of culturally responsive pedagogy.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- THE ADDIE MODEL -->
-        <section id="addie-framework" class="reveal scroll-mt-24">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold text-slate-900 mb-4">The ADDIE Model Integration</h2>
-                <p class="text-xl text-slate-600 max-w-2xl mx-auto">A systematic instructional design framework applied to redesigning Math 15.</p>
-            </div>
-
-            <div class="glass-panel p-4 md:p-8 rounded-3xl">
-                <!-- Interactive Tabs -->
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-8">
-                    <button class="addie-step active bg-white border border-slate-200 rounded-xl p-4 text-left cursor-pointer hover:bg-slate-50 flex flex-col items-center justify-center text-center group" onclick="openAddieTab('analysis')">
-                        <span class="step-num w-8 h-8 rounded-full bg-slate-100 text-slate-500 font-bold flex items-center justify-center mb-2 text-sm">A</span>
-                        <h3 class="font-bold text-sm md:text-base">Analysis</h3>
-                    </button>
-                    <button class="addie-step bg-white border border-slate-200 rounded-xl p-4 text-left cursor-pointer hover:bg-slate-50 flex flex-col items-center justify-center text-center group" onclick="openAddieTab('design')">
-                        <span class="step-num w-8 h-8 rounded-full bg-slate-100 text-slate-500 font-bold flex items-center justify-center mb-2 text-sm">D</span>
-                        <h3 class="font-bold text-sm md:text-base">Design</h3>
-                    </button>
-                    <button class="addie-step bg-white border border-slate-200 rounded-xl p-4 text-left cursor-pointer hover:bg-slate-50 flex flex-col items-center justify-center text-center group" onclick="openAddieTab('development')">
-                        <span class="step-num w-8 h-8 rounded-full bg-slate-100 text-slate-500 font-bold flex items-center justify-center mb-2 text-sm">D</span>
-                        <h3 class="font-bold text-sm md:text-base">Development</h3>
-                    </button>
-                    <button class="addie-step bg-white border border-slate-200 rounded-xl p-4 text-left cursor-pointer hover:bg-slate-50 flex flex-col items-center justify-center text-center group" onclick="openAddieTab('implementation')">
-                        <span class="step-num w-8 h-8 rounded-full bg-slate-100 text-slate-500 font-bold flex items-center justify-center mb-2 text-sm">I</span>
-                        <h3 class="font-bold text-sm md:text-base">Implementation</h3>
-                    </button>
-                    <button class="addie-step bg-white border border-slate-200 rounded-xl p-4 text-left cursor-pointer hover:bg-slate-50 flex flex-col items-center justify-center text-center group col-span-2 md:col-span-1" onclick="openAddieTab('evaluation')">
-                        <span class="step-num w-8 h-8 rounded-full bg-slate-100 text-slate-500 font-bold flex items-center justify-center mb-2 text-sm">E</span>
-                        <h3 class="font-bold text-sm md:text-base">Evaluation</h3>
-                    </button>
-                </div>
-
-                <!-- Tab Contents -->
-                <div class="bg-white/80 border border-white p-6 md:p-10 rounded-2xl shadow-inner">
-                    
-                    <div id="analysis" class="addie-content active">
-                        <div class="flex items-start gap-6">
-                            <div class="hidden md:flex p-4 bg-brand-100 rounded-2xl text-brand-600"><i data-lucide="search" class="w-10 h-10"></i></div>
-                            <div>
-                                <h3 class="text-2xl font-bold text-slate-900 mb-4">Phase 1: Analysis</h3>
-                                <p class="text-slate-700 leading-relaxed mb-4">
-                                    The Analysis phase involved assessing the target audience—English Language Learners (ELLs) aged 18–20 who are new to Canada. Many have interrupted schooling backgrounds and require foundational numeracy skills before advancing to high school math.
-                                </p>
-                                <ul class="space-y-2 text-slate-700">
-                                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500"></i> Identified language barriers as the primary obstacle to math comprehension.</li>
-                                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500"></i> Assessed current skill levels through initial diagnostics.</li>
-                                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500"></i> Recognized the need for culturally responsive pedagogy and flexible pacing.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="design" class="addie-content">
-                        <div class="flex items-start gap-6">
-                            <div class="hidden md:flex p-4 bg-brand-100 rounded-2xl text-brand-600"><i data-lucide="pen-tool" class="w-10 h-10"></i></div>
-                            <div>
-                                <h3 class="text-2xl font-bold text-slate-900 mb-4">Phase 2: Design</h3>
-                                <p class="text-slate-700 leading-relaxed mb-4">
-                                    The Design phase utilized Universal Design for Learning (UDL) principles to outline learning objectives and instructional strategies. The course was mapped out to be self-paced, providing learner autonomy.
-                                </p>
-                                <ul class="space-y-2 text-slate-700">
-                                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500"></i> Designed a self-paced booklet structure for clear progression.</li>
-                                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500"></i> Planned for multiple means of engagement (1-on-1, small groups).</li>
-                                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500"></i> Outlined integration points for visual aids and translated resources.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="development" class="addie-content">
-                        <div class="flex items-start gap-6">
-                            <div class="hidden md:flex p-4 bg-brand-100 rounded-2xl text-brand-600"><i data-lucide="code" class="w-10 h-10"></i></div>
-                            <div>
-                                <h3 class="text-2xl font-bold text-slate-900 mb-4">Phase 3: Development</h3>
-                                <p class="text-slate-700 leading-relaxed mb-4">
-                                    This phase focused on creating the actual course materials and multimedia resources necessary to support the diverse needs identified in the Analysis phase.
-                                </p>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-                                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                                        <h4 class="font-bold text-slate-800 mb-1">Materials Created</h4>
-                                        <p class="text-sm text-slate-600">Practice booklets, translated glossaries, and step-by-step visual diagrams.</p>
-                                    </div>
-                                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                                        <h4 class="font-bold text-slate-800 mb-1">Multimedia</h4>
-                                        <p class="text-sm text-slate-600">Curating video tutorials to provide multiple means of representation.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="implementation" class="addie-content">
-                        <div class="flex items-start gap-6">
-                            <div class="hidden md:flex p-4 bg-brand-100 rounded-2xl text-brand-600"><i data-lucide="play-circle" class="w-10 h-10"></i></div>
-                            <div>
-                                <h3 class="text-2xl font-bold text-slate-900 mb-4">Phase 4: Implementation</h3>
-                                <p class="text-slate-700 leading-relaxed mb-4">
-                                    Delivering the course to the students while fostering a collaborative and supportive environment. This included gamified activities and active peer learning.
-                                </p>
-                                <ul class="space-y-2 text-slate-700 mb-6">
-                                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500"></i> Executing collaborative problem-solving on digital/physical whiteboards.</li>
-                                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500"></i> Facilitating gamified learning (e.g., Kahoot, educational games).</li>
-                                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500"></i> Providing real-time scaffolding and peer-tutoring opportunities.</li>
-                                </ul>
-                                <a href="#video-section" class="text-sm font-bold text-brand-600 hover:text-brand-800 underline underline-offset-4">See Collaborative Math in Action &darr;</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="evaluation" class="addie-content">
-                        <div class="flex items-start gap-6">
-                            <div class="hidden md:flex p-4 bg-brand-100 rounded-2xl text-brand-600"><i data-lucide="bar-chart" class="w-10 h-10"></i></div>
-                            <div>
-                                <h3 class="text-2xl font-bold text-slate-900 mb-4">Phase 5: Evaluation</h3>
-                                <p class="text-slate-700 leading-relaxed mb-4">
-                                    The final phase involves evaluating the course's effectiveness against UDL guidelines and making iterative recommendations for improvement.
-                                </p>
-                                <ul class="space-y-2 text-slate-700 mb-6">
-                                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500"></i> Assessing formative and summative success rates.</li>
-                                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500"></i> Utilizing UDL Checklists to identify gaps in representation and expression.</li>
-                                    <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500"></i> Formulating recommendations (e.g., project-based assessments) for future iterations.</li>
-                                </ul>
-                                <a href="#udl-evaluation" class="text-sm font-bold text-brand-600 hover:text-brand-800 underline underline-offset-4">Read Full UDL Evaluation &darr;</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- UDL EVALUATION & RECOMMENDATIONS (Accordion) -->
-        <section id="udl-evaluation" class="reveal scroll-mt-24">
-            <div class="grid md:grid-cols-12 gap-8 items-start">
-                <div class="md:col-span-5 sticky top-28">
-                    <h2 class="text-4xl font-bold text-slate-900 mb-4">UDL Course Evaluation</h2>
-                    <p class="text-lg text-slate-600 mb-6">
-                        Evaluating Math 15 through the three core principles of Universal Design for Learning, and identifying actionable recommendations.
-                    </p>
-                    <div class="bg-brand-50 p-6 rounded-2xl border border-brand-100">
-                        <h4 class="font-bold text-brand-800 mb-2">Why UDL?</h4>
-                        <p class="text-sm text-brand-700">By embedding UDL insights, the project aims to bridge gaps in course design and align Math 15 with the broader goals of inclusive education (Sewell et al., 2022).</p>
-                    </div>
-                </div>
-
-                <div class="md:col-span-7 space-y-4">
-                    <!-- Accordion Item 1 -->
-                    <div class="glass-panel rounded-2xl overflow-hidden">
-                        <div class="accordion-header p-6 flex justify-between items-center bg-white/50 hover:bg-white" onclick="toggleAccordion(this)">
-                            <h3 class="text-xl font-bold text-slate-900 flex items-center gap-3">
-                                <span class="p-2 bg-pink-100 text-pink-600 rounded-lg"><i data-lucide="heart" class="w-5 h-5"></i></span>
-                                Engagement
-                            </h3>
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 accordion-icon"></i>
-                        </div>
-                        <div class="accordion-content bg-white">
-                            <div class="p-6 border-t border-slate-100 space-y-6">
-                                <div>
-                                    <h4 class="font-bold text-slate-800 mb-2">Current Evaluation</h4>
-                                    <p class="text-slate-600 text-sm">
-                                        The self-paced structure fosters student autonomy. However, it can leave some learners disengaged without timely support. One-on-one teaching is used, but there's a lack of structured peer interaction.
-                                    </p>
-                                </div>
-                                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                                    <h4 class="font-bold text-brand-700 mb-2 flex items-center gap-2"><i data-lucide="lightbulb" class="w-4 h-4"></i> Recommendations</h4>
-                                    <p class="text-slate-600 text-sm mb-2">Incorporate <strong>gamified activities</strong> (Kahoot, Quizlet Live) and schedule <strong>weekly group problem-solving sessions</strong>. This fosters collaboration and community, especially beneficial for ELLs (Gentile & Budzilowicz, 2022).</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Accordion Item 2 -->
-                    <div class="glass-panel rounded-2xl overflow-hidden">
-                        <div class="accordion-header p-6 flex justify-between items-center bg-white/50 hover:bg-white" onclick="toggleAccordion(this)">
-                            <h3 class="text-xl font-bold text-slate-900 flex items-center gap-3">
-                                <span class="p-2 bg-purple-100 text-purple-600 rounded-lg"><i data-lucide="eye" class="w-5 h-5"></i></span>
-                                Representation
-                            </h3>
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 accordion-icon"></i>
-                        </div>
-                        <div class="accordion-content bg-white">
-                            <div class="p-6 border-t border-slate-100 space-y-6">
-                                <div>
-                                    <h4 class="font-bold text-slate-800 mb-2">Current Evaluation</h4>
-                                    <p class="text-slate-600 text-sm">
-                                        Practice booklets ensure consistent delivery, but relying on a single medium doesn't address the diverse needs of ELLs.
-                                    </p>
-                                </div>
-                                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                                    <h4 class="font-bold text-brand-700 mb-2 flex items-center gap-2"><i data-lucide="lightbulb" class="w-4 h-4"></i> Recommendations</h4>
-                                    <ul class="list-disc pl-5 text-slate-600 text-sm space-y-1">
-                                        <li><strong>Video tutorials</strong> for step-by-step explanations.</li>
-                                        <li><strong>Visual aids</strong> (diagrams, charts) to simplify concepts.</li>
-                                        <li><strong>Translated materials</strong> and glossaries to bridge language barriers.</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Accordion Item 3 -->
-                    <div class="glass-panel rounded-2xl overflow-hidden">
-                        <div class="accordion-header p-6 flex justify-between items-center bg-white/50 hover:bg-white" onclick="toggleAccordion(this)">
-                            <h3 class="text-xl font-bold text-slate-900 flex items-center gap-3">
-                                <span class="p-2 bg-green-100 text-green-600 rounded-lg"><i data-lucide="activity" class="w-5 h-5"></i></span>
-                                Action & Expression
-                            </h3>
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 accordion-icon"></i>
-                        </div>
-                        <div class="accordion-content bg-white">
-                            <div class="p-6 border-t border-slate-100 space-y-6">
-                                <div>
-                                    <h4 class="font-bold text-slate-800 mb-2">Current Evaluation</h4>
-                                    <p class="text-slate-600 text-sm">
-                                        Evaluations are primarily unit exams. This provides standardized measures but doesn't account for varied ways students can demonstrate learning.
-                                    </p>
-                                </div>
-                                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                                    <h4 class="font-bold text-brand-700 mb-2 flex items-center gap-2"><i data-lucide="lightbulb" class="w-4 h-4"></i> Recommendations</h4>
-                                    <ul class="list-disc pl-5 text-slate-600 text-sm space-y-1">
-                                        <li><strong>Project-based assessments:</strong> Apply math to real-world scenarios.</li>
-                                        <li><strong>Self-assessment tools:</strong> Encourage metacognition.</li>
-                                        <li>Build support structures like drop-in sessions and peer-mentoring.</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- VIDEO SECTION -->
-        <section id="video-section" class="reveal scroll-mt-24">
-            <div class="glass-panel p-8 md:p-12 rounded-3xl bg-slate-900 text-white relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 z-0"></div>
                 
-                <div class="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Small Card 1 -->
+                <div class="bento-card flex flex-col justify-center">
+                    <div class="w-12 h-12 bg-rose-100 text-secondary rounded-xl flex items-center justify-center mb-4">
+                        <i data-lucide="users" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-2">Target Audience</h3>
+                    <p class="text-slate-600 text-sm">ELL students with interrupted schooling backgrounds requiring flexible pacing and strong foundational support.</p>
+                </div>
+                
+                <!-- Small Card 2 -->
+                <div class="bento-card flex flex-col justify-center">
+                    <div class="w-12 h-12 bg-emerald-100 text-accent rounded-xl flex items-center justify-center mb-4">
+                        <i data-lucide="target" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-2">Core Objective</h3>
+                    <p class="text-slate-600 text-sm">Empower diverse learners through culturally responsive pedagogy and multiple means of expression (Gentile & Budzilowicz, 2022).</p>
+                </div>
+
+                <!-- Medium Card -->
+                <div class="bento-card md:col-span-2 flex items-center justify-between gap-6 bg-slate-900 text-white border-none">
                     <div>
-                        <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide mb-4 inline-block">Implementation</span>
-                        <h2 class="text-3xl md:text-4xl font-bold mb-6">Collaborative Math in Action</h2>
-                        <div class="space-y-4 text-slate-300 font-light leading-relaxed">
-                            <p>
-                                Collaboration is important for effective learning, especially in foundational courses like Math 15. Collaborative activities allow students to build communication skills, share problem-solving strategies, and gain confidence.
-                            </p>
-                            <p>
-                                These opportunities are particularly valuable for ELLs, who often benefit from peer interactions that reinforce both math concepts and language acquisition (Bastoni et al., 2023).
-                            </p>
-                            <p class="text-sm border-l-2 border-brand-500 pl-4 mt-4 italic text-slate-400">
-                                The video highlights group activities, whiteboard work, and games reflecting UDL principles of multiple means of engagement. Created by Brandon Woodland.
-                            </p>
-                        </div>
+                        <h3 class="text-xl font-bold mb-2">Math 15 Course Outline</h3>
+                        <p class="text-slate-400 text-sm mb-0">Review the original foundational curriculum and structure evaluated in this project.</p>
                     </div>
-                    <div class="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-black/50 border border-slate-700">
-                        <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/UPD5zg6GtD0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
+                    <a href="Math_15_Course_Outline.pdf" target="_blank" class="bg-white text-dark px-6 py-3 rounded-lg font-bold hover:bg-slate-200 transition-colors whitespace-nowrap flex items-center gap-2">
+                        View PDF <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- INTERACTIVE UDL CHECKLIST -->
-        <section id="udl-checklist" class="reveal scroll-mt-24">
-            <div class="glass-panel p-8 md:p-12 rounded-3xl text-center max-w-4xl mx-auto">
-                <div class="inline-flex p-4 bg-brand-100 rounded-full text-brand-600 mb-6">
-                    <i data-lucide="check-square" class="w-8 h-8"></i>
-                </div>
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">UDL Course Alignment Checklist</h2>
-                <p class="text-slate-600 mb-8">Test your own course design. Check all that apply to see if it adheres to the Universal Design for Learning guidelines.</p>
+        <!-- ADDIE MODEL TIMELINE -->
+        <section id="addie-model">
+            <div class="mb-16 text-center">
+                <span class="text-secondary font-bold tracking-wider uppercase text-sm mb-2 block">Instructional Design</span>
+                <h2 class="text-4xl font-bold text-dark mb-4">The ADDIE Framework</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">A systematic approach used to evaluate and redesign the Math 15 curriculum.</p>
+            </div>
+
+            <div class="timeline-container max-w-4xl mx-auto">
                 
-                <form id="udlForm" class="text-left space-y-4 bg-white p-6 md:p-8 rounded-2xl border border-slate-100 shadow-sm">
-                    <label class="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 cursor-pointer border border-transparent hover:border-slate-200 transition-colors">
-                        <input type="checkbox" class="udl-checkbox w-5 h-5 mt-1 rounded border-slate-300 text-brand-600 focus:ring-brand-500" value="25">
-                        <div>
-                            <span class="font-bold text-slate-800 block">Multiple ways to access course content</span>
-                            <span class="text-sm text-slate-500">Examples: Course website, note packages, Google Classroom</span>
-                        </div>
-                    </label>
-                    <label class="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 cursor-pointer border border-transparent hover:border-slate-200 transition-colors">
-                        <input type="checkbox" class="udl-checkbox w-5 h-5 mt-1 rounded border-slate-300 text-brand-600 focus:ring-brand-500" value="25">
-                        <div>
-                            <span class="font-bold text-slate-800 block">Diverse assessment methods</span>
-                            <span class="text-sm text-slate-500">Examples: Projects, quizzes, presentations</span>
-                        </div>
-                    </label>
-                    <label class="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 cursor-pointer border border-transparent hover:border-slate-200 transition-colors">
-                        <input type="checkbox" class="udl-checkbox w-5 h-5 mt-1 rounded border-slate-300 text-brand-600 focus:ring-brand-500" value="25">
-                        <div>
-                            <span class="font-bold text-slate-800 block">Opportunities for engagement and collaboration</span>
-                            <span class="text-sm text-slate-500">Examples: Group projects, discussions, peer reviews</span>
-                        </div>
-                    </label>
-                    <label class="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 cursor-pointer border border-transparent hover:border-slate-200 transition-colors">
-                        <input type="checkbox" class="udl-checkbox w-5 h-5 mt-1 rounded border-slate-300 text-brand-600 focus:ring-brand-500" value="25">
-                        <div>
-                            <span class="font-bold text-slate-800 block">Support for diverse cultural and linguistic needs</span>
-                            <span class="text-sm text-slate-500">Examples: Translated materials, glossaries, cultural references</span>
-                        </div>
-                    </label>
-                    
-                    <div class="pt-6 mt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-6">
-                        <button type="button" id="submitChecklist" class="w-full sm:w-auto bg-slate-900 text-white px-8 py-3 rounded-xl font-bold hover:bg-brand-600 transition-colors">Calculate Score</button>
-                        
-                        <div class="flex-1 w-full flex items-center gap-4">
-                            <div class="w-full bg-slate-200 rounded-full h-4 overflow-hidden">
-                                <div id="scoreBar" class="bg-brand-500 h-4 w-0 transition-all duration-1000 ease-out"></div>
-                            </div>
-                            <span id="scoreText" class="font-bold text-slate-900 text-lg w-16 text-right">0%</span>
-                        </div>
-                    </div>
-                    <p id="checklistResult" class="text-center font-medium mt-4 text-brand-700 hidden"></p>
-                </form>
-            </div>
-        </section>
-
-        <!-- ADDITIONAL RESOURCES -->
-        <section id="resources" class="reveal scroll-mt-24 mb-24">
-            <div class="glass-panel p-8 rounded-3xl">
-                <h3 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2"><i data-lucide="link" class="w-6 h-6 text-slate-400"></i> Additional Resources & References</h3>
-                <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-                    <a href="https://www.understood.org/en/articles/understanding-universal-design-for-learning" target="_blank" class="bg-white p-5 rounded-xl border border-slate-200 hover:border-brand-500 hover:shadow-md transition-all group">
-                        <h4 class="font-bold text-slate-800 mb-2 group-hover:text-brand-600 flex items-center justify-between">Understanding UDL <i data-lucide="external-link" class="w-4 h-4 opacity-50"></i></h4>
-                        <p class="text-xs text-slate-500">Understood.org</p>
-                    </a>
-                    <a href="https://www.texthelp.com/resources/universal-design-for-learning/udl-guidelines/" target="_blank" class="bg-white p-5 rounded-xl border border-slate-200 hover:border-brand-500 hover:shadow-md transition-all group">
-                        <h4 class="font-bold text-slate-800 mb-2 group-hover:text-brand-600 flex items-center justify-between">UDL Guidelines <i data-lucide="external-link" class="w-4 h-4 opacity-50"></i></h4>
-                        <p class="text-xs text-slate-500">Texthelp Resources</p>
-                    </a>
-                    <a href="https://udlguidelines.cast.org/" target="_blank" class="bg-white p-5 rounded-xl border border-slate-200 hover:border-brand-500 hover:shadow-md transition-all group">
-                        <h4 class="font-bold text-slate-800 mb-2 group-hover:text-brand-600 flex items-center justify-between">Official UDL Guidelines <i data-lucide="external-link" class="w-4 h-4 opacity-50"></i></h4>
-                        <p class="text-xs text-slate-500">CAST</p>
-                    </a>
-                    <div class="col-span-full mt-4 p-4 bg-slate-50 rounded-xl text-sm text-slate-600 border border-slate-100">
-                        <p><strong>References:</strong></p>
-                        <ul class="list-disc pl-5 mt-2 space-y-1">
-                            <li>Bastoni et al. (2023). Importance of professional development in implementing UDL strategies.</li>
-                            <li>Gentile & Budzilowicz (2022). Culturally responsive pedagogy in empowering diverse learners.</li>
-                            <li>Sewell et al. (2022). Multiple means of representation for addressing learner variability.</li>
+                <!-- Analysis -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">A</div>
+                    <div class="timeline-content bento-card">
+                        <span class="text-primary font-bold text-sm uppercase mb-1 block">Phase 1</span>
+                        <h3 class="text-2xl font-bold text-dark mb-3">Analysis</h3>
+                        <p class="text-slate-600 text-sm mb-3">
+                            Assessed the target audience of ELLs aged 18–20. Identified that language barriers—not mathematical ability—were the primary obstacle to comprehension.
+                        </p>
+                        <ul class="text-sm text-slate-700 space-y-1 mt-4 border-t border-slate-100 pt-4">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Diagnostic skill assessments</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Identified need for cultural responsiveness</li>
                         </ul>
                     </div>
+                </div>
+
+                <!-- Design -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">D</div>
+                    <div class="timeline-content bento-card">
+                        <span class="text-primary font-bold text-sm uppercase mb-1 block">Phase 2</span>
+                        <h3 class="text-2xl font-bold text-dark mb-3">Design</h3>
+                        <p class="text-slate-600 text-sm mb-3">
+                            Utilized UDL principles to outline strategies. Mapped the course to be entirely self-paced via structured practice booklets, allowing for critical learner autonomy.
+                        </p>
+                        <ul class="text-sm text-slate-700 space-y-1 mt-4 border-t border-slate-100 pt-4">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Self-paced module structure</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Planned integration of visual aids</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Development -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">D</div>
+                    <div class="timeline-content bento-card">
+                        <span class="text-primary font-bold text-sm uppercase mb-1 block">Phase 3</span>
+                        <h3 class="text-2xl font-bold text-dark mb-3">Development</h3>
+                        <p class="text-slate-600 text-sm mb-3">
+                            Created concrete materials based on the design phase. This included writing the practice booklets and curating external multimedia resources.
+                        </p>
+                        <ul class="text-sm text-slate-700 space-y-1 mt-4 border-t border-slate-100 pt-4">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Creation of translated glossaries</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Sourcing step-by-step video tutorials</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Implementation -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">I</div>
+                    <div class="timeline-content bento-card">
+                        <span class="text-primary font-bold text-sm uppercase mb-1 block">Phase 4</span>
+                        <h3 class="text-2xl font-bold text-dark mb-3">Implementation</h3>
+                        <p class="text-slate-600 text-sm mb-3">
+                            Delivering the course with a focus on collaborative problem-solving. Balancing independent self-paced work with active peer learning and 1-on-1 scaffolding.
+                        </p>
+                        <ul class="text-sm text-slate-700 space-y-1 mt-4 border-t border-slate-100 pt-4">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Gamified activities (Kahoot)</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Physical/digital whiteboard sessions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Evaluation -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">E</div>
+                    <div class="timeline-content bento-card">
+                        <span class="text-primary font-bold text-sm uppercase mb-1 block">Phase 5</span>
+                        <h3 class="text-2xl font-bold text-dark mb-3">Evaluation</h3>
+                        <p class="text-slate-600 text-sm mb-3">
+                            Formative and summative assessments of course effectiveness. Generating actionable recommendations to improve UDL alignment in future iterations.
+                        </p>
+                        <ul class="text-sm text-slate-700 space-y-1 mt-4 border-t border-slate-100 pt-4">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Unit exam success rates</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Student feedback surveys</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- UDL EVALUATION EXPANDABLE CARDS -->
+        <section id="udl-eval">
+            <div class="mb-10 text-center">
+                <span class="text-accent font-bold tracking-wider uppercase text-sm mb-2 block">Core Framework</span>
+                <h2 class="text-4xl font-bold text-dark mb-4">UDL Course Evaluation</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Evaluating Math 15 through the three principles of Universal Design for Learning (Sewell et al., 2022).</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Engagement -->
+                <div class="bento-card udl-card" onclick="this.classList.toggle('expanded')">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center">
+                            <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                        </div>
+                        <i data-lucide="plus" class="w-5 h-5 text-slate-400 udl-icon"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-2">Engagement</h3>
+                    <p class="text-slate-600 text-sm">Self-paced structure fosters autonomy, but lacks structured peer interaction.</p>
+                    
+                    <div class="udl-details">
+                        <div class="bg-slate-50 p-4 rounded-lg mt-2">
+                            <h4 class="font-bold text-dark text-sm mb-2"><i data-lucide="zap" class="w-4 h-4 inline mr-1 text-blue-600"></i> Recommendations</h4>
+                            <p class="text-sm text-slate-600">Incorporate gamified activities (Quizlet Live) and schedule weekly group problem-solving to build community for ELLs (Bastoni et al., 2023).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Representation -->
+                <div class="bento-card udl-card" onclick="this.classList.toggle('expanded')">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center">
+                            <i data-lucide="layout-template" class="w-6 h-6"></i>
+                        </div>
+                        <i data-lucide="plus" class="w-5 h-5 text-slate-400 udl-icon"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-2">Representation</h3>
+                    <p class="text-slate-600 text-sm">Practice booklets provide consistency but fail to address diverse learning mediums.</p>
+                    
+                    <div class="udl-details">
+                        <div class="bg-slate-50 p-4 rounded-lg mt-2">
+                            <h4 class="font-bold text-dark text-sm mb-2"><i data-lucide="zap" class="w-4 h-4 inline mr-1 text-purple-600"></i> Recommendations</h4>
+                            <ul class="text-sm text-slate-600 list-disc pl-4 space-y-1">
+                                <li>Video tutorials for step-by-step guides.</li>
+                                <li>Visual aids to simplify complex concepts.</li>
+                                <li>Translated materials and glossaries.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action & Expression -->
+                <div class="bento-card udl-card" onclick="this.classList.toggle('expanded')">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center">
+                            <i data-lucide="pen-tool" class="w-6 h-6"></i>
+                        </div>
+                        <i data-lucide="plus" class="w-5 h-5 text-slate-400 udl-icon"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-2">Expression</h3>
+                    <p class="text-slate-600 text-sm">Reliance on traditional unit exams limits how students can demonstrate knowledge.</p>
+                    
+                    <div class="udl-details">
+                        <div class="bg-slate-50 p-4 rounded-lg mt-2">
+                            <h4 class="font-bold text-dark text-sm mb-2"><i data-lucide="zap" class="w-4 h-4 inline mr-1 text-orange-600"></i> Recommendations</h4>
+                            <ul class="text-sm text-slate-600 list-disc pl-4 space-y-1">
+                                <li>Project-based alternative assessments.</li>
+                                <li>Self-assessment reflection tools.</li>
+                                <li>Peer-mentoring opportunities.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIDEO SECTION (Bento Style) -->
+        <section>
+            <div class="bento-card p-0 overflow-hidden bg-dark text-white flex flex-col lg:flex-row">
+                <div class="p-8 lg:p-12 lg:w-1/2 flex flex-col justify-center">
+                    <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="play" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold mb-4">Collaborative Math in Action</h2>
+                    <p class="text-slate-300 font-body leading-relaxed mb-6">
+                        Collaboration is vital for foundational courses. Group activities, whiteboard work, and educational games allow students to build communication skills and share strategies—highly valuable for ELLs reinforcing language and math concepts simultaneously.
+                    </p>
+                    <p class="text-sm text-slate-400 border-l-2 border-primary pl-4">
+                        Video created by Brandon Woodland, showcasing UDL principles of multiple means of engagement in practice.
+                    </p>
+                </div>
+                <div class="lg:w-1/2 min-h-[300px] lg:min-h-full relative bg-black">
+                    <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/UPD5zg6GtD0" title="Collaborative Math" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERACTIVE CHECKLIST -->
+        <section>
+            <div class="bento-card border-2 border-primary/20 relative overflow-hidden">
+                <div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+                
+                <div class="flex flex-col md:flex-row gap-12 items-center relative z-10">
+                    <div class="flex-1">
+                        <h2 class="text-3xl font-bold text-dark mb-2">UDL Alignment Test</h2>
+                        <p class="text-slate-600 mb-8">Evaluate your own course design. Check the boxes that apply to your classroom to calculate your UDL alignment score.</p>
+                        
+                        <form id="udlChecklist" class="space-y-3">
+                            <label class="flex items-center gap-4 p-3 rounded-lg hover:bg-slate-50 cursor-pointer border border-slate-100 transition-colors">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary check-item" value="25">
+                                <span class="font-medium text-dark text-sm md:text-base">Multiple ways to access course content</span>
+                            </label>
+                            <label class="flex items-center gap-4 p-3 rounded-lg hover:bg-slate-50 cursor-pointer border border-slate-100 transition-colors">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary check-item" value="25">
+                                <span class="font-medium text-dark text-sm md:text-base">Diverse assessment methods (projects, presentations)</span>
+                            </label>
+                            <label class="flex items-center gap-4 p-3 rounded-lg hover:bg-slate-50 cursor-pointer border border-slate-100 transition-colors">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary check-item" value="25">
+                                <span class="font-medium text-dark text-sm md:text-base">Opportunities for structured peer collaboration</span>
+                            </label>
+                            <label class="flex items-center gap-4 p-3 rounded-lg hover:bg-slate-50 cursor-pointer border border-slate-100 transition-colors">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary check-item" value="25">
+                                <span class="font-medium text-dark text-sm md:text-base">Support for diverse linguistic needs (glossaries, translations)</span>
+                            </label>
+                        </form>
+                    </div>
+                    
+                    <div class="flex flex-col items-center justify-center bg-slate-50 p-8 rounded-2xl border border-slate-100 w-full md:w-auto min-w-[250px]">
+                        <div class="circular-progress mb-4" id="circularProgress" style="--progress: 0deg;">
+                            <span class="progress-value" id="progressText">0%</span>
+                        </div>
+                        <p id="progressMessage" class="text-sm font-bold text-slate-500 text-center h-10">Select criteria to <br>calculate score</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- REFERENCES BENTO -->
+        <section class="mb-20">
+            <h3 class="text-2xl font-bold text-dark mb-6 text-center">References & Resources</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="https://udlguidelines.cast.org/" target="_blank" class="bento-card p-6 flex flex-col items-center text-center hover:bg-primary hover:text-white group">
+                    <i data-lucide="external-link" class="w-6 h-6 mb-3 text-slate-400 group-hover:text-white/80"></i>
+                    <h4 class="font-bold mb-1">CAST Guidelines</h4>
+                    <p class="text-xs text-slate-500 group-hover:text-white/70">Official UDL Site</p>
+                </a>
+                <a href="https://www.understood.org/en/articles/understanding-universal-design-for-learning" target="_blank" class="bento-card p-6 flex flex-col items-center text-center hover:bg-primary hover:text-white group">
+                    <i data-lucide="external-link" class="w-6 h-6 mb-3 text-slate-400 group-hover:text-white/80"></i>
+                    <h4 class="font-bold mb-1">Understood.org</h4>
+                    <p class="text-xs text-slate-500 group-hover:text-white/70">Understanding UDL</p>
+                </a>
+                <div class="bento-card p-6 sm:col-span-2 bg-slate-900 text-white">
+                    <h4 class="font-bold mb-3 flex items-center gap-2"><i data-lucide="book" class="w-4 h-4"></i> Literature</h4>
+                    <ul class="text-xs text-slate-400 space-y-2">
+                        <li><strong>Bastoni et al. (2023).</strong> Importance of PD in implementing UDL strategies.</li>
+                        <li><strong>Gentile & Budzilowicz (2022).</strong> Culturally responsive pedagogy for diverse learners.</li>
+                        <li><strong>Sewell et al. (2022).</strong> Multiple means of representation for learner variability.</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="glass-panel py-12 mt-12 border-b-0 border-l-0 border-r-0 rounded-b-none rounded-t-3xl">
-        <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
-            <p>&copy; 2026 Hannah Terkper. EDU 714: Course Design.</p>
-            <p class="mt-2 text-xs opacity-70">Interactive Final Project</p>
+    <footer class="bg-white border-t border-slate-200 py-10 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-slate-800 font-bold">EDU 714: Course Design</p>
+            <p class="text-slate-500 text-sm mt-1">&copy; 2026 Hannah Terkper. Final Project Evaluation.</p>
         </div>
     </footer>
 
-    <!-- Scripts for Interactions -->
+    <!-- Scripts -->
     <script>
-        // Initialize Icons
         lucide.createIcons();
 
-        // ADDIE Tabs
-        function openAddieTab(tabName) {
-            document.querySelectorAll('.addie-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.addie-step').forEach(el => el.classList.remove('active'));
-            
-            document.getElementById(tabName).classList.add('active');
-            event.currentTarget.classList.add('active');
-        }
+        // UDL Checklist Logic with Circular Progress
+        const checkboxes = document.querySelectorAll('.check-item');
+        const circularProgress = document.getElementById('circularProgress');
+        const progressText = document.getElementById('progressText');
+        const progressMessage = document.getElementById('progressMessage');
 
-        // Accordion functionality
-        function toggleAccordion(element) {
-            const content = element.nextElementSibling;
-            const isActive = element.classList.contains('active');
-            
-            // Close all accordions (optional, remove for multi-open)
-            document.querySelectorAll('.accordion-header').forEach(header => {
-                header.classList.remove('active');
-                header.nextElementSibling.style.maxHeight = null;
-            });
+        checkboxes.forEach(box => {
+            box.addEventListener('change', () => {
+                let total = 0;
+                document.querySelectorAll('.check-item:checked').forEach(cb => {
+                    total += parseInt(cb.value);
+                });
 
-            if (!isActive) {
-                element.classList.add('active');
-                content.style.maxHeight = content.scrollHeight + "px";
-            }
-        }
+                // Update circular progress (360 degrees = 100%)
+                const degrees = (total / 100) * 360;
+                circularProgress.style.setProperty('--progress', `${degrees}deg`);
+                progressText.innerText = `${total}%`;
 
-        // UDL Checklist Calculator
-        document.getElementById('submitChecklist').addEventListener('click', () => {
-            const checkboxes = document.querySelectorAll('.udl-checkbox:checked');
-            let total = 0;
-            checkboxes.forEach(cb => total += parseInt(cb.value));
-            
-            const scoreBar = document.getElementById('scoreBar');
-            const scoreText = document.getElementById('scoreText');
-            const resultText = document.getElementById('checklistResult');
-            
-            scoreBar.style.width = total + '%';
-            scoreText.innerText = total + '%';
-            
-            resultText.style.display = 'block';
-            if(total === 100) {
-                resultText.innerText = "Excellent! Your course aligns strongly with UDL guidelines.";
-                resultText.className = "text-center font-bold mt-4 text-green-600";
-            } else if(total >= 50) {
-                resultText.innerText = "Good start! Review the unchecked areas to improve accessibility.";
-                resultText.className = "text-center font-bold mt-4 text-brand-600";
-            } else {
-                resultText.innerText = "Room for improvement. Consider implementing more UDL strategies.";
-                resultText.className = "text-center font-bold mt-4 text-orange-500";
-            }
-        });
-
-        // Scroll Reveal Animation
-        const revealElements = document.querySelectorAll('.reveal');
-        
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    revealObserver.unobserve(entry.target);
+                // Update message
+                if (total === 100) {
+                    progressMessage.innerHTML = "<span class='text-accent'>Excellent!</span><br>Strong UDL Alignment";
+                } else if (total >= 50) {
+                    progressMessage.innerHTML = "<span class='text-primary'>Good Start</span><br>Room for improvement";
+                } else if (total > 0) {
+                    progressMessage.innerHTML = "<span class='text-secondary'>Needs Work</span><br>Review UDL guidelines";
+                } else {
+                    progressMessage.innerHTML = "Select criteria to <br>calculate score";
                 }
             });
-        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-
-        revealElements.forEach(el => revealObserver.observe(el));
-        
-        // Open first accordion by default
-        setTimeout(() => {
-            const firstAccordion = document.querySelector('.accordion-header');
-            if(firstAccordion) toggleAccordion(firstAccordion);
-        }, 500);
+        });
     </script>
 </body>
 </html>
