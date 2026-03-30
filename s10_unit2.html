@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css">
+    <style>
+        /* Consistent with main course pages */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+
+        .content-box {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+
+        .content-box h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+
+        .units-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+
+        .unit-card {
+            padding: 20px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            transition: transform 0.3s ease;
+            border: 1px solid #e0e0e0;
+            text-decoration: none;
+            color: #34495e;
+        }
+
+
+        .unit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+
+        .unit-card h3 {
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+
+        .unit-card p {
+            line-height: 1.5;
+        }
+
+
+        .outcomes-list {
+            columns: 2;
+            gap: 30px;
+            padding-left: 20px;
+        }
+
+
+        .outcomes-list li {
+            margin-bottom: 12px;
+            break-inside: avoid;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 25px;
+        }
+
+
+        .outcomes-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #2ecc71;
+        }
+
+
+        .resources-box {
+            background: #f8f9fa;
+            border-color: #2ecc71;
+        }
+
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 6px;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: #34495e;
+            border: 1px solid #e0e0e0;
+        }
+
+
+        .resource-link:hover {
+            transform: translateX(5px);
+            border-color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <div id="navbar-placeholder"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      })
+      .catch(err => console.error("Navbar failed to load:", err));
+  });
+</script>
+
+<title>Energy Flow in Technological Systems &mdash; Ms. Terkper's Digital Classroom</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,sans-serif;background:#f1f5f9;color:#0f172a;line-height:1.6}
+
+/* SITE HEADER */
+.site-header{background:linear-gradient(135deg,#2a9d8f 0%,#3b82f6 100%);text-align:center;padding:2rem 1rem}
+.site-header h1{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:700;color:#fff;letter-spacing:-0.02em}
+
+/* SITE NAV */
+.site-nav{background:#3b82f6;display:flex;flex-wrap:wrap;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.site-nav a{color:#fff;text-decoration:none;padding:.75rem 1.25rem;font-size:.875rem;font-weight:500;white-space:nowrap;transition:background .2s}
+.site-nav a:hover{background:#2563eb}
+
+/* UNIT NAV */
+.unit-nav{background:#fff;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:200;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.unit-nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;flex-wrap:nowrap;overflow-x:auto;padding:0 1rem;gap:0;scrollbar-width:none}
+.unit-nav-inner::-webkit-scrollbar{display:none}
+.unit-nav-brand{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.95rem;color:#b45309;padding:.75rem 1rem .75rem 0;margin-right:.5rem;border-right:1px solid #e2e8f0;flex-shrink:0;white-space:nowrap}
+.unit-nav a{color:#475569;text-decoration:none;padding:.75rem .85rem;font-size:.78rem;font-weight:600;white-space:nowrap;transition:color .2s;border-bottom:2px solid transparent}
+.unit-nav a:hover{color:#b45309;border-bottom-color:#b45309}
+
+/* LAYOUT */
+main{max-width:1200px;margin:0 auto;padding:2.5rem 1rem 8rem;display:flex;flex-direction:column;gap:5rem}
+
+/* TYPOGRAPHY */
+h2.sh{font-family:Georgia,serif;font-size:2rem;font-weight:700;color:#0f172a}
+h3{font-family:Georgia,serif;font-size:1.2rem;font-weight:700;color:#1e293b}
+.section-row{display:flex;align-items:center;gap:1rem;border-bottom:2px solid #e2e8f0;padding-bottom:1rem;margin-bottom:2rem}
+.snum{width:2.5rem;height:2.5rem;border-radius:.5rem;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.2rem;flex-shrink:0;color:#fff;background:#b45309}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#78350f 0%,#b45309 50%,#d97706 100%);color:#fff;border-radius:1.25rem;padding:3rem;border-bottom:8px solid #fbbf24;position:relative;overflow:hidden;margin-bottom:2rem}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;background:rgba(255,255,255,.04);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-80px;left:40%;width:400px;height:400px;background:rgba(255,255,255,.03);border-radius:50%}
+.hero .badge{display:inline-block;background:rgba(255,255,255,.12);color:#fde68a;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .9rem;border-radius:9999px;margin-bottom:1.25rem}
+.hero h1{font-family:Georgia,serif;font-size:clamp(1.75rem,4vw,3.25rem);font-weight:700;line-height:1.2;margin-bottom:.5rem;position:relative;z-index:1}
+.hero p{color:rgba(255,255,255,.8);font-size:1.05rem;position:relative;z-index:1}
+
+/* ENERGY TYPE COLOUR SYSTEM */
+:root{
+  --kin:#2563eb;--kin-l:#eff6ff;--kin-b:#bfdbfe;
+  --pot:#16a34a;--pot-l:#f0fdf4;--pot-b:#bbf7d0;
+  --therm:#dc2626;--therm-l:#fef2f2;--therm-b:#fecaca;
+  --chem:#7c3aed;--chem-l:#f5f3ff;--chem-b:#ddd6fe;
+  --elec:#ea580c;--elec-l:#fff7ed;--elec-b:#fed7aa;
+  --sound:#0891b2;--sound-l:#ecfeff;--sound-b:#a5f3fc;
+  --nuke:#be185d;--nuke-l:#fdf2f8;--nuke-b:#f9a8d4;
+  --solar:#ca8a04;--solar-l:#fefce8;--solar-b:#fde047;
+}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
+.g4{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.25rem}
+.span2{grid-column:1/-1}
+
+/* CARDS */
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:.875rem;overflow:hidden}
+.card-hd{background:#f8fafc;border-bottom:1px solid #e2e8f0;padding:1rem 1.25rem;font-weight:700;font-size:.95rem}
+.card-bd{padding:1.25rem}
+.card-amber{border-left:4px solid #f59e0b}
+.card-blue{border-left:4px solid #3b82f6}
+.card-green{border-left:4px solid #16a34a}
+.card-red{border-left:4px solid #dc2626}
+.card-purple{border-left:4px solid #7c3aed}
+
+/* ENERGY TYPE BADGES / CHIPS */
+.e-chip{display:inline-flex;align-items:center;gap:.35rem;padding:.25rem .75rem;border-radius:9999px;font-size:.8rem;font-weight:700;margin:.2rem}
+.e-kin{background:var(--kin-b);color:var(--kin)}
+.e-pot{background:var(--pot-b);color:var(--pot)}
+.e-therm{background:var(--therm-b);color:var(--therm)}
+.e-chem{background:var(--chem-b);color:var(--chem)}
+.e-elec{background:var(--elec-b);color:var(--elec)}
+.e-sound{background:var(--sound-b);color:var(--sound)}
+.e-nuke{background:var(--nuke-b);color:var(--nuke)}
+.e-solar{background:var(--solar-b);color:var(--solar)}
+
+/* TABLES */
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{background:#1e293b;color:#fff;padding:.6rem 1rem;text-align:left;font-weight:600}
+td{padding:.6rem 1rem;border-bottom:1px solid #e2e8f0;vertical-align:top}
+tr:hover td{background:#f8fafc}
+tr:last-child td{border-bottom:none}
+.ot{overflow-x:auto}
+.th-dk{background:#334155;color:#fff}
+.th-lt{background:#e2e8f0;color:#334155}
+.mono{font-family:'Courier New',monospace}
+
+/* FORMULA BOXES */
+.formula-box{background:linear-gradient(135deg,#1e3a8a,#1e40af);color:#fff;border-radius:.75rem;padding:1.5rem;text-align:center;font-family:'Courier New',monospace;font-size:1.4rem;font-weight:700;letter-spacing:.03em;margin:.5rem 0}
+.formula-box .vars{font-family:system-ui,sans-serif;font-size:.78rem;font-weight:400;color:rgba(255,255,255,.7);margin-top:.5rem;letter-spacing:0}
+.formula-sm{background:#f1f5f9;border:1px solid #e2e8f0;border-radius:.5rem;padding:.6rem 1rem;font-family:'Courier New',monospace;font-size:.9rem;display:inline-block;color:#1e3a8a;font-weight:700}
+.formula-block{background:#f8fafc;border:1px solid #e2e8f0;border-radius:.5rem;padding:.75rem 1rem;font-family:'Courier New',monospace;font-size:.85rem;line-height:2}
+
+/* STEPS */
+.step-list{display:flex;flex-direction:column;gap:.75rem}
+.step{display:flex;gap:.75rem;align-items:flex-start}
+.step-num{background:#b45309;color:#fff;width:1.75rem;height:1.75rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;flex-shrink:0}
+
+/* LAW CARDS */
+.law-card{border-radius:.875rem;padding:1.75rem;position:relative;overflow:hidden}
+.law-card-1{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff}
+.law-card-2{background:linear-gradient(135deg,#7c3aed,#9333ea);color:#fff}
+.law-card h3{color:#fbbf24;font-size:1.1rem;margin-bottom:.5rem}
+.law-card p{font-size:.9rem;color:rgba(255,255,255,.85);line-height:1.7}
+.law-card .law-num{position:absolute;top:.75rem;right:1.25rem;font-size:4rem;font-weight:900;color:rgba(255,255,255,.07);line-height:1}
+
+/* BACK TO TOP */
+.btt{position:fixed;bottom:2rem;right:2rem;background:#f59e0b;color:#0f172a;border:none;border-radius:50%;width:3rem;height:3rem;font-size:1.5rem;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.2);z-index:300;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.btt:hover{transform:scale(1.12)}
+
+/* FOOTER */
+footer{background:#0f172a;border-top:4px solid #22c55e;text-align:center;padding:1.25rem 1rem}
+footer p{color:#cbd5e1;font-size:.875rem}
+
+/* BADGE */
+.badge{display:inline-block;background:#e2e8f0;color:#334155;border-radius:9999px;padding:.25rem .75rem;font-size:.8rem;font-weight:500;margin:.2rem}
+
+/* INFO BOX */
+.info-amber{background:#fffbeb;border:1px solid #fde68a;border-radius:.75rem;padding:1.25rem}
+.info-amber h3{color:#92400e}
+.info-amber ul{color:#78350f;font-size:.875rem;list-style:disc;padding-left:1.25rem;line-height:2}
+.info-slate{background:#f8fafc;border:1px solid #e2e8f0;border-radius:.75rem;padding:1.25rem}
+.info-blue{background:#eff6ff;border:1px solid #bfdbfe;border-radius:.75rem;padding:1.25rem}
+.info-blue h3{color:#1d4ed8}
+
+/* ═══ INTERACTIVE CALCULATORS ═══ */
+.calc-panel{background:#fff;border:1px solid #e2e8f0;border-radius:1rem;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.calc-tabs{display:flex;border-bottom:2px solid #e2e8f0}
+.calc-tab{flex:1;padding:.85rem .5rem;text-align:center;font-size:.82rem;font-weight:700;cursor:pointer;color:#64748b;transition:all .2s;border:none;background:transparent}
+.calc-tab.active{background:#b45309;color:#fff}
+.calc-tab:hover:not(.active){background:#f8fafc;color:#b45309}
+.calc-pane{display:none;padding:1.75rem}
+.calc-pane.active{display:block}
+.calc-pane h4{font-weight:700;font-size:1rem;margin-bottom:.4rem;color:#0f172a}
+.calc-pane .sub{font-size:.8rem;color:#64748b;margin-bottom:1.25rem}
+.slider-row{display:flex;flex-direction:column;gap:1rem;margin-bottom:1.5rem}
+.slider-item{display:flex;flex-direction:column;gap:.4rem}
+.slider-item label{font-size:.8rem;font-weight:600;color:#475569;display:flex;justify-content:space-between;align-items:center}
+.slider-item label span{font-family:'Courier New',monospace;font-size:.9rem;font-weight:700;color:#b45309}
+.slider-item input[type=range]{width:100%;accent-color:#b45309;height:6px;cursor:pointer}
+.result-display{background:linear-gradient(135deg,#b45309,#d97706);border-radius:.75rem;padding:1.25rem 1.5rem;color:#fff;text-align:center;margin-top:1rem}
+.result-display .rd-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.75);margin-bottom:.25rem}
+.result-display .rd-value{font-size:2.25rem;font-weight:700;font-family:'Courier New',monospace}
+.result-display .rd-unit{font-size:.9rem;color:rgba(255,255,255,.8)}
+.result-display .rd-formula{font-size:.78rem;color:rgba(255,255,255,.65);margin-top:.4rem;font-family:'Courier New',monospace}
+
+/* Efficiency Calculator */
+.eff-device-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.75rem;margin-bottom:1.5rem}
+.eff-device{background:#f8fafc;border:2px solid #e2e8f0;border-radius:.5rem;padding:.75rem;cursor:pointer;text-align:center;transition:all .2s;font-size:.8rem;font-weight:600;color:#334155}
+.eff-device:hover,.eff-device.selected{border-color:#b45309;background:#fff7ed;color:#b45309}
+.eff-bar-wrap{background:#e2e8f0;border-radius:9999px;height:2rem;overflow:hidden;margin:.75rem 0;position:relative}
+.eff-bar{height:100%;background:linear-gradient(90deg,#16a34a,#22c55e);border-radius:9999px;transition:width .6s cubic-bezier(.4,0,.2,1);min-width:0}
+.eff-bar-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:#fff;mix-blend-mode:luminosity}
+.eff-waste{background:#fee2e2;border:1px solid #fecaca;border-radius:.5rem;padding:.75rem;font-size:.85rem;color:#991b1b;margin-top:.5rem}
+
+/* Energy Flow Diagram */
+.flow-diagram{display:flex;align-items:center;flex-wrap:wrap;gap:0;justify-content:center;padding:1rem 0}
+.flow-node{background:#fff;border:2px solid #e2e8f0;border-radius:.75rem;padding:.75rem 1rem;text-align:center;font-size:.8rem;font-weight:700;cursor:pointer;min-width:110px;transition:all .25s;position:relative}
+.flow-node.active{transform:scale(1.06);box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.flow-arrow{font-size:1.5rem;color:#94a3b8;padding:0 .25rem;flex-shrink:0;align-self:center}
+.flow-node-detail{background:#f8fafc;border:1px solid #e2e8f0;border-radius:.75rem;padding:1rem 1.25rem;margin-top:1rem;font-size:.875rem;color:#334155;min-height:70px;transition:all .3s}
+.flow-node-detail strong{color:#b45309;display:block;margin-bottom:.3rem}
+
+/* Motion Graph */
+.graph-wrap{background:#fff;border:1px solid #e2e8f0;border-radius:.875rem;overflow:hidden}
+.graph-controls{padding:1rem 1.25rem;background:#f8fafc;border-bottom:1px solid #e2e8f0;display:flex;flex-wrap:wrap;gap:1rem;align-items:flex-end}
+.ctrl-item{display:flex;flex-direction:column;gap:.3rem}
+.ctrl-item label{font-size:.75rem;font-weight:600;color:#64748b}
+.ctrl-item input[type=range]{accent-color:#b45309;width:130px;cursor:pointer}
+.ctrl-item .val{font-size:.85rem;font-weight:700;color:#b45309;font-family:'Courier New',monospace;min-width:60px;text-align:right}
+.graph-toggle{display:flex;gap:.5rem;background:#e2e8f0;border-radius:.5rem;padding:.25rem}
+.g-btn{padding:.35rem .85rem;border-radius:.375rem;border:none;font-size:.78rem;font-weight:700;cursor:pointer;transition:all .2s;color:#64748b;background:transparent}
+.g-btn.active{background:#b45309;color:#fff}
+canvas.mgraph{display:block;width:100%;max-height:260px}
+
+/* ═══ QUIZZES ═══ */
+.quiz-wrap{max-width:700px;margin:0 auto}
+.q-card{background:#fff;border:1px solid #e2e8f0;border-radius:.875rem;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.q-header{background:#f8fafc;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e2e8f0}
+.q-header h4{font-weight:700;font-size:1rem}
+.q-prog{font-size:.78rem;font-weight:700;color:#64748b;text-transform:uppercase}
+.q-score{background:#b45309;color:#fff;font-size:.78rem;font-weight:700;padding:.2rem .6rem;border-radius:9999px}
+.q-body{padding:1.5rem}
+.q-text{font-size:1rem;color:#0f172a;margin-bottom:1.25rem;line-height:1.6}
+.q-options{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1rem}
+.q-opt{display:flex;align-items:center;gap:.75rem;padding:.85rem 1rem;border:2px solid #e2e8f0;border-radius:.625rem;cursor:pointer;transition:all .2s;font-size:.9rem}
+.q-opt:hover{border-color:#b45309;background:#fff7ed}
+.q-opt.selected{border-color:#b45309;background:#fff7ed}
+.q-opt.correct{border-color:#16a34a;background:#f0fdf4;color:#166534}
+.q-opt.wrong{border-color:#dc2626;background:#fef2f2;color:#991b1b}
+.q-opt input{accent-color:#b45309;width:1.1rem;height:1.1rem}
+.q-feedback{padding:.875rem 1rem;border-radius:.5rem;font-size:.875rem;display:none;margin-bottom:1rem}
+.q-feedback.correct{background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;display:block}
+.q-feedback.wrong{background:#fef2f2;color:#991b1b;border:1px solid #fecaca;display:block}
+.q-footer{background:#f8fafc;padding:1rem 1.5rem;border-top:1px solid #e2e8f0;display:flex;justify-content:center}
+.btn{cursor:pointer;font-weight:600;border:none;border-radius:.5rem;padding:.6rem 1.5rem;transition:all .2s}
+.btn-amber{background:#f59e0b;color:#0f172a;font-size:.9rem}
+.btn-amber:hover{background:#d97706}
+.btn-primary{background:#1e3a8a;color:#fff}
+.btn-primary:hover{background:#1e40af}
+.btn-outline{background:#fff;color:#334155;border:1px solid #e2e8f0}
+.btn-outline:hover{background:#f8fafc}
+.btn-lg{padding:.75rem 2rem;font-size:1rem}
+
+/* FLASHCARDS */
+.fc-wrap{max-width:480px;margin:0 auto}
+.fc{width:100%;height:15rem;cursor:pointer;perspective:1000px}
+.fc-inner{width:100%;height:100%;transform-style:preserve-3d;transition:transform .5s}
+.fc-inner.flip{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:.875rem;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;text-align:center;gap:.75rem;box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.fc-front{background:linear-gradient(135deg,#78350f,#b45309);color:#fff}
+.fc-back{background:#f8fafc;color:#1e293b;transform:rotateY(180deg);border:2px solid #e2e8f0}
+.fc-term{font-family:Georgia,serif;font-size:1.75rem;font-weight:700}
+.fc-hint{font-size:.78rem;opacity:.65}
+.fc-def{font-size:1rem;line-height:1.65}
+.fc-nav{display:flex;justify-content:space-between;align-items:center;background:#f1f5f9;padding:.5rem;border-radius:.5rem;margin-top:1rem}
+.fc-ctr{font-size:.75rem;font-weight:700;text-transform:uppercase;color:#64748b;letter-spacing:.06em}
+
+/* MATCHING GAME */
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:700px;margin:0 auto}
+.match-col{display:flex;flex-direction:column;gap:.5rem}
+.match-item{padding:.75rem 1rem;border:2px solid #e2e8f0;border-radius:.625rem;cursor:pointer;font-size:.85rem;font-weight:600;transition:all .2s;background:#fff;text-align:center}
+.match-item:hover:not(.matched):not(.locked){border-color:#b45309;background:#fff7ed}
+.match-item.selected{border-color:#b45309;background:#fff7ed;color:#b45309}
+.match-item.matched{border-color:#16a34a;background:#f0fdf4;color:#166534;cursor:default}
+.match-item.wrong-flash{border-color:#dc2626;background:#fef2f2;animation:flash .4s}
+@keyframes flash{0%,100%{opacity:1}50%{opacity:.4}}
+.match-score-bar{background:#e2e8f0;border-radius:9999px;height:.75rem;overflow:hidden;margin-bottom:1rem}
+.match-score-fill{height:100%;background:linear-gradient(90deg,#b45309,#d97706);border-radius:9999px;transition:width .4s}
+
+/* Responsive */
+@media(max-width:640px){
+  .unit-nav-brand{font-size:.78rem}
+  .calc-tabs{flex-wrap:wrap}
+  .calc-tab{flex:auto}
+  .eff-device-grid{grid-template-columns:repeat(2,1fr)}
+  .match-grid{grid-template-columns:1fr}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1>Ms. Terkper's Digital Classroom</h1>
+</header>
+
+<div id="navbar-placeholder"></div>
+
+<div class="unit-nav">
+  <div class="unit-nav-inner">
+    <div class="unit-nav-brand">
+      <svg width="18" height="18" fill="none" stroke="#b45309" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      Energy Flow &mdash; Unit B
+    </div>
+    <a href="#overview">Overview</a>
+    <a href="#history">History</a>
+    <a href="#forms">Forms of Energy</a>
+    <a href="#motion">Motion</a>
+    <a href="#equations">Equations</a>
+    <a href="#laws">Laws &amp; Efficiency</a>
+    <a href="#practice">Practice</a>
+  </div>
+</div>
+
+<main>
+
+<!-- ═══════════════════════ SECTION 1: OVERVIEW ═══════════════════════ -->
+<section id="overview">
+  <div class="hero">
+    <div class="badge">Alberta Science 10 &mdash; Unit B</div>
+    <h1>Energy Flow in Technological Systems</h1>
+    <p>Ms. Terkper's Digital Classroom &mdash; Science &amp; Technology Emphasis</p>
+  </div>
+
+  <div class="g2">
+    <div style="display:flex;flex-direction:column;gap:1.5rem">
+      <div>
+        <h3 style="font-size:1.3rem;margin-bottom:.75rem">Focusing Questions</h3>
+        <blockquote style="border-left:4px solid #f59e0b;background:#fff;border:1px solid #e2e8f0;border-left:4px solid #f59e0b;padding:1.25rem 1.5rem;border-radius:.625rem;font-style:italic;color:#475569;font-size:.95rem;line-height:1.85">
+          "Which came first, science or technology, and is it possible for technological development to take place without help from pure science? How did efforts to improve the efficiency of heat engines result in the formulation of the first and second laws of thermodynamics? How can the analysis of moving objects help in the understanding of changes in kinetic energy, force and work? Why are efficiency and sustainability important considerations in designing energy conversion technologies?"
+        </blockquote>
+      </div>
+      <div>
+        <h3 style="font-size:1.3rem;margin-bottom:.75rem">Program Outcomes</h3>
+        <div style="display:flex;flex-direction:column;gap:.75rem">
+          <div style="display:flex;gap:.75rem;background:#fff;border:1px solid #e2e8f0;border-left:4px solid #b45309;border-radius:.5rem;padding:.875rem 1rem;font-size:.875rem"><strong style="color:#b45309;white-space:nowrap">Outcome 1:</strong>&nbsp;Analyze how technologies based on thermodynamic principles were developed before the laws of thermodynamics were formulated.</div>
+          <div style="display:flex;gap:.75rem;background:#fff;border:1px solid #e2e8f0;border-left:4px solid #b45309;border-radius:.5rem;padding:.875rem 1rem;font-size:.875rem"><strong style="color:#b45309;white-space:nowrap">Outcome 2:</strong>&nbsp;Explain and apply concepts used in theoretical and practical measures of energy in mechanical systems (Ek, Ep, W, scalars, vectors, acceleration).</div>
+          <div style="display:flex;gap:.75rem;background:#fff;border:1px solid #e2e8f0;border-left:4px solid #b45309;border-radius:.5rem;padding:.875rem 1rem;font-size:.875rem"><strong style="color:#b45309;white-space:nowrap">Outcome 3:</strong>&nbsp;Apply the principles of energy conservation and thermodynamics to investigate, describe and predict efficiency of energy transformation in technological systems.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3 style="font-size:1.2rem;margin-bottom:1rem">Key Concepts</h3>
+      <div style="margin-bottom:1.5rem">
+        <span class="badge">Forms &amp; Interconversions of Energy</span>
+        <span class="badge">Thermodynamic Laws</span>
+        <span class="badge">One-Dimensional Motion</span>
+        <span class="badge">Kinetic &amp; Potential Energy</span>
+        <span class="badge">Mechanical Work</span>
+        <span class="badge">Efficiency</span>
+        <span class="badge">Sustainability</span>
+        <span class="badge">Heat Engines</span>
+        <span class="badge">Energy Conversion Devices</span>
+      </div>
+      <div class="info-amber">
+        <h3 style="color:#92400e;font-size:1rem;margin-bottom:.75rem">Unit Overview</h3>
+        <p style="font-size:.875rem;color:#78350f;line-height:1.7">The first and second laws of thermodynamics were useful in developing modern, efficient energy conversion devices. Students learn that while energy is conserved, useful energy diminishes with each conversion. Energy can only be observed when it is being transferred, and mechanical energy can be quantified.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SECTION 2: HISTORY ═══════════════════════ -->
+<section id="history">
+  <div class="section-row">
+    <div class="snum">2</div>
+    <h2 class="sh">History of Thermodynamics &amp; Engines</h2>
+  </div>
+
+  <div class="g2" style="margin-bottom:2rem">
+    <div>
+      <h3 style="margin-bottom:1rem">Technology Before Theory</h3>
+      <div class="info-blue" style="margin-bottom:1.25rem">
+        <h3 style="font-size:.95rem;margin-bottom:.5rem">Key Idea</h3>
+        <p style="font-size:.875rem;color:#1e3a8a;line-height:1.7">In thermodynamics, <strong>technology came before the science</strong>. Engineers improved heat engines through trial and error over centuries <em>before</em> scientists formalized the laws that explained why they worked. The science was derived from observing the technology.</p>
+      </div>
+
+      <div class="card" style="margin-bottom:1.25rem">
+        <div class="card-hd">Development of Energy Concepts</div>
+        <div class="card-bd">
+          <div class="step-list">
+            <div class="step"><div class="step-num">1</div><div><strong>Count Rumford (1798):</strong> Observed that boring cannon barrels produced heat indefinitely &mdash; challenging the caloric theory. He proposed that heat is a form of motion, not a substance.</div></div>
+            <div class="step"><div class="step-num">2</div><div><strong>James Prescott Joule (1840s):</strong> Precisely measured the mechanical equivalent of heat. Showed that mechanical energy and heat are interconvertible. The SI unit of energy (joule) is named after him.</div></div>
+            <div class="step"><div class="step-num">3</div><div><strong>1st Law of Thermodynamics:</strong> Formalized by Clausius and others (1850). Energy is conserved in all processes &mdash; it cannot be created or destroyed.</div></div>
+            <div class="step"><div class="step-num">4</div><div><strong>2nd Law of Thermodynamics:</strong> Formalized to explain why engines can never be 100% efficient &mdash; heat always flows from hot to cold; disorder increases.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:1.25rem">
+      <div class="card">
+        <div class="card-hd">The Steam Engine Timeline</div>
+        <div class="ot">
+          <table>
+            <thead><tr><th>Year</th><th>Person</th><th>Contribution</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">1698</td><td><strong>Thomas Savery</strong></td><td>First practical steam pump (mining)</td></tr>
+              <tr><td class="mono">1712</td><td><strong>Thomas Newcomen</strong></td><td>Atmospheric steam engine; very inefficient</td></tr>
+              <tr><td class="mono">1769</td><td><strong>James Watt</strong></td><td>Separate condenser &mdash; dramatically improved efficiency; defined "horsepower"</td></tr>
+              <tr><td class="mono">1824</td><td><strong>Sadi Carnot</strong></td><td>Theoretical maximum efficiency of any heat engine (Carnot cycle)</td></tr>
+              <tr><td class="mono">1850s</td><td><strong>Clausius / Kelvin</strong></td><td>Formal statement of both laws of thermodynamics</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="info-amber">
+        <h3 style="color:#92400e;font-size:.95rem;margin-bottom:.6rem">Aboriginal Perspectives</h3>
+        <p style="font-size:.85rem;color:#78350f;line-height:1.7">Pre-contact First Nations and Inuit peoples applied sophisticated understandings of thermal energy and transfer in tool making, design of structures (e.g., igloos for insulation), and heating technologies &mdash; practical thermodynamic engineering that predates European formalization of these laws.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Energy Conversion Timeline cards -->
+  <h3 style="margin-bottom:1rem">How Energy Concepts Were Discovered</h3>
+  <div class="g3">
+    <div class="card card-amber" style="padding:1.25rem">
+      <div style="font-size:.7rem;font-weight:700;color:#b45309;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.4rem">Caloric Theory (Wrong!)</div>
+      <p style="font-size:.85rem">Early scientists thought heat was an invisible fluid called "caloric." Rumford's cannon-boring experiment showed heat was limitless as long as boring continued &mdash; impossible if heat were a finite fluid.</p>
+    </div>
+    <div class="card card-blue" style="padding:1.25rem">
+      <div style="font-size:.7rem;font-weight:700;color:#1d4ed8;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.4rem">Joule's Experiments</div>
+      <p style="font-size:.85rem">Joule used a paddle wheel turned by falling weights to heat water. By measuring the temperature rise, he calculated: <strong>4.18 J of mechanical work = 1 cal of heat</strong>.</p>
+    </div>
+    <div class="card card-green" style="padding:1.25rem">
+      <div style="font-size:.7rem;font-weight:700;color:#15803d;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.4rem">Watt's Innovation</div>
+      <p style="font-size:.85rem">James Watt observed that Newcomen's engine wasted energy re-heating the cylinder on every stroke. Adding a separate condenser kept the cylinder hot and increased efficiency dramatically.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SECTION 3: FORMS OF ENERGY ═══════════════════════ -->
+<section id="forms">
+  <div class="section-row">
+    <div class="snum">3</div>
+    <h2 class="sh">Forms of Energy &amp; Conversions</h2>
+  </div>
+
+  <div style="margin-bottom:2rem">
+    <h3 style="margin-bottom:1rem">Major Forms of Energy</h3>
+    <div class="g4">
+      <div class="card" style="padding:1.25rem;border-top:4px solid var(--kin)">
+        <span class="e-chip e-kin" style="margin-bottom:.5rem;display:inline-flex">Kinetic</span>
+        <p style="font-size:.85rem">Energy of motion. Any moving object has kinetic energy. <span class="formula-sm">Ek = &frac12;mv&sup2;</span></p>
+        <p style="font-size:.78rem;color:#64748b;margin-top:.4rem">Examples: moving car, wind, flowing water</p>
+      </div>
+      <div class="card" style="padding:1.25rem;border-top:4px solid var(--pot)">
+        <span class="e-chip e-pot" style="margin-bottom:.5rem;display:inline-flex">Gravitational Potential</span>
+        <p style="font-size:.85rem">Energy due to position above a reference point. <span class="formula-sm">Ep = mgh</span></p>
+        <p style="font-size:.78rem;color:#64748b;margin-top:.4rem">Examples: water in a dam, ball held up high</p>
+      </div>
+      <div class="card" style="padding:1.25rem;border-top:4px solid var(--chem)">
+        <span class="e-chip e-chem" style="margin-bottom:.5rem;display:inline-flex">Chemical Potential</span>
+        <p style="font-size:.85rem">Energy stored in chemical bonds &mdash; a form of potential energy.</p>
+        <p style="font-size:.78rem;color:#64748b;margin-top:.4rem">Examples: gasoline, food (glucose, ATP), batteries</p>
+      </div>
+      <div class="card" style="padding:1.25rem;border-top:4px solid var(--therm)">
+        <span class="e-chip e-therm" style="margin-bottom:.5rem;display:inline-flex">Thermal</span>
+        <p style="font-size:.85rem">Energy from random motion of particles (heat). Always produced as a "waste" in conversions.</p>
+        <p style="font-size:.78rem;color:#64748b;margin-top:.4rem">Examples: friction, combustion heat, body heat</p>
+      </div>
+      <div class="card" style="padding:1.25rem;border-top:4px solid var(--elec)">
+        <span class="e-chip e-elec" style="margin-bottom:.5rem;display:inline-flex">Electrical</span>
+        <p style="font-size:.85rem">Energy carried by moving charges (current).</p>
+        <p style="font-size:.78rem;color:#64748b;margin-top:.4rem">Examples: power grid, batteries, lightning</p>
+      </div>
+      <div class="card" style="padding:1.25rem;border-top:4px solid var(--solar)">
+        <span class="e-chip e-solar" style="margin-bottom:.5rem;display:inline-flex">Solar (Radiant)</span>
+        <p style="font-size:.85rem">Energy carried by electromagnetic waves (light).</p>
+        <p style="font-size:.78rem;color:#64748b;margin-top:.4rem">Examples: sunlight, infrared radiation</p>
+      </div>
+      <div class="card" style="padding:1.25rem;border-top:4px solid var(--sound)">
+        <span class="e-chip e-sound" style="margin-bottom:.5rem;display:inline-flex">Sound</span>
+        <p style="font-size:.85rem">Energy carried as pressure waves through matter.</p>
+        <p style="font-size:.78rem;color:#64748b;margin-top:.4rem">Examples: speaker, thunder, vibration</p>
+      </div>
+      <div class="card" style="padding:1.25rem;border-top:4px solid var(--nuke)">
+        <span class="e-chip e-nuke" style="margin-bottom:.5rem;display:inline-flex">Nuclear</span>
+        <p style="font-size:.85rem">Energy stored in the nucleus of atoms, released by fission or fusion.</p>
+        <p style="font-size:.78rem;color:#64748b;margin-top:.4rem">Examples: nuclear power plants, the Sun</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Energy Conversion Flow Diagram -->
+  <div class="card" style="margin-bottom:2rem">
+    <div class="card-hd">Interactive Energy Flow &mdash; Click any stage to learn more</div>
+    <div class="card-bd">
+      <div style="margin-bottom:.75rem;font-size:.85rem;color:#64748b">Example: Coal-Burning Power Plant &rarr; Your Light Bulb</div>
+      <div class="flow-diagram" id="flow-plant">
+        <div class="flow-node" onclick="flowClick(0)" data-idx="0" style="border-color:var(--chem);background:var(--chem-l)"><span class="e-chip e-chem" style="font-size:.7rem">Chemical</span><br/>Coal</div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-node" onclick="flowClick(1)" data-idx="1" style="border-color:var(--therm);background:var(--therm-l)"><span class="e-chip e-therm" style="font-size:.7rem">Thermal</span><br/>Combustion</div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-node" onclick="flowClick(2)" data-idx="2" style="border-color:var(--kin);background:var(--kin-l)"><span class="e-chip e-kin" style="font-size:.7rem">Kinetic</span><br/>Steam/Turbine</div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-node" onclick="flowClick(3)" data-idx="3" style="border-color:var(--elec);background:var(--elec-l)"><span class="e-chip e-elec" style="font-size:.7rem">Electrical</span><br/>Generator</div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-node" onclick="flowClick(4)" data-idx="4" style="border-color:var(--solar);background:var(--solar-l)"><span class="e-chip e-solar" style="font-size:.7rem">Light</span><br/>Light Bulb</div>
+      </div>
+      <div class="flow-node-detail" id="flow-detail">
+        <strong>Click a stage above to see details.</strong>
+        Each conversion loses some energy as waste heat &mdash; this is why the overall system is less than 100% efficient.
+      </div>
+    </div>
+  </div>
+
+  <!-- Common Conversions Table -->
+  <div class="g2">
+    <div class="card">
+      <div class="card-hd">Common Energy Conversions in Technology</div>
+      <div class="ot">
+        <table>
+          <thead><tr><th>Device</th><th>Input Energy</th><th>Output Energy</th><th>Waste</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Car Engine</strong></td><td><span class="e-chip e-chem" style="font-size:.72rem">Chemical</span></td><td><span class="e-chip e-kin" style="font-size:.72rem">Kinetic</span></td><td><span class="e-chip e-therm" style="font-size:.72rem">Thermal</span></td></tr>
+            <tr><td><strong>Hydroelectric Dam</strong></td><td><span class="e-chip e-pot" style="font-size:.72rem">Gravitational Pot.</span></td><td><span class="e-chip e-elec" style="font-size:.72rem">Electrical</span></td><td><span class="e-chip e-therm" style="font-size:.72rem">Thermal</span></td></tr>
+            <tr><td><strong>Solar Panel</strong></td><td><span class="e-chip e-solar" style="font-size:.72rem">Solar</span></td><td><span class="e-chip e-elec" style="font-size:.72rem">Electrical</span></td><td><span class="e-chip e-therm" style="font-size:.72rem">Thermal</span></td></tr>
+            <tr><td><strong>Light Bulb (LED)</strong></td><td><span class="e-chip e-elec" style="font-size:.72rem">Electrical</span></td><td><span class="e-chip e-solar" style="font-size:.72rem">Light</span></td><td><span class="e-chip e-therm" style="font-size:.72rem">Thermal</span></td></tr>
+            <tr><td><strong>Wind Turbine</strong></td><td><span class="e-chip e-kin" style="font-size:.72rem">Kinetic</span></td><td><span class="e-chip e-elec" style="font-size:.72rem">Electrical</span></td><td><span class="e-chip e-therm" style="font-size:.72rem">Thermal</span></td></tr>
+            <tr><td><strong>Nuclear Plant</strong></td><td><span class="e-chip e-nuke" style="font-size:.72rem">Nuclear</span></td><td><span class="e-chip e-elec" style="font-size:.72rem">Electrical</span></td><td><span class="e-chip e-therm" style="font-size:.72rem">Thermal</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="info-slate" style="display:flex;flex-direction:column;gap:1rem">
+      <h3>Evidence of Energy Transfer</h3>
+      <p style="font-size:.875rem;color:#475569">Energy can only be observed when it is <strong>being transferred</strong>. Evidence that energy transfer is occurring includes:</p>
+      <ul style="font-size:.875rem;color:#475569;list-style:disc;padding-left:1.25rem;line-height:2.2">
+        <li><strong>Change in motion</strong> (acceleration or deceleration)</li>
+        <li><strong>Change in shape</strong> (deformation, compression)</li>
+        <li><strong>Change in temperature</strong> (heat gained or lost)</li>
+        <li><strong>Observable physical or chemical changes</strong></li>
+      </ul>
+      <div class="formula-sm" style="display:block;text-align:center;padding:.75rem">
+        &Delta;E = W &nbsp;&nbsp; (change in energy = work done)
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SECTION 4: MOTION ═══════════════════════ -->
+<section id="motion">
+  <div class="section-row">
+    <div class="snum">4</div>
+    <h2 class="sh">One-Dimensional Motion</h2>
+  </div>
+
+  <div class="g2" style="margin-bottom:2rem">
+    <!-- Scalars vs Vectors -->
+    <div class="card">
+      <div class="card-hd">Scalar vs Vector Quantities</div>
+      <div class="ot">
+        <table>
+          <thead><tr><th>Quantity</th><th>Scalar or Vector?</th><th>Definition</th><th>SI Unit</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Distance</strong></td><td style="color:#16a34a;font-weight:700">Scalar</td><td>Total path length travelled</td><td class="mono">m</td></tr>
+            <tr><td><strong>Displacement</strong></td><td style="color:#1d4ed8;font-weight:700">Vector</td><td>Change in position (direction matters)</td><td class="mono">m</td></tr>
+            <tr><td><strong>Speed</strong></td><td style="color:#16a34a;font-weight:700">Scalar</td><td>Distance per unit time</td><td class="mono">m/s</td></tr>
+            <tr><td><strong>Velocity</strong></td><td style="color:#1d4ed8;font-weight:700">Vector</td><td>Displacement per unit time</td><td class="mono">m/s</td></tr>
+            <tr><td><strong>Acceleration</strong></td><td style="color:#1d4ed8;font-weight:700">Vector</td><td>Change in velocity per unit time</td><td class="mono">m/s&sup2;</td></tr>
+            <tr><td><strong>Mass</strong></td><td style="color:#16a34a;font-weight:700">Scalar</td><td>Amount of matter in an object</td><td class="mono">kg</td></tr>
+            <tr><td><strong>Force</strong></td><td style="color:#1d4ed8;font-weight:700">Vector</td><td>A push or a pull</td><td class="mono">N (kg&middot;m/s&sup2;)</td></tr>
+            <tr><td><strong>Work</strong></td><td style="color:#16a34a;font-weight:700">Scalar</td><td>Force &times; displacement</td><td class="mono">J (N&middot;m)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Motion Definitions -->
+    <div style="display:flex;flex-direction:column;gap:1.25rem">
+      <div class="card card-blue">
+        <div class="card-bd">
+          <h3 style="margin-bottom:.75rem">Key Motion Definitions</h3>
+          <div style="display:flex;flex-direction:column;gap:1rem;font-size:.875rem">
+            <div>
+              <strong class="mono" style="color:#1d4ed8;font-size:1rem">velocity = &Delta;d / &Delta;t</strong>
+              <p style="color:#475569;margin-top:.25rem">Velocity = change in position &divide; change in time. Direction is important.</p>
+            </div>
+            <div>
+              <strong class="mono" style="color:#1d4ed8;font-size:1rem">a = &Delta;v / &Delta;t</strong>
+              <p style="color:#475569;margin-top:.25rem">Acceleration = change in velocity &divide; change in time. Can be positive (speeding up) or negative (slowing down).</p>
+            </div>
+            <div>
+              <strong style="color:#475569">At constant speed:</strong>
+              <p style="color:#475569;margin-top:.25rem">No net force is needed (in the absence of resistive forces). No energy input is required to maintain constant speed &mdash; only to overcome friction.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-amber">
+        <h3 style="color:#92400e;font-size:.95rem;margin-bottom:.6rem">Reading Motion Graphs</h3>
+        <ul style="font-size:.85rem;color:#78350f;list-style:disc;padding-left:1.25rem;line-height:2.1">
+          <li><strong>d-t graph:</strong> Slope = velocity. Horizontal line = at rest.</li>
+          <li><strong>v-t graph:</strong> Slope = acceleration. Area under line = displacement.</li>
+          <li><strong>Constant acceleration</strong> appears as a straight line on a v-t graph.</li>
+          <li><strong>Constant velocity</strong> appears as a horizontal line on a v-t graph.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Motion Graph -->
+  <div class="graph-wrap">
+    <div class="graph-controls">
+      <div class="ctrl-item">
+        <label>Graph Type</label>
+        <div class="graph-toggle">
+          <button class="g-btn active" id="gtype-dt" onclick="setGraphType('dt')">d-t</button>
+          <button class="g-btn" id="gtype-vt" onclick="setGraphType('vt')">v-t</button>
+        </div>
+      </div>
+      <div class="ctrl-item">
+        <label>Initial position (m) <span class="val" id="lbl-d0">0</span></label>
+        <input type="range" min="0" max="50" value="0" id="ctrl-d0" oninput="updateGraph()">
+      </div>
+      <div class="ctrl-item">
+        <label>Initial velocity (m/s) <span class="val" id="lbl-v0">10</span></label>
+        <input type="range" min="-20" max="30" value="10" id="ctrl-v0" oninput="updateGraph()">
+      </div>
+      <div class="ctrl-item">
+        <label>Acceleration (m/s&sup2;) <span class="val" id="lbl-a">0</span></label>
+        <input type="range" min="-10" max="10" value="0" id="ctrl-a" oninput="updateGraph()">
+      </div>
+    </div>
+    <canvas class="mgraph" id="motion-graph" height="260"></canvas>
+    <div style="padding:.75rem 1.25rem;background:#f8fafc;border-top:1px solid #e2e8f0;font-size:.8rem;color:#475569" id="graph-info">
+      Slope = velocity; a horizontal line means constant velocity (no acceleration).
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SECTION 5: EQUATIONS ═══════════════════════ -->
+<section id="equations">
+  <div class="section-row">
+    <div class="snum">5</div>
+    <h2 class="sh">Energy Equations &amp; Work</h2>
+  </div>
+
+  <!-- Formula display row -->
+  <div class="g3" style="margin-bottom:2.5rem">
+    <div class="formula-box">
+      E<sub style="font-size:.6em">k</sub> = &frac12;mv&sup2;
+      <div class="vars">Ek = kinetic energy (J) &nbsp;|&nbsp; m = mass (kg) &nbsp;|&nbsp; v = velocity (m/s)</div>
+    </div>
+    <div class="formula-box">
+      E<sub style="font-size:.6em">p</sub> = mgh
+      <div class="vars">Ep = gravitational potential energy (J) &nbsp;|&nbsp; g = 9.8 m/s&sup2; &nbsp;|&nbsp; h = height (m)</div>
+    </div>
+    <div class="formula-box">
+      W = Fd = &Delta;E
+      <div class="vars">W = work (J) &nbsp;|&nbsp; F = force (N) &nbsp;|&nbsp; d = displacement (m)</div>
+    </div>
+  </div>
+
+  <!-- Interactive Calculator -->
+  <div class="calc-panel" style="margin-bottom:2rem">
+    <div class="calc-tabs">
+      <button class="calc-tab active" onclick="switchCalc('ek')">Kinetic Energy</button>
+      <button class="calc-tab" onclick="switchCalc('ep')">Potential Energy</button>
+      <button class="calc-tab" onclick="switchCalc('work')">Work</button>
+      <button class="calc-tab" onclick="switchCalc('fall')">Free Fall</button>
+    </div>
+
+    <div class="calc-pane active" id="pane-ek">
+      <h4>Kinetic Energy Calculator</h4>
+      <div class="sub">Ek = &frac12;mv&sup2; &nbsp;&mdash;&nbsp; Adjust the sliders to calculate kinetic energy in real time.</div>
+      <div class="slider-row">
+        <div class="slider-item">
+          <label>Mass (m) <span id="ek-m-val">50 kg</span></label>
+          <input type="range" min="1" max="2000" value="50" id="ek-m" oninput="calcEk()">
+        </div>
+        <div class="slider-item">
+          <label>Velocity (v) <span id="ek-v-val">10 m/s</span></label>
+          <input type="range" min="0" max="100" value="10" step=".5" id="ek-v" oninput="calcEk()">
+        </div>
+      </div>
+      <div class="result-display" id="ek-result">
+        <div class="rd-label">Kinetic Energy</div>
+        <div class="rd-value" id="ek-ans">2,500</div>
+        <div class="rd-unit">Joules (J)</div>
+        <div class="rd-formula" id="ek-formula">Ek = &frac12; &times; 50 &times; 10&sup2; = 2500 J</div>
+      </div>
+    </div>
+
+    <div class="calc-pane" id="pane-ep">
+      <h4>Gravitational Potential Energy Calculator</h4>
+      <div class="sub">Ep = mgh &nbsp;&mdash;&nbsp; g = 9.8 m/s&sup2; (Earth)</div>
+      <div class="slider-row">
+        <div class="slider-item">
+          <label>Mass (m) <span id="ep-m-val">10 kg</span></label>
+          <input type="range" min="1" max="1000" value="10" id="ep-m" oninput="calcEp()">
+        </div>
+        <div class="slider-item">
+          <label>Height (h) <span id="ep-h-val">5 m</span></label>
+          <input type="range" min="0" max="500" value="5" id="ep-h" oninput="calcEp()">
+        </div>
+      </div>
+      <div class="result-display" id="ep-result">
+        <div class="rd-label">Gravitational Potential Energy</div>
+        <div class="rd-value" id="ep-ans">490</div>
+        <div class="rd-unit">Joules (J)</div>
+        <div class="rd-formula" id="ep-formula">Ep = 10 &times; 9.8 &times; 5 = 490 J</div>
+      </div>
+    </div>
+
+    <div class="calc-pane" id="pane-work">
+      <h4>Work Calculator</h4>
+      <div class="sub">W = F &times; d &nbsp;&mdash;&nbsp; Work is done when a force moves an object in the direction of the force.</div>
+      <div class="slider-row">
+        <div class="slider-item">
+          <label>Force (F) <span id="w-f-val">100 N</span></label>
+          <input type="range" min="0" max="10000" value="100" id="w-f" oninput="calcWork()">
+        </div>
+        <div class="slider-item">
+          <label>Displacement (d) <span id="w-d-val">10 m</span></label>
+          <input type="range" min="0" max="1000" value="10" id="w-d" oninput="calcWork()">
+        </div>
+      </div>
+      <div class="result-display">
+        <div class="rd-label">Work Done</div>
+        <div class="rd-value" id="w-ans">1,000</div>
+        <div class="rd-unit">Joules (J)</div>
+        <div class="rd-formula" id="w-formula">W = 100 N &times; 10 m = 1000 J</div>
+      </div>
+    </div>
+
+    <div class="calc-pane" id="pane-fall">
+      <h4>Free Fall &mdash; Energy Conservation</h4>
+      <div class="sub">At height h: all energy is Ep = mgh. At the bottom: all energy is Ek = &frac12;mv&sup2;. Total energy is conserved.</div>
+      <div class="slider-row">
+        <div class="slider-item">
+          <label>Mass (m) <span id="ff-m-val">5 kg</span></label>
+          <input type="range" min="1" max="500" value="5" id="ff-m" oninput="calcFall()">
+        </div>
+        <div class="slider-item">
+          <label>Drop height (h) <span id="ff-h-val">20 m</span></label>
+          <input type="range" min="1" max="200" value="20" id="ff-h" oninput="calcFall()">
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div class="result-display" style="background:linear-gradient(135deg,#16a34a,#22c55e)">
+          <div class="rd-label">Initial Ep (at top)</div>
+          <div class="rd-value" id="ff-ep">980</div>
+          <div class="rd-unit">Joules</div>
+        </div>
+        <div class="result-display">
+          <div class="rd-label">Final Ek (at bottom)</div>
+          <div class="rd-value" id="ff-ek">980</div>
+          <div class="rd-unit">Joules</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:1rem;font-size:.85rem;color:#475569">
+        Impact velocity: <strong id="ff-v" style="color:#b45309;font-family:'Courier New',monospace"></strong>
+        &nbsp;&mdash;&nbsp; Ep = Ek confirms conservation of energy
+      </div>
+    </div>
+  </div>
+
+  <!-- Joule Derivation + Worked Problems -->
+  <div class="g2">
+    <div class="card">
+      <div class="card-hd">Joule Derivation from Fundamental Units</div>
+      <div class="card-bd" style="font-size:.875rem">
+        <p style="margin-bottom:1rem">The SI unit of energy and work is the <strong>joule (J)</strong>. It is derived from:</p>
+        <div class="formula-block">
+          W = F &times; d<br/>
+          1 J = 1 N &times; 1 m<br/>
+          1 N = 1 kg&middot;m/s&sup2;<br/>
+          &therefore; 1 J = 1 kg&middot;m&sup2;/s&sup2;
+        </div>
+        <p style="margin-top:1rem;color:#475569">This confirms that energy and work share the same fundamental units, consistent with the work-energy theorem: <strong>&Delta;E = W</strong></p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-hd">5 Worked Problems</div>
+      <div class="card-bd" style="display:flex;flex-direction:column;gap:1rem">
+        <div>
+          <strong style="color:#b45309;font-size:.875rem;display:block">1. Ek of a 1000 kg car at 20 m/s?</strong>
+          <div class="formula-block">Ek = &frac12;mv&sup2; = 0.5 &times; 1000 &times; 20&sup2; = 200,000 J = 200 kJ</div>
+        </div>
+        <div>
+          <strong style="color:#b45309;font-size:.875rem;display:block">2. Ep of a 5 kg ball at 12 m height?</strong>
+          <div class="formula-block">Ep = mgh = 5 &times; 9.8 &times; 12 = 588 J</div>
+        </div>
+        <div>
+          <strong style="color:#b45309;font-size:.875rem;display:block">3. Work done pushing 200 N over 15 m?</strong>
+          <div class="formula-block">W = Fd = 200 &times; 15 = 3000 J = 3 kJ</div>
+        </div>
+        <div>
+          <strong style="color:#b45309;font-size:.875rem;display:block">4. Speed of a 2 kg object with Ek = 100 J?</strong>
+          <div class="formula-block">v = &radic;(2Ek/m) = &radic;(200/2) = &radic;100 = 10 m/s</div>
+        </div>
+        <div>
+          <strong style="color:#b45309;font-size:.875rem;display:block">5. Acceleration of 4 kg object from 0 to 6 m/s in 3 s?</strong>
+          <div class="formula-block">a = &Delta;v/&Delta;t = (6&minus;0)/3 = 2 m/s&sup2;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SECTION 6: LAWS & EFFICIENCY ═══════════════════════ -->
+<section id="laws">
+  <div class="section-row">
+    <div class="snum">6</div>
+    <h2 class="sh">Laws of Thermodynamics &amp; Efficiency</h2>
+  </div>
+
+  <!-- Two Laws -->
+  <div class="g2" style="margin-bottom:2rem">
+    <div class="law-card law-card-1">
+      <div class="law-num">1</div>
+      <h3>First Law of Thermodynamics</h3>
+      <p style="margin-top:.5rem"><strong style="color:#fde68a">Conservation of Energy:</strong><br/>Energy cannot be created or destroyed; it can only be converted from one form to another. The total energy of an isolated system remains constant.</p>
+      <div style="background:rgba(255,255,255,.1);border-radius:.5rem;padding:.75rem 1rem;margin-top:1rem;font-family:'Courier New',monospace;font-size:1rem;text-align:center;">
+        E<sub>total in</sub> = E<sub>total out</sub>
+      </div>
+      <p style="margin-top:.75rem;font-size:.82rem;color:rgba(255,255,255,.7)">Consequence: You cannot build a perpetual motion machine that creates energy from nothing.</p>
+    </div>
+    <div class="law-card law-card-2">
+      <div class="law-num">2</div>
+      <h3>Second Law of Thermodynamics</h3>
+      <p style="margin-top:.5rem"><strong style="color:#fde68a">Energy Degradation:</strong><br/>In every energy conversion, some energy is converted to thermal energy (heat) that cannot be fully recovered as useful work. Disorder (entropy) always increases.</p>
+      <div style="background:rgba(255,255,255,.1);border-radius:.5rem;padding:.75rem 1rem;margin-top:1rem;font-family:'Courier New',monospace;font-size:1rem;text-align:center;">
+        Efficiency &lt; 100% (always)
+      </div>
+      <p style="margin-top:.75rem;font-size:.82rem;color:rgba(255,255,255,.7)">Consequence: Heat engines are never 100% efficient &mdash; some energy always "leaks" as waste heat.</p>
+    </div>
+  </div>
+
+  <!-- Efficiency Formula + Calculator -->
+  <div class="g2" style="margin-bottom:2rem">
+    <div style="display:flex;flex-direction:column;gap:1.25rem">
+      <div>
+        <h3 style="margin-bottom:.75rem">Efficiency Formula</h3>
+        <div class="formula-box" style="font-size:1.1rem">
+          Efficiency = (E<sub style="font-size:.55em">useful out</sub> / E<sub style="font-size:.55em">total in</sub>) &times; 100%
+          <div class="vars">Efficiency is always between 0% and 100%</div>
+        </div>
+      </div>
+      <div class="card card-green" style="padding:1.25rem">
+        <h3 style="font-size:.95rem;margin-bottom:.5rem">Worked Efficiency Example</h3>
+        <p style="font-size:.875rem;margin-bottom:.5rem">A car engine burns fuel containing 400,000 J of chemical energy and produces 100,000 J of useful kinetic energy. What is its efficiency?</p>
+        <div class="formula-block">
+          Efficiency = (100,000 / 400,000) &times; 100%<br/>
+          Efficiency = 0.25 &times; 100% = <strong>25%</strong><br/>
+          Waste heat = 400,000 &minus; 100,000 = 300,000 J
+        </div>
+      </div>
+      <div class="card card-red" style="padding:1.25rem">
+        <h3 style="font-size:.95rem;margin-bottom:.5rem">Why Can't Engines Be 100% Efficient?</h3>
+        <p style="font-size:.875rem;color:#475569">The Second Law requires that heat always flows from hot to cold. In a heat engine, some of the thermal energy must be rejected to the cold reservoir (exhaust). This is not a design flaw &mdash; it is a fundamental law of nature.</p>
+      </div>
+    </div>
+
+    <!-- Interactive Efficiency Calculator -->
+    <div class="calc-panel">
+      <div style="background:#b45309;padding:.875rem 1.25rem;color:#fff;font-weight:700;font-size:.95rem">Interactive Efficiency Explorer</div>
+      <div style="padding:1.5rem">
+        <div style="margin-bottom:1rem;font-size:.85rem;color:#64748b">Select a real device or enter custom values:</div>
+        <div class="eff-device-grid" id="eff-devices">
+          <div class="eff-device selected" onclick="setDevice(this,25,'Car Engine')" data-eff="25">Car Engine<br/><span style="font-size:.72rem;color:#94a3b8">~25%</span></div>
+          <div class="eff-device" onclick="setDevice(this,90,'LED Bulb')" data-eff="90">LED Bulb<br/><span style="font-size:.72rem;color:#94a3b8">~90%</span></div>
+          <div class="eff-device" onclick="setDevice(this,40,'Incandescent')" data-eff="10">Incandescent<br/><span style="font-size:.72rem;color:#94a3b8">~10%</span></div>
+          <div class="eff-device" onclick="setDevice(this,90,'Hydro Dam')" data-eff="90">Hydro Dam<br/><span style="font-size:.72rem;color:#94a3b8">~90%</span></div>
+          <div class="eff-device" onclick="setDevice(this,35,'Coal Plant')" data-eff="35">Coal Plant<br/><span style="font-size:.72rem;color:#94a3b8">~35%</span></div>
+          <div class="eff-device" onclick="setDevice(this,95,'Elec Motor')" data-eff="95">Elec Motor<br/><span style="font-size:.72rem;color:#94a3b8">~95%</span></div>
+          <div class="eff-device" onclick="setDevice(this,20,'Solar Cell')" data-eff="20">Solar Cell<br/><span style="font-size:.72rem;color:#94a3b8">~20%</span></div>
+          <div class="eff-device" onclick="setDevice(this,60,'Fuel Cell')" data-eff="60">Fuel Cell<br/><span style="font-size:.72rem;color:#94a3b8">~60%</span></div>
+        </div>
+        <div class="slider-item" style="margin-bottom:1rem">
+          <label>Total Energy Input (J) <span id="eff-in-val">100 J</span></label>
+          <input type="range" min="10" max="1000" value="100" id="eff-in" oninput="calcEff()">
+        </div>
+        <div class="eff-bar-wrap">
+          <div class="eff-bar" id="eff-bar" style="width:25%"></div>
+          <div class="eff-bar-label" id="eff-bar-lbl">25% Useful</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.5rem">
+          <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:.5rem;padding:.75rem;text-align:center">
+            <div style="font-size:.72rem;color:#166534;font-weight:700;text-transform:uppercase">Useful Output</div>
+            <div style="font-size:1.5rem;font-weight:700;color:#16a34a;font-family:'Courier New',monospace" id="eff-out-val">25 J</div>
+          </div>
+          <div class="eff-waste" style="text-align:center">
+            <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;margin-bottom:.2rem">Wasted as Heat</div>
+            <div style="font-size:1.5rem;font-weight:700;font-family:'Courier New',monospace" id="eff-waste-val">75 J</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fuels Comparison -->
+  <div class="card">
+    <div class="card-hd">Fuel Comparison &mdash; Alberta Power Plants</div>
+    <div class="ot">
+      <table>
+        <thead><tr><th>Fuel</th><th>Energy Content</th><th>Typical Efficiency</th><th>Cost</th><th>Environmental Impact</th><th>Sustainability</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Coal</strong></td><td class="mono">~24 MJ/kg</td><td style="color:#dc2626">~35%</td><td>Low</td><td>High CO<sub>2</sub>, SO<sub>2</sub>, particulates</td><td style="color:#dc2626">Not sustainable</td></tr>
+          <tr><td><strong>Natural Gas</strong></td><td class="mono">~55 MJ/kg</td><td style="color:#d97706">~50%</td><td>Medium</td><td>Lower CO<sub>2</sub> than coal; cleaner burn</td><td style="color:#d97706">Limited</td></tr>
+          <tr><td><strong>Hydroelectric</strong></td><td>Varies with flow</td><td style="color:#16a34a">~90%</td><td>Low (operating)</td><td>Low emissions; habitat change</td><td style="color:#16a34a">Renewable</td></tr>
+          <tr><td><strong>Wind</strong></td><td>Varies with wind</td><td style="color:#16a34a">~45%</td><td>Medium (capital)</td><td>Very low; some wildlife impact</td><td style="color:#16a34a">Renewable</td></tr>
+          <tr><td><strong>Solar (PV)</strong></td><td>~1400 W/m&sup2;</td><td style="color:#d97706">~20%</td><td>Medium&ndash;High</td><td>Low (manufacturing impact)</td><td style="color:#16a34a">Renewable</td></tr>
+          <tr><td><strong>Nuclear</strong></td><td class="mono">~3.9M MJ/kg U</td><td style="color:#d97706">~33%</td><td>High (capital)</td><td>Low emissions; waste disposal</td><td style="color:#d97706">Long-term concerns</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SECTION 7: PRACTICE ═══════════════════════ -->
+<section id="practice">
+  <div class="section-row">
+    <div class="snum">7</div>
+    <h2 class="sh">Interactive Practice &amp; Quizzes</h2>
+  </div>
+
+  <!-- KNOWLEDGE CHECK QUIZ -->
+  <div style="margin-bottom:4rem">
+    <div style="text-align:center;margin-bottom:1.5rem">
+      <h3 style="font-size:1.6rem">Knowledge Check Quiz</h3>
+      <p style="color:#64748b">Test your understanding of energy, motion and thermodynamics.</p>
+    </div>
+    <div class="quiz-wrap">
+      <div class="q-card">
+        <div class="q-header">
+          <h4>Energy Flow &mdash; Science 10</h4>
+          <div style="display:flex;gap:.75rem;align-items:center">
+            <span class="q-prog" id="kq-counter">Question 1 of 10</span>
+            <span class="q-score" id="kq-score">0 / 0</span>
+          </div>
+        </div>
+        <div class="q-body">
+          <div class="q-text" id="kq-text"></div>
+          <div class="q-options" id="kq-opts"></div>
+          <div class="q-feedback" id="kq-feedback"></div>
+        </div>
+        <div class="q-footer">
+          <button class="btn btn-amber btn-lg" id="kq-btn" onclick="kqCheck()">Submit Answer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MATCHING GAME -->
+  <div style="margin-bottom:4rem">
+    <div style="text-align:center;margin-bottom:1.5rem">
+      <h3 style="font-size:1.6rem">Energy Conversion Match</h3>
+      <p style="color:#64748b">Match each device on the left with its primary energy conversion on the right.</p>
+    </div>
+    <div id="match-score-wrap" style="max-width:700px;margin:0 auto 1rem">
+      <div class="match-score-bar"><div class="match-score-fill" id="match-score-fill" style="width:0%"></div></div>
+      <div style="text-align:center;font-size:.85rem;color:#64748b" id="match-score-text">0 of 6 matched</div>
+    </div>
+    <div class="match-grid" id="match-grid">
+      <!-- built by JS -->
+    </div>
+    <div style="text-align:center;margin-top:1.5rem">
+      <button class="btn btn-outline" onclick="matchReset()">Reset Game</button>
+    </div>
+  </div>
+
+  <!-- FLASHCARDS -->
+  <div style="margin-bottom:4rem">
+    <div style="text-align:center;margin-bottom:1.5rem">
+      <h3 style="font-size:1.6rem">Vocabulary Flashcards</h3>
+      <p style="color:#64748b">Click the card to flip it. Use the arrows to navigate.</p>
+    </div>
+    <div class="fc-wrap">
+      <div class="fc" onclick="fcFlip()">
+        <div class="fc-inner" id="fc-inner">
+          <div class="fc-face fc-front">
+            <span class="fc-term" id="fc-term"></span>
+            <span class="fc-hint">Click to flip</span>
+          </div>
+          <div class="fc-face fc-back">
+            <span class="fc-def" id="fc-def"></span>
+          </div>
+        </div>
+      </div>
+      <div class="fc-nav">
+        <button class="btn btn-outline" onclick="fcPrev()">&#8592; Prev</button>
+        <span class="fc-ctr" id="fc-ctr">1 / 20</span>
+        <button class="btn btn-outline" onclick="fcNext()">Next &#8594;</button>
+      </div>
+    </div>
+  </div>
+
+</section>
+</main>
+
+<footer>
+  <p>Email: terkperhannah@gmail.com &nbsp;|&nbsp; Instagram: hannah.attempts.teaching &nbsp;|&nbsp; TikTok: hannah.attempts.teaching</p>
+</footer>
+
+<button class="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
+
+<script>
+// ═══════════════════════════════════════
+// NAVBAR LOADER
+// ═══════════════════════════════════════
+document.addEventListener('DOMContentLoaded',()=>{
+  fetch('navbar.html').then(r=>r.text()).then(d=>{
+    document.getElementById('navbar-placeholder').innerHTML=d;
+  }).catch(()=>{});
+});
+
+// ═══════════════════════════════════════
+// ENERGY FLOW DIAGRAM
+// ═══════════════════════════════════════
+const FLOW_DETAILS=[
+  {title:'Stage 1: Chemical Energy in Coal',text:'Coal stores energy in chemical bonds formed millions of years ago from compressed organic matter. When burned, these bonds break, releasing energy as heat. This is a chemical potential energy store.'},
+  {title:'Stage 2: Thermal Energy from Combustion',text:'Burning coal heats water in a boiler, producing high-pressure steam. The chemical energy is converted to thermal energy (heat). This stage is about 85-90% efficient at transferring heat to steam.'},
+  {title:'Stage 3: Kinetic Energy in the Turbine',text:'High-pressure steam spins a turbine blade at high speed. Thermal energy is converted to kinetic (rotational) energy. This conversion is limited in efficiency by the 2nd Law of Thermodynamics.'},
+  {title:'Stage 4: Electrical Energy from the Generator',text:'The spinning turbine drives an electrical generator (electromagnetic induction). Kinetic energy converts to electrical energy. Generators are typically 95%+ efficient at this conversion.'},
+  {title:'Stage 5: Light Energy from the Bulb',text:'Electrical current passes through the bulb, producing light (and heat). An LED bulb converts ~90% of electrical energy to light; an incandescent only ~10%, wasting 90% as heat.'},
+];
+
+function flowClick(i){
+  document.querySelectorAll('.flow-node').forEach((n,j)=>{
+    n.classList.toggle('active',j===i);
+  });
+  const d=document.getElementById('flow-detail');
+  d.innerHTML=`<strong>${FLOW_DETAILS[i].title}</strong>${FLOW_DETAILS[i].text}`;
+}
+
+// ═══════════════════════════════════════
+// MOTION GRAPH
+// ═══════════════════════════════════════
+let graphType='dt';
+
+function setGraphType(t){
+  graphType=t;
+  document.getElementById('gtype-dt').classList.toggle('active',t==='dt');
+  document.getElementById('gtype-vt').classList.toggle('active',t==='vt');
+  updateGraph();
+}
+
+function updateGraph(){
+  const d0=parseFloat(document.getElementById('ctrl-d0').value);
+  const v0=parseFloat(document.getElementById('ctrl-v0').value);
+  const a=parseFloat(document.getElementById('ctrl-a').value);
+  document.getElementById('lbl-d0').textContent=d0+' m';
+  document.getElementById('lbl-v0').textContent=v0+' m/s';
+  document.getElementById('lbl-a').textContent=a+' m/s²';
+
+  const canvas=document.getElementById('motion-graph');
+  const W=canvas.offsetWidth;const H=260;
+  canvas.width=W;canvas.height=H;
+  const ctx=canvas.getContext('2d');
+  ctx.clearRect(0,0,W,H);
+
+  const pad={l:55,r:25,t:25,b:45};
+  const gW=W-pad.l-pad.r;const gH=H-pad.t-pad.b;
+  const T=10;const N=200;
+
+  // Generate data
+  const pts=[];
+  for(let i=0;i<=N;i++){
+    const t=i/N*T;
+    const d=d0+v0*t+0.5*a*t*t;
+    const v=v0+a*t;
+    pts.push(graphType==='dt'?{x:t,y:d}:{x:t,y:v});
+  }
+
+  const yVals=pts.map(p=>p.y);
+  let yMin=Math.min(...yVals);let yMax=Math.max(...yVals);
+  if(yMin===yMax){yMin-=1;yMax+=1;}
+  const yRange=yMax-yMin;
+  const yPad=yRange*0.12;
+
+  function toCanvasX(t){return pad.l+t/T*gW;}
+  function toCanvasY(y){return pad.t+gH-(y-(yMin-yPad))/(yRange+2*yPad)*gH;}
+
+  // Grid
+  ctx.strokeStyle='#e2e8f0';ctx.lineWidth=1;
+  for(let i=0;i<=5;i++){
+    const x=pad.l+i/5*gW;
+    ctx.beginPath();ctx.moveTo(x,pad.t);ctx.lineTo(x,pad.t+gH);ctx.stroke();
+    const y=pad.t+i/5*gH;
+    ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+gW,y);ctx.stroke();
+  }
+
+  // Axes
+  ctx.strokeStyle='#334155';ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(pad.l,pad.t);ctx.lineTo(pad.l,pad.t+gH);ctx.lineTo(pad.l+gW,pad.t+gH);ctx.stroke();
+
+  // Labels
+  ctx.fillStyle='#475569';ctx.font='700 11px system-ui';ctx.textAlign='center';
+  ctx.fillText('Time (s)',pad.l+gW/2,H-6);
+  ctx.save();ctx.translate(14,pad.t+gH/2);ctx.rotate(-Math.PI/2);
+  ctx.fillText(graphType==='dt'?'Position (m)':'Velocity (m/s)',0,0);ctx.restore();
+
+  // Axis tick labels
+  ctx.font='10px system-ui';ctx.fillStyle='#64748b';ctx.textAlign='center';
+  for(let i=0;i<=5;i++){
+    ctx.fillText((i*2)+'s',pad.l+i/5*gW,pad.t+gH+14);
+  }
+  ctx.textAlign='right';
+  for(let i=0;i<=5;i++){
+    const yVal=yMin-yPad+(yRange+2*yPad)*i/5;
+    ctx.fillText(Math.round(yVal),pad.l-5,pad.t+gH-i/5*gH+4);
+  }
+
+  // Zero line if in range
+  const zeroY=toCanvasY(0);
+  if(zeroY>=pad.t&&zeroY<=pad.t+gH){
+    ctx.strokeStyle='rgba(100,116,139,.4)';ctx.lineWidth=1;ctx.setLineDash([4,4]);
+    ctx.beginPath();ctx.moveTo(pad.l,zeroY);ctx.lineTo(pad.l+gW,zeroY);ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  // Line
+  ctx.strokeStyle='#b45309';ctx.lineWidth=2.5;ctx.lineJoin='round';
+  ctx.beginPath();
+  pts.forEach((p,i)=>{
+    const cx=toCanvasX(p.x);const cy=toCanvasY(p.y);
+    i===0?ctx.moveTo(cx,cy):ctx.lineTo(cx,cy);
+  });
+  ctx.stroke();
+
+  // Info
+  const info=document.getElementById('graph-info');
+  if(graphType==='dt'){
+    const slope=v0;
+    info.textContent=`d-t graph: Slope = velocity = ${slope} m/s. ${a!==0?'Curved line = acceleration present.':'Straight line = constant velocity.'}`;
+  } else {
+    info.textContent=`v-t graph: Slope = acceleration = ${a} m/s². Area under line = displacement. ${a===0?'Horizontal line = constant velocity.':''}`;
+  }
+}
+
+// ═══════════════════════════════════════
+// CALCULATORS
+// ═══════════════════════════════════════
+function fmt(n){
+  if(Math.abs(n)>=1e6) return (n/1e6).toFixed(2)+' ×10⁶';
+  if(Math.abs(n)>=1e3) return n.toLocaleString(undefined,{maximumFractionDigits:1});
+  return n.toFixed(2);
+}
+
+function switchCalc(id){
+  document.querySelectorAll('.calc-pane').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.calc-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('pane-'+id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function calcEk(){
+  const m=parseFloat(document.getElementById('ek-m').value);
+  const v=parseFloat(document.getElementById('ek-v').value);
+  document.getElementById('ek-m-val').textContent=m+' kg';
+  document.getElementById('ek-v-val').textContent=v+' m/s';
+  const ek=0.5*m*v*v;
+  document.getElementById('ek-ans').textContent=fmt(ek);
+  document.getElementById('ek-formula').textContent='Ek = ½ × '+m+' × '+v+'² = '+fmt(ek)+' J';
+}
+
+function calcEp(){
+  const m=parseFloat(document.getElementById('ep-m').value);
+  const h=parseFloat(document.getElementById('ep-h').value);
+  document.getElementById('ep-m-val').textContent=m+' kg';
+  document.getElementById('ep-h-val').textContent=h+' m';
+  const ep=m*9.8*h;
+  document.getElementById('ep-ans').textContent=fmt(ep);
+  document.getElementById('ep-formula').textContent='Ep = '+m+' × 9.8 × '+h+' = '+fmt(ep)+' J';
+}
+
+function calcWork(){
+  const f=parseFloat(document.getElementById('w-f').value);
+  const d=parseFloat(document.getElementById('w-d').value);
+  document.getElementById('w-f-val').textContent=f+' N';
+  document.getElementById('w-d-val').textContent=d+' m';
+  const w=f*d;
+  document.getElementById('w-ans').textContent=fmt(w);
+  document.getElementById('w-formula').textContent='W = '+f+' N × '+d+' m = '+fmt(w)+' J';
+}
+
+function calcFall(){
+  const m=parseFloat(document.getElementById('ff-m').value);
+  const h=parseFloat(document.getElementById('ff-h').value);
+  document.getElementById('ff-m-val').textContent=m+' kg';
+  document.getElementById('ff-h-val').textContent=h+' m';
+  const ep=m*9.8*h;
+  const v=Math.sqrt(2*9.8*h);
+  document.getElementById('ff-ep').textContent=fmt(ep);
+  document.getElementById('ff-ek').textContent=fmt(ep);
+  document.getElementById('ff-v').textContent=v.toFixed(2)+' m/s';
+}
+
+// ═══════════════════════════════════════
+// EFFICIENCY CALCULATOR
+// ═══════════════════════════════════════
+let currentEff=25;
+
+function setDevice(el,eff,name){
+  document.querySelectorAll('.eff-device').forEach(d=>d.classList.remove('selected'));
+  el.classList.add('selected');
+  currentEff=eff;
+  calcEff();
+}
+
+function calcEff(){
+  const totalIn=parseFloat(document.getElementById('eff-in').value);
+  document.getElementById('eff-in-val').textContent=totalIn+' J';
+  const useful=totalIn*currentEff/100;
+  const waste=totalIn-useful;
+  document.getElementById('eff-bar').style.width=currentEff+'%';
+  document.getElementById('eff-bar-lbl').textContent=currentEff+'% Useful';
+  document.getElementById('eff-out-val').textContent=useful.toFixed(1)+' J';
+  document.getElementById('eff-waste-val').textContent=waste.toFixed(1)+' J';
+}
+
+// ═══════════════════════════════════════
+// KNOWLEDGE QUIZ
+// ═══════════════════════════════════════
+const KQS=[
+  {q:'A 3 kg ball is thrown at 4 m/s. What is its kinetic energy?',opts:['6 J','24 J','48 J','12 J'],ans:'24 J',hint:'Ek = ½mv² = ½ × 3 × 4² = ½ × 3 × 16 = 24 J'},
+  {q:'Which of the following is a VECTOR quantity?',opts:['Speed','Temperature','Mass','Velocity'],ans:'Velocity',hint:'Vectors have both magnitude and direction. Velocity specifies direction; speed does not.'},
+  {q:'What does the slope of a d-t (position-time) graph represent?',opts:['Acceleration','Force','Velocity','Work'],ans:'Velocity',hint:'Slope = Δd/Δt = velocity.'},
+  {q:'A boulder has 980 J of gravitational potential energy at 10 m height. What is its mass? (g = 9.8 m/s²)',opts:['5 kg','10 kg','20 kg','100 kg'],ans:'10 kg',hint:'Ep = mgh → m = Ep/(gh) = 980/(9.8×10) = 10 kg'},
+  {q:'The First Law of Thermodynamics states that energy in a closed system is:',opts:['Always increasing','Always decreasing','Conserved (constant)','Converted entirely to heat'],ans:'Conserved (constant)',hint:'The First Law = Law of Conservation of Energy. Total energy cannot be created or destroyed.'},
+  {q:'Why can a heat engine never be 100% efficient?',opts:['Engineers have not found the right design yet','The Second Law of Thermodynamics requires some energy to be lost as heat','Friction always absorbs energy','Materials are never perfect'],ans:'The Second Law of Thermodynamics requires some energy to be lost as heat',hint:'The Second Law states that in any energy conversion, some energy is irreversibly converted to thermal energy.'},
+  {q:'Efficiency of a device = ?',opts:['(Total input / Useful output) × 100%','(Useful output / Total input) × 100%','(Waste heat / Total input) × 100%','(Total output / Useful input) × 100%'],ans:'(Useful output / Total input) × 100%',hint:'Efficiency = (useful energy out ÷ total energy in) × 100%.'},
+  {q:'A force of 50 N moves an object 8 m. How much work is done?',opts:['6.25 J','58 J','400 J','200 J'],ans:'400 J',hint:'W = F × d = 50 × 8 = 400 J'},
+  {q:'Chemical energy (e.g., in gasoline) is a form of:',opts:['Kinetic energy','Thermal energy','Potential energy','Nuclear energy'],ans:'Potential energy',hint:'Chemical energy is stored energy in chemical bonds — a form of potential energy.'},
+  {q:'An object falls from rest at 20 m height. Using energy conservation, what is its speed just before impact? (g = 9.8 m/s²)',opts:['~14 m/s','~9.8 m/s','~19.6 m/s','~196 m/s'],ans:'~19.6 m/s',hint:'mgh = ½mv² → v = √(2gh) = √(2×9.8×20) = √392 ≈ 19.8 m/s ≈ 19.6 m/s'},
+];
+
+let kqIdx=0;let kqSel='';let kqScore={c:0,t:0};let kqDone=false;
+
+function kqInit(){
+  const q=KQS[kqIdx];
+  document.getElementById('kq-counter').textContent=`Question ${kqIdx+1} of ${KQS.length}`;
+  document.getElementById('kq-text').textContent=q.q;
+  const opts=document.getElementById('kq-opts');
+  opts.innerHTML='';
+  q.opts.forEach((o,i)=>{
+    const div=document.createElement('div');
+    div.className='q-opt';
+    div.id='qopt-'+i;
+    div.innerHTML=`<input type="radio" name="kq-r" id="kr-${i}" value="${o}" onchange="kqSel='${o}';highlightOpt(${i})"><label for="kr-${i}" style="flex:1;cursor:pointer">${o}</label>`;
+    opts.appendChild(div);
+  });
+  document.getElementById('kq-feedback').className='q-feedback';
+  document.getElementById('kq-btn').textContent='Submit Answer';
+  document.getElementById('kq-btn').onclick=kqCheck;
+  kqSel='';kqDone=false;
+}
+
+function highlightOpt(i){
+  document.querySelectorAll('.q-opt').forEach((el,j)=>el.classList.toggle('selected',j===i));
+  kqSel=KQS[kqIdx].opts[i];
+}
+
+function kqCheck(){
+  if(!kqSel||kqDone)return;
+  kqDone=true;
+  const q=KQS[kqIdx];
+  const correct=kqSel===q.ans;
+  kqScore.t++;
+  if(correct)kqScore.c++;
+  document.getElementById('kq-score').textContent=`${kqScore.c} / ${kqScore.t}`;
+  document.querySelectorAll('.q-opt').forEach(el=>{
+    const lbl=el.querySelector('label').textContent;
+    el.querySelector('input').disabled=true;
+    if(lbl===q.ans)el.classList.add('correct');
+    else if(lbl===kqSel&&!correct)el.classList.add('wrong');
+  });
+  const fb=document.getElementById('kq-feedback');
+  if(correct){
+    fb.className='q-feedback correct';
+    fb.innerHTML=`<strong>Correct!</strong> ${q.hint}`;
+  } else {
+    fb.className='q-feedback wrong';
+    fb.innerHTML=`<strong>Incorrect.</strong> Correct answer: <strong>${q.ans}</strong>. ${q.hint}`;
+  }
+  const btn=document.getElementById('kq-btn');
+  if(kqIdx<KQS.length-1){
+    btn.textContent='Next Question →';
+    btn.onclick=()=>{kqIdx++;kqInit();};
+  } else {
+    btn.textContent='Restart Quiz';
+    btn.onclick=()=>{kqIdx=0;kqScore={c:0,t:0};kqInit();document.getElementById('kq-score').textContent='0 / 0';};
+  }
+}
+
+// ═══════════════════════════════════════
+// MATCHING GAME
+// ═══════════════════════════════════════
+const MATCH_PAIRS=[
+  {device:'Car Engine',conversion:'Chemical → Kinetic'},
+  {device:'Hydroelectric Dam',conversion:'Gravitational Potential → Electrical'},
+  {device:'Solar Panel',conversion:'Solar (Radiant) → Electrical'},
+  {device:'LED Light Bulb',conversion:'Electrical → Light'},
+  {device:'Wind Turbine',conversion:'Kinetic → Electrical'},
+  {device:'Nuclear Reactor',conversion:'Nuclear → Thermal → Electrical'},
+];
+
+let matchLeft=null;let matchMatched=0;
+
+function matchReset(){
+  matchLeft=null;matchMatched=0;
+  document.getElementById('match-score-fill').style.width='0%';
+  document.getElementById('match-score-text').textContent='0 of 6 matched';
+  buildMatchGrid();
+}
+
+function buildMatchGrid(){
+  const grid=document.getElementById('match-grid');
+  const shuffled=[...MATCH_PAIRS].map((p,i)=>({...p,id:i}));
+  const convShuffled=shuffled.map(p=>({text:p.conversion,id:p.id})).sort(()=>Math.random()-.5);
+  grid.innerHTML=`
+    <div class="match-col" id="match-left">
+      ${shuffled.map(p=>`<div class="match-item" id="ml-${p.id}" onclick="matchClickLeft(${p.id},'${p.device.replace(/'/g,"&#39;")}')">${p.device}</div>`).join('')}
+    </div>
+    <div class="match-col" id="match-right">
+      ${convShuffled.map(c=>`<div class="match-item" id="mr-${c.id}" onclick="matchClickRight(${c.id},'${c.text.replace(/'/g,"&#39;")}')">${c.text}</div>`).join('')}
+    </div>`;
+}
+
+function matchClickLeft(id,text){
+  const el=document.getElementById('ml-'+id);
+  if(el.classList.contains('matched'))return;
+  document.querySelectorAll('#match-left .match-item').forEach(e=>e.classList.remove('selected'));
+  matchLeft={id,text};
+  el.classList.add('selected');
+}
+
+function matchClickRight(id,text){
+  if(!matchLeft)return;
+  const elR=document.getElementById('mr-'+id);
+  if(elR.classList.contains('matched'))return;
+  const elL=document.getElementById('ml-'+matchLeft.id);
+  if(matchLeft.id===id){
+    elL.classList.remove('selected');elL.classList.add('matched');
+    elR.classList.add('matched');
+    matchMatched++;
+    document.getElementById('match-score-fill').style.width=(matchMatched/6*100)+'%';
+    document.getElementById('match-score-text').textContent=`${matchMatched} of 6 matched${matchMatched===6?' — Perfect! Well done!':''}`;
+  } else {
+    elL.classList.remove('selected');elL.classList.add('wrong-flash');
+    elR.classList.add('wrong-flash');
+    setTimeout(()=>{elL.classList.remove('wrong-flash');elR.classList.remove('wrong-flash');},420);
+  }
+  matchLeft=null;
+}
+
+// ═══════════════════════════════════════
+// FLASHCARDS
+// ═══════════════════════════════════════
+const FC_TERMS=[
+  {t:'Kinetic Energy',d:'Energy due to the motion of an object. Ek = ½mv²'},
+  {t:'Gravitational Potential Energy',d:'Energy due to an object\'s position above a reference height. Ep = mgh'},
+  {t:'Work',d:'Energy transferred when a force moves an object in the direction of the force. W = Fd'},
+  {t:'Joule (J)',d:'The SI unit of energy and work. 1 J = 1 N·m = 1 kg·m²/s²'},
+  {t:'First Law of Thermodynamics',d:'Energy cannot be created or destroyed in an isolated system; it can only change form. Total energy is conserved.'},
+  {t:'Second Law of Thermodynamics',d:'In every energy conversion, some energy is converted to heat that cannot be fully recovered. Entropy (disorder) always increases.'},
+  {t:'Efficiency',d:'The ratio of useful energy output to total energy input, expressed as a percentage: Efficiency = (Useful out / Total in) × 100%'},
+  {t:'Scalar Quantity',d:'A physical quantity described by magnitude only (no direction). Examples: speed, mass, temperature, energy.'},
+  {t:'Vector Quantity',d:'A physical quantity described by both magnitude and direction. Examples: velocity, displacement, force, acceleration.'},
+  {t:'Acceleration',d:'The rate of change of velocity. a = Δv / Δt. SI unit: m/s². A vector quantity.'},
+  {t:'Displacement',d:'The change in position of an object, including direction. A vector quantity. SI unit: metres (m).'},
+  {t:'Velocity',d:'The rate of change of displacement. v = Δd/Δt. A vector quantity. SI unit: m/s.'},
+  {t:'Thermodynamics',d:'The branch of science dealing with the relationships between heat, work, temperature and energy.'},
+  {t:'Heat Engine',d:'A device that converts thermal energy into mechanical work by moving heat from a hot reservoir to a cold reservoir.'},
+  {t:'Entropy',d:'A measure of the disorder or randomness in a system. The Second Law states entropy always increases in a closed system.'},
+  {t:'Chemical Potential Energy',d:'Energy stored in the chemical bonds of substances (e.g., fuel, food). A form of potential energy.'},
+  {t:'Conservation of Energy',d:'The principle that the total energy of an isolated system remains constant. Energy is neither created nor destroyed.'},
+  {t:'James Watt',d:'Scottish engineer who dramatically improved the steam engine by adding a separate condenser, increasing efficiency. The unit of power (watt) is named after him.'},
+  {t:'James Prescott Joule',d:'English physicist who measured the mechanical equivalent of heat and showed that heat and mechanical energy are interconvertible. The joule (unit of energy) is named after him.'},
+  {t:'Count Rumford',d:'Conducted experiments boring cannon barrels that disproved the caloric theory of heat, showing heat is a form of motion (kinetic energy of particles).'},
+];
+
+let fcIdx=0;let fcFlipped=false;
+
+function fcRender(){
+  document.getElementById('fc-term').textContent=FC_TERMS[fcIdx].t;
+  document.getElementById('fc-def').textContent=FC_TERMS[fcIdx].d;
+  document.getElementById('fc-ctr').textContent=`${fcIdx+1} / ${FC_TERMS.length}`;
+  const inner=document.getElementById('fc-inner');
+  inner.className='fc-inner'+(fcFlipped?' flip':'');
+}
+function fcFlip(){fcFlipped=!fcFlipped;document.getElementById('fc-inner').className='fc-inner'+(fcFlipped?' flip':'');}
+function fcNext(){fcFlipped=false;document.getElementById('fc-inner').className='fc-inner';setTimeout(()=>{fcIdx=(fcIdx+1)%FC_TERMS.length;fcRender();},150);}
+function fcPrev(){fcFlipped=false;document.getElementById('fc-inner').className='fc-inner';setTimeout(()=>{fcIdx=(fcIdx-1+FC_TERMS.length)%FC_TERMS.length;fcRender();},150);}
+
+// ═══════════════════════════════════════
+// BOOT
+// ═══════════════════════════════════════
+calcEk();calcEp();calcWork();calcFall();calcEff();
+kqInit();
+buildMatchGrid();
+fcRender();
+window.addEventListener('resize',()=>{if(document.getElementById('motion-graph'))updateGraph();});
+setTimeout(updateGraph,100);
+</script>
+</body>
+</html>
