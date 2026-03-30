@@ -1,597 +1,1341 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Science 10 - Energy & Matter in Chemical Change | Ms. Terkper's Classroom</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: system-ui, 'Segoe UI', 'Inter', 'Helvetica Neue', sans-serif;
-            background: #f1f5f9;
-            color: #0f172a;
-            line-height: 1.5;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Science 10 Chemistry &mdash; Ms. Terkper's Digital Classroom</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.6; }
 
-        /* Header styling matching main site */
-        header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2b4c7c 100%);
-            color: white;
-            padding: 2rem 1rem;
-            text-align: center;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
+  /* ── SITE HEADER ── */
+  .site-header {
+    background: linear-gradient(135deg, #2a9d8f 0%, #3b82f6 100%);
+    text-align: center; padding: 2rem 1rem;
+  }
+  .site-header h1 { font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 700; color: #fff; letter-spacing: -0.02em; }
 
-        header h1 {
-            font-size: 2.2rem;
-            letter-spacing: -0.5px;
-            font-weight: 600;
-        }
+  /* ── SITE NAV ── */
+  .site-nav { background: #3b82f6; display: flex; flex-wrap: wrap; justify-content: center; gap: 0; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+  .site-nav a { color: #fff; text-decoration: none; padding: .75rem 1.25rem; font-size: .875rem; font-weight: 500; white-space: nowrap; transition: background .2s; }
+  .site-nav a:hover { background: #2563eb; }
 
-        /* Navbar placeholder style (will match main site) */
-        #navbar-placeholder {
-            background: #0f2b3d;
-        }
+  /* ── UNIT NAV ── */
+  .unit-nav { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+  .unit-nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; flex-wrap: wrap; gap: 0; padding: 0 1rem; }
+  .unit-nav-brand { display: flex; align-items: center; gap: .5rem; font-weight: 700; font-size: 1rem; color: #1e3a8a; padding: .75rem 1rem .75rem 0; margin-right: .5rem; border-right: 1px solid #e2e8f0; }
+  .unit-nav a { color: #475569; text-decoration: none; padding: .75rem .9rem; font-size: .8rem; font-weight: 500; white-space: nowrap; transition: color .2s; border-bottom: 2px solid transparent; }
+  .unit-nav a:hover { color: #1e3a8a; border-bottom-color: #1e3a8a; }
 
-        main {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
+  /* ── MAIN LAYOUT ── */
+  main { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem 6rem; display: flex; flex-direction: column; gap: 5rem; }
 
-        /* Hero / unit intro */
-        .hero-card {
-            background: linear-gradient(125deg, #ffffff 0%, #fef9e6 100%);
-            border-radius: 2rem;
-            padding: 2rem 2rem 2rem 2rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.02);
-            border: 1px solid rgba(0,0,0,0.05);
-        }
+  /* ── TYPOGRAPHY ── */
+  h2.section-heading { font-family: Georgia, serif; font-size: 1.875rem; font-weight: 700; color: #0f172a; }
+  h3 { font-family: Georgia, serif; font-size: 1.25rem; font-weight: 700; color: #1e293b; }
+  .section-title-row { display: flex; align-items: center; gap: 1rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; margin-bottom: 2rem; }
+  .section-num { background: #1e3a8a; color: #fff; width: 2.5rem; height: 2.5rem; border-radius: .5rem; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.25rem; flex-shrink: 0; }
 
-        .hero-card h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #1e3c72, #3b82f6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 0.75rem;
-        }
+  /* ── HERO BANNER ── */
+  .hero { background: #1e3a8a; color: #fff; border-radius: 1rem; padding: 3rem; border-bottom: 8px solid #f59e0b; position: relative; overflow: hidden; margin-bottom: 2rem; }
+  .hero::after { content: '\2192'; position: absolute; top: 0; right: 2rem; font-size: 12rem; color: rgba(255,255,255,.07); pointer-events: none; line-height: 1; }
+  .hero .label { display: inline-block; background: rgba(255,255,255,.1); color: #fbbf24; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .25rem .75rem; border-radius: 9999px; margin-bottom: 1rem; }
+  .hero h1 { font-family: Georgia, serif; font-size: clamp(1.75rem, 4vw, 3rem); font-weight: 700; line-height: 1.2; margin-bottom: .5rem; }
+  .hero p { color: rgba(255,255,255,.75); font-size: 1.1rem; }
 
-        .hero-sub {
-            color: #334155;
-            font-size: 1.2rem;
-            border-left: 4px solid #3b82f6;
-            padding-left: 1rem;
-            margin-bottom: 1.5rem;
-        }
+  /* ── GRID HELPERS ── */
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+  .col-span-2 { grid-column: 1 / -1; }
 
-        .focus-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
+  /* ── CARDS ── */
+  .card { background: #fff; border: 1px solid #e2e8f0; border-radius: .75rem; overflow: hidden; }
+  .card-header { background: #f8fafc; border-bottom: 1px solid #e2e8f0; padding: 1rem 1.25rem; font-weight: 700; font-size: 1rem; }
+  .card-body { padding: 1.25rem; }
+  .card-blue-left { border-left: 4px solid #1e3a8a; }
+  .card-amber-left { border-left: 4px solid #f59e0b; }
+  .card-blue2-left { border-left: 4px solid #3b82f6; }
+  .card-green-left { border-left: 4px solid #10b981; }
+  .card-red-left { border-left: 4px solid #ef4444; }
+  .card-primary { background: #1e3a8a; color: #fff; border: none; }
+  .card-primary h3 { color: #fbbf24; }
+  .card-primary .sub { color: rgba(255,255,255,.8); }
+  .card-amber { background: #fffbeb; border: 1px solid #fde68a; }
+  .card-amber h3 { color: #78350f; }
 
-        .focus-badge {
-            background: #e6f0ff;
-            color: #1e4a8a;
-            padding: 0.4rem 1rem;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
+  /* ── TABLES ── */
+  table { width: 100%; border-collapse: collapse; font-size: .875rem; }
+  th { background: #1e293b; color: #fff; padding: .65rem 1rem; font-weight: 600; text-align: left; }
+  td { padding: .6rem 1rem; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8fafc; }
+  .th-light { background: #e2e8f0; color: #334155; }
+  .td-mono { font-family: 'Courier New', monospace; }
+  .overflow-table { overflow-x: auto; }
 
-        /* Two column layout for main content */
-        .two-col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
-        }
+  /* ── OUTCOME CARDS ── */
+  .outcome { display: flex; align-items: flex-start; gap: .75rem; background: #fff; border: 1px solid #e2e8f0; border-left: 4px solid #1e3a8a; border-radius: .5rem; padding: .875rem 1rem; margin-bottom: .75rem; font-size: .9rem; }
+  .outcome strong { color: #1e3a8a; white-space: nowrap; }
 
-        @media (max-width: 800px) {
-            .two-col {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-        }
+  /* ── BADGES ── */
+  .badge { display: inline-block; background: #e2e8f0; color: #334155; border-radius: 9999px; padding: .25rem .75rem; font-size: .8rem; font-weight: 500; margin: .2rem; }
 
-        /* Card style */
-        .card {
-            background: white;
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            box-shadow: 0 4px 14px 0 rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
-            transition: all 0.2s ease;
-        }
+  /* ── CODE/MONO BLOCK ── */
+  .mono-block { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: .375rem; padding: .75rem 1rem; font-family: 'Courier New', monospace; font-size: .8rem; line-height: 1.8; }
+  .mono-line { font-family: 'Courier New', monospace; font-size: .875rem; }
 
-        .card h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1.25rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            border-left: 5px solid #3b82f6;
-            padding-left: 1rem;
-        }
+  /* ── REACTION TYPE CARDS ── */
+  .rxn-card { background: #fff; border: 1px solid #e2e8f0; border-radius: .625rem; padding: 1.25rem; }
+  .rxn-card h4 { font-weight: 700; color: #1e3a8a; margin-bottom: .5rem; }
+  .rxn-type-pattern { background: #f1f5f9; border-radius: .25rem; padding: .4rem .75rem; text-align: center; font-family: 'Courier New', monospace; font-size: .8rem; color: #334155; margin-bottom: .5rem; }
+  .rxn-examples { font-family: 'Courier New', monospace; font-size: .82rem; color: #475569; line-height: 1.9; }
 
-        .outcome-list {
-            list-style: none;
-            margin-top: 0.5rem;
-        }
+  /* ── INFO BOXES ── */
+  .info-amber { background: #fffbeb; border: 1px solid #fde68a; border-radius: .75rem; padding: 1.25rem; }
+  .info-amber h3 { color: #92400e; margin-bottom: .5rem; }
+  .info-amber ul { color: #78350f; font-size: .875rem; list-style: disc; padding-left: 1.25rem; line-height: 2; }
+  .info-slate { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .75rem; padding: 1.25rem; }
 
-        .outcome-list li {
-            margin-bottom: 1rem;
-            padding-left: 1.8rem;
-            position: relative;
-            font-size: 0.95rem;
-        }
+  /* ── WHMIS ── */
+  .whmis-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 1rem; }
+  .whmis-item { background: #fff; border: 1px solid #e2e8f0; border-radius: .5rem; padding: 1rem; text-align: center; }
+  .whmis-icon { width: 4rem; height: 4rem; border-radius: 50%; border: 4px solid #dc2626; color: #dc2626; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.5rem; margin: 0 auto .5rem; }
+  .whmis-label { font-size: .8rem; font-weight: 600; color: #334155; }
 
-        .outcome-list li::before {
-            content: "🧪";
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: #2c6e9e;
-        }
+  /* ── MOLE TRIANGLE ── */
+  .mole-triangle-wrap { background: #fff; border: 1px solid #e2e8f0; border-radius: .75rem; padding: 1.5rem; text-align: center; }
+  .formula-row { display: flex; gap: 1.25rem; justify-content: center; font-family: 'Courier New', monospace; font-size: .875rem; background: #f1f5f9; padding: .5rem 1rem; border-radius: .375rem; margin-top: 1rem; flex-wrap: wrap; }
+  .formula-note { font-size: .75rem; color: #64748b; margin-top: .5rem; }
 
-        /* Interactive simulator */
-        .sim-card {
-            background: #f8fafc;
-            border-radius: 1.25rem;
-            margin-bottom: 2rem;
-            overflow: hidden;
-            border: 1px solid #cbd5e1;
-        }
+  /* ── MOLE PROBLEMS ── */
+  .mole-problem { margin-bottom: 1rem; }
+  .mole-problem strong { color: #1e3a8a; display: block; font-size: .875rem; margin-bottom: .25rem; }
 
-        .sim-header {
-            background: #1e293b;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
+  /* ── SECTION DIVIDER ── */
+  .section-label { font-size: .85rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: .06em; border-bottom: 2px solid #e2e8f0; padding-bottom: .5rem; margin-bottom: 1.25rem; }
 
-        .sim-content {
-            padding: 1.5rem;
-        }
+  /* ── WORD EQUATION ── */
+  .word-eq { margin-bottom: 1.25rem; font-size: .9rem; }
+  .word-eq .word { font-style: italic; color: #334155; margin-bottom: .2rem; }
+  .word-eq .chem { font-family: 'Courier New', monospace; font-weight: 700; color: #1e3a8a; }
 
-        .balancing-panel {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-            align-items: center;
-            margin: 1rem 0;
-        }
+  /* ── FOOTER ── */
+  footer { background: #0f172a; border-top: 4px solid #22c55e; text-align: center; padding: 1.25rem 1rem; }
+  footer p { color: #cbd5e1; font-size: .875rem; }
 
-        .equation-display {
-            font-family: 'Courier New', monospace;
-            font-size: 1.3rem;
-            background: #eef2ff;
-            padding: 1rem 1.2rem;
-            border-radius: 60px;
-            font-weight: bold;
-            text-align: center;
-        }
+  /* ── BACK TO TOP ── */
+  .back-top { position: fixed; bottom: 2rem; right: 2rem; background: #f59e0b; color: #0f172a; border: none; border-radius: 50%; width: 3rem; height: 3rem; font-size: 1.25rem; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,.2); display: flex; align-items: center; justify-content: center; z-index: 200; transition: transform .2s; }
+  .back-top:hover { transform: scale(1.1); }
 
-        .coefficient-buttons {
-            display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+  /* ── INTERACTIVE QUIZZES ── */
+  .quiz-section { display: flex; flex-direction: column; gap: 1rem; }
+  .quiz-section h3 { font-size: 1.5rem; text-align: center; }
+  .quiz-section p.desc { text-align: center; color: #64748b; }
 
-        .coeff-btn {
-            background: white;
-            border: 2px solid #cbd5e1;
-            padding: 0.5rem 1rem;
-            font-weight: bold;
-            border-radius: 40px;
-            cursor: pointer;
-            transition: all 0.1s ease;
-            font-size: 1rem;
-        }
+  /* Equation Balancer */
+  .eq-card { background: #fff; border: 1px solid #e2e8f0; border-top: 4px solid #1e3a8a; border-radius: .75rem; max-width: 760px; margin: 0 auto; overflow: hidden; }
+  .eq-card-header { background: #f8fafc; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
+  .eq-card-header h4 { font-weight: 700; color: #1e3a8a; font-size: 1.1rem; }
+  .eq-badge { background: #1e3a8a; color: #fff; font-size: .78rem; font-weight: 700; padding: .25rem .75rem; border-radius: 9999px; }
+  .eq-display { font-size: 1.5rem; text-align: center; padding: 1.5rem 1rem; letter-spacing: .04em; }
+  .coeff-row { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; background: #f1f5f9; padding: 1.25rem; border-radius: .5rem; margin: 0 1.5rem 1rem; }
+  .coeff-item { display: flex; flex-direction: column; align-items: center; gap: .4rem; }
+  .coeff-label { font-size: .7rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: .05em; }
+  .coeff-select { width: 4.5rem; text-align: center; font-size: 1.1rem; font-weight: 700; border: 2px solid #cbd5e1; border-radius: .375rem; padding: .35rem; background: #fff; }
+  .atom-tracker { margin: 0 1.5rem 1rem; border: 1px solid #e2e8f0; border-radius: .5rem; overflow: hidden; }
+  .atom-tracker-header { background: #f8fafc; text-align: center; padding: .5rem; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #64748b; border-bottom: 1px solid #e2e8f0; }
+  .atom-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+  .atom-grid-head { padding: .4rem; text-align: center; font-size: .75rem; font-weight: 700; color: #64748b; border-bottom: 1px solid #e2e8f0; }
+  .atom-cell { padding: .4rem; text-align: center; font-size: .875rem; border-bottom: 1px solid #f1f5f9; }
+  .atom-cell:last-child { border-bottom: none; }
+  .balanced-atom { color: #16a34a; font-weight: 700; }
+  .unbalanced-atom { color: #dc2626; }
+  .eq-feedback { margin: 0 1.5rem 1rem; padding: 1rem 1.5rem; border-radius: .5rem; text-align: center; font-weight: 700; font-size: 1.1rem; display: none; }
+  .eq-feedback.correct { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; display: block; }
+  .eq-feedback.incorrect { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; display: block; }
+  .eq-footer { background: #f8fafc; border-top: 1px solid #e2e8f0; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+  .btn { cursor: pointer; font-size: .9rem; font-weight: 600; padding: .6rem 1.5rem; border-radius: .5rem; border: none; transition: background .2s; }
+  .btn-outline { background: #fff; color: #1e293b; border: 1px solid #cbd5e1; }
+  .btn-outline:hover { background: #f1f5f9; }
+  .btn-amber { background: #f59e0b; color: #0f172a; font-size: 1rem; padding: .65rem 2.5rem; }
+  .btn-amber:hover { background: #d97706; }
+  .btn-primary { background: #1e3a8a; color: #fff; }
+  .btn-primary:hover { background: #1e40af; }
+  .btn-ghost { background: transparent; color: #334155; border: 1px solid #e2e8f0; }
+  .btn-ghost:hover { background: #f1f5f9; }
 
-        .coeff-btn.active {
-            background: #3b82f6;
-            border-color: #3b82f6;
-            color: white;
-        }
+  /* Naming Quiz */
+  .naming-card { background: #fff; border: 1px solid #e2e8f0; border-top: 4px solid #334155; border-radius: .75rem; max-width: 640px; margin: 0 auto; overflow: hidden; }
+  .naming-header { background: #f8fafc; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
+  .naming-score { display: flex; align-items: center; gap: .5rem; background: #f1f5f9; padding: .25rem .75rem; border-radius: 9999px; font-size: .875rem; font-weight: 700; }
+  .naming-body { padding: 2rem 1.5rem; text-align: center; }
+  .naming-subtext { font-size: .78rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 1rem; }
+  .naming-formula { font-size: 2.5rem; font-family: Georgia, serif; font-weight: 700; color: #1e3a8a; letter-spacing: .05em; padding: 1rem 0; }
+  .naming-input { width: 100%; max-width: 340px; text-align: center; font-size: 1.1rem; padding: .75rem 1rem; border: 2px solid #cbd5e1; border-radius: .5rem; margin-bottom: 1rem; display: block; margin-left: auto; margin-right: auto; }
+  .naming-input:focus { outline: none; border-color: #1e3a8a; }
+  .naming-feedback { text-align: left; padding: .75rem 1rem; border-radius: .5rem; margin-top: .75rem; font-size: .9rem; display: none; }
+  .naming-feedback.correct { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; display: block; }
+  .naming-feedback.incorrect { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; display: block; }
 
-        .check-btn {
-            background: #10b981;
-            border: none;
-            color: white;
-            padding: 0.6rem 1.5rem;
-            border-radius: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 1rem;
-            transition: 0.1s;
-        }
+  /* Reaction Classification */
+  .rxn-quiz-card { background: #fff; border: 1px solid #e2e8f0; border-radius: .75rem; overflow: hidden; }
+  .rxn-quiz-header { background: #f8fafc; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
+  .rxn-display { font-size: 1.5rem; text-align: center; background: #f8fafc; padding: 2rem 1rem; border-radius: .5rem; margin: 1.5rem; border: 1px solid #e2e8f0; }
+  .rxn-select { width: 100%; font-size: 1.05rem; padding: .75rem 1rem; border: 1px solid #cbd5e1; border-radius: .5rem; background: #fff; max-width: 480px; display: block; margin: 0 auto 1rem; }
+  .rxn-body { padding: 0 1.5rem 1.5rem; text-align: center; }
+  .rxn-feedback { padding: .75rem 1rem; border-radius: .5rem; margin-top: .75rem; max-width: 480px; margin-left: auto; margin-right: auto; display: none; }
+  .rxn-feedback.correct { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; display: block; }
+  .rxn-feedback.incorrect { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; display: block; }
 
-        .feedback {
-            margin-top: 1rem;
-            font-weight: 500;
-            text-align: center;
-        }
+  /* Mole Calc */
+  .mole-quiz-card { background: #fff; border: 1px solid #e2e8f0; border-top: 4px solid #1e3a8a; border-radius: .75rem; max-width: 640px; margin: 0 auto; overflow: hidden; }
+  .mole-quiz-header { background: #f8fafc; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
+  .mole-quiz-body { padding: 1.5rem; }
+  .mole-q-text { font-size: 1.05rem; color: #1e293b; margin-bottom: 1.25rem; }
+  .radio-option { display: flex; align-items: center; gap: .75rem; padding: .75rem 1rem; border: 1px solid #e2e8f0; border-radius: .5rem; margin-bottom: .6rem; cursor: pointer; transition: background .15s; }
+  .radio-option:hover { background: #f8fafc; }
+  .radio-option.selected { border-color: #1e3a8a; background: #eff6ff; }
+  .radio-option input { accent-color: #1e3a8a; width: 1.1rem; height: 1.1rem; cursor: pointer; }
+  .mole-hint { margin-top: 1rem; background: #fff; padding: .75rem 1rem; border-radius: .375rem; font-size: .875rem; }
+  .mole-feedback { padding: 1rem; border-radius: .5rem; margin-bottom: 1rem; }
+  .mole-feedback.correct { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+  .mole-feedback.incorrect { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
 
-        .flashcard-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
+  /* Flashcards */
+  .flashcard-wrap { max-width: 480px; margin: 0 auto; }
+  .flashcard { width: 100%; height: 16rem; cursor: pointer; position: relative; perspective: 1000px; }
+  .flashcard-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform .5s; }
+  .flashcard-inner.flipped { transform: rotateY(180deg); }
+  .flashcard-front, .flashcard-back {
+    position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    border-radius: .75rem; display: flex; align-items: center; justify-content: center;
+    padding: 2rem; text-align: center; flex-direction: column; gap: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,.1);
+  }
+  .flashcard-front { background: #1e3a8a; color: #fff; }
+  .flashcard-back { background: #f8fafc; color: #1e293b; transform: rotateY(180deg); border: 1px solid #e2e8f0; }
+  .flashcard-term { font-family: Georgia, serif; font-size: 2rem; font-weight: 700; }
+  .flashcard-hint { font-size: .8rem; opacity: .7; }
+  .flashcard-def { font-size: 1.1rem; line-height: 1.6; }
+  .flashcard-nav { display: flex; justify-content: space-between; align-items: center; background: #f1f5f9; padding: .5rem; border-radius: .5rem; margin-top: 1rem; }
+  .fc-counter { font-size: .78rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: .07em; }
 
-        .flashcard {
-            background: #f1f5f9;
-            border-radius: 1rem;
-            padding: 1rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            flex: 1 1 160px;
-            text-align: center;
-            font-weight: 500;
-            border: 1px solid #e2e8f0;
-        }
-
-        .flashcard:hover {
-            background: #e2e8f0;
-            transform: translateY(-3px);
-        }
-
-        .flash-answer {
-            display: none;
-            font-size: 0.85rem;
-            color: #2d6a4f;
-            margin-top: 0.5rem;
-        }
-
-        .resource-link {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem;
-            background: #f8fafc;
-            border-radius: 1rem;
-            margin-bottom: 0.75rem;
-            text-decoration: none;
-            color: #0f172a;
-            border: 1px solid #e2e8f0;
-            transition: 0.2s;
-        }
-
-        .resource-link:hover {
-            background: #eef2ff;
-            border-color: #3b82f6;
-            transform: translateX(5px);
-        }
-
-        .video-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        footer {
-            background: #0f172a;
-            color: #cbd5e1;
-            text-align: center;
-            padding: 1.5rem;
-            margin-top: 3rem;
-            font-size: 0.9rem;
-        }
-
-        button {
-            background: none;
-            border: none;
-        }
-
-        .periodic-hint {
-            background: #fef9c3;
-            border-radius: 1rem;
-            padding: 1rem;
-            font-size: 0.9rem;
-            margin-top: 1rem;
-            border-left: 5px solid #eab308;
-        }
-
-        hr {
-            margin: 1rem 0;
-        }
-    </style>
+  /* Responsive */
+  @media (max-width: 640px) {
+    .site-nav a { padding: .6rem .75rem; font-size: .8rem; }
+    .unit-nav-inner { overflow-x: auto; flex-wrap: nowrap; }
+    .unit-nav a { font-size: .75rem; padding: .65rem .65rem; }
+    .hero { padding: 1.75rem 1.25rem; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .coeff-select { width: 3.5rem; }
+    .naming-formula { font-size: 2rem; }
+  }
+</style>
 </head>
 <body>
-    <header>
-        <h1>⚛️ Ms. Terkper's Digital Classroom</h1>
-        <p>Science 10 – Energy & Matter in Chemical Change</p>
-    </header>
-    <div id="navbar-placeholder"></div>
-    <script>
-        // Load navbar dynamically (if navbar.html exists, else just a placeholder)
-        document.addEventListener('DOMContentLoaded', () => {
-            fetch('navbar.html')
-                .then(res => res.text())
-                .then(data => {
-                    document.getElementById('navbar-placeholder').innerHTML = data;
-                })
-                .catch(() => {
-                    document.getElementById('navbar-placeholder').innerHTML = '<nav style="background:#0f2b3d; padding:0.8rem; text-align:center;"><a href="index.html" style="color:white; margin:0 1rem;">Home</a><a href="science10.html" style="color:white;">Science 10</a></nav>';
-                });
-        });
-    </script>
 
-    <main>
-        <!-- Hero & overview -->
-        <div class="hero-card">
-            <h2>🔬 Unit A: Energy & Matter in Chemical Change</h2>
-            <div class="hero-sub">Atoms, ions, chemical reactions, and the conservation of mass — the foundation of modern chemistry.</div>
-            <p>From the atomic model to balancing complex reactions, this unit explores how substances interact, how energy flows, and how we classify matter. Students will investigate ionic and molecular compounds, the periodic table, IUPAC nomenclature, and the law of conservation of mass.</p>
-            <div class="focus-grid">
-                <span class="focus-badge">🧪 Atomic theory</span>
-                <span class="focus-badge">⚛️ Periodic table trends</span>
-                <span class="focus-badge">🔁 Balancing equations</span>
-                <span class="focus-badge">🧴 Ionic & molecular compounds</span>
-                <span class="focus-badge">🌡️ Exothermic/Endothermic</span>
-                <span class="focus-badge">⚖️ Mole concept</span>
-            </div>
+<!-- SITE HEADER -->
+<header class="site-header">
+  <h1>Ms. Terkper's Digital Classroom</h1>
+</header>
+
+<!-- SITE NAV -->
+<nav class="site-nav" aria-label="Site navigation">
+  <a href="#">Home</a>
+  <a href="#">Math</a>
+  <a href="#">Science</a>
+  <a href="#">Computer Science</a>
+  <a href="#">Graduate Courses</a>
+  <a href="#">Learning Toolkit Hub</a>
+</nav>
+
+<!-- UNIT NAV -->
+<div class="unit-nav">
+  <div class="unit-nav-inner">
+    <div class="unit-nav-brand">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2"><circle cx="9" cy="9" r="7"/><path d="M9 6v6M6 9h6"/><path d="M20 20l-4-4"/></svg>
+      Science 10 Chemistry
+    </div>
+    <a href="#overview">Overview</a>
+    <a href="#atomic-theory">Atomic Theory</a>
+    <a href="#compounds">Compounds</a>
+    <a href="#reactions">Reactions</a>
+    <a href="#moles">Mole Concept</a>
+    <a href="#practice">Practice</a>
+  </div>
+</div>
+
+<main>
+
+  <!-- ══════════════════════════════════════════════ SECTION 1: OVERVIEW -->
+  <section id="overview">
+
+    <div class="hero">
+      <div class="label">Alberta Science 10</div>
+      <h1>Unit A: Energy &amp; Matter in Chemical Change</h1>
+      <p>Ms. Terkper's Digital Classroom</p>
+    </div>
+
+    <div class="grid-2">
+      <div style="display:flex; flex-direction:column; gap:1.5rem;">
+        <div>
+          <h3 style="font-size:1.4rem; margin-bottom:.75rem;">Focusing Questions</h3>
+          <blockquote style="border-left:4px solid #f59e0b; background:#fff; border:1px solid #e2e8f0; border-left:4px solid #f59e0b; padding:1.25rem 1.5rem; border-radius:.625rem; font-style:italic; color:#475569; font-size:1rem; line-height:1.8;">
+            "How has knowledge of the structure of matter led to other scientific advancements? How do elements combine? Can these combinations be classified and the products be predicted and quantified? Why do scientists classify chemical change, follow guidelines for nomenclature, and represent chemical change with equations?"
+          </blockquote>
         </div>
+        <div>
+          <h3 style="font-size:1.4rem; margin-bottom:.75rem;">Program Outcomes</h3>
+          <div class="outcome"><strong>Outcome 1:</strong>&nbsp;Describe the basic particles that make up matter; evidence-based development of atomic model (Dalton, Thomson, Rutherford, Bohr); chemistry-based careers.</div>
+          <div class="outcome"><strong>Outcome 2:</strong>&nbsp;Explain using periodic table how elements combine; IUPAC naming of ionic/molecular compounds and acids; WHMIS; solubility; molecular structure and properties.</div>
+          <div class="outcome"><strong>Outcome 3:</strong>&nbsp;Identify and classify chemical changes; write balanced chemical equations; Lavoisier's law of conservation of mass; mole concept; Avogadro's number (6.02&times;10<sup>23</sup>).</div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:1.2rem; margin-bottom:1rem;">Key Concepts</h3>
+        <div>
+          <span class="badge">IUPAC Nomenclature</span>
+          <span class="badge">Atomic Models</span>
+          <span class="badge">Chemical Reactions</span>
+          <span class="badge">Conservation of Mass</span>
+          <span class="badge">Mole Concept</span>
+          <span class="badge">WHMIS Safety</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- 2-col layout: outcomes + interactive sims -->
-        <div class="two-col">
-            <!-- Left column: Alberta outcomes & key concepts -->
-            <div class="card">
-                <h3>📖 Alberta Program of Studies</h3>
-                <p class="periodic-hint" style="background:#e6f7ec; border-left-color:#2ecc71;"><strong>🔍 Key STS & Knowledge outcomes:</strong> Students will describe the basic particles that make up matter, explain how elements combine using the periodic table, classify chemical changes, write balanced equations, and apply the mole concept to real-world quantities.</p>
-                <ul class="outcome-list">
-                    <li><strong>Atomic models:</strong> Trace evidence from Dalton, Thomson, Rutherford, Bohr – how our view of the atom evolved.</li>
-                    <li><strong>IUPAC naming:</strong> Predict formulas and name ionic/molecular compounds and common acids using periodic table and ion tables.</li>
-                    <li><strong>Classify reactions:</strong> Synthesis, decomposition, single/double replacement, hydrocarbon combustion.</li>
-                    <li><strong>Balanced equations & conservation of mass:</strong> Translate word equations to symbolic form; verify Lavoisier's law.</li>
-                    <li><strong>Mole & Avogadro:</strong> Relate 6.02 × 10²³ particles to measurable quantities, calculate moles of substances.</li>
-                    <li><strong>Energy changes:</strong> Differentiate endothermic vs exothermic reactions (e.g., photosynthesis, combustion).</li>
-                    <li><strong>Safety & WHMIS:</strong> Recognize safe handling of laboratory chemicals, hazardous compounds, MSDS.</li>
+  <!-- ══════════════════════════════════════════════ SECTION 2: ATOMIC THEORY -->
+  <section id="atomic-theory">
+    <div class="section-title-row">
+      <div class="section-num">2</div>
+      <h2 class="section-heading">Atomic Theory</h2>
+    </div>
+
+    <!-- Atomic Model Timeline -->
+    <div class="card" style="margin-bottom:2rem;">
+      <div class="card-header">History of the Atomic Model</div>
+      <div class="overflow-table">
+        <table>
+          <thead><tr><th>Scientist</th><th>Year</th><th>Model</th><th>Evidence</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Dalton</strong></td><td style="color:#64748b">1803</td><td>Solid sphere ("billiard ball")</td><td>Law of definite proportions; Law of multiple proportions</td></tr>
+            <tr><td><strong>Thomson</strong></td><td style="color:#64748b">1897</td><td>"Plum pudding" &mdash; electrons embedded in positive mass</td><td>Discovery of electron via cathode ray tube</td></tr>
+            <tr><td><strong>Rutherford</strong></td><td style="color:#64748b">1911</td><td>Nuclear model &mdash; dense positive nucleus, electrons orbit far away</td><td>Gold foil experiment (alpha particle scattering)</td></tr>
+            <tr><td><strong>Bohr</strong></td><td style="color:#64748b">1913</td><td>Planetary model &mdash; electrons in fixed energy levels/shells</td><td>Hydrogen emission spectrum</td></tr>
+            <tr><td><strong>Modern (Quantum)</strong></td><td style="color:#64748b">1926+</td><td>Electron cloud/orbital model</td><td>Wave mechanics, Schrodinger equation</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <!-- Subatomic Particles -->
+      <div class="card">
+        <div class="card-header">Subatomic Particles</div>
+        <table>
+          <thead><tr><th class="th-light" style="background:#e2e8f0;color:#334155">Particle</th><th class="th-light" style="background:#e2e8f0;color:#334155">Symbol</th><th class="th-light" style="background:#e2e8f0;color:#334155">Charge</th><th class="th-light" style="background:#e2e8f0;color:#334155">Location</th><th class="th-light" style="background:#e2e8f0;color:#334155">Rel. Mass</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Proton</strong></td><td class="td-mono">p<sup>+</sup></td><td style="color:#16a34a;font-weight:700">+1</td><td>Nucleus</td><td>1</td></tr>
+            <tr><td><strong>Neutron</strong></td><td class="td-mono">n<sup>0</sup></td><td style="color:#64748b;font-weight:700">0</td><td>Nucleus</td><td>1</td></tr>
+            <tr><td><strong>Electron</strong></td><td class="td-mono">e<sup>-</sup></td><td style="color:#dc2626;font-weight:700">-1</td><td>Electron shells</td><td>1/1836</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:1.25rem;">
+        <!-- Atomic Number / Isotopes -->
+        <div class="card card-blue-left">
+          <div class="card-body">
+            <h3 style="margin-bottom:.75rem;">Atomic Number, Mass Number, Isotopes</h3>
+            <div style="font-size:.875rem;color:#475569;display:flex;flex-direction:column;gap:.75rem;">
+              <div><strong style="color:#0f172a;">Atomic Number (Z):</strong> The number of protons in an atom. This defines the element. (e.g., Carbon's atomic number is 6, so every carbon atom has 6 protons).</div>
+              <div><strong style="color:#0f172a;">Mass Number (A):</strong> The total number of protons + neutrons in the nucleus.</div>
+              <div><strong style="color:#0f172a;">Isotopes:</strong> Atoms of the same element (same number of protons) but with a different number of neutrons (different mass number).</div>
+              <div class="info-slate" style="margin-top:.25rem;">
+                <strong style="color:#1e293b;display:block;margin-bottom:.4rem;">Example: Carbon Isotopes</strong>
+                <ul style="list-style:disc;padding-left:1.25rem;line-height:2;">
+                  <li><strong>Carbon-12:</strong> 6 protons, 6 neutrons (Mass = 12)</li>
+                  <li><strong>Carbon-14:</strong> 6 protons, 8 neutrons (Mass = 14)</li>
                 </ul>
-                <div class="periodic-hint">
-                    💡 <strong>Did you know?</strong> First Nations communities historically used biotic and abiotic materials (like brain tissue for tanning) based on chemical understanding of tanning agents — an example of applied chemistry!
-                </div>
+              </div>
             </div>
-
-            <!-- Right column: interactive balancing simulator + flashcards -->
-            <div class="card">
-                <h3>⚖️ BALANCE IT! – Interactive Equation</h3>
-                <p>Test your skills. Select coefficients to balance the combustion of methane:</p>
-                <div class="sim-card" style="margin-top: 0.5rem;">
-                    <div class="sim-header">🔥 CH₄ + O₂ → CO₂ + H₂O</div>
-                    <div class="sim-content">
-                        <div style="font-weight:bold; text-align:center; margin-bottom:1rem;">___ CH₄ + ___ O₂ → ___ CO₂ + ___ H₂O</div>
-                        <div class="balancing-panel">
-                            <div><label>CH₄ coeff: </label><input type="number" id="coeff_ch4" min="0" max="5" value="1" style="width:70px; padding:5px;"></div>
-                            <div><label>O₂ coeff: </label><input type="number" id="coeff_o2" min="0" max="5" value="1" style="width:70px; padding:5px;"></div>
-                            <div><label>CO₂ coeff: </label><input type="number" id="coeff_co2" min="0" max="5" value="1" style="width:70px; padding:5px;"></div>
-                            <div><label>H₂O coeff: </label><input type="number" id="coeff_h2o" min="0" max="5" value="1" style="width:70px; padding:5px;"></div>
-                        </div>
-                        <button class="check-btn" id="checkBalanceBtn">✔ Check Balance</button>
-                        <div id="balanceFeedback" class="feedback"></div>
-                        <div class="periodic-hint" style="margin-top:1rem; font-size:0.85rem;">⭐ Balanced equation: CH₄ + 2 O₂ → CO₂ + 2 H₂O (Conservation of mass: 1 C, 4 H, 4 O each side)</div>
-                    </div>
-                </div>
-                <h3 style="margin-top: 1.5rem;">🧠 Quick Concept Flashcards</h3>
-                <div class="flashcard-grid" id="flashcardContainer">
-                    <!-- flashcards injected via js for easy maintenance -->
-                </div>
-            </div>
+          </div>
         </div>
 
-        <!-- Additional Resources: Videos, sims, PhET, study guides -->
-        <div class="card" style="margin-bottom: 2rem;">
-            <h3>🌐 Interactive Tools & Study Resources</h3>
-            <div class="two-col" style="gap:1.5rem;">
-                <div>
-                    <p><strong>🎮 PhET Simulations (University of Colorado)</strong> – Visualize atoms, balancing equations, and reactions.</p>
-                    <a href="https://phet.colorado.edu/en/simulations/balancing-chemical-equations" target="_blank" class="resource-link">⚖️ Balancing Chemical Equations (PhET) →</a>
-                    <a href="https://phet.colorado.edu/en/simulations/reactants-products-and-leftovers" target="_blank" class="resource-link">🧪 Reactants, Products, and Leftovers →</a>
-                    <a href="https://phet.colorado.edu/en/simulations/build-an-atom" target="_blank" class="resource-link">⚛️ Build an Atom – Explore subatomic particles →</a>
-                </div>
-                <div>
-                    <p><strong>📽️ YouTube & Visual Lessons</strong></p>
-                    <div class="video-grid">
-                        <a href="https://www.youtube.com/watch?v=ULh1nFwH1wg" target="_blank" class="resource-link">▶️ Tyler DeWitt: Balancing Chemical Equations</a>
-                        <a href="https://www.youtube.com/watch?v=SM4zYYtOisQ" target="_blank" class="resource-link">▶️ Bozeman Science: The Mole & Avogadro's Number</a>
-                        <a href="https://www.youtube.com/watch?v=QqjcCvzWwww" target="_blank" class="resource-link">▶️ Crash Course Chemistry: Naming Ionic Compounds</a>
-                    </div>
-                </div>
+        <!-- Bohr Rules -->
+        <div class="info-amber">
+          <h3 style="color:#92400e;font-size:1rem;">Bohr Diagram Rules</h3>
+          <ul>
+            <li>Nucleus contains protons and neutrons in the center.</li>
+            <li>Electrons are placed in energy levels (shells) around the nucleus.</li>
+            <li><strong>Shell 1:</strong> Maximum 2 electrons</li>
+            <li><strong>Shell 2:</strong> Maximum 8 electrons</li>
+            <li><strong>Shell 3:</strong> Maximum 8 electrons</li>
+            <li>Always fill the lowest energy level first before moving to the next.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ SECTION 3: COMPOUNDS -->
+  <section id="compounds">
+    <div class="section-title-row">
+      <div class="section-num">3</div>
+      <h2 class="section-heading">Periodic Table &amp; Compounds</h2>
+    </div>
+
+    <!-- Groups Table -->
+    <div style="margin-bottom:2rem;">
+      <h3 style="margin-bottom:1rem;">Periodic Table Groups and Trends</h3>
+      <div class="card overflow-table">
+        <table>
+          <thead><tr><th>Group / Category</th><th>Characteristics &amp; Valence Electrons</th><th>Typical Ion Charge</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Group 1: Alkali Metals</strong></td><td>Highly reactive metals. 1 valence electron.</td><td style="text-align:center;font-family:'Courier New',monospace;background:#f8fafc">+1</td></tr>
+            <tr><td><strong>Group 2: Alkaline Earth Metals</strong></td><td>Reactive metals. 2 valence electrons.</td><td style="text-align:center;font-family:'Courier New',monospace;background:#f8fafc">+2</td></tr>
+            <tr><td><strong>Groups 3&ndash;12: Transition Metals</strong></td><td>Complex electron arrangements, multivalent (can form multiple ions).</td><td style="text-align:center;font-family:'Courier New',monospace;background:#f8fafc">Variable (e.g., +2, +3)</td></tr>
+            <tr><td><strong>Group 17: Halogens</strong></td><td>Highly reactive non-metals. 7 valence electrons.</td><td style="text-align:center;font-family:'Courier New',monospace;background:#f8fafc">&minus;1</td></tr>
+            <tr><td><strong>Group 18: Noble Gases</strong></td><td>Unreactive, stable non-metals. Full valence shell (8 electrons).</td><td style="text-align:center;font-family:'Courier New',monospace;background:#f8fafc">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:.85rem;color:#64748b;margin-top:.5rem;padding-left:.5rem;"><strong>Periods (rows):</strong> Indicate the number of occupied electron shells. Elements in period 3 have electrons in 3 shells.</p>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:2rem;">
+      <!-- Ion Formation -->
+      <div>
+        <h3 style="margin-bottom:1rem;">Ion Formation</h3>
+        <p style="font-size:.875rem;margin-bottom:1rem;"><strong>Metals</strong> lose electrons to form positive ions (<strong style="color:#1e3a8a">cations</strong>).<br/><strong>Non-metals</strong> gain electrons to form negative ions (<strong style="color:#1e3a8a">anions</strong>).</p>
+        <div class="card">
+          <div class="card-header" style="font-size:.95rem;">Common Ions</div>
+          <div class="card-body" style="font-family:'Courier New',monospace;font-size:.85rem;">
+            <div class="grid-2" style="gap:1rem;">
+              <div>
+                <strong style="font-family:system-ui,sans-serif;display:block;margin-bottom:.4rem;">Cations (+)</strong>
+                Na<sup>+</sup>, K<sup>+</sup>, Ca<sup>2+</sup>, Mg<sup>2+</sup>, Al<sup>3+</sup><br/>
+                Fe<sup>2+</sup>, Fe<sup>3+</sup>, Cu<sup>+</sup>, Cu<sup>2+</sup><br/>
+                NH<sub>4</sub><sup>+</sup> (Ammonium)
+              </div>
+              <div>
+                <strong style="font-family:system-ui,sans-serif;display:block;margin-bottom:.4rem;">Anions (&minus;)</strong>
+                Cl<sup>-</sup>, O<sup>2&minus;</sup>, N<sup>3&minus;</sup>, S<sup>2&minus;</sup><br/>
+                OH<sup>&minus;</sup>, NO<sub>3</sub><sup>&minus;</sup><br/>
+                SO<sub>4</sub><sup>2&minus;</sup>, CO<sub>3</sub><sup>2&minus;</sup>, PO<sub>4</sub><sup>3&minus;</sup>
+              </div>
             </div>
-            <hr>
-            <div class="two-col">
-                <div>
-                    <p><strong>📚 Practice & Reference</strong></p>
-                    <a href="https://www.chemteam.info/" target="_blank" class="resource-link">ChemTeam: tutorials on balancing & stoichiometry</a>
-                    <a href="https://ptable.com/" target="_blank" class="resource-link">🔁 Interactive Periodic Table (p-table)</a>
-                    <a href="https://www.khanacademy.org/science/chemistry/chemical-reactions-stoichiome" target="_blank" class="resource-link">Khan Academy: Chemical reactions & stoichiometry</a>
-                </div>
-                <div>
-                    <p><strong>🧪 Alberta Science 10 Support</strong></p>
-                    <a href="https://www.learnalberta.ca/content/sciences10/html/unit1/unit1.html" target="_blank" class="resource-link">LearnAlberta: Science 10 Unit A Interactive</a>
-                    <a href="https://www.alberta.ca/curriculum/science-10.aspx" target="_blank" class="resource-link">📘 Official Alberta Program of Studies (Science 10)</a>
-                    <a href="https://sites.google.com/epsb.ca/science10/chemistry" target="_blank" class="resource-link">Student Study Hub – Chemistry Review</a>
-                </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formula Writing -->
+      <div>
+        <h3 style="margin-bottom:1rem;">Formula Writing</h3>
+        <div class="card card-amber-left">
+          <div class="card-header" style="background:#fffbeb;font-size:.95rem;">Cross-Multiply Method</div>
+          <div class="card-body" style="font-size:.875rem;">
+            <p style="margin-bottom:.75rem;">To write the formula for an ionic compound, balance the total positive and negative charges to zero.</p>
+            <div class="mono-block">
+              1. Calcium chloride: Ca<sup>2+</sup> Cl<sup>&minus;</sup> &rarr; CaCl<sub>2</sub><br/>
+              2. Aluminum oxide: Al<sup>3+</sup> O<sup>2&minus;</sup> &rarr; Al<sub>2</sub>O<sub>3</sub><br/>
+              3. Iron(III) sulfate: Fe<sup>3+</sup> SO<sub>4</sub><sup>2&minus;</sup> &rarr; Fe<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub><br/>
+              4. Magnesium nitride: Mg<sup>2+</sup> N<sup>3&minus;</sup> &rarr; Mg<sub>3</sub>N<sub>2</sub><br/>
+              5. Sodium carbonate: Na<sup>+</sup> CO<sub>3</sub><sup>2&minus;</sup> &rarr; Na<sub>2</sub>CO<sub>3</sub>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IUPAC Naming + Properties -->
+    <div class="grid-2" style="margin-bottom:2rem;">
+      <div style="display:flex;flex-direction:column;gap:1.25rem;">
+        <h3>IUPAC Naming Rules</h3>
+
+        <div class="card card-blue2-left">
+          <div class="card-header">Ionic Compounds (Metal + Non-metal)</div>
+          <div class="card-body" style="font-size:.875rem;">
+            <p>Name = metal name + non-metal name (change ending to <strong>-ide</strong>).</p>
+            <p style="margin:.4rem 0;">If the metal has a variable charge, use Roman numerals in parentheses.</p>
+            <div class="mono-block" style="margin-top:.5rem;">
+              NaCl = sodium chloride<br/>
+              FeCl<sub>2</sub> = iron(II) chloride<br/>
+              FeCl<sub>3</sub> = iron(III) chloride<br/>
+              CaCO<sub>3</sub> = calcium carbonate<br/>
+              Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub> = aluminum sulfate
+            </div>
+          </div>
         </div>
 
-        <!-- Extra: mole calculator concept + additional learning -->
-        <div class="card" style="background: linear-gradient(115deg, #fff, #f0f9ff);">
-            <h3>🧴 The Mole & Avogadro's Number – Real-world Quantities</h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center;">
-                <div style="flex:2">
-                    <p><strong>⚖️ Molar mass & counting atoms:</strong> 1 mole = 6.022 × 10²³ particles (atoms, molecules, ions). This number allows chemists to weigh out substances. For water (H₂O), 1 mole = 18.02 g, containing 6.02×10²³ molecules.</p>
-                    <p><strong>✏️ Example problem:</strong> How many moles in 36.04 g of water? → 36.04 g / 18.02 g/mol = 2.00 moles. Balanced equations can be interpreted in terms of moles!</p>
-                    <div class="periodic-hint" style="background:#d9f0ff;">✨ Relating to Lavoisier: Mass is conserved in reactions, moles reflect particle ratios.</div>
-                </div>
-                <div style="flex:1; background:#eef2ff; padding:1rem; border-radius:1rem; text-align:center;">
-                    <strong>🔢 Avogadro's number</strong><br>
-                    6.022 × 10²³<br>
-                    <span style="font-size:0.8rem;">atoms in 12 g of carbon-12</span>
-                </div>
+        <div class="card card-green-left">
+          <div class="card-header">Molecular Compounds (Non-metal + Non-metal)</div>
+          <div class="card-body" style="font-size:.875rem;">
+            <p>Use Greek prefixes: mono, di, tri, tetra, penta, hexa, hepta, octa, nona, deca.</p>
+            <p style="margin:.4rem 0;">First element gets a prefix ONLY if more than one. Second element always gets a prefix and ends in <strong>-ide</strong>.</p>
+            <div class="mono-block" style="margin-top:.5rem;">
+              CO = carbon monoxide<br/>
+              CO<sub>2</sub> = carbon dioxide<br/>
+              N<sub>2</sub>O<sub>4</sub> = dinitrogen tetroxide<br/>
+              PCl<sub>5</sub> = phosphorus pentachloride
             </div>
+          </div>
         </div>
 
-        <!-- Reaction type classifier mini-quiz style -->
-        <div class="card" style="margin-top: 1rem;">
-            <h3>🔁 Identify the Reaction Type</h3>
-            <p>Match the general equation to its reaction type: <strong>Synthesis (S), Decomposition (D), Single Replacement (SR), Double Replacement (DR), Combustion (C)</strong></p>
-            <div id="quizReaction" style="display: flex; flex-direction: column; gap: 0.8rem;">
-                <div class="reaction-quiz-item" style="background:#f1f5f9; padding:0.8rem; border-radius:1rem;">
-                    <span>1. AB → A + B &nbsp;&nbsp; 
-                        <select id="q1" class="reaction-select">
-                            <option value="">Select</option><option value="S">Synthesis</option><option value="D">Decomposition</option><option value="SR">Single Replacement</option><option value="DR">Double Replacement</option><option value="C">Combustion</option>
-                        </select>
-                    </span>
-                </div>
-                <div class="reaction-quiz-item" style="background:#f1f5f9; padding:0.8rem; border-radius:1rem;">
-                    <span>2. Hydrocarbon + O₂ → CO₂ + H₂O &nbsp;&nbsp; 
-                        <select id="q2">
-                            <option value="">Select</option><option value="S">Synthesis</option><option value="D">Decomposition</option><option value="SR">Single Replacement</option><option value="DR">Double Replacement</option><option value="C">Combustion</option>
-                        </select>
-                    </span>
-                </div>
-                <div class="reaction-quiz-item" style="background:#f1f5f9; padding:0.8rem; border-radius:1rem;">
-                    <span>3. A + BC → AC + B &nbsp;&nbsp; 
-                        <select id="q3">
-                            <option value="">Select</option><option value="S">Synthesis</option><option value="D">Decomposition</option><option value="SR">Single Replacement</option><option value="DR">Double Replacement</option><option value="C">Combustion</option>
-                        </select>
-                    </span>
-                </div>
-                <button id="checkReactionsBtn" class="check-btn" style="background:#3b82f6; width:fit-content;">✔ Check Answers</button>
-                <div id="reactionFeedback" class="feedback" style="text-align:left;"></div>
+        <div class="card card-red-left">
+          <div class="card-header">Common Acids</div>
+          <div class="card-body" style="font-size:.875rem;">
+            <p><strong>Binary (no oxygen):</strong> hydro- + root + -ic acid.</p>
+            <p style="margin:.4rem 0;"><strong>Oxyacids (with oxygen):</strong> polyatomic ion name determines ending (&minus;ate &rarr; &minus;ic, &minus;ite &rarr; &minus;ous).</p>
+            <div class="mono-block" style="margin-top:.5rem;">
+              HCl = hydrochloric acid<br/>
+              H<sub>2</sub>S = hydrosulfuric acid<br/>
+              H<sub>2</sub>SO<sub>4</sub> = sulfuric acid<br/>
+              HNO<sub>3</sub> = nitric acid<br/>
+              H<sub>3</sub>PO<sub>4</sub> = phosphoric acid<br/>
+              CH<sub>3</sub>COOH = ethanoic (acetic) acid
             </div>
+          </div>
         </div>
-    </main>
-    <footer>
-        <p>📧 terkperhannah@gmail.com | 📸 Instagram: hannah.attempts.teaching | 🎵 TikTok: hannah.attempts.teaching</p>
-        <p style="margin-top:0.5rem;">Science 10 – Alberta Curriculum | Updated 2025 | Interactive learning for chemical change mastery</p>
-    </footer>
+      </div>
 
-    <script>
-        // 1) Balancing equation interactive logic
-        const checkBtn = document.getElementById('checkBalanceBtn');
-        const feedbackDiv = document.getElementById('balanceFeedback');
-        function validateBalance() {
-            let ch4 = parseInt(document.getElementById('coeff_ch4').value) || 0;
-            let o2 = parseInt(document.getElementById('coeff_o2').value) || 0;
-            let co2 = parseInt(document.getElementById('coeff_co2').value) || 0;
-            let h2o = parseInt(document.getElementById('coeff_h2o').value) || 0;
+      <div style="display:flex;flex-direction:column;gap:1.25rem;">
+        <h3>Properties Comparison</h3>
+        <div class="card overflow-table">
+          <table>
+            <thead><tr><th>Property</th><th>Ionic</th><th>Molecular</th></tr></thead>
+            <tbody>
+              <tr><td style="background:#f8fafc"><strong>Elements</strong></td><td>Metal + Non-metal</td><td>Non-metals only</td></tr>
+              <tr><td style="background:#f8fafc"><strong>Bonding Type</strong></td><td>Transfer of electrons</td><td>Sharing of electrons</td></tr>
+              <tr><td style="background:#f8fafc"><strong>State at RT</strong></td><td>Solid crystal lattice</td><td>Solid, liquid, or gas</td></tr>
+              <tr><td style="background:#f8fafc"><strong>Melting Point</strong></td><td>High</td><td>Relatively low</td></tr>
+              <tr><td style="background:#f8fafc"><strong>Conductivity</strong></td><td>Conducts in solution/liquid</td><td>Does not conduct</td></tr>
+              <tr><td style="background:#f8fafc"><strong>Solubility</strong></td><td>High solubility in water</td><td>Variable solubility</td></tr>
+              <tr><td style="background:#f8fafc"><strong>Examples</strong></td><td class="td-mono">NaCl, CaCO<sub>3</sub></td><td class="td-mono">H<sub>2</sub>O, CO<sub>2</sub>, C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></td></tr>
+            </tbody>
+          </table>
+        </div>
 
-            // atoms left: C: ch4, H: 4*ch4, O: 2*o2
-            let leftC = ch4;
-            let leftH = 4 * ch4;
-            let leftO = 2 * o2;
-            // right side: C: co2, H: 2*h2o, O: 2*co2 + h2o
-            let rightC = co2;
-            let rightH = 2 * h2o;
-            let rightO = 2 * co2 + h2o;
+        <div class="card" style="padding:1.25rem;">
+          <h3 style="font-size:1rem;margin-bottom:.75rem;">Solubility Quick Rules</h3>
+          <ul style="font-size:.875rem;color:#475569;list-style:none;display:flex;flex-direction:column;gap:.4rem;">
+            <li>&bull; All Group 1 and NH<sub>4</sub><sup>+</sup> compounds are soluble.</li>
+            <li>&bull; All nitrates (NO<sub>3</sub><sup>&minus;</sup>) are always soluble.</li>
+            <li>&bull; Most chlorides are soluble (except AgCl, PbCl<sub>2</sub>).</li>
+            <li>&bull; Most sulfates are soluble (except BaSO<sub>4</sub>, PbSO<sub>4</sub>).</li>
+            <li>&bull; Most carbonates are generally insoluble (except Group 1/NH<sub>4</sub><sup>+</sup>).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-            if (ch4 === 0 && o2 === 0 && co2 === 0 && h2o === 0) {
-                feedbackDiv.innerHTML = "⚠️ Enter coefficients greater than zero to attempt balancing.";
-                feedbackDiv.style.color = "#b45309";
-                return;
-            }
-            if (leftC === rightC && leftH === rightH && leftO === rightO) {
-                feedbackDiv.innerHTML = "✅ Perfect! Balanced equation: " + ch4 + " CH₄ + " + o2 + " O₂ → " + co2 + " CO₂ + " + h2o + " H₂O. Conservation of mass achieved!";
-                feedbackDiv.style.color = "#15803d";
-            } else {
-                feedbackDiv.innerHTML = `❌ Not balanced yet. Left: C=${leftC}, H=${leftH}, O=${leftO} | Right: C=${rightC}, H=${rightH}, O=${rightO}. Hint: try CH₄=1, O₂=2, CO₂=1, H₂O=2`;
-                feedbackDiv.style.color = "#b91c1c";
-            }
-        }
-        checkBtn.addEventListener('click', validateBalance);
-        
-        // 2) Flashcards data: term / description
-        const flashcards = [
-            { term: "Law of Conservation of Mass", desc: "Matter cannot be created or destroyed in a chemical reaction; total mass of reactants = total mass of products." },
-            { term: "Ionic Compound", desc: "Metal + nonmetal; transfer of electrons; held by electrostatic forces; e.g., NaCl." },
-            { term: "Molecular Compound", desc: "Two nonmetals share electrons; e.g., CO₂, H₂O." },
-            { term: "Endothermic Reaction", desc: "Absorbs energy (heat) from surroundings; feels cold; e.g., photosynthesis." },
-            { term: "Exothermic Reaction", desc: "Releases energy (heat/light); e.g., combustion, respiration." },
-            { term: "Avogadro's Number", desc: "6.02 × 10²³ particles per mole." },
-            { term: "Synthesis Reaction", desc: "A + B → AB (two or more reactants form one product)." }
-        ];
-        const flashContainer = document.getElementById('flashcardContainer');
-        flashcards.forEach(card => {
-            const cardDiv = document.createElement('div');
-            cardDiv.className = 'flashcard';
-            cardDiv.innerHTML = `<strong>${card.term}</strong><div class="flash-answer" style="display:none;">${card.desc}</div>`;
-            cardDiv.addEventListener('click', () => {
-                const answerDiv = cardDiv.querySelector('.flash-answer');
-                if (answerDiv.style.display === 'none' || !answerDiv.style.display) {
-                    answerDiv.style.display = 'block';
-                } else {
-                    answerDiv.style.display = 'none';
-                }
-            });
-            flashContainer.appendChild(cardDiv);
-        });
+    <!-- WHMIS -->
+    <div>
+      <h3 style="margin-bottom:1rem;">WHMIS 2015 Safety Symbols</h3>
+      <div class="whmis-grid">
+        <div class="whmis-item"><div class="whmis-icon">!</div><div class="whmis-label">Flammable</div></div>
+        <div class="whmis-item"><div class="whmis-icon">!</div><div class="whmis-label">Corrosive</div></div>
+        <div class="whmis-item"><div class="whmis-icon">!</div><div class="whmis-label">Toxic</div></div>
+        <div class="whmis-item"><div class="whmis-icon">!</div><div class="whmis-label">Oxidizing</div></div>
+        <div class="whmis-item"><div class="whmis-icon">!</div><div class="whmis-label">Explosive</div></div>
+        <div class="whmis-item"><div class="whmis-icon">!</div><div class="whmis-label">Compressed Gas</div></div>
+        <div class="whmis-item"><div class="whmis-icon">!</div><div class="whmis-label">Environmental Hazard</div></div>
+        <div class="whmis-item"><div class="whmis-icon">!</div><div class="whmis-label">Biohazardous</div></div>
+      </div>
+    </div>
+  </section>
 
-        // Reaction type mini-quiz answers
-        const reactionCheckBtn = document.getElementById('checkReactionsBtn');
-        const reactionFeedbackSpan = document.getElementById('reactionFeedback');
-        function checkReactionQuiz() {
-            const q1 = document.getElementById('q1').value;
-            const q2 = document.getElementById('q2').value;
-            const q3 = document.getElementById('q3').value;
-            let correct = 0;
-            let feedbackMsg = "";
-            if (q1 === "D") { correct++; } else { feedbackMsg += "1) AB → A + B is Decomposition. "; }
-            if (q2 === "C") { correct++; } else { feedbackMsg += "2) Hydrocarbon + O₂ → CO₂ + H₂O is Combustion. "; }
-            if (q3 === "SR") { correct++; } else { feedbackMsg += "3) A + BC → AC + B is Single Replacement. "; }
-            if (correct === 3) {
-                reactionFeedbackSpan.innerHTML = "🎉 Perfect! You identified all reaction types correctly! Great job!";
-                reactionFeedbackSpan.style.color = "#0f7b3a";
-            } else {
-                reactionFeedbackSpan.innerHTML = `✅ ${correct}/3 correct. ${feedbackMsg} Review reaction type definitions.`;
-                reactionFeedbackSpan.style.color = "#b45309";
-            }
-        }
-        reactionCheckBtn.addEventListener('click', checkReactionQuiz);
-        
-        // Additional interactive: auto-update placeholder for equation display
-        // optional extra styling for fluid experience
-        const inputs = ['coeff_ch4','coeff_o2','coeff_co2','coeff_h2o'];
-        inputs.forEach(id => {
-            document.getElementById(id).addEventListener('input', () => {
-                // just clears feedback on new input
-                feedbackDiv.innerHTML = "⚡ Adjust coefficients and click 'Check Balance'";
-                feedbackDiv.style.color = "#4b5563";
-            });
-        });
-        
-        // Periodic table hint link - make all external resources open safely
-    </script>
-    <!-- Additional small style to improve flashcard visibility -->
-    <style>
-        .flashcard .flash-answer {
-            font-size: 0.8rem;
-            margin-top: 8px;
-            color: #1e4620;
-            background: #e9f5e9;
-            padding: 6px;
-            border-radius: 12px;
-        }
-        .reaction-select {
-            margin-left: 0.5rem;
-            padding: 0.25rem 0.5rem;
-            border-radius: 20px;
-            border: 1px solid #cbd5e1;
-        }
-    </style>
+  <!-- ══════════════════════════════════════════════ SECTION 4: REACTIONS -->
+  <section id="reactions">
+    <div class="section-title-row">
+      <div class="section-num">4</div>
+      <h2 class="section-heading">Chemical Reactions &amp; Equations</h2>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:2rem;">
+      <!-- Evidence of change -->
+      <div class="card">
+        <div class="card-header">Evidence of Chemical Change</div>
+        <div class="card-body" style="display:flex;flex-direction:column;gap:1rem;">
+          <div style="display:flex;gap:.75rem;align-items:flex-start;"><div style="background:#fef3c7;color:#b45309;width:1.5rem;height:1.5rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;flex-shrink:0">1</div><div><strong>Energy change:</strong> Release of light, heat, or sound (e.g., burning wood).</div></div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;"><div style="background:#fef3c7;color:#b45309;width:1.5rem;height:1.5rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;flex-shrink:0">2</div><div><strong>Formation of a gas:</strong> Bubbling (e.g., mixing baking soda and vinegar).</div></div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;"><div style="background:#fef3c7;color:#b45309;width:1.5rem;height:1.5rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;flex-shrink:0">3</div><div><strong>Formation of a precipitate:</strong> A solid forms when mixing two solutions (e.g., mixing lead nitrate and potassium iodide).</div></div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;"><div style="background:#fef3c7;color:#b45309;width:1.5rem;height:1.5rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;flex-shrink:0">4</div><div><strong>Colour change:</strong> Unexpected color appears (e.g., rusting iron).</div></div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;"><div style="background:#fef3c7;color:#b45309;width:1.5rem;height:1.5rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;flex-shrink:0">5</div><div><strong>Temperature change:</strong> Solution gets hotter (hand warmers) or colder (cold packs).</div></div>
+        </div>
+      </div>
+
+      <!-- Exo vs Endo -->
+      <div class="card">
+        <div class="card-header">Exothermic vs Endothermic</div>
+        <table>
+          <thead><tr><th style="background:#e2e8f0;color:#334155"></th><th style="color:#dc2626;background:#e2e8f0">Exothermic</th><th style="color:#2563eb;background:#e2e8f0">Endothermic</th></tr></thead>
+          <tbody>
+            <tr><td style="background:#f8fafc"><strong>Energy flow</strong></td><td>Released to surroundings</td><td>Absorbed from surroundings</td></tr>
+            <tr><td style="background:#f8fafc"><strong>Temperature change</strong></td><td>Surroundings get warmer</td><td>Surroundings get cooler</td></tr>
+            <tr><td style="background:#f8fafc"><strong>Examples</strong></td><td>Combustion, cellular respiration, neutralization, hand warmers</td><td>Photosynthesis, cold packs, baking soda + citric acid</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 5 Types -->
+    <div style="margin-bottom:2rem;">
+      <h3 style="font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:.75rem;margin-bottom:1.25rem;">5 Types of Chemical Reactions</h3>
+      <div class="grid-2">
+        <div class="rxn-card">
+          <h4>1. Synthesis (Formation)</h4>
+          <div class="rxn-type-pattern">A + B &rarr; AB</div>
+          <div class="rxn-examples">
+            &bull; 2H<sub>2</sub> + O<sub>2</sub> &rarr; 2H<sub>2</sub>O<br/>
+            &bull; N<sub>2</sub> + 3H<sub>2</sub> &rarr; 2NH<sub>3</sub><br/>
+            &bull; 2Na + Cl<sub>2</sub> &rarr; 2NaCl
+          </div>
+        </div>
+        <div class="rxn-card">
+          <h4>2. Decomposition</h4>
+          <div class="rxn-type-pattern">AB &rarr; A + B</div>
+          <div class="rxn-examples">
+            &bull; 2H<sub>2</sub>O &rarr; 2H<sub>2</sub> + O<sub>2</sub><br/>
+            &bull; 2H<sub>2</sub>O<sub>2</sub> &rarr; 2H<sub>2</sub>O + O<sub>2</sub><br/>
+            &bull; CaCO<sub>3</sub> &rarr; CaO + CO<sub>2</sub>
+          </div>
+        </div>
+        <div class="rxn-card">
+          <h4>3. Single Replacement</h4>
+          <div class="rxn-type-pattern">A + BC &rarr; AC + B</div>
+          <p style="font-size:.78rem;color:#64748b;margin-bottom:.4rem;">Metal replaces metal, or nonmetal replaces nonmetal.</p>
+          <div class="rxn-examples">
+            &bull; Zn + 2HCl &rarr; ZnCl<sub>2</sub> + H<sub>2</sub><br/>
+            &bull; 2Na + 2H<sub>2</sub>O &rarr; 2NaOH + H<sub>2</sub><br/>
+            &bull; Mg + CuSO<sub>4</sub> &rarr; MgSO<sub>4</sub> + Cu
+          </div>
+        </div>
+        <div class="rxn-card">
+          <h4>4. Double Replacement</h4>
+          <div class="rxn-type-pattern">AB + CD &rarr; AD + CB</div>
+          <div class="rxn-examples">
+            &bull; NaCl + AgNO<sub>3</sub> &rarr; AgCl + NaNO<sub>3</sub><br/>
+            &bull; BaCl<sub>2</sub> + Na<sub>2</sub>SO<sub>4</sub> &rarr; BaSO<sub>4</sub> + 2NaCl<br/>
+            &bull; HCl + NaOH &rarr; NaCl + H<sub>2</sub>O
+          </div>
+        </div>
+        <div class="rxn-card" style="grid-column:1/-1;">
+          <h4>5. Hydrocarbon Combustion</h4>
+          <div class="rxn-type-pattern">C<sub>x</sub>H<sub>y</sub> + O<sub>2</sub> &rarr; CO<sub>2</sub> + H<sub>2</sub>O</div>
+          <div class="rxn-examples">
+            &bull; Complete: CH<sub>4</sub> + 2O<sub>2</sub> &rarr; CO<sub>2</sub> + 2H<sub>2</sub>O<br/>
+            &bull; Complete: C<sub>3</sub>H<sub>8</sub> + 5O<sub>2</sub> &rarr; 3CO<sub>2</sub> + 4H<sub>2</sub>O<br/>
+            <span style="font-family:system-ui,sans-serif;font-size:.78rem;color:#64748b;font-style:italic;">Incomplete combustion (less O<sub>2</sub>) produces CO or C (soot) instead of CO<sub>2</sub>.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Balancing + Conservation -->
+    <div class="grid-2">
+      <div>
+        <h3 style="font-size:1.5rem;margin-bottom:1rem;">Balancing Chemical Equations</h3>
+        <div class="info-slate">
+          <h4 style="font-weight:700;font-size:1rem;margin-bottom:.75rem;">Step-by-Step Guide</h4>
+          <ul style="font-size:.875rem;color:#475569;list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1rem;">
+            <li><strong>Rules:</strong> Coefficients go in front; subscripts CANNOT change; same number of atoms on both sides; conservation of mass.</li>
+            <li><strong>Step 1:</strong> Write the unbalanced equation.</li>
+            <li><strong>Step 2:</strong> Count atoms of each element on both sides.</li>
+            <li><strong>Step 3:</strong> Add coefficients to balance. Tip: Balance metals first, then non-metals, then hydrogen, then oxygen last.</li>
+            <li><strong>Step 4:</strong> Recount to verify.</li>
+          </ul>
+
+          <h4 style="font-weight:700;font-size:1rem;margin-bottom:.75rem;border-top:1px solid #e2e8f0;padding-top:.75rem;">Worked Examples</h4>
+          <div style="font-family:'Courier New',monospace;font-size:.85rem;display:flex;flex-direction:column;gap:.75rem;">
+            <div><span style="color:#64748b">Ex 1: __H<sub>2</sub> + __O<sub>2</sub> &rarr; __H<sub>2</sub>O</span><br/><strong style="color:#1e3a8a">Answer: 2H<sub>2</sub> + O<sub>2</sub> &rarr; 2H<sub>2</sub>O</strong></div>
+            <div><span style="color:#64748b">Ex 2: __CH<sub>4</sub> + __O<sub>2</sub> &rarr; __CO<sub>2</sub> + __H<sub>2</sub>O</span><br/><strong style="color:#1e3a8a">Answer: CH<sub>4</sub> + 2O<sub>2</sub> &rarr; CO<sub>2</sub> + 2H<sub>2</sub>O</strong></div>
+            <div><span style="color:#64748b">Ex 3: __Fe + __O<sub>2</sub> &rarr; __Fe<sub>2</sub>O<sub>3</sub></span><br/><strong style="color:#1e3a8a">Answer: 4Fe + 3O<sub>2</sub> &rarr; 2Fe<sub>2</sub>O<sub>3</sub></strong></div>
+            <div><span style="color:#64748b">Ex 4: __Al + __HCl &rarr; __AlCl<sub>3</sub> + __H<sub>2</sub></span><br/><strong style="color:#1e3a8a">Answer: 2Al + 6HCl &rarr; 2AlCl<sub>3</sub> + 3H<sub>2</sub></strong></div>
+            <div><span style="color:#64748b">Ex 5: __C<sub>3</sub>H<sub>8</sub> + __O<sub>2</sub> &rarr; __CO<sub>2</sub> + __H<sub>2</sub>O</span><br/><strong style="color:#1e3a8a">Answer: C<sub>3</sub>H<sub>8</sub> + 5O<sub>2</sub> &rarr; 3CO<sub>2</sub> + 4H<sub>2</sub>O</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:1.25rem;">
+        <!-- Conservation of Mass -->
+        <div class="card-amber" style="border-radius:.75rem;padding:1.5rem;border:1px solid #fde68a;">
+          <h3 style="color:#78350f;margin-bottom:.75rem;">Law of Conservation of Mass</h3>
+          <p style="color:#92400e;font-size:.875rem;line-height:1.7;margin-bottom:.75rem;">
+            Lavoisier's law states that matter cannot be created or destroyed in a chemical reaction. The total mass of reactants equals the total mass of products.
+          </p>
+          <div style="background:rgba(255,255,255,.7);border:1px solid #fde68a;border-radius:.375rem;padding:.75rem 1rem;font-size:.875rem;color:#78350f;">
+            <strong>Calculation Example:</strong><br/>
+            If 10g of H<sub>2</sub> reacts completely with 80g of O<sub>2</sub>, what mass of water forms?<br/>
+            <span class="mono-line" style="display:block;margin-top:.4rem;">10g + 80g = 90g (Product)</span>
+          </div>
+        </div>
+
+        <!-- Word Equations -->
+        <div class="card">
+          <div class="card-header">Word Equations &rarr; Chemical Equations</div>
+          <div class="card-body" style="font-size:.875rem;">
+            <div class="word-eq">
+              <div class="word">"magnesium reacts with oxygen to form magnesium oxide"</div>
+              <div class="chem">2Mg + O<sub>2</sub> &rarr; 2MgO</div>
+            </div>
+            <div class="word-eq">
+              <div class="word">"hydrogen peroxide decomposes to water and oxygen gas"</div>
+              <div class="chem">2H<sub>2</sub>O<sub>2</sub> &rarr; 2H<sub>2</sub>O + O<sub>2</sub></div>
+            </div>
+            <div class="word-eq">
+              <div class="word">"sodium reacts with water to form sodium hydroxide and hydrogen gas"</div>
+              <div class="chem">2Na + 2H<sub>2</sub>O &rarr; 2NaOH + H<sub>2</sub></div>
+            </div>
+            <div class="word-eq">
+              <div class="word">"methane burns in oxygen to form carbon dioxide and water"</div>
+              <div class="chem">CH<sub>4</sub> + 2O<sub>2</sub> &rarr; CO<sub>2</sub> + 2H<sub>2</sub>O</div>
+            </div>
+            <div class="word-eq">
+              <div class="word">"aluminum reacts with iron(III) oxide to form aluminum oxide and iron"</div>
+              <div class="chem">2Al + Fe<sub>2</sub>O<sub>3</sub> &rarr; Al<sub>2</sub>O<sub>3</sub> + 2Fe</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ SECTION 5: MOLE CONCEPT -->
+  <section id="moles">
+    <div class="section-title-row">
+      <div class="section-num">5</div>
+      <h2 class="section-heading">The Mole Concept</h2>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:2rem;">
+      <!-- Primary card -->
+      <div style="background:#1e3a8a;color:#fff;border-radius:.75rem;padding:2rem;display:flex;flex-direction:column;gap:1.5rem;">
+        <div>
+          <h3 style="color:#fbbf24;margin-bottom:.5rem;">What is a Mole?</h3>
+          <p style="font-family:'Courier New',monospace;font-size:1.1rem;margin-bottom:.5rem;">1 mole = 6.02 &times; 10<sup>23</sup> particles</p>
+          <p style="font-size:.875rem;color:rgba(255,255,255,.8);line-height:1.7;">
+            This is Avogadro's number. It is the SI unit for amount of substance. Just like a "dozen" means 12 of something, a "mole" means 6.02 &times; 10<sup>23</sup> of something.
+          </p>
+        </div>
+        <div style="border-top:1px solid rgba(255,255,255,.2);padding-top:1.5rem;">
+          <h3 style="color:#fbbf24;margin-bottom:.5rem;">Molar Mass (M)</h3>
+          <p style="font-size:.875rem;color:rgba(255,255,255,.85);line-height:1.7;margin-bottom:.75rem;">
+            The mass of 1 mole of a substance in grams. It equals the atomic mass from the periodic table, measured in g/mol.
+          </p>
+          <div style="background:rgba(255,255,255,.1);border-radius:.5rem;padding:1rem;font-family:'Courier New',monospace;font-size:.85rem;line-height:2;">
+            <div>1 mol of C = 12.01 g</div>
+            <div>1 mol of H<sub>2</sub>O = 18.02 g <span style="opacity:.5">(2&times;1.01 + 16.00)</span></div>
+            <div>1 mol of NaCl = 58.44 g <span style="opacity:.5">(22.99 + 35.45)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Triangle -->
+      <div class="mole-triangle-wrap">
+        <h3 style="margin-bottom:1rem;">The Calculation Triangle</h3>
+        <svg viewBox="0 0 100 100" style="width:180px;height:180px;display:block;margin:0 auto;">
+          <polygon points="50,10 90,90 10,90" fill="#f8fafc" stroke="#1e3a8a" stroke-width="2"/>
+          <line x1="25" y1="60" x2="75" y2="60" stroke="#1e3a8a" stroke-width="2"/>
+          <line x1="50" y1="60" x2="50" y2="90" stroke="#1e3a8a" stroke-width="2"/>
+          <text x="50" y="45" text-anchor="middle" font-size="18" font-weight="bold" fill="#1e3a8a">m</text>
+          <text x="32" y="82" text-anchor="middle" font-size="18" font-weight="bold" fill="#1e3a8a">n</text>
+          <text x="68" y="82" text-anchor="middle" font-size="18" font-weight="bold" fill="#1e3a8a">M</text>
+        </svg>
+        <div class="formula-row">
+          <span>n = m / M</span>
+          <span>m = n &times; M</span>
+          <span>M = m / n</span>
+        </div>
+        <div class="formula-note">
+          n = moles (mol) &nbsp;&bull;&nbsp; m = mass (grams) &nbsp;&bull;&nbsp; M = molar mass (g/mol)
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <!-- Worked Problems -->
+      <div class="card">
+        <div class="card-header">5 Worked Mole Problems</div>
+        <div class="card-body" style="display:flex;flex-direction:column;gap:1rem;">
+          <div class="mole-problem">
+            <strong>1. How many moles is 36g of water?</strong>
+            <div class="mono-block">n = m / M = 36 / 18.02 = 2.00 mol</div>
+          </div>
+          <div class="mole-problem">
+            <strong>2. What is the mass of 3.5 mol of NaCl?</strong>
+            <div class="mono-block">m = n &times; M = 3.5 &times; 58.44 = 204.5g</div>
+          </div>
+          <div class="mole-problem">
+            <strong>3. How many molecules are in 2.5 mol of CO<sub>2</sub>?</strong>
+            <div class="mono-block">2.5 &times; 6.02&times;10<sup>23</sup> = 1.505&times;10<sup>24</sup> molecules</div>
+          </div>
+          <div class="mole-problem">
+            <strong>4. How many moles of Fe<sub>2</sub>O<sub>3</sub> contains 4.5&times;10<sup>24</sup> formula units?</strong>
+            <div class="mono-block">n = 4.5&times;10<sup>24</sup> / 6.02&times;10<sup>23</sup> = 7.47 mol</div>
+          </div>
+          <div class="mole-problem">
+            <strong>5. What is the molar mass of Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub>?</strong>
+            <div class="mono-block">
+              3(40.08) + 2(30.97 + 4&times;16.00)<br/>
+              = 120.24 + 2(94.97) = 310.18 g/mol
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stoichiometry Intro -->
+      <div class="info-slate" style="display:flex;flex-direction:column;gap:1rem;">
+        <h3>Moles and Balanced Equations</h3>
+        <p style="font-size:.875rem;color:#475569;">Introduction to stoichiometry. The coefficients in a balanced equation represent the mole ratio between reactants and products.</p>
+        <div class="card" style="text-align:center;font-family:'Courier New',monospace;font-size:1.25rem;color:#1e3a8a;padding:1.25rem;">
+          2H<sub>2</sub> + O<sub>2</sub> &rarr; 2H<sub>2</sub>O
+        </div>
+        <p style="font-size:.875rem;color:#475569;">The "2:1:2" ratio means: <strong>2 moles</strong> of H<sub>2</sub> reacts exactly with <strong>1 mole</strong> of O<sub>2</sub> to produce <strong>2 moles</strong> of H<sub>2</sub>O.</p>
+        <div style="background:#f1f5f9;padding:1rem;border-radius:.5rem;border-left:4px solid #f59e0b;font-size:.875rem;">
+          <strong>Simple Ratio Problem:</strong>
+          <p style="margin-top:.4rem;">If you start with 4 moles of O<sub>2</sub>, how many moles of H<sub>2</sub>O can you make?</p>
+          <p style="font-family:'Courier New',monospace;color:#1e3a8a;margin-top:.4rem;">Answer: Since the ratio of O<sub>2</sub> to H<sub>2</sub>O is 1:2, you multiply by 2. You can make 8 moles of H<sub>2</sub>O.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ SECTION 6: PRACTICE -->
+  <section id="practice">
+    <div class="section-title-row">
+      <div class="section-num">6</div>
+      <h2 class="section-heading">Interactive Practice &amp; Quizzes</h2>
+    </div>
+
+    <!-- ── EQUATION BALANCER ── -->
+    <div class="quiz-section" style="margin-bottom:4rem;">
+      <h3>Equation Balancer</h3>
+      <p class="desc">Adjust the coefficients to satisfy the Law of Conservation of Mass.</p>
+
+      <div class="eq-card">
+        <div class="eq-card-header">
+          <h4>Interactive Equation Balancer</h4>
+          <div class="eq-badge" id="eq-counter">Equation 1 of 8</div>
+        </div>
+        <div class="card-body">
+          <div class="eq-display" id="eq-display"></div>
+          <div class="coeff-row" id="coeff-row"></div>
+          <div class="atom-tracker">
+            <div class="atom-tracker-header">Atom Tracker</div>
+            <div class="atom-grid" id="atom-grid-head">
+              <div class="atom-grid-head">Reactants</div>
+              <div class="atom-grid-head">Element</div>
+              <div class="atom-grid-head">Products</div>
+            </div>
+            <div id="atom-tracker-body"></div>
+          </div>
+          <div class="eq-feedback" id="eq-feedback"></div>
+        </div>
+        <div class="eq-footer">
+          <button class="btn btn-outline" onclick="eqPrev()">&#8592; Previous</button>
+          <button class="btn btn-amber" onclick="eqCheck()">Check Answer</button>
+          <button class="btn btn-outline" onclick="eqNext()">Next &#8594;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── NAMING QUIZ ── -->
+    <div class="quiz-section" style="margin-bottom:4rem;">
+      <h3>IUPAC Naming</h3>
+      <p class="desc">Test your knowledge of ionic, molecular, and acid nomenclature.</p>
+
+      <div class="naming-card">
+        <div class="naming-header">
+          <h4 style="font-weight:700;font-size:1.05rem;">IUPAC Naming Practice</h4>
+          <div class="naming-score" id="naming-score">Score: 0 / 0</div>
+        </div>
+        <div class="naming-body">
+          <div class="naming-subtext">Name this compound</div>
+          <div class="naming-formula" id="naming-formula"></div>
+          <input class="naming-input" id="naming-input" type="text" placeholder="Type IUPAC name here..." autocomplete="off" />
+          <div id="naming-btn-wrap">
+            <button class="btn btn-primary" style="width:100%;max-width:340px;" onclick="namingCheck()">Submit Answer</button>
+          </div>
+          <div class="naming-feedback" id="naming-feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── REACTION CLASSIFICATION ── -->
+    <div class="quiz-section" style="margin-bottom:4rem;">
+      <h3>Reaction Types</h3>
+      <p class="desc">Identify the five major types of chemical reactions.</p>
+
+      <div class="rxn-quiz-card">
+        <div class="rxn-quiz-header">
+          <h4 style="font-weight:700;font-size:1.05rem;">Classify the Reaction</h4>
+          <div style="display:flex;align-items:center;gap:1rem;">
+            <span style="font-size:.85rem;font-weight:700;color:#d97706;background:#fef3c7;padding:.2rem .6rem;border-radius:.25rem;" id="rxn-score">Score: 0</span>
+            <span style="font-size:.8rem;font-weight:700;color:#64748b;text-transform:uppercase;" id="rxn-counter">Question 1 of 10</span>
+          </div>
+        </div>
+        <div class="rxn-display" id="rxn-display"></div>
+        <div class="rxn-body">
+          <select class="rxn-select" id="rxn-select">
+            <option value="">Select reaction type...</option>
+            <option value="Synthesis">Synthesis</option>
+            <option value="Decomposition">Decomposition</option>
+            <option value="Single Replacement">Single Replacement</option>
+            <option value="Double Replacement">Double Replacement</option>
+            <option value="Hydrocarbon Combustion">Hydrocarbon Combustion</option>
+          </select>
+          <div id="rxn-btn-wrap">
+            <button class="btn btn-amber" style="max-width:480px;width:100%;" onclick="rxnCheck()">Check Classification</button>
+          </div>
+          <div class="rxn-feedback" id="rxn-feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MOLE CALCULATIONS ── -->
+    <div class="quiz-section" style="margin-bottom:4rem;">
+      <h3>Mole Calculations</h3>
+      <p class="desc">Practice converting between mass, moles, and number of particles.</p>
+
+      <div class="mole-quiz-card">
+        <div class="mole-quiz-header">
+          <h4 style="font-weight:700;font-size:1.05rem;">Mole Calculation Practice</h4>
+          <span style="font-size:.78rem;font-weight:700;background:#e2e8f0;color:#334155;padding:.2rem .6rem;border-radius:.25rem;" id="mole-counter">Problem 1 / 8</span>
+        </div>
+        <div class="mole-quiz-body">
+          <div class="mole-q-text" id="mole-q-text"></div>
+          <div id="mole-options"></div>
+          <div id="mole-btn-wrap">
+            <button class="btn btn-primary" style="width:100%;" onclick="moleSubmit()">Submit Answer</button>
+          </div>
+          <div style="display:none;" id="mole-feedback-wrap">
+            <div class="mole-feedback" id="mole-feedback"></div>
+            <button class="btn btn-ghost" style="width:100%;" onclick="moleNext()">Next Problem &#8594;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FLASHCARDS ── -->
+    <div class="quiz-section">
+      <h3>Vocabulary Flashcards</h3>
+      <p class="desc">Review key terms for the unit exam. Click a card to flip it.</p>
+
+      <div class="flashcard-wrap">
+        <div class="flashcard" onclick="fcFlip()">
+          <div class="flashcard-inner" id="fc-inner">
+            <div class="flashcard-front" id="fc-front">
+              <span class="flashcard-term" id="fc-term"></span>
+              <span class="flashcard-hint">Click to flip</span>
+            </div>
+            <div class="flashcard-back" id="fc-back">
+              <span class="flashcard-def" id="fc-def"></span>
+            </div>
+          </div>
+        </div>
+        <div class="flashcard-nav">
+          <button class="btn btn-ghost" onclick="fcPrev()">&#8592; Prev</button>
+          <span class="fc-counter" id="fc-counter">1 / 19</span>
+          <button class="btn btn-ghost" onclick="fcNext()">Next &#8594;</button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p>Email: terkperhannah@gmail.com &nbsp;|&nbsp; Instagram: hannah.attempts.teaching &nbsp;|&nbsp; TikTok: hannah.attempts.teaching</p>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
+
+<script>
+// ═══════════════════════════════════════════════
+// EQUATION BALANCER
+// ═══════════════════════════════════════════════
+const EQ_DATA = [
+  {
+    ans: [2, 1, 2],
+    render: (c) => `${c[0]>1?c[0]:""}H<sub>2</sub> + ${c[1]>1?c[1]:""}O<sub>2</sub> &rarr; ${c[2]>1?c[2]:""}H<sub>2</sub>O`,
+    reactants: [{H:2},{O:2}], products: [{H:2,O:1}]
+  },
+  {
+    ans: [1, 2, 1, 2],
+    render: (c) => `${c[0]>1?c[0]:""}CH<sub>4</sub> + ${c[1]>1?c[1]:""}O<sub>2</sub> &rarr; ${c[2]>1?c[2]:""}CO<sub>2</sub> + ${c[3]>1?c[3]:""}H<sub>2</sub>O`,
+    reactants: [{C:1,H:4},{O:2}], products: [{C:1,O:2},{H:2,O:1}]
+  },
+  {
+    ans: [4, 3, 2],
+    render: (c) => `${c[0]>1?c[0]:""}Fe + ${c[1]>1?c[1]:""}O<sub>2</sub> &rarr; ${c[2]>1?c[2]:""}Fe<sub>2</sub>O<sub>3</sub>`,
+    reactants: [{Fe:1},{O:2}], products: [{Fe:2,O:3}]
+  },
+  {
+    ans: [2, 6, 2, 3],
+    render: (c) => `${c[0]>1?c[0]:""}Al + ${c[1]>1?c[1]:""}HCl &rarr; ${c[2]>1?c[2]:""}AlCl<sub>3</sub> + ${c[3]>1?c[3]:""}H<sub>2</sub>`,
+    reactants: [{Al:1},{H:1,Cl:1}], products: [{Al:1,Cl:3},{H:2}]
+  },
+  {
+    ans: [2, 2, 2, 1],
+    render: (c) => `${c[0]>1?c[0]:""}Na + ${c[1]>1?c[1]:""}H<sub>2</sub>O &rarr; ${c[2]>1?c[2]:""}NaOH + ${c[3]>1?c[3]:""}H<sub>2</sub>`,
+    reactants: [{Na:1},{H:2,O:1}], products: [{Na:1,O:1,H:1},{H:2}]
+  },
+  {
+    ans: [1, 5, 3, 4],
+    render: (c) => `${c[0]>1?c[0]:""}C<sub>3</sub>H<sub>8</sub> + ${c[1]>1?c[1]:""}O<sub>2</sub> &rarr; ${c[2]>1?c[2]:""}CO<sub>2</sub> + ${c[3]>1?c[3]:""}H<sub>2</sub>O`,
+    reactants: [{C:3,H:8},{O:2}], products: [{C:1,O:2},{H:2,O:1}]
+  },
+  {
+    ans: [1, 3, 2],
+    render: (c) => `${c[0]>1?c[0]:""}N<sub>2</sub> + ${c[1]>1?c[1]:""}H<sub>2</sub> &rarr; ${c[2]>1?c[2]:""}NH<sub>3</sub>`,
+    reactants: [{N:2},{H:2}], products: [{N:1,H:3}]
+  },
+  {
+    ans: [1, 2, 1, 1],
+    render: (c) => `${c[0]>1?c[0]:""}Mg + ${c[1]>1?c[1]:""}HCl &rarr; ${c[2]>1?c[2]:""}MgCl<sub>2</sub> + ${c[3]>1?c[3]:""}H<sub>2</sub>`,
+    reactants: [{Mg:1},{H:1,Cl:1}], products: [{Mg:1,Cl:2},{H:2}]
+  }
+];
+
+let eqIdx = 0;
+let eqCoeffs = [];
+
+function eqInit() {
+  const eq = EQ_DATA[eqIdx];
+  eqCoeffs = new Array(eq.ans.length).fill(1);
+  document.getElementById('eq-counter').textContent = `Equation ${eqIdx+1} of ${EQ_DATA.length}`;
+  document.getElementById('eq-feedback').className = 'eq-feedback';
+  document.getElementById('eq-feedback').textContent = '';
+  renderEqDisplay();
+  renderCoeffSelects();
+  renderAtomTracker();
+}
+
+function renderEqDisplay() {
+  document.getElementById('eq-display').innerHTML = EQ_DATA[eqIdx].render(eqCoeffs);
+}
+
+function renderCoeffSelects() {
+  const eq = EQ_DATA[eqIdx];
+  const row = document.getElementById('coeff-row');
+  row.innerHTML = '';
+  eqCoeffs.forEach((c, i) => {
+    const div = document.createElement('div');
+    div.className = 'coeff-item';
+    const options = [1,2,3,4,5,6,7,8,9].map(n => `<option value="${n}"${c===n?' selected':''}>${n}</option>`).join('');
+    div.innerHTML = `<div class="coeff-label">Position ${i+1}</div><select class="coeff-select" onchange="eqUpdateCoeff(${i},this.value)">${options}</select>`;
+    row.appendChild(div);
+  });
+}
+
+function eqUpdateCoeff(i, val) {
+  eqCoeffs[i] = parseInt(val, 10);
+  renderEqDisplay();
+  renderAtomTracker();
+  document.getElementById('eq-feedback').className = 'eq-feedback';
+}
+
+function getAtomCounts(parts, coeffsList) {
+  const counts = {};
+  parts.forEach((part, i) => {
+    const coeff = coeffsList[i] || 1;
+    Object.entries(part).forEach(([atom, cnt]) => {
+      counts[atom] = (counts[atom]||0) + cnt * coeff;
+    });
+  });
+  return counts;
+}
+
+function renderAtomTracker() {
+  const eq = EQ_DATA[eqIdx];
+  const rCoeffs = eqCoeffs.slice(0, eq.reactants.length);
+  const pCoeffs = eqCoeffs.slice(eq.reactants.length);
+  const rCounts = getAtomCounts(eq.reactants, rCoeffs);
+  const pCounts = getAtomCounts(eq.products, pCoeffs);
+  const atoms = Array.from(new Set([...Object.keys(rCounts),...Object.keys(pCounts)])).sort();
+  const body = document.getElementById('atom-tracker-body');
+  body.innerHTML = '';
+  atoms.forEach(atom => {
+    const r = rCounts[atom]||0, p = pCounts[atom]||0;
+    const bal = r === p;
+    body.innerHTML += `
+      <div class="atom-grid">
+        <div class="atom-cell ${bal?'balanced-atom':'unbalanced-atom'}">${r}</div>
+        <div class="atom-cell" style="font-weight:700">${atom}</div>
+        <div class="atom-cell ${bal?'balanced-atom':'unbalanced-atom'}">${p}</div>
+      </div>`;
+  });
+}
+
+function eqCheck() {
+  const eq = EQ_DATA[eqIdx];
+  const isCorrect = eqCoeffs.every((v, i) => v === eq.ans[i]);
+  const fb = document.getElementById('eq-feedback');
+  if (isCorrect) {
+    fb.className = 'eq-feedback correct';
+    fb.textContent = 'Perfectly balanced! Great job.';
+  } else {
+    fb.className = 'eq-feedback incorrect';
+    fb.textContent = 'Not quite. Check your atom counts on both sides.';
+  }
+}
+
+function eqNext() { eqIdx = (eqIdx+1) % EQ_DATA.length; eqInit(); }
+function eqPrev() { eqIdx = (eqIdx-1+EQ_DATA.length) % EQ_DATA.length; eqInit(); }
+
+// ═══════════════════════════════════════════════
+// NAMING QUIZ
+// ═══════════════════════════════════════════════
+const NAMING_QS = [
+  { f: "NaCl", a: "sodium chloride" },
+  { f: "FeCl<sub>3</sub>", a: "iron(iii) chloride" },
+  { f: "CuO", a: "copper(ii) oxide" },
+  { f: "K<sub>2</sub>SO<sub>4</sub>", a: "potassium sulfate" },
+  { f: "MgO", a: "magnesium oxide" },
+  { f: "Al<sub>2</sub>O<sub>3</sub>", a: "aluminum oxide" },
+  { f: "CO<sub>2</sub>", a: "carbon dioxide" },
+  { f: "N<sub>2</sub>O", a: "dinitrogen monoxide" },
+  { f: "PCl<sub>3</sub>", a: "phosphorus trichloride" },
+  { f: "H<sub>2</sub>SO<sub>4</sub>", a: "sulfuric acid" },
+  { f: "HCl", a: "hydrochloric acid" },
+  { f: "NaOH", a: "sodium hydroxide" },
+  { f: "Ca(NO<sub>3</sub>)<sub>2</sub>", a: "calcium nitrate" },
+  { f: "(NH<sub>4</sub>)<sub>2</sub>CO<sub>3</sub>", a: "ammonium carbonate" },
+  { f: "Fe<sub>2</sub>O<sub>3</sub>", a: "iron(iii) oxide" }
+];
+
+let namingIdx = 0;
+let namingScore = { correct: 0, total: 0 };
+let namingAnswered = false;
+
+function namingInit() {
+  document.getElementById('naming-formula').innerHTML = NAMING_QS[namingIdx].f;
+  const inp = document.getElementById('naming-input');
+  inp.value = '';
+  inp.disabled = false;
+  document.getElementById('naming-feedback').className = 'naming-feedback';
+  document.getElementById('naming-btn-wrap').innerHTML = `<button class="btn btn-primary" style="width:100%;max-width:340px;" onclick="namingCheck()">Submit Answer</button>`;
+  namingAnswered = false;
+}
+
+function namingCheck() {
+  if (namingAnswered) return;
+  const inp = document.getElementById('naming-input');
+  const answer = inp.value.toLowerCase().replace(/\s+/g,' ').trim();
+  const correct = NAMING_QS[namingIdx].a;
+  const isCorrect = answer === correct;
+  namingAnswered = true;
+  namingScore.total++;
+  if (isCorrect) namingScore.correct++;
+  document.getElementById('naming-score').textContent = `Score: ${namingScore.correct} / ${namingScore.total}`;
+  inp.disabled = true;
+  const fb = document.getElementById('naming-feedback');
+  if (isCorrect) {
+    fb.className = 'naming-feedback correct';
+    fb.innerHTML = '<strong>Correct!</strong>';
+  } else {
+    fb.className = 'naming-feedback incorrect';
+    fb.innerHTML = `<strong>Incorrect.</strong> The correct name is: <strong>${correct}</strong>`;
+  }
+  document.getElementById('naming-btn-wrap').innerHTML = `<button class="btn btn-ghost" style="width:100%;max-width:340px;" onclick="namingNext()">Next Question &#8594;</button>`;
+}
+
+function namingNext() {
+  namingIdx = (namingIdx+1) % NAMING_QS.length;
+  namingInit();
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && document.activeElement === document.getElementById('naming-input')) {
+    if (!namingAnswered) namingCheck();
+  }
+});
+
+// ═══════════════════════════════════════════════
+// REACTION CLASSIFICATION
+// ═══════════════════════════════════════════════
+const RXN_QS = [
+  { eq: "2H<sub>2</sub> + O<sub>2</sub> &rarr; 2H<sub>2</sub>O", type: "Synthesis" },
+  { eq: "CaCO<sub>3</sub> &rarr; CaO + CO<sub>2</sub>", type: "Decomposition" },
+  { eq: "Zn + 2HCl &rarr; ZnCl<sub>2</sub> + H<sub>2</sub>", type: "Single Replacement" },
+  { eq: "NaCl + AgNO<sub>3</sub> &rarr; AgCl + NaNO<sub>3</sub>", type: "Double Replacement" },
+  { eq: "CH<sub>4</sub> + 2O<sub>2</sub> &rarr; CO<sub>2</sub> + 2H<sub>2</sub>O", type: "Hydrocarbon Combustion" },
+  { eq: "N<sub>2</sub> + 3H<sub>2</sub> &rarr; 2NH<sub>3</sub>", type: "Synthesis" },
+  { eq: "2H<sub>2</sub>O<sub>2</sub> &rarr; 2H<sub>2</sub>O + O<sub>2</sub>", type: "Decomposition" },
+  { eq: "2Na + 2H<sub>2</sub>O &rarr; 2NaOH + H<sub>2</sub>", type: "Single Replacement" },
+  { eq: "BaCl<sub>2</sub> + Na<sub>2</sub>SO<sub>4</sub> &rarr; BaSO<sub>4</sub> + 2NaCl", type: "Double Replacement" },
+  { eq: "C<sub>3</sub>H<sub>8</sub> + 5O<sub>2</sub> &rarr; 3CO<sub>2</sub> + 4H<sub>2</sub>O", type: "Hydrocarbon Combustion" }
+];
+
+let rxnIdx = 0;
+let rxnScore = 0;
+let rxnAnswered = false;
+
+function rxnInit() {
+  document.getElementById('rxn-display').innerHTML = RXN_QS[rxnIdx].eq;
+  document.getElementById('rxn-counter').textContent = `Question ${rxnIdx+1} of ${RXN_QS.length}`;
+  document.getElementById('rxn-select').value = '';
+  document.getElementById('rxn-select').disabled = false;
+  document.getElementById('rxn-feedback').className = 'rxn-feedback';
+  document.getElementById('rxn-btn-wrap').innerHTML = `<button class="btn btn-amber" style="max-width:480px;width:100%;" onclick="rxnCheck()">Check Classification</button>`;
+  rxnAnswered = false;
+}
+
+function rxnCheck() {
+  if (rxnAnswered) return;
+  const sel = document.getElementById('rxn-select').value;
+  if (!sel) return;
+  const isCorrect = sel === RXN_QS[rxnIdx].type;
+  rxnAnswered = true;
+  if (isCorrect) { rxnScore++; document.getElementById('rxn-score').textContent = `Score: ${rxnScore}`; }
+  document.getElementById('rxn-select').disabled = true;
+  const fb = document.getElementById('rxn-feedback');
+  if (isCorrect) {
+    fb.className = 'rxn-feedback correct';
+    fb.textContent = 'Correct! Well done.';
+  } else {
+    fb.className = 'rxn-feedback incorrect';
+    fb.textContent = `Incorrect. The correct type is ${RXN_QS[rxnIdx].type}.`;
+  }
+  document.getElementById('rxn-btn-wrap').innerHTML = `<button class="btn btn-outline" style="max-width:480px;width:100%;" onclick="rxnNext()">Continue &#8594;</button>`;
+}
+
+function rxnNext() {
+  rxnIdx = (rxnIdx+1) % RXN_QS.length;
+  rxnInit();
+}
+
+// ═══════════════════════════════════════════════
+// MOLE CALCULATIONS
+// ═══════════════════════════════════════════════
+const MOLE_QS = [
+  { q: "How many moles are in 44g of CO<sub>2</sub>?", opts: ["0.5 mol","1.0 mol","2.0 mol","4.0 mol"], ans: "1.0 mol", hint: "n = m / M = 44g / 44.01 g/mol = 1.0 mol" },
+  { q: "What is the mass of 0.5 mol of NaCl?", opts: ["14.6g","29.2g","58.4g","116.8g"], ans: "29.2g", hint: "m = n \u00d7 M = 0.5 mol \u00d7 58.44 g/mol = 29.2g" },
+  { q: "How many molecules in 1.0 mol of H<sub>2</sub>O?", opts: ["1.0 \u00d7 10\u00b2\u00b2","3.01 \u00d7 10\u00b2\u00b3","6.02 \u00d7 10\u00b2\u00b3","1.20 \u00d7 10\u00b2\u2074"], ans: "6.02 \u00d7 10\u00b2\u00b3", hint: "1 mole always contains Avogadro's number (6.02 \u00d7 10\u00b2\u00b3) of particles." },
+  { q: "What is the molar mass of H<sub>2</sub>SO<sub>4</sub>?", opts: ["49 g/mol","98 g/mol","147 g/mol","196 g/mol"], ans: "98 g/mol", hint: "2(1.01) + 32.07 + 4(16.00) = 98.09 g/mol \u2248 98 g/mol" },
+  { q: "How many moles are in 2.0 \u00d7 10\u00b2\u2074 atoms of He?", opts: ["1.0 mol","2.0 mol","3.32 mol","4.0 mol"], ans: "3.32 mol", hint: "n = N / N\u2090 = 2.0 \u00d7 10\u00b2\u2074 / 6.02 \u00d7 10\u00b2\u00b3 = 3.32 mol" },
+  { q: "What is the mass of 2.0 mol of glucose (C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>)?", opts: ["90g","180g","360g","540g"], ans: "360g", hint: "Molar mass of glucose = 180.18 g/mol. Mass = 2.0 \u00d7 180.18 = 360.36g \u2248 360g" },
+  { q: "How many formula units are in 3.0 mol of NaCl?", opts: ["3.0 \u00d7 10\u00b2\u00b3","6.02 \u00d7 10\u00b2\u00b3","1.81 \u00d7 10\u00b2\u2074","3.61 \u00d7 10\u00b2\u2074"], ans: "1.81 \u00d7 10\u00b2\u2074", hint: "N = n \u00d7 N\u2090 = 3.0 \u00d7 6.02 \u00d7 10\u00b2\u00b3 = 1.806 \u00d7 10\u00b2\u2074" },
+  { q: "Find the number of moles if you have 27g of Al (molar mass 26.98 g/mol).", opts: ["0.5 mol","1.0 mol","1.5 mol","2.0 mol"], ans: "1.0 mol", hint: "n = m / M = 27g / 26.98 g/mol \u2248 1.0 mol" }
+];
+
+let moleIdx = 0;
+let moleSelected = '';
+
+function moleInit() {
+  const q = MOLE_QS[moleIdx];
+  document.getElementById('mole-counter').textContent = `Problem ${moleIdx+1} / ${MOLE_QS.length}`;
+  document.getElementById('mole-q-text').innerHTML = q.q;
+  moleSelected = '';
+  const opts = document.getElementById('mole-options');
+  opts.innerHTML = '';
+  q.opts.forEach((opt, i) => {
+    const div = document.createElement('div');
+    div.className = 'radio-option';
+    div.id = `mole-opt-${i}`;
+    div.innerHTML = `<input type="radio" name="mole-radio" id="mole-r-${i}" value="${opt}" onchange="moleSelect('${opt}',${i})"><label for="mole-r-${i}" style="flex-grow:1;cursor:pointer;font-size:1rem;">${opt}</label>`;
+    opts.appendChild(div);
+  });
+  document.getElementById('mole-btn-wrap').style.display = '';
+  document.getElementById('mole-feedback-wrap').style.display = 'none';
+}
+
+function moleSelect(val, idx) {
+  moleSelected = val;
+  MOLE_QS[moleIdx].opts.forEach((_,i) => {
+    const el = document.getElementById(`mole-opt-${i}`);
+    if (el) el.className = i===idx ? 'radio-option selected' : 'radio-option';
+  });
+}
+
+function moleSubmit() {
+  if (!moleSelected) return;
+  const q = MOLE_QS[moleIdx];
+  const isCorrect = moleSelected === q.ans;
+  document.getElementById('mole-btn-wrap').style.display = 'none';
+  document.getElementById('mole-feedback-wrap').style.display = '';
+  const fb = document.getElementById('mole-feedback');
+  if (isCorrect) {
+    fb.className = 'mole-feedback correct';
+    fb.innerHTML = `<strong>Correct!</strong><div class="mole-hint" style="background:rgba(255,255,255,.5);border-radius:.375rem;margin-top:.5rem;"><strong>Solution:</strong> ${q.hint}</div>`;
+  } else {
+    fb.className = 'mole-feedback incorrect';
+    fb.innerHTML = `<strong>Incorrect.</strong><div class="mole-hint" style="background:rgba(255,255,255,.5);border-radius:.375rem;margin-top:.5rem;"><strong>Solution:</strong> ${q.hint}</div>`;
+  }
+  document.querySelectorAll('input[name="mole-radio"]').forEach(r => r.disabled = true);
+}
+
+function moleNext() {
+  moleIdx = (moleIdx+1) % MOLE_QS.length;
+  moleInit();
+}
+
+// ═══════════════════════════════════════════════
+// FLASHCARDS
+// ═══════════════════════════════════════════════
+const FC_TERMS = [
+  { term: "Atom", def: "The smallest particle of an element that retains the properties of that element." },
+  { term: "Element", def: "A pure substance that cannot be broken down into simpler substances by chemical means." },
+  { term: "Compound", def: "A pure substance formed from two or more elements chemically combined in fixed proportions." },
+  { term: "Ion", def: "An atom or group of atoms that has a positive or negative charge due to loss or gain of electrons." },
+  { term: "Cation", def: "A positively charged ion formed when a metal atom loses one or more electrons." },
+  { term: "Anion", def: "A negatively charged ion formed when a non-metal atom gains one or more electrons." },
+  { term: "Ionic Bond", def: "The electrostatic attraction between oppositely charged ions in a chemical compound." },
+  { term: "Covalent Bond", def: "A chemical bond formed when two non-metal atoms share pairs of electrons." },
+  { term: "Mole", def: "The SI unit for amount of substance, equal to 6.02 \u00d7 10\u00b2\u00b3 particles." },
+  { term: "Avogadro's Number", def: "The number of representative particles in one mole: 6.02 \u00d7 10\u00b2\u00b3." },
+  { term: "IUPAC", def: "International Union of Pure and Applied Chemistry; the organization that sets rules for naming compounds." },
+  { term: "Molar Mass", def: "The mass of one mole of a pure substance, expressed in g/mol." },
+  { term: "Balanced Equation", def: "A chemical equation with the same number of atoms of each element on both reactant and product sides." },
+  { term: "Coefficient", def: "A whole number placed in front of a formula in a chemical equation to balance it." },
+  { term: "Subscript", def: "A small number written below and to the right of an element symbol indicating the number of atoms." },
+  { term: "Reactant", def: "A starting substance in a chemical reaction." },
+  { term: "Product", def: "A substance formed as the result of a chemical reaction." },
+  { term: "Exothermic", def: "A process that releases energy, usually in the form of heat, to the surroundings." },
+  { term: "Endothermic", def: "A process that absorbs energy from the surroundings." },
+  { term: "Precipitate", def: "A solid that forms from a solution during a chemical reaction." }
+];
+
+let fcIdx = 0;
+let fcFlipped = false;
+
+function fcRender() {
+  document.getElementById('fc-term').textContent = FC_TERMS[fcIdx].term;
+  document.getElementById('fc-def').textContent = FC_TERMS[fcIdx].def;
+  document.getElementById('fc-counter').textContent = `${fcIdx+1} / ${FC_TERMS.length}`;
+  document.getElementById('fc-inner').className = 'flashcard-inner' + (fcFlipped ? ' flipped' : '');
+}
+
+function fcFlip() {
+  fcFlipped = !fcFlipped;
+  document.getElementById('fc-inner').className = 'flashcard-inner' + (fcFlipped ? ' flipped' : '');
+}
+
+function fcNext() {
+  fcFlipped = false;
+  document.getElementById('fc-inner').className = 'flashcard-inner';
+  setTimeout(() => { fcIdx = (fcIdx+1) % FC_TERMS.length; fcRender(); }, 150);
+}
+
+function fcPrev() {
+  fcFlipped = false;
+  document.getElementById('fc-inner').className = 'flashcard-inner';
+  setTimeout(() => { fcIdx = (fcIdx-1+FC_TERMS.length) % FC_TERMS.length; fcRender(); }, 150);
+}
+
+// ═══════════════════════════════════════════════
+// BOOT
+// ═══════════════════════════════════════════════
+eqInit();
+namingInit();
+rxnInit();
+moleInit();
+fcRender();
+</script>
 </body>
 </html>
