@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css">
+    <style>
+        /* Consistent with main course pages */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+
+        .content-box {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+
+        .content-box h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+
+        .units-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+
+        .unit-card {
+            padding: 20px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            transition: transform 0.3s ease;
+            border: 1px solid #e0e0e0;
+            text-decoration: none;
+            color: #34495e;
+        }
+
+
+        .unit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+
+        .unit-card h3 {
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+
+        .unit-card p {
+            line-height: 1.5;
+        }
+
+
+        .outcomes-list {
+            columns: 2;
+            gap: 30px;
+            padding-left: 20px;
+        }
+
+
+        .outcomes-list li {
+            margin-bottom: 12px;
+            break-inside: avoid;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 25px;
+        }
+
+
+        .outcomes-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #2ecc71;
+        }
+
+
+        .resources-box {
+            background: #f8f9fa;
+            border-color: #2ecc71;
+        }
+
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 6px;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: #34495e;
+            border: 1px solid #e0e0e0;
+        }
+
+
+        .resource-link:hover {
+            transform: translateX(5px);
+            border-color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <div id="navbar-placeholder"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      })
+      .catch(err => console.error("Navbar failed to load:", err));
+  });
+</script>
+
+<title>Ecosystems &amp; Population Change &mdash; Ms. Terkper's Digital Classroom</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,sans-serif;background:#f7fee7;color:#0f172a;line-height:1.6}
+
+/* SITE HEADER */
+.site-header{background:linear-gradient(135deg,#2a9d8f 0%,#3b82f6 100%);text-align:center;padding:2rem 1rem}
+.site-header h1{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:700;color:#fff;letter-spacing:-.02em}
+
+/* SITE NAV */
+.site-nav{background:#3b82f6;display:flex;flex-wrap:wrap;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.site-nav a{color:#fff;text-decoration:none;padding:.75rem 1.25rem;font-size:.875rem;font-weight:500;white-space:nowrap;transition:background .2s}
+.site-nav a:hover{background:#2563eb}
+
+/* UNIT NAV */
+.unit-nav{background:#fff;border-bottom:1px solid #bef264;position:sticky;top:0;z-index:200;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.unit-nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;flex-wrap:nowrap;overflow-x:auto;padding:0 1rem;scrollbar-width:none}
+.unit-nav-inner::-webkit-scrollbar{display:none}
+.unit-nav-brand{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.9rem;color:#4d7c0f;padding:.75rem 1rem .75rem 0;margin-right:.5rem;border-right:1px solid #bef264;flex-shrink:0;white-space:nowrap}
+.unit-nav a{color:#475569;text-decoration:none;padding:.75rem .85rem;font-size:.78rem;font-weight:600;white-space:nowrap;transition:color .2s;border-bottom:2px solid transparent}
+.unit-nav a:hover{color:#4d7c0f;border-bottom-color:#84cc16}
+
+/* LAYOUT */
+main{max-width:1200px;margin:0 auto;padding:2.5rem 1rem 8rem;display:flex;flex-direction:column;gap:5rem}
+
+h2.sh{font-family:Georgia,serif;font-size:2rem;font-weight:700;color:#0f172a}
+h3{font-family:Georgia,serif;font-size:1.2rem;font-weight:700;color:#1e293b}
+.section-row{display:flex;align-items:center;gap:1rem;border-bottom:2px solid #bef264;padding-bottom:1rem;margin-bottom:2rem}
+.snum{width:2.5rem;height:2.5rem;border-radius:.5rem;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.2rem;flex-shrink:0;color:#fff;background:#4d7c0f}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#1a2e05 0%,#365314 55%,#3f6212 100%);color:#fff;border-radius:1.25rem;padding:3rem;border-bottom:8px solid #84cc16;position:relative;overflow:hidden;margin-bottom:2rem}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:320px;height:320px;background:rgba(255,255,255,.04);border-radius:50%}
+.hero .badge{display:inline-block;background:rgba(255,255,255,.12);color:#d9f99d;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .9rem;border-radius:9999px;margin-bottom:1.25rem}
+.hero h1{font-family:Georgia,serif;font-size:clamp(1.75rem,4vw,3.25rem);font-weight:700;line-height:1.2;margin-bottom:.5rem;position:relative;z-index:1}
+.hero p{color:rgba(255,255,255,.8);font-size:1.05rem;position:relative;z-index:1}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
+.g4{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem}
+
+/* CARDS */
+.card{background:#fff;border:1px solid #bef264;border-radius:.875rem;overflow:hidden}
+.card-hd{background:#f7fee7;border-bottom:1px solid #bef264;padding:1rem 1.25rem;font-weight:700;font-size:.95rem}
+.card-bd{padding:1.25rem}
+.cl-olive{border-left:4px solid #65a30d}
+.cl-green{border-left:4px solid #16a34a}
+.cl-blue{border-left:4px solid #3b82f6}
+.cl-amber{border-left:4px solid #f59e0b}
+.cl-red{border-left:4px solid #dc2626}
+.cl-purple{border-left:4px solid #7c3aed}
+.cl-teal{border-left:4px solid #0d9488}
+.cl-brown{border-left:4px solid #92400e}
+
+/* INFO BOXES */
+.info-olive{background:#f7fee7;border:1px solid #bef264;border-radius:.75rem;padding:1.25rem}
+.info-green{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:.75rem;padding:1.25rem}
+.info-amber{background:#fffbeb;border:1px solid #fde68a;border-radius:.75rem;padding:1.25rem}
+.info-red{background:#fef2f2;border:1px solid #fecaca;border-radius:.75rem;padding:1.25rem}
+.info-purple{background:#faf5ff;border:1px solid #e9d5ff;border-radius:.75rem;padding:1.25rem}
+.info-slate{background:#f8fafc;border:1px solid #e2e8f0;border-radius:.75rem;padding:1.25rem}
+.info-blue{background:#eff6ff;border:1px solid #bfdbfe;border-radius:.75rem;padding:1.25rem}
+
+/* TABLES */
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{background:#365314;color:#fff;padding:.65rem 1rem;text-align:left;font-weight:600}
+td{padding:.65rem 1rem;border-bottom:1px solid #ecfccb;vertical-align:top}
+tr:hover td{background:#f7fee7}
+tr:last-child td{border-bottom:none}
+.ot{overflow-x:auto}
+
+/* STEP LIST */
+.step-list{display:flex;flex-direction:column;gap:.75rem}
+.step{display:flex;gap:.75rem;align-items:flex-start}
+.step-num{background:#4d7c0f;color:#fff;width:1.75rem;height:1.75rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;flex-shrink:0}
+
+/* BADGE */
+.badge{display:inline-block;background:#ecfccb;color:#4d7c0f;border-radius:9999px;padding:.25rem .75rem;font-size:.8rem;font-weight:500;margin:.2rem}
+
+/* FOOTER */
+footer{background:#0f172a;border-top:4px solid #22c55e;text-align:center;padding:1.25rem 1rem}
+footer p{color:#cbd5e1;font-size:.875rem}
+
+/* BACK TO TOP */
+.btt{position:fixed;bottom:2rem;right:2rem;background:#4d7c0f;color:#fff;border:none;border-radius:50%;width:3rem;height:3rem;font-size:1.5rem;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.2);z-index:300;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.btt:hover{transform:scale(1.12)}
+
+/* BUTTONS */
+.btn{cursor:pointer;font-weight:600;border:none;border-radius:.5rem;padding:.6rem 1.5rem;transition:all .2s}
+.btn-olive{background:#4d7c0f;color:#fff}
+.btn-olive:hover{background:#365314}
+.btn-outline{background:#fff;color:#334155;border:1px solid #bef264}
+.btn-outline:hover{background:#f7fee7}
+.btn-lg{padding:.75rem 2rem;font-size:1rem}
+
+/* ════ HIERARCHY EXPLORER ════ */
+.hier-levels{display:flex;flex-direction:column;gap:.75rem}
+.hier-level{border-radius:.75rem;padding:1rem 1.5rem;cursor:pointer;transition:all .2s;border:2px solid transparent}
+.hier-level:hover,.hier-level.active{transform:translateX(8px);box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.hier-l1{background:linear-gradient(135deg,#166534,#16a34a);color:#fff}
+.hier-l2{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff}
+.hier-l3{background:linear-gradient(135deg,#7c2d12,#ea580c);color:#fff}
+.hier-l4{background:linear-gradient(135deg,#581c87,#9333ea);color:#fff}
+.hier-level-name{font-weight:700;font-size:1rem}
+.hier-level-def{font-size:.8rem;opacity:.8;margin-top:.2rem}
+.hier-info{background:#fff;border:1px solid #bef264;border-radius:.875rem;padding:1.5rem;min-height:200px}
+
+/* ════ ZONES ════ */
+.zone-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.25rem}
+.zone-tab{padding:.45rem 1rem;border-radius:.5rem;font-size:.82rem;font-weight:700;cursor:pointer;border:2px solid #bef264;background:#fff;color:#64748b;transition:all .2s}
+.zone-tab.active,.zone-tab:hover{color:#fff;border-color:transparent}
+.zone-content{display:none}
+.zone-content.active{display:block}
+
+/* ════ TAXONOMY DRILL ════ */
+.tax-bar{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.25rem;align-items:center}
+.tax-node{padding:.3rem .8rem;border-radius:9999px;font-size:.78rem;font-weight:700;color:#fff;white-space:nowrap}
+.tax-arrow{color:#64748b;font-size:.9rem}
+.tax-info{background:#fff;border:1px solid #bef264;border-radius:.875rem;padding:1.5rem}
+
+/* ════ EVOLUTION COMPARISON ════ */
+.evo-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.evo-card{border-radius:.875rem;overflow:hidden}
+.evo-card-hd{padding:1rem 1.25rem;font-weight:700;font-size:1rem;color:#fff}
+.evo-card-bd{padding:1.25rem;font-size:.875rem;color:#475569;display:flex;flex-direction:column;gap:.75rem;background:#fff;border:1px solid #bef264;border-top:none}
+.evo-row{display:flex;gap:.5rem;align-items:flex-start;padding:.6rem .875rem;border-radius:.5rem;background:#f7fee7;font-size:.85rem}
+.evo-icon{font-size:1rem;flex-shrink:0}
+
+/* ════ EVIDENCE TABS ════ */
+.evid-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.evid-tab{padding:.5rem 1.1rem;border-radius:.5rem;font-size:.82rem;font-weight:700;cursor:pointer;border:2px solid #bef264;background:#fff;color:#64748b;transition:all .2s}
+.evid-tab.active{background:#365314;color:#fff;border-color:#365314}
+.evid-tab:hover:not(.active){background:#f7fee7;color:#4d7c0f}
+.evid-content{display:none}
+.evid-content.active{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+
+/* ════ NATURAL SELECTION SIM ════ */
+.sim-wrap{background:#fff;border:1px solid #bef264;border-radius:1rem;overflow:hidden}
+.sim-controls{background:#f7fee7;padding:1rem 1.5rem;border-bottom:1px solid #bef264;display:flex;flex-wrap:wrap;gap:1.5rem;align-items:flex-end}
+.ctrl{display:flex;flex-direction:column;gap:.3rem;min-width:160px}
+.ctrl label{font-size:.75rem;font-weight:600;color:#64748b;display:flex;justify-content:space-between}
+.ctrl label span{color:#4d7c0f;font-family:'Courier New',monospace}
+.sim-canvas-area{padding:1.5rem;display:flex;flex-wrap:wrap;gap:1.5rem}
+.gen-bars{flex:1;min-width:280px;display:flex;flex-direction:column;gap:.5rem}
+.gen-row{display:flex;align-items:center;gap:.75rem}
+.gen-label{font-size:.75rem;font-weight:600;color:#64748b;width:4.5rem;flex-shrink:0;font-family:'Courier New',monospace}
+.gen-bar-wrap{flex:1;background:#e2e8f0;border-radius:9999px;height:1.35rem;overflow:hidden;position:relative}
+.gen-bar-A{height:100%;background:linear-gradient(90deg,#16a34a,#4ade80);border-radius:9999px;transition:width .4s}
+.gen-bar-B{position:absolute;top:0;height:100%;background:linear-gradient(90deg,#dc2626,#f87171);border-radius:9999px;transition:all .4s}
+.gen-pct{font-size:.72rem;font-family:'Courier New',monospace;font-weight:700;width:3rem;text-align:right;flex-shrink:0}
+
+/* ════ QUIZ ════ */
+.quiz-wrap{max-width:700px;margin:0 auto}
+.q-card{background:#fff;border:1px solid #bef264;border-radius:.875rem;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.q-header{background:#f7fee7;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #bef264}
+.q-header h4{font-weight:700;font-size:1rem}
+.q-prog{font-size:.78rem;font-weight:700;color:#64748b;text-transform:uppercase}
+.q-score{background:#4d7c0f;color:#fff;font-size:.78rem;font-weight:700;padding:.2rem .6rem;border-radius:9999px}
+.q-body{padding:1.5rem}
+.q-text{font-size:1rem;color:#0f172a;margin-bottom:1.25rem;line-height:1.6}
+.q-options{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1rem}
+.q-opt{display:flex;align-items:center;gap:.75rem;padding:.85rem 1rem;border:2px solid #bef264;border-radius:.625rem;cursor:pointer;transition:all .2s;font-size:.9rem}
+.q-opt:hover{border-color:#65a30d;background:#f7fee7}
+.q-opt.selected{border-color:#4d7c0f;background:#f7fee7}
+.q-opt.correct{border-color:#16a34a;background:#f0fdf4;color:#166534}
+.q-opt.wrong{border-color:#dc2626;background:#fef2f2;color:#991b1b}
+.q-opt input{accent-color:#4d7c0f;width:1.1rem;height:1.1rem}
+.q-feedback{padding:.875rem 1rem;border-radius:.5rem;font-size:.875rem;display:none;margin-bottom:1rem}
+.q-feedback.correct{background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;display:block}
+.q-feedback.wrong{background:#fef2f2;color:#991b1b;border:1px solid #fecaca;display:block}
+.q-footer{background:#f7fee7;padding:1rem 1.5rem;border-top:1px solid #bef264;display:flex;justify-content:center}
+
+/* ════ MATCHING ════ */
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:700px;margin:0 auto}
+.match-col{display:flex;flex-direction:column;gap:.5rem}
+.match-item{padding:.75rem 1rem;border:2px solid #bef264;border-radius:.625rem;cursor:pointer;font-size:.83rem;font-weight:600;transition:all .2s;background:#fff;text-align:center}
+.match-item:hover:not(.matched){border-color:#4d7c0f;background:#f7fee7}
+.match-item.selected{border-color:#4d7c0f;background:#f7fee7;color:#4d7c0f}
+.match-item.matched{border-color:#16a34a;background:#dcfce7;color:#166534;cursor:default}
+.match-item.wrong-flash{border-color:#dc2626;background:#fef2f2;animation:flash .4s}
+@keyframes flash{0%,100%{opacity:1}50%{opacity:.3}}
+.match-score-bar{background:#d9f99d;border-radius:9999px;height:.75rem;overflow:hidden;margin-bottom:.75rem}
+.match-score-fill{height:100%;background:linear-gradient(90deg,#4d7c0f,#84cc16);border-radius:9999px;transition:width .4s}
+
+/* ════ FLASHCARDS ════ */
+.fc-wrap{max-width:480px;margin:0 auto}
+.fc{width:100%;height:15rem;cursor:pointer;perspective:1000px}
+.fc-inner{width:100%;height:100%;transform-style:preserve-3d;transition:transform .5s}
+.fc-inner.flip{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:.875rem;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;text-align:center;gap:.75rem;box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.fc-front{background:linear-gradient(135deg,#1a2e05,#4d7c0f);color:#fff}
+.fc-back{background:#f8fafc;color:#1e293b;transform:rotateY(180deg);border:2px solid #bef264}
+.fc-term{font-family:Georgia,serif;font-size:1.75rem;font-weight:700}
+.fc-hint{font-size:.78rem;opacity:.65}
+.fc-def{font-size:.9rem;line-height:1.65}
+.fc-nav{display:flex;justify-content:space-between;align-items:center;background:#f7fee7;padding:.5rem;border-radius:.5rem;margin-top:1rem}
+.fc-ctr{font-size:.75rem;font-weight:700;text-transform:uppercase;color:#64748b;letter-spacing:.06em}
+
+/* INVASIVE species cards */
+.inv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.inv-card{background:#fff;border:2px solid #fecaca;border-radius:.75rem;padding:1.1rem;cursor:pointer;transition:all .2s}
+.inv-card:hover,.inv-card.open{border-color:#dc2626;background:#fef2f2}
+.inv-card h4{font-size:.9rem;font-weight:700;color:#991b1b}
+.inv-card .origin{font-size:.7rem;color:#64748b;margin-bottom:.5rem}
+.inv-card .impact{font-size:.82rem;color:#475569;display:none;margin-top:.5rem;line-height:1.6}
+.inv-card.open .impact{display:block}
+
+@media(max-width:768px){
+  .evo-cards,.evid-content.active{grid-template-columns:1fr}
+  .match-grid{grid-template-columns:1fr}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+
+<div id="navbar-placeholder"></div>
+
+<div class="unit-nav">
+  <div class="unit-nav-inner">
+    <div class="unit-nav-brand">
+      <svg width="16" height="16" fill="none" stroke="#4d7c0f" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Bio 20 &mdash; Unit B
+    </div>
+    <a href="#overview">Overview</a>
+    <a href="#ecosystem">Ecosystems</a>
+    <a href="#zones">Habitats &amp; Niches</a>
+    <a href="#taxonomy">Taxonomy</a>
+    <a href="#variation">Variation</a>
+    <a href="#evolution">Natural Selection</a>
+    <a href="#impacts">Human Impacts</a>
+    <a href="#practice">Practice</a>
+  </div>
+</div>
+
+<main>
+
+<!-- ════════ OVERVIEW ════════ -->
+<section id="overview">
+  <div class="hero">
+    <div class="badge">Biology 20 &mdash; Unit B</div>
+    <h1>Ecosystems &amp; Population Change</h1>
+    <p>Ms. Terkper's Digital Classroom &mdash; Themes: Energy, Matter &amp; Systems</p>
+  </div>
+
+  <div class="g2">
+    <div style="display:flex;flex-direction:column;gap:1.5rem">
+      <div>
+        <h3 style="font-size:1.3rem;margin-bottom:.75rem">Focusing Questions</h3>
+        <blockquote style="border-left:4px solid #84cc16;background:#fff;border:1px solid #bef264;border-left:4px solid #84cc16;padding:1.25rem 1.5rem;border-radius:.625rem;font-style:italic;color:#475569;font-size:.95rem;line-height:1.85">
+          "What are the major biotic and abiotic characteristics that distinguish aquatic and terrestrial ecosystems? What data would one need to collect in a field study to illustrate the major abiotic characteristics and diversity of organisms? What mechanisms are involved in the change of populations over time? In what ways do humans apply their knowledge of ecosystems to assess and limit the impact of human activities?"
+        </blockquote>
+      </div>
+      <div>
+        <h3 style="font-size:1.3rem;margin-bottom:.75rem">General Outcomes</h3>
+        <div style="display:flex;flex-direction:column;gap:.75rem">
+          <div style="display:flex;gap:.75rem;background:#fff;border:1px solid #bef264;border-left:4px solid #4d7c0f;border-radius:.5rem;padding:.875rem 1rem;font-size:.875rem"><strong style="color:#4d7c0f;white-space:nowrap">20-B1:</strong>&nbsp;Explain that the biosphere is composed of ecosystems, each with distinctive biotic and abiotic characteristics.</div>
+          <div style="display:flex;gap:.75rem;background:#fff;border:1px solid #bef264;border-left:4px solid #4d7c0f;border-radius:.5rem;padding:.875rem 1rem;font-size:.875rem"><strong style="color:#4d7c0f;white-space:nowrap">20-B2:</strong>&nbsp;Explain the mechanisms involved in the change of populations over time.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-size:1.2rem;margin-bottom:1rem">Key Concepts</h3>
+      <div style="margin-bottom:1.5rem">
+        <span class="badge">Ecosystem</span><span class="badge">Niche</span><span class="badge">Biotic Factors</span><span class="badge">Abiotic Factors</span><span class="badge">Limiting Factors</span><span class="badge">Binomial Nomenclature</span><span class="badge">Adaptation</span><span class="badge">Population</span><span class="badge">Natural Selection</span><span class="badge">Species</span><span class="badge">Speciation</span><span class="badge">Evidence for Evolution</span>
+      </div>
+      <div class="info-olive">
+        <h3 style="color:#4d7c0f;font-size:1rem;margin-bottom:.75rem">Unit Overview</h3>
+        <p style="font-size:.875rem;color:#3f6212;line-height:1.7">Students become familiar with a range of ecosystems by studying their distinctive biotic and abiotic characteristics. Students are introduced to the concept of populations as a basic component of ecosystem structure and complete the unit by examining population change through the process of natural selection. This unit prepares students for the study of populations and community dynamics in Biology 30.</p>
+      </div>
+      <div class="info-amber" style="margin-top:1rem">
+        <h3 style="color:#92400e;font-size:.9rem;margin-bottom:.4rem">Builds on Prior Learning</h3>
+        <p style="font-size:.85rem;color:#78350f">Gr. 7 Interactions and Ecosystems, Gr. 8 Freshwater and Saltwater Systems, Gr. 9 Biological Diversity, and Bio 20 Unit A (Energy and Matter Exchange).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ ECOSYSTEM ORGANIZATION ════════ -->
+<section id="ecosystem">
+  <div class="section-row">
+    <div class="snum">2</div>
+    <h2 class="sh">Ecosystem Organization &amp; Characteristics</h2>
+  </div>
+
+  <!-- Hierarchy explorer -->
+  <div class="g2" style="margin-bottom:2rem">
+    <div>
+      <h3 style="margin-bottom:1rem">Ecological Hierarchy &mdash; Click a Level</h3>
+      <div class="hier-levels" id="hier-levels">
+        <div class="hier-level hier-l1 active" onclick="showHier('species')">
+          <div class="hier-level-name">Species</div>
+          <div class="hier-level-def">The most fundamental unit of classification</div>
+        </div>
+        <div class="hier-level hier-l2" onclick="showHier('population')">
+          <div class="hier-level-name">Population</div>
+          <div class="hier-level-def">All individuals of one species in an area</div>
+        </div>
+        <div class="hier-level hier-l3" onclick="showHier('community')">
+          <div class="hier-level-name">Community</div>
+          <div class="hier-level-def">All populations in an area interacting together</div>
+        </div>
+        <div class="hier-level hier-l4" onclick="showHier('ecosystem')">
+          <div class="hier-level-name">Ecosystem</div>
+          <div class="hier-level-def">Community plus all abiotic factors of the environment</div>
+        </div>
+      </div>
+    </div>
+    <div class="hier-info" id="hier-info">
+      <!-- filled by JS -->
+    </div>
+  </div>
+
+  <!-- Biotic vs Abiotic -->
+  <div class="g2" style="margin-bottom:2rem">
+    <div class="card cl-olive">
+      <div class="card-hd">Biotic Factors &mdash; Living Components</div>
+      <div class="card-bd">
+        <p style="font-size:.875rem;color:#475569;margin-bottom:.875rem">Biotic factors are all living organisms and their interactions within an ecosystem. They include:</p>
+        <div class="g2" style="gap:1rem">
+          <div>
+            <h3 style="font-size:.85rem;color:#4d7c0f;margin-bottom:.4rem">Producers (Autotrophs)</h3>
+            <ul style="font-size:.82rem;color:#475569;list-style:disc;padding-left:1.25rem;line-height:2.1">
+              <li>Plants, algae, cyanobacteria</li>
+              <li>Convert solar/chemical energy to organic matter</li>
+              <li>Base of all food webs</li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="font-size:.85rem;color:#4d7c0f;margin-bottom:.4rem">Consumers (Heterotrophs)</h3>
+            <ul style="font-size:.82rem;color:#475569;list-style:disc;padding-left:1.25rem;line-height:2.1">
+              <li>Herbivores, carnivores, omnivores</li>
+              <li>Parasites, scavengers</li>
+              <li>Decomposers (bacteria, fungi)</li>
+            </ul>
+          </div>
+        </div>
+        <div style="background:#ecfccb;border-radius:.5rem;padding:.75rem;margin-top:.75rem;font-size:.85rem">
+          <strong style="color:#4d7c0f">Biotic interactions include:</strong> predation, competition, mutualism, commensalism, parasitism, and decomposition.
+        </div>
+      </div>
+    </div>
+    <div class="card cl-blue">
+      <div class="card-hd">Abiotic Factors &mdash; Non-Living Components</div>
+      <div class="card-bd">
+        <p style="font-size:.875rem;color:#475569;margin-bottom:.875rem">Abiotic factors are non-living physical and chemical components that shape where organisms can live:</p>
+        <div class="g2" style="gap:1rem">
+          <div>
+            <ul style="font-size:.82rem;color:#475569;list-style:none;padding:0;display:flex;flex-direction:column;gap:.4rem">
+              <li style="display:flex;gap:.5rem"><span style="color:#4d7c0f">&#9632;</span> <strong>Temperature:</strong> Determines enzyme activity and metabolic rate</li>
+              <li style="display:flex;gap:.5rem"><span style="color:#4d7c0f">&#9632;</span> <strong>Sunlight:</strong> Energy source for photosynthesis; controls day length signals</li>
+              <li style="display:flex;gap:.5rem"><span style="color:#4d7c0f">&#9632;</span> <strong>Water / moisture:</strong> Universal solvent for biochemistry</li>
+              <li style="display:flex;gap:.5rem"><span style="color:#4d7c0f">&#9632;</span> <strong>Soil composition:</strong> Mineral nutrients, pH, texture, organic matter</li>
+            </ul>
+          </div>
+          <div>
+            <ul style="font-size:.82rem;color:#475569;list-style:none;padding:0;display:flex;flex-direction:column;gap:.4rem">
+              <li style="display:flex;gap:.5rem"><span style="color:#3b82f6">&#9632;</span> <strong>Nutrients (N, P, K):</strong> Essential for growth; often limiting factors</li>
+              <li style="display:flex;gap:.5rem"><span style="color:#3b82f6">&#9632;</span> <strong>Oxygen:</strong> Required for aerobic respiration; varies greatly in aquatic zones</li>
+              <li style="display:flex;gap:.5rem"><span style="color:#3b82f6">&#9632;</span> <strong>pH:</strong> Affects chemical reactions and solubility of nutrients</li>
+              <li style="display:flex;gap:.5rem"><span style="color:#3b82f6">&#9632;</span> <strong>Relative humidity:</strong> Controls water loss through transpiration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Limiting Factors -->
+  <div class="card" style="margin-bottom:2rem">
+    <div class="card-hd">Limiting Factors &mdash; What Controls Where Organisms Can Live?</div>
+    <div class="card-bd">
+      <p style="font-size:.875rem;color:#475569;margin-bottom:1rem;line-height:1.7">A <strong>limiting factor</strong> is any resource or condition that is present in amounts less than what an organism requires. The limiting factor prevents a population from growing beyond a certain size. Liebig's Law of the Minimum states that growth is controlled by the most scarce essential resource, not by the total amount of available resources.</p>
+      <div class="ot">
+        <table>
+          <thead><tr><th>Limiting Factor</th><th>Type</th><th>Effect on Organisms</th><th>Alberta Example</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Temperature</strong></td><td>Abiotic</td><td>Determines enzyme function, metabolic rate, dormancy triggers. Too hot or cold = death or migration.</td><td>Chinook winds cause rapid temperature swings in southern Alberta, stressing overwintering insects and plants</td></tr>
+            <tr><td><strong>Water availability</strong></td><td>Abiotic</td><td>Controls plant productivity; determines desert vs. grassland vs. forest</td><td>Annual precipitation gradient: &lt;300 mm in SE prairies vs. &gt;1,000 mm in Rocky Mountain valleys</td></tr>
+            <tr><td><strong>Sunlight</strong></td><td>Abiotic</td><td>Controls photosynthesis rate; creates vertical zonation in forests and water bodies</td><td>Boreal forest understory dominated by shade-tolerant mosses and ferns; canopy closure limits plant diversity below</td></tr>
+            <tr><td><strong>Nutrients (N, P)</strong></td><td>Abiotic</td><td>Limit primary productivity in terrestrial and aquatic systems</td><td>Nutrient-poor muskeg supports sparse spruce/tamarack; phosphorus limits algae growth in clear mountain lakes</td></tr>
+            <tr><td><strong>Dissolved oxygen</strong></td><td>Abiotic</td><td>Controls species composition in aquatic ecosystems; low O&sub;2; = invertebrate/fish death</td><td>Ice cover in winter reduces O&sub;2; in shallow lakes; some Alberta lakes experience winter fish kills</td></tr>
+            <tr><td><strong>Competition</strong></td><td>Biotic</td><td>Interspecific competition reduces resource availability for each species. Can lead to competitive exclusion.</td><td>Purple loosestrife outcompetes native cattails in Alberta wetlands by altering water retention</td></tr>
+            <tr><td><strong>Predation</strong></td><td>Biotic</td><td>Top-down control of prey populations; can prevent overgrazing</td><td>Wolf reintroduction in Banff controls elk populations, allowing willow/aspen regeneration</td></tr>
+            <tr><td><strong>Parasitism</strong></td><td>Biotic</td><td>Weakens host organisms; can cause population crashes at high infestation</td><td>Mountain pine beetle infestations in Alberta's Rocky Mountain lodgepole pine forests</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ HABITATS & NICHES ════════ -->
+<section id="zones">
+  <div class="section-row">
+    <div class="snum">3</div>
+    <h2 class="sh">Habitats, Niches &amp; Ecosystem Zones</h2>
+  </div>
+
+  <div class="g2" style="margin-bottom:2rem">
+    <div class="info-olive">
+      <h3 style="color:#4d7c0f;margin-bottom:.75rem">Habitat vs. Niche</h3>
+      <p style="font-size:.875rem;color:#475569;margin-bottom:.875rem;line-height:1.7">The <strong>habitat</strong> is where an organism lives &mdash; its physical address. The <strong>ecological niche</strong> is the organism's complete role in the ecosystem &mdash; what it eats, when it is active, how it reproduces, what it competes with. The niche is the organism's "profession."</p>
+      <div style="background:#fff;border:1px solid #bef264;border-radius:.5rem;padding:.875rem 1rem;margin-bottom:.75rem;font-size:.875rem">
+        <strong style="color:#4d7c0f">Competitive Exclusion Principle (Gause, 1934):</strong> No two species can occupy the same niche in the same place at the same time indefinitely. One species will always outcompete the other, leading to either competitive exclusion or niche partitioning (resource sharing by slightly different use).
+      </div>
+      <div style="font-size:.85rem;color:#475569"><strong>Alberta example:</strong> Three species of warblers (Cape May, Bay-breasted, Myrtle) coexist in the same boreal spruce trees by foraging in different zones &mdash; top, middle and lower branches respectively. Same habitat, partitioned niches.</div>
+    </div>
+    <div class="info-blue">
+      <h3 style="color:#1d4ed8;margin-bottom:.75rem">Fundamental vs. Realized Niche</h3>
+      <div style="display:flex;flex-direction:column;gap:.875rem">
+        <div style="background:#fff;border:1px solid #bfdbfe;border-radius:.5rem;padding:.875rem 1rem">
+          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;color:#1d4ed8;margin-bottom:.3rem">Fundamental Niche</div>
+          <div style="font-size:.85rem;color:#475569">The full range of conditions and resources a species could theoretically use if there were no competitors or predators. Defined by physical tolerances (temperature, humidity, etc.).</div>
+        </div>
+        <div style="background:#fff;border:1px solid #bfdbfe;border-radius:.5rem;padding:.875rem 1rem">
+          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;color:#1d4ed8;margin-bottom:.3rem">Realized Niche</div>
+          <div style="font-size:.85rem;color:#475569">The actual conditions and resources a species uses in the presence of competition and predation. Always a subset of the fundamental niche. Biotic interactions shrink the realized niche.</div>
+        </div>
+        <div style="background:#dbeafe;border-radius:.5rem;padding:.875rem 1rem;font-size:.85rem;color:#1e40af">
+          <strong>Example:</strong> The American toad's fundamental niche includes all moist areas of Alberta. Its realized niche is smaller because it competes with the boreal toad for breeding ponds.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Zone tabs -->
+  <h3 style="margin-bottom:1rem">Ecosystem Zones Explorer</h3>
+  <div class="zone-tabs" id="zone-tabs">
+    <button class="zone-tab active" onclick="setZone('terrestrial',this)" style="background:#4d7c0f;color:#fff;border-color:#4d7c0f">Terrestrial Zones</button>
+    <button class="zone-tab" onclick="setZone('aquatic',this)">Aquatic Zones (Lake)</button>
+    <button class="zone-tab" onclick="setZone('stream',this)">Stream / River Zones</button>
+    <button class="zone-tab" onclick="setZone('alberta',this)">Alberta Ecosystem Examples</button>
+  </div>
+  <div id="zone-container"></div>
+</section>
+
+<!-- ════════ TAXONOMY ════════ -->
+<section id="taxonomy">
+  <div class="section-row">
+    <div class="snum">4</div>
+    <h2 class="sh">Taxonomy &amp; Classification</h2>
+  </div>
+
+  <div class="g2" style="margin-bottom:2rem">
+    <div>
+      <h3 style="margin-bottom:.75rem">Binomial Nomenclature</h3>
+      <p style="font-size:.875rem;color:#475569;margin-bottom:1rem;line-height:1.7">Developed by Carl Linnaeus (1753), binomial nomenclature gives every species a two-part Latin name: <em>Genus species</em>. This system is universal across all languages and cultures, allowing scientists worldwide to communicate precisely about organisms.</p>
+      <div style="display:flex;flex-direction:column;gap:.75rem;margin-bottom:1.25rem">
+        <div style="background:#fff;border:1px solid #bef264;border-radius:.625rem;padding:1rem 1.25rem;font-size:.875rem">
+          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;color:#4d7c0f;margin-bottom:.4rem">Rules of Binomial Nomenclature</div>
+          <ul style="color:#475569;list-style:disc;padding-left:1.25rem;line-height:2.2">
+            <li>Genus name is <strong>capitalized</strong>, species name is <strong>lowercase</strong></li>
+            <li>Written in <strong>italics</strong> when typed; <em>underlined</em> when handwritten</li>
+            <li>Names are in Latin or Latinized Greek</li>
+            <li>Genus name may be abbreviated after first use (<em>C. lupus</em> after <em>Canis lupus</em>)</li>
+          </ul>
+        </div>
+        <div style="background:#ecfccb;border-radius:.625rem;padding:1rem 1.25rem;font-size:.875rem">
+          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;color:#4d7c0f;margin-bottom:.4rem">Alberta Examples</div>
+          <table style="font-size:.82rem"><thead><tr><th>Common Name</th><th>Scientific Name</th></tr></thead><tbody>
+            <tr><td>Grey wolf</td><td><em>Canis lupus</em></td></tr>
+            <tr><td>Bison</td><td><em>Bison bison</em></td></tr>
+            <tr><td>Black spruce</td><td><em>Picea mariana</em></td></tr>
+            <tr><td>Grizzly bear</td><td><em>Ursus arctos</em></td></tr>
+            <tr><td>Common loon</td><td><em>Gavia immer</em></td></tr>
+            <tr><td>Rocky Mountain elk</td><td><em>Cervus canadensis</em></td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 style="margin-bottom:.75rem">Taxonomic Classification Hierarchy</h3>
+      <p style="font-size:.85rem;color:#475569;margin-bottom:1rem">The seven major classification levels, from broadest to most specific. Click a level below to see details.</p>
+      <div class="tax-bar" id="tax-bar"></div>
+      <div class="tax-info" id="tax-info"></div>
+    </div>
+  </div>
+
+  <!-- Aboriginal classification systems -->
+  <div style="background:linear-gradient(135deg,#1c1917,#292524);border-radius:1.25rem;padding:2.5rem;border:2px solid #92400e;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#f59e0b,#d97706,#92400e,#d97706,#f59e0b)"></div>
+    <h3 style="color:#fbbf24;font-family:Georgia,serif;font-size:1.4rem;margin-bottom:.5rem">Aboriginal Classification Systems</h3>
+    <p style="color:rgba(255,255,255,.65);font-size:.9rem;margin-bottom:1.5rem">Alberta's First Nations, Métis and Inuit peoples developed detailed classification systems for the organisms in their territories &mdash; systems that parallel modern taxonomy and often capture ecological relationships that Western science formally recognized centuries later.</p>
+    <div class="g3">
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(251,191,36,.2);border-radius:.875rem;padding:1.25rem">
+        <h3 style="color:#fbbf24;font-size:.95rem;font-family:Georgia,serif;margin-bottom:.4rem">Blackfoot Plant Classification</h3>
+        <p style="font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.65">Blackfoot people classified plants by their functional properties and ecological relationships: food plants, medicine plants, fiber plants, ceremonial plants, and indicator species. These categories reflect ecological niches &mdash; how and where the plants grow, what they interact with, and their role in the ecosystem. Buffalo berry (<em>mî'skakatôminaan</em>) and its relationship to bears was documented through oral classification long before scientific study.</p>
+      </div>
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(251,191,36,.2);border-radius:.875rem;padding:1.25rem">
+        <h3 style="color:#fbbf24;font-size:.95rem;font-family:Georgia,serif;margin-bottom:.4rem">Cree Animal Taxonomy</h3>
+        <p style="font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.65">The Cree classification of animals grouped species by habitat, behavior and spiritual significance in ways that often aligned with modern biological groupings. Cree names frequently encoded ecological information &mdash; describing what the animal eats, where it lives, or how it behaves &mdash; making the name itself a classification statement. The Cree term <em>amisk</em> (beaver) carries embedded knowledge of the beaver's role as a water-environment modifier that ecologists now call "ecosystem engineering."</p>
+      </div>
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(251,191,36,.2);border-radius:.875rem;padding:1.25rem">
+        <h3 style="color:#fbbf24;font-size:.95rem;font-family:Georgia,serif;margin-bottom:.4rem">Métis &amp; Woodland Cree Fungi Knowledge</h3>
+        <p style="font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.65">Traditional knowledge includes detailed classification of edible, medicinal and toxic fungi &mdash; a classification that Western science did not formalize until the 19th century. Knowledge of which fungi grow in association with specific trees (mycorrhizal relationships) was embedded in harvesting practices: experienced harvesters knew that certain mushrooms only appeared under certain tree species, demonstrating an intuitive understanding of the ecological niche concept.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ VARIATION ════════ -->
+<section id="variation">
+  <div class="section-row">
+    <div class="snum">5</div>
+    <h2 class="sh">Variation, Heredity &amp; Adaptation</h2>
+  </div>
+
+  <div class="g2" style="margin-bottom:2rem">
+    <div>
+      <h3 style="margin-bottom:.875rem">Sources of Variation</h3>
+      <div class="step-list" style="margin-bottom:1.25rem">
+        <div class="step"><div class="step-num">1</div><div><strong>Heritable mutations:</strong> Random changes in DNA sequence. Can be substitution, insertion, deletion, or chromosomal rearrangement. Most are neutral or harmful; occasionally a mutation increases survival/reproduction.</div></div>
+        <div class="step"><div class="step-num">2</div><div><strong>Sexual reproduction:</strong> Meiosis (crossing over, independent assortment) and random fertilization produce enormous genetic variation in offspring. No two sexually-produced offspring (except identical twins) are genetically identical.</div></div>
+        <div class="step"><div class="step-num">3</div><div><strong>Gene flow:</strong> Movement of individuals (and their alleles) between populations introduces new variation into a population.</div></div>
+        <div class="step"><div class="step-num">4</div><div><strong>Genetic drift:</strong> Random changes in allele frequency, especially significant in small populations. Founder effect and bottleneck effect are special cases.</div></div>
+      </div>
+      <div class="info-olive">
+        <h3 style="color:#4d7c0f;font-size:.9rem;margin-bottom:.4rem">Selective Advantage</h3>
+        <p style="font-size:.85rem;color:#3f6212;line-height:1.65">A mutation has a <strong>selective advantage</strong> when it increases the organism's fitness &mdash; its ability to survive and reproduce in its environment. Selective advantage is always relative to the current environment. A mutation that is advantageous today may be neutral or harmful if the environment changes.</p>
+      </div>
+    </div>
+    <div>
+      <h3 style="margin-bottom:.875rem">Types of Adaptations</h3>
+      <div style="display:flex;flex-direction:column;gap:.75rem;margin-bottom:1.25rem">
+        <div class="card cl-olive" style="padding:1rem">
+          <h3 style="font-size:.9rem;margin-bottom:.4rem">Structural Adaptations</h3>
+          <p style="font-size:.85rem;color:#475569">Physical body features that improve survival. Examples: thick fur of Arctic fox, hollow bones of birds, waxy cuticle of desert plants, counter-current circulation in fish gills.</p>
+          <div style="font-size:.8rem;color:#4d7c0f;margin-top:.4rem"><em>Alberta example:</em> Snowshoe hare's large hind feet distribute weight on snow; coat colour changes from brown to white in winter.</div>
+        </div>
+        <div class="card cl-blue" style="padding:1rem">
+          <h3 style="font-size:.9rem;margin-bottom:.4rem">Physiological Adaptations</h3>
+          <p style="font-size:.85rem;color:#475569">Internal biochemical processes that allow survival. Examples: antifreeze proteins in fish, nitrogen excretion as urea vs. uric acid, cold-resistant enzymes in alpine species.</p>
+          <div style="font-size:.8rem;color:#3b82f6;margin-top:.4rem"><em>Alberta example:</em> Wood frog (<em>Rana sylvatica</em>) produces glucose antifreeze that prevents ice crystal formation in cells; survives being frozen solid in winter.</div>
+        </div>
+        <div class="card cl-amber" style="padding:1rem">
+          <h3 style="font-size:.9rem;margin-bottom:.4rem">Behavioural Adaptations</h3>
+          <p style="font-size:.85rem;color:#475569">Instinctive or learned behaviours that improve survival. Examples: migration, hibernation, flocking, alarm calls, caching food.</p>
+          <div style="font-size:.8rem;color:#b45309;margin-top:.4rem"><em>Alberta example:</em> Clark's nutcracker caches thousands of whitebark pine seeds each autumn; spatial memory allows retrieval months later; critical to tree regeneration.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ NATURAL SELECTION & EVOLUTION ════════ -->
+<section id="evolution">
+  <div class="section-row">
+    <div class="snum">6</div>
+    <h2 class="sh">Natural Selection &amp; Evolution</h2>
+  </div>
+
+  <!-- Lamarck vs Darwin -->
+  <h3 style="margin-bottom:1rem">Lamarck vs Darwin &mdash; Two Explanations of Evolutionary Change</h3>
+  <div class="evo-cards" style="margin-bottom:2rem">
+    <div class="evo-card">
+      <div class="evo-card-hd" style="background:linear-gradient(135deg,#7c2d12,#ea580c)">Jean-Baptiste Lamarck (1809) &mdash; Inheritance of Acquired Characteristics</div>
+      <div class="evo-card-bd">
+        <div class="evo-row"><span class="evo-icon">&#9632;</span><div><strong>Core idea:</strong> Organisms change during their lifetime due to use or disuse of body parts; these acquired changes are passed to offspring.</div></div>
+        <div class="evo-row"><span class="evo-icon">&#128517;</span><div><strong>Giraffe example:</strong> Giraffes stretched their necks to reach higher leaves; longer necks were passed to offspring. Each generation stretched slightly more.</div></div>
+        <div class="evo-row"><span class="evo-icon">&#10008;</span><div><strong>Why it fails:</strong> There is no mechanism by which somatic (body) changes alter DNA in reproductive cells (Weismann barrier). A bodybuilder's muscles are not inherited.</div></div>
+        <div class="evo-row"><span class="evo-icon">&#9679;</span><div><strong>Historical importance:</strong> First major scientific theory of evolution. Proposed that species change over time &mdash; a radical idea in 1809. Shifted thinking away from fixed, unchanging species.</div></div>
+      </div>
+    </div>
+    <div class="evo-card">
+      <div class="evo-card-hd" style="background:linear-gradient(135deg,#1a3a1a,#4d7c0f)">Charles Darwin (1859) &mdash; Natural Selection</div>
+      <div class="evo-card-bd">
+        <div class="evo-row"><span class="evo-icon">&#9632;</span><div><strong>Core idea:</strong> Variation exists in populations. Individuals with advantageous traits survive and reproduce more. Advantageous traits become more common over generations.</div></div>
+        <div class="evo-row"><span class="evo-icon">&#128022;</span><div><strong>Giraffe example:</strong> Natural variation produced giraffes with different neck lengths. Those with longer necks reached more food, survived better, and reproduced more. Over generations, longer-necked giraffes became dominant.</div></div>
+        <div class="evo-row"><span class="evo-icon">&#10004;</span><div><strong>Why it works:</strong> Selection acts on existing heritable variation. The mechanism (DNA mutation, sexual reproduction) produces variation; the environment selects which variants reproduce.</div></div>
+        <div class="evo-row"><span class="evo-icon">&#9679;</span><div><strong>Key contributors:</strong> Wallace (parallel theory), Malthus (population pressure idea), Lyell (geological time), Buffon (species change concept).</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Evidence tabs -->
+  <h3 style="margin-bottom:1rem">Evidence for Evolution</h3>
+  <div class="evid-tabs" id="evid-tabs">
+    <button class="evid-tab active" onclick="setEvid('fossil',this)">Fossil Record</button>
+    <button class="evid-tab" onclick="setEvid('homolog',this)">Homologous Structures</button>
+    <button class="evid-tab" onclick="setEvid('analog',this)">Analogous Structures</button>
+    <button class="evid-tab" onclick="setEvid('biogeo',this)">Biogeography</button>
+    <button class="evid-tab" onclick="setEvid('embryo',this)">Embryology</button>
+    <button class="evid-tab" onclick="setEvid('biochem',this)">Biochemistry</button>
+  </div>
+  <div id="evid-container" style="margin-bottom:2rem"></div>
+
+  <!-- Natural Selection Simulator -->
+  <h3 style="margin-bottom:1rem">Natural Selection Simulator</h3>
+  <div class="sim-wrap">
+    <div style="background:#365314;color:#fff;padding:1rem 1.5rem;font-weight:700;font-size:.95rem">Allele Frequency Change Over Generations</div>
+    <div class="sim-controls">
+      <div class="ctrl">
+        <label>Starting frequency of allele A (advantageous) <span id="sim-start-val">50%</span></label>
+        <input type="range" min="1" max="99" value="50" id="sim-start" oninput="runSim()" style="accent-color:#4d7c0f;cursor:pointer;width:200px">
+      </div>
+      <div class="ctrl">
+        <label>Selective advantage of A <span id="sim-adv-val">0.10</span></label>
+        <input type="range" min="1" max="50" value="10" id="sim-adv" oninput="runSim()" style="accent-color:#4d7c0f;cursor:pointer;width:200px">
+      </div>
+      <div class="ctrl">
+        <label>Number of generations <span id="sim-gen-val">15</span></label>
+        <input type="range" min="5" max="30" value="15" id="sim-gen" oninput="runSim()" style="accent-color:#4d7c0f;cursor:pointer;width:180px">
+      </div>
+    </div>
+    <div class="sim-canvas-area">
+      <div style="flex:1;min-width:280px">
+        <div style="display:flex;gap:1rem;margin-bottom:.875rem;font-size:.8rem;font-weight:700">
+          <div style="display:flex;align-items:center;gap:.4rem"><div style="width:1rem;height:.8rem;background:#16a34a;border-radius:.2rem"></div> Allele A (advantageous)</div>
+          <div style="display:flex;align-items:center;gap:.4rem"><div style="width:1rem;height:.8rem;background:#dc2626;border-radius:.2rem"></div> Allele B</div>
+        </div>
+        <div class="gen-bars" id="gen-bars"></div>
+      </div>
+      <div style="flex:1;min-width:220px;display:flex;flex-direction:column;gap:1rem">
+        <div class="info-olive">
+          <h3 style="color:#4d7c0f;font-size:.9rem;margin-bottom:.5rem">Four Conditions for Natural Selection</h3>
+          <ol style="font-size:.85rem;color:#475569;padding-left:1.25rem;line-height:2.2">
+            <li><strong>Variation exists</strong> in the population</li>
+            <li><strong>Variation is heritable</strong> (passed to offspring)</li>
+            <li><strong>More offspring are born</strong> than can survive (Malthus)</li>
+            <li><strong>Traits affect survival/reproduction</strong> differently</li>
+          </ol>
+        </div>
+        <div class="info-amber">
+          <h3 style="color:#92400e;font-size:.9rem;margin-bottom:.4rem">Speciation</h3>
+          <p style="font-size:.85rem;color:#78350f;line-height:1.65"><strong>Allopatric speciation</strong> (most common): populations become geographically isolated. Genetic divergence accumulates. If isolated long enough, populations become reproductively incompatible &mdash; new species. <br/><strong>Alberta example:</strong> Columbian ground squirrels in isolated Rocky Mountain meadows show measurable genetic divergence between mountain valley populations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Punctuated equilibrium vs Gradualism -->
+  <div class="g2" style="margin-top:2rem">
+    <div class="card cl-olive">
+      <div class="card-hd">Gradualism</div>
+      <div class="card-bd">
+        <p style="font-size:.875rem;color:#475569;margin-bottom:.75rem">Darwin's original model: evolution occurs through the slow, gradual accumulation of small changes over vast amounts of time. Species change continuously and imperceptibly generation to generation.</p>
+        <ul style="font-size:.85rem;color:#475569;list-style:disc;padding-left:1.25rem;line-height:2.1">
+          <li>Consistent with observed microevolution in lab populations (bacteria, Drosophila)</li>
+          <li>Predicts many transitional fossil forms</li>
+          <li>Supported by Darwin's finch beak data (Peter and Rosemary Grant, 40+ years in Galapagos)</li>
+          <li>Slow environmental changes favour gradual adaptive shifts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card cl-purple">
+      <div class="card-hd">Punctuated Equilibrium (Eldredge &amp; Gould, 1972)</div>
+      <div class="card-bd">
+        <p style="font-size:.875rem;color:#475569;margin-bottom:.75rem">Evolution proceeds in bursts of rapid change separated by long periods of stasis (little change). Species remain stable for millions of years, then change quickly in geologically short intervals.</p>
+        <ul style="font-size:.85rem;color:#475569;list-style:disc;padding-left:1.25rem;line-height:2.1">
+          <li>Explains the relative scarcity of transitional fossil forms</li>
+          <li>Rapid change usually follows extinction events or sudden environmental shifts</li>
+          <li>Cambrian Explosion (~540 mya) as evidence: rapid diversification after mass extinction</li>
+          <li><strong>Burgess Shale (British Columbia, 508 mya):</strong> Exceptional fossil preservation showing the Cambrian burst of animal diversity &mdash; one of the world's most important fossil sites, and it's Canadian</li>
+        </ul>
+        <div style="background:#faf5ff;border:1px solid #e9d5ff;border-radius:.5rem;padding:.75rem;margin-top:.5rem;font-size:.82rem;color:#6d28d9"><strong>Note:</strong> Gradualism and punctuated equilibrium are not mutually exclusive. Most biologists accept that both rates of change occur depending on conditions.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mass extinction -->
+  <div class="card" style="margin-top:2rem">
+    <div class="card-hd">Past Mass Extinctions vs Current Species Decline</div>
+    <div class="ot">
+      <table>
+        <thead><tr><th>Event</th><th>Time (mya)</th><th>Species Lost (est.)</th><th>Primary Cause</th><th>Connection to Alberta</th></tr></thead>
+        <tbody>
+          <tr><td><strong>End-Ordovician</strong></td><td class="mono">443</td><td>~86%</td><td>Glaciation, sea level drop</td><td>Marine invertebrate fossils in Alberta Rockies date from this era</td></tr>
+          <tr><td><strong>Late Devonian</strong></td><td class="mono">375&ndash;360</td><td>~75%</td><td>Ocean anoxia, climate cooling</td><td>Devonian coral reef fossil beds near Jasper National Park</td></tr>
+          <tr><td><strong>Permian-Triassic (Great Dying)</strong></td><td class="mono">252</td><td>~96%</td><td>Volcanic CO&sub;2;, ocean acidification</td><td>Triassic strata in Alberta Foothills document the recovery period</td></tr>
+          <tr><td><strong>End-Cretaceous (K-Pg)</strong></td><td class="mono">66</td><td>~76%</td><td>Asteroid impact + volcanism</td><td>Dinosaur Provincial Park (UNESCO) contains one of the richest Cretaceous fossil beds on Earth</td></tr>
+          <tr><td><strong>Current (Holocene) Extinction</strong></td><td class="mono">~0.01 (ongoing)</td><td>1,000&ndash;10,000&times; background rate</td><td>Habitat destruction, climate change, overexploitation, invasive species</td><td>Woodland caribou, swift fox, burrowing owl, American badger all at-risk in Alberta</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ HUMAN IMPACTS ════════ -->
+<section id="impacts">
+  <div class="section-row">
+    <div class="snum">7</div>
+    <h2 class="sh">Human Impacts on Ecosystems &amp; Biodiversity</h2>
+  </div>
+
+  <div class="g2" style="margin-bottom:2rem">
+    <div>
+      <h3 style="margin-bottom:1rem">Impact Categories</h3>
+      <div class="step-list">
+        <div class="step"><div class="step-num" style="background:#dc2626">1</div><div><strong>Habitat destruction &amp; fragmentation:</strong> Roads, pipelines, and agricultural clearing divide continuous habitat into isolated patches. Reduces biodiversity, disrupts gene flow, increases edge effects. Over 70% of Alberta's native grasslands have been converted.</div></div>
+        <div class="step"><div class="step-num" style="background:#ea580c">2</div><div><strong>Wetland drainage:</strong> Alberta has lost over 65% of its original wetlands. Wetlands filter water, recharge groundwater, reduce flooding, and provide habitat for ~50% of Alberta's at-risk species.</div></div>
+        <div class="step"><div class="step-num" style="background:#ca8a04">3</div><div><strong>Monoculturing:</strong> Growing a single crop/species eliminates natural biodiversity. Monoculture forests (single-species plantations) are far more vulnerable to disease and pest outbreaks than natural multi-species forests.</div></div>
+        <div class="step"><div class="step-num" style="background:#4d7c0f">4</div><div><strong>Interbasin water transfer:</strong> Moving water between river basins introduces invasive species, parasites (e.g., whirling disease), and alters flow regimes. Contentious in Alberta (North Saskatchewan to South Saskatchewan proposals).</div></div>
+        <div class="step"><div class="step-num" style="background:#0d9488">5</div><div><strong>Urbanization:</strong> Impervious surfaces increase runoff, reduce infiltration, create heat islands, and generate light/noise pollution that disrupts wildlife behaviour, migration and reproduction.</div></div>
+      </div>
+    </div>
+    <div>
+      <h3 style="margin-bottom:1rem">Invasive Species in Alberta &mdash; Click to Expand</h3>
+      <div class="inv-grid" id="inv-grid"></div>
+      <div class="info-red" style="margin-top:1rem">
+        <h3 style="color:#991b1b;font-size:.9rem;margin-bottom:.4rem">Competitive Exclusion by Invasives</h3>
+        <p style="font-size:.85rem;color:#7f1d1d;line-height:1.65">Invasive species often succeed because they enter an ecosystem without their natural predators, parasites and competitors. They occupy niches with reduced biotic resistance, allowing rapid population growth that outcompetes native species. Controlling invasives is one of the most costly environmental challenges in Alberta.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Land reclamation -->
+  <div class="card">
+    <div class="card-hd">Land Reclamation &mdash; Science and Technology Responding to Environmental Damage</div>
+    <div class="card-bd">
+      <p style="font-size:.875rem;color:#475569;margin-bottom:1rem;line-height:1.7">Alberta has strong land reclamation regulations requiring industrial disturbances (mines, oil sands, pipelines) to be restored to equivalent land capability. This is a major application of ecosystem biology in practice.</p>
+      <div class="g3">
+        <div class="info-olive">
+          <h3 style="color:#4d7c0f;font-size:.85rem;margin-bottom:.4rem">Oil Sands Reclamation</h3>
+          <p style="font-size:.82rem;color:#3f6212;line-height:1.65">Alberta's oil sands operations must reclaim disturbed land to a "boreal forest equivalent." Reclamation involves reshaping terrain, rebuilding soil profiles, replanting native trees and shrubs, and re-establishing wetlands. As of 2023, only a small fraction of disturbed land has received certified reclamation.</p>
+        </div>
+        <div class="info-green">
+          <h3 style="color:#166534;font-size:.85rem;margin-bottom:.4rem">Prairie Grassland Restoration</h3>
+          <p style="font-size:.82rem;color:#15803d;line-height:1.65">Converting cultivated land back to native prairie requires reseeding with original seed mixes (dozens of species), eliminating invasive weeds, and often re-introducing grazers (bison, cattle under managed programs) to simulate natural disturbance regimes.</p>
+        </div>
+        <div class="info-blue">
+          <h3 style="color:#1d4ed8;font-size:.85rem;margin-bottom:.4rem">Wetland Reconstruction</h3>
+          <p style="font-size:.82rem;color:#1e40af;line-height:1.65">Ducks Unlimited Canada has restored or constructed over 570,000 ha of wetlands in Alberta. Wetland construction requires reshaping topography, establishing hydrology, and planting emergent vegetation. Restored wetlands recover most species diversity within 10&ndash;20 years.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ PRACTICE ════════ -->
+<section id="practice">
+  <div class="section-row">
+    <div class="snum">8</div>
+    <h2 class="sh">Interactive Practice &amp; Review</h2>
+  </div>
+
+  <!-- QUIZ -->
+  <div style="margin-bottom:4rem">
+    <div style="text-align:center;margin-bottom:1.5rem">
+      <h3 style="font-size:1.6rem">Knowledge Check Quiz</h3>
+      <p style="color:#64748b">10 questions covering ecosystems, taxonomy, natural selection and evolution.</p>
+    </div>
+    <div class="quiz-wrap">
+      <div class="q-card">
+        <div class="q-header">
+          <h4>Bio 20 &mdash; Unit B</h4>
+          <div style="display:flex;gap:.75rem;align-items:center">
+            <span class="q-prog" id="kq-counter">Question 1 of 10</span>
+            <span class="q-score" id="kq-score">0 / 0</span>
+          </div>
+        </div>
+        <div class="q-body">
+          <div class="q-text" id="kq-text"></div>
+          <div class="q-options" id="kq-opts"></div>
+          <div class="q-feedback" id="kq-feedback"></div>
+        </div>
+        <div class="q-footer">
+          <button class="btn btn-olive btn-lg" id="kq-btn" onclick="kqCheck()">Submit Answer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MATCHING -->
+  <div style="margin-bottom:4rem">
+    <div style="text-align:center;margin-bottom:1.5rem">
+      <h3 style="font-size:1.6rem">Term Match</h3>
+      <p style="color:#64748b">Match each concept on the left to its correct definition on the right.</p>
+    </div>
+    <div style="max-width:700px;margin:0 auto 1rem">
+      <div class="match-score-bar"><div class="match-score-fill" id="match-score-fill" style="width:0%"></div></div>
+      <div style="text-align:center;font-size:.85rem;color:#64748b" id="match-score-text">0 of 8 matched</div>
+    </div>
+    <div class="match-grid" id="match-grid"></div>
+    <div style="text-align:center;margin-top:1.5rem"><button class="btn btn-outline" onclick="matchReset()">Reset Game</button></div>
+  </div>
+
+  <!-- FLASHCARDS -->
+  <div>
+    <div style="text-align:center;margin-bottom:1.5rem">
+      <h3 style="font-size:1.6rem">Vocabulary Flashcards</h3>
+      <p style="color:#64748b">Click card to flip. Navigate all 20 terms.</p>
+    </div>
+    <div class="fc-wrap">
+      <div class="fc" onclick="fcFlip()">
+        <div class="fc-inner" id="fc-inner">
+          <div class="fc-face fc-front"><span class="fc-term" id="fc-term"></span><span class="fc-hint">Click to flip</span></div>
+          <div class="fc-face fc-back"><span class="fc-def" id="fc-def"></span></div>
+        </div>
+      </div>
+      <div class="fc-nav">
+        <button class="btn btn-outline" onclick="fcPrev()">&#8592; Prev</button>
+        <span class="fc-ctr" id="fc-ctr">1 / 20</span>
+        <button class="btn btn-outline" onclick="fcNext()">Next &#8594;</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>Email: terkperhannah@gmail.com &nbsp;|&nbsp; Instagram: hannah.attempts.teaching &nbsp;|&nbsp; TikTok: hannah.attempts.teaching</p>
+</footer>
+<button class="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
+
+<script>
+// ════════════════════════════════
+// NAVBAR
+// ════════════════════════════════
+document.addEventListener('DOMContentLoaded',()=>{
+  fetch('navbar.html').then(r=>r.text()).then(d=>{document.getElementById('navbar-placeholder').innerHTML=d;}).catch(()=>{});
+});
+
+// ════════════════════════════════
+// HIERARCHY EXPLORER
+// ════════════════════════════════
+const HIER={
+  species:{title:'Species',color:'#16a34a',def:'A group of organisms capable of interbreeding and producing fertile offspring. The fundamental unit of classification. Defined by reproductive isolation from other groups.',ab_ex:'Bison (<em>Bison bison</em>), Black-footed ferret (<em>Mustela nigripes</em>), Wild rose (<em>Rosa acicularis</em>)',key:'Species is the most specific level. Two organisms are the same species if they can reproduce and their offspring can also reproduce.',detail:'The biological species concept (Mayr, 1942) defines a species by reproductive isolation. However, ring species, hybridization zones, and asexual organisms complicate this definition. Alternative species concepts include morphological, phylogenetic, and ecological species concepts.'},
+  population:{title:'Population',color:'#2563eb',def:'All individuals of the same species living in the same geographic area at the same time. Members can potentially interbreed with each other. Populations have emergent properties: size, density, age structure, birth rate, death rate.',ab_ex:'The Banff wolf pack (pack living within park boundaries), all bison in Elk Island National Park, all white spruce trees in the Athabasca River valley',key:'Population ecology studies how populations grow, fluctuate, and are regulated. Population size = births - deaths + immigration - emigration.',detail:'Population genetics examines how allele frequencies change within populations over time. Hardy-Weinberg equilibrium describes allele frequencies in non-evolving populations; deviations indicate evolutionary forces are acting.'},
+  community:{title:'Community',color:'#ea580c',def:'All the populations of different species living and interacting in the same area. Community ecology examines species interactions: predation, competition, mutualism, commensalism, parasitism. Communities have structure (dominants, keystones, etc.).',ab_ex:'All species living in a boreal lake (fish, invertebrates, algae, bacteria, aquatic plants, waterfowl); all species in an aspen parkland stand',key:'A keystone species has a disproportionate effect on community structure relative to its abundance. Removing it causes major biodiversity changes (e.g., wolves, sea otters, beavers).',detail:'Community succession describes directional change in species composition over time. Primary succession begins on bare rock (e.g., after glacial retreat). Secondary succession restarts after disturbance (e.g., fire, logging). Alberta boreal fires are followed by predictable successional sequences.'},
+  ecosystem:{title:'Ecosystem',color:'#9333ea',def:'A community of organisms plus all the abiotic factors of the environment they interact with. Ecosystems have boundaries (a lake, a forest patch, a stream reach) but are open systems that exchange matter and energy with adjacent ecosystems.',ab_ex:'Jasper National Park as a whole; a single beaver pond in central Alberta; the entire Peace-Athabasca Delta (one of the world\'s largest inland deltas)',key:'Ecosystem ecology examines energy flow and matter cycling. Every ecosystem needs a source of energy (solar or chemical), producers, consumers, decomposers, and abiotic cycling of nutrients.',detail:'The concept of the ecosystem was introduced by Arthur Tansley (1935). Modern ecosystem ecology uses systems-thinking to model complex feedbacks between biotic and abiotic components. Ecosystem services (clean water, pollination, carbon storage) provide enormous but often unquantified economic value.'}
+};
+
+function showHier(id){
+  document.querySelectorAll('.hier-level').forEach(el=>el.classList.remove('active'));
+  const clicked=event.currentTarget;clicked.classList.add('active');
+  const h=HIER[id];
+  document.getElementById('hier-info').innerHTML=`
+    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem">
+      <div style="width:2.5rem;height:2.5rem;background:${h.color};border-radius:.5rem;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.1rem;flex-shrink:0">${h.title[0]}</div>
+      <div><h3 style="color:${h.color};font-family:Georgia,serif">${h.title}</h3><div style="font-size:.78rem;color:#64748b">Ecological Organization Level</div></div>
+    </div>
+    <p style="font-size:.875rem;color:#475569;line-height:1.7;margin-bottom:.875rem">${h.def}</p>
+    <div style="background:#f7fee7;border:1px solid #bef264;border-radius:.5rem;padding:.875rem 1rem;margin-bottom:.75rem;font-size:.85rem;color:#3f6212">
+      <strong style="color:#4d7c0f">Alberta examples:</strong> ${h.ab_ex}
+    </div>
+    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:.5rem;padding:.875rem 1rem;margin-bottom:.75rem;font-size:.85rem;color:#166534">
+      <strong>Key concept:</strong> ${h.key}
+    </div>
+    <p style="font-size:.82rem;color:#64748b;line-height:1.65">${h.detail}</p>`;
+}
+
+// ════════════════════════════════
+// ZONE EXPLORER
+// ════════════════════════════════
+const ZONES={
+  terrestrial:{
+    html:`<div class="g2"><div><h3 style="margin-bottom:1rem">Vertical Zones in a Boreal Forest</h3>
+    <div style="display:flex;flex-direction:column;gap:.75rem">
+      ${[
+        {name:'Canopy Layer (20&ndash;30 m)',bg:'#166534',desc:'Top of tall trees. Highest light intensity, widest temperature fluctuations. Dominated by black spruce (<em>Picea mariana</em>), white spruce, lodgepole pine. Habitat for eagles, goshawks, crossbills. Strong wind exposure shapes tree growth.'},
+        {name:'Sub-Canopy / Understorey (5&ndash;20 m)',bg:'#16a34a',desc:'Medium trees and tall shrubs. Filtered light. Trembling aspen, balsam poplar, alder. Habitat for warblers, vireos, squirrels. More humid microclimate than canopy.'},
+        {name:'Shrub Layer (1&ndash;5 m)',bg:'#4ade80',desc:'Dense shrubs. Labrador tea, Saskatoon berry, dogwood, willow. Important for berry-eating birds and mammals. Grouse habitat for winter.'},
+        {name:'Herb / Ground Layer (0&ndash;1 m)',bg:'#bbf7d0',desc:'Shade-tolerant ferns, mosses, wildflowers. Horsetails, bunchberry, twinflower. High humidity, stable temperatures. Nest sites for ground-nesting birds (hermit thrush, ovenbird).'},
+        {name:'Soil Layer (below surface)',bg:'#d97706',desc:'Decomposers, burrowers, root systems. Organic layer (humus), mineral soil layers. Earthworms (non-native in boreal), insect larvae, fungi, bacteria, small mammals (voles, shrews).'},
+      ].map(z=>`<div style="background:${z.bg};color:${z.bg==='#bbf7d0'||z.bg==='#d97706'?'#1e293b':'#fff'};border-radius:.625rem;padding:.875rem 1.25rem"><div style="font-weight:700;font-size:.9rem">${z.name}</div><div style="font-size:.82rem;opacity:.9;margin-top:.3rem;line-height:1.55">${z.desc}</div></div>`).join('')}
+    </div></div>
+    <div><div class="info-olive" style="margin-bottom:1rem">
+      <h3 style="color:#4d7c0f;font-size:.9rem;margin-bottom:.5rem">Why Vertical Zonation?</h3>
+      <p style="font-size:.875rem;color:#3f6212;line-height:1.65">Light is the primary abiotic gradient that creates vertical zonation in forests. Each layer has different light intensity, temperature range, humidity, and wind exposure. These gradients create distinct microhabitats with different communities of organisms &mdash; each layer is essentially a different niche environment within the same forest.</p>
+    </div>
+    <div class="card cl-amber" style="padding:1.25rem">
+      <h3 style="font-size:.9rem;margin-bottom:.5rem">Edge Effects</h3>
+      <p style="font-size:.875rem;color:#475569;line-height:1.65">Where two different habitats meet is called an <strong>ecotone</strong>. Edges have characteristics of both habitats plus unique conditions (more light, more wind, temperature extremes). Alberta's aspen parkland is essentially a large ecotone between boreal forest and grassland &mdash; one of the world's most productive wildlife zones.</p>
+    </div></div></div>`
+  },
+  aquatic:{
+    html:`<div><h3 style="margin-bottom:1rem">Freshwater Lake Zones &mdash; Alberta Example: Lake Athabasca</h3>
+    <div class="g2" style="margin-bottom:1.5rem">
+      ${[
+        {name:'Littoral Zone',color:'#16a34a',depth:'Shoreline to where rooted plants stop growing',org:'Cattails, bulrushes, water lilies (rooted plants). Frogs, turtles, shore birds, invertebrates, juvenile fish. Highest biodiversity in the lake.'},
+        {name:'Limnetic Zone',color:'#2563eb',depth:'Open water above light penetration limit (photic zone)',org:'Phytoplankton (algae, cyanobacteria) &mdash; main photosynthesizers. Zooplankton (Daphnia, Cyclops). Mid-water fish (lake whitefish, cisco). Primary productivity driven by nutrient and light availability.'},
+        {name:'Profundal Zone',color:'#4f46e5',depth:'Deep water below light penetration limit (aphotic zone)',org:'Bacteria, some invertebrates tolerant of low O\u2082. No photosynthesis. Heterotrophic decomposers process organic matter settling from above. Cold and dark year-round.'},
+        {name:'Benthic Zone',color:'#92400e',depth:'Bottom sediment of the lake (any depth)',org:'Benthic invertebrates (chironomid larvae, oligochaete worms, mayfly nymphs). Feeding on organic material in sediment. Food source for bottom-feeding fish (suckers, catfish). Crucial for nutrient recycling from sediment.'},
+      ].map(z=>`<div style="background:#fff;border:1px solid #bef264;border-radius:.75rem;overflow:hidden"><div style="background:${z.color};color:#fff;padding:.75rem 1.25rem;font-weight:700;font-size:.9rem">${z.name}</div><div style="padding:1rem"><div style="font-size:.78rem;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:.4rem">Depth</div><div style="font-size:.85rem;color:#475569;margin-bottom:.75rem">${z.depth}</div><div style="font-size:.78rem;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:.4rem">Organisms</div><div style="font-size:.85rem;color:#475569">${z.org}</div></div></div>`).join('')}
+    </div>
+    <div class="info-blue"><h3 style="color:#1d4ed8;font-size:.9rem;margin-bottom:.4rem">Thermal Stratification in Alberta Lakes</h3><p style="font-size:.875rem;color:#1e40af;line-height:1.65">In summer, warm surface water floats above cold deep water, separated by a thermocline. Nutrients accumulate in cold deep water; algae grow in warm surface water. In fall and spring, cooling surface water creates turnover (mixing), distributing nutrients. This seasonal pattern drives algae blooms and fish behaviour in all Alberta lakes.</p></div></div>`
+  },
+  stream:{
+    html:`<div class="g2"><div><h3 style="margin-bottom:1rem">Stream Zones &mdash; Longitudinal Gradient</h3>
+    <div style="display:flex;flex-direction:column;gap:.75rem">
+      ${[
+        {name:'Headwater Zone (Rhithron)',bg:'#0369a1',desc:'Cool, fast, well-oxygenated water. Rocky substrate. High-gradient mountain streams. Species: bull trout, cutthroat trout, stoneflies, mayflies. Organisms adapted to clinging to rocks in fast flow.'},
+        {name:'Middle Reach',bg:'#0284c7',desc:'Moderate flow. Mix of riffle (fast, shallow) and pool (slow, deep) habitats. Species diversity peaks here. Brown trout, mountain whitefish. Alberta foothills streams. Riparian willows and alders.'},
+        {name:'Lowland Zone (Potamon)',bg:'#7c3aed',desc:'Slow, warmer, silty water. Lower gradient. Northern pike, walleye, goldeye, channel catfish. Prairie rivers of southern Alberta. Higher turbidity; more algae; more aquatic vegetation.'},
+      ].map(z=>`<div style="background:${z.bg};color:#fff;border-radius:.625rem;padding:.875rem 1.25rem"><div style="font-weight:700;font-size:.9rem">${z.name}</div><div style="font-size:.82rem;opacity:.9;margin-top:.3rem;line-height:1.55">${z.desc}</div></div>`).join('')}
+    </div></div>
+    <div><div class="info-olive" style="margin-bottom:1rem">
+      <h3 style="color:#4d7c0f;font-size:.9rem;margin-bottom:.5rem">Riparian Zones</h3>
+      <p style="font-size:.875rem;color:#3f6212;line-height:1.65">The zone immediately adjacent to a stream or river. One of the most productive and biodiverse habitats on Earth. Riparian vegetation (willows, alders, cottonwoods) stabilizes banks, filters agricultural runoff, shades streams (keeping water cool for fish), and provides food inputs (leaf litter, insects).</p>
+    </div>
+    <div class="info-amber">
+      <h3 style="color:#92400e;font-size:.9rem;margin-bottom:.5rem">Hyporheic Zone</h3>
+      <p style="font-size:.875rem;color:#78350f;line-height:1.65">The zone of water-saturated sediment beneath and beside the stream. Water moves through the gravel, exchanging with the surface stream. Contains enormous bacterial and invertebrate communities. Critical for salmon and trout spawning (eggs incubate in hyporheic zone oxygenated water).</p>
+    </div></div></div>`
+  },
+  alberta:{
+    html:`<div class="g3">
+    ${[
+      {name:'Boreal Forest (Taiga)',color:'#365314',area:'57% of Alberta',biotic:'Black spruce, jack pine, trembling aspen, white birch. Moose, black bear, wolf, lynx, marten. Thrush, warbler, waterfowl.',abiotic:'Long cold winters (-40\u00b0C+), short warm summers. 350&ndash;500 mm precipitation. Acidic, nutrient-poor soil (podzol). Permafrost in far north.',note:'One of the world\'s largest intact forest ecosystems. Critical carbon sink. Home to caribou, a provincial indicator species.'},
+      {name:'Aspen Parkland',color:'#4d7c0f',area:'~10% of Alberta (transitional)',biotic:'Trembling aspen groves, fescue grassland. White-tailed deer, beaver, coyote, numerous bird species. Highest bird diversity in Alberta.',abiotic:'Moderate precipitation (350&ndash;500 mm). Fertile chernozem soils. Cool winters, warm summers. Highly variable &mdash; responds strongly to precipitation.',note:'Most productive agricultural land in Alberta. Less than 5% of original parkland habitat remains. Alberta\'s densest human population zone.'},
+      {name:'Grassland (Prairie)',color:'#b45309',area:'~12% of Alberta',biotic:'Fescue and mixed-grass prairie. Pronghorn, ground squirrel, burrowing owl, ferruginous hawk, swift fox. Shortgrass and mixed-grass variants.',abiotic:'Low precipitation (250&ndash;400 mm). Continental climate extremes. Wind-eroded, alkaline soils. Chinook winds common.',note:'Over 70% converted to agriculture. Burrowing owl population declined by 90% in Alberta since 1990s. Pronghorn require large contiguous areas.'},
+      {name:'Rocky Mountain / Foothills',color:'#4f46e5',area:'~10% of Alberta',biotic:'Altitudinal zonation: montane, subalpine, alpine. Grizzly, wolf, elk, bighorn sheep, wolverine. Whitebark pine (keystone for Clark\'s nutcracker and grizzly).',abiotic:'Orographic precipitation on windward slopes. Strong elevation gradient: 900&ndash;3,700 m. Rocky substrate. Thin, cold soils.',note:'Home to 4 UNESCO World Heritage Sites (Banff, Jasper, Kootenay, Yoho together). Climate change pushing treeline upslope ~2&ndash;3 m/yr.'},
+      {name:'Wetlands (Peatlands &amp; Marshes)',color:'#0d9488',area:'~20% of Alberta (peatland)',biotic:'Cattails, sedges, Sphagnum mosses (bogs), Black spruce. Waterfowl breeding habitat: 50+ species. Wood frog, mink, river otter.',abiotic:'Waterlogged soils. Cool temperatures slow decomposition, building peat over millennia. Slightly acidic (bogs); more neutral (fens).',note:'Stores more carbon per hectare than any other ecosystem. Alberta peatlands contain thousands of years of accumulated carbon. Extremely vulnerable to drainage and wildfire.'},
+      {name:'Peace-Athabasca Delta',color:'#7c3aed',area:'~5,000 km\u00b2',biotic:'Wood buffalo, whooping crane (last wild flock), fall staging for 200+ bird species. Northern pike, walleye. Muskrat, beaver.',abiotic:'Formed where Athabasca, Peace and Birch rivers meet Lake Athabasca. Seasonal flooding creates productive wetlands. Largest inland delta in the world by some measures.',note:'UNESCO World Heritage Site within Wood Buffalo National Park. Flow regulation of Peace River by W.A.C. Bennett Dam has reduced seasonal flooding, shrinking wetlands.'},
+    ].map(e=>`<div style="background:#fff;border:2px solid #bef264;border-top:4px solid ${e.color};border-radius:.875rem;padding:1.25rem">
+      <h3 style="color:${e.color};font-size:.95rem;font-family:Georgia,serif;margin-bottom:.2rem">${e.name}</h3>
+      <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:.75rem">${e.area}</div>
+      <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;color:#4d7c0f;margin-bottom:.2rem">Key Species</div>
+      <p style="font-size:.82rem;color:#475569;margin-bottom:.5rem">${e.biotic}</p>
+      <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;color:#2563eb;margin-bottom:.2rem">Abiotic Characteristics</div>
+      <p style="font-size:.82rem;color:#475569;margin-bottom:.5rem">${e.abiotic}</p>
+      <div style="background:#f7fee7;border-radius:.375rem;padding:.5rem .75rem;font-size:.78rem;color:#3f6212">${e.note}</div>
+    </div>`).join('')}
+    </div>`
+  }
+};
+
+function setZone(id,btn){
+  document.querySelectorAll('.zone-tab').forEach(t=>{t.classList.remove('active');t.style.background='';t.style.color='';t.style.borderColor='';});
+  btn.classList.add('active');btn.style.background='#4d7c0f';btn.style.color='#fff';btn.style.borderColor='#4d7c0f';
+  document.getElementById('zone-container').innerHTML=ZONES[id].html;
+}
+
+// ════════════════════════════════
+// TAXONOMY DRILL
+// ════════════════════════════════
+const TAX_LEVELS=[
+  {name:'Domain',color:'#7c3aed',ex:'Eukarya',desc:'All organisms with membrane-bound nuclei (including all animals, plants, fungi, protists). The other domains are Bacteria and Archaea.'},
+  {name:'Kingdom',color:'#dc2626',ex:'Animalia',desc:'Animals &mdash; multicellular heterotrophs. Other kingdoms include Plantae, Fungi, Protista. Mode of nutrition is the key criterion at the kingdom level.'},
+  {name:'Phylum',color:'#ea580c',ex:'Chordata',desc:'Animals with a notochord, hollow dorsal nerve cord, pharyngeal slits and post-anal tail at some life stage. Includes all vertebrates.'},
+  {name:'Class',color:'#ca8a04',ex:'Mammalia',desc:'Warm-blooded vertebrates with hair/fur, three middle ear bones, mammary glands. ~5,500 species globally.'},
+  {name:'Order',color:'#4d7c0f',ex:'Carnivora',desc:'Mammals with teeth and claws adapted for eating flesh. Includes wolves, bears, cats, seals, raccoons.'},
+  {name:'Family',color:'#0369a1',ex:'Canidae',desc:'Dog family. Includes wolves, coyotes, foxes, jackals. All Alberta wild canids: grey wolf, coyote, red fox, swift fox.'},
+  {name:'Genus',color:'#0d9488',ex:'Canis',desc:'The wolf genus. Includes grey wolf (<em>C. lupus</em>), coyote (<em>C. latrans</em>), domestic dog (<em>C. lupus familiaris</em>).'},
+  {name:'Species',color:'#3b82f6',ex:'lupus',desc:'The grey wolf (<em>Canis lupus</em>). Locally extirpated from most of Alberta\'s prairies; still present in boreal forest. Recolonized Banff National Park naturally in the 1980s.'},
+];
+let activeTax=0;
+function renderTax(){
+  const bar=document.getElementById('tax-bar');
+  bar.innerHTML=TAX_LEVELS.map((l,i)=>`<div class="tax-node" style="background:${l.color};cursor:pointer;opacity:${i===activeTax?1:.55};transform:${i===activeTax?'scale(1.1)':'scale(1)'};transition:all .2s" onclick="activeTax=${i};renderTax()">${l.name}</div>${i<TAX_LEVELS.length-1?'<span class="tax-arrow">\u2192</span>':''}`).join('');
+  const l=TAX_LEVELS[activeTax];
+  document.getElementById('tax-info').innerHTML=`<div style="display:flex;align-items:flex-start;gap:1rem"><div style="background:${l.color};color:#fff;border-radius:.625rem;padding:.875rem 1.25rem;flex-shrink:0;text-align:center;min-width:6rem"><div style="font-weight:700;font-size:1.1rem">${l.name}</div><div style="font-size:.85rem;opacity:.8;margin-top:.2rem;font-style:italic">${l.ex}</div></div><div><p style="font-size:.9rem;color:#475569;line-height:1.7">${l.desc}</p><div style="margin-top:.75rem;font-size:.82rem;color:#64748b">Using grey wolf (<em>Canis lupus</em>) as example &mdash; click each level to navigate the full classification.</div></div></div>`;
+}
+
+// ════════════════════════════════
+// EVIDENCE FOR EVOLUTION
+// ════════════════════════════════
+const EVID={
+  fossil:{title:'Fossil Record',color:'#92400e',data:`
+    <div class="cycle-box" style="background:#fefce8;border:1px solid #fef08a">
+      <h3 style="color:#92400e">How Fossils Form Evidence</h3>
+      <p style="font-size:.875rem;color:#475569;margin-bottom:.875rem;line-height:1.7">The fossil record shows a clear temporal pattern: simpler organisms appear in older strata; more complex organisms in younger strata. Transitional fossils show intermediate characteristics between ancestral and descendant groups.</p>
+      <ul style="font-size:.875rem;color:#475569;list-style:disc;padding-left:1.25rem;line-height:2.2">
+        <li><strong>Stratigraphic principle:</strong> Older fossils appear in deeper rock layers (law of superposition)</li>
+        <li><strong>Radiometric dating:</strong> Decay rates of radioactive isotopes (C-14, K-40) give absolute ages</li>
+        <li><strong>Transitional fossils:</strong> <em>Archaeopteryx</em> (reptile-bird), Pakicetus (land mammal-whale), <em>Tiktaalik</em> (fish-tetrapod)</li>
+      </ul>
+    </div>
+    <div class="info-amber">
+      <h3 style="color:#92400e;font-size:.9rem;margin-bottom:.5rem">Burgess Shale &mdash; Canada's Fossil Treasure</h3>
+      <p style="font-size:.875rem;color:#78350f;line-height:1.65">Located in British Columbia's Yoho National Park, the Burgess Shale contains exceptional soft-bodied Cambrian animal fossils (~508 mya). Discovered by Charles Walcott in 1909. These fossils document the Cambrian Explosion &mdash; the most dramatic burst of animal diversification in Earth's history. Many organisms preserved here have no living relatives. Alberta's Dinosaur Provincial Park (Cretaceous, 75 mya) contains the world's highest density of Cretaceous dinosaur species.</p>
+    </div>`
+  },
+  homolog:{title:'Homologous Structures',color:'#4d7c0f',data:`
+    <div class="info-olive">
+      <h3 style="color:#4d7c0f">Homologous Structures</h3>
+      <p style="font-size:.875rem;color:#3f6212;margin-bottom:.875rem;line-height:1.7">Structures in different species that share a common evolutionary origin (same ancestral structure), even if they now perform different functions. Homology indicates common ancestry (divergent evolution).</p>
+      <table><thead><tr><th>Structure</th><th>Human</th><th>Cat</th><th>Whale</th><th>Bat</th><th>Bird</th></tr></thead><tbody>
+        <tr><td>Humerus</td><td>Upper arm</td><td>Upper foreleg</td><td>Flipper base</td><td>Wing arm</td><td>Wing arm</td></tr>
+        <tr><td>Radius/Ulna</td><td>Forearm</td><td>Lower foreleg</td><td>Flipper shaft</td><td>Wing shaft</td><td>Wing shaft</td></tr>
+        <tr><td>Carpals/metacarpals</td><td>Wrist/hand</td><td>Paw bones</td><td>Flipper digits</td><td>Elongated wing fingers</td><td>Fused wing bones</td></tr>
+      </tbody></table>
+    </div>
+    <div class="info-green">
+      <h3 style="color:#166534;font-size:.9rem;margin-bottom:.5rem">Vestigial Structures</h3>
+      <p style="font-size:.875rem;color:#15803d;line-height:1.65">Reduced or non-functional remnants of structures that were functional in ancestors. Whales retain vestigial pelvic bones from terrestrial ancestors. Humans retain a vestigial coccyx (tail bone), plantaris muscle, and goosebumps (arrector pili). Python snakes retain vestigial pelvic and hindlimb bones. All indicate common ancestry.</p>
+    </div>`
+  },
+  analog:{title:'Analogous Structures',color:'#2563eb',data:`
+    <div class="info-blue">
+      <h3 style="color:#1d4ed8">Analogous Structures</h3>
+      <p style="font-size:.875rem;color:#1e40af;margin-bottom:.875rem;line-height:1.7">Structures in different species that perform similar functions but have different evolutionary origins. Analogous structures indicate <strong>convergent evolution</strong> &mdash; different lineages evolving similar solutions to similar environmental challenges.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:.875rem">
+      ${[
+        {pair:'Bat wings vs Butterfly wings',desc:'Both are wings used for flying. Bat wings are modified forelimbs (homologous to human arms); butterfly wings are extensions of the exoskeleton. No common winged ancestor.'},
+        {pair:'Dolphin fins vs Shark fins',desc:'Both are streamlined appendages for swimming. Dolphin fins are modified mammalian forelimbs; shark fins evolved independently in cartilaginous fish. Convergent for hydrodynamic efficiency.'},
+        {pair:'Cactus spines vs Rose thorns',desc:'Both deter herbivores. Cactus spines are modified leaves; rose thorns are modified stem epidermis. Analogous structures, not homologous.'},
+        {pair:'Eyes of vertebrates vs Octopus',desc:'Both are camera-type eyes with lens, iris, and retina. Evolved independently. Notably, the octopus eye has no blind spot (optic nerve exits from back of retina, not through photoreceptor layer).'},
+      ].map(a=>`<div class="info-slate"><strong style="color:#1d4ed8">${a.pair}:</strong> <span style="font-size:.875rem;color:#475569">${a.desc}</span></div>`).join('')}
+    </div>`
+  },
+  biogeo:{title:'Biogeography',color:'#7c3aed',data:`
+    <div class="info-purple">
+      <h3 style="color:#7c3aed">Biogeography</h3>
+      <p style="font-size:.875rem;color:#6d28d9;margin-bottom:.875rem;line-height:1.7">The geographic distribution of species provides powerful evidence for evolution. Species are found where their ancestors lived and where they could disperse to. The pattern of species distribution reflects both evolutionary history and past continental configurations.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:.875rem">
+      ${[
+        {title:'Island Biogeography',desc:'Islands separated from continents have species derived from mainland ancestors that colonized and then diverged. Darwin\'s finches on the Galapagos: 13+ species evolved from a single South American ancestral finch. Each species fills a different niche. Classic natural experiment in evolution.'},
+        {title:'Continental Drift Evidence',desc:'Marsupials are found in Australia and South America (but not elsewhere) because these continents were connected via Antarctica when marsupials diversified. Continental drift separated populations, which then evolved independently. Similar patterns occur with many other groups.'},
+        {title:'Endemism',desc:'Species unique to a specific geographic area (endemic species) show that evolution occurred in geographic isolation. Madagascar has extraordinary endemism (&gt;90% of species unique) because it has been isolated since ~165 mya.'},
+        {title:'Alberta Biogeography',desc:'Alberta\'s biota reflects its post-glacial colonization history. Most current species arrived since the last glaciation (~10,000 years ago). Rocky Mountain species have different post-glacial histories than prairie and boreal species, reflecting the different refugia where they survived glaciation.'},
+      ].map(b=>`<div class="card cl-purple" style="padding:1rem"><h4 style="font-size:.88rem;color:#7c3aed;margin-bottom:.3rem">${b.title}</h4><p style="font-size:.85rem;color:#475569;line-height:1.6">${b.desc}</p></div>`).join('')}
+    </div>`
+  },
+  embryo:{title:'Embryology',color:'#ea580c',data:`
+    <div style="display:flex;flex-direction:column;gap:1rem">
+      <div class="card cl-red" style="padding:1.25rem">
+        <h3 style="font-size:.95rem;margin-bottom:.75rem">Embryological Evidence for Common Ancestry</h3>
+        <p style="font-size:.875rem;color:#475569;margin-bottom:.875rem;line-height:1.7">Early embryos of vertebrates (fish, frogs, reptiles, birds, mammals) are strikingly similar, even though adults are very different. All vertebrate embryos have: pharyngeal slits, a dorsal hollow nerve cord, a notochord, and a post-anal tail at some stage.</p>
+        <ul style="font-size:.875rem;color:#475569;list-style:disc;padding-left:1.25rem;line-height:2.2">
+          <li>Fish: pharyngeal slits become gill arches (functional gills)</li>
+          <li>Human: pharyngeal slits become middle ear bones (malleus, incus) and the thymus gland</li>
+          <li>All vertebrate embryos develop a proto-tail; in humans this regresses in utero</li>
+        </ul>
+      </div>
+      <div class="info-amber">
+        <h3 style="color:#92400e;font-size:.9rem;margin-bottom:.4rem">Haeckel's Recapitulation Theory</h3>
+        <p style="font-size:.875rem;color:#78350f;line-height:1.65">"Ontogeny recapitulates phylogeny" (Haeckel, 1866) &mdash; the idea that embryo development replays evolutionary history. The strong form of this idea is considered incorrect, but embryological similarities do reflect shared developmental pathways inherited from common ancestors. Developmental genes (Hox genes) are highly conserved across all animals.</p>
+      </div>
+    </div>`
+  },
+  biochem:{title:'Biochemistry / Molecular',color:'#0369a1',data:`
+    <div style="display:flex;flex-direction:column;gap:1rem">
+      <div class="info-blue">
+        <h3 style="color:#1d4ed8">Molecular Evidence for Common Ancestry</h3>
+        <p style="font-size:.875rem;color:#1e40af;margin-bottom:.875rem;line-height:1.7">All living organisms share the same genetic code (DNA), the same ATP energy currency, and remarkably similar metabolic pathways. This universality of biochemistry is powerful evidence that all life on Earth descended from a common ancestor.</p>
+      </div>
+      <div class="g2">
+        <div class="card cl-blue" style="padding:1.25rem">
+          <h3 style="font-size:.9rem;margin-bottom:.5rem">Cytochrome c Comparison</h3>
+          <p style="font-size:.85rem;color:#475569;line-height:1.65">Cytochrome c (electron transport protein) is functionally identical across organisms but differs in amino acid sequence. Humans and chimpanzees: identical sequence. Humans and rhesus monkeys: 1 difference. Humans and wheat: 37 differences. The more closely related two species are evolutionarily, the more similar their cytochrome c sequence.</p>
+        </div>
+        <div class="card cl-teal" style="padding:1.25rem">
+          <h3 style="font-size:.9rem;margin-bottom:.5rem">DNA Hybridization &amp; Sequencing</h3>
+          <p style="font-size:.85rem;color:#475569;line-height:1.65">DNA sequence comparisons provide the most precise measure of evolutionary relationship. Humans and chimpanzees share ~98.7% of DNA sequence. Humans and mice: ~85%. Humans and yeast: ~31%. Phylogenetic trees built from molecular data generally match those built from morphology &mdash; confirming both lines of evidence.</p>
+        </div>
+      </div>
+    </div>`
+  }
+};
+
+function setEvid(id,btn){
+  document.querySelectorAll('.evid-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  const e=EVID[id];
+  document.getElementById('evid-container').innerHTML=`<div class="evid-content active">${e.data}</div>`;
+}
+
+// ════════════════════════════════
+// NATURAL SELECTION SIMULATOR
+// ════════════════════════════════
+function runSim(){
+  const startFreq=parseInt(document.getElementById('sim-start').value)/100;
+  const adv=parseInt(document.getElementById('sim-adv').value)/100;
+  const gens=parseInt(document.getElementById('sim-gen').value);
+  document.getElementById('sim-start-val').textContent=Math.round(startFreq*100)+'%';
+  document.getElementById('sim-adv-val').textContent=adv.toFixed(2);
+  document.getElementById('sim-gen-val').textContent=gens;
+
+  let freqA=startFreq;
+  const container=document.getElementById('gen-bars');container.innerHTML='';
+
+  const addRow=(label,fA)=>{
+    const fB=1-fA;
+    const div=document.createElement('div');div.className='gen-row';
+    div.innerHTML=`<div class="gen-label">${label}</div>
+    <div class="gen-bar-wrap">
+      <div class="gen-bar-A" style="width:${fA*100}%"></div>
+      <div class="gen-bar-B" style="left:${fA*100}%;width:${fB*100}%"></div>
+    </div>
+    <div class="gen-pct" style="color:${fA>0.5?'#16a34a':'#dc2626'}">${Math.round(fA*100)}%</div>`;
+    container.appendChild(div);
+  };
+
+  addRow('Gen 0',freqA);
+  for(let i=1;i<=gens;i++){
+    // Simple selection model: w_AA=1+s, w_Aa=1+s/2, w_aa=1
+    const p=freqA,q=1-p;
+    const wAA=1+adv,wAa=1+adv/2,waa=1;
+    const wBar=p*p*wAA+2*p*q*wAa+q*q*waa;
+    freqA=(p*p*wAA+p*q*wAa)/wBar;
+    freqA=Math.max(0,Math.min(1,freqA));
+    if(i<=5||i%3===0||i===gens)addRow(`Gen ${i}`,freqA);
+  }
+}
+
+// ════════════════════════════════
+// INVASIVE SPECIES
+// ════════════════════════════════
+const INVASIVES=[
+  {name:'Purple Loosestrife',sci:'Lythrum salicaria',origin:'Europe/Asia',impact:'Invades Alberta wetlands and riparian areas. Produces up to 2.7 million seeds per plant annually. Outcompetes native cattails and sedges by altering water retention. Reduces waterfowl and shorebird habitat. Designated noxious weed in Alberta.'},
+  {name:'Quack Grass',sci:'Elymus repens',origin:'Eurasia',impact:'Highly invasive agricultural weed spreading through underground rhizomes. Competes with native prairie grasses and crops. Releases allelopathic chemicals that inhibit germination of neighbouring plants. Found in all agricultural areas of Alberta.'},
+  {name:'Scented Chamomile',sci:'Anthemis cotula',origin:'Mediterranean',impact:'Invades roadsides, disturbed areas, and overwintered cropland. Competitive with native annual forbs. Releases chemicals that repel insects and inhibit other plants. Less damaging than some invasives but common throughout southern Alberta.'},
+  {name:'Eurasian Watermilfoil',sci:'Myriophyllum spicatum',origin:'Europe/Asia',impact:'Dense mats shade out native aquatic plants and reduce dissolved oxygen. Fragments easily and spreads through boat traffic. Present in numerous Alberta recreational lakes. Major threat to lake biodiversity.'},
+  {name:'Common Carp',sci:'Cyprinus carpio',origin:'Europe/Asia',impact:'Bottom-feeding stirs up sediment, reducing water clarity and uprooting aquatic plants. Present in the North and South Saskatchewan River systems. Releases phosphorus from sediment, triggering algal blooms. Threatens native fish habitat.'},
+  {name:'Tropical Fish (Banff Hot Springs)',sci:'Various ornamental species',origin:'Various tropical regions',impact:'Historical example: ornamental fish released into Banff Hot Springs in the early 20th century. Spring-fed pools have constant warm temperatures year-round, allowing tropical species to establish. Demonstrates how artificial microhabitats can create ecological niches for invasives in unlikely locations.'},
+];
+
+function buildInvGrid(){
+  const grid=document.getElementById('inv-grid');
+  grid.innerHTML=INVASIVES.map((inv,i)=>`<div class="inv-card" id="inv-${i}" onclick="toggleInv(${i})">
+    <h4>${inv.name}</h4><div class="origin"><em>${inv.sci}</em> &mdash; Origin: ${inv.origin}</div>
+    <div style="font-size:.7rem;color:#dc2626;font-weight:700">Click to see impacts</div>
+    <div class="impact">${inv.impact}</div>
+  </div>`).join('');
+}
+function toggleInv(i){document.getElementById('inv-'+i).classList.toggle('open');}
+
+// ════════════════════════════════
+// QUIZ
+// ════════════════════════════════
+const KQS=[
+  {q:'What is a "realized niche" compared to a "fundamental niche"?',opts:['The fundamental niche is smaller; the realized niche is theoretical','The realized niche is the actual conditions used in the presence of competitors; the fundamental niche is the theoretical maximum range','They are identical terms used in different contexts','The realized niche only describes abiotic conditions; the fundamental niche describes biotic conditions'],ans:'The realized niche is the actual conditions used in the presence of competitors; the fundamental niche is the theoretical maximum range',hint:'Competitive interactions force species to use fewer resources than their physiological tolerance would allow. The realized niche is always a subset of the fundamental niche. This concept explains niche partitioning: coexisting species each use a portion of the available resource space.'},
+  {q:'Which of the following is an example of a BIOTIC limiting factor?',opts:['Temperature','Sunlight intensity','Predation','Dissolved oxygen concentration'],ans:'Predation',hint:'Biotic limiting factors are other living organisms: predators, competitors, and parasites. Abiotic limiting factors are non-living: temperature, sunlight, moisture, dissolved oxygen, nutrients, pH. Both categories limit where organisms can survive and reproduce.'},
+  {q:'In binomial nomenclature, what is the correct way to write the scientific name for the grey wolf?',opts:['canis lupus','Canis Lupus','Canis lupus','CANIS LUPUS'],ans:'Canis lupus',hint:'Rules: (1) Genus is capitalized, species is lowercase. (2) Written in italics when typed, underlined when handwritten. (3) Names are in Latin or Latinized Greek. So: <em>Canis lupus</em>.'},
+  {q:'The Competitive Exclusion Principle (Gause\'s Law) states that:',opts:['Two species with different niches cannot coexist in the same habitat','No two species can permanently occupy the same ecological niche in the same location','Competition always leads to one species going extinct','Predation is a more powerful limiting factor than competition'],ans:'No two species can permanently occupy the same ecological niche in the same location',hint:'If two species have identical niches, the slightly more efficient one will out-compete the other until one goes locally extinct or one evolves to use slightly different resources (niche differentiation). Coexisting species always have some degree of niche partitioning.'},
+  {q:'What is the key difference between Lamarck\'s and Darwin\'s explanations of how giraffes evolved long necks?',opts:['Lamarck said giraffes originally had long necks; Darwin said they evolved them','Lamarck proposed acquired characteristics are inherited; Darwin proposed selection acts on existing heritable variation','Darwin proposed giraffes chose to stretch their necks; Lamarck proposed random mutation','There is no meaningful difference; both proposed natural selection'],ans:'Lamarck proposed acquired characteristics are inherited; Darwin proposed selection acts on existing heritable variation',hint:'Lamarck: individual giraffes stretched their necks and passed that change to offspring (use/disuse + inheritance of acquired characteristics). Darwin: variation in neck length already existed; longer-necked individuals reproduced more successfully; selection changed allele frequencies over generations. Lamarck\'s mechanism has no genetic basis.'},
+  {q:'Which of the following is the BEST evidence for evolution provided by the fossil record?',opts:['All fossils look the same throughout geological time','Older rock layers contain simpler organisms; younger layers contain more complex organisms, with transitional forms documented','The absence of any transitional fossils proves species do not change','Fossils are only found in Alberta and a few other places'],ans:'Older rock layers contain simpler organisms; younger layers contain more complex organisms, with transitional forms documented',hint:'The fossil record shows a clear temporal pattern: the law of superposition places older fossils in deeper strata. Simple single-celled organisms appear first (~3.5 bya); multicellular organisms later (~600 mya); vertebrates later still. Transitional fossils (Tiktaalik: fish-tetrapod; Archaeopteryx: reptile-bird) document major evolutionary transitions.'},
+  {q:'What is ALLOPATRIC speciation?',opts:['Speciation occurring within the same geographic area','Speciation caused by polyploidy in plants','Speciation occurring when populations become geographically isolated and evolve separately','Speciation caused by sexual selection alone'],ans:'Speciation occurring when populations become geographically isolated and evolve separately',hint:'Allopatric (from Greek: "other land") speciation: geographic isolation prevents gene flow between populations. Each population accumulates different mutations, experiences different selection pressures, and may undergo genetic drift. Over time, if differences become great enough, the populations can no longer interbreed even if brought back together &mdash; they are now separate species.'},
+  {q:'The Burgess Shale in British Columbia provides evidence for which of the following?',opts:['The gradual nature of evolution over billions of years','The Cambrian Explosion &mdash; a rapid burst of animal diversification ~508 million years ago','The origin of land plants from aquatic algae','The formation of Earth\'s atmosphere by cyanobacteria'],ans:'The Cambrian Explosion &mdash; a rapid burst of animal diversification ~508 million years ago',hint:'The Burgess Shale (~508 mya, Yoho National Park, BC) preserves exceptional soft-bodied Cambrian organisms in fine detail. The extraordinary diversity of body plans documented there represents the Cambrian Explosion &mdash; the most rapid and dramatic diversification of animal life in Earth\'s history. This supports punctuated equilibrium as well as documenting a major evolutionary event.'},
+  {q:'Homologous structures are evidence for evolution because:',opts:['They perform the same function in different species, proving independent evolution','They share a common evolutionary origin in a shared ancestor, even if they now perform different functions','They are found only in closely related species that share identical niches','They demonstrate that analogous structures are more common than previously thought'],ans:'They share a common evolutionary origin in a shared ancestor, even if they now perform different functions',hint:'Homologous structures (e.g., the bones of a human arm, bat wing, whale flipper, and bird wing) share the same basic skeletal plan inherited from a common tetrapod ancestor. They have been modified by natural selection for different functions (grasping, flying, swimming) but their structural blueprint reveals common descent.'},
+  {q:'Purple loosestrife is problematic as an invasive species in Alberta wetlands primarily because:',opts:['It releases toxins that directly kill animals','It competes with native cattails and reduces wetland habitat quality for wildlife','It changes water chemistry by releasing heavy metals','It carries a disease fatal to waterfowl'],ans:'It competes with native cattails and reduces wetland habitat quality for wildlife',hint:'Purple loosestrife outcompetes native cattails and other wetland plants through competitive exclusion: it grows rapidly, produces millions of seeds, and alters the physical structure of wetlands (changes water retention patterns). This reduces the structural diversity that native wildlife depend on. It succeeds partly because it arrived without its natural European enemies.'},
+];
+
+let kqIdx=0,kqSel='',kqScore={c:0,t:0},kqDone=false;
+function kqInit(){
+  const q=KQS[kqIdx];
+  document.getElementById('kq-counter').textContent=`Question ${kqIdx+1} of ${KQS.length}`;
+  document.getElementById('kq-text').textContent=q.q;
+  const opts=document.getElementById('kq-opts');opts.innerHTML='';
+  q.opts.forEach((o,i)=>{const d=document.createElement('div');d.className='q-opt';d.id='qopt-'+i;d.innerHTML=`<input type="radio" name="kq-r" id="kr-${i}" onchange="highlightOpt(${i})"><label for="kr-${i}" style="flex:1;cursor:pointer">${o}</label>`;opts.appendChild(d);});
+  document.getElementById('kq-feedback').className='q-feedback';
+  document.getElementById('kq-btn').textContent='Submit Answer';
+  document.getElementById('kq-btn').onclick=kqCheck;
+  kqSel='';kqDone=false;
+}
+function highlightOpt(i){document.querySelectorAll('.q-opt').forEach((el,j)=>el.classList.toggle('selected',j===i));kqSel=KQS[kqIdx].opts[i];}
+function kqCheck(){
+  if(!kqSel||kqDone)return;kqDone=true;
+  const q=KQS[kqIdx];const correct=kqSel===q.ans;
+  kqScore.t++;if(correct)kqScore.c++;
+  document.getElementById('kq-score').textContent=`${kqScore.c} / ${kqScore.t}`;
+  document.querySelectorAll('.q-opt').forEach(el=>{const lbl=el.querySelector('label').textContent;el.querySelector('input').disabled=true;if(lbl===q.ans)el.classList.add('correct');else if(lbl===kqSel&&!correct)el.classList.add('wrong');});
+  const fb=document.getElementById('kq-feedback');
+  if(correct){fb.className='q-feedback correct';fb.innerHTML=`<strong>Correct!</strong> ${q.hint}`;}
+  else{fb.className='q-feedback wrong';fb.innerHTML=`<strong>Incorrect.</strong> Correct answer: <strong>${q.ans}</strong>. ${q.hint}`;}
+  const btn=document.getElementById('kq-btn');
+  if(kqIdx<KQS.length-1){btn.textContent='Next Question \u2192';btn.onclick=()=>{kqIdx++;kqInit();};}
+  else{btn.textContent='Restart Quiz';btn.onclick=()=>{kqIdx=0;kqScore={c:0,t:0};kqInit();document.getElementById('kq-score').textContent='0 / 0';};}
+}
+
+// ════════════════════════════════
+// MATCHING
+// ════════════════════════════════
+const MATCH_PAIRS=[
+  {left:'Habitat',right:'Where an organism physically lives'},
+  {left:'Ecological niche',right:'Full role of organism in ecosystem (what + where + when)'},
+  {left:'Keystone species',right:'Species with disproportionately large ecosystem impact'},
+  {left:'Allopatric speciation',right:'New species from geographically isolated populations'},
+  {left:'Homologous structures',right:'Same evolutionary origin, different functions'},
+  {left:'Analogous structures',right:'Same function, different evolutionary origins'},
+  {left:'Competitive exclusion',right:'One species eliminates another from the same niche'},
+  {left:'Punctuated equilibrium',right:'Long stasis punctuated by rapid evolutionary bursts'},
+];
+let matchLeft=null,matchMatched=0;
+function matchReset(){matchLeft=null;matchMatched=0;document.getElementById('match-score-fill').style.width='0%';document.getElementById('match-score-text').textContent='0 of 8 matched';buildMatchGrid();}
+function buildMatchGrid(){
+  const grid=document.getElementById('match-grid');
+  const sh=MATCH_PAIRS.map((p,i)=>({...p,id:i}));
+  const rv=sh.map(p=>({text:p.right,id:p.id})).sort(()=>Math.random()-.5);
+  grid.innerHTML=`<div class="match-col" id="match-left">${sh.map(p=>`<div class="match-item" id="ml-${p.id}" onclick="matchClickLeft(${p.id})">${p.left}</div>`).join('')}</div><div class="match-col" id="match-right">${rv.map(c=>`<div class="match-item" id="mr-${c.id}" onclick="matchClickRight(${c.id})">${c.text}</div>`).join('')}</div>`;
+}
+function matchClickLeft(id){const el=document.getElementById('ml-'+id);if(el.classList.contains('matched'))return;document.querySelectorAll('#match-left .match-item').forEach(e=>e.classList.remove('selected'));matchLeft={id};el.classList.add('selected');}
+function matchClickRight(id){
+  if(!matchLeft)return;const elR=document.getElementById('mr-'+id);if(elR.classList.contains('matched'))return;
+  const elL=document.getElementById('ml-'+matchLeft.id);
+  if(matchLeft.id===id){elL.classList.remove('selected');elL.classList.add('matched');elR.classList.add('matched');matchMatched++;document.getElementById('match-score-fill').style.width=(matchMatched/8*100)+'%';document.getElementById('match-score-text').textContent=`${matchMatched} of 8 matched${matchMatched===8?' \u2014 Perfect!':''}`;}
+  else{elL.classList.remove('selected');elL.classList.add('wrong-flash');elR.classList.add('wrong-flash');setTimeout(()=>{elL.classList.remove('wrong-flash');elR.classList.remove('wrong-flash');},420);}
+  matchLeft=null;
+}
+
+// ════════════════════════════════
+// FLASHCARDS
+// ════════════════════════════════
+const FC_TERMS=[
+  {t:'Species',d:'A group of organisms capable of interbreeding and producing fertile offspring. Defined by reproductive isolation from other groups. The most specific level of biological classification.'},
+  {t:'Population',d:'All individuals of the same species living in the same geographic area at the same time. Has emergent properties: size, density, age structure, birth rate, death rate, and genetic composition.'},
+  {t:'Community',d:'All populations of different species living and interacting in the same area. Community ecology examines species interactions: predation, competition, mutualism, commensalism, and parasitism.'},
+  {t:'Ecosystem',d:'A community of organisms plus all the abiotic factors of the environment they interact with. Open system exchanging energy and matter with adjacent ecosystems.'},
+  {t:'Habitat',d:'The specific physical environment where an organism lives \u2014 its physical address. Defined by abiotic characteristics (soil type, temperature range, moisture, light level).'},
+  {t:'Ecological Niche',d:'The complete functional role of an organism in its ecosystem \u2014 what it eats, when it is active, what it competes with, how it reproduces. The organism\'s "profession." Always more specific than habitat.'},
+  {t:'Limiting Factor',d:'Any resource or condition present in amounts less than required by an organism, limiting population growth. Liebig\'s Law: growth is controlled by the most scarce essential resource, not the total.'},
+  {t:'Competitive Exclusion',d:'The principle (Gause, 1934) that no two species can permanently occupy the same ecological niche in the same location. One species will eventually outcompete the other.'},
+  {t:'Biotic Factor',d:'Living components of an ecosystem and their interactions: producers, consumers, decomposers, predators, competitors, parasites. All organism-to-organism interactions.'},
+  {t:'Abiotic Factor',d:'Non-living physical and chemical components: temperature, sunlight, water, soil composition, nutrients (N, P), dissolved oxygen, pH, relative humidity, wind.'},
+  {t:'Natural Selection',d:'The mechanism of evolution proposed by Darwin: heritable variation exists; more offspring are born than can survive; individuals with advantageous traits survive and reproduce more; over generations, beneficial traits become more common.'},
+  {t:'Adaptation',d:'A heritable trait that increases an organism\'s fitness (survival and reproductive success) in its environment. Can be structural, physiological, or behavioural.'},
+  {t:'Homologous Structures',d:'Body structures in different species that share a common evolutionary origin (same ancestral structure) even if they now perform different functions. Example: bones of human arm, bat wing, whale flipper.'},
+  {t:'Analogous Structures',d:'Body structures in different species that perform similar functions but have different evolutionary origins. Evidence for convergent evolution. Example: bat wings and butterfly wings.'},
+  {t:'Allopatric Speciation',d:'The most common mode of speciation: geographic isolation prevents gene flow; populations accumulate different mutations and experience different selection; eventually become reproductively incompatible.'},
+  {t:'Punctuated Equilibrium',d:'The model (Eldredge & Gould, 1972) that species remain stable for long periods (stasis) punctuated by rapid evolutionary change. Supported by the Burgess Shale Cambrian Explosion.'},
+  {t:'Burgess Shale',d:'Exceptional Cambrian fossil site in Yoho National Park, British Columbia (~508 mya). Documents the Cambrian Explosion \u2014 the most rapid diversification of animal body plans in Earth\'s history. One of Canada\'s most important fossil sites.'},
+  {t:'Binomial Nomenclature',d:'Linnaeus\'s system giving each species a two-part Latin name: Genus species. Genus is capitalized; species is lowercase. Written in italics. Universal across all languages. Example: Canis lupus (grey wolf).'},
+  {t:'Invasive Species',d:'A species introduced to a new area (intentionally or accidentally) where it has no natural predators or competitors, allowing rapid population growth that outcompetes native species. Often major drivers of biodiversity loss.'},
+  {t:'Keystone Species',d:'A species that has a disproportionately large effect on ecosystem structure relative to its abundance. Removing a keystone species causes major biodiversity changes. Examples: grey wolf, beaver, sea otter, bison (Alberta).'},
+];
+let fcIdx=0,fcFlipped=false;
+function fcRender(){document.getElementById('fc-term').textContent=FC_TERMS[fcIdx].t;document.getElementById('fc-def').textContent=FC_TERMS[fcIdx].d;document.getElementById('fc-ctr').textContent=`${fcIdx+1} / ${FC_TERMS.length}`;document.getElementById('fc-inner').className='fc-inner'+(fcFlipped?' flip':'');}
+function fcFlip(){fcFlipped=!fcFlipped;document.getElementById('fc-inner').className='fc-inner'+(fcFlipped?' flip':'');}
+function fcNext(){fcFlipped=false;document.getElementById('fc-inner').className='fc-inner';setTimeout(()=>{fcIdx=(fcIdx+1)%FC_TERMS.length;fcRender();},150);}
+function fcPrev(){fcFlipped=false;document.getElementById('fc-inner').className='fc-inner';setTimeout(()=>{fcIdx=(fcIdx-1+FC_TERMS.length)%FC_TERMS.length;fcRender();},150);}
+
+// ════════════════════════════════
+// BOOT
+// ════════════════════════════════
+showHier('species');
+setZone('terrestrial',document.querySelector('.zone-tab'));
+renderTax();
+setEvid('fossil',document.querySelector('.evid-tab'));
+buildInvGrid();
+runSim();
+kqInit();buildMatchGrid();fcRender();
+</script>
+</body>
+</html>
