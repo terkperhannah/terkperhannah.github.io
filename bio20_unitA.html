@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css">
+    <style>
+        /* Consistent with main course pages */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+
+        .content-box {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+
+        .content-box h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+
+        .units-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+
+        .unit-card {
+            padding: 20px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            transition: transform 0.3s ease;
+            border: 1px solid #e0e0e0;
+            text-decoration: none;
+            color: #34495e;
+        }
+
+
+        .unit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+
+        .unit-card h3 {
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+
+        .unit-card p {
+            line-height: 1.5;
+        }
+
+
+        .outcomes-list {
+            columns: 2;
+            gap: 30px;
+            padding-left: 20px;
+        }
+
+
+        .outcomes-list li {
+            margin-bottom: 12px;
+            break-inside: avoid;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 25px;
+        }
+
+
+        .outcomes-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #2ecc71;
+        }
+
+
+        .resources-box {
+            background: #f8f9fa;
+            border-color: #2ecc71;
+        }
+
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 6px;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: #34495e;
+            border: 1px solid #e0e0e0;
+        }
+
+
+        .resource-link:hover {
+            transform: translateX(5px);
+            border-color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+    <div id="navbar-placeholder"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      })
+      .catch(err => console.error("Navbar failed to load:", err));
+  });
+</script>
+
+<title>Energy &amp; Matter Exchange in the Biosphere &mdash; Ms. Terkper's Digital Classroom</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,sans-serif;background:#f0fdfa;color:#0f172a;line-height:1.6}
+
+/* SITE HEADER */
+.site-header{background:linear-gradient(135deg,#2a9d8f 0%,#3b82f6 100%);text-align:center;padding:2rem 1rem}
+.site-header h1{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:700;color:#fff;letter-spacing:-.02em}
+
+/* SITE NAV */
+.site-nav{background:#3b82f6;display:flex;flex-wrap:wrap;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.site-nav a{color:#fff;text-decoration:none;padding:.75rem 1.25rem;font-size:.875rem;font-weight:500;white-space:nowrap;transition:background .2s}
+.site-nav a:hover{background:#2563eb}
+
+/* UNIT NAV */
+.unit-nav{background:#fff;border-bottom:1px solid #99f6e4;position:sticky;top:0;z-index:200;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.unit-nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;flex-wrap:nowrap;overflow-x:auto;padding:0 1rem;scrollbar-width:none}
+.unit-nav-inner::-webkit-scrollbar{display:none}
+.unit-nav-brand{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.9rem;color:#0d9488;padding:.75rem 1rem .75rem 0;margin-right:.5rem;border-right:1px solid #99f6e4;flex-shrink:0;white-space:nowrap}
+.unit-nav a{color:#475569;text-decoration:none;padding:.75rem .85rem;font-size:.78rem;font-weight:600;white-space:nowrap;transition:color .2s;border-bottom:2px solid transparent}
+.unit-nav a:hover{color:#0d9488;border-bottom-color:#2dd4bf}
+
+/* LAYOUT */
+main{max-width:1200px;margin:0 auto;padding:2.5rem 1rem 8rem;display:flex;flex-direction:column;gap:5rem}
+
+/* TYPOGRAPHY */
+h2.sh{font-family:Georgia,serif;font-size:2rem;font-weight:700;color:#0f172a}
+h3{font-family:Georgia,serif;font-size:1.2rem;font-weight:700;color:#1e293b}
+.section-row{display:flex;align-items:center;gap:1rem;border-bottom:2px solid #99f6e4;padding-bottom:1rem;margin-bottom:2rem}
+.snum{width:2.5rem;height:2.5rem;border-radius:.5rem;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.2rem;flex-shrink:0;color:#fff;background:#0d9488}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#134e4a 0%,#0d9488 55%,#0f766e 100%);color:#fff;border-radius:1.25rem;padding:3rem;border-bottom:8px solid #2dd4bf;position:relative;overflow:hidden;margin-bottom:2rem}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:320px;height:320px;background:rgba(255,255,255,.04);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-80px;left:40%;width:400px;height:400px;background:rgba(255,255,255,.03);border-radius:50%}
+.hero .badge{display:inline-block;background:rgba(255,255,255,.12);color:#99f6e4;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .9rem;border-radius:9999px;margin-bottom:1.25rem}
+.hero h1{font-family:Georgia,serif;font-size:clamp(1.75rem,4vw,3.25rem);font-weight:700;line-height:1.2;margin-bottom:.5rem;position:relative;z-index:1}
+.hero p{color:rgba(255,255,255,.8);font-size:1.05rem;position:relative;z-index:1}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
+.g4{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.25rem}
+
+/* CARDS */
+.card{background:#fff;border:1px solid #99f6e4;border-radius:.875rem;overflow:hidden}
+.card-hd{background:#f0fdfa;border-bottom:1px solid #99f6e4;padding:1rem 1.25rem;font-weight:700;font-size:.95rem}
+.card-bd{padding:1.25rem}
+.cl-teal{border-left:4px solid #0d9488}
+.cl-green{border-left:4px solid #16a34a}
+.cl-blue{border-left:4px solid #3b82f6}
+.cl-amber{border-left:4px solid #f59e0b}
+.cl-red{border-left:4px solid #dc2626}
+.cl-purple{border-left:4px solid #7c3aed}
+.cl-indigo{border-left:4px solid #4f46e5}
+.cl-brown{border-left:4px solid #92400e}
+
+/* INFO BOXES */
+.info-teal{background:#f0fdfa;border:1px solid #99f6e4;border-radius:.75rem;padding:1.25rem}
+.info-green{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:.75rem;padding:1.25rem}
+.info-amber{background:#fffbeb;border:1px solid #fde68a;border-radius:.75rem;padding:1.25rem}
+.info-red{background:#fef2f2;border:1px solid #fecaca;border-radius:.75rem;padding:1.25rem}
+.info-purple{background:#faf5ff;border:1px solid #e9d5ff;border-radius:.75rem;padding:1.25rem}
+.info-earth{background:#fefce8;border:1px solid #fef08a;border-radius:.75rem;padding:1.25rem}
+.info-slate{background:#f8fafc;border:1px solid #e2e8f0;border-radius:.75rem;padding:1.25rem}
+
+/* TABLES */
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{background:#134e4a;color:#fff;padding:.65rem 1rem;text-align:left;font-weight:600}
+td{padding:.65rem 1rem;border-bottom:1px solid #ccfbf1;vertical-align:top}
+tr:hover td{background:#f0fdfa}
+tr:last-child td{border-bottom:none}
+.ot{overflow-x:auto}
+.mono{font-family:'Courier New',monospace}
+
+/* STEP LIST */
+.step-list{display:flex;flex-direction:column;gap:.75rem}
+.step{display:flex;gap:.75rem;align-items:flex-start}
+.step-num{background:#0d9488;color:#fff;width:1.75rem;height:1.75rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;flex-shrink:0}
+
+/* BADGE */
+.badge{display:inline-block;background:#ccfbf1;color:#0d9488;border-radius:9999px;padding:.25rem .75rem;font-size:.8rem;font-weight:500;margin:.2rem}
+
+/* FOOTER */
+footer{background:#0f172a;border-top:4px solid #22c55e;text-align:center;padding:1.25rem 1rem}
+footer p{color:#cbd5e1;font-size:.875rem}
+
+/* BACK TO TOP */
+.btt{position:fixed;bottom:2rem;right:2rem;background:#0d9488;color:#fff;border:none;border-radius:50%;width:3rem;height:3rem;font-size:1.5rem;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.2);z-index:300;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.btt:hover{transform:scale(1.12)}
+
+/* ════ ENERGY PYRAMID ════ */
+.pyramid-wrap{background:#fff;border:1px solid #99f6e4;border-radius:1rem;overflow:hidden}
+.pyramid-controls{padding:1rem 1.5rem;background:#f0fdfa;border-bottom:1px solid #99f6e4;display:flex;flex-wrap:wrap;gap:1.5rem;align-items:flex-end}
+.ctrl-item{display:flex;flex-direction:column;gap:.3rem}
+.ctrl-item label{font-size:.75rem;font-weight:600;color:#64748b}
+.ctrl-item .val{font-size:.85rem;font-weight:700;color:#0d9488;font-family:'Courier New',monospace}
+.pyramid-canvas-wrap{padding:1.5rem;display:flex;flex-wrap:wrap;gap:2rem;align-items:flex-start}
+.pyramid-levels{display:flex;flex-direction:column;gap:.75rem;flex:1;min-width:280px}
+.pyr-level{border-radius:.625rem;padding:.875rem 1.25rem;position:relative;transition:all .5s}
+.pyr-level-label{font-weight:700;font-size:.9rem}
+.pyr-level-sub{font-size:.78rem;opacity:.85;margin-top:.2rem}
+.pyr-energy{font-family:'Courier New',monospace;font-size:1rem;font-weight:700;margin-top:.3rem}
+.pyr-l1{background:linear-gradient(135deg,#166534,#16a34a);color:#fff}
+.pyr-l2{background:linear-gradient(135deg,#854d0e,#ca8a04);color:#fff}
+.pyr-l3{background:linear-gradient(135deg,#9a3412,#ea580c);color:#fff}
+.pyr-l4{background:linear-gradient(135deg,#6b21a8,#9333ea);color:#fff}
+.pyr-lost{color:rgba(255,255,255,.75);font-size:.75rem;margin-top:.2rem}
+
+/* ════ CYCLE EXPLORER ════ */
+.cycle-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.cycle-tab{padding:.5rem 1.25rem;border-radius:.5rem;font-size:.85rem;font-weight:700;cursor:pointer;border:2px solid #99f6e4;background:#fff;color:#64748b;transition:all .2s}
+.cycle-tab.active,.cycle-tab:hover{color:#fff;border-color:transparent}
+.cycle-content{display:none}
+.cycle-content.active{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+
+/* ════ FOOD WEB ════ */
+.fw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.75rem;margin-bottom:1.25rem}
+.fw-item{background:#fff;border:2px solid #99f6e4;border-radius:.75rem;padding:.875rem;text-align:center;cursor:pointer;transition:all .2s}
+.fw-item:hover,.fw-item.selected{border-color:#0d9488;background:#f0fdfa;transform:translateY(-2px);box-shadow:0 4px 12px rgba(13,148,136,.15)}
+.fw-item .fw-level{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.3rem}
+.fw-item .fw-name{font-weight:700;font-size:.88rem}
+.fw-item .fw-sci{font-style:italic;font-size:.73rem;color:#64748b;margin-top:.2rem}
+.fw-info-panel{background:#fff;border:1px solid #99f6e4;border-radius:.875rem;padding:1.5rem;min-height:180px}
+
+/* ════ INDIGENOUS KNOWLEDGE ════ */
+.ik-section{background:linear-gradient(135deg,#1c1917 0%,#292524 50%,#1c1917 100%);border-radius:1.25rem;padding:2.5rem;border:2px solid #92400e;position:relative;overflow:hidden}
+.ik-section::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#f59e0b,#d97706,#92400e,#d97706,#f59e0b)}
+.ik-section h2{color:#fbbf24;font-family:Georgia,serif;font-size:1.75rem;margin-bottom:.5rem}
+.ik-section .ik-sub{color:rgba(255,255,255,.65);font-size:.9rem;margin-bottom:2rem}
+.ik-nation{background:rgba(255,255,255,.06);border:1px solid rgba(251,191,36,.2);border-radius:.875rem;padding:1.5rem;margin-bottom:1.25rem}
+.ik-nation h3{color:#fbbf24;font-size:1rem;margin-bottom:.4rem;font-family:Georgia,serif}
+.ik-nation .ik-territory{font-size:.72rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem}
+.ik-nation ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.ik-nation li{font-size:.875rem;color:rgba(255,255,255,.8);line-height:1.65;padding-left:1.25rem;position:relative}
+.ik-nation li::before{content:'\25C8';position:absolute;left:0;color:#f59e0b;font-size:.75rem;top:.2rem}
+.ik-tek{background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.3);border-radius:.875rem;padding:1.5rem;margin-top:1.5rem}
+.ik-tek h3{color:#fbbf24;font-family:Georgia,serif;font-size:1.05rem;margin-bottom:.75rem}
+.ik-tek p{font-size:.875rem;color:rgba(255,255,255,.8);line-height:1.7}
+.ik-connect{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-top:1.5rem}
+.ik-conn-card{background:rgba(255,255,255,.06);border:1px solid rgba(251,191,36,.15);border-radius:.75rem;padding:1rem}
+.ik-conn-card .ik-cycle-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:#f59e0b;margin-bottom:.35rem}
+.ik-conn-card p{font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.6}
+
+/* ════ QUIZ ════ */
+.quiz-wrap{max-width:700px;margin:0 auto}
+.q-card{background:#fff;border:1px solid #99f6e4;border-radius:.875rem;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.q-header{background:#f0fdfa;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #99f6e4}
+.q-header h4{font-weight:700;font-size:1rem}
+.q-prog{font-size:.78rem;font-weight:700;color:#64748b;text-transform:uppercase}
+.q-score{background:#0d9488;color:#fff;font-size:.78rem;font-weight:700;padding:.2rem .6rem;border-radius:9999px}
+.q-body{padding:1.5rem}
+.q-text{font-size:1rem;color:#0f172a;margin-bottom:1.25rem;line-height:1.6}
+.q-options{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1rem}
+.q-opt{display:flex;align-items:center;gap:.75rem;padding:.85rem 1rem;border:2px solid #99f6e4;border-radius:.625rem;cursor:pointer;transition:all .2s;font-size:.9rem}
+.q-opt:hover{border-color:#0d9488;background:#f0fdfa}
+.q-opt.selected{border-color:#0d9488;background:#f0fdfa}
+.q-opt.correct{border-color:#16a34a;background:#f0fdf4;color:#166534}
+.q-opt.wrong{border-color:#dc2626;background:#fef2f2;color:#991b1b}
+.q-opt input{accent-color:#0d9488;width:1.1rem;height:1.1rem}
+.q-feedback{padding:.875rem 1rem;border-radius:.5rem;font-size:.875rem;display:none;margin-bottom:1rem}
+.q-feedback.correct{background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;display:block}
+.q-feedback.wrong{background:#fef2f2;color:#991b1b;border:1px solid #fecaca;display:block}
+.q-footer{background:#f0fdfa;padding:1rem 1.5rem;border-top:1px solid #99f6e4;display:flex;justify-content:center}
+.btn{cursor:pointer;font-weight:600;border:none;border-radius:.5rem;padding:.6rem 1.5rem;transition:all .2s}
+.btn-teal{background:#0d9488;color:#fff}
+.btn-teal:hover{background:#0f766e}
+.btn-outline{background:#fff;color:#334155;border:1px solid #99f6e4}
+.btn-outline:hover{background:#f0fdfa}
+.btn-lg{padding:.75rem 2rem;font-size:1rem}
+
+/* ════ MATCHING ════ */
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:700px;margin:0 auto}
+.match-col{display:flex;flex-direction:column;gap:.5rem}
+.match-item{padding:.75rem 1rem;border:2px solid #99f6e4;border-radius:.625rem;cursor:pointer;font-size:.83rem;font-weight:600;transition:all .2s;background:#fff;text-align:center}
+.match-item:hover:not(.matched){border-color:#0d9488;background:#f0fdfa}
+.match-item.selected{border-color:#0d9488;background:#f0fdfa;color:#0d9488}
+.match-item.matched{border-color:#16a34a;background:#dcfce7;color:#166534;cursor:default}
+.match-item.wrong-flash{border-color:#dc2626;background:#fef2f2;animation:flash .4s}
+@keyframes flash{0%,100%{opacity:1}50%{opacity:.3}}
+.match-score-bar{background:#ccfbf1;border-radius:9999px;height:.75rem;overflow:hidden;margin-bottom:.75rem}
+.match-score-fill{height:100%;background:linear-gradient(90deg,#0d9488,#2dd4bf);border-radius:9999px;transition:width .4s}
+
+/* ════ FLASHCARDS ════ */
+.fc-wrap{max-width:480px;margin:0 auto}
+.fc{width:100%;height:15rem;cursor:pointer;perspective:1000px}
+.fc-inner{width:100%;height:100%;transform-style:preserve-3d;transition:transform .5s}
+.fc-inner.flip{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:.875rem;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;text-align:center;gap:.75rem;box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.fc-front{background:linear-gradient(135deg,#134e4a,#0d9488);color:#fff}
+.fc-back{background:#f8fafc;color:#1e293b;transform:rotateY(180deg);border:2px solid #99f6e4}
+.fc-term{font-family:Georgia,serif;font-size:1.75rem;font-weight:700}
+.fc-hint{font-size:.78rem;opacity:.65}
+.fc-def{font-size:.9rem;line-height:1.65}
+.fc-nav{display:flex;justify-content:space-between;align-items:center;background:#f0fdfa;padding:.5rem;border-radius:.5rem;margin-top:1rem}
+.fc-ctr{font-size:.75rem;font-weight:700;text-transform:uppercase;color:#64748b;letter-spacing:.06em}
+
+/* Cycle process diagram */
+.cycle-box{background:#fff;border:1px solid #99f6e4;border-radius:.875rem;padding:1.5rem}
+.cycle-box h3{color:#0d9488;font-size:.95rem;margin-bottom:.75rem}
+.proc-list{display:flex;flex-direction:column;gap:.5rem}
+.proc{display:flex;align-items:flex-start;gap:.75rem;padding:.6rem .875rem;border-radius:.5rem;font-size:.85rem}
+.proc-arrow{font-size:.9rem;color:#0d9488;margin-top:.05rem;flex-shrink:0}
+.proc-text{color:#334155;line-height:1.55}
+.proc-text strong{color:#0f172a}
+.human-impact{background:#fef2f2;border:1px solid #fecaca;border-radius:.625rem;padding:.875rem 1rem;margin-top:.75rem;font-size:.82rem;color:#991b1b}
+.human-impact strong{color:#7f1d1d}
+
+@media(max-width:768px){
+  .cycle-content.active{grid-template-columns:1fr}
+  .match-grid{grid-template-columns:1fr}
+  .fw-grid{grid-template-columns:repeat(2,1fr)}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .ik-connect{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<div class="unit-nav">
+  <div class="unit-nav-inner">
+    <div class="unit-nav-brand">
+      <svg width="16" height="16" fill="none" stroke="#0d9488" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12c0-5.5 8-5.5 8 0s-8 5.5-8 0"/><path d="M12 7v10"/></svg>
+      Bio 20 &mdash; Unit A
+    </div>
+    <a href="#overview">Overview</a>
+    <a href="#energy">Energy Flow</a>
+    <a href="#cycles">Biogeochemical Cycles</a>
+    <a href="#equilibrium">Biosphere Equilibrium</a>
+    <a href="#human">Human Impacts</a>
+    <a href="#indigenous">Indigenous Knowledge</a>
+    <a href="#practice">Practice</a>
+  </div>
+</div>
+
+<main>
+
+<!-- ════════ OVERVIEW ════════ -->
+<section id="overview">
+  <div class="hero">
+    <div class="badge">Biology 20 &mdash; Unit A</div>
+    <h1>Energy &amp; Matter Exchange in the Biosphere</h1>
+    <p>Ms. Terkper's Digital Classroom &mdash; Themes: Energy, Equilibrium, Matter &amp; Systems</p>
+  </div>
+
+  <div class="g2">
+    <div style="display:flex;flex-direction:column;gap:1.5rem">
+      <div>
+        <h3 style="font-size:1.3rem;margin-bottom:.75rem">Focusing Questions</h3>
+        <blockquote style="border-left:4px solid #2dd4bf;background:#fff;border:1px solid #99f6e4;border-left:4px solid #2dd4bf;padding:1.25rem 1.5rem;border-radius:.625rem;font-style:italic;color:#475569;font-size:.95rem;line-height:1.85">
+          "How are carbon, oxygen, nitrogen and phosphorus cycled in the biosphere? How is the flow of energy balanced in the biosphere? How have human activities and technological advances affected the balance of energy and matter in the biosphere?"
+        </blockquote>
+      </div>
+      <div>
+        <h3 style="font-size:1.3rem;margin-bottom:.75rem">General Outcomes</h3>
+        <div style="display:flex;flex-direction:column;gap:.75rem">
+          <div style="display:flex;gap:.75rem;background:#fff;border:1px solid #99f6e4;border-left:4px solid #0d9488;border-radius:.5rem;padding:.875rem 1rem;font-size:.875rem"><strong style="color:#0d9488;white-space:nowrap">20-A1:</strong>&nbsp;Explain the constant flow of energy through the biosphere and ecosystems.</div>
+          <div style="display:flex;gap:.75rem;background:#fff;border:1px solid #99f6e4;border-left:4px solid #0d9488;border-radius:.5rem;padding:.875rem 1rem;font-size:.875rem"><strong style="color:#0d9488;white-space:nowrap">20-A2:</strong>&nbsp;Explain the cycling of matter through the biosphere.</div>
+          <div style="display:flex;gap:.75rem;background:#fff;border:1px solid #99f6e4;border-left:4px solid #0d9488;border-radius:.5rem;padding:.875rem 1rem;font-size:.875rem"><strong style="color:#0d9488;white-space:nowrap">20-A3:</strong>&nbsp;Explain the balance of energy and matter exchange in the biosphere, as an open system, and explain how this maintains equilibrium.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-size:1.2rem;margin-bottom:1rem">Key Concepts</h3>
+      <div style="margin-bottom:1.5rem">
+        <span class="badge">Biosphere</span>
+        <span class="badge">Trophic Levels</span>
+        <span class="badge">Food Chains &amp; Webs</span>
+        <span class="badge">Ecological Pyramids</span>
+        <span class="badge">Carbon Cycle</span>
+        <span class="badge">Nitrogen Cycle</span>
+        <span class="badge">Oxygen Cycle</span>
+        <span class="badge">Phosphorus Cycle</span>
+        <span class="badge">Water Properties</span>
+        <span class="badge">Equilibrium</span>
+        <span class="badge">Biomass Production</span>
+        <span class="badge">Stromatolites</span>
+      </div>
+      <div class="info-teal">
+        <h3 style="color:#0d9488;font-size:1rem;margin-bottom:.75rem">Unit Overview</h3>
+        <p style="font-size:.875rem;color:#0f766e;line-height:1.7">The constant flow of energy and cycling of matter in the biosphere leads to a balanced or steady state. This balance is achieved through biogeochemical cycles and the processes of photosynthesis and cellular respiration. The unit explores how various human activities have affected this balance.</p>
+      </div>
+      <div class="info-amber" style="margin-top:1rem">
+        <h3 style="color:#92400e;font-size:.9rem;margin-bottom:.4rem">Builds on Science 10 Unit D</h3>
+        <p style="font-size:.85rem;color:#78350f">This unit extends knowledge from Science 10's Energy Flow in Global Systems, diving deeper into the biochemical processes that drive energy transfer and matter cycling at the biosphere level.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ ENERGY FLOW ════════ -->
+<section id="energy">
+  <div class="section-row">
+    <div class="snum">2</div>
+    <h2 class="sh">Energy Flow Through the Biosphere</h2>
+  </div>
+
+  <div class="g2" style="margin-bottom:2rem">
+    <div>
+      <h3 style="margin-bottom:.75rem">One-Way Energy Flow</h3>
+      <p style="color:#475569;font-size:.9rem;margin-bottom:1rem;line-height:1.7">Unlike matter, which is cycled continuously, energy flows in <strong>one direction</strong> through the biosphere. It enters as solar energy, is converted to chemical energy by producers, and is ultimately lost as heat at every trophic level. Energy is never recycled.</p>
+      <div class="step-list" style="margin-bottom:1.25rem">
+        <div class="step"><div class="step-num">1</div><div><strong>Photosynthesis:</strong> Producers (plants, algae) convert light energy + CO<sub>2</sub> + H<sub>2</sub>O into glucose. Chemical energy is stored in organic molecules.</div></div>
+        <div class="step"><div class="step-num">2</div><div><strong>Cellular respiration:</strong> All organisms break down glucose to release ATP. ~60% of energy released as heat at every transfer step.</div></div>
+        <div class="step"><div class="step-num">3</div><div><strong>Trophic transfer:</strong> Only ~10% of energy stored at one trophic level is available to the next (the 10% rule). 90% is lost as metabolic heat.</div></div>
+        <div class="step"><div class="step-num">4</div><div><strong>Decomposition:</strong> Decomposers break down dead organic matter, releasing final stored energy as heat. All energy eventually dissipates.</div></div>
+      </div>
+      <div class="info-teal">
+        <h3 style="color:#0d9488;font-size:.9rem;margin-bottom:.4rem">Chemosynthetic Ecosystems</h3>
+        <p style="font-size:.85rem;color:#0f766e;line-height:1.65">Not all ecosystems depend on photosynthesis. Deep-sea hydrothermal vent ecosystems use <strong>chemosynthesis</strong> — bacteria oxidize inorganic compounds (H<sub>2</sub>S) to produce energy, supporting a complete food web without sunlight. This shows the biosphere can be powered by chemical energy too.</p>
+      </div>
+    </div>
+    <div>
+      <h3 style="margin-bottom:.75rem">Photosynthesis &amp; Respiration Equations</h3>
+      <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:1rem">
+        <div style="background:linear-gradient(135deg,#134e4a,#16a34a);color:#fff;border-radius:.75rem;padding:1.25rem">
+          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.7);margin-bottom:.5rem">Photosynthesis (energy stored)</div>
+          <div style="font-family:'Courier New',monospace;font-size:.95rem;text-align:center">6CO<sub>2</sub> + 6H<sub>2</sub>O + light &rarr; C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> + 6O<sub>2</sub></div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.65);text-align:center;margin-top:.3rem">Carbon dioxide + water + light &rarr; glucose + oxygen</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#7f1d1d,#dc2626);color:#fff;border-radius:.75rem;padding:1.25rem">
+          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.7);margin-bottom:.5rem">Cellular Respiration (energy released)</div>
+          <div style="font-family:'Courier New',monospace;font-size:.95rem;text-align:center">C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> + 6O<sub>2</sub> &rarr; 6CO<sub>2</sub> + 6H<sub>2</sub>O + ATP</div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.65);text-align:center;margin-top:.3rem">Glucose + oxygen &rarr; carbon dioxide + water + energy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Food Web Explorer -->
+  <h3 style="margin-bottom:1rem">Prairie Food Web Explorer &mdash; Click an Organism</h3>
+  <div class="fw-grid" id="fw-grid">
+    <div class="fw-item selected" onclick="showOrganism('grass')"><div class="fw-level" style="color:#16a34a">Producer</div><div class="fw-name">Grasses</div><div class="fw-sci">Poaceae spp.</div></div>
+    <div class="fw-item" onclick="showOrganism('willow')"><div class="fw-level" style="color:#16a34a">Producer</div><div class="fw-name">Willow Shrubs</div><div class="fw-sci">Salix spp.</div></div>
+    <div class="fw-item" onclick="showOrganism('grasshopper')"><div class="fw-level" style="color:#ca8a04">Primary Consumer</div><div class="fw-name">Grasshopper</div><div class="fw-sci">Melanoplinae</div></div>
+    <div class="fw-item" onclick="showOrganism('gopher')"><div class="fw-level" style="color:#ca8a04">Primary Consumer</div><div class="fw-name">Richardson's Ground Squirrel</div><div class="fw-sci">Urocitellus richardsonii</div></div>
+    <div class="fw-item" onclick="showOrganism('bison')"><div class="fw-level" style="color:#ca8a04">Primary Consumer</div><div class="fw-name">Bison</div><div class="fw-sci">Bison bison</div></div>
+    <div class="fw-item" onclick="showOrganism('hawk')"><div class="fw-level" style="color:#ea580c">Secondary Consumer</div><div class="fw-name">Ferruginous Hawk</div><div class="fw-sci">Buteo regalis</div></div>
+    <div class="fw-item" onclick="showOrganism('coyote')"><div class="fw-level" style="color:#ea580c">Secondary Consumer</div><div class="fw-name">Coyote</div><div class="fw-sci">Canis latrans</div></div>
+    <div class="fw-item" onclick="showOrganism('decomp')"><div class="fw-level" style="color:#7c3aed">Decomposer</div><div class="fw-name">Soil Bacteria &amp; Fungi</div><div class="fw-sci">Various species</div></div>
+  </div>
+  <div class="fw-info-panel" id="fw-info">
+    <h4 style="color:#16a34a;font-family:Georgia,serif;margin-bottom:.5rem">Grasses (Poaceae)</h4>
+    <p style="font-size:.875rem;color:#475569;margin-bottom:.75rem">The foundation of the Alberta prairie ecosystem. Grasses capture solar energy through photosynthesis, converting CO<sub>2</sub> and H<sub>2</sub>O into glucose. They are the primary energy entry point for the entire food web.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem;font-size:.8rem">
+      <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:.375rem;padding:.35rem .7rem"><strong style="color:#166534">Trophic level:</strong> Producer (Level 1)</div>
+      <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:.375rem;padding:.35rem .7rem"><strong style="color:#166534">Energy from:</strong> Solar energy (photosynthesis)</div>
+      <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:.375rem;padding:.35rem .7rem"><strong style="color:#166534">Energy available to next level:</strong> ~10%</div>
+    </div>
+  </div>
+
+  <!-- Ecological Pyramid -->
+  <div class="pyramid-wrap" style="margin-top:2rem">
+    <div style="background:#134e4a;color:#fff;padding:1rem 1.5rem;font-weight:700;font-size:.95rem">Interactive Ecological Energy Pyramid &mdash; The 10% Rule</div>
+    <div class="pyramid-controls">
+      <div class="ctrl-item">
+        <label>Producer energy input (kJ/m&sup2;/yr) <span class="val" id="pyr-input-val">10,000</span></label>
+        <input type="range" min="1000" max="50000" step="1000" value="10000" id="pyr-input" oninput="calcPyramid()" style="accent-color:#0d9488;cursor:pointer;width:220px">
+      </div>
+      <div class="ctrl-item">
+        <label>Transfer efficiency (%) <span class="val" id="pyr-eff-val">10%</span></label>
+        <input type="range" min="5" max="20" value="10" id="pyr-eff" oninput="calcPyramid()" style="accent-color:#0d9488;cursor:pointer;width:160px">
+      </div>
+    </div>
+    <div class="pyramid-canvas-wrap">
+      <div class="pyramid-levels" id="pyr-levels">
+        <!-- Built by JS -->
+      </div>
+      <div style="flex:1;min-width:220px">
+        <div class="info-teal" style="margin-bottom:1rem">
+          <h3 style="color:#0d9488;font-size:.9rem;margin-bottom:.5rem">Why Does Energy Decrease?</h3>
+          <p style="font-size:.85rem;color:#0f766e;line-height:1.65">At each trophic level, organisms use energy for metabolic processes (movement, growth, heat production, reproduction). Only the energy stored in new biomass is available to the next level. This is why food chains rarely exceed 4&ndash;5 levels.</p>
+        </div>
+        <div class="card cl-amber" style="padding:1.25rem">
+          <h3 style="font-size:.9rem;margin-bottom:.5rem">Three Types of Ecological Pyramids</h3>
+          <ul style="font-size:.85rem;color:#475569;list-style:disc;padding-left:1.25rem;line-height:2.2">
+            <li><strong>Energy pyramid:</strong> Always decreases upward (kJ/m&sup2;/yr)</li>
+            <li><strong>Biomass pyramid:</strong> Usually decreases upward; exceptions in aquatic ecosystems (phytoplankton bloom)</li>
+            <li><strong>Numbers pyramid:</strong> Can invert (e.g., many parasites on one host; many insects on one tree)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ BIOGEOCHEMICAL CYCLES ════════ -->
+<section id="cycles">
+  <div class="section-row">
+    <div class="snum">3</div>
+    <h2 class="sh">Biogeochemical Cycles</h2>
+  </div>
+
+  <p style="color:#475569;margin-bottom:1.5rem;font-size:.9rem;line-height:1.7">Unlike energy, matter is continuously <strong>cycled</strong> through the biosphere. The same atoms have been used and reused for billions of years. The four major nutrient cycles are driven by biological, geological, and chemical processes, with water acting as the universal transport medium.</p>
+
+  <!-- Water Properties Box -->
+  <div class="g2" style="margin-bottom:2rem">
+    <div class="card cl-blue">
+      <div class="card-hd">Water &mdash; The Universal Transport Medium</div>
+      <div class="card-bd">
+        <p style="font-size:.875rem;color:#475569;margin-bottom:.75rem">Water is essential to all biogeochemical cycles because of its unique chemical and physical properties.</p>
+        <ul style="font-size:.875rem;color:#475569;list-style:disc;padding-left:1.25rem;line-height:2.2">
+          <li><strong>Universal solvent:</strong> Polar structure dissolves ions and organic molecules, allowing nutrients to be transported in solution through cells, soil, and water bodies</li>
+          <li><strong>Hydrogen bonding:</strong> Creates surface tension, capillary action (xylem), and high specific heat capacity; moderates climate</li>
+          <li><strong>Phase changes:</strong> Evaporation and condensation transfer enormous amounts of thermal energy globally</li>
+          <li><strong>Density anomaly:</strong> Ice is less dense than liquid water, so water bodies freeze from the top down, protecting aquatic life below</li>
+          <li><strong>Reactant in photosynthesis:</strong> H atoms from water are used to reduce CO<sub>2</sub> to glucose</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info-teal" style="display:flex;flex-direction:column;gap:1rem">
+      <h3>What Are Biogeochemical Cycles?</h3>
+      <p style="font-size:.875rem;color:#475569;line-height:1.7">Biogeochemical cycles are the pathways through which chemical elements move between living (biotic) components and non-living (abiotic) components of the Earth. The "bio" refers to living organisms, "geo" refers to Earth's physical systems (atmosphere, hydrosphere, lithosphere), and "chemical" refers to the chemical transformations that occur.</p>
+      <p style="font-size:.875rem;color:#475569;line-height:1.7">There are two types: <strong>gaseous cycles</strong> (carbon, oxygen, nitrogen) where the atmosphere is the main reservoir, and <strong>sedimentary cycles</strong> (phosphorus) where the Earth's crust is the main reservoir.</p>
+      <div style="background:#ccfbf1;border-radius:.5rem;padding:.75rem 1rem;font-size:.85rem;color:#0d9488;font-weight:700;text-align:center">All matter on Earth is recycled &mdash; atoms in your body may once have been part of a dinosaur, a volcano, or the ancient ocean.</div>
+    </div>
+  </div>
+
+  <!-- Cycle Explorer Tabs -->
+  <div class="cycle-tabs" id="cycle-tabs">
+    <button class="cycle-tab active" onclick="setCycle('carbon',this)" style="background:#374151;color:#fff;border-color:#374151">Carbon Cycle</button>
+    <button class="cycle-tab" onclick="setCycle('nitrogen',this)">Nitrogen Cycle</button>
+    <button class="cycle-tab" onclick="setCycle('oxygen',this)">Oxygen Cycle</button>
+    <button class="cycle-tab" onclick="setCycle('phosphorus',this)">Phosphorus Cycle</button>
+  </div>
+  <div id="cycle-container">
+    <!-- Built by JS -->
+  </div>
+</section>
+
+<!-- ════════ BIOSPHERE EQUILIBRIUM ════════ -->
+<section id="equilibrium">
+  <div class="section-row">
+    <div class="snum">4</div>
+    <h2 class="sh">Biosphere Equilibrium &amp; Atmospheric Composition</h2>
+  </div>
+
+  <div class="g2" style="margin-bottom:2rem">
+    <div>
+      <h3 style="margin-bottom:1rem">The Biosphere as an Open System</h3>
+      <p style="font-size:.9rem;color:#475569;margin-bottom:1rem;line-height:1.7">The biosphere is an <strong>open system</strong> &mdash; it exchanges both energy and matter with space. Energy enters as solar radiation and leaves as infrared radiation. Matter cycles internally with minimal net loss or gain. This openness allows the biosphere to maintain a dynamic equilibrium.</p>
+      <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:1.25rem">
+        <div class="card cl-teal" style="padding:1rem">
+          <h3 style="font-size:.9rem;margin-bottom:.4rem">Gas Exchange Equilibrium</h3>
+          <p style="font-size:.85rem;color:#475569">Photosynthesis consumes CO<sub>2</sub> and produces O<sub>2</sub>. Cellular respiration does the opposite. When these processes are in balance, atmospheric composition stays relatively stable. Human activities are disrupting this balance by adding CO<sub>2</sub> faster than photosynthesis can remove it.</p>
+        </div>
+        <div class="card cl-green" style="padding:1rem">
+          <h3 style="font-size:.9rem;margin-bottom:.4rem">Current Atmosphere (~present day)</h3>
+          <div style="font-size:.85rem;color:#475569;display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.4rem">
+            <span class="badge" style="background:#eff6ff;color:#1d4ed8">N<sub>2</sub> 78%</span>
+            <span class="badge" style="background:#fef2f2;color:#dc2626">O<sub>2</sub> 21%</span>
+            <span class="badge" style="background:#fefce8;color:#92400e">Ar 0.93%</span>
+            <span class="badge" style="background:#f0fdf4;color:#15803d">CO<sub>2</sub> ~0.042%</span>
+            <span class="badge" style="background:#f5f3ff;color:#6d28d9">Other trace gases</span>
+          </div>
+          <p style="font-size:.82rem;color:#64748b;margin-top:.5rem">CO<sub>2</sub> pre-industrial was ~0.028% (280 ppm). Now ~420 ppm due to fossil fuel combustion and deforestation.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 style="margin-bottom:1rem">Stromatolites &mdash; Evidence of Atmospheric Change</h3>
+      <div class="card" style="margin-bottom:1.25rem">
+        <div class="card-hd">The Great Oxygenation Event (~2.4 billion years ago)</div>
+        <div class="card-bd">
+          <div class="step-list">
+            <div class="step"><div class="step-num" style="font-size:.65rem;background:#64748b">1</div><div><strong>Early anoxic Earth (~3.8 bya):</strong> Early atmosphere had almost no free O<sub>2</sub>. Dominated by N<sub>2</sub>, CO<sub>2</sub>, CH<sub>4</sub>. Life existed as anaerobic microbes.</div></div>
+            <div class="step"><div class="step-num" style="font-size:.65rem;background:#0d9488">2</div><div><strong>Cyanobacteria evolve photosynthesis (~3.5 bya):</strong> First organisms to perform oxygenic photosynthesis. Built <strong>stromatolites</strong> (layered mineral mats). Fossil stromatolites are found in Canada.</div></div>
+            <div class="step"><div class="step-num" style="font-size:.65rem;background:#0369a1">3</div><div><strong>Great Oxygenation Event (~2.4 bya):</strong> Cyanobacterial O<sub>2</sub> accumulates in atmosphere after iron-rich oceans become saturated. Catastrophic for anaerobes; opens path for aerobic eukaryotes.</div></div>
+            <div class="step"><div class="step-num" style="font-size:.65rem;background:#16a34a">4</div><div><strong>Modern atmosphere established (~600 mya):</strong> O<sub>2</sub> reaches modern levels. Ozone (O<sub>3</sub>) layer forms, shielding surface from UV. Complex life diversifies rapidly.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="info-teal">
+        <h3 style="color:#0d9488;font-size:.9rem;margin-bottom:.5rem">Closed System Comparison: Biosphere 2</h3>
+        <p style="font-size:.875rem;color:#0f766e;line-height:1.65">In 1991, scientists sealed 8 people in Biosphere 2 in Arizona for 2 years, attempting to create a self-sustaining closed biosphere. CO<sub>2</sub> unexpectedly rose and O<sub>2</sub> fell due to decomposers in soil consuming oxygen faster than plants produced it &mdash; demonstrating how difficult it is to maintain gas exchange equilibrium in an artificial closed system. NASA uses this research for planning Mars habitats and space stations.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ecosystem Productivity Table -->
+  <div class="card">
+    <div class="card-hd">Ecosystem Productivity &mdash; Biomass Production by Ecosystem Type</div>
+    <div class="ot">
+      <table>
+        <thead><tr><th>Ecosystem</th><th>Net Primary Productivity (g C/m&sup2;/yr)</th><th>Total Global Contribution</th><th>Limiting Factor</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Tropical Rain Forest</strong></td><td class="mono" style="color:#16a34a;font-weight:700">900</td><td>Highest; covers ~7% land area but contributes ~25% global NPP</td><td>Light in lower canopy</td></tr>
+          <tr><td><strong>Temperate Deciduous Forest</strong></td><td class="mono">540</td><td>Significant; seasonal growth limits annual output</td><td>Seasonality</td></tr>
+          <tr><td><strong>Taiga (Boreal Forest)</strong></td><td class="mono">360</td><td>Large area; lower intensity; Alberta's boreal forest is a major C sink</td><td>Cold temperature</td></tr>
+          <tr><td><strong>Grassland / Savanna</strong></td><td class="mono">315</td><td>Important globally; Alberta prairies</td><td>Water availability</td></tr>
+          <tr><td><strong>Tundra</strong></td><td class="mono">65</td><td>Very low; frozen soils and short growing season</td><td>Temperature, nutrients</td></tr>
+          <tr><td><strong>Desert</strong></td><td class="mono">40</td><td>Low; covers ~33% of land area but minimal NPP</td><td>Water</td></tr>
+          <tr><td><strong>Open Ocean</strong></td><td class="mono">57</td><td>Low intensity but enormous area; significant total contribution</td><td>Nutrients (N, P, Fe)</td></tr>
+          <tr><td><strong>Coastal / Upwelling Zones</strong></td><td class="mono">360</td><td>Highly productive due to nutrient upwelling</td><td>Nutrient cycling</td></tr>
+          <tr><td><strong>Antarctic / Arctic Ocean</strong></td><td class="mono">55</td><td>Nutrient-rich but cold; phytoplankton blooms in summer</td><td>Light, temperature</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ HUMAN IMPACTS ════════ -->
+<section id="human">
+  <div class="section-row">
+    <div class="snum">5</div>
+    <h2 class="sh">Human Impacts on the Biosphere</h2>
+  </div>
+
+  <div class="g3" style="margin-bottom:2rem">
+    <div class="card cl-teal">
+      <div class="card-hd">Carbon Cycle Disruptions</div>
+      <div class="card-bd">
+        <ul style="font-size:.875rem;color:#475569;list-style:disc;padding-left:1.25rem;line-height:2.2">
+          <li><strong>Fossil fuel combustion:</strong> Returns carbon stored for millions of years to the atmosphere as CO<sub>2</sub> within decades</li>
+          <li><strong>Deforestation:</strong> Removes major CO<sub>2</sub> sinks; releases stored carbon when forests are burned or decay</li>
+          <li><strong>Cement production:</strong> Releases CO<sub>2</sub> from limestone (CaCO<sub>3</sub> &rarr; CaO + CO<sub>2</sub>)</li>
+          <li><strong>Peatland drainage:</strong> Northern Alberta peatlands store millennia of carbon; drainage releases CH<sub>4</sub> and CO<sub>2</sub></li>
+        </ul>
+      </div>
+    </div>
+    <div class="card cl-amber">
+      <div class="card-hd">Nitrogen Cycle Disruptions</div>
+      <div class="card-bd">
+        <ul style="font-size:.875rem;color:#475569;list-style:disc;padding-left:1.25rem;line-height:2.2">
+          <li><strong>Synthetic fertilizers:</strong> Haber-Bosch process adds more fixed nitrogen to land than all natural biological fixation</li>
+          <li><strong>Feedlot operations:</strong> Concentrated animal waste overwhelms local nitrogen cycling capacity</li>
+          <li><strong>Vehicle emissions:</strong> NO<sub>x</sub> gases form acid deposition, disrupting soil and water N cycles</li>
+          <li><strong>Eutrophication:</strong> Excess N and P in runoff causes algal blooms, dead zones (e.g., Lac Ste. Anne, AB)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card cl-red">
+      <div class="card-hd">Phosphorus &amp; Other Cycle Disruptions</div>
+      <div class="card-bd">
+        <ul style="font-size:.875rem;color:#475569;list-style:disc;padding-left:1.25rem;line-height:2.2">
+          <li><strong>Mining &amp; processing:</strong> Sulfur released as SO<sub>2</sub>; forms sulfuric acid in atmosphere (acid rain)</li>
+          <li><strong>Sewage disposal:</strong> Phosphorus discharged to water bodies accelerates eutrophication</li>
+          <li><strong>Heavy metal bioaccumulation:</strong> Mercury, lead and cadmium accumulate through food chains (biomagnification) &mdash; 10&times; concentration at each level</li>
+          <li><strong>Persistent organic pollutants:</strong> PCBs, DDT bioaccumulate in fat tissue, most concentrated in top predators</li>
+          <li><strong>Ozone depletion:</strong> CFCs break down stratospheric O<sub>3</sub>, allowing UV-B radiation to increase surface levels</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bioaccumulation table -->
+  <div class="card">
+    <div class="card-hd">Biomagnification &mdash; Mercury Example (Great Lakes / Alberta Lake Systems)</div>
+    <div class="ot">
+      <table>
+        <thead><tr><th>Trophic Level</th><th>Example Organism</th><th>Approx. Mercury Concentration</th><th>Accumulation Factor</th></tr></thead>
+        <tbody>
+          <tr><td>Water</td><td class="mono">H<sub>2</sub>O</td><td class="mono" style="color:#16a34a">0.0001 ppm</td><td>Baseline</td></tr>
+          <tr><td>Producer</td><td>Phytoplankton</td><td class="mono">0.001 ppm</td><td>10&times;</td></tr>
+          <tr><td>Primary Consumer</td><td>Zooplankton</td><td class="mono">0.01 ppm</td><td>100&times;</td></tr>
+          <tr><td>Secondary Consumer</td><td>Small fish (perch)</td><td class="mono">0.1 ppm</td><td>1,000&times;</td></tr>
+          <tr><td>Tertiary Consumer</td><td>Large fish (pike, walleye)</td><td class="mono" style="color:#f59e0b">1 ppm</td><td>10,000&times;</td></tr>
+          <tr><td>Quaternary Consumer</td><td>Bald eagle, osprey, humans</td><td class="mono" style="color:#dc2626;font-weight:700">10+ ppm</td><td>100,000&times;</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="padding:.875rem 1.25rem;background:#fffbeb;border-top:1px solid #fde68a;font-size:.82rem;color:#78350f">Health Canada issues consumption advisories for sport fish in many Alberta lakes due to mercury bioaccumulation from industrial emissions and gold mining (e.g., historical use in gold separation).</div>
+  </div>
+</section>
+
+<!-- ════════ INDIGENOUS KNOWLEDGE ════════ -->
+<section id="indigenous">
+  <div class="section-row">
+    <div class="snum">6</div>
+    <h2 class="sh">Indigenous Knowledge &amp; the Biosphere</h2>
+  </div>
+
+  <div class="ik-section">
+    <h2>Traditional Ecological Knowledge in Alberta</h2>
+    <p class="ik-sub">Alberta's First Nations, Métis and Inuit (FNMI) peoples have accumulated thousands of years of observation of ecological systems. Their Traditional Ecological Knowledge (TEK) reflects a deep, relational understanding of energy flow, matter cycling and ecosystem equilibrium &mdash; often reaching conclusions that parallel those of modern ecology.</p>
+
+    <div class="g2">
+      <div class="ik-nation">
+        <h3>Blackfoot Confederacy (Niitsitapi)</h3>
+        <div class="ik-territory">Southern Alberta plains &mdash; Treaty 7 Territory</div>
+        <ul>
+          <li>The Blackfoot recognized the central role of the bison (<em>iinnii</em>) in structuring the prairie food web &mdash; a living understanding of trophic dynamics long before Western ecology formalized the concept.</li>
+          <li>Controlled grassland burns were used to stimulate new plant growth, attract bison, and cycle nutrients back into the soil &mdash; a direct practical application of carbon and nutrient cycling principles.</li>
+          <li>Detailed knowledge of seasonal plant phenology (which plants emerged when, and in which soil conditions) reflects deep understanding of nutrient availability in the carbon and nitrogen cycles.</li>
+          <li>The concept of <em>napi</em> (the creative life force) reflects recognition of the interconnectedness of all biosphere components &mdash; energy and matter as part of a single living system.</li>
+          <li>Bison pounds and cliff drives were managed to minimize waste &mdash; every part of the animal was used, reflecting an understanding of energy efficiency and matter recycling.</li>
+        </ul>
+      </div>
+
+      <div class="ik-nation">
+        <h3>Cree Nation (nehiyawak)</h3>
+        <div class="ik-territory">Northern Alberta boreal forest &mdash; Treaty 6 &amp; 8 Territory</div>
+        <ul>
+          <li>The Cree concept of <em>miyo wîcêhtowin</em> (good relations / interconnectedness) describes the web of relationships between all living and non-living components of the boreal ecosystem.</li>
+          <li>Detailed knowledge of the beaver (<em>amisk</em>) as a keystone ecosystem engineer &mdash; beaver dams create wetlands that serve as major nitrogen and phosphorus cycling hubs, supporting biodiversity.</li>
+          <li>Cree trappers maintained detailed oral records of population cycles (lynx-hare cycles, marten populations) spanning many generations &mdash; a form of long-term ecological monitoring equivalent to modern population biology data.</li>
+          <li>Knowledge of medicinal plants linked ecosystem productivity (soil type, water availability, light conditions) to the chemical composition of plants &mdash; an understanding of nutrient cycling effects on biomass quality.</li>
+          <li>Sacred water protocols: Water was treated as a living relative, with community responsibilities to maintain watershed health &mdash; reflecting understanding of water's role in all biogeochemical cycles.</li>
+        </ul>
+      </div>
+
+      <div class="ik-nation">
+        <h3>Métis Nation of Alberta</h3>
+        <div class="ik-territory">Throughout Alberta &mdash; Métis Settlements and Traditional Territories</div>
+        <ul>
+          <li>Deep knowledge of ecotones (forest-prairie transition zones) where ecological exchange is most active and biodiversity highest &mdash; areas where multiple biogeochemical cycles intersect.</li>
+          <li>Traditional harvesting practices (game, fish, berries, medicines) were guided by observed carrying capacity and seasonal availability &mdash; demonstrating intuitive understanding of sustainable energy yield from ecosystems.</li>
+          <li>Knowledge of indicator species: changes in the distribution or abundance of particular plants or animals were used to assess ecosystem health &mdash; functioning as informal ecological monitoring of cycle disruptions.</li>
+          <li>Winter gardens and traditional food preservation (pemmican, dried fish) reflected understanding of energy storage and transfer in biological systems.</li>
+        </ul>
+      </div>
+
+      <div class="ik-nation">
+        <h3>Athabasca Chipewyan &amp; Dene Nations</h3>
+        <div class="ik-territory">Northern Alberta boreal/tundra transition &mdash; Treaty 8 Territory</div>
+        <ul>
+          <li>Multi-generational knowledge of Athabasca River and lake systems tracked water quality, fish populations and ice conditions &mdash; creating a continuous record of hydrologic cycle changes over centuries.</li>
+          <li>Concerns about changes to the Athabasca watershed downstream of the oil sands represent community-based ecological monitoring grounded in TEK &mdash; reporting disruptions in the water, carbon and sulfur cycles.</li>
+          <li>Caribou migration knowledge tracked herd movements linked to lichen availability (slow-growing N-fixing organisms critical to taiga nutrient cycling) &mdash; connecting energy flow to matter cycling at the ecosystem scale.</li>
+          <li>Understanding of permafrost dynamics in northern Alberta &mdash; knowledge passed through generations about which areas remained frozen and when, now being validated by climate science as permafrost thaws.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ik-tek">
+      <h3>Principles of Traditional Ecological Knowledge (TEK) and Their Connections to Biology 20 Unit A</h3>
+      <p>TEK is grounded in long-term observation, relational thinking, and reciprocity with the natural world. These principles parallel the scientific methods and ecological concepts developed in this unit.</p>
+    </div>
+
+    <div class="ik-connect">
+      <div class="ik-conn-card">
+        <div class="ik-cycle-label">Carbon Cycle</div>
+        <p>Controlled burns (Blackfoot, Cree, Anishinaabe) returned carbon and nutrients to soil, stimulating new growth &mdash; a practical application of the carbon cycle and carbon-nitrogen balance in soils.</p>
+      </div>
+      <div class="ik-conn-card">
+        <div class="ik-cycle-label">Nitrogen Cycle</div>
+        <p>The "Three Sisters" companion planting (corn, beans, squash) used by Plains peoples demonstrates knowledge of nitrogen fixation &mdash; beans fix atmospheric N<sub>2</sub>; corn and squash use it. An organic nitrogen management system.</p>
+      </div>
+      <div class="ik-conn-card">
+        <div class="ik-cycle-label">Phosphorus Cycle</div>
+        <p>Placing fish in garden beds (common among Plains and woodland peoples) returned phosphorus from aquatic ecosystems to terrestrial soils &mdash; deliberately connecting two ecosystem nutrient cycles.</p>
+      </div>
+      <div class="ik-conn-card">
+        <div class="ik-cycle-label">Water Cycle</div>
+        <p>Sacred water teachings emphasize water as the connector of all living things. Beaver dam protection practices maintained wetland systems that filter, cycle and store water &mdash; watershed stewardship grounded in observed water cycle dynamics.</p>
+      </div>
+      <div class="ik-conn-card">
+        <div class="ik-cycle-label">Energy Flow</div>
+        <p>Bison as a keystone species: Blackfoot management of bison herds maintained healthy grasslands that supported the full trophic cascade from producers through decomposers &mdash; an intuitive understanding of energy pyramid stability.</p>
+      </div>
+      <div class="ik-conn-card">
+        <div class="ik-cycle-label">Equilibrium</div>
+        <p>The principle of <em>miyo wîcêhtowin</em> (good relations) and the practice of taking only what is needed reflects understanding of sustainable yield and ecosystem equilibrium &mdash; avoiding overharvesting that disrupts population balance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ PRACTICE ════════ -->
+<section id="practice">
+  <div class="section-row">
+    <div class="snum">7</div>
+    <h2 class="sh">Interactive Practice &amp; Review</h2>
+  </div>
+
+  <!-- QUIZ -->
+  <div style="margin-bottom:4rem">
+    <div style="text-align:center;margin-bottom:1.5rem">
+      <h3 style="font-size:1.6rem">Knowledge Check Quiz</h3>
+      <p style="color:#64748b">Test your understanding of energy flow, matter cycling and biosphere equilibrium.</p>
+    </div>
+    <div class="quiz-wrap">
+      <div class="q-card">
+        <div class="q-header">
+          <h4>Bio 20 &mdash; Unit A</h4>
+          <div style="display:flex;gap:.75rem;align-items:center">
+            <span class="q-prog" id="kq-counter">Question 1 of 10</span>
+            <span class="q-score" id="kq-score">0 / 0</span>
+          </div>
+        </div>
+        <div class="q-body">
+          <div class="q-text" id="kq-text"></div>
+          <div class="q-options" id="kq-opts"></div>
+          <div class="q-feedback" id="kq-feedback"></div>
+        </div>
+        <div class="q-footer">
+          <button class="btn btn-teal btn-lg" id="kq-btn" onclick="kqCheck()">Submit Answer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MATCHING -->
+  <div style="margin-bottom:4rem">
+    <div style="text-align:center;margin-bottom:1.5rem">
+      <h3 style="font-size:1.6rem">Cycle Process Match</h3>
+      <p style="color:#64748b">Match each process on the left with the biogeochemical cycle it belongs to on the right.</p>
+    </div>
+    <div style="max-width:700px;margin:0 auto 1rem">
+      <div class="match-score-bar"><div class="match-score-fill" id="match-score-fill" style="width:0%"></div></div>
+      <div style="text-align:center;font-size:.85rem;color:#64748b" id="match-score-text">0 of 8 matched</div>
+    </div>
+    <div class="match-grid" id="match-grid"></div>
+    <div style="text-align:center;margin-top:1.5rem"><button class="btn btn-outline" onclick="matchReset()">Reset Game</button></div>
+  </div>
+
+  <!-- FLASHCARDS -->
+  <div style="margin-bottom:4rem">
+    <div style="text-align:center;margin-bottom:1.5rem">
+      <h3 style="font-size:1.6rem">Vocabulary Flashcards</h3>
+      <p style="color:#64748b">Click card to flip. Navigate all 20 terms.</p>
+    </div>
+    <div class="fc-wrap">
+      <div class="fc" onclick="fcFlip()">
+        <div class="fc-inner" id="fc-inner">
+          <div class="fc-face fc-front"><span class="fc-term" id="fc-term"></span><span class="fc-hint">Click to flip</span></div>
+          <div class="fc-face fc-back"><span class="fc-def" id="fc-def"></span></div>
+        </div>
+      </div>
+      <div class="fc-nav">
+        <button class="btn btn-outline" onclick="fcPrev()">&#8592; Prev</button>
+        <span class="fc-ctr" id="fc-ctr">1 / 20</span>
+        <button class="btn btn-outline" onclick="fcNext()">Next &#8594;</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>Email: terkperhannah@gmail.com &nbsp;|&nbsp; Instagram: hannah.attempts.teaching &nbsp;|&nbsp; TikTok: hannah.attempts.teaching</p>
+</footer>
+<button class="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679;</button>
+
+<script>
+// ════════════════════════
+// NAVBAR
+// ════════════════════════
+document.addEventListener('DOMContentLoaded',()=>{
+  fetch('navbar.html').then(r=>r.text()).then(d=>{document.getElementById('navbar-placeholder').innerHTML=d;}).catch(()=>{});
+});
+
+// ════════════════════════
+// FOOD WEB
+// ════════════════════════
+const ORGS={
+  grass:{name:'Grasses (Poaceae)',level:'Producer',color:'#16a34a',desc:'The foundation of the Alberta prairie food web. Grasses capture solar energy via photosynthesis, converting CO\u2082 and H\u2082O into glucose. They produce the most biomass of any trophic level, supporting all consumers above them.',from:'Solar energy (photosynthesis)',avail:'~10% to primary consumers'},
+  willow:{name:'Willow Shrubs (Salix spp.)',level:'Producer',color:'#16a34a',desc:'Riparian willows grow along streams and wetland edges in Alberta. They fix large amounts of carbon and provide habitat and food for many species including moose, beavers and songbirds. A key part of the aquatic-terrestrial energy link.',from:'Solar energy (photosynthesis)',avail:'~10% to primary consumers'},
+  grasshopper:{name:'Grasshopper (Melanoplinae)',level:'Primary Consumer',color:'#ca8a04',desc:'One of the most abundant herbivores in Alberta grasslands. Grasshoppers feed directly on grasses and forbs, transferring approximately 10% of plant energy into animal biomass. In outbreak years, they consume enormous amounts of plant material.',from:'Grasses and other vegetation',avail:'~10% to secondary consumers'},
+  gopher:{name:"Richardson's Ground Squirrel",level:'Primary Consumer',color:'#ca8a04',desc:'Abundant across Alberta prairies, these small herbivores are a critical energy link from plants to predators. Their colonial burrows also aerate soils and affect nutrient cycling. They are a key prey species for hawks, coyotes and badgers.',from:'Grasses, seeds, forbs',avail:'~10% to secondary consumers'},
+  bison:{name:'Bison (Bison bison)',level:'Primary Consumer',color:'#ca8a04',desc:'Historically the keystone species of the Alberta plains ecosystem. Bison herds maintained grassland health through grazing and wallowing, recycling nutrients through dung, and creating habitat heterogeneity. Their near-extinction disrupted the entire prairie trophic pyramid.',from:'Grasses and prairie vegetation',avail:'~10% to predators (wolf, etc.)'},
+  hawk:{name:'Ferruginous Hawk (Buteo regalis)',level:'Secondary Consumer',color:'#ea580c',desc:'Alberta\'s largest hawk and a specialist predator of ground squirrels, prairie dogs and other small mammals. It is a critical energy link from primary consumers to the apex of the food web. Listed as threatened in Canada due to habitat loss and prey decline.',from:'Ground squirrels, grasshoppers, small birds',avail:'~10% to tertiary consumers (or end of chain)'},
+  coyote:{name:'Coyote (Canis latrans)',level:'Secondary Consumer',color:'#ea580c',desc:'One of the most ecologically versatile predators in Alberta. Coyotes consume ground squirrels, rabbits, grasshoppers, berries and carrion &mdash; acting as both secondary and tertiary consumers depending on the food web. They redistribute nutrients across the landscape through scat.',from:'Rodents, rabbits, insects, berries',avail:'~10% (or end of chain)'},
+  decomp:{name:'Soil Bacteria & Fungi',level:'Decomposer',color:'#7c3aed',desc:'Decomposers are essential to ALL biogeochemical cycles. They break down dead organic matter at every trophic level, releasing stored nutrients (C, N, P) back into the soil in inorganic forms available to producers. Without decomposers, matter would never be recycled and the biosphere would grind to a halt.',from:'Dead organic matter from all trophic levels',avail:'Nutrients returned to soil and atmosphere'}
+};
+
+function showOrganism(id){
+  document.querySelectorAll('.fw-item').forEach(el=>el.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
+  const o=ORGS[id];
+  document.getElementById('fw-info').innerHTML=`
+    <h4 style="color:${o.color};font-family:Georgia,serif;margin-bottom:.5rem">${o.name}</h4>
+    <p style="font-size:.875rem;color:#475569;margin-bottom:.75rem">${o.desc}</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem;font-size:.8rem">
+      <div style="background:#f0fdfa;border:1px solid #99f6e4;border-radius:.375rem;padding:.35rem .7rem"><strong style="color:#0d9488">Trophic Level:</strong> ${o.level}</div>
+      <div style="background:#f0fdfa;border:1px solid #99f6e4;border-radius:.375rem;padding:.35rem .7rem"><strong style="color:#0d9488">Energy from:</strong> ${o.from}</div>
+      <div style="background:#f0fdfa;border:1px solid #99f6e4;border-radius:.375rem;padding:.35rem .7rem"><strong style="color:#0d9488">Energy to next:</strong> ${o.avail}</div>
+    </div>`;
+}
+
+// ════════════════════════
+// ENERGY PYRAMID
+// ════════════════════════
+function calcPyramid(){
+  const input=parseInt(document.getElementById('pyr-input').value);
+  const eff=parseInt(document.getElementById('pyr-eff').value)/100;
+  document.getElementById('pyr-input-val').textContent=input.toLocaleString();
+  document.getElementById('pyr-eff-val').textContent=(eff*100)+'%';
+
+  const levels=[
+    {label:'Producers',sub:'Plants, algae, cyanobacteria',cls:'pyr-l1'},
+    {label:'Primary Consumers',sub:'Herbivores (bison, grasshoppers)',cls:'pyr-l2'},
+    {label:'Secondary Consumers',sub:'Omnivores/carnivores (coyote, hawk)',cls:'pyr-l3'},
+    {label:'Tertiary Consumers',sub:'Top predators (wolf, cougar)',cls:'pyr-l4'},
+  ];
+
+  let energy=input;
+  const container=document.getElementById('pyr-levels');
+  container.innerHTML='';
+  levels.forEach((lv,i)=>{
+    const div=document.createElement('div');
+    div.className='pyr-level '+lv.cls;
+    const lost=i<levels.length-1?Math.round(energy*(1-eff)):0;
+    div.innerHTML=`<div class="pyr-level-label">${lv.label}</div><div class="pyr-level-sub">${lv.sub}</div><div class="pyr-energy">${energy.toLocaleString()} kJ/m&sup2;/yr</div>${i<levels.length-1?`<div class="pyr-lost">\u2193 ${(eff*100).toFixed(0)}% (${(energy*eff).toLocaleString()} kJ) passed up \u25AA ${(100-eff*100).toFixed(0)}% (${lost.toLocaleString()} kJ) lost as heat</div>`:'<div class="pyr-lost">End of food chain</div>'}`;
+    container.appendChild(div);
+    energy=Math.round(energy*eff);
+  });
+}
+
+// ════════════════════════
+// BIOGEOCHEMICAL CYCLES
+// ════════════════════════
+const CYCLES={
+  carbon:{
+    name:'Carbon Cycle',color:'#374151',bg:'#f8fafc',
+    processes:[
+      {arrow:'\u2193',text:'<strong>Photosynthesis:</strong> CO\u2082 from atmosphere fixed into organic glucose by plants and algae: 6CO\u2082 + 6H\u2082O + light \u2192 C\u2086H\u2081\u2082O\u2086 + 6O\u2082'},
+      {arrow:'\u2191',text:'<strong>Cellular Respiration:</strong> All organisms release CO\u2082 by oxidizing glucose: C\u2086H\u2081\u2082O\u2086 + 6O\u2082 \u2192 6CO\u2082 + 6H\u2082O + ATP'},
+      {arrow:'\u2193',text:'<strong>Decomposition:</strong> Decomposers break down dead organic matter, releasing CO\u2082 and CH\u2084 (in anaerobic conditions)'},
+      {arrow:'\u21C4',text:'<strong>Ocean exchange:</strong> CO\u2082 dissolves in ocean water (CO\u2082 + H\u2082O \u21CC H\u2082CO\u2083), forming carbonic acid. Oceans absorb ~25% of human CO\u2082 emissions'},
+      {arrow:'\u2193',text:'<strong>Fossilization:</strong> Over millions of years, some organic carbon becomes fossil fuels (coal, oil, natural gas) or limestone (CaCO\u2083)'},
+    ],
+    reservoirs:[
+      {name:'Atmosphere',amount:'850 Gt C (rising)'},
+      {name:'Ocean',amount:'38,000 Gt C'},
+      {name:'Fossil fuels',amount:'4,000 Gt C (pre-human)'},
+      {name:'Vegetation/soil',amount:'2,300 Gt C'},
+    ],
+    human:'Human activities have increased atmospheric CO\u2082 from ~280 ppm (pre-industrial) to ~420 ppm today. Fossil fuel combustion releases ~10 Gt C/yr; deforestation ~1.5 Gt C/yr. This exceeds the ocean and terrestrial carbon sink capacity by ~5 Gt C/yr, causing net atmospheric accumulation.',
+    ab:'Alberta peatlands (northern boreal) store over 20 billion tonnes of carbon accumulated over thousands of years. Alberta is also Canada\'s largest emitter of greenhouse gases, primarily from oil sands extraction, electricity generation and cattle agriculture.'
+  },
+  nitrogen:{
+    name:'Nitrogen Cycle',color:'#1d4ed8',bg:'#eff6ff',
+    processes:[
+      {arrow:'\u2193',text:'<strong>Nitrogen fixation:</strong> N\u2082 gas converted to NH\u2083 or NH\u2084\u207a by nitrogen-fixing bacteria (Rhizobium in legume root nodules; Cyanobacteria; Azotobacter in soil)'},
+      {arrow:'\u21C4',text:'<strong>Nitrification:</strong> NH\u2084\u207a oxidized to NO\u2082\u207b (Nitrosomonas), then to NO\u2083\u207b (Nitrobacter). Nitrate is the form most used by plants.'},
+      {arrow:'\u2191',text:'<strong>Denitrification:</strong> Anaerobic bacteria (Pseudomonas) convert NO\u2083\u207b back to N\u2082 gas, returning nitrogen to the atmosphere. Occurs in waterlogged soils.'},
+      {arrow:'\u21C4',text:'<strong>Assimilation:</strong> Plants absorb NO\u2083\u207b and NH\u2084\u207a through roots and build amino acids, proteins and nucleic acids.'},
+      {arrow:'\u2191',text:'<strong>Ammonification:</strong> Decomposers break down nitrogen-containing organic molecules (proteins), releasing NH\u2083 back to soil.'},
+    ],
+    reservoirs:[
+      {name:'Atmosphere',amount:'N\u2082 78% of air (3.9 \u00d7 10\u00b9\u2079 kg)'},
+      {name:'Soil organic matter',amount:'~95% of total soil N'},
+      {name:'Ocean',amount:'Large dissolved pool'},
+      {name:'Sedimentary rocks',amount:'Very large, long-term storage'},
+    ],
+    human:'The Haber-Bosch process (1913) synthesizes NH\u2083 from N\u2082, enabling mass fertilizer production. It now fixes more nitrogen annually than all natural sources combined. Excess fertilizer runoff causes eutrophication in Alberta lakes (e.g., Lac Ste. Anne, Sylvan Lake). Vehicle NOx emissions contribute to acid deposition.',
+    ab:'Alberta\'s intensive beef and grain agriculture industries are major sources of N disruption. Feedlot operations near Lethbridge and Ponoka produce concentrated nitrogen waste that can exceed local cycling capacity. Wetland drainage in agricultural areas removes key N-cycling habitats.'
+  },
+  oxygen:{
+    name:'Oxygen Cycle',color:'#0d9488',bg:'#f0fdfa',
+    processes:[
+      {arrow:'\u2193',text:'<strong>Photosynthesis:</strong> O\u2082 produced from the splitting of H\u2082O molecules during the light reactions; the oxygen atoms in glucose come from CO\u2082.'},
+      {arrow:'\u2191',text:'<strong>Cellular Respiration:</strong> O\u2082 consumed by all aerobic organisms to oxidize glucose; returned to atmosphere as water and CO\u2082.'},
+      {arrow:'\u21C4',text:'<strong>Atmospheric reservoir:</strong> O\u2082 comprises ~21% of the atmosphere, maintained by the balance of photosynthesis and respiration.'},
+      {arrow:'\u21C4',text:'<strong>Ozone (O\u2083) formation:</strong> O\u2082 in stratosphere converted to O\u2083 by UV radiation. Ozone layer absorbs 97-99% of UV-B radiation, protecting surface life.'},
+      {arrow:'\u2193',text:'<strong>Combustion &amp; weathering:</strong> O\u2082 consumed by burning of fossil fuels and organic matter; also consumed in weathering of iron-containing rocks (rusting).'},
+    ],
+    reservoirs:[
+      {name:'Atmosphere',amount:'~21% (1.2 \u00d7 10\u00b9\u2078 kg)'},
+      {name:'Lithosphere',amount:'Largest pool (silicates, oxides)'},
+      {name:'Hydrosphere',amount:'Dissolved O\u2082 in water (vital for aquatic life)'},
+      {name:'Biosphere',amount:'In organic molecules and water in organisms'},
+    ],
+    human:'CFCs (chlorofluorocarbons) from refrigerants and aerosols destroy stratospheric ozone. Each CFC molecule can destroy up to 100,000 O\u2083 molecules. The Montreal Protocol (1987) has been largely successful at reducing CFC emissions. Deforestation reduces photosynthetic O\u2082 production, though the ocean remains the primary oxygen source.',
+    ab:'Forest fires in Alberta (increasingly severe due to climate change) consume large amounts of O\u2082 and release carbon stored over decades. The 2016 Fort McMurray fire released an estimated 570 million tonnes of CO\u2082, temporarily measurable as a drop in local O\u2082 production.'
+  },
+  phosphorus:{
+    name:'Phosphorus Cycle',color:'#7c3aed',bg:'#faf5ff',
+    processes:[
+      {arrow:'\u2193',text:'<strong>Weathering:</strong> Rain and water slowly dissolve phosphate (PO\u2084\u00b3\u207b) from rock minerals, releasing it into soil water over very long time scales.'},
+      {arrow:'\u2193',text:'<strong>Assimilation:</strong> Plants absorb dissolved phosphate from soil through roots. Used to make ATP, DNA, RNA, cell membranes (phospholipids) and bones/teeth.'},
+      {arrow:'\u21C4',text:'<strong>Decomposition:</strong> Phosphorus in organic matter is mineralized back to inorganic phosphate (PO\u2084\u00b3\u207b) by decomposers when organisms die.'},
+      {arrow:'\u2193',text:'<strong>Sedimentation:</strong> Phosphate washed into water bodies may precipitate and settle as sediment, eventually forming new sedimentary rock (very slow return to land cycle).'},
+      {arrow:'!',text:'<strong>Key difference from other cycles:</strong> Phosphorus has NO atmospheric component. It is a purely sedimentary cycle \u2014 making it easy to disrupt and the most common limiting nutrient in aquatic ecosystems.'},
+    ],
+    reservoirs:[
+      {name:'Rock minerals',amount:'Largest pool; very slow release'},
+      {name:'Soil',amount:'~200 kg P/ha in surface 30 cm'},
+      {name:'Sediment (ocean)',amount:'Largest accessible reservoir'},
+      {name:'Organisms',amount:'Concentrated in ATP, DNA, bone'},
+    ],
+    human:'Mining of phosphate rock (Morocco holds ~75% of world reserves) for fertilizer is non-renewable on human timescales. Phosphorus from sewage and fertilizer runoff causes eutrophication in lakes. Alberta\'s Lake Wabamun and Lac La Biche have experienced phosphorus-driven algal blooms from agricultural and residential runoff.',
+    ab:'Alberta has significant phosphate deposits near Peace River (Wapiti River area). Feedlot operations near Lethbridge concentrate phosphorus from imported feed, which can leach into the Oldman River basin. Wetland restoration programs aim to rebuild natural P-cycling capacity.'
+  }
+};
+
+let activeCycle='carbon';
+
+function setCycle(id,btn){
+  activeCycle=id;
+  document.querySelectorAll('.cycle-tab').forEach(t=>{t.classList.remove('active');t.style.background='';t.style.color='';t.style.borderColor='';});
+  const c=CYCLES[id];
+  btn.classList.add('active');btn.style.background=c.color;btn.style.color='#fff';btn.style.borderColor=c.color;
+  renderCycle(id);
+}
+
+function renderCycle(id){
+  const c=CYCLES[id];
+  document.getElementById('cycle-container').innerHTML=`
+    <div class="cycle-content active">
+      <div class="cycle-box" style="background:${c.bg}">
+        <h3 style="color:${c.color}">Cycle Processes</h3>
+        <div class="proc-list">
+          ${c.processes.map(p=>`<div class="proc" style="background:rgba(255,255,255,.7)"><span class="proc-arrow" style="color:${c.color}">${p.arrow}</span><div class="proc-text">${p.text}</div></div>`).join('')}
+        </div>
+        <div class="human-impact"><strong>Human Impact on ${c.name}:</strong> ${c.human}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <div class="cycle-box">
+          <h3 style="color:${c.color};margin-bottom:.75rem">Major Reservoirs</h3>
+          <table><thead><tr><th>Reservoir</th><th>Amount / Notes</th></tr></thead><tbody>
+            ${c.reservoirs.map(r=>`<tr><td><strong>${r.name}</strong></td><td>${r.amount}</td></tr>`).join('')}
+          </tbody></table>
+        </div>
+        <div style="background:#fefce8;border:1px solid #fef08a;border-radius:.875rem;padding:1.25rem">
+          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#92400e;margin-bottom:.5rem">Alberta Connection</div>
+          <p style="font-size:.875rem;color:#78350f;line-height:1.65">${c.ab}</p>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ════════════════════════
+// QUIZ
+// ════════════════════════
+const KQS=[
+  {q:'Energy flows through the biosphere in which direction?',opts:['In a cycle, like matter','One-way; from producers to consumers, lost as heat','Back and forth between organisms and the atmosphere','Bidirectionally between photosynthesis and respiration'],ans:'One-way; from producers to consumers, lost as heat',hint:'Energy follows the second law of thermodynamics \u2014 it is not recycled. At each trophic transfer, approximately 90% of energy is lost as heat through metabolism. Only matter cycles; energy flows one-way.'},
+  {q:'Approximately what percentage of energy is transferred from one trophic level to the next?',opts:['1%','10%','50%','90%'],ans:'10%',hint:'The "10% rule" (or ecological efficiency): only about 10% of energy stored at one trophic level is incorporated into biomass at the next. The remaining ~90% is lost as metabolic heat, movement, and incomplete digestion.'},
+  {q:'Which process describes the conversion of N\u2082 gas into usable ammonia (NH\u2083) by soil bacteria?',opts:['Nitrification','Denitrification','Nitrogen fixation','Ammonification'],ans:'Nitrogen fixation',hint:'Nitrogen fixation converts atmospheric N\u2082 into NH\u2083 or NH\u2084\u207a. It is performed by nitrogen-fixing bacteria such as Rhizobium (in legume root nodules), Azotobacter (free-living in soil), and cyanobacteria.'},
+  {q:'What is the primary reason the phosphorus cycle is easily disrupted compared to the carbon and nitrogen cycles?',opts:['Phosphorus reacts with oxygen too quickly','Phosphorus has no atmospheric reservoir','Phosphorus is very toxic to decomposers','Phosphorus is only found in ocean sediments'],ans:'Phosphorus has no atmospheric reservoir',hint:'Carbon, nitrogen and oxygen all have large atmospheric reservoirs that buffer disruptions. Phosphorus is a purely sedimentary cycle \u2014 it cycles through soil, water and organisms only. Once lost to deep ocean sediments, it returns to land only through geological uplift (millions of years).'},
+  {q:'Which ancient organism is responsible for the Great Oxygenation Event ~2.4 billion years ago?',opts:['Stromatolites (cyanobacteria)','Anaerobic archaea','Early fungi','Marine diatoms'],ans:'Stromatolites (cyanobacteria)',hint:'Cyanobacteria (photosynthetic prokaryotes) evolved oxygenic photosynthesis. They built layered structures called stromatolites. Their O\u2082 production over hundreds of millions of years transformed Earth\'s anoxic atmosphere, enabling aerobic life.'},
+  {q:'Eutrophication in Alberta lakes is primarily caused by excess:',opts:['Carbon dioxide from the atmosphere','Nitrogen and phosphorus from agricultural runoff','Salt from road de-icing','Sediment from soil erosion'],ans:'Nitrogen and phosphorus from agricultural runoff',hint:'Eutrophication is excessive aquatic plant/algae growth caused by nutrient enrichment \u2014 primarily nitrogen (from fertilizers, feedlots, sewage) and phosphorus (from fertilizers, detergents, sewage). Algal blooms deplete oxygen, creating dead zones.'},
+  {q:'In a food chain of 4 trophic levels, if producers fix 100,000 kJ/m\u00b2/yr, how much energy reaches the tertiary consumer (applying the 10% rule)?',opts:['1,000 kJ','100 kJ','10 kJ','1 kJ'],ans:'100 kJ',hint:'Producers: 100,000 kJ. Primary consumers: 100,000 \u00d7 10% = 10,000 kJ. Secondary consumers: 10,000 \u00d7 10% = 1,000 kJ. Tertiary consumers: 1,000 \u00d7 10% = 100 kJ. After 3 transfers, only 0.1% of original energy remains.'},
+  {q:'What property of water makes it the universal transport medium for biogeochemical cycles?',opts:['Its blue colour absorbs more solar energy','Its polarity allows it to dissolve ionic and polar compounds','Its high boiling point keeps it liquid year-round','Its low density compared to other liquids'],ans:'Its polarity allows it to dissolve ionic and polar compounds',hint:'Water\'s polar molecular structure (partial positive and negative charges) allows it to dissolve ionic compounds (like mineral nutrients) and polar organic molecules. This makes water the universal solvent that transports nutrients through soil, organisms and aquatic systems.'},
+  {q:'The process in which aerobic bacteria convert ammonia (NH\u2084\u207a) to nitrate (NO\u2083\u207b) is called:',opts:['Nitrogen fixation','Nitrification','Denitrification','Assimilation'],ans:'Nitrification',hint:'Nitrification is a two-step process: (1) Nitrosomonas bacteria oxidize NH\u2084\u207a to NO\u2082\u207b; (2) Nitrobacter bacteria oxidize NO\u2082\u207b to NO\u2083\u207b (nitrate). Nitrate is the form most readily absorbed by plant roots.'},
+  {q:'Which of the following is an example of chemosynthesis rather than photosynthesis powering an ecosystem?',opts:['Tropical rain forest canopy','Alberta boreal forest floor','Deep-sea hydrothermal vent community','Arctic tundra meadow'],ans:'Deep-sea hydrothermal vent community',hint:'Hydrothermal vent ecosystems are powered by chemosynthesis \u2014 bacteria oxidize H\u2082S (hydrogen sulfide) from volcanic vents to produce organic matter, with no sunlight involved. This demonstrates that solar energy is not the only possible energy input to a biosphere.'},
+];
+
+let kqIdx=0;let kqSel='';let kqScore={c:0,t:0};let kqDone=false;
+function kqInit(){
+  const q=KQS[kqIdx];
+  document.getElementById('kq-counter').textContent=`Question ${kqIdx+1} of ${KQS.length}`;
+  document.getElementById('kq-text').textContent=q.q;
+  const opts=document.getElementById('kq-opts');opts.innerHTML='';
+  q.opts.forEach((o,i)=>{
+    const d=document.createElement('div');d.className='q-opt';d.id='qopt-'+i;
+    d.innerHTML=`<input type="radio" name="kq-r" id="kr-${i}" onchange="highlightOpt(${i})"><label for="kr-${i}" style="flex:1;cursor:pointer">${o}</label>`;
+    opts.appendChild(d);
+  });
+  document.getElementById('kq-feedback').className='q-feedback';
+  document.getElementById('kq-btn').textContent='Submit Answer';
+  document.getElementById('kq-btn').onclick=kqCheck;
+  kqSel='';kqDone=false;
+}
+function highlightOpt(i){document.querySelectorAll('.q-opt').forEach((el,j)=>el.classList.toggle('selected',j===i));kqSel=KQS[kqIdx].opts[i];}
+function kqCheck(){
+  if(!kqSel||kqDone)return;kqDone=true;
+  const q=KQS[kqIdx];const correct=kqSel===q.ans;
+  kqScore.t++;if(correct)kqScore.c++;
+  document.getElementById('kq-score').textContent=`${kqScore.c} / ${kqScore.t}`;
+  document.querySelectorAll('.q-opt').forEach(el=>{const lbl=el.querySelector('label').textContent;el.querySelector('input').disabled=true;if(lbl===q.ans)el.classList.add('correct');else if(lbl===kqSel&&!correct)el.classList.add('wrong');});
+  const fb=document.getElementById('kq-feedback');
+  if(correct){fb.className='q-feedback correct';fb.innerHTML=`<strong>Correct!</strong> ${q.hint}`;}
+  else{fb.className='q-feedback wrong';fb.innerHTML=`<strong>Incorrect.</strong> Correct answer: <strong>${q.ans}</strong>. ${q.hint}`;}
+  const btn=document.getElementById('kq-btn');
+  if(kqIdx<KQS.length-1){btn.textContent='Next Question \u2192';btn.onclick=()=>{kqIdx++;kqInit();};}
+  else{btn.textContent='Restart Quiz';btn.onclick=()=>{kqIdx=0;kqScore={c:0,t:0};kqInit();document.getElementById('kq-score').textContent='0 / 0';};}
+}
+
+// ════════════════════════
+// MATCHING
+// ════════════════════════
+const MATCH_PAIRS=[
+  {left:'Nitrogen fixation',right:'N\u2082 gas \u2192 NH\u2083 by Rhizobium bacteria'},
+  {left:'Denitrification',right:'NO\u2083\u207b \u2192 N\u2082 gas by anaerobic bacteria'},
+  {left:'Photosynthesis',right:'CO\u2082 + H\u2082O + light \u2192 glucose + O\u2082'},
+  {left:'Decomposition',right:'Returns C, N, P to inorganic forms'},
+  {left:'Eutrophication',right:'Algal blooms from excess N and P'},
+  {left:'Biomagnification',right:'Toxin concentration increases up food chain'},
+  {left:'Nitrification',right:'NH\u2084\u207a \u2192 NO\u2082\u207b \u2192 NO\u2083\u207b by soil bacteria'},
+  {left:'Chemosynthesis',right:'Energy from H\u2082S oxidation (no sunlight)'},
+];
+let matchLeft=null;let matchMatched=0;
+function matchReset(){matchLeft=null;matchMatched=0;document.getElementById('match-score-fill').style.width='0%';document.getElementById('match-score-text').textContent='0 of 8 matched';buildMatchGrid();}
+function buildMatchGrid(){
+  const grid=document.getElementById('match-grid');
+  const sh=MATCH_PAIRS.map((p,i)=>({...p,id:i}));
+  const rv=sh.map(p=>({text:p.right,id:p.id})).sort(()=>Math.random()-.5);
+  grid.innerHTML=`<div class="match-col" id="match-left">${sh.map(p=>`<div class="match-item" id="ml-${p.id}" onclick="matchClickLeft(${p.id})">${p.left}</div>`).join('')}</div><div class="match-col" id="match-right">${rv.map(c=>`<div class="match-item" id="mr-${c.id}" onclick="matchClickRight(${c.id})">${c.text}</div>`).join('')}</div>`;
+}
+function matchClickLeft(id){const el=document.getElementById('ml-'+id);if(el.classList.contains('matched'))return;document.querySelectorAll('#match-left .match-item').forEach(e=>e.classList.remove('selected'));matchLeft={id};el.classList.add('selected');}
+function matchClickRight(id){
+  if(!matchLeft)return;const elR=document.getElementById('mr-'+id);if(elR.classList.contains('matched'))return;
+  const elL=document.getElementById('ml-'+matchLeft.id);
+  if(matchLeft.id===id){elL.classList.remove('selected');elL.classList.add('matched');elR.classList.add('matched');matchMatched++;document.getElementById('match-score-fill').style.width=(matchMatched/8*100)+'%';document.getElementById('match-score-text').textContent=`${matchMatched} of 8 matched${matchMatched===8?' \u2014 Perfect! Well done!':''}`;
+  }else{elL.classList.remove('selected');elL.classList.add('wrong-flash');elR.classList.add('wrong-flash');setTimeout(()=>{elL.classList.remove('wrong-flash');elR.classList.remove('wrong-flash');},420);}
+  matchLeft=null;
+}
+
+// ════════════════════════
+// FLASHCARDS
+// ════════════════════════
+const FC_TERMS=[
+  {t:'Biosphere',d:'The global sum of all ecosystems on Earth \u2014 the zone of life extending from the deep ocean floor to the lower atmosphere. An open system exchanging energy with space.'},
+  {t:'Trophic Level',d:'A feeding level in a food chain. Level 1 = producers; Level 2 = primary consumers; Level 3 = secondary consumers; etc. Energy decreases by ~90% at each transfer.'},
+  {t:'10% Rule',d:'Approximately 10% of energy stored at one trophic level is transferred to the next. The remaining ~90% is lost as metabolic heat, movement, and incomplete digestion.'},
+  {t:'Food Web',d:'A complex network of interconnected food chains showing all feeding relationships in an ecosystem. More realistic than a single food chain; shows energy flow pathways.'},
+  {t:'Ecological Pyramid',d:'A diagram showing quantitative relationships between trophic levels. Three types: energy (always decreases upward), biomass (usually decreases), and numbers (can be inverted).'},
+  {t:'Biogeochemical Cycle',d:'The pathway by which a chemical element moves between living (biotic) and non-living (abiotic) components of the Earth. Carbon, nitrogen, oxygen, phosphorus and water are key cycles.'},
+  {t:'Nitrogen Fixation',d:'The conversion of atmospheric N\u2082 gas into usable ammonia (NH\u2083) or ammonium (NH\u2084\u207a) by nitrogen-fixing bacteria (Rhizobium, Azotobacter, cyanobacteria). Makes N available to producers.'},
+  {t:'Nitrification',d:'The two-step oxidation of NH\u2084\u207a to NO\u2082\u207b (Nitrosomonas) and then to NO\u2083\u207b (Nitrobacter). Nitrate (NO\u2083\u207b) is the primary form absorbed by plant roots.'},
+  {t:'Denitrification',d:'The conversion of NO\u2083\u207b back to N\u2082 gas by anaerobic bacteria (e.g., Pseudomonas) in waterlogged soils. Returns nitrogen to the atmosphere, completing the cycle.'},
+  {t:'Eutrophication',d:'Excessive plant/algae growth in a water body due to nutrient enrichment (primarily N and P). Algal blooms block sunlight and decay consumes O\u2082, creating aquatic dead zones.'},
+  {t:'Biomagnification',d:'The increase in concentration of a substance (e.g., mercury, PCBs) in organisms at successively higher trophic levels. Top predators accumulate the highest concentrations.'},
+  {t:'Net Primary Productivity (NPP)',d:'The rate at which producers store energy as new biomass, after subtracting their own cellular respiration. Measured in g C/m\u00b2/yr. Determines how much energy is available to consumers.'},
+  {t:'Decomposer',d:'An organism (bacteria, fungi) that breaks down dead organic matter into inorganic nutrients. Essential for nutrient cycling \u2014 without decomposers, matter would not be returned to producers.'},
+  {t:'Chemosynthesis',d:'The production of organic compounds using chemical energy (e.g., H\u2082S oxidation) rather than light energy. Occurs in deep-sea hydrothermal vents and other extreme environments with no sunlight.'},
+  {t:'Phosphorus Cycle',d:'A sedimentary cycle (no atmospheric component) in which phosphorus moves between rocks, soil, water and organisms. Slow geological uplift and weathering are the primary inputs. P is often a limiting nutrient.'},
+  {t:'Equilibrium',d:'A dynamic steady state in which opposing processes are balanced. The biosphere maintains equilibrium through the balance of photosynthesis and cellular respiration, and the cycling of matter.'},
+  {t:'Stromatolite',d:'Layered rocky structures formed by cyanobacteria. Ancient fossil stromatolites provide evidence that cyanobacteria were responsible for the Great Oxygenation Event ~2.4 billion years ago.'},
+  {t:'Open vs Closed System',d:'An open system (like Earth\'s biosphere) exchanges both energy and matter with its surroundings. A closed system exchanges only energy. Biosphere 2 attempted to create a closed biological system.'},
+  {t:'Traditional Ecological Knowledge (TEK)',d:'A cumulative body of knowledge, practices and beliefs about the relationships between living beings (including humans) and their environment, held by Indigenous peoples and passed through generations.'},
+  {t:'Limiting Nutrient',d:'The nutrient that limits growth because it is least available relative to demand. In terrestrial ecosystems, N is often limiting. In aquatic ecosystems, P is usually limiting. In open oceans, iron can be limiting.'},
+];
+let fcIdx=0;let fcFlipped=false;
+function fcRender(){document.getElementById('fc-term').textContent=FC_TERMS[fcIdx].t;document.getElementById('fc-def').textContent=FC_TERMS[fcIdx].d;document.getElementById('fc-ctr').textContent=`${fcIdx+1} / ${FC_TERMS.length}`;document.getElementById('fc-inner').className='fc-inner'+(fcFlipped?' flip':'');}
+function fcFlip(){fcFlipped=!fcFlipped;document.getElementById('fc-inner').className='fc-inner'+(fcFlipped?' flip':'');}
+function fcNext(){fcFlipped=false;document.getElementById('fc-inner').className='fc-inner';setTimeout(()=>{fcIdx=(fcIdx+1)%FC_TERMS.length;fcRender();},150);}
+function fcPrev(){fcFlipped=false;document.getElementById('fc-inner').className='fc-inner';setTimeout(()=>{fcIdx=(fcIdx-1+FC_TERMS.length)%FC_TERMS.length;fcRender();},150);}
+
+// ════════════════════════
+// BOOT
+// ════════════════════════
+calcPyramid();
+setCycle('carbon',document.querySelector('.cycle-tab'));
+kqInit();buildMatchGrid();fcRender();
+</script>
+</body>
+</html>
