@@ -1,1 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biology 30 &mdash; Ms. Terkper's Digital Classroom</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      line-height: 1.6;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1rem 6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+    }
+
+    /* top course nav */
+    .unit-nav-overview {
+      background: #f1f5f9;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    .unit-nav-overview .unit-nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.95rem 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.35rem;
+    }
+
+    .unit-nav-overview .unit-nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #475569;
+      letter-spacing: 0.3px;
+    }
+
+    .unit-nav-overview a {
+      color: #334155;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.92rem;
+      transition: all 0.2s ease;
+    }
+
+    .unit-nav-overview a:hover {
+      color: #312e81;
+      transform: translateY(-1px);
+    }
+
+    /* hero */
+    .hero {
+      background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 55%, #1d4ed8 100%);
+      border-radius: 1.35rem;
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      right: -80px;
+      top: -90px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      left: -70px;
+      bottom: -80px;
+      border-radius: 50%;
+      background: rgba(168,85,247,0.16);
+    }
+
+    .hero-inner { position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.11);
+      color: #c4b5fd;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.34rem 0.92rem;
+      border-radius: 9999px;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 5vw, 3.35rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero p {
+      color: rgba(255,255,255,0.78);
+      font-size: 1.04rem;
+      max-width: 700px;
+      line-height: 1.78;
+      margin-bottom: 2rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .hero-stat {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 0.85rem;
+      padding: 0.9rem 1.2rem;
+      min-width: 145px;
+    }
+
+    .stat-val {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #fff;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.58);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.12rem;
+    }
+
+    /* section heading */
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-head h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.65rem;
+      color: #0f172a;
+      white-space: nowrap;
+    }
+
+    .section-head-line {
+      flex: 1;
+      height: 1px;
+      background: #e2e8f0;
+    }
+
+    /* unit cards */
+    .units-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .unit-card {
+      display: block;
+      text-decoration: none;
+      border-radius: 1rem;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      transition: transform 0.24s ease, box-shadow 0.24s ease;
+    }
+
+    .unit-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.12);
+    }
+
+    .unit-card-banner { height: 0.38rem; }
+    .unit-card-body { padding: 1.5rem; }
+
+    .unit-card-num {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      margin-bottom: 0.5rem;
+    }
+
+    .unit-card h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.35;
+      margin-bottom: 0.7rem;
+    }
+
+    .unit-card p {
+      font-size: 0.86rem;
+      color: #64748b;
+      line-height: 1.62;
+      margin-bottom: 1rem;
+    }
+
+    .unit-card-topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.38rem;
+    }
+
+    .topic-tag {
+      font-size: 0.69rem;
+      font-weight: 700;
+      padding: 0.2rem 0.58rem;
+      border-radius: 9999px;
+    }
+
+    .unit-card-footer {
+      padding: 0.92rem 1.5rem;
+      border-top: 1px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .unit-card-footer span:first-child { color: #94a3b8; }
+
+    .uc-a .unit-card-banner { background: linear-gradient(90deg, #312e81, #4f46e5); }
+    .uc-a .unit-card-num { color: #4338ca; }
+    .uc-a .topic-tag { background: #eef2ff; color: #4338ca; }
+    .uc-a .arrow { color: #4338ca; }
+
+    .uc-b .unit-card-banner { background: linear-gradient(90deg, #9f1239, #f43f5e); }
+    .uc-b .unit-card-num { color: #be123c; }
+    .uc-b .topic-tag { background: #fff1f2; color: #be123c; }
+    .uc-b .arrow { color: #be123c; }
+
+    .uc-c .unit-card-banner { background: linear-gradient(90deg, #065f46, #10b981); }
+    .uc-c .unit-card-num { color: #047857; }
+    .uc-c .topic-tag { background: #ecfdf5; color: #047857; }
+    .uc-c .arrow { color: #047857; }
+
+    .uc-d .unit-card-banner { background: linear-gradient(90deg, #92400e, #f59e0b); }
+    .uc-d .unit-card-num { color: #b45309; }
+    .uc-d .topic-tag { background: #fffbeb; color: #b45309; }
+    .uc-d .arrow { color: #b45309; }
+
+    /* outcomes panel */
+    .outcomes-panel {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+
+    .outcomes-header {
+      background: linear-gradient(135deg, #312e81, #1d4ed8);
+      padding: 1.5rem 2rem;
+    }
+
+    .outcomes-header h3 {
+      color: #fff;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.16rem;
+      margin-bottom: 0.28rem;
+    }
+
+    .outcomes-header p {
+      color: rgba(255,255,255,0.78);
+      font-size: 0.86rem;
+    }
+
+    .outcomes-body { padding: 1.75rem 2rem; }
+
+    .outcomes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 0.8rem;
+    }
+
+    .outcome-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.8rem;
+      border-radius: 0.6rem;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+    }
+
+    .outcome-dot {
+      width: 0.52rem;
+      height: 0.52rem;
+      border-radius: 50%;
+      background: #4f46e5;
+      margin-top: 0.42rem;
+      flex-shrink: 0;
+    }
+
+    .outcome-item p {
+      font-size: 0.85rem;
+      color: #334155;
+      line-height: 1.58;
+    }
+
+    /* attitudes */
+    .attitudes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+      gap: 1rem;
+    }
+
+    .att-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #4f46e5;
+      border-radius: 0.9rem;
+      padding: 1.25rem 1.45rem;
+    }
+
+    .att-card h4 {
+      color: #3730a3;
+      font-size: 0.96rem;
+      font-weight: 800;
+      margin-bottom: 0.42rem;
+    }
+
+    .att-card p {
+      color: #475569;
+      font-size: 0.85rem;
+      line-height: 1.62;
+    }
+
+    /* tabs */
+    .resources-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .rtab {
+      padding: 0.52rem 1.25rem;
+      border-radius: 0.55rem;
+      font-size: 0.85rem;
+      font-weight: 800;
+      cursor: pointer;
+      border: 2px solid #e2e8f0;
+      background: #fff;
+      color: #64748b;
+      transition: all 0.2s ease;
+    }
+
+    .rtab.active {
+      background: #312e81;
+      color: #fff;
+      border-color: #312e81;
+    }
+
+    .rtab:hover:not(.active) {
+      border-color: #4f46e5;
+      color: #312e81;
+    }
+
+    .rtab-content { display: none; }
+    .rtab-content.active { display: block; }
+
+    /* resource cards */
+    .res-category { margin-bottom: 2rem; }
+
+    .res-category-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #94a3b8;
+      margin-bottom: 0.88rem;
+      padding-bottom: 0.45rem;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .res-grid,
+    .yt-grid,
+    .assessment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 0.9rem;
+    }
+
+    .res-card,
+    .assessment-card {
+      display: block;
+      text-decoration: none;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.88rem;
+      padding: 1.12rem 1.22rem;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .res-card::before,
+    .assessment-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+    }
+
+    .res-card:hover,
+    .assessment-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.09);
+      border-color: transparent;
+    }
+
+    .res-card-name,
+    .assessment-card-name {
+      font-weight: 800;
+      font-size: 0.92rem;
+      color: #0f172a;
+      margin-bottom: 0.28rem;
+    }
+
+    .res-card-desc,
+    .assessment-card-desc {
+      font-size: 0.8rem;
+      color: #64748b;
+      line-height: 1.56;
+      margin-bottom: 0.62rem;
+    }
+
+    .res-card-tag,
+    .assessment-card-tag {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      padding: 0.16rem 0.55rem;
+      border-radius: 9999px;
+      display: inline-block;
+    }
+
+    .res-card-url,
+    .assessment-card-url {
+      font-size: 0.72rem;
+      color: #94a3b8;
+      margin-top: 0.42rem;
+    }
+
+    .res-indigo::before { background: #4f46e5; }
+    .res-indigo .res-card-tag { background: #eef2ff; color: #4338ca; }
+    .res-rose::before { background: #e11d48; }
+    .res-rose .res-card-tag { background: #fff1f2; color: #be123c; }
+    .res-green::before { background: #10b981; }
+    .res-green .res-card-tag { background: #ecfdf5; color: #047857; }
+    .res-amber::before { background: #f59e0b; }
+    .res-amber .res-card-tag { background: #fffbeb; color: #b45309; }
+    .res-blue::before { background: #2563eb; }
+    .res-blue .res-card-tag { background: #eff6ff; color: #1d4ed8; }
+    .res-purple::before { background: #a855f7; }
+    .res-purple .res-card-tag { background: #faf5ff; color: #7e22ce; }
+
+    .assessment-card::before { background: #0f766e; }
+    .assessment-card-tag { background: #f0fdfa; color: #0f766e; }
+
+    /* YouTube */
+    .yt-card {
+      display: block;
+      text-decoration: none;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.88rem;
+      padding: 1.12rem 1.22rem;
+      transition: all 0.2s ease;
+      border-top: 3px solid #dc2626;
+    }
+
+    .yt-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.09);
+      border-color: #dc2626;
+    }
+
+    .yt-card-top {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .yt-icon {
+      width: 2rem;
+      height: 2rem;
+      background: #dc2626;
+      border-radius: 0.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .yt-icon svg { width: 1.1rem; height: 1.1rem; fill: #fff; }
+
+    .yt-card-name {
+      font-weight: 800;
+      font-size: 0.92rem;
+      color: #0f172a;
+    }
+
+    .yt-card-handle {
+      font-size: 0.72rem;
+      color: #94a3b8;
+    }
+
+    .yt-card-desc {
+      font-size: 0.8rem;
+      color: #64748b;
+      line-height: 1.56;
+      margin-bottom: 0.6rem;
+    }
+
+    .yt-subjects {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .yt-sub-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.16rem 0.5rem;
+      border-radius: 9999px;
+      background: #ede9fe;
+      color: #5b21b6;
+    }
+
+    /* study tips */
+    .tips-box {
+      background: linear-gradient(135deg, #eef2ff, #ede9fe);
+      border: 1px solid #c7d2fe;
+      border-radius: 1rem;
+      padding: 1.75rem 2rem;
+    }
+
+    .tips-box h3 {
+      color: #3730a3;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.12rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .tips-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 0.9rem;
+    }
+
+    .tip-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .tip-marker {
+      width: 1.55rem;
+      height: 1.55rem;
+      background: #4f46e5;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .tip-marker span {
+      color: #fff;
+      font-size: 0.66rem;
+      font-weight: 800;
+    }
+
+    .tip-item p {
+      font-size: 0.84rem;
+      color: #334155;
+      line-height: 1.62;
+    }
+
+    footer {
+      background: #0f172a;
+      border-top: 4px solid #8b5cf6;
+      text-align: center;
+      padding: 1.5rem 1rem;
+    }
+
+    footer p {
+      color: #cbd5e1;
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero { padding: 2rem 1.5rem; }
+      .outcomes-body { padding: 1.25rem; }
+      .outcomes-grid,
+      .attitudes-grid,
+      .res-grid,
+      .yt-grid,
+      .assessment-grid,
+      .tips-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('navbar.html')
+      .then(r => r.text())
+      .then(html => { document.getElementById('navbar-placeholder').innerHTML = html; })
+      .catch(e => console.error('Navbar load failed:', e));
+  });
+</script>
+
+<div class="unit-nav unit-nav-overview">
+  <div class="unit-nav-inner">
+    <div class="unit-nav-brand">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#312e81" stroke-width="2">
+        <circle cx="9" cy="9" r="7"></circle>
+        <path d="M9 6v6M6 9h6"></path>
+        <path d="M20 20l-4-4"></path>
+      </svg>
+      Biology 30 Units
+    </div>
+    <a href="bio30_unitA.html">Unit A: Nervous and Endocrine Systems</a>
+    <a href="bio30_unitB.html">Unit B: Reproduction and Development</a>
+    <a href="bio30_unitC.html">Unit C: Cell Division, Genetics and Molecular Biology</a>
+    <a href="bio30_unitD.html">Unit D: Population and Community Dynamics</a>
+  </div>
+</div>
+
+<main>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">Alberta Biology 30</div>
+      <h1>Biology 30</h1>
+      <p>
+        Dive deeper into the complexity of living systems through homeostasis, reproduction,
+        genetics, molecular biology, and population dynamics. Biology 30 builds on Biology 20 and
+        prepares students to think critically about the human body, heredity, biotechnology, and
+        ecological change.
+      </p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="stat-val">4</div>
+          <div class="stat-label">Course Units</div>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-val">Bio 30</div>
+          <div class="stat-label">Alberta Diploma Course</div>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-val">STS</div>
+          <div class="stat-label">Science, Tech &amp; Society</div>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-val">Gr. 12</div>
+          <div class="stat-label">Senior Biology</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Course Units</h2>
+      <div class="section-head-line"></div>
+    </div>
+
+    <div class="units-grid">
+      <a href="bio30_unitA.html" class="unit-card uc-a">
+        <div class="unit-card-banner"></div>
+        <div class="unit-card-body">
+          <div class="unit-card-num">Unit A</div>
+          <h3>Nervous and Endocrine Systems</h3>
+          <p>Study how the nervous and endocrine systems coordinate communication, maintain homeostasis, and help the body respond to internal and external stimuli.</p>
+          <div class="unit-card-topics">
+            <span class="topic-tag">Neurons</span>
+            <span class="topic-tag">Synapses</span>
+            <span class="topic-tag">Reflex Arcs</span>
+            <span class="topic-tag">Hormones</span>
+            <span class="topic-tag">Homeostasis</span>
+          </div>
+        </div>
+        <div class="unit-card-footer">
+          <span>Outcome 30-A</span>
+          <span class="arrow">Open Unit &rarr;</span>
+        </div>
+      </a>
+
+      <a href="bio30_unitB.html" class="unit-card uc-b">
+        <div class="unit-card-banner"></div>
+        <div class="unit-card-body">
+          <div class="unit-card-num">Unit B</div>
+          <h3>Reproduction and Development</h3>
+          <p>Examine human reproductive systems, hormonal regulation, embryonic and fetal development, and the societal impact of reproductive technologies.</p>
+          <div class="unit-card-topics">
+            <span class="topic-tag">Hormones</span>
+            <span class="topic-tag">Pregnancy</span>
+            <span class="topic-tag">Development</span>
+            <span class="topic-tag">IVF</span>
+            <span class="topic-tag">Ethics</span>
+          </div>
+        </div>
+        <div class="unit-card-footer">
+          <span>Outcome 30-B</span>
+          <span class="arrow">Open Unit &rarr;</span>
+        </div>
+      </a>
+
+      <a href="bio30_unitC.html" class="unit-card uc-c">
+        <div class="unit-card-banner"></div>
+        <div class="unit-card-body">
+          <div class="unit-card-num">Unit C</div>
+          <h3>Cell Division, Genetics and Molecular Biology</h3>
+          <p>Explore mitosis, meiosis, inheritance patterns, DNA structure, protein synthesis, mutations, and the foundations of biotechnology.</p>
+          <div class="unit-card-topics">
+            <span class="topic-tag">Mitosis</span>
+            <span class="topic-tag">Meiosis</span>
+            <span class="topic-tag">Punnett Squares</span>
+            <span class="topic-tag">DNA</span>
+            <span class="topic-tag">Mutation</span>
+          </div>
+        </div>
+        <div class="unit-card-footer">
+          <span>Outcome 30-C</span>
+          <span class="arrow">Open Unit &rarr;</span>
+        </div>
+      </a>
+
+      <a href="bio30_unitD.html" class="unit-card uc-d">
+        <div class="unit-card-banner"></div>
+        <div class="unit-card-body">
+          <div class="unit-card-num">Unit D</div>
+          <h3>Population and Community Dynamics</h3>
+          <p>Analyze how populations change over time, how species interact within communities, and how ecological models help us understand environmental change.</p>
+          <div class="unit-card-topics">
+            <span class="topic-tag">Population Growth</span>
+            <span class="topic-tag">Communities</span>
+            <span class="topic-tag">Succession</span>
+            <span class="topic-tag">Predation</span>
+            <span class="topic-tag">Sustainability</span>
+          </div>
+        </div>
+        <div class="unit-card-footer">
+          <span>Outcome 30-D</span>
+          <span class="arrow">Open Unit &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Alberta Curriculum Outcomes</h2>
+      <div class="section-head-line"></div>
+    </div>
+
+    <div class="outcomes-panel">
+      <div class="outcomes-header">
+        <h3>What You Will Learn</h3>
+        <p>Key understandings and skills drawn from the Alberta Biology 30 program of studies.</p>
+      </div>
+      <div class="outcomes-body">
+        <div class="outcomes-grid">
+          <div class="outcome-item"><div class="outcome-dot"></div><p>Explain how neurons generate and transmit impulses, how synapses communicate signals, and how the nervous system coordinates physiological responses.</p></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><p>Describe the roles of the central and peripheral nervous systems, sensory receptors, reflex arcs, and major structures of the eye and ear.</p></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><p>Explain how endocrine glands and hormones such as insulin, glucagon, thyroxine, ADH, and cortisol help maintain homeostasis through feedback systems.</p></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><p>Describe the structures and functions of the male and female reproductive systems and explain how reproduction supports survival of the species.</p></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><p>Analyze hormonal regulation of the menstrual cycle, pregnancy, parturition, and lactation, and evaluate reproductive technologies from multiple perspectives.</p></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><p>Describe fertilization, implantation, embryonic and fetal development, and the influence of environmental factors and teratogens on development.</p></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><p>Compare mitosis and meiosis, explain chromosome behaviour, and analyze the significance of crossing over, nondisjunction, and chromosome number.</p></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><p>Solve genetics problems involving monohybrid, dihybrid, sex-linked, incomplete dominance, codominance, multiple alleles, and polygenic inheritance.</p></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><p>Explain DNA replication, transcription, and translation, and connect mutations to protein synthesis, inheritance, and genetic disorders.</p></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><p>Analyze population growth models, limiting factors, species interactions, and community change to explain ecological dynamics over time.</p></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><p>Interpret biological data, graphs, simulations, and published evidence to support conclusions and evaluate the reliability of sources and methods.</p></div>
+          <div class="outcome-item"><div class="outcome-dot"></div><p>Assess how science, technology, and society intersect in areas such as hormone therapy, reproduction, biotechnology, genetics, and environmental stewardship.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Attitude Outcomes</h2>
+      <div class="section-head-line"></div>
+    </div>
+
+    <div class="attitudes-grid">
+      <div class="att-card">
+        <h4>Interest in Science</h4>
+        <p>Build curiosity about biological systems, pursue meaningful questions, and explore future pathways in science, health, research, and biotechnology.</p>
+      </div>
+      <div class="att-card">
+        <h4>Mutual Respect</h4>
+        <p>Recognize that scientific understanding grows through collaboration, multiple perspectives, and thoughtful discussion of ethical and social issues.</p>
+      </div>
+      <div class="att-card">
+        <h4>Scientific Inquiry</h4>
+        <p>Seek evidence, test ideas carefully, question assumptions, and use biological reasoning when interpreting data, models, and scientific claims.</p>
+      </div>
+      <div class="att-card">
+        <h4>Collaboration</h4>
+        <p>Work effectively with others during labs, discussions, investigations, and presentations while valuing shared responsibility and communication.</p>
+      </div>
+      <div class="att-card">
+        <h4>Stewardship</h4>
+        <p>Consider the environmental and long-term consequences of scientific and technological decisions, especially in genetics, reproduction, and ecology.</p>
+      </div>
+      <div class="att-card">
+        <h4>Safety</h4>
+        <p>Demonstrate safe and responsible behaviour in laboratory work, simulations, dissections, and all science learning environments.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Student Resources</h2>
+      <div class="section-head-line"></div>
+    </div>
+
+    <div class="resources-tabs">
+      <button class="rtab active" onclick="switchTab(event, 'websites')">Websites &amp; Tools</button>
+      <button class="rtab" onclick="switchTab(event, 'youtube')">YouTube Channels</button>
+      <button class="rtab" onclick="switchTab(event, 'assessments')">Study Categories</button>
+      <button class="rtab" onclick="switchTab(event, 'tips')">Study Tips</button>
+    </div>
+
+    <div class="rtab-content active" id="tab-websites">
+      <div class="res-category">
+        <div class="res-category-label">Nervous &amp; Endocrine Systems</div>
+        <div class="res-grid">
+          <a href="https://www.visiblebody.com/learn" target="_blank" rel="noopener" class="res-card res-indigo">
+            <div class="res-card-name">Visible Body Learn</div>
+            <div class="res-card-desc">Detailed 3D anatomy explanations for the brain, nervous pathways, endocrine glands, and major sensory organs. Excellent for Unit A review.</div>
+            <span class="res-card-tag">3D Anatomy</span>
+            <div class="res-card-url">visiblebody.com/learn</div>
+          </a>
+          <a href="https://www.khanacademy.org/science/biology/human-biology" target="_blank" rel="noopener" class="res-card res-blue">
+            <div class="res-card-name">Khan Academy &mdash; Human Biology</div>
+            <div class="res-card-desc">Clear lessons on neurons, synapses, hormones, blood glucose regulation, and feedback systems that support the core concepts of Unit A.</div>
+            <span class="res-card-tag">Video + Practice</span>
+            <div class="res-card-url">khanacademy.org</div>
+          </a>
+          <a href="https://phet.colorado.edu/" target="_blank" rel="noopener" class="res-card res-purple">
+            <div class="res-card-name">PhET Simulations</div>
+            <div class="res-card-desc">Use biology and health-related simulations to reinforce homeostasis, membrane transport, graph interpretation, and systems thinking.</div>
+            <span class="res-card-tag">Interactive</span>
+            <div class="res-card-url">phet.colorado.edu</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="res-category">
+        <div class="res-category-label">Reproduction &amp; Development</div>
+        <div class="res-grid">
+          <a href="https://www.hhmi.org/biointeractive" target="_blank" rel="noopener" class="res-card res-rose">
+            <div class="res-card-name">HHMI BioInteractive</div>
+            <div class="res-card-desc">High-quality interactives, videos, and short readings for development, genetics, embryo growth, and modern biotechnology applications.</div>
+            <span class="res-card-tag">Interactive + Film</span>
+            <div class="res-card-url">biointeractive.org</div>
+          </a>
+          <a href="https://www.labxchange.org/" target="_blank" rel="noopener" class="res-card res-blue">
+            <div class="res-card-name">LabXchange</div>
+            <div class="res-card-desc">Virtual labs and biology learning pathways covering hormones, reproduction, heredity, and molecular biology with real data and guided exploration.</div>
+            <span class="res-card-tag">Virtual Labs</span>
+            <div class="res-card-url">labxchange.org</div>
+          </a>
+          <a href="https://medlineplus.gov/encyclopedia.html" target="_blank" rel="noopener" class="res-card res-amber">
+            <div class="res-card-name">MedlinePlus Medical Encyclopedia</div>
+            <div class="res-card-desc">Reliable, student-friendly medical reference pages for reproductive health, endocrine disorders, pregnancy, and development-related vocabulary.</div>
+            <span class="res-card-tag">Reference</span>
+            <div class="res-card-url">medlineplus.gov</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="res-category">
+        <div class="res-category-label">Genetics &amp; Molecular Biology</div>
+        <div class="res-grid">
+          <a href="https://learn.genetics.utah.edu/" target="_blank" rel="noopener" class="res-card res-green">
+            <div class="res-card-name">Learn.Genetics</div>
+            <div class="res-card-desc">Outstanding animations and interactives for meiosis, DNA replication, inheritance, mutations, pedigrees, and biotechnology. One of the best Unit C resources.</div>
+            <span class="res-card-tag">Genetics Interactive</span>
+            <div class="res-card-url">learn.genetics.utah.edu</div>
+          </a>
+          <a href="https://www.biomanbio.com/" target="_blank" rel="noopener" class="res-card res-indigo">
+            <div class="res-card-name">Bioman Biology</div>
+            <div class="res-card-desc">Engaging games and review tools for cell division, genetics vocabulary, DNA structure, transcription, translation, and mutations.</div>
+            <span class="res-card-tag">Games + Review</span>
+            <div class="res-card-url">biomanbio.com</div>
+          </a>
+          <a href="https://www.ck12.org/student/" target="_blank" rel="noopener" class="res-card res-purple">
+            <div class="res-card-name">CK-12 Biology</div>
+            <div class="res-card-desc">Free digital textbook and practice platform that can be searched by topic for heredity, biotechnology, molecular genetics, and ecological dynamics.</div>
+            <span class="res-card-tag">Textbook + Practice</span>
+            <div class="res-card-url">ck12.org</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="res-category">
+        <div class="res-category-label">Population &amp; Community Dynamics</div>
+        <div class="res-grid">
+          <a href="https://www.inaturalist.org/" target="_blank" rel="noopener" class="res-card res-green">
+            <div class="res-card-name">iNaturalist</div>
+            <div class="res-card-desc">Use real observations to explore biodiversity, distribution, ecosystems, community interactions, and field biology connected to Unit D.</div>
+            <span class="res-card-tag">Field Biology</span>
+            <div class="res-card-url">inaturalist.org</div>
+          </a>
+          <a href="https://www.iucnredlist.org/" target="_blank" rel="noopener" class="res-card res-rose">
+            <div class="res-card-name">IUCN Red List</div>
+            <div class="res-card-desc">Investigate conservation status, threats to species, and biodiversity trends using real-world ecological data and species profiles.</div>
+            <span class="res-card-tag">Biodiversity Data</span>
+            <div class="res-card-url">iucnredlist.org</div>
+          </a>
+          <a href="https://www.globalforestwatch.org/" target="_blank" rel="noopener" class="res-card res-amber">
+            <div class="res-card-name">Global Forest Watch</div>
+            <div class="res-card-desc">Track deforestation, habitat change, and ecological pressure using live maps and datasets that connect population dynamics to human impact.</div>
+            <span class="res-card-tag">Real Data</span>
+            <div class="res-card-url">globalforestwatch.org</div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="rtab-content" id="tab-youtube">
+      <div class="res-category">
+        <div class="res-category-label">All Units</div>
+        <div class="yt-grid">
+          <a href="https://www.youtube.com/@AmoebaSisters" target="_blank" rel="noopener" class="yt-card">
+            <div class="yt-card-top">
+              <div class="yt-icon"><svg viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 0 0 2.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg></div>
+              <div><div class="yt-card-name">Amoeba Sisters</div><div class="yt-card-handle">@AmoebaSisters</div></div>
+            </div>
+            <div class="yt-card-desc">Still one of the most useful channels for concise explanations of neurons, hormones, meiosis, DNA, mutations, and natural selection.</div>
+            <div class="yt-subjects"><span class="yt-sub-tag">All Units</span><span class="yt-sub-tag">Most Recommended</span></div>
+          </a>
+          <a href="https://www.youtube.com/@crashcourse" target="_blank" rel="noopener" class="yt-card">
+            <div class="yt-card-top">
+              <div class="yt-icon"><svg viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 0 0 2.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg></div>
+              <div><div class="yt-card-name">Crash Course Biology</div><div class="yt-card-handle">@crashcourse</div></div>
+            </div>
+            <div class="yt-card-desc">Fast-paced but excellent for high-level review of the nervous system, reproduction, genetics, DNA, evolution, and ecology before quizzes or exams.</div>
+            <div class="yt-subjects"><span class="yt-sub-tag">All Units</span><span class="yt-sub-tag">Review</span></div>
+          </a>
+          <a href="https://www.youtube.com/@khanacademy" target="_blank" rel="noopener" class="yt-card">
+            <div class="yt-card-top">
+              <div class="yt-icon"><svg viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 0 0 2.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg></div>
+              <div><div class="yt-card-name">Khan Academy</div><div class="yt-card-handle">@khanacademy</div></div>
+            </div>
+            <div class="yt-card-desc">Best for methodical, step-by-step learning in human physiology, hormones, genetics, and DNA/protein synthesis when you need a slower pace.</div>
+            <div class="yt-subjects"><span class="yt-sub-tag">All Units</span><span class="yt-sub-tag">Structured</span></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="res-category">
+        <div class="res-category-label">Genetics, DNA &amp; Molecular Biology</div>
+        <div class="yt-grid">
+          <a href="https://www.youtube.com/@BozemanScience" target="_blank" rel="noopener" class="yt-card">
+            <div class="yt-card-top">
+              <div class="yt-icon"><svg viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 0 0 2.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg></div>
+              <div><div class="yt-card-name">Bozeman Science</div><div class="yt-card-handle">@BozemanScience</div></div>
+            </div>
+            <div class="yt-card-desc">Outstanding lessons for meiosis, inheritance, DNA replication, transcription, translation, biotechnology, and ecological relationships.</div>
+            <div class="yt-subjects"><span class="yt-sub-tag">Unit C</span><span class="yt-sub-tag">Unit D</span></div>
+          </a>
+          <a href="https://www.youtube.com/@ProfessorDaveExplains" target="_blank" rel="noopener" class="yt-card">
+            <div class="yt-card-top">
+              <div class="yt-icon"><svg viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 0 0 2.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg></div>
+              <div><div class="yt-card-name">Professor Dave Explains</div><div class="yt-card-handle">@ProfessorDaveExplains</div></div>
+            </div>
+            <div class="yt-card-desc">Strong, clear explanations for genetics problems, DNA, mutations, and molecular biology with enough depth for Biology 30.</div>
+            <div class="yt-subjects"><span class="yt-sub-tag">Unit C</span><span class="yt-sub-tag">Detailed</span></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="res-category">
+        <div class="res-category-label">Physiology &amp; Development</div>
+        <div class="yt-grid">
+          <a href="https://www.youtube.com/@NinjaNerdOfficial" target="_blank" rel="noopener" class="yt-card">
+            <div class="yt-card-top">
+              <div class="yt-icon"><svg viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 0 0 2.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg></div>
+              <div><div class="yt-card-name">Ninja Nerd</div><div class="yt-card-handle">@NinjaNerdOfficial</div></div>
+            </div>
+            <div class="yt-card-desc">Excellent for endocrine pathways, homeostasis, reproduction, and anatomy-heavy content when you want thorough explanations and diagrams.</div>
+            <div class="yt-subjects"><span class="yt-sub-tag">Unit A</span><span class="yt-sub-tag">Unit B</span></div>
+          </a>
+          <a href="https://www.youtube.com/@armandohasudungan" target="_blank" rel="noopener" class="yt-card">
+            <div class="yt-card-top">
+              <div class="yt-icon"><svg viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 0 0 2.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg></div>
+              <div><div class="yt-card-name">Armando Hasudungan</div><div class="yt-card-handle">@armandohasudungan</div></div>
+            </div>
+            <div class="yt-card-desc">Fantastic hand-drawn physiology diagrams for hormonal control, reproductive structures, pregnancy, and development.</div>
+            <div class="yt-subjects"><span class="yt-sub-tag">Unit A</span><span class="yt-sub-tag">Unit B</span><span class="yt-sub-tag">Visual Learning</span></div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="rtab-content" id="tab-assessments">
+      <div class="res-category">
+        <div class="res-category-label">Recommended Study Categories</div>
+        <div class="assessment-grid">
+          <div class="assessment-card">
+            <div class="assessment-card-name">Unit A Focus</div>
+            <div class="assessment-card-desc">Prioritize neuron structure, action potentials, synapses, reflex arcs, senses, endocrine glands, hormones, and feedback loops.</div>
+            <span class="assessment-card-tag">Physiology</span>
+          </div>
+          <div class="assessment-card">
+            <div class="assessment-card-name">Unit B Focus</div>
+            <div class="assessment-card-desc">Study reproductive anatomy, hormones, menstrual cycle graphs, pregnancy, fetal development, reproductive technologies, and ethical issues.</div>
+            <span class="assessment-card-tag">Development</span>
+          </div>
+          <div class="assessment-card">
+            <div class="assessment-card-name">Unit C Focus</div>
+            <div class="assessment-card-desc">Practise mitosis vs. meiosis comparisons, genetics problem solving, pedigrees, DNA structure, replication, transcription, translation, and mutation effects.</div>
+            <span class="assessment-card-tag">Genetics</span>
+          </div>
+          <div class="assessment-card">
+            <div class="assessment-card-name">Unit D Focus</div>
+            <div class="assessment-card-desc">Review population curves, community relationships, succession, limiting factors, carrying capacity, and ecological data interpretation.</div>
+            <span class="assessment-card-tag">Ecology</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rtab-content" id="tab-tips">
+      <div class="tips-box">
+        <h3>How to Succeed in Biology 30</h3>
+        <div class="tips-list">
+          <div class="tip-item"><div class="tip-marker"><span>1</span></div><p><strong>Learn processes in sequence.</strong> For many topics, the order matters: nerve transmission, hormone feedback loops, embryonic development, meiosis, and protein synthesis.</p></div>
+          <div class="tip-item"><div class="tip-marker"><span>2</span></div><p><strong>Connect structure to function.</strong> When you study a gland, organ, chromosome, or molecule, always ask what its shape or location helps it do.</p></div>
+          <div class="tip-item"><div class="tip-marker"><span>3</span></div><p><strong>Practise graphs and data.</strong> Biology 30 often includes hormone graphs, inheritance ratios, and ecology data. Do not only memorize notes.</p></div>
+          <div class="tip-item"><div class="tip-marker"><span>4</span></div><p><strong>Use diagrams actively.</strong> Redraw the neuron, menstrual cycle, stages of meiosis, and DNA to strengthen memory and improve explanation skills.</p></div>
+          <div class="tip-item"><div class="tip-marker"><span>5</span></div><p><strong>Say it out loud.</strong> Explain concepts verbally as if you are teaching someone else. If you cannot explain it clearly, review it again.</p></div>
+          <div class="tip-item"><div class="tip-marker"><span>6</span></div><p><strong>Separate the similar processes.</strong> Students often mix up mitosis vs. meiosis, DNA replication vs. transcription, and endocrine vs. nervous control. Compare them directly.</p></div>
+          <div class="tip-item"><div class="tip-marker"><span>7</span></div><p><strong>Memorize key vocabulary precisely.</strong> Terms like homeostasis, implantation, codominance, transcription, and carrying capacity need exact meaning.</p></div>
+          <div class="tip-item"><div class="tip-marker"><span>8</span></div><p><strong>Review a little every week.</strong> Biology 30 is dense. Frequent short review sessions work much better than one long cram session before a test.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Email: terkperhannah@gmail.com &nbsp;|&nbsp; Instagram: hannah.attempts.teaching &nbsp;|&nbsp; TikTok: hannah.attempts.teaching</p>
+</footer>
+
+<script>
+  function switchTab(e, id) {
+    document.querySelectorAll('.rtab').forEach(tab => tab.classList.remove('active'));
+    document.querySelectorAll('.rtab-content').forEach(content => content.classList.remove('active'));
+    e.currentTarget.classList.add('active');
+    document.getElementById('tab-' + id).classList.add('active');
+  }
+</script>
+
+</body>
+</html>
 
