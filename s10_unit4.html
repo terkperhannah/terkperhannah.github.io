@@ -374,7 +374,55 @@ footer p{color:#cbd5e1;font-size:.875rem}
 </head>
 <body>
 
+<!-- ALL UNITS NAV -->
+<div class="unit-nav unit-nav-overview">
+  <div class="unit-nav-inner">
+    <div class="unit-nav-brand">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2">
+        <circle cx="9" cy="9" r="7"/>
+        <path d="M9 6v6M6 9h6"/>
+        <path d="M20 20l-4-4"/>
+      </svg>
+      Science 10 Units
+    </div>
+    <a href="s10_unit1.html">Unit A: Chemistry</a>
+    <a href="s10_unit2.html">Unit B: Physics</a>
+    <a href="s10_unit3.html">Unit C: Biology</a>
+    <a href="s10_unit4.html">Unit D: Biosphere</a>
+  </div>
+</div>
+ <style>
+ /* TOP NAV (ALL UNITS) — softer + distinct */
+.unit-nav-overview {
+  background: #f1f5f9; /* light slate */
+  border-bottom: 2px solid #e2e8f0;
+}
 
+.unit-nav-overview .unit-nav-brand {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #475569; /* muted */
+  letter-spacing: 0.5px;
+}
+
+.unit-nav-overview a {
+  color: #334155;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.unit-nav-overview a:hover {
+  color: #1e3a8a;
+  transform: translateY(-1px);
+}
+
+/* subtle spacing tweak */
+.unit-nav-overview .unit-nav-inner {
+  gap: 1.5rem;
+}
+  </style>
+  
 <div id="navbar-placeholder"></div>
 
 <div class="unit-nav">
