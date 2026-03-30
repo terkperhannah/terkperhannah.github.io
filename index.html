@@ -4,191 +4,413 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
     <title>Hannah Terkper - Educator | Ms. Terkper's Digital Classroom</title>
-    <meta name="description" content="Hannah Terkper is a STEM educator based in Edmonton specializing in digital learning, equity in education, and emerging technologies. Explore comprehensive math, science, and computer science resources for grades 7-12, plus AI tutoring tools.">
-    <meta name="keywords" content="Hannah Terkper, Terkper Hannah, Hannah Terkper educator, Hannah Terkper Edmonton, STEM educator Edmonton, digital classroom, math education Alberta, science curriculum, emerging technologies education, AI tutor, Grade 9 math, interactive learning, equity in STEM">
+    <meta name="description" content="Hannah Terkper is a STEM educator based in Edmonton specializing in digital learning, equity in education, and emerging technologies. Explore comprehensive math, science, and computer science resources for grades 7-12.">
+    <meta name="keywords" content="Hannah Terkper, STEM educator Edmonton, digital classroom, math education Alberta, science curriculum, emerging technologies education">
     <meta name="author" content="Hannah Terkper">
-    
-    <!-- Enhanced SEO Meta Tags -->
-    <meta property="og:title" content="Hannah Terkper - STEM Educator & Educational Technology Specialist">
-    <meta property="og:description" content="Edmonton-based STEM educator specializing in digital learning, equity in education, and emerging technologies. Comprehensive educational resources for grades 7-12.">
-    <meta property="og:url" content="https://terkperhannah.github.io/">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Hannah Terkper's Digital Classroom">
-    
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Hannah Terkper - STEM Educator & Educational Technology Specialist">
-    <meta name="twitter:description" content="Edmonton-based STEM educator specializing in digital learning, equity in education, and emerging technologies.">
-    
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://terkperhannah.github.io/">
-    
-    <!-- Additional Schema Markup -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Hannah Terkper",
-      "jobTitle": "STEM Educator",
-      "affiliation": "University of Alberta",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Edmonton",
-        "addressRegion": "Alberta",
-        "addressCountry": "Canada"
-      },
-      "url": "https://terkperhannah.github.io/",
-      "sameAs": [
-        "https://github.com/terkperhannah"
-      ],
-      "knowsAbout": [
-        "STEM Education",
-        "Digital Learning",
-        "Educational Technology",
-        "Equity in Education",
-        "Mathematics Education",
-        "Science Education"
-      ]
-    }
-    </script>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style>
-    /* Paragraph styling directly here */
-    p {
-      font-size: clamp(1rem, 2.5vw, 1.1rem);
-      line-height: 1.8;
-      color: #34495e;
-      font-family: 'Poppins', sans-serif;
-    }
+        :root {
+            --navy: #17324d;
+            --teal: #0f766e;
+            --teal-soft: #dff6f3;
+            --sky: #edf6ff;
+            --slate: #475569;
+            --text: #1f2937;
+            --muted: #64748b;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
+            --radius-lg: 24px;
+            --radius-md: 18px;
+            --radius-sm: 12px;
+        }
 
-    /* Custom header style for h2 in content boxes */
-    .content-box h2 {
-      color: #0984e3;
-      font-size: clamp(1.5rem, 4vw, 1.8rem);
-      font-weight: 600;
-      font-family: 'Poppins', sans-serif;
-      border-bottom: 2px solid rgba(116, 185, 255, 0.3);
-      padding-bottom: 10px;
-      margin-bottom: 15px;
-    }
+        * { box-sizing: border-box; }
 
-    .content-box:nth-child(even) h2 {
-      color: #00cec9;
-    }
-  
-        /* Mobile Responsiveness Fixes */
-        @media (max-width: 768px) {
-            .content-wrapper {
-                padding: 10px !important;
-                margin: 0 !important;
-            }
-            
-            .content-box {
-                padding: 15px !important;
-                margin-bottom: 15px !important;
-            }
-            
-            /* Fix grid layouts */
-            .stream-container {
-                grid-template-columns: 1fr !important;
-                gap: 15px !important;
-            }
-            
-            .units-grid {
-                grid-template-columns: 1fr !important;
-                gap: 15px !important;
-            }
-            
-            .course-grid {
-                grid-template-columns: 1fr !important;
-                gap: 15px !important;
-            }
-            
-            /* Fix minimum widths that cause overflow */
-            .unit-card, .content-card, .resource-card {
-                min-width: auto !important;
-                width: 100% !important;
-                box-sizing: border-box !important;
-                padding: 15px !important;
-            }
-            
-            /* Fix tables */
-            table {
-                width: 100% !important;
-                font-size: 0.9em !important;
-                overflow-x: auto !important;
-                display: block !important;
-                white-space: nowrap !important;
-            }
-            
-            /* Fix text sizing */
-            h1 { font-size: clamp(1.5rem, 5vw, 2rem) !important; }
-            h2 { font-size: clamp(1.2rem, 4vw, 1.5rem) !important; }
-            h3 { font-size: clamp(1rem, 3vw, 1.2rem) !important; }
-            p { font-size: clamp(0.9rem, 2.5vw, 1rem) !important; }
-            
-            /* Fix navigation and links */
-            .nav-links, .resource-links {
-                flex-direction: column !important;
-            }
-            
-            .resource-link {
-                padding: 10px !important;
-                font-size: 0.9em !important;
-                margin: 5px 0 !important;
-            }
-            
-            /* Fix images and media */
-            img {
-                max-width: 100% !important;
-                height: auto !important;
-            }
-            
-            /* Fix any fixed widths */
-            * {
-                max-width: 100% !important;
-                box-sizing: border-box !important;
-            }
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background:
+                radial-gradient(circle at top right, rgba(15,118,110,0.08), transparent 28%),
+                linear-gradient(180deg, #f8fbfd 0%, #f4f7fb 100%);
+            color: var(--text);
         }
-        
-        /* Additional mobile fixes for specific patterns */
-        @media (max-width: 480px) {
-            .content-wrapper {
-                padding: 5px !important;
-            }
-            
-            .content-box {
-                padding: 10px !important;
-            }
-            
-            .unit-card {
-                padding: 10px !important;
-            }
+
+        p {
+            font-size: clamp(1rem, 2.2vw, 1.08rem);
+            line-height: 1.85;
+            color: #334155;
+            margin: 0 0 18px 0;
         }
-        
-        /* Animation keyframes */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+
+        main {
+            padding-bottom: 48px;
         }
-        
+
+        .content-wrapper {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 24px 20px 0;
+        }
+
+        .hero-shell {
+            max-width: 1240px;
+            margin: 26px auto 24px;
+            padding: 0 20px;
+        }
+
+        .hero-card {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0f766e 0%, #17324d 88%);
+            border-radius: 32px;
+            padding: 42px 42px 38px;
+            box-shadow: 0 18px 42px rgba(15, 23, 42, 0.18);
+            color: white;
+        }
+
+        .hero-card::before,
+        .hero-card::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.07);
+            pointer-events: none;
+        }
+
+        .hero-card::before {
+            width: 340px;
+            height: 340px;
+            right: -100px;
+            top: -120px;
+        }
+
+        .hero-card::after {
+            width: 220px;
+            height: 220px;
+            left: 58%;
+            bottom: -110px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1.3fr 0.9fr;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            margin-bottom: 16px;
+            padding: 7px 14px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.14);
+            color: #d9fffb;
+            font-size: 0.76rem;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            margin: 0 0 14px 0;
+            font-size: clamp(2rem, 4.2vw, 3rem);
+            line-height: 1.12;
+            font-weight: 700;
+            color: white;
+        }
+
+        .hero-sub {
+            color: rgba(255,255,255,0.82);
+            max-width: 720px;
+            margin-bottom: 0;
+        }
+
+        .hero-highlights {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .hero-pill {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 14px;
+            padding: 14px 16px;
+            font-size: 0.92rem;
+            color: white;
+            backdrop-filter: blur(6px);
+        }
+
+        .hero-pill strong {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 2px;
+            color: #ffffff;
+        }
+
+        .content-box {
+            background: rgba(255,255,255,0.88);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            border-radius: var(--radius-lg);
+            padding: 34px;
+            margin-bottom: 26px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(8px);
+        }
+
+        .content-box h1 {
+            color: var(--navy);
+            text-align: center;
+            margin: 0 0 28px 0;
+            font-size: clamp(1.9rem, 4vw, 2.45rem);
+            line-height: 1.18;
+        }
+
+        .content-box h2 {
+            color: var(--teal);
+            font-size: clamp(1.45rem, 3.4vw, 1.8rem);
+            font-weight: 600;
+            border-bottom: 2px solid #cfe9e6;
+            padding-bottom: 12px;
+            margin: 0 0 18px 0;
+        }
+
+        .desktop-welcome { display: block; }
+        .mobile-welcome { display: none; }
+        .mobile-notice { display: none; }
+
+        .intro-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+            gap: 34px;
+            align-items: start;
+        }
+
+        .intro-copy {
+            padding-right: 4px;
+        }
+
+        .intro-side {
+            background: linear-gradient(180deg, #f8fffe 0%, #f4f8fb 100%);
+            border: 1px solid #dbe7f0;
+            border-radius: 22px;
+            padding: 22px;
+        }
+
+        .portrait-wrap {
+            text-align: center;
+            margin-bottom: 22px;
+        }
+
+        .portrait-wrap img {
+            max-width: 320px;
+            width: 100%;
+            height: auto;
+            border-radius: 18px;
+            border: 4px solid #ffffff;
+            box-shadow: 0 14px 30px rgba(23, 50, 77, 0.16);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portrait-wrap img:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 36px rgba(23, 50, 77, 0.22);
+        }
+
+        .support-box {
+            margin-top: 18px;
+            padding: 18px 18px;
+            background: linear-gradient(135deg, var(--teal-soft) 0%, #eefbf8 100%);
+            border: 1px solid #bfe7df;
+            border-radius: 16px;
+        }
+
+        .support-box p {
+            margin: 0;
+            font-size: 0.98rem;
+            color: #134e4a;
+            font-weight: 500;
+        }
+
+        .setting-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .setting-card {
+            background: linear-gradient(180deg, #ffffff 0%, #f8fbfe 100%);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 18px;
+        }
+
+        .setting-card h3 {
+            margin: 0 0 8px 0;
+            color: var(--navy);
+            font-size: 1rem;
+        }
+
+        .setting-card p {
+            margin: 0;
+            font-size: 0.94rem;
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .search-shell {
+            max-width: 1240px;
+            margin: 0 auto 24px;
+            padding: 0 20px;
+        }
+
+        .search-panel {
+            background: rgba(255,255,255,0.9);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            border-radius: 20px;
+            padding: 20px 22px 12px;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+        }
+
+        .search-panel h3 {
+            margin: 0 0 10px 0;
+            font-size: 1rem;
+            color: var(--navy);
+            font-weight: 600;
+        }
+
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.6s ease;
         }
-        
+
         .animate-on-scroll.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        footer {
+            background: linear-gradient(135deg, #17324d 0%, #0f766e 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 44px;
+            box-shadow: 0 -6px 22px rgba(15, 23, 42, 0.08);
+        }
+
+        footer h3 {
+            margin: 0 0 20px 0;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-pill {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 18px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 999px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-pill:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .footer-pill svg { flex-shrink: 0; }
+
+        .footer-meta {
+            border-top: 1px solid rgba(255,255,255,0.18);
+            padding-top: 18px;
+            font-size: 0.9rem;
+            opacity: 0.92;
+            line-height: 1.7;
+        }
+
+        .footer-meta p { color: rgba(255,255,255,0.92); margin: 0 0 6px 0; }
+        .footer-meta a { color: #d9fffb; }
+
+        @media (max-width: 1024px) {
+            .hero-content,
+            .intro-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-card {
+                padding: 34px 28px 30px;
+            }
+
+            .setting-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper,
+            .hero-shell,
+            .search-shell {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .hero-card {
+                border-radius: 24px;
+                padding: 28px 20px 24px;
+            }
+
+            .hero-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .content-box {
+                padding: 22px 18px;
+                border-radius: 20px;
+            }
+
+            .desktop-welcome { display: none; }
+            .mobile-welcome { display: block; }
+
+            .mobile-notice {
+                display: block;
+                background: #e6f4ff;
+                border: 1px solid #bcdcff;
+                border-radius: 12px;
+                padding: 14px;
+                margin-bottom: 18px;
+                font-size: 0.94rem;
+                color: #1d4f91;
+            }
+
+            .footer-links {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -196,16 +418,15 @@
     <header>
         <h1>Ms. Terkper's Digital Classroom</h1>
     </header>
-    
+
     <div id="navbar-placeholder"></div>
-    
+
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         fetch('navbar.html')
           .then(res => res.text())
           .then(data => {
             document.getElementById('navbar-placeholder').innerHTML = data;
-            // Initialize mobile navigation after navbar is loaded
             if (typeof initMobileNav === 'function') {
               initMobileNav();
             }
@@ -215,17 +436,16 @@
     </script>
     <script src="mobile-nav.js"></script>
     <script>
-        // Mobile detection and UI adjustments
         function isMobileDevice() {
             return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         }
-        
+
         function updateMobileUI() {
             const isMobile = isMobileDevice();
             const desktopWelcome = document.querySelector('.desktop-welcome');
             const mobileWelcome = document.querySelector('.mobile-welcome');
             const mobileNotice = document.querySelector('.mobile-notice');
-            
+
             if (isMobile) {
                 if (desktopWelcome) desktopWelcome.style.display = 'none';
                 if (mobileWelcome) mobileWelcome.style.display = 'block';
@@ -236,176 +456,73 @@
                 if (mobileNotice) mobileNotice.style.display = 'none';
             }
         }
-        
-        // Run on load and resize
+
         document.addEventListener('DOMContentLoaded', updateMobileUI);
         window.addEventListener('resize', updateMobileUI);
     </script>
 
     <main>
-        <!-- Tagline Section -->
-        <div style="
-            text-align: center;
-            padding: 30px 20px 20px 20px;
-            background: linear-gradient(135deg, #1976d2 0%, #00796b 100%);
-            margin: 0 0 30px 0;
-            position: relative;
-            overflow: hidden;
-        ">
-            <div style="
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(255,255,255,0.05);
-                backdrop-filter: blur(5px);
-            "></div>
-            <div style="position: relative; z-index: 2;">
-            <p style="
-                font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-                color: white;
-                font-weight: 500;
-                margin: 0 0 25px 0;
-                opacity: 0.95;
-                text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            ">Empowering STEM Learning Through Innovation & Technology</p>
-            <div style="
-                display: flex;
-                gap: 20px;
-                justify-content: center;
-                flex-wrap: wrap;
-            ">
-                <a href="hannah-ai-tutor.html" style="
-                    background: rgba(255,255,255,0.2);
-                    backdrop-filter: blur(10px);
-                    color: white;
-                    padding: 12px 25px;
-                    border-radius: 25px;
-                    text-decoration: none;
-                    font-weight: 500;
-                    transition: all 0.3s ease;
-                    border: 1px solid rgba(255,255,255,0.3);
-                    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-                " onmouseover="this.style.background='rgba(255,255,255,0.3)'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.1)'">
-                    Try Hannah AI Tutor
-                </a>
-                <a href="learning-toolkit-hub.html" style="
-                    background: white;
-                    color: #1976d2;
-                    padding: 12px 25px;
-                    border-radius: 25px;
-                    text-decoration: none;
-                    font-weight: 600;
-                    transition: all 0.3s ease;
-                    border: none;
-                    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-                " onmouseover="this.style.background='#f8f9fa'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.2)'" onmouseout="this.style.background='white'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.15)'">
-                    Explore Learning Tools
-                </a>
+        <section class="hero-shell">
+            <div class="hero-card animate-on-scroll">
+                <div class="hero-content">
+                    <div>
+                        <span class="hero-badge">Digital Classroom</span>
+                        <h2 class="hero-title">A polished, welcoming home for your classroom resources.</h2>
+                        <p class="hero-sub">This refreshed homepage keeps your voice, your photo, and your message — but gives the layout a cleaner, more modern structure with softer colour balance and stronger visual hierarchy.</p>
+                    </div>
+                    <div class="hero-highlights">
+                        <div class="hero-pill"><strong>Cleaner palette</strong> More elegant navy and teal tones.</div>
+                        <div class="hero-pill"><strong>Stronger layout</strong> Better spacing and balance across sections.</div>
+                        <div class="hero-pill"><strong>Same content</strong> Your text and image stay intact.</div>
+                        <div class="hero-pill"><strong>Less clutter</strong> Removed the extra promo strip you wanted gone.</div>
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <div class="search-shell">
+            <div class="search-panel">
+                <h3>Search the site</h3>
+                <script async src="https://cse.google.com/cse.js?cx=55023492bbb93437c"></script>
+                <div class="gcse-search"></div>
             </div>
         </div>
-
-        <!-- Search Section -->
-        <div style="text-align: center; margin: 0 0 40px 0; padding: 0 20px;">
-            <script async src="https://cse.google.com/cse.js?cx=55023492bbb93437c"></script>
-            <div class="gcse-search"></div>
-        </div>
-
 
         <div class="content-wrapper">
-            <div class="content-box animate-on-scroll" style="
-                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-                border: none;
-                border-radius: 20px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            ">
-                <h1 class="desktop-welcome" style="
-                    color: #2c3e50;
-                    text-align: center;
-                    margin-bottom: 30px;
-                    font-size: clamp(1.8rem, 4vw, 2.2rem);
-                ">Hannah Terkper - STEM Educator & Digital Learning Specialist</h1>
-                <h1 class="mobile-welcome" style="
-                    display: none;
-                    color: #2c3e50;
-                    text-align: center;
-                    margin-bottom: 30px;
-                    font-size: clamp(1.5rem, 4vw, 1.8rem);
-                ">Hannah Terkper - STEM Educator Edmonton</h1>
-                <div class="mobile-notice" style="display: none; background: #e3f2fd; border: 2px solid #2196f3; border-radius: 8px; padding: 15px; margin-bottom: 20px; font-size: 0.95em; color: #1565c0;">
-                    📱 You're viewing the mobile version. For full access to all interactive features and content, please visit on a desktop or laptop computer.
+            <div class="content-box animate-on-scroll">
+                <h1 class="desktop-welcome">Hannah Terkper - STEM Educator &amp; Digital Learning Specialist</h1>
+                <h1 class="mobile-welcome">Hannah Terkper - STEM Educator Edmonton</h1>
+
+                <div class="mobile-notice">
+                    You’re viewing the mobile version. For the best experience with the site’s interactive tools, desktop viewing is recommended.
                 </div>
-                <div style="
-                    display: grid;
-                    grid-template-columns: 1fr 3px 1fr;
-                    gap: 30px;
-                    align-items: center;
-                " class="mobile-responsive-grid">
-                    <div>
-                        <p style="margin-bottom: 20px;">
+
+                <div class="intro-layout">
+                    <div class="intro-copy">
+                        <p>
                             Hi! I'm Hannah Terkper, a STEM educator based in Edmonton with a love for learning, creativity, and helping students thrive. I hold a Bachelor of Education with a major in biological sciences, a minor in mathematics, and a certification in Sustainability. I recently completed my Master of Education in Emerging Technologies, where my work centered on Artificial Intelligence, Instructional Design, Digital Curriculum Development, and Data-Informed Instructional Improvement, with a particular interest in how these tools can transform the way students engage with biology and mathematics.
                         </p>
-                        <p style="margin-bottom: 20px;">
-Outside the classroom, I'm passionate about designing meaningful, student-centred learning experiences and developing accessible educational tools. I enjoy programming and have built this website as a platform to share curriculum-aligned resources, original tools, and interactive content. I also enjoy experimenting with emerging technologies, building inclusive STEM programs, and reflecting on my practice as an educator through social media and academic research. When I'm not teaching, you'll likely find me outdoors, trying new recipes, or reading a good sci-fi novel.
-
+                        <p>
+                            Outside the classroom, I'm passionate about designing meaningful, student-centred learning experiences and developing accessible educational tools. I enjoy programming and have built this website as a platform to share curriculum-aligned resources, original tools, and interactive content. I also enjoy experimenting with emerging technologies, building inclusive STEM programs, and reflecting on my practice as an educator through social media and academic research. When I'm not teaching, you'll likely find me outdoors, trying new recipes, or reading a good sci-fi novel.
                         </p>
                     </div>
-                    <div style="
-                        background: linear-gradient(135deg, #667eea, #764ba2);
-                        width: 3px;
-                        height: 100px;
-                        border-radius: 2px;
-                    " class="mobile-divider"></div>
-                    <div>
-                        <div style="
-                            text-align: center;
-                            margin-bottom: 25px;
-                        ">
-                            <img src="resources1/index_image.JPG" alt="Hannah Terkper in her classroom" style="
-                                max-width: 300px;
-                                width: 100%;
-                                height: auto;
-                                border-radius: 15px;
-                                border: 4px solid;
-                                border-image: linear-gradient(135deg, #1976d2, #00796b) 1;
-                                box-shadow: 0 8px 25px rgba(25, 118, 210, 0.3);
-                                transition: all 0.3s ease;
-                            " onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 12px 35px rgba(25, 118, 210, 0.4)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 25px rgba(25, 118, 210, 0.3)'">
+
+                    <div class="intro-side">
+                        <div class="portrait-wrap">
+                            <img src="resources1/index_image.JPG" alt="Hannah Terkper in her classroom">
                         </div>
-                        <p style="margin-bottom: 20px;">
+                        <p>
                             This site brings together my teaching, research, and innovation projects. Whether you're here to explore resources, try out the AI tutor, or connect with new tools and strategies, I hope you find something that supports your growth.
                         </p>
-                        <a href="learning-toolkit-hub.html" style="
-                            display: block;
-                            background: linear-gradient(135deg, #00cec9, #0984e3);
-                            color: white;
-                            padding: 20px;
-                            border-radius: 15px;
-                            text-align: center;
-                            margin-top: 20px;
-                            text-decoration: none;
-                            transition: all 0.3s ease;
-                            cursor: pointer;
-                        " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(0, 206, 201, 0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-                            <p style="
-                                margin: 0;
-                                font-weight: 500;
-                                color: white;
-                            ">Ready to enhance your learning experience?</p>
-                        </a>
+                        <div class="support-box">
+                            <p>Designed to feel like a natural extension of the classroom: warm, structured, and easy to explore.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="content-box animate-on-scroll" style="
-                background: white;
-                border-radius: 20px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-                border-left: 5px solid #00cec9;
-            ">
-                <h2 style="color: #00cec9;">Educational Setting and Audience</h2>
+            <div class="content-box animate-on-scroll">
+                <h2>Educational Setting and Audience</h2>
                 <p>
                     This website serves as a digital extension of my classroom and educational practice. The primary audience includes students in Grades 7 through 12 enrolled in Mathematics, Science, and Computer Science courses aligned with the Alberta Program of Studies. All resources are designed to support the development of foundational knowledge, reinforce key concepts, and prepare students for both classroom assessments and real-world applications.
                 </p>
@@ -415,32 +532,63 @@ Outside the classroom, I'm passionate about designing meaningful, student-centre
                 <p>
                     As a STEM-focused educator with a passion for equitable access to emerging technologies, I aim to provide tools that empower all learners, especially girls and students from underserved communities. The materials shared here are aligned with curriculum outcomes, ISTE standards, and inclusive design practices.
                 </p>
+
+                <div class="setting-grid">
+                    <div class="setting-card">
+                        <h3>Students</h3>
+                        <p>Curriculum-aligned resources that support review, practice, confidence, and independent learning.</p>
+                    </div>
+                    <div class="setting-card">
+                        <h3>Families</h3>
+                        <p>Clear access to course support tools, digital resources, and meaningful learning pathways.</p>
+                    </div>
+                    <div class="setting-card">
+                        <h3>Educators</h3>
+                        <p>Examples of digital classroom design, emerging technology integration, and student-centred practice.</p>
+                    </div>
+                </div>
             </div>
         </div>
-
-
     </main>
-    
-    <style>
-        /* Mobile responsiveness for the enhanced design */
-        @media (max-width: 768px) {
-            .mobile-responsive-grid {
-                grid-template-columns: 1fr !important;
-                gap: 20px !important;
-            }
-            
-            .mobile-divider {
-                display: none !important;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr !important;
-            }
-        }
-    </style>
-    
+
+    <footer>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h3>Connect with Ms. Terkper</h3>
+
+            <div class="footer-links">
+                <a href="mailto:terkperhannah@gmail.com" class="footer-pill" title="Click to email terkperhannah@gmail.com">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    terkperhannah@gmail.com
+                </a>
+
+                <a href="https://www.instagram.com/hannah.attempts.teaching/" target="_blank" class="footer-pill">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3z"/>
+                    </svg>
+                    Instagram
+                </a>
+
+                <a href="https://www.tiktok.com/@hannah.attempts.teaching" target="_blank" class="footer-pill">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/>
+                    </svg>
+                    TikTok
+                </a>
+            </div>
+
+            <div class="footer-meta">
+                <p>Hannah Terkper | STEM Educator</p>
+                <p>
+                    Original content licensed under
+                    <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // Animate elements on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -460,93 +608,6 @@ Outside the classroom, I'm passionate about designing meaningful, student-centre
             });
         });
     </script>
-
-                    <footer style="
-        background: linear-gradient(to right, #1976d2, #00796b);
-        color: white;
-        padding: 40px 20px;
-        text-align: center;
-        font-family: 'Poppins', sans-serif;
-        margin-top: 40px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    ">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h3 style="margin: 0 0 20px 0; font-size: 1.4em; font-weight: 600;">Connect with Ms. Terkper</h3>
-            
-            <div style="display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 25px; flex-wrap: wrap;">
-                <!-- Email -->
-                <a href="mailto:terkperhannah@gmail.com" style="
-                    color: white;
-                    text-decoration: none;
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    padding: 12px 20px;
-                    background: rgba(255,255,255,0.1);
-                    border-radius: 25px;
-                    transition: all 0.3s ease;
-                    font-size: 0.95em;
-                " onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'" title="Click to email terkperhannah@gmail.com">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                    </svg>
-                    terkperhannah@gmail.com
-                </a>
-                
-                <!-- Instagram -->
-                <a href="https://www.instagram.com/hannah.attempts.teaching/" target="_blank" style="
-                    color: white;
-                    text-decoration: none;
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    padding: 12px 20px;
-                    background: rgba(255,255,255,0.1);
-                    border-radius: 25px;
-                    transition: all 0.3s ease;
-                    font-size: 0.95em;
-                " onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3z"/>
-                    </svg>
-                    Instagram
-                </a>
-                
-                <!-- TikTok -->
-                <a href="https://www.tiktok.com/@hannah.attempts.teaching" target="_blank" style="
-                    color: white;
-                    text-decoration: none;
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    padding: 12px 20px;
-                    background: rgba(255,255,255,0.1);
-                    border-radius: 25px;
-                    transition: all 0.3s ease;
-                    font-size: 0.95em;
-                " onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/>
-                    </svg>
-                    TikTok
-                </a>
-            </div>
-            
-            <div style="
-                border-top: 1px solid rgba(255,255,255,0.2);
-                padding-top: 20px;
-                font-size: 0.9em;
-                opacity: 0.9;
-                line-height: 1.6;
-            ">
-                <p style="margin: 0 0 8px 0;">Hannah Terkper | STEM Educator</p>
-                <p style="margin: 0; font-size: 0.85em;">
-                    Original content licensed under 
-                    <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color: #e3f2fd; text-decoration: underline;">CC BY 4.0</a>
-                </p>
-            </div>
-        </div>
-    </footer>
     <script src="universal-mobile-fix.js"></script>
 </body>
 </html>
