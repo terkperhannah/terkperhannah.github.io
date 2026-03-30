@@ -240,15 +240,8 @@
   <h1>Ms. Terkper's Digital Classroom</h1>
 </header>
 
-<!-- SITE NAV -->
-<nav class="site-nav" aria-label="Site navigation">
-  <a href="#">Home</a>
-  <a href="#">Math</a>
-  <a href="#">Science</a>
-  <a href="#">Computer Science</a>
-  <a href="#">Graduate Courses</a>
-  <a href="#">Learning Toolkit Hub</a>
-</nav>
+<!-- SITE NAV (loaded from shared navbar.html) -->
+<div id="navbar-placeholder"></div>
 
 <!-- UNIT NAV -->
 <div class="unit-nav">
@@ -1327,6 +1320,18 @@ function fcPrev() {
   document.getElementById('fc-inner').className = 'flashcard-inner';
   setTimeout(() => { fcIdx = (fcIdx-1+FC_TERMS.length) % FC_TERMS.length; fcRender(); }, 150);
 }
+
+// ═══════════════════════════════════════════════
+// NAVBAR LOADER
+// ═══════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  fetch('navbar.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('navbar-placeholder').innerHTML = data;
+    })
+    .catch(err => console.error("Navbar failed to load:", err));
+});
 
 // ═══════════════════════════════════════════════
 // BOOT
