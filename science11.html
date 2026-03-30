@@ -1,1 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biology 20</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
+        .content-box {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .content-box h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #27ae60;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .content-box h3 {
+            color: #1e8449;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+
+        .intro-text {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #34495e;
+        }
+
+        .units-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .unit-card {
+            padding: 20px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e0e0e0;
+            text-decoration: none;
+            color: #34495e;
+            display: block;
+        }
+
+        .unit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-color: #27ae60;
+        }
+
+        .unit-card h3 {
+            color: #27ae60;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .unit-card p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .unit-topics {
+            margin-top: 12px;
+            padding-left: 18px;
+        }
+
+        .unit-topics li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .outcomes-list {
+            columns: 2;
+            gap: 30px;
+            padding-left: 20px;
+            margin-top: 20px;
+        }
+
+        .outcomes-list li {
+            margin-bottom: 12px;
+            break-inside: avoid;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 25px;
+            list-style: none;
+        }
+
+        .outcomes-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .attitude-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .attitude-card {
+            background: #f8f9fa;
+            border: 1px solid #dfe6e9;
+            border-left: 5px solid #27ae60;
+            border-radius: 8px;
+            padding: 18px;
+        }
+
+        .attitude-card h4 {
+            margin: 0 0 8px 0;
+            color: #1e8449;
+            font-size: 1rem;
+        }
+
+        .attitude-card p {
+            margin: 0;
+            line-height: 1.5;
+            color: #34495e;
+            font-size: 0.95rem;
+        }
+
+        .resources-box {
+            background: #f8f9fa;
+            border-color: #27ae60;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 6px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            text-decoration: none;
+            color: #34495e;
+            border: 1px solid #e0e0e0;
+        }
+
+        .resource-link:hover {
+            transform: translateX(5px);
+            border-color: #27ae60;
+        }
+
+        .note-box {
+            background: #eefaf1;
+            border-left: 5px solid #27ae60;
+            padding: 15px 18px;
+            border-radius: 8px;
+            margin-top: 15px;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+
+        @media (max-width: 768px) {
+            .outcomes-list {
+                columns: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ms. Terkper's Digital Classroom</h1>
+    </header>
+
+    <div id="navbar-placeholder"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('navbar.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                })
+                .catch(err => console.error("Navbar failed to load:", err));
+        });
+    </script>
+
+    <main>
+        <div class="content-wrapper">
+
+            <div class="content-box">
+                <h2>Biology 20 Curriculum</h2>
+                <p class="intro-text">
+                    Biology 20 explores how living systems function at both the ecosystem and organism level.
+                    Throughout this course, students investigate the flow of energy, the cycling of matter,
+                    population change, cellular processes, and the organization of human body systems.
+                </p>
+
+                <div class="note-box">
+                    This course is organized around four major units from the Alberta Biology 20 Program of Studies.
+                    Click a unit below to explore notes, assignments, labs, and review materials.
+                </div>
+
+                <h3>Course Units</h3>
+                <div class="units-grid">
+                    <a href="bio20_unitA.html" class="unit-card">
+                        <h3>Unit A: Energy and Matter Exchange in the Biosphere</h3>
+                        <p>
+                            Explore how energy flows through ecosystems and how matter cycles through the biosphere.
+                        </p>
+                        <ul class="unit-topics">
+                            <li>Energy flow in ecosystems</li>
+                            <li>Trophic levels, food chains, and food webs</li>
+                            <li>Ecological pyramids</li>
+                            <li>Carbon, oxygen, nitrogen, and phosphorus cycles</li>
+                            <li>Biosphere equilibrium and human impact</li>
+                        </ul>
+                    </a>
+
+                    <a href="bio20_unitB.html" class="unit-card">
+                        <h3>Unit B: Ecosystems and Population Change</h3>
+                        <p>
+                            Study ecosystem structure, limiting factors, biodiversity, and how populations change over time.
+                        </p>
+                        <ul class="unit-topics">
+                            <li>Species, populations, communities, and ecosystems</li>
+                            <li>Biotic and abiotic factors</li>
+                            <li>Habitats and niches</li>
+                            <li>Taxonomy and binomial nomenclature</li>
+                            <li>Natural selection and evidence for evolution</li>
+                        </ul>
+                    </a>
+
+                    <a href="bio20_unitC.html" class="unit-card">
+                        <h3>Unit C: Photosynthesis and Cellular Respiration</h3>
+                        <p>
+                            Investigate how cells capture, transform, store, and release energy through essential biochemical processes.
+                        </p>
+                        <ul class="unit-topics">
+                            <li>Structure and function of chloroplasts</li>
+                            <li>Photosynthesis pathways</li>
+                            <li>Structure and function of mitochondria</li>
+                            <li>Cellular respiration and ATP production</li>
+                            <li>Energy transformation in living systems</li>
+                        </ul>
+                    </a>
+
+                    <a href="bio20_unitD.html" class="unit-card">
+                        <h3>Unit D: Human Systems</h3>
+                        <p>
+                            Examine the structure, function, and interactions of major human body systems.
+                        </p>
+                        <ul class="unit-topics">
+                            <li>Digestive system</li>
+                            <li>Respiratory system</li>
+                            <li>Circulatory system</li>
+                            <li>Excretory system</li>
+                            <li>Homeostasis and system interactions</li>
+                        </ul>
+                    </a>
+                </div>
+            </div>
+
+            <div class="content-box">
+                <h2>Biology 20 Learning Focus</h2>
+                <ul class="outcomes-list">
+                    <li>Explain the constant flow of energy through the biosphere and ecosystems</li>
+                    <li>Explain the cycling of matter through the biosphere</li>
+                    <li>Explain how energy and matter exchange in the biosphere maintains equilibrium</li>
+                    <li>Explain that the biosphere is composed of ecosystems with distinctive biotic and abiotic characteristics</li>
+                    <li>Explain the mechanisms involved in population change over time</li>
+                    <li>Investigate photosynthesis and cellular respiration as complementary biological processes</li>
+                    <li>Analyze how structure supports function in living systems</li>
+                    <li>Examine the organization and interaction of major human body systems</li>
+                    <li>Apply scientific inquiry and laboratory skills to biological investigations</li>
+                    <li>Evaluate human impact on ecosystems, biological balance, and sustainability</li>
+                </ul>
+            </div>
+
+            <div class="content-box">
+                <h2>Biology 20 Attitude Outcomes</h2>
+                <p class="intro-text">
+                    In Biology 20, students are also expected to develop attitudes that support responsible
+                    scientific learning and application.
+                </p>
+
+                <div class="attitude-grid">
+                    <div class="attitude-card">
+                        <h4>Interest in Science</h4>
+                        <p>Show curiosity about science-related questions, issues, and possible careers in science.</p>
+                    </div>
+
+                    <div class="attitude-card">
+                        <h4>Mutual Respect</h4>
+                        <p>Appreciate that scientific understanding grows through different perspectives and backgrounds.</p>
+                    </div>
+
+                    <div class="attitude-card">
+                        <h4>Scientific Inquiry</h4>
+                        <p>Seek evidence, ask questions, and think critically when exploring biological ideas and problems.</p>
+                    </div>
+
+                    <div class="attitude-card">
+                        <h4>Collaboration</h4>
+                        <p>Work effectively with others when planning investigations and communicating scientific ideas.</p>
+                    </div>
+
+                    <div class="attitude-card">
+                        <h4>Stewardship</h4>
+                        <p>Demonstrate responsibility toward environmental sustainability and the impact of human actions.</p>
+                    </div>
+
+                    <div class="attitude-card">
+                        <h4>Safety</h4>
+                        <p>Show concern for safety in labs and investigations, including proper handling and disposal of materials.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-box resources-box">
+                <h2>Recommended Resources</h2>
+
+                <a href="https://www.alberta.ca/curriculum" class="resource-link" target="_blank">
+                    Alberta Program of Studies / Curriculum Resources
+                </a>
+
+                <a href="https://phet.colorado.edu/" class="resource-link" target="_blank">
+                    PhET Interactive Simulations
+                </a>
+
+                <a href="https://www.ck12.org/student/" class="resource-link" target="_blank">
+                    CK-12 Biology Resources
+                </a>
+
+                <a href="https://biointeractive.org/" class="resource-link" target="_blank">
+                    HHMI BioInteractive
+                </a>
+
+                <a href="https://www.khanacademy.org/science/biology" class="resource-link" target="_blank">
+                    Khan Academy Biology
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>Email: terkperhannah@gmail.com | Instagram: hannah.attempts.teaching | TikTok: hannah.attempts.teaching</p>
+    </footer>
+</body>
+</html>
